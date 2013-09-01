@@ -1,0 +1,13 @@
+PODS:
+  - MFSideMenu (0.5.4)
+  - UITableView-NXEmptyView (0.1.4)
+
+DEPENDENCIES:
+  - MFSideMenu
+  - UITableView-NXEmptyView
+
+SPEC CHECKSUMS:
+  MFSideMenu: f59e25c080097a701e108459c207fb22e1f62c30
+  UITableView-NXEmptyView: 034e5162ce7b8e3584d720d0d925c27ea7711220
+
+COCOAPODS: 0.19.1
