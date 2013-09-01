@@ -18,6 +18,12 @@
 		182D72DC17D3CFAF00134224 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182D72DB17D3CFAF00134224 /* Default@2x.png */; };
 		182D72DE17D3CFAF00134224 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182D72DD17D3CFAF00134224 /* Default-568h@2x.png */; };
 		182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 182D72DF17D3CFAF00134224 /* TheRiverApp.xcdatamodeld */; };
+		182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72EA17D3D73800134224 /* TRMyContactListBar.m */; };
+		182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */; };
+		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
+		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
+		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
+		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,18 @@
 		182D72DB17D3CFAF00134224 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		182D72DD17D3CFAF00134224 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		182D72E017D3CFAF00134224 /* TheRiverApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheRiverApp.xcdatamodel; sourceTree = "<group>"; };
+		182D72E917D3D73800134224 /* TRMyContactListBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMyContactListBar.h; path = Controllers/SideBars/TRMyContactListBar.h; sourceTree = "<group>"; };
+		182D72EA17D3D73800134224 /* TRMyContactListBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMyContactListBar.m; path = Controllers/SideBars/TRMyContactListBar.m; sourceTree = "<group>"; };
+		182D72EC17D3D76A00134224 /* TRLeftRootMenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRLeftRootMenuBar.h; path = Controllers/SideBars/TRLeftRootMenuBar.h; sourceTree = "<group>"; };
+		182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRLeftRootMenuBar.m; path = Controllers/SideBars/TRLeftRootMenuBar.m; sourceTree = "<group>"; };
+		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
+		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
+		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
+		18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchBarVC.m; path = Controllers/SearchBar/TRSearchBarVC.m; sourceTree = "<group>"; };
+		18DA912817D3E1A900138EF2 /* UISearchBar+CancelBtnShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+CancelBtnShow.h"; path = "Controllers/SearchBar/UISearchBar+CancelBtnShow.h"; sourceTree = "<group>"; };
+		18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+CancelBtnShow.m"; path = "Controllers/SearchBar/UISearchBar+CancelBtnShow.m"; sourceTree = "<group>"; };
+		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +65,7 @@
 				182D72C817D3CFAF00134224 /* Foundation.framework in Frameworks */,
 				182D72CA17D3CFAF00134224 /* CoreGraphics.framework in Frameworks */,
 				182D72CC17D3CFAF00134224 /* CoreData.framework in Frameworks */,
+				FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +78,7 @@
 				182D72CD17D3CFAF00134224 /* TheRiverApp */,
 				182D72C417D3CFAF00134224 /* Frameworks */,
 				182D72C317D3CFAF00134224 /* Products */,
+				651A28E0F2D441E39829411F /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +97,7 @@
 				182D72C717D3CFAF00134224 /* Foundation.framework */,
 				182D72C917D3CFAF00134224 /* CoreGraphics.framework */,
 				182D72CB17D3CFAF00134224 /* CoreData.framework */,
+				20D9CF22E8694C9C9542AEF5 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -84,6 +105,7 @@
 		182D72CD17D3CFAF00134224 /* TheRiverApp */ = {
 			isa = PBXGroup;
 			children = (
+				182D72E717D3D65100134224 /* Controllers */,
 				182D72D617D3CFAF00134224 /* TRAppDelegate.h */,
 				182D72D717D3CFAF00134224 /* TRAppDelegate.m */,
 				182D72DF17D3CFAF00134224 /* TheRiverApp.xcdatamodeld */,
@@ -106,6 +128,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		182D72E717D3D65100134224 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18DA912417D3DECD00138EF2 /* SearchBar */,
+				182D72E817D3D65F00134224 /* SideBars */,
+				18DA912117D3DCC200138EF2 /* TRRootController.h */,
+				18DA912217D3DCC200138EF2 /* TRRootController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		182D72E817D3D65F00134224 /* SideBars */ = {
+			isa = PBXGroup;
+			children = (
+				182D72E917D3D73800134224 /* TRMyContactListBar.h */,
+				182D72EA17D3D73800134224 /* TRMyContactListBar.m */,
+				182D72EC17D3D76A00134224 /* TRLeftRootMenuBar.h */,
+				182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */,
+			);
+			name = SideBars;
+			sourceTree = "<group>";
+		};
+		18DA912417D3DECD00138EF2 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */,
+				18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */,
+				18DA912817D3E1A900138EF2 /* UISearchBar+CancelBtnShow.h */,
+				18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */,
+			);
+			name = SearchBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 182D72E417D3CFAF00134224 /* Build configuration list for PBXNativeTarget "TheRiverApp" */;
 			buildPhases = (
+				6C709524899D4AC5937E7341 /* Check Pods Manifest.lock */,
 				182D72BE17D3CFAF00134224 /* Sources */,
 				182D72BF17D3CFAF00134224 /* Frameworks */,
 				182D72C017D3CFAF00134224 /* Resources */,
+				27A8FB87191A4F0084C2ACFA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,6 +224,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		27A8FB87191A4F0084C2ACFA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		6C709524899D4AC5937E7341 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		182D72BE17D3CFAF00134224 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -175,6 +263,11 @@
 				182D72D417D3CFAF00134224 /* main.m in Sources */,
 				182D72D817D3CFAF00134224 /* TRAppDelegate.m in Sources */,
 				182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */,
+				182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */,
+				182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */,
+				18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */,
+				18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */,
+				18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +343,7 @@
 		};
 		182D72E517D3CFAF00134224 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
@@ -261,6 +355,7 @@
 		};
 		182D72E617D3CFAF00134224 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
@@ -289,6 +384,7 @@
 				182D72E617D3CFAF00134224 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
