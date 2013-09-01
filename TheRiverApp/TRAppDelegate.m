@@ -8,6 +8,17 @@
 
 #import "TRAppDelegate.h"
 
+#import <MFSideMenu/MFSideMenu.h>
+
+#import "TRLeftRootMenuBar.h"
+#import "TRMyContactListBar.h"
+
+@interface TRAppDelegate()
+@property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
+@property (nonatomic, retain) TRLeftRootMenuBar *leftRootMenuBar;
+@property (nonatomic, retain) TRMyContactListBar *rightMyContactList;
+@end
+
 @implementation TRAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -17,9 +28,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
+    _rightMyContactList = [[TRMyContactListBar alloc] init];
+    _rootContainer = [MFSideMenuContainerViewController
+                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]
+                                                    leftMenuViewController: _leftRootMenuBar
+                                                    rightMenuViewController: _rightMyContactList];
+    self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
