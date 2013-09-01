@@ -8,7 +8,9 @@
 
 #import "TRMyContactListBar.h"
 #import "TRSearchBarVC.h"
+
 #import <MFSideMenu/MFSideMenu.h>
+#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 
 @interface TRMyContactListBar ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
@@ -43,6 +45,7 @@
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	_contactsTableView.backgroundColor = [UIColor whiteColor];
 	_contactsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //_contactsTableView.nxEV_emptyView = all;
 	[self.view addSubview: _contactsTableView];
 }
 
@@ -58,7 +61,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
