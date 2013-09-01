@@ -345,10 +345,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B97938B8-06F1-430C-B953-559B9BB9EC7F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -357,10 +359,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B97938B8-06F1-430C-B953-559B9BB9EC7F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
