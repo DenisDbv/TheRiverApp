@@ -31,8 +31,10 @@
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
+    UIViewController *mainVC = [[UIViewController alloc] init];
+    mainVC.view.backgroundColor = [UIColor whiteColor];
     _rootContainer = [MFSideMenuContainerViewController
-                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]
+                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController:mainVC]
                                                     leftMenuViewController: _leftRootMenuBar
                                                     rightMenuViewController: _rightMyContactList];
     self.window.rootViewController = _rootContainer;
