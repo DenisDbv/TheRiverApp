@@ -28,7 +28,9 @@ typedef enum {
     MFSideMenuStateEventMenuWillOpen, // the menu is going to open
     MFSideMenuStateEventMenuDidOpen, // the menu finished opening
     MFSideMenuStateEventMenuWillClose, // the menu is going to close
-    MFSideMenuStateEventMenuDidClose // the menu finished closing
+    MFSideMenuStateEventMenuDidClose, // the menu finished closing
+    
+    MFSideMenuStateEventMenuAnimationDidEnd
 } MFSideMenuStateEvent;
 
 

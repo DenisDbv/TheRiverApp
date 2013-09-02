@@ -34,18 +34,6 @@
     self.navigationController.navigationBarHidden = YES;
     
     //[self toShortWidth];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(menuStateEventOccurred:)
-                                                 name:MFSideMenuStateNotificationEvent
-                                               object:nil];
-}
-
-- (void)menuStateEventOccurred:(NSNotification *)notification {
-    MFSideMenuStateEvent event = [[[notification userInfo] objectForKey:@"eventType"] intValue];
-    //MFSideMenuContainerViewController *containerViewController = notification.object;
- 
-    NSLog(@"=>%i", event);
 }
 
 - (void)didReceiveMemoryWarning

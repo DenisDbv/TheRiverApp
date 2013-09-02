@@ -710,11 +710,13 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
             if(additionalAnimations) additionalAnimations();
         } completion:^(BOOL finished) {
             innerCompletion();
+            [self sendStateEventNotification:MFSideMenuStateEventMenuAnimationDidEnd];
         }];
     } else {
         [self setCenterViewControllerOffset:offset];
         if(additionalAnimations) additionalAnimations();
         innerCompletion();
+        [self sendStateEventNotification:MFSideMenuStateEventMenuAnimationDidEnd];
     }
 }
 
