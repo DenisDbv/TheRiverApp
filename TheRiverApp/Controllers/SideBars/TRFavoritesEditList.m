@@ -10,7 +10,7 @@
 #import "TRSearchBarVC.h"
 #import "TRSectionHeaderView.h"
 
-#import <MFSideMenu/MFSideMenu.h>
+#import "MFSideMenu.h"
 
 @interface TRFavoritesEditList ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;

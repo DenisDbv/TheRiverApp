@@ -11,7 +11,7 @@
 #import "TRSectionHeaderView.h"
 #import "TRFavoritesEditList.h"
 
-#import <MFSideMenu/MFSideMenu.h>
+#import "MFSideMenu.h"
 //#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 #import <REActivityViewController/REActivityViewController.h>
 
@@ -67,8 +67,10 @@
 {
     [UIView beginAnimations:nil context:NULL];
     [self toShortWidth];
-    [_searchBarController.searchBar sizeToFit];
+    [_searchBarController.searchBar layoutSubviews];
     [UIView commitAnimations];
+    
+    [_searchBarController.searchBar sizeToFit];
 }
 
 - (void)didReceiveMemoryWarning

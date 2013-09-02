@@ -8,7 +8,7 @@
 
 #import "TRAppDelegate.h"
 
-#import <MFSideMenu/MFSideMenu.h>
+#import "MFSideMenu.h"
 
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"

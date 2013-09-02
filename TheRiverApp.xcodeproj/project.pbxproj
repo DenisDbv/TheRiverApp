@@ -33,6 +33,9 @@
 		18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */; };
 		18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */; };
 		18E65E2117D4B97A00D1B778 /* TRFavoritesEditList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2017D4B97A00D1B778 /* TRFavoritesEditList.m */; };
+		18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */; };
+		18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */; };
+		18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +78,13 @@
 		18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+GestureBlocks.m"; path = "Common/UIView+GestureBlocks.m"; sourceTree = "<group>"; };
 		18E65E1F17D4B97A00D1B778 /* TRFavoritesEditList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRFavoritesEditList.h; path = Controllers/SideBars/TRFavoritesEditList.h; sourceTree = "<group>"; };
 		18E65E2017D4B97A00D1B778 /* TRFavoritesEditList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRFavoritesEditList.m; path = Controllers/SideBars/TRFavoritesEditList.m; sourceTree = "<group>"; };
+		18E65E2417D5009700D1B778 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
+		18E65E2517D5009700D1B778 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
+		18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
+		18E65E2717D5009700D1B778 /* MFSideMenuShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuShadow.h; sourceTree = "<group>"; };
+		18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
+		18E65E2917D5009700D1B778 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
+		18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -128,6 +138,7 @@
 		182D72CD17D3CFAF00134224 /* TheRiverApp */ = {
 			isa = PBXGroup;
 			children = (
+				18E65E2217D5009700D1B778 /* ExternalLibs */,
 				18DA914517D4851400138EF2 /* Common */,
 				18DA914117D4750900138EF2 /* TableViewHelpers */,
 				18DA912B17D44C5700138EF2 /* Resources */,
@@ -227,6 +238,28 @@
 				18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
+			isa = PBXGroup;
+			children = (
+				18E65E2317D5009700D1B778 /* MFSideMenu */,
+			);
+			path = ExternalLibs;
+			sourceTree = "<group>";
+		};
+		18E65E2317D5009700D1B778 /* MFSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				18E65E2417D5009700D1B778 /* MFSideMenu.h */,
+				18E65E2517D5009700D1B778 /* MFSideMenuContainerViewController.h */,
+				18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */,
+				18E65E2717D5009700D1B778 /* MFSideMenuShadow.h */,
+				18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */,
+				18E65E2917D5009700D1B778 /* UIViewController+MFSideMenuAdditions.h */,
+				18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */,
+			);
+			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +379,9 @@
 				18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */,
 				18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */,
 				18E65E2117D4B97A00D1B778 /* TRFavoritesEditList.m in Sources */,
+				18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */,
+				18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */,
+				18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
