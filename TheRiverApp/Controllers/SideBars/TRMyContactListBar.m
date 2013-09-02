@@ -43,10 +43,20 @@
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    //_contactsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	_contactsTableView.backgroundColor = [UIColor whiteColor];
-	_contactsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0
+                                                          green:54.0/255.0
+                                                           blue:57.0/255.0
+                                                          alpha:1.0]];
+    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:77.0/255.0
+                                                           green:79.0/255.0
+                                                            blue:80.0/255.0
+                                                           alpha:1.0]];
     //_contactsTableView.nxEV_emptyView = all;
 	[self.view addSubview: _contactsTableView];
+    
+    [self.view setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,15 +78,20 @@
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:16]];
     }
     
+    cell.imageView.image = [UIImage imageNamed:@"IamAppleDev2.jpg"];
     cell.textLabel.text = @"Дубов Денис";
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark SearchNearContactsDelegate

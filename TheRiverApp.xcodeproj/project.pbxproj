@@ -23,6 +23,13 @@
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
+		18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913217D4526000138EF2 /* IamAppleDev.jpg */; };
+		18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913317D4526000138EF2 /* IamAppleDev2.jpg */; };
+		18DA913717D4526000138EF2 /* IamChinaMan.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913417D4526000138EF2 /* IamChinaMan.JPG */; };
+		18DA913D17D4529D00138EF2 /* searchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913917D4529D00138EF2 /* searchBarBG.png */; };
+		18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913A17D4529D00138EF2 /* searchBarIcon.png */; };
+		18DA913F17D4529D00138EF2 /* searchBarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */; };
+		18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913C17D4529D00138EF2 /* searchTextBG.png */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +59,13 @@
 		18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchBarVC.m; path = Controllers/SearchBar/TRSearchBarVC.m; sourceTree = "<group>"; };
 		18DA912817D3E1A900138EF2 /* UISearchBar+CancelBtnShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+CancelBtnShow.h"; path = "Controllers/SearchBar/UISearchBar+CancelBtnShow.h"; sourceTree = "<group>"; };
 		18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+CancelBtnShow.m"; path = "Controllers/SearchBar/UISearchBar+CancelBtnShow.m"; sourceTree = "<group>"; };
+		18DA913217D4526000138EF2 /* IamAppleDev.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IamAppleDev.jpg; path = Resources/IamAppleDev.jpg; sourceTree = "<group>"; };
+		18DA913317D4526000138EF2 /* IamAppleDev2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IamAppleDev2.jpg; path = Resources/IamAppleDev2.jpg; sourceTree = "<group>"; };
+		18DA913417D4526000138EF2 /* IamChinaMan.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IamChinaMan.JPG; path = Resources/IamChinaMan.JPG; sourceTree = "<group>"; };
+		18DA913917D4529D00138EF2 /* searchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchBarBG.png; path = Resources/SearchBar/searchBarBG.png; sourceTree = "<group>"; };
+		18DA913A17D4529D00138EF2 /* searchBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchBarIcon.png; path = Resources/SearchBar/searchBarIcon.png; sourceTree = "<group>"; };
+		18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchBarIcon@2x.png"; path = "Resources/SearchBar/searchBarIcon@2x.png"; sourceTree = "<group>"; };
+		18DA913C17D4529D00138EF2 /* searchTextBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchTextBG.png; path = Resources/SearchBar/searchTextBG.png; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -105,6 +119,7 @@
 		182D72CD17D3CFAF00134224 /* TheRiverApp */ = {
 			isa = PBXGroup;
 			children = (
+				18DA912B17D44C5700138EF2 /* Resources */,
 				182D72E717D3D65100134224 /* Controllers */,
 				182D72D617D3CFAF00134224 /* TRAppDelegate.h */,
 				182D72D717D3CFAF00134224 /* TRAppDelegate.m */,
@@ -157,6 +172,28 @@
 				18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */,
 				18DA912817D3E1A900138EF2 /* UISearchBar+CancelBtnShow.h */,
 				18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */,
+			);
+			name = SearchBar;
+			sourceTree = "<group>";
+		};
+		18DA912B17D44C5700138EF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				18DA913817D4526D00138EF2 /* SearchBar */,
+				18DA913217D4526000138EF2 /* IamAppleDev.jpg */,
+				18DA913317D4526000138EF2 /* IamAppleDev2.jpg */,
+				18DA913417D4526000138EF2 /* IamChinaMan.JPG */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		18DA913817D4526D00138EF2 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				18DA913917D4529D00138EF2 /* searchBarBG.png */,
+				18DA913A17D4529D00138EF2 /* searchBarIcon.png */,
+				18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */,
+				18DA913C17D4529D00138EF2 /* searchTextBG.png */,
 			);
 			name = SearchBar;
 			sourceTree = "<group>";
@@ -219,6 +256,13 @@
 				182D72DA17D3CFAF00134224 /* Default.png in Resources */,
 				182D72DC17D3CFAF00134224 /* Default@2x.png in Resources */,
 				182D72DE17D3CFAF00134224 /* Default-568h@2x.png in Resources */,
+				18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */,
+				18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */,
+				18DA913717D4526000138EF2 /* IamChinaMan.JPG in Resources */,
+				18DA913D17D4529D00138EF2 /* searchBarBG.png in Resources */,
+				18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */,
+				18DA913F17D4529D00138EF2 /* searchBarIcon@2x.png in Resources */,
+				18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
