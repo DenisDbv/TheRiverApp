@@ -11,6 +11,7 @@
 
 #import <MFSideMenu/MFSideMenu.h>
 #import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
+#import <REActivityViewController/REActivityViewController.h>
 
 @interface TRMyContactListBar ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
@@ -92,6 +93,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] init];
+    RETwitterActivity *twitterActivity = [[RETwitterActivity alloc] init];
+    REVKActivity *vkActivity = [[REVKActivity alloc] initWithClientId:@"3396235"];
+    REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
+    REMailActivity *mailActivity = [[REMailActivity alloc] init];
+    RESafariActivity *safariActivity = [[RESafariActivity alloc] init];
+    
+    NSArray *activities = @[messageActivity, mailActivity, safariActivity,
+                            vkActivity, facebookActivity, twitterActivity ];
+    REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
+    [activityViewController presentFromRootViewController];
+    
 }
 
 #pragma mark SearchNearContactsDelegate
