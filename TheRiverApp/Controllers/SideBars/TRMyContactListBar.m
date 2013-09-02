@@ -8,6 +8,7 @@
 
 #import "TRMyContactListBar.h"
 #import "TRSearchBarVC.h"
+#import "TRSectionHeaderView.h"
 
 #import <MFSideMenu/MFSideMenu.h>
 #import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
@@ -73,6 +74,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 100;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
+                                                                         withTitle:@"ИЗБРАННОЕ"
+                                                                   withButtonTitle:@"РЕДАКТИРОВАТЬ"
+                                                                           byBlock:^{
+                                                                               NSLog(@"haha");
+                                                                           }];
+    [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    return headerView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 32.0;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

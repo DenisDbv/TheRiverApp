@@ -30,6 +30,8 @@
 		18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913A17D4529D00138EF2 /* searchBarIcon.png */; };
 		18DA913F17D4529D00138EF2 /* searchBarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */; };
 		18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913C17D4529D00138EF2 /* searchTextBG.png */; };
+		18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */; };
+		18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,10 @@
 		18DA913A17D4529D00138EF2 /* searchBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchBarIcon.png; path = Resources/SearchBar/searchBarIcon.png; sourceTree = "<group>"; };
 		18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchBarIcon@2x.png"; path = "Resources/SearchBar/searchBarIcon@2x.png"; sourceTree = "<group>"; };
 		18DA913C17D4529D00138EF2 /* searchTextBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchTextBG.png; path = Resources/SearchBar/searchTextBG.png; sourceTree = "<group>"; };
+		18DA914217D4757E00138EF2 /* TRSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSectionHeaderView.h; path = TableViewHelpers/TRSectionHeaderView.h; sourceTree = "<group>"; };
+		18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSectionHeaderView.m; path = TableViewHelpers/TRSectionHeaderView.m; sourceTree = "<group>"; };
+		18DA914617D4853C00138EF2 /* UIView+GestureBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+GestureBlocks.h"; path = "Common/UIView+GestureBlocks.h"; sourceTree = "<group>"; };
+		18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+GestureBlocks.m"; path = "Common/UIView+GestureBlocks.m"; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -119,6 +125,8 @@
 		182D72CD17D3CFAF00134224 /* TheRiverApp */ = {
 			isa = PBXGroup;
 			children = (
+				18DA914517D4851400138EF2 /* Common */,
+				18DA914117D4750900138EF2 /* TableViewHelpers */,
 				18DA912B17D44C5700138EF2 /* Resources */,
 				182D72E717D3D65100134224 /* Controllers */,
 				182D72D617D3CFAF00134224 /* TRAppDelegate.h */,
@@ -196,6 +204,24 @@
 				18DA913C17D4529D00138EF2 /* searchTextBG.png */,
 			);
 			name = SearchBar;
+			sourceTree = "<group>";
+		};
+		18DA914117D4750900138EF2 /* TableViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				18DA914217D4757E00138EF2 /* TRSectionHeaderView.h */,
+				18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */,
+			);
+			name = TableViewHelpers;
+			sourceTree = "<group>";
+		};
+		18DA914517D4851400138EF2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				18DA914617D4853C00138EF2 /* UIView+GestureBlocks.h */,
+				18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +338,8 @@
 				18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */,
 				18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */,
 				18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */,
+				18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */,
+				18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
