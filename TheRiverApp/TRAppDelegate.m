@@ -36,11 +36,11 @@
     _rootContainer = [MFSideMenuContainerViewController
                                                     containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController:mainVC]
                                                     leftMenuViewController: _leftRootMenuBar
-                                                    rightMenuViewController: _rightMyContactList];
+                                                    rightMenuViewController: [[UINavigationController alloc] initWithRootViewController:_rightMyContactList]];
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     
-    [self showFontsList];
+    //[self showFontsList];
     
     return YES;
 }

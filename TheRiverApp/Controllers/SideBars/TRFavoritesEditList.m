@@ -1,26 +1,23 @@
 //
-//  TRMyContactListBar.m
+//  TRFavoritesEditList.m
 //  TheRiverApp
 //
 //  Created by DenisDbv on 02.09.13.
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
-#import "TRMyContactListBar.h"
+#import "TRFavoritesEditList.h"
 #import "TRSearchBarVC.h"
 #import "TRSectionHeaderView.h"
-#import "TRFavoritesEditList.h"
 
 #import <MFSideMenu/MFSideMenu.h>
-//#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
-#import <REActivityViewController/REActivityViewController.h>
 
-@interface TRMyContactListBar ()
+@interface TRFavoritesEditList ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
 @property (nonatomic, retain) UITableView *contactsTableView;
 @end
 
-@implementation TRMyContactListBar
+@implementation TRFavoritesEditList
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,18 +32,20 @@
 {
     [super viewDidLoad];
     
+    [self toFullWidth];
+    self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
+	
     _searchBarController = [[TRSearchBarVC alloc] init];
     _searchBarController.delegate = (id)self;
     [self.view addSubview:_searchBarController.searchBar];
     [_searchBarController.searchBar sizeToFit];
     
     _contactsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f,
-                                                                       320.0, CGRectGetHeight(self.view.bounds)-44.0)
+                                                                       320, CGRectGetHeight(self.view.bounds)-44.0)
                                                       style:UITableViewStylePlain];
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-	_contactsTableView.backgroundColor = [UIColor whiteColor];
     [_contactsTableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0
                                                           green:54.0/255.0
                                                            blue:57.0/255.0
@@ -59,21 +58,12 @@
 	[self.view addSubview: _contactsTableView];
     
     [self.view setBackgroundColor:[UIColor clearColor]];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-}
-
--(void) viewDidAppear:(BOOL)animated
-{
-    [UIView beginAnimations:nil context:NULL];
-    [self toShortWidth];
-    [_searchBarController.searchBar sizeToFit];
-    [UIView commitAnimations];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark UITableViewDataSource
@@ -82,16 +72,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 100;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
-                                                                         withTitle:@"ИЗБРАННОЕ"
-                                                                   withButtonTitle:@"РЕДАКТИРОВАТЬ"
-                                                                           byBlock:^{
-                                                                               [self checkoutTableToEditMode];
-                                                                           }];
+    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)];
+    [headerView setTitle:@"ИЗБРАННОЕ"];
     [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
     return headerView;
 }
@@ -123,60 +109,20 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] init];
-    RETwitterActivity *twitterActivity = [[RETwitterActivity alloc] init];
-    REVKActivity *vkActivity = [[REVKActivity alloc] initWithClientId:@"3396235"];
-    REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
-    REMailActivity *mailActivity = [[REMailActivity alloc] init];
-    RESafariActivity *safariActivity = [[RESafariActivity alloc] init];
-    
-    NSArray *activities = @[messageActivity, mailActivity, safariActivity,
-                            vkActivity, facebookActivity, twitterActivity ];
-    REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
-    [activityViewController presentFromRootViewController];
-    
 }
 
 #pragma mark SearchNearContactsDelegate
 
 -(void) onClickBySearchBar:(UISearchBar*)searchBar
 {
-    [UIView beginAnimations:nil context:NULL];
-    [self toFullWidth];
-    [_searchBarController.searchBar layoutSubviews];
-    [UIView commitAnimations];
     
-    //[_searchBarController.searchBar setShowsCancelButton:YES animated:YES];
-    
-    self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
 }
 
 -(void) onCancelSearchBar:(UISearchBar*)searchBar
 {
-    [_searchBarController.searchBar resignFirstResponder];
-    
-    [UIView beginAnimations:nil context:NULL];
-    [self toShortWidth];
-    [_searchBarController.searchBar layoutSubviews];
-    [UIView commitAnimations];
-    
-    //[_searchBarController.searchBar setShowsCancelButton:NO animated:YES];
-    
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
-#pragma mark Click on edit in header section
-
--(void) checkoutTableToEditMode
-{
-    //!!! Заплатка. При переходе из окна выбора избранных, текущий searchBar остался в тех же размерах что и
-    // до перехода, поэтому после трансформации ширины экрана с большего на меньший появляется пробел справа.
-    // Увеличим searchBar до 320 и в viewDidAppear будем его уменьшать пропорционально изменению ширины.
-    CGRect rect = _searchBarController.searchBar.frame;
-    rect.size.width = 320.0;
-    _searchBarController.searchBar.frame = rect;
-    
-    [self.navigationController pushViewController:[[TRFavoritesEditList alloc] init] animated:NO];
-}
 
 @end
