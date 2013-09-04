@@ -15,6 +15,7 @@
 
 @interface TRAppDelegate()
 @property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
+@property (nonatomic, retain) UIViewController *mainController;
 @property (nonatomic, retain) TRLeftRootMenuBar *leftRootMenuBar;
 @property (nonatomic, retain) TRMyContactListBar *rightMyContactList;
 @end
@@ -31,10 +32,10 @@
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    UIViewController *mainVC = [[UIViewController alloc] init];
-    mainVC.view.backgroundColor = [UIColor whiteColor];
+    _mainController = [[UIViewController alloc] init];
+    _mainController.view.backgroundColor = [UIColor whiteColor];
     _rootContainer = [MFSideMenuContainerViewController
-                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController:mainVC]
+                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                                                     leftMenuViewController: _leftRootMenuBar
                                                     rightMenuViewController: [[UINavigationController alloc] initWithRootViewController:_rightMyContactList]];
     self.window.rootViewController = _rootContainer;
@@ -43,6 +44,11 @@
     //[self showFontsList];
     
     return YES;
+}
+
+-(void) changeCenterViewController:(UIViewController*)newController
+{
+    [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
 }
 
 -(void) showFontsList

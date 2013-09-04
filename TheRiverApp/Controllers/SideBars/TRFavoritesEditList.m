@@ -160,7 +160,7 @@ forRowAtIndexPath: (NSIndexPath *)indexPath
     {
         if(outFavorite > 1)
         {
-            inFavotite++;
+            //inFavotite++;
             //outFavorite--;
             //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView reloadData];

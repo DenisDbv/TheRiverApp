@@ -20,6 +20,16 @@
 		182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 182D72DF17D3CFAF00134224 /* TheRiverApp.xcdatamodeld */; };
 		182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72EA17D3D73800134224 /* TRMyContactListBar.m */; };
 		182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */; };
+		1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */; };
+		1891D72917D643FE00281246 /* TRUserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72817D643FE00281246 /* TRUserProfileController.m */; };
+		1891D73017D6515A00281246 /* TRHeadBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72F17D6515A00281246 /* TRHeadBox.m */; };
+		1891D73217D657F900281246 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1891D73117D657F900281246 /* background.jpg */; };
+		1891D73517D65BE600281246 /* TRPhotoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73417D65BE600281246 /* TRPhotoBox.m */; };
+		1891D73817D6645600281246 /* TRSecondHeadBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73717D6645500281246 /* TRSecondHeadBox.m */; };
+		1891D73B17D67FC300281246 /* TRTagsScrollBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73A17D67FC300281246 /* TRTagsScrollBox.m */; };
+		1891D75317D7079D00281246 /* gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75017D7079D00281246 /* gold.png */; };
+		1891D75417D7079D00281246 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75117D7079D00281246 /* green.png */; };
+		1891D75517D7079D00281246 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75217D7079D00281246 /* black.png */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -59,6 +69,23 @@
 		182D72EA17D3D73800134224 /* TRMyContactListBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMyContactListBar.m; path = Controllers/SideBars/TRMyContactListBar.m; sourceTree = "<group>"; };
 		182D72EC17D3D76A00134224 /* TRLeftRootMenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRLeftRootMenuBar.h; path = Controllers/SideBars/TRLeftRootMenuBar.h; sourceTree = "<group>"; };
 		182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRLeftRootMenuBar.m; path = Controllers/SideBars/TRLeftRootMenuBar.m; sourceTree = "<group>"; };
+		1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootMenuCell.h; path = TableViewHelpers/TRRootMenuCell.h; sourceTree = "<group>"; };
+		1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootMenuCell.m; path = TableViewHelpers/TRRootMenuCell.m; sourceTree = "<group>"; };
+		1835771317D5AB1C00AE0D72 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Common/Global.h; sourceTree = "<group>"; };
+		1891D72717D643FE00281246 /* TRUserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserProfileController.h; path = Controllers/UserProfile/TRUserProfileController.h; sourceTree = "<group>"; };
+		1891D72817D643FE00281246 /* TRUserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserProfileController.m; path = Controllers/UserProfile/TRUserProfileController.m; sourceTree = "<group>"; };
+		1891D72E17D6515A00281246 /* TRHeadBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRHeadBox.h; path = Controllers/UserProfile/Layers/TRHeadBox.h; sourceTree = "<group>"; };
+		1891D72F17D6515A00281246 /* TRHeadBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRHeadBox.m; path = Controllers/UserProfile/Layers/TRHeadBox.m; sourceTree = "<group>"; };
+		1891D73117D657F900281246 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = Resources/background.jpg; sourceTree = "<group>"; };
+		1891D73317D65BE600281246 /* TRPhotoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPhotoBox.h; path = Controllers/UserProfile/Layers/TRPhotoBox.h; sourceTree = "<group>"; };
+		1891D73417D65BE600281246 /* TRPhotoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPhotoBox.m; path = Controllers/UserProfile/Layers/TRPhotoBox.m; sourceTree = "<group>"; };
+		1891D73617D6645500281246 /* TRSecondHeadBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSecondHeadBox.h; path = Controllers/UserProfile/Layers/TRSecondHeadBox.h; sourceTree = "<group>"; };
+		1891D73717D6645500281246 /* TRSecondHeadBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSecondHeadBox.m; path = Controllers/UserProfile/Layers/TRSecondHeadBox.m; sourceTree = "<group>"; };
+		1891D73917D67FC200281246 /* TRTagsScrollBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRTagsScrollBox.h; path = Controllers/UserProfile/Layers/TRTagsScrollBox.h; sourceTree = "<group>"; };
+		1891D73A17D67FC300281246 /* TRTagsScrollBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRTagsScrollBox.m; path = Controllers/UserProfile/Layers/TRTagsScrollBox.m; sourceTree = "<group>"; };
+		1891D75017D7079D00281246 /* gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold.png; sourceTree = "<group>"; };
+		1891D75117D7079D00281246 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		1891D75217D7079D00281246 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -168,6 +195,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1891D72617D643BD00281246 /* UserProfile */,
 				18DA912417D3DECD00138EF2 /* SearchBar */,
 				182D72E817D3D65F00134224 /* SideBars */,
 				18DA912117D3DCC200138EF2 /* TRRootController.h */,
@@ -189,6 +217,31 @@
 			name = SideBars;
 			sourceTree = "<group>";
 		};
+		1891D72617D643BD00281246 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				1891D72D17D6505900281246 /* Layers */,
+				1891D72717D643FE00281246 /* TRUserProfileController.h */,
+				1891D72817D643FE00281246 /* TRUserProfileController.m */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		1891D72D17D6505900281246 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				1891D72E17D6515A00281246 /* TRHeadBox.h */,
+				1891D72F17D6515A00281246 /* TRHeadBox.m */,
+				1891D73317D65BE600281246 /* TRPhotoBox.h */,
+				1891D73417D65BE600281246 /* TRPhotoBox.m */,
+				1891D73617D6645500281246 /* TRSecondHeadBox.h */,
+				1891D73717D6645500281246 /* TRSecondHeadBox.m */,
+				1891D73917D67FC200281246 /* TRTagsScrollBox.h */,
+				1891D73A17D67FC300281246 /* TRTagsScrollBox.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +256,10 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1891D75017D7079D00281246 /* gold.png */,
+				1891D75117D7079D00281246 /* green.png */,
+				1891D75217D7079D00281246 /* black.png */,
+				1891D73117D657F900281246 /* background.jpg */,
 				18DA913817D4526D00138EF2 /* SearchBar */,
 				18DA913217D4526000138EF2 /* IamAppleDev.jpg */,
 				18DA913317D4526000138EF2 /* IamAppleDev2.jpg */,
@@ -227,6 +284,8 @@
 			children = (
 				18DA914217D4757E00138EF2 /* TRSectionHeaderView.h */,
 				18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */,
+				1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */,
+				1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -236,6 +295,7 @@
 			children = (
 				18DA914617D4853C00138EF2 /* UIView+GestureBlocks.h */,
 				18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */,
+				1835771317D5AB1C00AE0D72 /* Global.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -327,6 +387,10 @@
 				18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */,
 				18DA913F17D4529D00138EF2 /* searchBarIcon@2x.png in Resources */,
 				18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */,
+				1891D73217D657F900281246 /* background.jpg in Resources */,
+				1891D75317D7079D00281246 /* gold.png in Resources */,
+				1891D75417D7079D00281246 /* green.png in Resources */,
+				1891D75517D7079D00281246 /* black.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +446,12 @@
 				18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */,
 				18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */,
 				18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+				1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */,
+				1891D72917D643FE00281246 /* TRUserProfileController.m in Sources */,
+				1891D73017D6515A00281246 /* TRHeadBox.m in Sources */,
+				1891D73517D65BE600281246 /* TRPhotoBox.m in Sources */,
+				1891D73817D6645600281246 /* TRSecondHeadBox.m in Sources */,
+				1891D73B17D67FC300281246 /* TRTagsScrollBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

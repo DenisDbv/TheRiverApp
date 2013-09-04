@@ -60,7 +60,7 @@
     
     [self.view setBackgroundColor:[UIColor clearColor]];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    //self.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(void) viewDidAppear:(BOOL)animated
