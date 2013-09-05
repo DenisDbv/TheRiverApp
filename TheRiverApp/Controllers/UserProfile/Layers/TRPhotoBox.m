@@ -22,6 +22,7 @@
     self.layer.shadowOffset = CGSizeMake(0, 0.5);
     self.layer.shadowRadius = 1;
     self.layer.shadowOpacity = 1;
+    self.layer.cornerRadius = 2;
     //self.layer.rasterizationScale = 1.0;
     //self.layer.shouldRasterize = YES;
 }
