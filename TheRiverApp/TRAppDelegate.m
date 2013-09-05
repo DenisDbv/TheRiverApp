@@ -8,13 +8,16 @@
 
 #import "TRAppDelegate.h"
 
-#import <MFSideMenu/MFSideMenu.h>
+#import "MFSideMenu.h"
 
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
+#import "TRTestViewController.h"
+#import "TRScrollViewController.h"
 
 @interface TRAppDelegate()
 @property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
+@property (nonatomic, retain) UIViewController *mainController;
 @property (nonatomic, retain) TRLeftRootMenuBar *leftRootMenuBar;
 @property (nonatomic, retain) TRMyContactListBar *rightMyContactList;
 @end
@@ -31,14 +34,42 @@
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
+    _mainController = [[TRScrollViewController alloc] init];
+    _mainController.view.backgroundColor = [UIColor whiteColor];
     _rootContainer = [MFSideMenuContainerViewController
-                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]
+                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                                                     leftMenuViewController: _leftRootMenuBar
-                                                    rightMenuViewController: _rightMyContactList];
+                                                    rightMenuViewController: [[UINavigationController alloc] initWithRootViewController:_rightMyContactList]];
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     
+    //[self showFontsList];
+    
     return YES;
+}
+
+-(void) changeCenterViewController:(UIViewController*)newController
+{
+    [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
+}
+
+-(void) showFontsList
+{
+    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
+    
+    NSArray *fontNames;
+    NSInteger indFamily, indFont;
+    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
+    {
+        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+        fontNames = [[NSArray alloc] initWithArray:
+                     [UIFont fontNamesForFamilyName:
+                      [familyNames objectAtIndex:indFamily]]];
+        for (indFont=0; indFont<[fontNames count]; ++indFont)
+        {
+            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

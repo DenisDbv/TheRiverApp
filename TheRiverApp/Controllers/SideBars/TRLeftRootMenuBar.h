@@ -8,6 +8,13 @@
 
 #import "TRRootController.h"
 
+typedef NS_ENUM(NSInteger, TRRootMenuSection){
+    TRRootMenuSectionProfile = 0,
+    TRRootMenuSectionFavorite,
+    TRRootMenuSectionKnowledge,
+    TRRootMenuSectionMy
+};
+
 @interface TRLeftRootMenuBar : TRRootController
 
 @end

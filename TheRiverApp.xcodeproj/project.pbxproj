@@ -20,9 +20,35 @@
 		182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 182D72DF17D3CFAF00134224 /* TheRiverApp.xcdatamodeld */; };
 		182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72EA17D3D73800134224 /* TRMyContactListBar.m */; };
 		182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */; };
+		1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */; };
+		1891D72917D643FE00281246 /* TRUserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72817D643FE00281246 /* TRUserProfileController.m */; };
+		1891D73017D6515A00281246 /* TRHeadBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72F17D6515A00281246 /* TRHeadBox.m */; };
+		1891D73217D657F900281246 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1891D73117D657F900281246 /* background.jpg */; };
+		1891D73517D65BE600281246 /* TRPhotoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73417D65BE600281246 /* TRPhotoBox.m */; };
+		1891D73817D6645600281246 /* TRSecondHeadBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73717D6645500281246 /* TRSecondHeadBox.m */; };
+		1891D73B17D67FC300281246 /* TRTagsScrollBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73A17D67FC300281246 /* TRTagsScrollBox.m */; };
+		1891D75317D7079D00281246 /* gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75017D7079D00281246 /* gold.png */; };
+		1891D75417D7079D00281246 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75117D7079D00281246 /* green.png */; };
+		1891D75517D7079D00281246 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75217D7079D00281246 /* black.png */; };
+		1891D75817D77C6700281246 /* TRMoreBoxes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75717D77C6700281246 /* TRMoreBoxes.m */; };
+		1891D75B17D852A400281246 /* TRTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75A17D852A300281246 /* TRTestViewController.m */; };
+		1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75D17D8537F00281246 /* TRScrollViewController.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
+		18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913217D4526000138EF2 /* IamAppleDev.jpg */; };
+		18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913317D4526000138EF2 /* IamAppleDev2.jpg */; };
+		18DA913717D4526000138EF2 /* IamChinaMan.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913417D4526000138EF2 /* IamChinaMan.JPG */; };
+		18DA913D17D4529D00138EF2 /* searchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913917D4529D00138EF2 /* searchBarBG.png */; };
+		18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913A17D4529D00138EF2 /* searchBarIcon.png */; };
+		18DA913F17D4529D00138EF2 /* searchBarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */; };
+		18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DA913C17D4529D00138EF2 /* searchTextBG.png */; };
+		18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */; };
+		18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */; };
+		18E65E2117D4B97A00D1B778 /* TRFavoritesEditList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2017D4B97A00D1B778 /* TRFavoritesEditList.m */; };
+		18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */; };
+		18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */; };
+		18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,12 +72,55 @@
 		182D72EA17D3D73800134224 /* TRMyContactListBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMyContactListBar.m; path = Controllers/SideBars/TRMyContactListBar.m; sourceTree = "<group>"; };
 		182D72EC17D3D76A00134224 /* TRLeftRootMenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRLeftRootMenuBar.h; path = Controllers/SideBars/TRLeftRootMenuBar.h; sourceTree = "<group>"; };
 		182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRLeftRootMenuBar.m; path = Controllers/SideBars/TRLeftRootMenuBar.m; sourceTree = "<group>"; };
+		1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootMenuCell.h; path = TableViewHelpers/TRRootMenuCell.h; sourceTree = "<group>"; };
+		1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootMenuCell.m; path = TableViewHelpers/TRRootMenuCell.m; sourceTree = "<group>"; };
+		1835771317D5AB1C00AE0D72 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Common/Global.h; sourceTree = "<group>"; };
+		1891D72717D643FE00281246 /* TRUserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserProfileController.h; path = Controllers/UserProfile/TRUserProfileController.h; sourceTree = "<group>"; };
+		1891D72817D643FE00281246 /* TRUserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserProfileController.m; path = Controllers/UserProfile/TRUserProfileController.m; sourceTree = "<group>"; };
+		1891D72E17D6515A00281246 /* TRHeadBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRHeadBox.h; path = Controllers/UserProfile/Layers/TRHeadBox.h; sourceTree = "<group>"; };
+		1891D72F17D6515A00281246 /* TRHeadBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRHeadBox.m; path = Controllers/UserProfile/Layers/TRHeadBox.m; sourceTree = "<group>"; };
+		1891D73117D657F900281246 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = Resources/background.jpg; sourceTree = "<group>"; };
+		1891D73317D65BE600281246 /* TRPhotoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPhotoBox.h; path = Controllers/UserProfile/Layers/TRPhotoBox.h; sourceTree = "<group>"; };
+		1891D73417D65BE600281246 /* TRPhotoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPhotoBox.m; path = Controllers/UserProfile/Layers/TRPhotoBox.m; sourceTree = "<group>"; };
+		1891D73617D6645500281246 /* TRSecondHeadBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSecondHeadBox.h; path = Controllers/UserProfile/Layers/TRSecondHeadBox.h; sourceTree = "<group>"; };
+		1891D73717D6645500281246 /* TRSecondHeadBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSecondHeadBox.m; path = Controllers/UserProfile/Layers/TRSecondHeadBox.m; sourceTree = "<group>"; };
+		1891D73917D67FC200281246 /* TRTagsScrollBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRTagsScrollBox.h; path = Controllers/UserProfile/Layers/TRTagsScrollBox.h; sourceTree = "<group>"; };
+		1891D73A17D67FC300281246 /* TRTagsScrollBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRTagsScrollBox.m; path = Controllers/UserProfile/Layers/TRTagsScrollBox.m; sourceTree = "<group>"; };
+		1891D75017D7079D00281246 /* gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold.png; sourceTree = "<group>"; };
+		1891D75117D7079D00281246 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		1891D75217D7079D00281246 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
+		1891D75617D77C6600281246 /* TRMoreBoxes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMoreBoxes.h; path = Controllers/UserProfile/Layers/TRMoreBoxes.h; sourceTree = "<group>"; };
+		1891D75717D77C6700281246 /* TRMoreBoxes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMoreBoxes.m; path = Controllers/UserProfile/Layers/TRMoreBoxes.m; sourceTree = "<group>"; };
+		1891D75917D852A200281246 /* TRTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRTestViewController.h; path = Controllers/UserProfile/TRTestViewController.h; sourceTree = "<group>"; };
+		1891D75A17D852A300281246 /* TRTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRTestViewController.m; path = Controllers/UserProfile/TRTestViewController.m; sourceTree = "<group>"; };
+		1891D75C17D8537F00281246 /* TRScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRScrollViewController.h; path = Controllers/UserProfile/TRScrollViewController.h; sourceTree = "<group>"; };
+		1891D75D17D8537F00281246 /* TRScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRScrollViewController.m; path = Controllers/UserProfile/TRScrollViewController.m; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
 		18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchBarVC.m; path = Controllers/SearchBar/TRSearchBarVC.m; sourceTree = "<group>"; };
 		18DA912817D3E1A900138EF2 /* UISearchBar+CancelBtnShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+CancelBtnShow.h"; path = "Controllers/SearchBar/UISearchBar+CancelBtnShow.h"; sourceTree = "<group>"; };
 		18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+CancelBtnShow.m"; path = "Controllers/SearchBar/UISearchBar+CancelBtnShow.m"; sourceTree = "<group>"; };
+		18DA913217D4526000138EF2 /* IamAppleDev.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IamAppleDev.jpg; path = Resources/IamAppleDev.jpg; sourceTree = "<group>"; };
+		18DA913317D4526000138EF2 /* IamAppleDev2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IamAppleDev2.jpg; path = Resources/IamAppleDev2.jpg; sourceTree = "<group>"; };
+		18DA913417D4526000138EF2 /* IamChinaMan.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IamChinaMan.JPG; path = Resources/IamChinaMan.JPG; sourceTree = "<group>"; };
+		18DA913917D4529D00138EF2 /* searchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchBarBG.png; path = Resources/SearchBar/searchBarBG.png; sourceTree = "<group>"; };
+		18DA913A17D4529D00138EF2 /* searchBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchBarIcon.png; path = Resources/SearchBar/searchBarIcon.png; sourceTree = "<group>"; };
+		18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "searchBarIcon@2x.png"; path = "Resources/SearchBar/searchBarIcon@2x.png"; sourceTree = "<group>"; };
+		18DA913C17D4529D00138EF2 /* searchTextBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchTextBG.png; path = Resources/SearchBar/searchTextBG.png; sourceTree = "<group>"; };
+		18DA914217D4757E00138EF2 /* TRSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSectionHeaderView.h; path = TableViewHelpers/TRSectionHeaderView.h; sourceTree = "<group>"; };
+		18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSectionHeaderView.m; path = TableViewHelpers/TRSectionHeaderView.m; sourceTree = "<group>"; };
+		18DA914617D4853C00138EF2 /* UIView+GestureBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+GestureBlocks.h"; path = "Common/UIView+GestureBlocks.h"; sourceTree = "<group>"; };
+		18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+GestureBlocks.m"; path = "Common/UIView+GestureBlocks.m"; sourceTree = "<group>"; };
+		18E65E1F17D4B97A00D1B778 /* TRFavoritesEditList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRFavoritesEditList.h; path = Controllers/SideBars/TRFavoritesEditList.h; sourceTree = "<group>"; };
+		18E65E2017D4B97A00D1B778 /* TRFavoritesEditList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRFavoritesEditList.m; path = Controllers/SideBars/TRFavoritesEditList.m; sourceTree = "<group>"; };
+		18E65E2417D5009700D1B778 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
+		18E65E2517D5009700D1B778 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
+		18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
+		18E65E2717D5009700D1B778 /* MFSideMenuShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuShadow.h; sourceTree = "<group>"; };
+		18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
+		18E65E2917D5009700D1B778 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
+		18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -105,6 +174,10 @@
 		182D72CD17D3CFAF00134224 /* TheRiverApp */ = {
 			isa = PBXGroup;
 			children = (
+				18E65E2217D5009700D1B778 /* ExternalLibs */,
+				18DA914517D4851400138EF2 /* Common */,
+				18DA914117D4750900138EF2 /* TableViewHelpers */,
+				18DA912B17D44C5700138EF2 /* Resources */,
 				182D72E717D3D65100134224 /* Controllers */,
 				182D72D617D3CFAF00134224 /* TRAppDelegate.h */,
 				182D72D717D3CFAF00134224 /* TRAppDelegate.m */,
@@ -131,6 +204,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1891D72617D643BD00281246 /* UserProfile */,
 				18DA912417D3DECD00138EF2 /* SearchBar */,
 				182D72E817D3D65F00134224 /* SideBars */,
 				18DA912117D3DCC200138EF2 /* TRRootController.h */,
@@ -146,8 +220,41 @@
 				182D72EA17D3D73800134224 /* TRMyContactListBar.m */,
 				182D72EC17D3D76A00134224 /* TRLeftRootMenuBar.h */,
 				182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */,
+				18E65E1F17D4B97A00D1B778 /* TRFavoritesEditList.h */,
+				18E65E2017D4B97A00D1B778 /* TRFavoritesEditList.m */,
 			);
 			name = SideBars;
+			sourceTree = "<group>";
+		};
+		1891D72617D643BD00281246 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				1891D72D17D6505900281246 /* Layers */,
+				1891D72717D643FE00281246 /* TRUserProfileController.h */,
+				1891D72817D643FE00281246 /* TRUserProfileController.m */,
+				1891D75917D852A200281246 /* TRTestViewController.h */,
+				1891D75A17D852A300281246 /* TRTestViewController.m */,
+				1891D75C17D8537F00281246 /* TRScrollViewController.h */,
+				1891D75D17D8537F00281246 /* TRScrollViewController.m */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		1891D72D17D6505900281246 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				1891D72E17D6515A00281246 /* TRHeadBox.h */,
+				1891D72F17D6515A00281246 /* TRHeadBox.m */,
+				1891D73317D65BE600281246 /* TRPhotoBox.h */,
+				1891D73417D65BE600281246 /* TRPhotoBox.m */,
+				1891D73617D6645500281246 /* TRSecondHeadBox.h */,
+				1891D73717D6645500281246 /* TRSecondHeadBox.m */,
+				1891D73917D67FC200281246 /* TRTagsScrollBox.h */,
+				1891D73A17D67FC300281246 /* TRTagsScrollBox.m */,
+				1891D75617D77C6600281246 /* TRMoreBoxes.h */,
+				1891D75717D77C6700281246 /* TRMoreBoxes.m */,
+			);
+			name = Layers;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -159,6 +266,75 @@
 				18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */,
 			);
 			name = SearchBar;
+			sourceTree = "<group>";
+		};
+		18DA912B17D44C5700138EF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1891D75017D7079D00281246 /* gold.png */,
+				1891D75117D7079D00281246 /* green.png */,
+				1891D75217D7079D00281246 /* black.png */,
+				1891D73117D657F900281246 /* background.jpg */,
+				18DA913817D4526D00138EF2 /* SearchBar */,
+				18DA913217D4526000138EF2 /* IamAppleDev.jpg */,
+				18DA913317D4526000138EF2 /* IamAppleDev2.jpg */,
+				18DA913417D4526000138EF2 /* IamChinaMan.JPG */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		18DA913817D4526D00138EF2 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				18DA913917D4529D00138EF2 /* searchBarBG.png */,
+				18DA913A17D4529D00138EF2 /* searchBarIcon.png */,
+				18DA913B17D4529D00138EF2 /* searchBarIcon@2x.png */,
+				18DA913C17D4529D00138EF2 /* searchTextBG.png */,
+			);
+			name = SearchBar;
+			sourceTree = "<group>";
+		};
+		18DA914117D4750900138EF2 /* TableViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				18DA914217D4757E00138EF2 /* TRSectionHeaderView.h */,
+				18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */,
+				1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */,
+				1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */,
+			);
+			name = TableViewHelpers;
+			sourceTree = "<group>";
+		};
+		18DA914517D4851400138EF2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				18DA914617D4853C00138EF2 /* UIView+GestureBlocks.h */,
+				18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */,
+				1835771317D5AB1C00AE0D72 /* Global.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
+			isa = PBXGroup;
+			children = (
+				18E65E2317D5009700D1B778 /* MFSideMenu */,
+			);
+			path = ExternalLibs;
+			sourceTree = "<group>";
+		};
+		18E65E2317D5009700D1B778 /* MFSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				18E65E2417D5009700D1B778 /* MFSideMenu.h */,
+				18E65E2517D5009700D1B778 /* MFSideMenuContainerViewController.h */,
+				18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */,
+				18E65E2717D5009700D1B778 /* MFSideMenuShadow.h */,
+				18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */,
+				18E65E2917D5009700D1B778 /* UIViewController+MFSideMenuAdditions.h */,
+				18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */,
+			);
+			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +395,17 @@
 				182D72DA17D3CFAF00134224 /* Default.png in Resources */,
 				182D72DC17D3CFAF00134224 /* Default@2x.png in Resources */,
 				182D72DE17D3CFAF00134224 /* Default-568h@2x.png in Resources */,
+				18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */,
+				18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */,
+				18DA913717D4526000138EF2 /* IamChinaMan.JPG in Resources */,
+				18DA913D17D4529D00138EF2 /* searchBarBG.png in Resources */,
+				18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */,
+				18DA913F17D4529D00138EF2 /* searchBarIcon@2x.png in Resources */,
+				18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */,
+				1891D73217D657F900281246 /* background.jpg in Resources */,
+				1891D75317D7079D00281246 /* gold.png in Resources */,
+				1891D75417D7079D00281246 /* green.png in Resources */,
+				1891D75517D7079D00281246 /* black.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +455,21 @@
 				18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */,
 				18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */,
 				18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */,
+				18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */,
+				18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */,
+				18E65E2117D4B97A00D1B778 /* TRFavoritesEditList.m in Sources */,
+				18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */,
+				18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */,
+				18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+				1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */,
+				1891D72917D643FE00281246 /* TRUserProfileController.m in Sources */,
+				1891D73017D6515A00281246 /* TRHeadBox.m in Sources */,
+				1891D73517D65BE600281246 /* TRPhotoBox.m in Sources */,
+				1891D73817D6645600281246 /* TRSecondHeadBox.m in Sources */,
+				1891D73B17D67FC300281246 /* TRTagsScrollBox.m in Sources */,
+				1891D75817D77C6700281246 /* TRMoreBoxes.m in Sources */,
+				1891D75B17D852A400281246 /* TRTestViewController.m in Sources */,
+				1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,10 +547,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "31134419-C692-4C23-8EA6-6A519CC989E1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -357,10 +561,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "31134419-C692-4C23-8EA6-6A519CC989E1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
