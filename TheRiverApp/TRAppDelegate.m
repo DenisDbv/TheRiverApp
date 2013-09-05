@@ -40,6 +40,8 @@
                                                     containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                                                     leftMenuViewController: _leftRootMenuBar
                                                     rightMenuViewController: [[UINavigationController alloc] initWithRootViewController:_rightMyContactList]];
+    [_rootContainer.shadow setEnabled:NO];
+    
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     

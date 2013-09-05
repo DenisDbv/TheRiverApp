@@ -141,6 +141,7 @@
                     break;
                 case 1:
                     cell.textLabel.text = @"Сообщения";
+                    cell.badgeString = @"3";
                     break;
                 case 2:
                     cell.textLabel.text = @"Мероприятия";
