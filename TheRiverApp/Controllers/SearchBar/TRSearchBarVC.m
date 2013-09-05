@@ -162,6 +162,10 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     
+    searchBar.showsScopeBar = YES;
+	[searchBar sizeToFit];
+    //[searchBar setShowsCancelButton:YES animated:YES];
+    
     [self showFronBlackView];
     
     if([self.delegate respondsToSelector:@selector(onClickBySearchBar:)])
@@ -171,6 +175,10 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    searchBar.showsScopeBar = NO;
+	[searchBar sizeToFit];
+    //[searchBar setShowsCancelButton:NO animated:YES];
     
     [self hideFrontBlackView];
     
@@ -191,15 +199,24 @@
         frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, self.searchBar.frame.origin.y+self.searchBar.bounds.size.height,
                                                                   self.view.bounds.size.width, self.view.bounds.size.height)];
         frontBlackView.backgroundColor = [UIColor blackColor];
-        frontBlackView.alpha = 0.9f;
+        frontBlackView.alpha = 0.0f;
+        
         [((UIViewController*)self.delegate).view addSubview:frontBlackView];
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            frontBlackView.alpha = 0.7f;
+        }];
     }
 }
 
 -(void) hideFrontBlackView
 {
-    [frontBlackView removeFromSuperview];
-    frontBlackView = nil;
+    [UIView animateWithDuration:0.3f animations:^{
+        frontBlackView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        [frontBlackView removeFromSuperview];
+        frontBlackView = nil;
+    }];
 }
 
 @end

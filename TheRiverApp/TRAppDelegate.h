@@ -19,4 +19,6 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+-(void) changeCenterViewController:(UIViewController*)newController;
+
 @end

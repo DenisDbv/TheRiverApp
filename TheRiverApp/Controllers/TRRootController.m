@@ -7,10 +7,10 @@
 //
 
 #import "TRRootController.h"
-#import <MFSideMenu/MFSideMenu.h>
+#import "MFSideMenu.h"
 
 #define MENU_BAR_FULL_WIDTH  320.0
-#define MENU_BAR_SHORT_WIDTH  260.0
+#define MENU_BAR_SHORT_WIDTH  270.0
 
 @interface TRRootController ()
 
@@ -30,8 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    [self toShortWidth];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
+    //[self toShortWidth];
 }
 
 - (void)didReceiveMemoryWarning
