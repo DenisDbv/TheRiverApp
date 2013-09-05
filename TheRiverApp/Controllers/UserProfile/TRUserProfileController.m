@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    //self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
+    self.menuContainerViewController.panMode = MFSideMenuPanModeCenterViewController;
     
     [self createRootScrollView];
     
@@ -56,6 +56,7 @@
 {
     _scrollView = [[MGScrollView alloc] initWithFrame:self.view.bounds];
     _scrollView.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.95 alpha:1];
+    _scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_scrollView];
 }
 

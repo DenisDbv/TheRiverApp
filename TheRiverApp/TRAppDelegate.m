@@ -12,6 +12,8 @@
 
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
+#import "TRTestViewController.h"
+#import "TRScrollViewController.h"
 
 @interface TRAppDelegate()
 @property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
@@ -32,7 +34,7 @@
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[UIViewController alloc] init];
+    _mainController = [[TRScrollViewController alloc] init];
     _mainController.view.backgroundColor = [UIColor whiteColor];
     _rootContainer = [MFSideMenuContainerViewController
                                                     containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]

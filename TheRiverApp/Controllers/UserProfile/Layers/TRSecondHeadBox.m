@@ -11,6 +11,7 @@
 #import <NVUIGradientButton/NVUIGradientButton.h>
 
 #import "TRTagsScrollBox.h"
+#import "TRMoreBoxes.h"
 
 @implementation TRSecondHeadBox
 
@@ -58,6 +59,9 @@
     
     TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"текущие ниши:" andTagsArray:[[NSArray alloc] initWithObjects:@"AXBX software", @"Школа программирования", @"NEO", nil]];
     [box.boxes addObject:tagsCurrentBusiness];
+    
+    TRMoreBoxes *moreBoxes = [TRMoreBoxes initBoxes];
+    [box.boxes addObject:moreBoxes];
     
     return box;
 }

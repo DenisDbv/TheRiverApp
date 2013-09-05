@@ -496,6 +496,13 @@ typedef enum {
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    
+    /*NSLog(@"=>%@", touch.view);
+    if([touch.view isKindOfClass:[UIScrollView class]])
+    {
+        return NO;
+    }*/
+        
     if([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] &&
        self.menuState != MFSideMenuStateClosed) return YES;
     
@@ -539,6 +546,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     if(self.panDirection == MFSideMenuPanDirectionNone) {
         CGPoint translatedPoint = [recognizer translationInView:view];
+        
+        if(translatedPoint.y > 0 || translatedPoint.y < 0) return;
+        
         if(translatedPoint.x > 0) {
             self.panDirection = MFSideMenuPanDirectionRight;
             if(self.leftMenuViewController && self.menuState == MFSideMenuStateClosed) {
