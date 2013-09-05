@@ -35,7 +35,12 @@
 {
     [super viewDidLoad];
     
-    self.menuContainerViewController.panMode = MFSideMenuPanModeCenterViewController;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(menuStateEventOccurred:)
+                                                 name:MFSideMenuStateNotificationEvent
+                                               object:nil];
+    
+    //self.menuContainerViewController.panMode = MFSideMenuPanModeCenterViewController;
     
     [self createRootScrollView];
     
@@ -48,6 +53,19 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)menuStateEventOccurred:(NSNotification *)notification {
+    MFSideMenuStateEvent event = [[[notification userInfo] objectForKey:@"eventType"] intValue];
+    
+    if(event == MFSideMenuStateEventMenuDragBegin)
+    {
+        _scrollView.scrollEnabled = NO;
+    }
+    else if(event == MFSideMenuStateEventMenuDragEnd)
+    {
+        _scrollView.scrollEnabled = YES;
+    }
 }
 
 #pragma mark Create data views for controller

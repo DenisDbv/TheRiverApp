@@ -330,6 +330,7 @@ typedef enum {
     switch (menuState) {
         case MFSideMenuStateClosed: {
             [self sendStateEventNotification:MFSideMenuStateEventMenuWillClose];
+            //[self sendStateEventNotification:MFSideMenuStateEventMenuDragEnd];
             [self closeSideMenuCompletion:^{
                 [self.leftMenuViewController view].hidden = YES;
                 [self.rightMenuViewController view].hidden = YES;
@@ -340,12 +341,14 @@ typedef enum {
         case MFSideMenuStateLeftMenuOpen:
             if(!self.leftMenuViewController) return;
             [self sendStateEventNotification:MFSideMenuStateEventMenuWillOpen];
+            //[self sendStateEventNotification:MFSideMenuStateEventMenuDragEnd];
             [self leftMenuWillShow];
             [self openLeftSideMenuCompletion:innerCompletion];
             break;
         case MFSideMenuStateRightMenuOpen:
             if(!self.rightMenuViewController) return;
             [self sendStateEventNotification:MFSideMenuStateEventMenuWillOpen];
+            //[self sendStateEventNotification:MFSideMenuStateEventMenuDragEnd];
             [self rightMenuWillShow];
             [self openRightSideMenuCompletion:innerCompletion];
             break;
@@ -548,16 +551,19 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         CGPoint translatedPoint = [recognizer translationInView:view];
         
         if(translatedPoint.y > 0 || translatedPoint.y < 0) return;
+        //NSLog(@"%f %f", translatedPoint.x, translatedPoint.y);
         
         if(translatedPoint.x > 0) {
             self.panDirection = MFSideMenuPanDirectionRight;
             if(self.leftMenuViewController && self.menuState == MFSideMenuStateClosed) {
+                [self sendStateEventNotification:MFSideMenuStateEventMenuDragBegin];
                 [self leftMenuWillShow];
             }
         }
         else if(translatedPoint.x < 0) {
             self.panDirection = MFSideMenuPanDirectionLeft;
             if(self.rightMenuViewController && self.menuState == MFSideMenuStateClosed) {
+                [self sendStateEventNotification:MFSideMenuStateEventMenuDragBegin];
                 [self rightMenuWillShow];
             }
         }
@@ -707,6 +713,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
                              animated:(BOOL)animated
                            completion:(void (^)(void))completion {
     void (^innerCompletion)() = ^ {
+        [self sendStateEventNotification:MFSideMenuStateEventMenuDragEnd];
         self.panGestureVelocity = 0.0;
         if(completion) completion();
     };

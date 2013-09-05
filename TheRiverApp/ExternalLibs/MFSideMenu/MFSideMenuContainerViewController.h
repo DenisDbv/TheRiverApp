@@ -30,7 +30,9 @@ typedef enum {
     MFSideMenuStateEventMenuWillClose, // the menu is going to close
     MFSideMenuStateEventMenuDidClose, // the menu finished closing
     
-    MFSideMenuStateEventMenuAnimationDidEnd
+    MFSideMenuStateEventMenuAnimationDidEnd,
+    MFSideMenuStateEventMenuDragBegin,
+    MFSideMenuStateEventMenuDragEnd
 } MFSideMenuStateEvent;
 
 
