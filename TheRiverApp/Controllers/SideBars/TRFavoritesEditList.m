@@ -93,7 +93,7 @@
         [_contactsTableView setEditing:YES animated:YES];
         
         [_searchBarController.searchBar setShowsCancelButton:YES animated:YES];
-        [self renameSearchButtonToTitle:@"Готово"];
+        //[self renameSearchButtonToTitle:@"Готово"];
     }
 }
 
@@ -101,6 +101,8 @@
 {
     UIButton *btn = [_searchBarController.searchBar cancelButton];
     [btn setTitle:title forState:UIControlStateNormal];
+    [btn.titleLabel sizeToFit];
+    [btn layoutSubviews];
 }
 
 #pragma mark UITableViewDataSource
@@ -239,8 +241,12 @@ forRowAtIndexPath: (NSIndexPath *)indexPath
     [buttonCopy addTarget:self action:@selector(onClickCancel:) forControlEvents:UIControlEventTouchUpInside];
     [buttonCopy setTitle:@"Отмена" forState:UIControlStateNormal];
     
-    cancelButton.hidden = YES;
-    [_searchBarController.searchBar addSubview:buttonCopy];
+    //cancelButton.hidden = YES;
+    [cancelButton.superview addSubview:buttonCopy];
+    //[_searchBarController.searchBar addSubview:buttonCopy];
+    
+    NSLog(@"1) %@", NSStringFromCGRect(buttonCopy.frame));
+    NSLog(@"2) %@", NSStringFromCGRect(cancelButton.frame));
 }
 
 -(void) onClickCancel:(id)sender
