@@ -36,6 +36,8 @@
     self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
 	
     [self initialized];
+    
+    [self addSwipeGestureRecognizer];
 }
 
 -(void) viewWillDisappear:(BOOL)animated
@@ -70,13 +72,29 @@
         else
             continue;
     }
-    
+
     for(NSString *str in allImageNames)
     {
         NSLog(@"%@", str);
     }
     
     [_gridView reloadData];
+}
+
+#pragma mark - Swipe gesture
+
+- (void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+}
+
+- (void)swipeRecognized:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded &&
+        gestureRecognizer.direction & UISwipeGestureRecognizerDirectionRight) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark -
