@@ -9,6 +9,7 @@
 #import "TRFavoritesEditList.h"
 #import "TRSearchBarVC.h"
 #import "TRSectionHeaderView.h"
+#import "UISearchBar+cancelButton.h"
 
 #import "MFSideMenu.h"
 
@@ -21,6 +22,8 @@
 {
     NSInteger inFavotite;
     NSInteger outFavorite;
+    
+    UIButton *buttonCopy;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -88,7 +91,16 @@
     if(event == MFSideMenuStateEventMenuAnimationDidEnd)
     {
         [_contactsTableView setEditing:YES animated:YES];
+        
+        [_searchBarController.searchBar setShowsCancelButton:YES animated:YES];
+        [self renameSearchButtonToTitle:@"Готово"];
     }
+}
+
+-(void) renameSearchButtonToTitle:(NSString*)title
+{
+    UIButton *btn = [_searchBarController.searchBar cancelButton];
+    [btn setTitle:title forState:UIControlStateNormal];
 }
 
 #pragma mark UITableViewDataSource
@@ -196,18 +208,66 @@ forRowAtIndexPath: (NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 #pragma mark SearchNearContactsDelegate
 
 -(void) onClickBySearchBar:(UISearchBar*)searchBar
 {
-    
+    [self createButtonInSearchBar];
 }
 
 -(void) onCancelSearchBar:(UISearchBar*)searchBar
 {
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+-(void) createButtonInSearchBar
+{
+    if(buttonCopy != nil)
+    {
+        [buttonCopy removeFromSuperview];
+        buttonCopy = nil;
+    }
+    
+    UIButton *cancelButton = [_searchBarController.searchBar cancelButton];
+    cancelButton.hidden = NO;
+    
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: cancelButton];
+    buttonCopy = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
+    [buttonCopy addTarget:self action:@selector(onClickCancel:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonCopy setTitle:@"Отмена" forState:UIControlStateNormal];
+    
+    cancelButton.hidden = YES;
+    [_searchBarController.searchBar addSubview:buttonCopy];
+}
+
+-(void) onClickCancel:(id)sender
+{
+    _searchBarController.searchBar.text = @"";
+    [_searchBarController removeSearchTable];
+    
+    UIButton *btn = (UIButton*)sender;
+    /*UIButton *cancelButton = [_searchBarController.searchBar cancelButton];
+    
+    [buttonCopy removeFromSuperview];
+    buttonCopy = nil;
+    
+    cancelButton.hidden = NO;*/
+    
+    [btn addTarget:self action:@selector(onClickCancel2:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"Готово" forState:UIControlStateNormal];
+}
+
+-(void) onClickCancel2:(id)sender
+{
+    [buttonCopy removeFromSuperview];
+    buttonCopy = nil;
+    
+    UIButton *cancelButton = [_searchBarController.searchBar cancelButton];
+    cancelButton.hidden = NO;
+    
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
     [self.navigationController popViewControllerAnimated:NO];
 }

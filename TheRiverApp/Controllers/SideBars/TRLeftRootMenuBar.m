@@ -124,6 +124,9 @@
         [cell setBackgroundColor:[UIColor clearColor]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:16]];
+        
+        cell.badge.fontSize = 13;
+        cell.badgeTextColor = [UIColor whiteColor];
     }
     
     switch (indexPath.section) {
@@ -137,13 +140,17 @@
         case TRRootMenuSectionFavorite: {
             switch (indexPath.row) {
                 case 0:
+                    cell.imageView.image = [UIImage imageNamed:@"news.png"];
                     cell.textLabel.text = @"Лента новостей";
+                    cell.badgeString = @"10+";
                     break;
                 case 1:
+                    cell.imageView.image = [UIImage imageNamed:@"comments.png"];
                     cell.textLabel.text = @"Сообщения";
                     cell.badgeString = @"3";
                     break;
                 case 2:
+                    cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
                     cell.textLabel.text = @"Мероприятия";
                     break;
                 case 3:
@@ -159,8 +166,10 @@
                     break;
                 case 1:
                     cell.textLabel.text = @"Кейсы";
+                    cell.badgeString = @"1+";
                     break;
                 case 2:
+                    cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
                     cell.textLabel.text = @"База знаний";
                     break;
             }

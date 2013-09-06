@@ -33,6 +33,19 @@
 		1891D75817D77C6700281246 /* TRMoreBoxes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75717D77C6700281246 /* TRMoreBoxes.m */; };
 		1891D75B17D852A400281246 /* TRTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75A17D852A300281246 /* TRTestViewController.m */; };
 		1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75D17D8537F00281246 /* TRScrollViewController.m */; };
+		1891D76117D8D35A00281246 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75F17D8D35A00281246 /* menu-icon.png */; };
+		1891D76217D8D35A00281246 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76017D8D35A00281246 /* menu-icon@2x.png */; };
+		1891D76517D8F48900281246 /* TRCenterRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D76417D8F48800281246 /* TRCenterRootController.m */; };
+		1891D76F17D8F74C00281246 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76617D8F74C00281246 /* tag.png */; };
+		1891D77017D8F74C00281246 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76717D8F74C00281246 /* photo.png */; };
+		1891D77117D8F74C00281246 /* wishlist.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76817D8F74C00281246 /* wishlist.png */; };
+		1891D77217D8F74C00281246 /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76917D8F74C00281246 /* news.png */; };
+		1891D77317D8F74C00281246 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76A17D8F74C00281246 /* map.png */; };
+		1891D77417D8F74C00281246 /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76B17D8F74C00281246 /* comments.png */; };
+		1891D77517D8F74C00281246 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76C17D8F74C00281246 /* calendar.png */; };
+		1891D77617D8F74C00281246 /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76D17D8F74C00281246 /* bookmark.png */; };
+		1891D77717D8F74C00281246 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76E17D8F74C00281246 /* nav_bg.png */; };
+		1891D77B17D9EB8900281246 /* UISearchBar+cancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D77A17D9EB8900281246 /* UISearchBar+cancelButton.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -95,6 +108,21 @@
 		1891D75A17D852A300281246 /* TRTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRTestViewController.m; path = Controllers/UserProfile/TRTestViewController.m; sourceTree = "<group>"; };
 		1891D75C17D8537F00281246 /* TRScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRScrollViewController.h; path = Controllers/UserProfile/TRScrollViewController.h; sourceTree = "<group>"; };
 		1891D75D17D8537F00281246 /* TRScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRScrollViewController.m; path = Controllers/UserProfile/TRScrollViewController.m; sourceTree = "<group>"; };
+		1891D75F17D8D35A00281246 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
+		1891D76017D8D35A00281246 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
+		1891D76317D8F48600281246 /* TRCenterRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRCenterRootController.h; path = Controllers/TRCenterRootController.h; sourceTree = "<group>"; };
+		1891D76417D8F48800281246 /* TRCenterRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRCenterRootController.m; path = Controllers/TRCenterRootController.m; sourceTree = "<group>"; };
+		1891D76617D8F74C00281246 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
+		1891D76717D8F74C00281246 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		1891D76817D8F74C00281246 /* wishlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wishlist.png; sourceTree = "<group>"; };
+		1891D76917D8F74C00281246 /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
+		1891D76A17D8F74C00281246 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		1891D76B17D8F74C00281246 /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
+		1891D76C17D8F74C00281246 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		1891D76D17D8F74C00281246 /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
+		1891D76E17D8F74C00281246 /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
+		1891D77917D9EB8900281246 /* UISearchBar+cancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+cancelButton.h"; path = "Common/UISearchBar+cancelButton.h"; sourceTree = "<group>"; };
+		1891D77A17D9EB8900281246 /* UISearchBar+cancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+cancelButton.m"; path = "Common/UISearchBar+cancelButton.m"; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -209,6 +237,8 @@
 				182D72E817D3D65F00134224 /* SideBars */,
 				18DA912117D3DCC200138EF2 /* TRRootController.h */,
 				18DA912217D3DCC200138EF2 /* TRRootController.m */,
+				1891D76317D8F48600281246 /* TRCenterRootController.h */,
+				1891D76417D8F48800281246 /* TRCenterRootController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -271,6 +301,17 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1891D76617D8F74C00281246 /* tag.png */,
+				1891D76717D8F74C00281246 /* photo.png */,
+				1891D76817D8F74C00281246 /* wishlist.png */,
+				1891D76917D8F74C00281246 /* news.png */,
+				1891D76A17D8F74C00281246 /* map.png */,
+				1891D76B17D8F74C00281246 /* comments.png */,
+				1891D76C17D8F74C00281246 /* calendar.png */,
+				1891D76D17D8F74C00281246 /* bookmark.png */,
+				1891D76E17D8F74C00281246 /* nav_bg.png */,
+				1891D75F17D8D35A00281246 /* menu-icon.png */,
+				1891D76017D8D35A00281246 /* menu-icon@2x.png */,
 				1891D75017D7079D00281246 /* gold.png */,
 				1891D75117D7079D00281246 /* green.png */,
 				1891D75217D7079D00281246 /* black.png */,
@@ -311,6 +352,8 @@
 				18DA914617D4853C00138EF2 /* UIView+GestureBlocks.h */,
 				18DA914717D4853C00138EF2 /* UIView+GestureBlocks.m */,
 				1835771317D5AB1C00AE0D72 /* Global.h */,
+				1891D77917D9EB8900281246 /* UISearchBar+cancelButton.h */,
+				1891D77A17D9EB8900281246 /* UISearchBar+cancelButton.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -406,6 +449,17 @@
 				1891D75317D7079D00281246 /* gold.png in Resources */,
 				1891D75417D7079D00281246 /* green.png in Resources */,
 				1891D75517D7079D00281246 /* black.png in Resources */,
+				1891D76117D8D35A00281246 /* menu-icon.png in Resources */,
+				1891D76217D8D35A00281246 /* menu-icon@2x.png in Resources */,
+				1891D76F17D8F74C00281246 /* tag.png in Resources */,
+				1891D77017D8F74C00281246 /* photo.png in Resources */,
+				1891D77117D8F74C00281246 /* wishlist.png in Resources */,
+				1891D77217D8F74C00281246 /* news.png in Resources */,
+				1891D77317D8F74C00281246 /* map.png in Resources */,
+				1891D77417D8F74C00281246 /* comments.png in Resources */,
+				1891D77517D8F74C00281246 /* calendar.png in Resources */,
+				1891D77617D8F74C00281246 /* bookmark.png in Resources */,
+				1891D77717D8F74C00281246 /* nav_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +524,8 @@
 				1891D75817D77C6700281246 /* TRMoreBoxes.m in Sources */,
 				1891D75B17D852A400281246 /* TRTestViewController.m in Sources */,
 				1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */,
+				1891D76517D8F48900281246 /* TRCenterRootController.m in Sources */,
+				1891D77B17D9EB8900281246 /* UISearchBar+cancelButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

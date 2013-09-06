@@ -18,4 +18,6 @@
 @property (nonatomic, assign) id <TRSearchBarDelegate> delegate;
 @property (nonatomic, retain) UISearchBar *searchBar;
 
+-(void) removeSearchTable;
+
 @end

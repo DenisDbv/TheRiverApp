@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TRCenterRootController.h"
 
-@interface TRUserProfileController : UIViewController
+@interface TRUserProfileController : TRCenterRootController
 
 @end
