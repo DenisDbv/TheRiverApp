@@ -46,6 +46,33 @@
 		1891D77617D8F74C00281246 /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76D17D8F74C00281246 /* bookmark.png */; };
 		1891D77717D8F74C00281246 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D76E17D8F74C00281246 /* nav_bg.png */; };
 		1891D77B17D9EB8900281246 /* UISearchBar+cancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D77A17D9EB8900281246 /* UISearchBar+cancelButton.m */; };
+		1891D78317DA26AB00281246 /* TRAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D78217DA26AB00281246 /* TRAlbumViewController.m */; };
+		1891D79D17DA298200281246 /* AQ3D-simplicity.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78517DA298200281246 /* AQ3D-simplicity.png */; };
+		1891D79E17DA298200281246 /* AQAppleTV-esque_by-mikelcroft_nl-1440.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78617DA298200281246 /* AQAppleTV-esque_by-mikelcroft_nl-1440.png */; };
+		1891D79F17DA298200281246 /* AQbatman_surfing_on_superman.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78717DA298200281246 /* AQbatman_surfing_on_superman.png */; };
+		1891D7A017DA298200281246 /* AQcoffee-break_.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78817DA298200281246 /* AQcoffee-break_.png */; };
+		1891D7A117DA298200281246 /* AQcolorful_1440x900.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78917DA298200281246 /* AQcolorful_1440x900.png */; };
+		1891D7A217DA298200281246 /* AQComposition53.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78A17DA298200281246 /* AQComposition53.png */; };
+		1891D7A317DA298200281246 /* AQDragon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78B17DA298200281246 /* AQDragon.png */; };
+		1891D7A417DA298200281246 /* AQeclipse.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78C17DA298200281246 /* AQeclipse.png */; };
+		1891D7A517DA298200281246 /* AQface.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78D17DA298200281246 /* AQface.png */; };
+		1891D7A617DA298200281246 /* AQfocus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78E17DA298200281246 /* AQfocus.png */; };
+		1891D7A717DA298200281246 /* AQgbo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D78F17DA298200281246 /* AQgbo.png */; };
+		1891D7A817DA298200281246 /* AQGreen_Plant_(2560x1600).png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79017DA298200281246 /* AQGreen_Plant_(2560x1600).png */; };
+		1891D7A917DA298200281246 /* AQgrounded.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79117DA298200281246 /* AQgrounded.png */; };
+		1891D7AA17DA298200281246 /* AQhappy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79217DA298200281246 /* AQhappy.png */; };
+		1891D7AB17DA298200281246 /* AQLeatherHoles-Apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79317DA298200281246 /* AQLeatherHoles-Apple.png */; };
+		1891D7AC17DA298200281246 /* AQLet_it_snow_by_mj_coffeeholick.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79417DA298200281246 /* AQLet_it_snow_by_mj_coffeeholick.png */; };
+		1891D7AD17DA298200281246 /* AQLuxury_Apple_by_Stratification.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79517DA298200281246 /* AQLuxury_Apple_by_Stratification.png */; };
+		1891D7AE17DA298200281246 /* AQMacMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79617DA298200281246 /* AQMacMini.png */; };
+		1891D7AF17DA298200281246 /* AQSlaveKingGod.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79717DA298200281246 /* AQSlaveKingGod.png */; };
+		1891D7B017DA298200281246 /* AQSnow_Leopard_by_vladstudio.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79817DA298200281246 /* AQSnow_Leopard_by_vladstudio.png */; };
+		1891D7B117DA298200281246 /* AQSpace Fold.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79917DA298200281246 /* AQSpace Fold.png */; };
+		1891D7B217DA298200281246 /* AQStormcloud_Schmeisser.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79A17DA298200281246 /* AQStormcloud_Schmeisser.png */; };
+		1891D7B317DA298200281246 /* AQtiamat.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79B17DA298200281246 /* AQtiamat.png */; };
+		1891D7B417DA298200281246 /* AQWTF.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79C17DA298200281246 /* AQWTF.png */; };
+		1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B617DA2F9900281246 /* TRRootBox.m */; };
+		1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -123,6 +150,36 @@
 		1891D76E17D8F74C00281246 /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
 		1891D77917D9EB8900281246 /* UISearchBar+cancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+cancelButton.h"; path = "Common/UISearchBar+cancelButton.h"; sourceTree = "<group>"; };
 		1891D77A17D9EB8900281246 /* UISearchBar+cancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+cancelButton.m"; path = "Common/UISearchBar+cancelButton.m"; sourceTree = "<group>"; };
+		1891D78117DA26AB00281246 /* TRAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAlbumViewController.h; sourceTree = "<group>"; };
+		1891D78217DA26AB00281246 /* TRAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAlbumViewController.m; sourceTree = "<group>"; };
+		1891D78517DA298200281246 /* AQ3D-simplicity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AQ3D-simplicity.png"; sourceTree = "<group>"; };
+		1891D78617DA298200281246 /* AQAppleTV-esque_by-mikelcroft_nl-1440.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AQAppleTV-esque_by-mikelcroft_nl-1440.png"; sourceTree = "<group>"; };
+		1891D78717DA298200281246 /* AQbatman_surfing_on_superman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQbatman_surfing_on_superman.png; sourceTree = "<group>"; };
+		1891D78817DA298200281246 /* AQcoffee-break_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AQcoffee-break_.png"; sourceTree = "<group>"; };
+		1891D78917DA298200281246 /* AQcolorful_1440x900.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQcolorful_1440x900.png; sourceTree = "<group>"; };
+		1891D78A17DA298200281246 /* AQComposition53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQComposition53.png; sourceTree = "<group>"; };
+		1891D78B17DA298200281246 /* AQDragon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQDragon.png; sourceTree = "<group>"; };
+		1891D78C17DA298200281246 /* AQeclipse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQeclipse.png; sourceTree = "<group>"; };
+		1891D78D17DA298200281246 /* AQface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQface.png; sourceTree = "<group>"; };
+		1891D78E17DA298200281246 /* AQfocus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQfocus.png; sourceTree = "<group>"; };
+		1891D78F17DA298200281246 /* AQgbo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQgbo.png; sourceTree = "<group>"; };
+		1891D79017DA298200281246 /* AQGreen_Plant_(2560x1600).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AQGreen_Plant_(2560x1600).png"; sourceTree = "<group>"; };
+		1891D79117DA298200281246 /* AQgrounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQgrounded.png; sourceTree = "<group>"; };
+		1891D79217DA298200281246 /* AQhappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQhappy.png; sourceTree = "<group>"; };
+		1891D79317DA298200281246 /* AQLeatherHoles-Apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AQLeatherHoles-Apple.png"; sourceTree = "<group>"; };
+		1891D79417DA298200281246 /* AQLet_it_snow_by_mj_coffeeholick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQLet_it_snow_by_mj_coffeeholick.png; sourceTree = "<group>"; };
+		1891D79517DA298200281246 /* AQLuxury_Apple_by_Stratification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQLuxury_Apple_by_Stratification.png; sourceTree = "<group>"; };
+		1891D79617DA298200281246 /* AQMacMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQMacMini.png; sourceTree = "<group>"; };
+		1891D79717DA298200281246 /* AQSlaveKingGod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQSlaveKingGod.png; sourceTree = "<group>"; };
+		1891D79817DA298200281246 /* AQSnow_Leopard_by_vladstudio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQSnow_Leopard_by_vladstudio.png; sourceTree = "<group>"; };
+		1891D79917DA298200281246 /* AQSpace Fold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AQSpace Fold.png"; sourceTree = "<group>"; };
+		1891D79A17DA298200281246 /* AQStormcloud_Schmeisser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQStormcloud_Schmeisser.png; sourceTree = "<group>"; };
+		1891D79B17DA298200281246 /* AQtiamat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQtiamat.png; sourceTree = "<group>"; };
+		1891D79C17DA298200281246 /* AQWTF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AQWTF.png; sourceTree = "<group>"; };
+		1891D7B517DA2F9700281246 /* TRRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootBox.h; path = Controllers/UserProfile/Layers/TRRootBox.h; sourceTree = "<group>"; };
+		1891D7B617DA2F9900281246 /* TRRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootBox.m; path = Controllers/UserProfile/Layers/TRRootBox.m; sourceTree = "<group>"; };
+		1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAlbumGridViewCell.h; sourceTree = "<group>"; };
+		1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAlbumGridViewCell.m; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -232,6 +289,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1891D78017DA26A900281246 /* PhotoAlbum */,
 				1891D72617D643BD00281246 /* UserProfile */,
 				18DA912417D3DECD00138EF2 /* SearchBar */,
 				182D72E817D3D65F00134224 /* SideBars */,
@@ -283,8 +341,53 @@
 				1891D73A17D67FC300281246 /* TRTagsScrollBox.m */,
 				1891D75617D77C6600281246 /* TRMoreBoxes.h */,
 				1891D75717D77C6700281246 /* TRMoreBoxes.m */,
+				1891D7B517DA2F9700281246 /* TRRootBox.h */,
+				1891D7B617DA2F9900281246 /* TRRootBox.m */,
 			);
 			name = Layers;
+			sourceTree = "<group>";
+		};
+		1891D78017DA26A900281246 /* PhotoAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				1891D78117DA26AB00281246 /* TRAlbumViewController.h */,
+				1891D78217DA26AB00281246 /* TRAlbumViewController.m */,
+				1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */,
+				1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */,
+			);
+			name = PhotoAlbum;
+			path = Controllers/PhotoAlbum;
+			sourceTree = "<group>";
+		};
+		1891D78417DA298200281246 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1891D78517DA298200281246 /* AQ3D-simplicity.png */,
+				1891D78617DA298200281246 /* AQAppleTV-esque_by-mikelcroft_nl-1440.png */,
+				1891D78717DA298200281246 /* AQbatman_surfing_on_superman.png */,
+				1891D78817DA298200281246 /* AQcoffee-break_.png */,
+				1891D78917DA298200281246 /* AQcolorful_1440x900.png */,
+				1891D78A17DA298200281246 /* AQComposition53.png */,
+				1891D78B17DA298200281246 /* AQDragon.png */,
+				1891D78C17DA298200281246 /* AQeclipse.png */,
+				1891D78D17DA298200281246 /* AQface.png */,
+				1891D78E17DA298200281246 /* AQfocus.png */,
+				1891D78F17DA298200281246 /* AQgbo.png */,
+				1891D79017DA298200281246 /* AQGreen_Plant_(2560x1600).png */,
+				1891D79117DA298200281246 /* AQgrounded.png */,
+				1891D79217DA298200281246 /* AQhappy.png */,
+				1891D79317DA298200281246 /* AQLeatherHoles-Apple.png */,
+				1891D79417DA298200281246 /* AQLet_it_snow_by_mj_coffeeholick.png */,
+				1891D79517DA298200281246 /* AQLuxury_Apple_by_Stratification.png */,
+				1891D79617DA298200281246 /* AQMacMini.png */,
+				1891D79717DA298200281246 /* AQSlaveKingGod.png */,
+				1891D79817DA298200281246 /* AQSnow_Leopard_by_vladstudio.png */,
+				1891D79917DA298200281246 /* AQSpace Fold.png */,
+				1891D79A17DA298200281246 /* AQStormcloud_Schmeisser.png */,
+				1891D79B17DA298200281246 /* AQtiamat.png */,
+				1891D79C17DA298200281246 /* AQWTF.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -301,6 +404,7 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1891D78417DA298200281246 /* Images */,
 				1891D76617D8F74C00281246 /* tag.png */,
 				1891D76717D8F74C00281246 /* photo.png */,
 				1891D76817D8F74C00281246 /* wishlist.png */,
@@ -460,6 +564,30 @@
 				1891D77517D8F74C00281246 /* calendar.png in Resources */,
 				1891D77617D8F74C00281246 /* bookmark.png in Resources */,
 				1891D77717D8F74C00281246 /* nav_bg.png in Resources */,
+				1891D79D17DA298200281246 /* AQ3D-simplicity.png in Resources */,
+				1891D79E17DA298200281246 /* AQAppleTV-esque_by-mikelcroft_nl-1440.png in Resources */,
+				1891D79F17DA298200281246 /* AQbatman_surfing_on_superman.png in Resources */,
+				1891D7A017DA298200281246 /* AQcoffee-break_.png in Resources */,
+				1891D7A117DA298200281246 /* AQcolorful_1440x900.png in Resources */,
+				1891D7A217DA298200281246 /* AQComposition53.png in Resources */,
+				1891D7A317DA298200281246 /* AQDragon.png in Resources */,
+				1891D7A417DA298200281246 /* AQeclipse.png in Resources */,
+				1891D7A517DA298200281246 /* AQface.png in Resources */,
+				1891D7A617DA298200281246 /* AQfocus.png in Resources */,
+				1891D7A717DA298200281246 /* AQgbo.png in Resources */,
+				1891D7A817DA298200281246 /* AQGreen_Plant_(2560x1600).png in Resources */,
+				1891D7A917DA298200281246 /* AQgrounded.png in Resources */,
+				1891D7AA17DA298200281246 /* AQhappy.png in Resources */,
+				1891D7AB17DA298200281246 /* AQLeatherHoles-Apple.png in Resources */,
+				1891D7AC17DA298200281246 /* AQLet_it_snow_by_mj_coffeeholick.png in Resources */,
+				1891D7AD17DA298200281246 /* AQLuxury_Apple_by_Stratification.png in Resources */,
+				1891D7AE17DA298200281246 /* AQMacMini.png in Resources */,
+				1891D7AF17DA298200281246 /* AQSlaveKingGod.png in Resources */,
+				1891D7B017DA298200281246 /* AQSnow_Leopard_by_vladstudio.png in Resources */,
+				1891D7B117DA298200281246 /* AQSpace Fold.png in Resources */,
+				1891D7B217DA298200281246 /* AQStormcloud_Schmeisser.png in Resources */,
+				1891D7B317DA298200281246 /* AQtiamat.png in Resources */,
+				1891D7B417DA298200281246 /* AQWTF.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +654,9 @@
 				1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */,
 				1891D76517D8F48900281246 /* TRCenterRootController.m in Sources */,
 				1891D77B17D9EB8900281246 /* UISearchBar+cancelButton.m in Sources */,
+				1891D78317DA26AB00281246 /* TRAlbumViewController.m in Sources */,
+				1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */,
+				1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

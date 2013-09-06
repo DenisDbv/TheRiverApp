@@ -7,6 +7,8 @@
 //
 
 #import "TRMoreBoxes.h"
+#import "UIView+GestureBlocks.h"
+#import "TRAlbumViewController.h"
 
 @implementation TRMoreBoxes
 {
@@ -21,14 +23,20 @@
     self.backgroundColor = [UIColor clearColor];
 }
 
-+(TRMoreBoxes *)initBoxes
++(TRMoreBoxes *)initBoxes:(id)target
 {
     TRMoreBoxes *box = [TRMoreBoxes boxWithSize: CGSizeMake(320, 100)];
     //box.backgroundColor = [UIColor yellowColor];
     
     [box initScroll];
     
-    NSArray *buttonsArray = [NSArray arrayWithObjects:[box createViewWithImage:nil withTitle:@"Фотографии"],
+    UIView *photoBox = [box createViewWithImage:nil withTitle:@"Фотографии"];
+    [photoBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        TRAlbumViewController *albumVC = [[TRAlbumViewController alloc] init];
+        [((UIViewController*)target).navigationController pushViewController:albumVC animated:YES];
+    } forTaps:1];
+    
+    NSArray *buttonsArray = [NSArray arrayWithObjects:photoBox,
                              [box createViewWithImage:nil withTitle:@"Кейсы"],
                              [box createViewWithImage:nil withTitle:@"Контакты"],
                              [box createViewWithImage:nil withTitle:@"Подписчики"], nil];

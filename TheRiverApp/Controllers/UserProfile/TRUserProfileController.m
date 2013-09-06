@@ -81,12 +81,13 @@
 -(void) createBackgroundHeadBlock
 {
     TRHeadBox *headBox = [TRHeadBox initBox:self.view.bounds.size];
+    headBox.rootControllerDelegate = self;
     [_scrollView.boxes addObject: headBox];
 }
 
 -(void) createSecondHeadBlock
 {
-    TRSecondHeadBox *headBox = [TRSecondHeadBox initBox:self.view.bounds.size];
+    TRSecondHeadBox *headBox = [TRSecondHeadBox initBox:self.view.bounds.size withTarget:self];
     [_scrollView.boxes addObject: headBox];
 }
 

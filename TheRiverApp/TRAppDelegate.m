@@ -45,6 +45,8 @@
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
     //[self showFontsList];
     
     return YES;

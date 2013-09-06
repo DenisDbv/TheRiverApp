@@ -22,7 +22,7 @@
     
 }
 
-+(TRSecondHeadBox *)initBox:(CGSize)bounds
++(TRSecondHeadBox *)initBox:(CGSize)bounds withTarget:(id)target
 {
     TRSecondHeadBox *box = [TRSecondHeadBox boxWithSize: CGSizeMake(bounds.width, 300)];
     
@@ -59,8 +59,8 @@
     
     TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"текущие ниши:" andTagsArray:[[NSArray alloc] initWithObjects:@"AXBX software", @"Школа программирования", @"NEO", nil]];
     [box.boxes addObject:tagsCurrentBusiness];
-    
-    TRMoreBoxes *moreBoxes = [TRMoreBoxes initBoxes];
+
+    TRMoreBoxes *moreBoxes = [TRMoreBoxes initBoxes:target];
     [box.boxes addObject:moreBoxes];
     
     return box;

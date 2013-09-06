@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
-#import "MGBox.h"
+#import "TRRootBox.h"
 
-@interface TRMoreBoxes : MGBox
+@interface TRMoreBoxes : TRRootBox
 
-+(TRMoreBoxes *)initBoxes;
++(TRMoreBoxes *)initBoxes:(id)target;
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
-#import "MGBox.h"
+#import "TRRootBox.h"
 
-@interface TRPhotoBox : MGBox
+@interface TRPhotoBox : TRRootBox
 
 +(TRPhotoBox *)initBox;
 
