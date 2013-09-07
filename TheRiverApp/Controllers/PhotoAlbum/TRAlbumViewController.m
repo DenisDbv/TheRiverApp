@@ -10,6 +10,7 @@
 #import <AQGridView/AQGridView.h>
 #import "TRAlbumGridViewCell.h"
 #import "MFSideMenu.h"
+#import "TRImageViewController.h"
 
 @interface TRAlbumViewController ()
 @property (nonatomic, retain) AQGridView * gridView;
@@ -32,12 +33,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
 	
     [self initialized];
     
     [self addSwipeGestureRecognizer];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
 }
 
 -(void) viewWillDisappear:(BOOL)animated
@@ -77,7 +81,7 @@
     {
         NSLog(@"%@", str);
     }
-    
+     
     [_gridView reloadData];
 }
 
@@ -126,6 +130,12 @@
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
     return ( CGSizeMake(105.0, 105.0) );
+}
+
+- (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
+{
+    TRImageViewController *imageViewController = [[TRImageViewController alloc] initWithImage: [allImageNames objectAtIndex:index]];
+    [self.navigationController pushViewController:imageViewController animated:YES];
 }
 
 @end

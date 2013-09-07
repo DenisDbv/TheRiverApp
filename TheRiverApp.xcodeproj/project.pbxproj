@@ -73,6 +73,8 @@
 		1891D7B417DA298200281246 /* AQWTF.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79C17DA298200281246 /* AQWTF.png */; };
 		1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B617DA2F9900281246 /* TRRootBox.m */; };
 		1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */; };
+		1891D7C117DB1AB200281246 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C017DB1AB200281246 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C317DB1AFE00281246 /* TRImageViewController.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -180,6 +182,10 @@
 		1891D7B617DA2F9900281246 /* TRRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootBox.m; path = Controllers/UserProfile/Layers/TRRootBox.m; sourceTree = "<group>"; };
 		1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAlbumGridViewCell.h; sourceTree = "<group>"; };
 		1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAlbumGridViewCell.m; sourceTree = "<group>"; };
+		1891D7BF17DB1AB200281246 /* ZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomView.h; sourceTree = "<group>"; };
+		1891D7C017DB1AB200281246 /* ZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomView.m; sourceTree = "<group>"; };
+		1891D7C217DB1AFD00281246 /* TRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRImageViewController.h; sourceTree = "<group>"; };
+		1891D7C317DB1AFE00281246 /* TRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImageViewController.m; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -350,10 +356,13 @@
 		1891D78017DA26A900281246 /* PhotoAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				1891D7BE17DB1AB200281246 /* ZoomView */,
 				1891D78117DA26AB00281246 /* TRAlbumViewController.h */,
 				1891D78217DA26AB00281246 /* TRAlbumViewController.m */,
 				1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */,
 				1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */,
+				1891D7C217DB1AFD00281246 /* TRImageViewController.h */,
+				1891D7C317DB1AFE00281246 /* TRImageViewController.m */,
 			);
 			name = PhotoAlbum;
 			path = Controllers/PhotoAlbum;
@@ -388,6 +397,15 @@
 				1891D79C17DA298200281246 /* AQWTF.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		1891D7BE17DB1AB200281246 /* ZoomView */ = {
+			isa = PBXGroup;
+			children = (
+				1891D7BF17DB1AB200281246 /* ZoomView.h */,
+				1891D7C017DB1AB200281246 /* ZoomView.m */,
+			);
+			path = ZoomView;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -657,6 +675,8 @@
 				1891D78317DA26AB00281246 /* TRAlbumViewController.m in Sources */,
 				1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */,
 				1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */,
+				1891D7C117DB1AB200281246 /* ZoomView.m in Sources */,
+				1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
