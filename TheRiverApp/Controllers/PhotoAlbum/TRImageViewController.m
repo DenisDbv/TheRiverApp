@@ -32,8 +32,6 @@
 {
     [super viewDidLoad];
 	
-    //self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
-	
     [self initialized];
     
     [self addSwipeGestureRecognizer];
@@ -47,7 +45,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void) initialized

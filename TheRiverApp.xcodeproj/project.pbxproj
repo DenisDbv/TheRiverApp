@@ -75,6 +75,8 @@
 		1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */; };
 		1891D7C117DB1AB200281246 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C017DB1AB200281246 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C317DB1AFE00281246 /* TRImageViewController.m */; };
+		1891D7F217DB59AC00281246 /* TRUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7F117DB59AC00281246 /* TRUserModel.m */; };
+		1891D7F617DB5B3300281246 /* TRUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7F517DB5B3300281246 /* TRUserManager.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -186,6 +188,10 @@
 		1891D7C017DB1AB200281246 /* ZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomView.m; sourceTree = "<group>"; };
 		1891D7C217DB1AFD00281246 /* TRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRImageViewController.h; sourceTree = "<group>"; };
 		1891D7C317DB1AFE00281246 /* TRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImageViewController.m; sourceTree = "<group>"; };
+		1891D7F017DB59AC00281246 /* TRUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserModel.h; path = Model/Entity/TRUserModel.h; sourceTree = "<group>"; };
+		1891D7F117DB59AC00281246 /* TRUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserModel.m; path = Model/Entity/TRUserModel.m; sourceTree = "<group>"; };
+		1891D7F417DB5B3300281246 /* TRUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserManager.h; path = Model/DataManagers/TRUserManager.h; sourceTree = "<group>"; };
+		1891D7F517DB5B3300281246 /* TRUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserManager.m; path = Model/DataManagers/TRUserManager.m; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 		182D72CD17D3CFAF00134224 /* TheRiverApp */ = {
 			isa = PBXGroup;
 			children = (
+				1891D7EE17DB595200281246 /* Model */,
 				18E65E2217D5009700D1B778 /* ExternalLibs */,
 				18DA914517D4851400138EF2 /* Common */,
 				18DA914117D4750900138EF2 /* TableViewHelpers */,
@@ -406,6 +413,33 @@
 				1891D7C017DB1AB200281246 /* ZoomView.m */,
 			);
 			path = ZoomView;
+			sourceTree = "<group>";
+		};
+		1891D7EE17DB595200281246 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1891D7F317DB5B0500281246 /* DataManagers */,
+				1891D7EF17DB596B00281246 /* Entity */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1891D7EF17DB596B00281246 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1891D7F017DB59AC00281246 /* TRUserModel.h */,
+				1891D7F117DB59AC00281246 /* TRUserModel.m */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		1891D7F317DB5B0500281246 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				1891D7F417DB5B3300281246 /* TRUserManager.h */,
+				1891D7F517DB5B3300281246 /* TRUserManager.m */,
+			);
+			name = DataManagers;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -677,6 +711,8 @@
 				1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */,
 				1891D7C117DB1AB200281246 /* ZoomView.m in Sources */,
 				1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */,
+				1891D7F217DB59AC00281246 /* TRUserModel.m in Sources */,
+				1891D7F617DB5B3300281246 /* TRUserManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,3 +15,4 @@
 #endif
 
 #import "Global.h"
+#import "TRUserManager.h"
