@@ -199,7 +199,7 @@
     
     if(indexPath.section == TRRootMenuSectionProfile && indexPath.row == 0) {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] init];
+            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
             [AppDelegateInstance() changeCenterViewController:userProfileVC];
         }];
     }

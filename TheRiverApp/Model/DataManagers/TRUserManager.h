@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ABMultiton/ABMultitonProtocol.h>
+#import <ABMultiton/ABMultiton.h>
 
 @interface TRUserManager : NSObject <ABMultitonProtocol>
 

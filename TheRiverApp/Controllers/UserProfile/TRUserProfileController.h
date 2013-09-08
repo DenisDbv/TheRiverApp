@@ -10,4 +10,6 @@
 
 @interface TRUserProfileController : TRCenterRootController
 
+-(id) initByUserModel:(TRUserModel*)userObject;
+
 @end

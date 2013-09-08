@@ -14,5 +14,6 @@
 @synthesize yearsOld;
 @synthesize city;
 @synthesize hightResolutions, currentBusiness;
+@synthesize businessAfterTitle, businessBeforeTitle, businessLogo, businessTitle;
 
 @end

@@ -7,8 +7,6 @@
 //
 
 #import "TRUserManager.h"
-#import <ABMultiton/ABMultiton.h>
-
 #import "TRUserModel.h"
 
 @interface TRUserManager()
@@ -19,7 +17,7 @@
 
 @synthesize usersObject;
 
-+ (instancetype)sharedIsntance
++ (instancetype)sharedInstance
 {
     return [ABMultiton sharedInstanceOfClass:[self class]];
 }
@@ -35,10 +33,14 @@
 {
     TRUserModel *userModel1 = [[TRUserModel alloc] init];
     userModel1.logo = @"IamAppleDev.jpg";
-    userModel1.firstName = @"Дубов";
-    userModel1.lastName = @"Денис";
+    userModel1.firstName = @"Денис";
+    userModel1.lastName = @"Дубов";
     userModel1.yearsOld = @"28 лет";
     userModel1.city = @"Гонконг";
+    userModel1.businessLogo = @"background.jpg";
+    userModel1.businessTitle = @"Бассейны в кредит";
+    userModel1.businessBeforeTitle = @"Было: 100000 рублей";
+    userModel1.businessAfterTitle = @"Стало: 5 000 000 рублей";
     
     usersObject = [[NSArray alloc] initWithObjects:userModel1, nil];
 }

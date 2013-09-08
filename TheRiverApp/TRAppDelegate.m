@@ -49,7 +49,7 @@
     
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    //[self showFontsList];
+    [self showFontsList];
     
     return YES;
 }

@@ -21,5 +21,10 @@
 @property (nonatomic, retain) NSArray *hightResolutions;
 @property (nonatomic, retain) NSArray *currentBusiness;
 
+@property (nonatomic, retain) NSString *businessLogo;
+@property (nonatomic, retain) NSString *businessTitle;
+@property (nonatomic, retain) NSString *businessBeforeTitle;
+@property (nonatomic, retain) NSString *businessAfterTitle;
+
 
 @end

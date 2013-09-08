@@ -10,6 +10,10 @@
 
 @interface TRRootBox : MGBox
 
-@property (nonatomic, strong) id rootControllerDelegate;
+@property (nonatomic, strong) TRUserModel *userData;
+
++(MGBox *) initBox:(CGSize)bounds;
++(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserModel*)userObject;
++(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserModel*)userObject byTarget:(id)target;
 
 @end

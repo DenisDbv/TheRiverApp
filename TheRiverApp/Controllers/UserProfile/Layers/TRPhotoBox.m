@@ -77,7 +77,7 @@
     nameLabel.numberOfLines = 2;
     nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
     nameLabel.text = @"Денис Дубов";
-    
+
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(dataBox.bounds.size.width, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping ];
     nameLabel.frame = CGRectMake(0, 0, size.width, size.height);
     [dataBox addSubview:nameLabel];

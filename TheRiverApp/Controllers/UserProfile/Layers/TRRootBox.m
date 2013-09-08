@@ -8,8 +8,11 @@
 
 #import "TRRootBox.h"
 
-@implementation TRRootBox
+@interface TRRootBox()
 
-@synthesize rootControllerDelegate;
+@end
+
+@implementation TRRootBox
+@synthesize userData;
 
 @end

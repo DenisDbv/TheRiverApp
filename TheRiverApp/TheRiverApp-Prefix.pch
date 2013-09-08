@@ -15,4 +15,6 @@
 #endif
 
 #import "Global.h"
+
+#import "TRUserModel.h"
 #import "TRUserManager.h"
