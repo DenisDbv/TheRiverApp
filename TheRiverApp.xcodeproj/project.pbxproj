@@ -24,13 +24,10 @@
 		1891D72917D643FE00281246 /* TRUserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72817D643FE00281246 /* TRUserProfileController.m */; };
 		1891D73017D6515A00281246 /* TRHeadBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72F17D6515A00281246 /* TRHeadBox.m */; };
 		1891D73217D657F900281246 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1891D73117D657F900281246 /* background.jpg */; };
-		1891D73517D65BE600281246 /* TRPhotoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73417D65BE600281246 /* TRPhotoBox.m */; };
-		1891D73817D6645600281246 /* TRSecondHeadBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73717D6645500281246 /* TRSecondHeadBox.m */; };
 		1891D73B17D67FC300281246 /* TRTagsScrollBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D73A17D67FC300281246 /* TRTagsScrollBox.m */; };
 		1891D75317D7079D00281246 /* gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75017D7079D00281246 /* gold.png */; };
 		1891D75417D7079D00281246 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75117D7079D00281246 /* green.png */; };
 		1891D75517D7079D00281246 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75217D7079D00281246 /* black.png */; };
-		1891D75817D77C6700281246 /* TRMoreBoxes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75717D77C6700281246 /* TRMoreBoxes.m */; };
 		1891D75B17D852A400281246 /* TRTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75A17D852A300281246 /* TRTestViewController.m */; };
 		1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D75D17D8537F00281246 /* TRScrollViewController.m */; };
 		1891D76117D8D35A00281246 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D75F17D8D35A00281246 /* menu-icon.png */; };
@@ -83,6 +80,8 @@
 		1891D80117DBC51D00281246 /* TRExMenuBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D80017DBC51800281246 /* TRExMenuBox.m */; };
 		1891D80417DBC95000281246 /* TRBusinessTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D80317DBC94C00281246 /* TRBusinessTitleBox.m */; };
 		1891D80717DBC9DC00281246 /* TRBusinessBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D80617DBC9D400281246 /* TRBusinessBox.m */; };
+		1891D80C17DC9AB000281246 /* TRMindBaseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D80A17DC9AB000281246 /* TRMindBaseListVC.m */; };
+		1891D80D17DC9AB000281246 /* TRMindBaseListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1891D80B17DC9AB000281246 /* TRMindBaseListVC.xib */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -130,17 +129,11 @@
 		1891D72E17D6515A00281246 /* TRHeadBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRHeadBox.h; path = Controllers/UserProfile/Layers/TRHeadBox.h; sourceTree = "<group>"; };
 		1891D72F17D6515A00281246 /* TRHeadBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRHeadBox.m; path = Controllers/UserProfile/Layers/TRHeadBox.m; sourceTree = "<group>"; };
 		1891D73117D657F900281246 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = Resources/background.jpg; sourceTree = "<group>"; };
-		1891D73317D65BE600281246 /* TRPhotoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPhotoBox.h; path = Controllers/UserProfile/Layers/TRPhotoBox.h; sourceTree = "<group>"; };
-		1891D73417D65BE600281246 /* TRPhotoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPhotoBox.m; path = Controllers/UserProfile/Layers/TRPhotoBox.m; sourceTree = "<group>"; };
-		1891D73617D6645500281246 /* TRSecondHeadBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSecondHeadBox.h; path = Controllers/UserProfile/Layers/TRSecondHeadBox.h; sourceTree = "<group>"; };
-		1891D73717D6645500281246 /* TRSecondHeadBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSecondHeadBox.m; path = Controllers/UserProfile/Layers/TRSecondHeadBox.m; sourceTree = "<group>"; };
 		1891D73917D67FC200281246 /* TRTagsScrollBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRTagsScrollBox.h; path = Controllers/UserProfile/Layers/TRTagsScrollBox.h; sourceTree = "<group>"; };
 		1891D73A17D67FC300281246 /* TRTagsScrollBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRTagsScrollBox.m; path = Controllers/UserProfile/Layers/TRTagsScrollBox.m; sourceTree = "<group>"; };
 		1891D75017D7079D00281246 /* gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold.png; sourceTree = "<group>"; };
 		1891D75117D7079D00281246 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
 		1891D75217D7079D00281246 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
-		1891D75617D77C6600281246 /* TRMoreBoxes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMoreBoxes.h; path = Controllers/UserProfile/Layers/TRMoreBoxes.h; sourceTree = "<group>"; };
-		1891D75717D77C6700281246 /* TRMoreBoxes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMoreBoxes.m; path = Controllers/UserProfile/Layers/TRMoreBoxes.m; sourceTree = "<group>"; };
 		1891D75917D852A200281246 /* TRTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRTestViewController.h; path = Controllers/UserProfile/TRTestViewController.h; sourceTree = "<group>"; };
 		1891D75A17D852A300281246 /* TRTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRTestViewController.m; path = Controllers/UserProfile/TRTestViewController.m; sourceTree = "<group>"; };
 		1891D75C17D8537F00281246 /* TRScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRScrollViewController.h; path = Controllers/UserProfile/TRScrollViewController.h; sourceTree = "<group>"; };
@@ -209,6 +202,9 @@
 		1891D80317DBC94C00281246 /* TRBusinessTitleBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessTitleBox.m; path = Controllers/UserProfile/Layers/TRBusinessTitleBox.m; sourceTree = "<group>"; };
 		1891D80517DBC9CF00281246 /* TRBusinessBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessBox.h; path = Controllers/UserProfile/Layers/TRBusinessBox.h; sourceTree = "<group>"; };
 		1891D80617DBC9D400281246 /* TRBusinessBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessBox.m; path = Controllers/UserProfile/Layers/TRBusinessBox.m; sourceTree = "<group>"; };
+		1891D80917DC9AB000281246 /* TRMindBaseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindBaseListVC.h; path = Controllers/MindBase/TRMindBaseListVC.h; sourceTree = "<group>"; };
+		1891D80A17DC9AB000281246 /* TRMindBaseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindBaseListVC.m; path = Controllers/MindBase/TRMindBaseListVC.m; sourceTree = "<group>"; };
+		1891D80B17DC9AB000281246 /* TRMindBaseListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRMindBaseListVC.xib; path = Controllers/MindBase/TRMindBaseListVC.xib; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -321,6 +317,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1891D80817DC9A6100281246 /* MindBase */,
 				1891D78017DA26A900281246 /* PhotoAlbum */,
 				1891D72617D643BD00281246 /* UserProfile */,
 				18DA912417D3DECD00138EF2 /* SearchBar */,
@@ -365,14 +362,8 @@
 			children = (
 				1891D72E17D6515A00281246 /* TRHeadBox.h */,
 				1891D72F17D6515A00281246 /* TRHeadBox.m */,
-				1891D73317D65BE600281246 /* TRPhotoBox.h */,
-				1891D73417D65BE600281246 /* TRPhotoBox.m */,
-				1891D73617D6645500281246 /* TRSecondHeadBox.h */,
-				1891D73717D6645500281246 /* TRSecondHeadBox.m */,
 				1891D73917D67FC200281246 /* TRTagsScrollBox.h */,
 				1891D73A17D67FC300281246 /* TRTagsScrollBox.m */,
-				1891D75617D77C6600281246 /* TRMoreBoxes.h */,
-				1891D75717D77C6700281246 /* TRMoreBoxes.m */,
 				1891D7B517DA2F9700281246 /* TRRootBox.h */,
 				1891D7B617DA2F9900281246 /* TRRootBox.m */,
 				1891D7F917DBC1F400281246 /* TRContactBox.h */,
@@ -469,6 +460,16 @@
 				1891D7F517DB5B3300281246 /* TRUserManager.m */,
 			);
 			name = DataManagers;
+			sourceTree = "<group>";
+		};
+		1891D80817DC9A6100281246 /* MindBase */ = {
+			isa = PBXGroup;
+			children = (
+				1891D80917DC9AB000281246 /* TRMindBaseListVC.h */,
+				1891D80A17DC9AB000281246 /* TRMindBaseListVC.m */,
+				1891D80B17DC9AB000281246 /* TRMindBaseListVC.xib */,
+			);
+			name = MindBase;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -669,6 +670,7 @@
 				1891D7B217DA298200281246 /* AQStormcloud_Schmeisser.png in Resources */,
 				1891D7B317DA298200281246 /* AQtiamat.png in Resources */,
 				1891D7B417DA298200281246 /* AQWTF.png in Resources */,
+				1891D80D17DC9AB000281246 /* TRMindBaseListVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,10 +729,7 @@
 				1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */,
 				1891D72917D643FE00281246 /* TRUserProfileController.m in Sources */,
 				1891D73017D6515A00281246 /* TRHeadBox.m in Sources */,
-				1891D73517D65BE600281246 /* TRPhotoBox.m in Sources */,
-				1891D73817D6645600281246 /* TRSecondHeadBox.m in Sources */,
 				1891D73B17D67FC300281246 /* TRTagsScrollBox.m in Sources */,
-				1891D75817D77C6700281246 /* TRMoreBoxes.m in Sources */,
 				1891D75B17D852A400281246 /* TRTestViewController.m in Sources */,
 				1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */,
 				1891D76517D8F48900281246 /* TRCenterRootController.m in Sources */,
@@ -747,6 +746,7 @@
 				1891D80117DBC51D00281246 /* TRExMenuBox.m in Sources */,
 				1891D80417DBC95000281246 /* TRBusinessTitleBox.m in Sources */,
 				1891D80717DBC9DC00281246 /* TRBusinessBox.m in Sources */,
+				1891D80C17DC9AB000281246 /* TRMindBaseListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,7 +829,7 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31134419-C692-4C23-8EA6-6A519CC989E1";
+				PROVISIONING_PROFILE = "EBC73F8C-AFBD-4B45-A208-0DAB01721EDE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -843,7 +843,7 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31134419-C692-4C23-8EA6-6A519CC989E1";
+				PROVISIONING_PROFILE = "EBC73F8C-AFBD-4B45-A208-0DAB01721EDE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

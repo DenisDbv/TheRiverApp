@@ -69,7 +69,6 @@
     nameLabel.frame = CGRectMake(10.0, 10.0, size.width, size.height);
     [self addSubview: nameLabel];
     
-    
     UILabel *beforeLabel = [[UILabel alloc] init];
     beforeLabel.backgroundColor = [UIColor clearColor];
     beforeLabel.textColor = [UIColor whiteColor];
@@ -93,7 +92,6 @@
     CGSize size3 = [afterLabel.text sizeWithFont:afterLabel.font constrainedToSize:CGSizeMake(280.0, FLT_MAX) lineBreakMode:afterLabel.lineBreakMode ];
     afterLabel.frame = CGRectMake(beforeLabel.frame.origin.x, beforeLabel.frame.origin.y+beforeLabel.frame.size.height, size3.width, size3.height);
     [self addSubview: afterLabel];
-
 }
 
 @end

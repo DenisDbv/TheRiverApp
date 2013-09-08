@@ -65,11 +65,11 @@
                                                                rootHead.frame.size.width,
                                                                rootHead.frame.size.height-20)];
     preview.backgroundColor = [UIColor yellowColor];
-    preview.layer.shadowColor = [UIColor colorWithWhite:0.12 alpha:1].CGColor;
+    /*preview.layer.shadowColor = [UIColor colorWithWhite:0.12 alpha:1].CGColor;
     preview.layer.shadowOffset = CGSizeMake(0, 0);
     preview.layer.shadowRadius = 1;
     preview.layer.shadowOpacity = 1;
-    preview.layer.cornerRadius = 2;
+    preview.layer.cornerRadius = 0;*/
     [rootHead addSubview:preview];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];

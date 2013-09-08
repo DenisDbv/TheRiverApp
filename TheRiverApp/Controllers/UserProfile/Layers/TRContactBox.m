@@ -36,7 +36,8 @@
     
     NVUIGradientButton *subscribeButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(9, 0, 146, 41) style:NVUIGradientButtonStyleDefault];
     subscribeButton.tintColor = subscribeButton.highlightedTintColor = [UIColor clearColor];
-    subscribeButton.borderColor = subscribeButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    subscribeButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    subscribeButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [subscribeButton setCornerRadius:4.0f];
     [subscribeButton setGradientEnabled:NO];
     subscribeButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
@@ -48,7 +49,8 @@
     
     NVUIGradientButton *messageButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(164, 0, 146, 41) style:NVUIGradientButtonStyleDefault];
     messageButton.tintColor = messageButton.highlightedTintColor = [UIColor clearColor];
-    messageButton.borderColor = messageButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    messageButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    messageButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [messageButton setCornerRadius:4.0f];
     [messageButton setGradientEnabled:NO];
     messageButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
@@ -66,7 +68,7 @@
     [self.boxes addObject:buttonsBox];
     
     NVUIGradientButton *addButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(0, 0, 320, 48) style:NVUIGradientButtonStyleDefault];
-    addButton.tintColor = addButton.highlightedTintColor = [UIColor colorWithRed:252.0/255.0 green:189.0/255.0 blue:0.0 alpha:1.0];
+    addButton.tintColor = addButton.highlightedTintColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]; //[UIColor colorWithRed:252.0/255.0 green:189.0/255.0 blue:0.0 alpha:1.0];
     addButton.borderColor = addButton.highlightedBorderColor = [UIColor clearColor];
     [addButton setCornerRadius:0.0f];
     [addButton setGradientEnabled:NO];

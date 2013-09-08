@@ -32,6 +32,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    [self setupAppearance];
+    
     [TRUserManager sharedInstance];
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
@@ -47,11 +49,17 @@
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    
     [self showFontsList];
     
     return YES;
+}
+
+- (void)setupAppearance {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
 }
 
 -(void) changeCenterViewController:(UIViewController*)newController

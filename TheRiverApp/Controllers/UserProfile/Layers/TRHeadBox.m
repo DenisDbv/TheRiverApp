@@ -7,7 +7,6 @@
 //
 
 #import "TRHeadBox.h"
-#import "TRPhotoBox.h"
 #import <MGBox2/MGScrollView.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -62,7 +61,7 @@
     imageView.frame = CGRectOffset(imageView.frame, 4.0, 49.0);
     imageView.alpha = 0;
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    imageView.layer.borderWidth = 2;
+    imageView.layer.borderWidth = 1;
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
     imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
     imageView.clipsToBounds = YES;

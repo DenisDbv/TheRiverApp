@@ -17,6 +17,8 @@
     
     self.borderStyle = MGBorderEtchedTop;
     self.topBorderColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
+    
+    self.zIndex = -1;
 }
 
 +(TRTagsBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject

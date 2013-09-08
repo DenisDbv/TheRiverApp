@@ -20,8 +20,6 @@
 #import "TRBusinessTitleBox.h"
 #import "TRBusinessBox.h"
 
-#import "TRSecondHeadBox.h"
-
 @interface TRUserProfileController ()
 @property (nonatomic, retain) MGScrollView *scrollView;
 @property (nonatomic, retain) TRUserModel *userDataObject;
@@ -41,6 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.clipsToBounds = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuStateEventOccurred:)
@@ -128,13 +128,6 @@
     TRBusinessBox *businessBox = (TRBusinessBox*)[TRBusinessBox initBox: self.view.bounds.size
                                                   withUserData:_userDataObject];
     [_scrollView.boxes addObject: businessBox];
-}
-
--(void) createSecondHeadBlock
-{
-    TRSecondHeadBox *headBox = [TRSecondHeadBox initBox:self.view.bounds.size withTarget:self];
-    headBox.zIndex = -2;
-    [_scrollView.boxes addObject: headBox];
 }
 
 @end
