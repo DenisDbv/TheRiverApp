@@ -44,20 +44,32 @@
 
 - (void)setupMenuBarButtonItems
 {
-    self.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem];
-    self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
+    //self.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem];
+    //self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
+    
+    UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 13)];
+    [settingsView addTarget:self action:@selector(leftSideMenuButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [settingsView setBackgroundImage:[UIImage imageNamed:@"toolbar-menu-icon@2x.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:settingsView];
+    [self.navigationItem setLeftBarButtonItem:settingsButton];
+    
+    UIButton *settingsView2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 23, 20)];
+    [settingsView2 addTarget:self action:@selector(rightSideMenuButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [settingsView2 setBackgroundImage:[UIImage imageNamed:@"toolbar-contacts-icon@2x.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *settingsButton2 = [[UIBarButtonItem alloc] initWithCustomView:settingsView2];
+    [self.navigationItem setRightBarButtonItem:settingsButton2];
 }
 
 - (UIBarButtonItem *)leftMenuBarButtonItem {
     return [[UIBarButtonItem alloc]
-            initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered
+            initWithImage:[UIImage imageNamed:@"toolbar-menu-icon.png"] style:UIBarButtonItemStyleBordered
             target:self
             action:@selector(leftSideMenuButtonPressed:)];
 }
 
 - (UIBarButtonItem *)rightMenuBarButtonItem {
     return [[UIBarButtonItem alloc]
-            initWithImage:[UIImage imageNamed:@"menu-icon.png"] style:UIBarButtonItemStyleBordered
+            initWithImage:[UIImage imageNamed:@"toolbar-contacts-icon.png"] style:UIBarButtonItemStyleBordered
             target:self
             action:@selector(rightSideMenuButtonPressed:)];
 }

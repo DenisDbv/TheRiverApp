@@ -18,6 +18,29 @@
 #import "TRBusinessUnitTitleBox.h"
 #import "TRBusinessWebViewBox.h"
 
+@interface UIBarButtonItem (BarButtonItemExtended)
++ (UIBarButtonItem*)barItemWithImage:(UIImage*)image target:(id)target action:(SEL)action;
+@end
+
+@implementation UIBarButtonItem (BarButtonItemExtended)
+
++ (UIBarButtonItem*)barItemWithImage:(UIImage*)image target:(id)target action:(SEL)action
+{
+    UIButton *imgButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [imgButton setImage:image forState:UIControlStateNormal];
+    imgButton.frame = CGRectMake(0.0, 0.0, image.size.width/2, image.size.height/2);
+    
+    UIBarButtonItem *b = [[UIBarButtonItem alloc]initWithCustomView:imgButton];
+    
+    [imgButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    [b setAction:action];
+    [b setTarget:target];
+    
+    return b;
+}
+@end
+
 @interface TRBusinessDescriptionVC ()
 @property (nonatomic, retain) MGScrollView *scrollView;
 @property (nonatomic, retain) TRBusinessModel *businessDataObject;
@@ -45,12 +68,21 @@
     
     [self addSwipeGestureRecognizer];
     
+    UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
+    [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
+    
     [self createRootScrollView];
     [self showBusinessLogo];
     [self showBusinessTitle];
     [self showMindWebView];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
+}
+
+-(void) onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated
