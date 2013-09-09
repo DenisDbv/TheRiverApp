@@ -26,19 +26,20 @@
     box.userData = userObject;
     box.borderStyle = MGBorderEtchedTop | MGBorderEtchedBottom;
     box.topBorderColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
-    box.bottomBorderColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
+    //box.bottomBorderColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
     
     [box initScroll];
     
-    UIView *photoBox = [box createViewWithImage:nil withTitle:@"Фотографии"];
+    UIView *photoBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-photos@2x.png"] withTitle:@"Фотографии"];
     [photoBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
         TRAlbumViewController *albumVC = [[TRAlbumViewController alloc] init];
         [((UIViewController*)target).navigationController pushViewController:albumVC animated:YES];
     } forTaps:1];
     
-    NSArray *buttonsArray = [NSArray arrayWithObjects:photoBox,
-                             [box createViewWithImage:nil withTitle:@"Кейсы"],
-                             [box createViewWithImage:nil withTitle:@"Контакты"],
+    NSArray *buttonsArray = [NSArray arrayWithObjects:
+                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-contacts@2x.png"] withTitle:@"Контакты"],
+                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Посты"],
+                             photoBox,
                              [box createViewWithImage:nil withTitle:@"Подписчики"], nil];
     [box addViewsToScroll:buttonsArray];
     
@@ -65,6 +66,12 @@
                                                                rootHead.frame.size.width,
                                                                rootHead.frame.size.height-20)];
     preview.backgroundColor = [UIColor yellowColor];
+    if(image != nil)    {
+        UIImageView *subImageView = [[UIImageView alloc] initWithImage:image];
+        subImageView.frame = preview.frame;
+        //[preview addSubview:subImageView];
+        preview = subImageView;
+    }
     /*preview.layer.shadowColor = [UIColor colorWithWhite:0.12 alpha:1].CGColor;
     preview.layer.shadowOffset = CGSizeMake(0, 0);
     preview.layer.shadowRadius = 1;

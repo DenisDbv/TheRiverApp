@@ -105,6 +105,15 @@
 		18A108EC17DE609600D9CD8C /* TRBusinessLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108EB17DE609600D9CD8C /* TRBusinessLogoBox.m */; };
 		18A108EF17DE618700D9CD8C /* TRBusinessUnitTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108EE17DE618700D9CD8C /* TRBusinessUnitTitleBox.m */; };
 		18A108F217DE65EE00D9CD8C /* TRBusinessWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108F117DE65ED00D9CD8C /* TRBusinessWebViewBox.m */; };
+		18A108F617DE6C9E00D9CD8C /* profile-scrollview-photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A108F317DE6C9E00D9CD8C /* profile-scrollview-photos@2x.png */; };
+		18A108F717DE6C9E00D9CD8C /* profile-scrollview-posts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A108F417DE6C9E00D9CD8C /* profile-scrollview-posts@2x.png */; };
+		18A108F817DE6C9E00D9CD8C /* profile-scrollview-contacts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A108F517DE6C9E00D9CD8C /* profile-scrollview-contacts@2x.png */; };
+		18A1090A17DE771A00D9CD8C /* add-contact-white-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A1090717DE771900D9CD8C /* add-contact-white-icon@2x.png */; };
+		18A1090B17DE771A00D9CD8C /* subscribe-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A1090817DE771A00D9CD8C /* subscribe-icon@2x.png */; };
+		18A1090C17DE771A00D9CD8C /* send-message-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A1090917DE771A00D9CD8C /* send-message-icon@2x.png */; };
+		18A1091017DE7A5700D9CD8C /* add-contact-white-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A1090D17DE7A5500D9CD8C /* add-contact-white-icon.png */; };
+		18A1091117DE7A5700D9CD8C /* send-message-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A1090E17DE7A5600D9CD8C /* send-message-icon.png */; };
+		18A1091217DE7A5700D9CD8C /* subscribe-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A1090F17DE7A5600D9CD8C /* subscribe-icon.png */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -268,6 +277,15 @@
 		18A108EE17DE618700D9CD8C /* TRBusinessUnitTitleBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessUnitTitleBox.m; path = Controllers/Business/Layers/TRBusinessUnitTitleBox.m; sourceTree = "<group>"; };
 		18A108F017DE65ED00D9CD8C /* TRBusinessWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessWebViewBox.h; path = Controllers/Business/Layers/TRBusinessWebViewBox.h; sourceTree = "<group>"; };
 		18A108F117DE65ED00D9CD8C /* TRBusinessWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessWebViewBox.m; path = Controllers/Business/Layers/TRBusinessWebViewBox.m; sourceTree = "<group>"; };
+		18A108F317DE6C9E00D9CD8C /* profile-scrollview-photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-scrollview-photos@2x.png"; sourceTree = "<group>"; };
+		18A108F417DE6C9E00D9CD8C /* profile-scrollview-posts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-scrollview-posts@2x.png"; sourceTree = "<group>"; };
+		18A108F517DE6C9E00D9CD8C /* profile-scrollview-contacts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-scrollview-contacts@2x.png"; sourceTree = "<group>"; };
+		18A1090717DE771900D9CD8C /* add-contact-white-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-contact-white-icon@2x.png"; sourceTree = "<group>"; };
+		18A1090817DE771A00D9CD8C /* subscribe-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subscribe-icon@2x.png"; sourceTree = "<group>"; };
+		18A1090917DE771A00D9CD8C /* send-message-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-icon@2x.png"; sourceTree = "<group>"; };
+		18A1090D17DE7A5500D9CD8C /* add-contact-white-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-contact-white-icon.png"; sourceTree = "<group>"; };
+		18A1090E17DE7A5600D9CD8C /* send-message-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message-icon.png"; sourceTree = "<group>"; };
+		18A1090F17DE7A5600D9CD8C /* subscribe-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subscribe-icon.png"; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -612,6 +630,15 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A1090D17DE7A5500D9CD8C /* add-contact-white-icon.png */,
+				18A1090E17DE7A5600D9CD8C /* send-message-icon.png */,
+				18A1090F17DE7A5600D9CD8C /* subscribe-icon.png */,
+				18A1090717DE771900D9CD8C /* add-contact-white-icon@2x.png */,
+				18A1090817DE771A00D9CD8C /* subscribe-icon@2x.png */,
+				18A1090917DE771A00D9CD8C /* send-message-icon@2x.png */,
+				18A108F317DE6C9E00D9CD8C /* profile-scrollview-photos@2x.png */,
+				18A108F417DE6C9E00D9CD8C /* profile-scrollview-posts@2x.png */,
+				18A108F517DE6C9E00D9CD8C /* profile-scrollview-contacts@2x.png */,
 				18A108CE17DDC94900D9CD8C /* star-icon.png */,
 				18A108CF17DDC94900D9CD8C /* star-icon@2x.png */,
 				1891D78417DA298200281246 /* Images */,
@@ -812,6 +839,15 @@
 				18A108D117DDC94900D9CD8C /* star-icon@2x.png in Resources */,
 				18A108DA17DE100200D9CD8C /* TRBusinessBaseListVC.xib in Resources */,
 				18A108E217DE19A100D9CD8C /* TRBusinessItemCell.xib in Resources */,
+				18A108F617DE6C9E00D9CD8C /* profile-scrollview-photos@2x.png in Resources */,
+				18A108F717DE6C9E00D9CD8C /* profile-scrollview-posts@2x.png in Resources */,
+				18A108F817DE6C9E00D9CD8C /* profile-scrollview-contacts@2x.png in Resources */,
+				18A1090A17DE771A00D9CD8C /* add-contact-white-icon@2x.png in Resources */,
+				18A1090B17DE771A00D9CD8C /* subscribe-icon@2x.png in Resources */,
+				18A1090C17DE771A00D9CD8C /* send-message-icon@2x.png in Resources */,
+				18A1091017DE7A5700D9CD8C /* add-contact-white-icon.png in Resources */,
+				18A1091117DE7A5700D9CD8C /* send-message-icon.png in Resources */,
+				18A1091217DE7A5700D9CD8C /* subscribe-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
