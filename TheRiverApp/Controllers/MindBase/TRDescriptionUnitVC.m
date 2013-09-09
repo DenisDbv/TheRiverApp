@@ -43,6 +43,8 @@
                                                  name:MFSideMenuStateNotificationEvent
                                                object:nil];
     
+    [self addSwipeGestureRecognizer];
+    
     [self createRootScrollView];
     
     [self showMindLogo];
@@ -50,6 +52,16 @@
     [self showMindWebView];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +80,22 @@
     else if(event == MFSideMenuStateEventMenuDragEnd)
     {
         _scrollView.scrollEnabled = YES;
+    }
+}
+
+#pragma mark - Swipe gesture
+
+- (void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+}
+
+- (void)swipeRecognized:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded &&
+        gestureRecognizer.direction & UISwipeGestureRecognizerDirectionRight) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

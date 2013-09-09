@@ -352,6 +352,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18A108D517DE034100D9CD8C /* Business */,
 				1891D80817DC9A6100281246 /* MindBase */,
 				1891D78017DA26A900281246 /* PhotoAlbum */,
 				1891D72617D643BD00281246 /* UserProfile */,
@@ -537,6 +538,13 @@
 				18A108CB17DDC04C00D9CD8C /* WDActivityIndicator.m */,
 			);
 			path = WDActivityIndicator;
+			sourceTree = "<group>";
+		};
+		18A108D517DE034100D9CD8C /* Business */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Business;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
