@@ -49,7 +49,7 @@
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     
-    [self showFontsList];
+    //[self showFontsList];
     
     return YES;
 }

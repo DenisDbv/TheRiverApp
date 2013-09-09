@@ -7,6 +7,11 @@
 //
 
 #import "TRMindBaseListVC.h"
+#import "TRMindItemCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import <SSToolkit/SSToolkit.h>
+
+#import "TRDescriptionUnitVC.h"
 
 @interface TRMindBaseListVC ()
 
@@ -26,7 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.navigationController.navigationBar.clipsToBounds = YES;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"TRMindItemCell" bundle:nil] forCellReuseIdentifier:@"TRMindCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +42,51 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return (NSInteger)[TRUserManager sharedInstance].mindObjects.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 109;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *itemCellIdentifier = @"TRMindCell";
+    TRMindItemCell *cell = [tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    if (cell == nil) {
+        cell = [[TRMindItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
+    }
+    
+    TRMindModel *mindUnit = [[TRUserManager sharedInstance].mindObjects objectAtIndex:indexPath.row];
+    
+    [cell reloadWithMindModel:mindUnit];
+    
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TRDescriptionUnitVC *descriptionUnit = [[TRDescriptionUnitVC alloc] initByMindModel:[[TRUserManager sharedInstance].mindObjects objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:descriptionUnit animated:YES];
+    
+    /*SSWebViewController *webController = [[SSWebViewController alloc] init];
+    [webController loadURL:[NSURL URLWithString:@"http://zomgg.ru/ios/oksana_kopylova/"]];
+    [AppDelegateInstance() changeCenterViewController:webController];*/
+}
+
 
 @end

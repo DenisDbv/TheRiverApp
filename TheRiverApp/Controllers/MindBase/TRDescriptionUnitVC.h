@@ -1,5 +1,5 @@
 //
-//  TRMindBaseListVC.h
+//  TRDescriptionUnitVC.h
 //  TheRiverApp
 //
 //  Created by DenisDbv on 08.09.13.
@@ -8,8 +8,8 @@
 
 #import "TRCenterRootController.h"
 
-@interface TRMindBaseListVC : TRCenterRootController
+@interface TRDescriptionUnitVC : UIViewController
 
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+-(id) initByMindModel:(TRMindModel*)mindObject;
 
 @end

@@ -27,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.clipsToBounds = YES;
 	
     [self setupMenuBarButtonItems];
 }

@@ -82,6 +82,19 @@
 		1891D80717DBC9DC00281246 /* TRBusinessBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D80617DBC9D400281246 /* TRBusinessBox.m */; };
 		1891D80C17DC9AB000281246 /* TRMindBaseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D80A17DC9AB000281246 /* TRMindBaseListVC.m */; };
 		1891D80D17DC9AB000281246 /* TRMindBaseListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1891D80B17DC9AB000281246 /* TRMindBaseListVC.xib */; };
+		1891D81017DCA9E700281246 /* TRDescriptionUnitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D80F17DCA9E700281246 /* TRDescriptionUnitVC.m */; };
+		1891D81317DCDB7800281246 /* TRMindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D81217DCDB7800281246 /* TRMindModel.m */; };
+		1891D81617DCE70E00281246 /* TRMindItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D81517DCE70D00281246 /* TRMindItemCell.m */; };
+		1891D81817DCEB1300281246 /* TRMindItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1891D81717DCEB1200281246 /* TRMindItemCell.xib */; };
+		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
+		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
+		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
+		18A108C717DDACA900D9CD8C /* TRMindWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C617DDACA900D9CD8C /* TRMindWebViewBox.m */; };
+		18A108CC17DDC04C00D9CD8C /* WDActivityIndicator.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A108C917DDC04C00D9CD8C /* WDActivityIndicator.bundle */; };
+		18A108CD17DDC04C00D9CD8C /* WDActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108CB17DDC04C00D9CD8C /* WDActivityIndicator.m */; };
+		18A108D017DDC94900D9CD8C /* star-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A108CE17DDC94900D9CD8C /* star-icon.png */; };
+		18A108D117DDC94900D9CD8C /* star-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A108CF17DDC94900D9CD8C /* star-icon@2x.png */; };
+		18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108D317DDCC5F00D9CD8C /* TRMindRatingBox.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -205,6 +218,28 @@
 		1891D80917DC9AB000281246 /* TRMindBaseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindBaseListVC.h; path = Controllers/MindBase/TRMindBaseListVC.h; sourceTree = "<group>"; };
 		1891D80A17DC9AB000281246 /* TRMindBaseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindBaseListVC.m; path = Controllers/MindBase/TRMindBaseListVC.m; sourceTree = "<group>"; };
 		1891D80B17DC9AB000281246 /* TRMindBaseListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRMindBaseListVC.xib; path = Controllers/MindBase/TRMindBaseListVC.xib; sourceTree = "<group>"; };
+		1891D80E17DCA9E700281246 /* TRDescriptionUnitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRDescriptionUnitVC.h; path = Controllers/MindBase/TRDescriptionUnitVC.h; sourceTree = "<group>"; };
+		1891D80F17DCA9E700281246 /* TRDescriptionUnitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRDescriptionUnitVC.m; path = Controllers/MindBase/TRDescriptionUnitVC.m; sourceTree = "<group>"; };
+		1891D81117DCDB7800281246 /* TRMindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindModel.h; path = Model/Entity/TRMindModel.h; sourceTree = "<group>"; };
+		1891D81217DCDB7800281246 /* TRMindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindModel.m; path = Model/Entity/TRMindModel.m; sourceTree = "<group>"; };
+		1891D81417DCE70C00281246 /* TRMindItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindItemCell.h; path = TableViewHelpers/TRMindItemCell.h; sourceTree = "<group>"; };
+		1891D81517DCE70D00281246 /* TRMindItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindItemCell.m; path = TableViewHelpers/TRMindItemCell.m; sourceTree = "<group>"; };
+		1891D81717DCEB1200281246 /* TRMindItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRMindItemCell.xib; path = TableViewHelpers/TRMindItemCell.xib; sourceTree = "<group>"; };
+		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
+		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
+		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
+		18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindRootBox.m; path = Controllers/MindBase/Layers/TRMindRootBox.m; sourceTree = "<group>"; };
+		18A108BF17DD976400D9CD8C /* TRMindTitleBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindTitleBox.h; path = Controllers/MindBase/Layers/TRMindTitleBox.h; sourceTree = "<group>"; };
+		18A108C017DD976400D9CD8C /* TRMindTitleBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindTitleBox.m; path = Controllers/MindBase/Layers/TRMindTitleBox.m; sourceTree = "<group>"; };
+		18A108C517DDACA800D9CD8C /* TRMindWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindWebViewBox.h; path = Controllers/MindBase/Layers/TRMindWebViewBox.h; sourceTree = "<group>"; };
+		18A108C617DDACA900D9CD8C /* TRMindWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindWebViewBox.m; path = Controllers/MindBase/Layers/TRMindWebViewBox.m; sourceTree = "<group>"; };
+		18A108C917DDC04C00D9CD8C /* WDActivityIndicator.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WDActivityIndicator.bundle; sourceTree = "<group>"; };
+		18A108CA17DDC04C00D9CD8C /* WDActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDActivityIndicator.h; sourceTree = "<group>"; };
+		18A108CB17DDC04C00D9CD8C /* WDActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDActivityIndicator.m; sourceTree = "<group>"; };
+		18A108CE17DDC94900D9CD8C /* star-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon.png"; sourceTree = "<group>"; };
+		18A108CF17DDC94900D9CD8C /* star-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon@2x.png"; sourceTree = "<group>"; };
+		18A108D217DDCC5E00D9CD8C /* TRMindRatingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRatingBox.h; path = Controllers/MindBase/Layers/TRMindRatingBox.h; sourceTree = "<group>"; };
+		18A108D317DDCC5F00D9CD8C /* TRMindRatingBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindRatingBox.m; path = Controllers/MindBase/Layers/TRMindRatingBox.m; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -360,16 +395,16 @@
 		1891D72D17D6505900281246 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				1891D72E17D6515A00281246 /* TRHeadBox.h */,
-				1891D72F17D6515A00281246 /* TRHeadBox.m */,
-				1891D73917D67FC200281246 /* TRTagsScrollBox.h */,
-				1891D73A17D67FC300281246 /* TRTagsScrollBox.m */,
 				1891D7B517DA2F9700281246 /* TRRootBox.h */,
 				1891D7B617DA2F9900281246 /* TRRootBox.m */,
+				1891D72E17D6515A00281246 /* TRHeadBox.h */,
+				1891D72F17D6515A00281246 /* TRHeadBox.m */,
 				1891D7F917DBC1F400281246 /* TRContactBox.h */,
 				1891D7FA17DBC1F800281246 /* TRContactBox.m */,
 				1891D7FC17DBC3C600281246 /* TRTagsBox.h */,
 				1891D7FD17DBC3C900281246 /* TRTagsBox.m */,
+				1891D73917D67FC200281246 /* TRTagsScrollBox.h */,
+				1891D73A17D67FC300281246 /* TRTagsScrollBox.m */,
 				1891D7FF17DBC51300281246 /* TRExMenuBox.h */,
 				1891D80017DBC51800281246 /* TRExMenuBox.m */,
 				1891D80217DBC94700281246 /* TRBusinessTitleBox.h */,
@@ -449,6 +484,8 @@
 			children = (
 				1891D7F017DB59AC00281246 /* TRUserModel.h */,
 				1891D7F117DB59AC00281246 /* TRUserModel.m */,
+				1891D81117DCDB7800281246 /* TRMindModel.h */,
+				1891D81217DCDB7800281246 /* TRMindModel.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -465,11 +502,41 @@
 		1891D80817DC9A6100281246 /* MindBase */ = {
 			isa = PBXGroup;
 			children = (
+				18A108B817DD199600D9CD8C /* Layers */,
 				1891D80917DC9AB000281246 /* TRMindBaseListVC.h */,
 				1891D80A17DC9AB000281246 /* TRMindBaseListVC.m */,
 				1891D80B17DC9AB000281246 /* TRMindBaseListVC.xib */,
+				1891D80E17DCA9E700281246 /* TRDescriptionUnitVC.h */,
+				1891D80F17DCA9E700281246 /* TRDescriptionUnitVC.m */,
 			);
 			name = MindBase;
+			sourceTree = "<group>";
+		};
+		18A108B817DD199600D9CD8C /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */,
+				18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */,
+				18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */,
+				18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */,
+				18A108BF17DD976400D9CD8C /* TRMindTitleBox.h */,
+				18A108C017DD976400D9CD8C /* TRMindTitleBox.m */,
+				18A108C517DDACA800D9CD8C /* TRMindWebViewBox.h */,
+				18A108C617DDACA900D9CD8C /* TRMindWebViewBox.m */,
+				18A108D217DDCC5E00D9CD8C /* TRMindRatingBox.h */,
+				18A108D317DDCC5F00D9CD8C /* TRMindRatingBox.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		18A108C817DDC04C00D9CD8C /* WDActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				18A108C917DDC04C00D9CD8C /* WDActivityIndicator.bundle */,
+				18A108CA17DDC04C00D9CD8C /* WDActivityIndicator.h */,
+				18A108CB17DDC04C00D9CD8C /* WDActivityIndicator.m */,
+			);
+			path = WDActivityIndicator;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -486,6 +553,8 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A108CE17DDC94900D9CD8C /* star-icon.png */,
+				18A108CF17DDC94900D9CD8C /* star-icon@2x.png */,
 				1891D78417DA298200281246 /* Images */,
 				1891D76617D8F74C00281246 /* tag.png */,
 				1891D76717D8F74C00281246 /* photo.png */,
@@ -528,6 +597,9 @@
 				18DA914317D4757E00138EF2 /* TRSectionHeaderView.m */,
 				1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */,
 				1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */,
+				1891D81417DCE70C00281246 /* TRMindItemCell.h */,
+				1891D81517DCE70D00281246 /* TRMindItemCell.m */,
+				1891D81717DCEB1200281246 /* TRMindItemCell.xib */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -547,6 +619,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				18A108C817DDC04C00D9CD8C /* WDActivityIndicator */,
 				18E65E2317D5009700D1B778 /* MFSideMenu */,
 			);
 			path = ExternalLibs;
@@ -671,6 +744,10 @@
 				1891D7B317DA298200281246 /* AQtiamat.png in Resources */,
 				1891D7B417DA298200281246 /* AQWTF.png in Resources */,
 				1891D80D17DC9AB000281246 /* TRMindBaseListVC.xib in Resources */,
+				1891D81817DCEB1300281246 /* TRMindItemCell.xib in Resources */,
+				18A108CC17DDC04C00D9CD8C /* WDActivityIndicator.bundle in Resources */,
+				18A108D017DDC94900D9CD8C /* star-icon.png in Resources */,
+				18A108D117DDC94900D9CD8C /* star-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +824,15 @@
 				1891D80417DBC95000281246 /* TRBusinessTitleBox.m in Sources */,
 				1891D80717DBC9DC00281246 /* TRBusinessBox.m in Sources */,
 				1891D80C17DC9AB000281246 /* TRMindBaseListVC.m in Sources */,
+				1891D81017DCA9E700281246 /* TRDescriptionUnitVC.m in Sources */,
+				1891D81317DCDB7800281246 /* TRMindModel.m in Sources */,
+				1891D81617DCE70E00281246 /* TRMindItemCell.m in Sources */,
+				18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */,
+				18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */,
+				18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */,
+				18A108C717DDACA900D9CD8C /* TRMindWebViewBox.m in Sources */,
+				18A108CD17DDC04C00D9CD8C /* WDActivityIndicator.m in Sources */,
+				18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,5 +13,6 @@
 @interface TRUserManager : NSObject <ABMultitonProtocol>
 
 @property (nonatomic, retain) NSArray *usersObject;
+@property (nonatomic, retain) NSArray *mindObjects;
 
 @end

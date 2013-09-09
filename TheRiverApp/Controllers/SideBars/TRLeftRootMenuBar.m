@@ -11,7 +11,10 @@
 #import "TRSectionHeaderView.h"
 #import "MFSideMenu.h"
 
+#import <SSToolkit/SSToolkit.h>
+
 #import "TRUserProfileController.h"
+#import "TRMindBaseListVC.h"
 
 @interface TRLeftRootMenuBar ()
 @property (nonatomic, retain) UITableView *rootMenuTableView;
@@ -201,6 +204,13 @@
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
             [AppDelegateInstance() changeCenterViewController:userProfileVC];
+        }];
+    } else if(indexPath.section == TRRootMenuSectionKnowledge && indexPath.row == 2) {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:mindBaseList];
+            
         }];
     }
 }
