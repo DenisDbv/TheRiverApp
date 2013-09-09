@@ -14,5 +14,6 @@
 
 @property (nonatomic, retain) NSArray *usersObject;
 @property (nonatomic, retain) NSArray *mindObjects;
+@property (nonatomic, retain) NSArray *businessObjects;
 
 @end

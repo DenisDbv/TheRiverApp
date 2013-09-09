@@ -17,6 +17,7 @@
 
 @synthesize usersObject;
 @synthesize mindObjects;
+@synthesize businessObjects;
 
 + (instancetype)sharedInstance
 {
@@ -28,6 +29,8 @@
     [self createsUserObjects];
     
     [self createMindObjects];
+    
+    [self createBusinessObjects];
     
     return [super init];
 }
@@ -140,6 +143,136 @@
                    mindModel7,
                    mindModel8,
                    mindModel9, nil];
+}
+
+-(void) createBusinessObjects
+{
+    TRBusinessModel *businessModel1 = [[TRBusinessModel alloc] init];
+    businessModel1.firstName = @"Вадим";
+    businessModel1.lastName = @"Бойчук";
+    businessModel1.age = @"43";
+    businessModel1.city = @"Москва";
+    businessModel1.businessLogo = @"background.jpg";
+    businessModel1.businessTitle = @"Прошел школу бизнеса 90-х и решил зарабатывать миллионы на женских удовольствиях";
+    businessModel1.shortBusinessTitle = @"«Волшебные» бигуди";
+    businessModel1.businessBeforeTitle = @"0 рублей";
+    businessModel1.businessAfterTitle = @"500000 рублей";
+    businessModel1.businessDate = @"01-01-2013";
+    businessModel1.businessURL = @"http://zomgg.ru/reki/cases/01/body.html";
+    
+    TRBusinessModel *businessModel2 = [[TRBusinessModel alloc] init];
+    businessModel2.firstName = @"Марина";
+    businessModel2.lastName = @"Уколова";
+    businessModel2.age = @"24";
+    businessModel2.city = @"Москва";
+    businessModel2.businessLogo = @"background.jpg";
+    businessModel2.businessTitle = @"250 000 чистой прибыли в месяц на своей Мечте";
+    businessModel2.shortBusinessTitle = @"Школа причесок ArtSchool";
+    businessModel2.businessBeforeTitle = @"0 рублей";
+    businessModel2.businessAfterTitle = @"250000 рублей";
+    businessModel2.businessDate = @"02-01-2013";
+    businessModel2.businessURL = @"http://zomgg.ru/reki/cases/02/body.html";
+    
+    TRBusinessModel *businessModel3 = [[TRBusinessModel alloc] init];
+    businessModel3.firstName = @"Оксана";
+    businessModel3.lastName = @"Копылова";
+    businessModel3.age = @"36";
+    businessModel3.city = @"Москва";
+    businessModel3.businessLogo = @"background.jpg";
+    businessModel3.businessTitle = @"Пришла создать идеальное «спальное место», но решила сначала изменить мир";
+    businessModel3.shortBusinessTitle = @"Оптово-розничная продажа мягкой мебели";
+    businessModel3.businessBeforeTitle = @"0 рублей";
+    businessModel3.businessAfterTitle = @"400000 рублей";
+    businessModel3.businessDate = @"03-01-2013";
+    businessModel3.businessURL = @"http://zomgg.ru/reki/cases/03/body.html";
+    
+    TRBusinessModel *businessModel4 = [[TRBusinessModel alloc] init];
+    businessModel4.firstName = @"Анастасия";
+    businessModel4.lastName = @"Затевахина";
+    businessModel4.age = @"25";
+    businessModel4.city = @"Москва";
+    businessModel4.businessLogo = @"background.jpg";
+    businessModel4.businessTitle = @"За время Коучинга увеличила прибыль в шесть раз, потом начала с нуля строить второй бизнес и теперь зарабатывает 600 000 чистыми в месяц";
+    businessModel4.shortBusinessTitle = @"Продакшен студия";
+    businessModel4.businessBeforeTitle = @"0 рублей";
+    businessModel4.businessAfterTitle = @"500000 рублей";
+    businessModel4.businessDate = @"04-01-2013";
+    businessModel4.businessURL = @"http://zomgg.ru/reki/cases/04/body.html";
+    
+    TRBusinessModel *businessModel5 = [[TRBusinessModel alloc] init];
+    businessModel5.firstName = @"Олег";
+    businessModel5.lastName = @"Шарпатый";
+    businessModel5.age = @"23";
+    businessModel5.city = @"Москва";
+    businessModel5.businessLogo = @"background.jpg";
+    businessModel5.businessTitle = @"За время Коучинга и «Миллиона за сто» увеличил прибыль в шесть раз, купил Maserati кабриолет и GT-R, организовал путешествие Мастер Группы БМ по Америке";
+    businessModel5.shortBusinessTitle = @"Туроператор Shine! Adventures";
+    businessModel5.businessBeforeTitle = @"200 000 рублей";
+    businessModel5.businessAfterTitle = @"1 300 000 рублей";
+    businessModel5.businessDate = @"05-01-2013";
+    businessModel5.businessURL = @"http://zomgg.ru/reki/cases/05/body.html";
+    
+    TRBusinessModel *businessModel6 = [[TRBusinessModel alloc] init];
+    businessModel6.firstName = @"Михаил";
+    businessModel6.lastName = @"Якимов";
+    businessModel6.age = @"30";
+    businessModel6.city = @"Москва";
+    businessModel6.businessLogo = @"background.jpg";
+    businessModel6.businessTitle = @"Бизнес-планы на заказ, консалтинг и сопровождение по всей России: если ты согласен на меньшее, значит, для бизнеса ты не рожден";
+    businessModel6.shortBusinessTitle = @"Первая консалтинговая компания";
+    businessModel6.businessBeforeTitle = @"250 000 рублей";
+    businessModel6.businessAfterTitle = @"1 000 000 рублей";
+    businessModel6.businessDate = @"06-01-2013";
+    businessModel6.businessURL = @"http://zomgg.ru/reki/cases/06/body.html";
+    
+    TRBusinessModel *businessModel7 = [[TRBusinessModel alloc] init];
+    businessModel7.firstName = @"Антон";
+    businessModel7.lastName = @"Агапов";
+    businessModel7.age = @"43";
+    businessModel7.city = @"Москва";
+    businessModel7.businessLogo = @"background.jpg";
+    businessModel7.businessTitle = @"Много лет занимался промышленным альпинизмом, но потом решил, что хочет украшать города и монетизировать навыки теперь зарабатывает 700 000 рублей в месяц чистыми";
+    businessModel7.shortBusinessTitle = @"Наружная реклама";
+    businessModel7.businessBeforeTitle = @"150 000 рублей";
+    businessModel7.businessAfterTitle = @"700 000 рублей";
+    businessModel7.businessDate = @"07-01-2013";
+    businessModel7.businessURL = @"http://zomgg.ru/reki/cases/07/body.html";
+    
+    TRBusinessModel *businessModel8 = [[TRBusinessModel alloc] init];
+    businessModel8.firstName = @"Александр";
+    businessModel8.lastName = @"Лебедев";
+    businessModel8.age = @"26";
+    businessModel8.city = @"Москва";
+    businessModel8.businessLogo = @"background.jpg";
+    businessModel8.businessTitle = @"Он начинал с купонаторов, а сейчас зарабатывает полмиллиона в месяц, создавая бизнес под ключ";
+    businessModel8.shortBusinessTitle = @"Открытие языковых школ под ключ";
+    businessModel8.businessBeforeTitle = @"175 000 рублей";
+    businessModel8.businessAfterTitle = @"500 000 рублей";
+    businessModel8.businessDate = @"08-01-2013";
+    businessModel8.businessURL = @"http://zomgg.ru/reki/cases/08/body.html";
+    
+    TRBusinessModel *businessModel9 = [[TRBusinessModel alloc] init];
+    businessModel9.firstName = @"Екатерина";
+    businessModel9.lastName = @"Калашникова";
+    businessModel9.age = @"20";
+    businessModel9.city = @"Москва";
+    businessModel9.businessLogo = @"background.jpg";
+    businessModel9.businessTitle = @"Освоила сразу несколько профессий, перевернула свое сознание и к 20 годам стала миллионером";
+    businessModel9.shortBusinessTitle = @"Агентство перфоманс-маркетинга UpSell";
+    businessModel9.businessBeforeTitle = @"500 000 рублей";
+    businessModel9.businessAfterTitle = @"100 000 000 рублей";
+    businessModel9.businessDate = @"09-01-2013";
+    businessModel9.businessURL = @"http://zomgg.ru/reki/cases/09/body.html";
+    
+    businessObjects = [[NSArray alloc] initWithObjects:businessModel1,
+                       businessModel2,
+                       businessModel3,
+                       businessModel4,
+                       businessModel5,
+                       businessModel6,
+                       businessModel7,
+                       businessModel8,
+                       businessModel9, nil];
 }
 
 @end

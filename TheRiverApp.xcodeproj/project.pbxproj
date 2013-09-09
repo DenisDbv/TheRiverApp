@@ -95,6 +95,16 @@
 		18A108D017DDC94900D9CD8C /* star-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A108CE17DDC94900D9CD8C /* star-icon.png */; };
 		18A108D117DDC94900D9CD8C /* star-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A108CF17DDC94900D9CD8C /* star-icon@2x.png */; };
 		18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108D317DDCC5F00D9CD8C /* TRMindRatingBox.m */; };
+		18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108D717DE100200D9CD8C /* TRBusinessBaseListVC.m */; };
+		18A108DA17DE100200D9CD8C /* TRBusinessBaseListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A108D817DE100200D9CD8C /* TRBusinessBaseListVC.xib */; };
+		18A108DD17DE108A00D9CD8C /* TRBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108DC17DE108900D9CD8C /* TRBusinessModel.m */; };
+		18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108DF17DE191F00D9CD8C /* TRBusinessItemCell.m */; };
+		18A108E217DE19A100D9CD8C /* TRBusinessItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A108E117DE19A100D9CD8C /* TRBusinessItemCell.xib */; };
+		18A108E517DE5D2800D9CD8C /* TRBusinessDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108E417DE5D2700D9CD8C /* TRBusinessDescriptionVC.m */; };
+		18A108E917DE604800D9CD8C /* TRBusinessRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108E817DE604800D9CD8C /* TRBusinessRootBox.m */; };
+		18A108EC17DE609600D9CD8C /* TRBusinessLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108EB17DE609600D9CD8C /* TRBusinessLogoBox.m */; };
+		18A108EF17DE618700D9CD8C /* TRBusinessUnitTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108EE17DE618700D9CD8C /* TRBusinessUnitTitleBox.m */; };
+		18A108F217DE65EE00D9CD8C /* TRBusinessWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108F117DE65ED00D9CD8C /* TRBusinessWebViewBox.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -203,7 +213,7 @@
 		1891D7F017DB59AC00281246 /* TRUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserModel.h; path = Model/Entity/TRUserModel.h; sourceTree = "<group>"; };
 		1891D7F117DB59AC00281246 /* TRUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserModel.m; path = Model/Entity/TRUserModel.m; sourceTree = "<group>"; };
 		1891D7F417DB5B3300281246 /* TRUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserManager.h; path = Model/DataManagers/TRUserManager.h; sourceTree = "<group>"; };
-		1891D7F517DB5B3300281246 /* TRUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserManager.m; path = Model/DataManagers/TRUserManager.m; sourceTree = "<group>"; };
+		1891D7F517DB5B3300281246 /* TRUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = TRUserManager.m; path = Model/DataManagers/TRUserManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1891D7F717DBA52E00281246 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1891D7F917DBC1F400281246 /* TRContactBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactBox.h; path = Controllers/UserProfile/Layers/TRContactBox.h; sourceTree = "<group>"; };
 		1891D7FA17DBC1F800281246 /* TRContactBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactBox.m; path = Controllers/UserProfile/Layers/TRContactBox.m; sourceTree = "<group>"; };
@@ -240,6 +250,24 @@
 		18A108CF17DDC94900D9CD8C /* star-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon@2x.png"; sourceTree = "<group>"; };
 		18A108D217DDCC5E00D9CD8C /* TRMindRatingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRatingBox.h; path = Controllers/MindBase/Layers/TRMindRatingBox.h; sourceTree = "<group>"; };
 		18A108D317DDCC5F00D9CD8C /* TRMindRatingBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindRatingBox.m; path = Controllers/MindBase/Layers/TRMindRatingBox.m; sourceTree = "<group>"; };
+		18A108D617DE100200D9CD8C /* TRBusinessBaseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessBaseListVC.h; path = Controllers/Business/TRBusinessBaseListVC.h; sourceTree = "<group>"; };
+		18A108D717DE100200D9CD8C /* TRBusinessBaseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessBaseListVC.m; path = Controllers/Business/TRBusinessBaseListVC.m; sourceTree = "<group>"; };
+		18A108D817DE100200D9CD8C /* TRBusinessBaseListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRBusinessBaseListVC.xib; path = Controllers/Business/TRBusinessBaseListVC.xib; sourceTree = "<group>"; };
+		18A108DB17DE108900D9CD8C /* TRBusinessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessModel.h; path = Model/Entity/TRBusinessModel.h; sourceTree = "<group>"; };
+		18A108DC17DE108900D9CD8C /* TRBusinessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessModel.m; path = Model/Entity/TRBusinessModel.m; sourceTree = "<group>"; };
+		18A108DE17DE191F00D9CD8C /* TRBusinessItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessItemCell.h; path = TableViewHelpers/TRBusinessItemCell.h; sourceTree = "<group>"; };
+		18A108DF17DE191F00D9CD8C /* TRBusinessItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessItemCell.m; path = TableViewHelpers/TRBusinessItemCell.m; sourceTree = "<group>"; };
+		18A108E117DE19A100D9CD8C /* TRBusinessItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRBusinessItemCell.xib; path = TableViewHelpers/TRBusinessItemCell.xib; sourceTree = "<group>"; };
+		18A108E317DE5D2700D9CD8C /* TRBusinessDescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessDescriptionVC.h; path = Controllers/Business/TRBusinessDescriptionVC.h; sourceTree = "<group>"; };
+		18A108E417DE5D2700D9CD8C /* TRBusinessDescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessDescriptionVC.m; path = Controllers/Business/TRBusinessDescriptionVC.m; sourceTree = "<group>"; };
+		18A108E717DE604800D9CD8C /* TRBusinessRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessRootBox.h; path = Controllers/Business/Layers/TRBusinessRootBox.h; sourceTree = "<group>"; };
+		18A108E817DE604800D9CD8C /* TRBusinessRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessRootBox.m; path = Controllers/Business/Layers/TRBusinessRootBox.m; sourceTree = "<group>"; };
+		18A108EA17DE609600D9CD8C /* TRBusinessLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessLogoBox.h; path = Controllers/Business/Layers/TRBusinessLogoBox.h; sourceTree = "<group>"; };
+		18A108EB17DE609600D9CD8C /* TRBusinessLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessLogoBox.m; path = Controllers/Business/Layers/TRBusinessLogoBox.m; sourceTree = "<group>"; };
+		18A108ED17DE618700D9CD8C /* TRBusinessUnitTitleBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessUnitTitleBox.h; path = Controllers/Business/Layers/TRBusinessUnitTitleBox.h; sourceTree = "<group>"; };
+		18A108EE17DE618700D9CD8C /* TRBusinessUnitTitleBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessUnitTitleBox.m; path = Controllers/Business/Layers/TRBusinessUnitTitleBox.m; sourceTree = "<group>"; };
+		18A108F017DE65ED00D9CD8C /* TRBusinessWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessWebViewBox.h; path = Controllers/Business/Layers/TRBusinessWebViewBox.h; sourceTree = "<group>"; };
+		18A108F117DE65ED00D9CD8C /* TRBusinessWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessWebViewBox.m; path = Controllers/Business/Layers/TRBusinessWebViewBox.m; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -487,6 +515,8 @@
 				1891D7F117DB59AC00281246 /* TRUserModel.m */,
 				1891D81117DCDB7800281246 /* TRMindModel.h */,
 				1891D81217DCDB7800281246 /* TRMindModel.m */,
+				18A108DB17DE108900D9CD8C /* TRBusinessModel.h */,
+				18A108DC17DE108900D9CD8C /* TRBusinessModel.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -543,8 +573,29 @@
 		18A108D517DE034100D9CD8C /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				18A108E617DE602100D9CD8C /* Layers */,
+				18A108D617DE100200D9CD8C /* TRBusinessBaseListVC.h */,
+				18A108D717DE100200D9CD8C /* TRBusinessBaseListVC.m */,
+				18A108D817DE100200D9CD8C /* TRBusinessBaseListVC.xib */,
+				18A108E317DE5D2700D9CD8C /* TRBusinessDescriptionVC.h */,
+				18A108E417DE5D2700D9CD8C /* TRBusinessDescriptionVC.m */,
 			);
 			name = Business;
+			sourceTree = "<group>";
+		};
+		18A108E617DE602100D9CD8C /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				18A108E717DE604800D9CD8C /* TRBusinessRootBox.h */,
+				18A108E817DE604800D9CD8C /* TRBusinessRootBox.m */,
+				18A108EA17DE609600D9CD8C /* TRBusinessLogoBox.h */,
+				18A108EB17DE609600D9CD8C /* TRBusinessLogoBox.m */,
+				18A108ED17DE618700D9CD8C /* TRBusinessUnitTitleBox.h */,
+				18A108EE17DE618700D9CD8C /* TRBusinessUnitTitleBox.m */,
+				18A108F017DE65ED00D9CD8C /* TRBusinessWebViewBox.h */,
+				18A108F117DE65ED00D9CD8C /* TRBusinessWebViewBox.m */,
+			);
+			name = Layers;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -608,6 +659,9 @@
 				1891D81417DCE70C00281246 /* TRMindItemCell.h */,
 				1891D81517DCE70D00281246 /* TRMindItemCell.m */,
 				1891D81717DCEB1200281246 /* TRMindItemCell.xib */,
+				18A108DE17DE191F00D9CD8C /* TRBusinessItemCell.h */,
+				18A108DF17DE191F00D9CD8C /* TRBusinessItemCell.m */,
+				18A108E117DE19A100D9CD8C /* TRBusinessItemCell.xib */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -756,6 +810,8 @@
 				18A108CC17DDC04C00D9CD8C /* WDActivityIndicator.bundle in Resources */,
 				18A108D017DDC94900D9CD8C /* star-icon.png in Resources */,
 				18A108D117DDC94900D9CD8C /* star-icon@2x.png in Resources */,
+				18A108DA17DE100200D9CD8C /* TRBusinessBaseListVC.xib in Resources */,
+				18A108E217DE19A100D9CD8C /* TRBusinessItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,6 +897,14 @@
 				18A108C717DDACA900D9CD8C /* TRMindWebViewBox.m in Sources */,
 				18A108CD17DDC04C00D9CD8C /* WDActivityIndicator.m in Sources */,
 				18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */,
+				18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */,
+				18A108DD17DE108A00D9CD8C /* TRBusinessModel.m in Sources */,
+				18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */,
+				18A108E517DE5D2800D9CD8C /* TRBusinessDescriptionVC.m in Sources */,
+				18A108E917DE604800D9CD8C /* TRBusinessRootBox.m in Sources */,
+				18A108EC17DE609600D9CD8C /* TRBusinessLogoBox.m in Sources */,
+				18A108EF17DE618700D9CD8C /* TRBusinessUnitTitleBox.m in Sources */,
+				18A108F217DE65EE00D9CD8C /* TRBusinessWebViewBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
