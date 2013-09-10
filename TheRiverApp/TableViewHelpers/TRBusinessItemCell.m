@@ -8,6 +8,7 @@
 
 #import "TRBusinessItemCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage+Resize.h"
 
 @implementation TRBusinessItemCell
 

@@ -9,6 +9,7 @@
 #import "TRExMenuBox.h"
 #import "UIView+GestureBlocks.h"
 #import "TRAlbumViewController.h"
+#import "TRFriendsListVC.h"
 
 @implementation TRExMenuBox
 {
@@ -36,8 +37,14 @@
         [((UIViewController*)target).navigationController pushViewController:albumVC animated:YES];
     } forTaps:1];
     
+    UIView *contactsBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-contacts@2x.png"] withTitle:@"Контакты"];
+    [contactsBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        TRFriendsListVC *friendsList = [[TRFriendsListVC alloc] init];
+        [((UIViewController*)target).navigationController pushViewController:friendsList animated:YES];
+    } forTaps:1];
+    
     NSArray *buttonsArray = [NSArray arrayWithObjects:
-                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-contacts@2x.png"] withTitle:@"Контакты"],
+                             contactsBox,
                              [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Посты"],
                              photoBox,
                              [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-subscribed@2x.png"] withTitle:@"Подписчики"], nil];
