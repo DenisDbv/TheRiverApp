@@ -26,5 +26,11 @@
 @property (nonatomic, retain) NSString *businessBeforeTitle;
 @property (nonatomic, retain) NSString *businessAfterTitle;
 
+@property (nonatomic, retain) NSString *contactPhone;
+@property (nonatomic, retain) NSString *contactEmail;
+@property (nonatomic, retain) NSString *contactVK;
+@property (nonatomic, retain) NSString *contactFB;
+@property (nonatomic, retain) NSString *contactTwitter;
+
 
 @end

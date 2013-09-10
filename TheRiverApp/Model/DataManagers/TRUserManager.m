@@ -39,14 +39,19 @@
 {
     TRUserModel *userModel1 = [[TRUserModel alloc] init];
     userModel1.logo = @"IamChinaMan.JPG";
-    userModel1.firstName = @"Денис";
-    userModel1.lastName = @"Дубов";
+    userModel1.firstName = @"Анастасия";
+    userModel1.lastName = @"Затевахина";
     userModel1.yearsOld = @"28 лет";
     userModel1.city = @"Гонконг";
     userModel1.businessLogo = @"background.jpg";
     userModel1.businessTitle = @"Бассейны в кредит";
     userModel1.businessBeforeTitle = @"Было: 100000 рублей";
     userModel1.businessAfterTitle = @"Стало: 5 000 000 рублей";
+    userModel1.contactPhone = @"+79275551234";
+    userModel1.contactEmail = @"mail@mail.ru";
+    userModel1.contactFB = @"vk.com/profile";
+    userModel1.contactVK = @"facebook.ru/profile";
+    userModel1.contactTwitter = @"twitter.com/profile";
     
     usersObject = [[NSArray alloc] initWithObjects:userModel1, nil];
 }

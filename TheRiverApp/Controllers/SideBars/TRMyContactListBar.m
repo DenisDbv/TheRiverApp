@@ -14,6 +14,7 @@
 #import "MFSideMenu.h"
 //#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 #import <REActivityViewController/REActivityViewController.h>
+#import <SSToolkit/SSToolkit.h>
 
 @interface TRMyContactListBar ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
@@ -125,14 +126,46 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] init];
-    RETwitterActivity *twitterActivity = [[RETwitterActivity alloc] init];
-    REVKActivity *vkActivity = [[REVKActivity alloc] initWithClientId:@"3396235"];
-    REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
-    REMailActivity *mailActivity = [[REMailActivity alloc] init];
-    RESafariActivity *safariActivity = [[RESafariActivity alloc] init];
+    REActivity *customActivity = [[REActivity alloc] initWithTitle:@"Телефон"
+                                                             image:[UIImage imageNamed:@"Phone.png"]
+                                                       actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+                                                           
+                                                           NSString *phoneNumber = [@"tel://" stringByAppendingString:@"+79063836363"];
+                                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+                                                           
+                                                           [activityViewController dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
     
-    NSArray *activities = @[messageActivity, mailActivity, safariActivity,
+    REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
+    messageActivity.userInfo = @{
+                                  @"text": @"Привет! :)",
+                                  @"recipient":@"+79063816363",
+                                };
+    
+    REMailActivity *mailActivity = [[REMailActivity alloc] init];
+    mailActivity.userInfo = @{
+                              @"text": @"Привет! :)",
+                              @"recipient":@"denisdbv@gmail.com",
+                            };
+    
+    REVKActivity *vkActivity = [[REVKActivity alloc] initWithTitle:@"ВКонтакте" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+        [activityViewController dismissViewControllerAnimated:YES completion:^{
+            NSURL *url = [NSURL URLWithString:@"http://vk.com/profile"];
+            [[UIApplication sharedApplication] openURL:url];
+        }];
+    }];
+    
+    REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] initWithTitle:@"Facebook" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+        NSURL *url = [NSURL URLWithString:@"http://vk.com/profile"];
+        [[UIApplication sharedApplication] openURL:url];
+    }];
+    
+    RETwitterActivity *twitterActivity = [[RETwitterActivity alloc] initWithTitle:@"Twitter" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Twitter"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+        NSURL *url = [NSURL URLWithString:@"http://vk.com/profile"];
+        [[UIApplication sharedApplication] openURL:url];
+    }];
+    
+    NSArray *activities = @[customActivity, messageActivity, mailActivity,
                             vkActivity, facebookActivity, twitterActivity ];
     REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
     [activityViewController presentFromRootViewController];

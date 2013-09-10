@@ -15,5 +15,6 @@
 @synthesize city;
 @synthesize hightResolutions, currentBusiness;
 @synthesize businessAfterTitle, businessBeforeTitle, businessLogo, businessTitle;
+@synthesize contactEmail, contactFB, contactPhone, contactTwitter, contactVK;
 
 @end
