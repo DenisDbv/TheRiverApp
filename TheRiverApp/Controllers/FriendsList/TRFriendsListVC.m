@@ -57,6 +57,7 @@
 
 -(void) viewWillDisappear:(BOOL)animated
 {
+    NSLog(@"111");
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
 }
 
@@ -132,6 +133,7 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
     [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
         TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row]];
         [AppDelegateInstance() changeCenterViewController:userProfileVC];

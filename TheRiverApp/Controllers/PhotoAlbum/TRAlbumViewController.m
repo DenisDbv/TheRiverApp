@@ -11,6 +11,7 @@
 #import "TRAlbumGridViewCell.h"
 #import "MFSideMenu.h"
 #import "TRImageViewController.h"
+#import "UIBarButtonItem+BarButtonItemExtended.h"
 
 @interface TRAlbumViewController ()
 @property (nonatomic, retain) AQGridView * gridView;
@@ -33,6 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
+    [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
 	
     [self initialized];
     
@@ -53,6 +58,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) initialized

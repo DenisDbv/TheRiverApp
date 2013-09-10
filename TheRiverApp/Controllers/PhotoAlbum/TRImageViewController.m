@@ -9,6 +9,7 @@
 #import "TRImageViewController.h"
 #import "MFSideMenu.h"
 #import "ZoomView.h"
+#import "UIBarButtonItem+BarButtonItemExtended.h"
 
 @interface TRImageViewController ()
 @property (nonatomic, retain) ZoomView *zoomView;
@@ -31,6 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
+    [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
 	
     [self initialized];
     
@@ -45,6 +50,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void) onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) initialized
