@@ -10,8 +10,10 @@
 #import "TRSearchBarVC.h"
 #import "TRSectionHeaderView.h"
 #import "TRFavoritesEditList.h"
+#import "TRUserProfileController.h"
 
 #import "MFSideMenu.h"
+#import "UIView+GestureBlocks.h"
 //#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 #import <REActivityViewController/REActivityViewController.h>
 #import <SSToolkit/SSToolkit.h>
@@ -116,7 +118,19 @@
         [cell setBackgroundColor:[UIColor clearColor]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
         [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
+        
+        [cell.imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            UIImageView *touchView = (UIImageView*)sender.view;
+            
+            [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:touchView.tag]];
+                [AppDelegateInstance() changeCenterViewController:userProfileVC];
+            }];
+            
+        } forTaps:1];
     }
+    
+    cell.imageView.tag = indexPath.row;
     
     TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
     
