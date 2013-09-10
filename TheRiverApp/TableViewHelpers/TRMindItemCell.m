@@ -48,7 +48,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        titleLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:16];
     }
     return self;
 }

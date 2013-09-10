@@ -40,7 +40,7 @@
                              [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-contacts@2x.png"] withTitle:@"Контакты"],
                              [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Посты"],
                              photoBox,
-                             [box createViewWithImage:nil withTitle:@"Подписчики"], nil];
+                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-subscribed@2x.png"] withTitle:@"Подписчики"], nil];
     [box addViewsToScroll:buttonsArray];
     
     return box;
