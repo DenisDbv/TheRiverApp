@@ -16,9 +16,14 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        [self initialized];
     }
     return self;
+}
+
+-(void)awakeFromNib
+{
+    [self initialized];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -31,7 +36,7 @@
 -(void) initialized
 {
     friendName.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:19];
-    friendCurrentBusiness.font = [UIFont fontWithName:@"" size:15];
+    friendCurrentBusiness.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
 }
 
 

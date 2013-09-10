@@ -10,6 +10,7 @@
 #import "UIBarButtonItem+BarButtonItemExtended.h"
 #import "TRFriendCell.h"
 #import "MFSideMenu.h"
+#import "TRUserProfileController.h"
 
 @interface TRFriendsListVC ()
 
@@ -30,6 +31,8 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"TRFriendCell" bundle:nil] forCellReuseIdentifier:@"FriendCell"];
+    
     [self addSwipeGestureRecognizer];
     
     UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
@@ -44,6 +47,7 @@
                                                            green:51.0/255.0
                                                             blue:51.0/255.0
                                                            alpha:1.0]];*/
+    [_tableView reloadData];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -90,33 +94,36 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
-}
-
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    return nil;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.0;
+    return [TRUserManager sharedInstance].usersObject.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 59.0;
+    return 69.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    TRFriendCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[TRFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FriendCell"];
         [cell setBackgroundColor:[UIColor clearColor]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
         [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
     }
+    
+    TRUserModel *model = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    
+    cell.friendLogo.image = [UIImage imageNamed:model.logo];
+    cell.friendName.text = [NSString stringWithFormat:@"%@ %@", model.firstName, model.lastName];
+    
+    NSString *currentsBusiness;
+    for(NSString *str in model.currentBusiness)
+    {
+        currentsBusiness = [currentsBusiness stringByAppendingFormat:@"%@, ", str];
+    }
+    cell.friendCurrentBusiness.text = currentsBusiness;
     
     return cell;
 }
@@ -124,6 +131,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+        TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row]];
+        [AppDelegateInstance() changeCenterViewController:userProfileVC];
+    }];
 }
 
 @end
