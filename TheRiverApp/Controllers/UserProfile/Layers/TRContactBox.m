@@ -86,7 +86,8 @@
     NVUIGradientButton *addButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(9, 0, 302, 48) style:NVUIGradientButtonStyleDefault];
     addButton.leftAccessoryImage = [UIImage imageNamed:@"add-contact-white-icon.png"];
     addButton.tintColor = addButton.highlightedTintColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]; //[UIColor colorWithRed:252.0/255.0 green:189.0/255.0 blue:0.0 alpha:1.0];
-    addButton.borderColor = addButton.highlightedBorderColor = [UIColor clearColor];
+    addButton.borderColor = [UIColor clearColor];
+    addButton.highlightedBorderColor = [UIColor blueColor];
     [addButton setCornerRadius:6.0f];
     [addButton setGradientEnabled:NO];
     addButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:19];
