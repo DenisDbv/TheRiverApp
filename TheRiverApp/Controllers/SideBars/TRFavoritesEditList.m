@@ -61,13 +61,13 @@
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0
-                                                          green:54.0/255.0
-                                                           blue:57.0/255.0
+    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:41.0/255.0
+                                                          green:41.0/255.0
+                                                           blue:41.0/255.0
                                                           alpha:1.0]];
-    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:77.0/255.0
-                                                           green:79.0/255.0
-                                                            blue:80.0/255.0
+    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
+                                                           green:51.0/255.0
+                                                            blue:51.0/255.0
                                                            alpha:1.0]];
     //_contactsTableView.nxEV_emptyView = all;
 	[self.view addSubview: _contactsTableView];
@@ -160,14 +160,14 @@
 - (void)tableView: (UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    [tableView beginUpdates]; 
+    /*[tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         if(inFavotite > 1)  {
-            /*inFavotite--;
+            inFavotite--;
             outFavorite++;
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView reloadData];*/
+            [tableView reloadData];
         }
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert)
@@ -180,7 +180,7 @@ forRowAtIndexPath: (NSIndexPath *)indexPath
             [tableView reloadData];
         }
     }
-    [tableView endUpdates];
+    [tableView endUpdates];*/
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

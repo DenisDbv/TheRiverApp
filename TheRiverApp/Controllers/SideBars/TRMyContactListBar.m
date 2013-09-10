@@ -15,6 +15,7 @@
 //#import <UITableView-NXEmptyView/UITableView+NXEmptyView.h>
 #import <REActivityViewController/REActivityViewController.h>
 #import <SSToolkit/SSToolkit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface TRMyContactListBar ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
@@ -48,13 +49,13 @@
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	_contactsTableView.backgroundColor = [UIColor whiteColor];
-    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0
-                                                          green:54.0/255.0
-                                                           blue:57.0/255.0
+    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:41.0/255.0
+                                                          green:41.0/255.0
+                                                           blue:41.0/255.0
                                                           alpha:1.0]];
-    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:77.0/255.0
-                                                           green:79.0/255.0
-                                                            blue:80.0/255.0
+    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
+                                                           green:51.0/255.0
+                                                            blue:51.0/255.0
                                                            alpha:1.0]];
     //_contactsTableView.nxEV_emptyView = all;
 	[self.view addSubview: _contactsTableView];
@@ -85,7 +86,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return (NSInteger)[TRUserManager sharedInstance].usersObject.count;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -104,7 +105,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44.0;
+    return 59.0f; //44.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,11 +115,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         [cell setBackgroundColor:[UIColor clearColor]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
-        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:16]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
     }
     
-    cell.imageView.image = [UIImage imageNamed:@"IamAppleDev2.jpg"];
-    cell.textLabel.text = @"Дубов Денис";
+    TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    
+    cell.imageView.image = [UIImage imageNamed:userUnit.logo];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userUnit.firstName, userUnit.lastName];
     return cell;
 }
 
@@ -126,43 +129,49 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    
     REActivity *customActivity = [[REActivity alloc] initWithTitle:@"Телефон"
                                                              image:[UIImage imageNamed:@"Phone.png"]
                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
-                                                           
-                                                           NSString *phoneNumber = [@"tel://" stringByAppendingString:@"+79063836363"];
-                                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
-                                                           
-                                                           [activityViewController dismissViewControllerAnimated:YES completion:nil];
+                                                                                                                      
+                                                           [activityViewController dismissViewControllerAnimated:YES completion:^{
+                                                               NSString *phoneNumber = [@"tel://" stringByAppendingString:userUnit.contactPhone];
+                                                               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+                                                           }];
                                                        }];
     
     REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
     messageActivity.userInfo = @{
                                   @"text": @"Привет! :)",
-                                  @"recipient":@"+79063816363",
+                                  @"recipient":userUnit.contactPhone,
                                 };
     
     REMailActivity *mailActivity = [[REMailActivity alloc] init];
     mailActivity.userInfo = @{
                               @"text": @"Привет! :)",
-                              @"recipient":@"denisdbv@gmail.com",
+                              @"recipient":userUnit.contactEmail,
                             };
     
     REVKActivity *vkActivity = [[REVKActivity alloc] initWithTitle:@"ВКонтакте" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:@"http://vk.com/profile"];
+            NSURL *url = [NSURL URLWithString:userUnit.contactVK];
             [[UIApplication sharedApplication] openURL:url];
         }];
     }];
     
     REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] initWithTitle:@"Facebook" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
-        NSURL *url = [NSURL URLWithString:@"http://vk.com/profile"];
-        [[UIApplication sharedApplication] openURL:url];
+        [activityViewController dismissViewControllerAnimated:YES completion:^{
+            NSURL *url = [NSURL URLWithString:userUnit.contactFB];
+            [[UIApplication sharedApplication] openURL:url];
+        }];
     }];
     
     RETwitterActivity *twitterActivity = [[RETwitterActivity alloc] initWithTitle:@"Twitter" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Twitter"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
-        NSURL *url = [NSURL URLWithString:@"http://vk.com/profile"];
-        [[UIApplication sharedApplication] openURL:url];
+        [activityViewController dismissViewControllerAnimated:YES completion:^{
+            NSURL *url = [NSURL URLWithString:userUnit.contactTwitter];
+            [[UIApplication sharedApplication] openURL:url];
+        }];
     }];
     
     NSArray *activities = @[customActivity, messageActivity, mailActivity,

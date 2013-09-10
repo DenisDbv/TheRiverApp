@@ -43,13 +43,13 @@
 	_rootMenuTableView.dataSource = (id)self;
 	_rootMenuTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	_rootMenuTableView.backgroundColor = [UIColor whiteColor];
-    [_rootMenuTableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0
-                                                          green:54.0/255.0
-                                                           blue:57.0/255.0
+    [_rootMenuTableView setSeparatorColor:[UIColor colorWithRed:41.0/255.0
+                                                          green:41.0/255.0
+                                                           blue:41.0/255.0
                                                           alpha:1.0]];
-    [_rootMenuTableView setBackgroundColor:[UIColor colorWithRed:77.0/255.0
-                                                           green:79.0/255.0
-                                                            blue:80.0/255.0
+    [_rootMenuTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
+                                                           green:51.0/255.0
+                                                            blue:51.0/255.0
                                                            alpha:1.0]];
 	[self.view addSubview: _rootMenuTableView];
     
