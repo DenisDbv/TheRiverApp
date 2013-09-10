@@ -23,7 +23,7 @@
     CGSize size = [title.text sizeWithFont: title.font
                               constrainedToSize: CGSizeMake(290.0, 50)
                                   lineBreakMode: NSLineBreakByWordWrapping ];
-    title.frame = CGRectMake(5.0, 5.0,
+    title.frame = CGRectMake(5.0, 7.0,
                             size.width, size.height);
     
     [subTitle sizeToFit];
@@ -38,26 +38,40 @@
     [self showBusinessTitle:businessObject];
 }
 
+-(void)awakeFromNib
+{
+    [self initialized];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        [self initialized];
     }
     return self;
+}
+
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    layerView.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    [layerView layoutSubviews];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    [self initialized];
 }
 
 -(void) initialized
 {
+    title.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:19];
+    
     layerShortTitleLabel.textColor = [UIColor whiteColor];
-    layerShortTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    layerShortTitleLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:20];
     layerShortTitleLabel.numberOfLines = 0;
     layerShortTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     layerShortTitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;

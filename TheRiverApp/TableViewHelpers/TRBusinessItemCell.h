@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SSToolkit/SSToolkit.h>
 
 @interface TRBusinessItemCell : UITableViewCell
 
@@ -14,7 +15,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *title;
 @property (nonatomic, weak) IBOutlet UILabel *subTitle;
 
-@property (nonatomic, retain) IBOutlet UIView *layerView;
+@property (nonatomic, retain) IBOutlet SSGradientView *layerView;
 @property (nonatomic, retain) IBOutlet UILabel *layerShortTitleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *layerBeforeLabel;
 @property (nonatomic, retain) IBOutlet UILabel *layerAfterLabel;

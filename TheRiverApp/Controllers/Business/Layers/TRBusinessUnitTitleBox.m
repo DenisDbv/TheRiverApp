@@ -38,7 +38,7 @@
     titleLine.topMargin = 10;
     titleLine.leftPadding = titleLine.rightPadding = 0;
     titleLine.borderStyle = MGBorderNone;
-    titleLine.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:23];
+    titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
     [box.boxes addObject:titleLine];
     
     NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.firstName, businessObject.lastName, businessObject.age, businessObject.city];

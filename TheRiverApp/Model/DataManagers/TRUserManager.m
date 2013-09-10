@@ -447,7 +447,7 @@
     businessModel1.lastName = @"Бойчук";
     businessModel1.age = @"43";
     businessModel1.city = @"Москва";
-    businessModel1.businessLogo = @"background.jpg";
+    businessModel1.businessLogo = @"1k.jpg";
     businessModel1.businessTitle = @"Прошел школу бизнеса 90-х и решил зарабатывать миллионы на женских удовольствиях";
     businessModel1.shortBusinessTitle = @"«Волшебные» бигуди";
     businessModel1.businessBeforeTitle = @"0 рублей";
@@ -460,7 +460,7 @@
     businessModel2.lastName = @"Уколова";
     businessModel2.age = @"24";
     businessModel2.city = @"Москва";
-    businessModel2.businessLogo = @"background.jpg";
+    businessModel2.businessLogo = @"2k.jpg";
     businessModel2.businessTitle = @"250 000 чистой прибыли в месяц на своей Мечте";
     businessModel2.shortBusinessTitle = @"Школа причесок ArtSchool";
     businessModel2.businessBeforeTitle = @"0 рублей";
@@ -473,7 +473,7 @@
     businessModel3.lastName = @"Копылова";
     businessModel3.age = @"36";
     businessModel3.city = @"Москва";
-    businessModel3.businessLogo = @"background.jpg";
+    businessModel3.businessLogo = @"3k.jpg";
     businessModel3.businessTitle = @"Пришла создать идеальное «спальное место», но решила сначала изменить мир";
     businessModel3.shortBusinessTitle = @"Оптово-розничная продажа мягкой мебели";
     businessModel3.businessBeforeTitle = @"0 рублей";
@@ -486,7 +486,7 @@
     businessModel4.lastName = @"Затевахина";
     businessModel4.age = @"25";
     businessModel4.city = @"Москва";
-    businessModel4.businessLogo = @"background.jpg";
+    businessModel4.businessLogo = @"4k.jpg";
     businessModel4.businessTitle = @"За время Коучинга увеличила прибыль в шесть раз, потом начала с нуля строить второй бизнес и теперь зарабатывает 600 000 чистыми в месяц";
     businessModel4.shortBusinessTitle = @"Продакшен студия";
     businessModel4.businessBeforeTitle = @"0 рублей";
@@ -499,7 +499,7 @@
     businessModel5.lastName = @"Шарпатый";
     businessModel5.age = @"23";
     businessModel5.city = @"Москва";
-    businessModel5.businessLogo = @"background.jpg";
+    businessModel5.businessLogo = @"5k.jpg";
     businessModel5.businessTitle = @"За время Коучинга и «Миллиона за сто» увеличил прибыль в шесть раз, купил Maserati кабриолет и GT-R, организовал путешествие Мастер Группы БМ по Америке";
     businessModel5.shortBusinessTitle = @"Туроператор Shine! Adventures";
     businessModel5.businessBeforeTitle = @"200 000 рублей";
@@ -512,7 +512,7 @@
     businessModel6.lastName = @"Якимов";
     businessModel6.age = @"30";
     businessModel6.city = @"Москва";
-    businessModel6.businessLogo = @"background.jpg";
+    businessModel6.businessLogo = @"6k.jpg";
     businessModel6.businessTitle = @"Бизнес-планы на заказ, консалтинг и сопровождение по всей России: если ты согласен на меньшее, значит, для бизнеса ты не рожден";
     businessModel6.shortBusinessTitle = @"Первая консалтинговая компания";
     businessModel6.businessBeforeTitle = @"250 000 рублей";
@@ -525,7 +525,7 @@
     businessModel7.lastName = @"Агапов";
     businessModel7.age = @"43";
     businessModel7.city = @"Москва";
-    businessModel7.businessLogo = @"background.jpg";
+    businessModel7.businessLogo = @"7k.jpg";
     businessModel7.businessTitle = @"Много лет занимался промышленным альпинизмом, но потом решил, что хочет украшать города и монетизировать навыки теперь зарабатывает 700 000 рублей в месяц чистыми";
     businessModel7.shortBusinessTitle = @"Наружная реклама";
     businessModel7.businessBeforeTitle = @"150 000 рублей";
@@ -538,7 +538,7 @@
     businessModel8.lastName = @"Лебедев";
     businessModel8.age = @"26";
     businessModel8.city = @"Москва";
-    businessModel8.businessLogo = @"background.jpg";
+    businessModel8.businessLogo = @"8k.jpg";
     businessModel8.businessTitle = @"Он начинал с купонаторов, а сейчас зарабатывает полмиллиона в месяц, создавая бизнес под ключ";
     businessModel8.shortBusinessTitle = @"Открытие языковых школ под ключ";
     businessModel8.businessBeforeTitle = @"175 000 рублей";
@@ -551,7 +551,7 @@
     businessModel9.lastName = @"Калашникова";
     businessModel9.age = @"20";
     businessModel9.city = @"Москва";
-    businessModel9.businessLogo = @"background.jpg";
+    businessModel9.businessLogo = @"9k.jpg";
     businessModel9.businessTitle = @"Освоила сразу несколько профессий, перевернула свое сознание и к 20 годам стала миллионером";
     businessModel9.shortBusinessTitle = @"Агентство перфоманс-маркетинга UpSell";
     businessModel9.businessBeforeTitle = @"500 000 рублей";
