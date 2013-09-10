@@ -12,6 +12,7 @@
 
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
+#import "TRUserProfileController.h"
 #import "TRTestViewController.h"
 #import "TRScrollViewController.h"
 
@@ -38,8 +39,7 @@
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[TRScrollViewController alloc] init];
-    _mainController.view.backgroundColor = [UIColor whiteColor];
+    _mainController = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
     _rootContainer = [MFSideMenuContainerViewController
                                                     containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                                                     leftMenuViewController: _leftRootMenuBar
@@ -49,7 +49,7 @@
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     
-    //[self showFontsList];
+    [self showFontsList];
     
     return YES;
 }

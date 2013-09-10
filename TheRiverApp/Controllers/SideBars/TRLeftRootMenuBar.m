@@ -13,6 +13,7 @@
 
 #import <SSToolkit/SSToolkit.h>
 
+#import "UIView+GestureBlocks.h"
 #import "TRUserProfileController.h"
 #import "TRMindBaseListVC.h"
 #import "TRBusinessBaseListVC.h"
@@ -63,11 +64,11 @@
 
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == TRRootMenuSectionProfile)
+    /*if(section == TRRootMenuSectionProfile)
     {
         return 1;
     } else if(section == TRRootMenuSectionFavorite)
@@ -79,14 +80,13 @@
     }else if(section == TRRootMenuSectionMy)
     {
         return 2;
-    }
-    
-    return 0;
+    }*/
+    return 5;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    TRSectionHeaderView * headerView;
+    /*TRSectionHeaderView * headerView;
     
     if(section == TRRootMenuSectionProfile)
     {
@@ -106,18 +106,75 @@
     }
     
     [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
-    return headerView;
+    return headerView;*/
+    
+    if(section == 0)
+    {
+        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 130.0)];
+        header.backgroundColor = [UIColor colorWithRed:51.0/255.0
+                                                 green:51.0/255.0
+                                                  blue:51.0/255.0
+                                                 alpha:1.0];
+        
+        TRUserModel *userModel = [[TRUserManager sharedInstance].usersObject objectAtIndex:0];
+        
+        UIImage *image = [UIImage imageNamed: userModel.logo];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake(10.0, 20.0, 90.0, 90.0);
+        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //imageView.layer.borderWidth = 1;
+        imageView.layer.borderColor = [UIColor clearColor].CGColor;
+        imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
+        imageView.clipsToBounds = YES;
+        [header addSubview:imageView];
+        
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.backgroundColor = [UIColor clearColor];
+        nameLabel.textColor = [UIColor whiteColor];
+        nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:25];
+        nameLabel.numberOfLines = 2;
+        nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        nameLabel.text = [NSString stringWithFormat:@"%@ %@", userModel.firstName, userModel.lastName];
+        [nameLabel sizeToFit];
+        [header addSubview:nameLabel];
+        
+        CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(270.0-117.0-20.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
+        nameLabel.frame = CGRectMake(imageView.frame.origin.x+imageView.frame.size.width+15, 40, size.width, size.height);
+        
+        UIImageView *settingsView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cog-gray-icon@2x.png"]];
+        settingsView.frame = CGRectMake(header.bounds.size.width-30, 10, settingsView.frame.size.width/2, settingsView.frame.size.height/2);
+        [header addSubview:settingsView];
+        
+        SSLineView *bottomLine = [[SSLineView alloc] initWithFrame:CGRectMake(0, header.bounds.size.height-1, header.bounds.size.width, 1)];
+        [bottomLine setLineColor:[UIColor colorWithRed:41.0/255.0
+                                                green:41.0/255.0
+                                                 blue:41.0/255.0
+                                                alpha:1.0]];
+        [header addSubview:bottomLine];
+        
+        [header initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
+                [AppDelegateInstance() changeCenterViewController:userProfileVC];
+            }];
+        } forTaps:1];
+        
+        return header;
+    }
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section == TRRootMenuSectionProfile)
-        return 0;
+    if(section == 0)
+        return 130;
     
-    return 32.0;
+    return 0.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44.0;
+    
+    return 59.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,13 +184,40 @@
         cell = [[TRRootMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         [cell setBackgroundColor:[UIColor clearColor]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
-        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:16]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
         
         cell.badge.fontSize = 13;
         cell.badgeTextColor = [UIColor whiteColor];
     }
     
-    switch (indexPath.section) {
+    switch (indexPath.row) {
+        case 0:
+            //cell.imageView.image = [UIImage imageNamed:@"news.png"];
+            cell.textLabel.text = @"Новости";
+            //cell.badgeString = @"10+";
+            break;
+        case 1:
+            //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
+            cell.textLabel.text = @"Сообщения";
+            //cell.badgeString = @"3";
+            break;
+        case 2:
+            //cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
+            cell.textLabel.text = @"Мероприятия";
+            break;
+        case 3:
+            cell.textLabel.text = @"Кейсы";
+            //cell.badgeString = @"1+";
+            break;
+        case 4:
+            //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
+            cell.textLabel.text = @"База знаний";
+            break;
+            
+        default:
+            break;
+    }
+    /*switch (indexPath.section) {
         case TRRootMenuSectionProfile:  {
             if( indexPath.row == 0 )   {
                 cell.imageView.image = [UIImage imageNamed:@"IamAppleDev2.jpg"];
@@ -193,7 +277,7 @@
             
         default:
             break;
-    }
+    }*/
     return cell;
 }
 
@@ -201,7 +285,22 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.section == TRRootMenuSectionProfile && indexPath.row == 0) {
+    if(indexPath.row == 4)  {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:mindBaseList];
+            
+        }];
+    } else if(indexPath.row == 3)   {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:businessBaseList];
+            
+        }];
+    }
+    /*if(indexPath.section == TRRootMenuSectionProfile && indexPath.row == 0) {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
             [AppDelegateInstance() changeCenterViewController:userProfileVC];
@@ -220,7 +319,7 @@
             [AppDelegateInstance() changeCenterViewController:businessBaseList];
             
         }];
-    }
+    }*/
 }
 
 @end

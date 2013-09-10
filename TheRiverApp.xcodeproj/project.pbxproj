@@ -138,6 +138,14 @@
 		18A1094917DEA2BB00D9CD8C /* 18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A1093C17DEA2BB00D9CD8C /* 18.jpg */; };
 		18A1094A17DEA2BB00D9CD8C /* 19.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A1093D17DEA2BB00D9CD8C /* 19.jpg */; };
 		18A1094B17DEA2BB00D9CD8C /* 20.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A1093E17DEA2BB00D9CD8C /* 20.jpg */; };
+		18A1094D17DEB9E800D9CD8C /* cog-gray-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A1094C17DEB9E600D9CD8C /* cog-gray-icon@2x.png */; };
+		18A1095617DEBBED00D9CD8C /* HypatiaSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1094F17DEBBED00D9CD8C /* HypatiaSansPro-Black.otf */; };
+		18A1095717DEBBED00D9CD8C /* HypatiaSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1095017DEBBED00D9CD8C /* HypatiaSansPro-Bold.otf */; };
+		18A1095817DEBBED00D9CD8C /* HypatiaSansPro-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1095117DEBBED00D9CD8C /* HypatiaSansPro-ExtraLight.otf */; };
+		18A1095917DEBBED00D9CD8C /* HypatiaSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1095217DEBBED00D9CD8C /* HypatiaSansPro-Light.otf */; };
+		18A1095A17DEBBED00D9CD8C /* HypatiaSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1095317DEBBED00D9CD8C /* HypatiaSansPro-Regular.otf */; };
+		18A1095B17DEBBED00D9CD8C /* HypatiaSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1095417DEBBED00D9CD8C /* HypatiaSansPro-Semibold.otf */; };
+		18A1095C17DEBBED00D9CD8C /* HypatiaSansProReadme.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1095517DEBBED00D9CD8C /* HypatiaSansProReadme.pdf */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -334,6 +342,14 @@
 		18A1093C17DEA2BB00D9CD8C /* 18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 18.jpg; sourceTree = "<group>"; };
 		18A1093D17DEA2BB00D9CD8C /* 19.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 19.jpg; sourceTree = "<group>"; };
 		18A1093E17DEA2BB00D9CD8C /* 20.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 20.jpg; sourceTree = "<group>"; };
+		18A1094C17DEB9E600D9CD8C /* cog-gray-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cog-gray-icon@2x.png"; sourceTree = "<group>"; };
+		18A1094F17DEBBED00D9CD8C /* HypatiaSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HypatiaSansPro-Black.otf"; sourceTree = "<group>"; };
+		18A1095017DEBBED00D9CD8C /* HypatiaSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HypatiaSansPro-Bold.otf"; sourceTree = "<group>"; };
+		18A1095117DEBBED00D9CD8C /* HypatiaSansPro-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HypatiaSansPro-ExtraLight.otf"; sourceTree = "<group>"; };
+		18A1095217DEBBED00D9CD8C /* HypatiaSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HypatiaSansPro-Light.otf"; sourceTree = "<group>"; };
+		18A1095317DEBBED00D9CD8C /* HypatiaSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HypatiaSansPro-Regular.otf"; sourceTree = "<group>"; };
+		18A1095417DEBBED00D9CD8C /* HypatiaSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HypatiaSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		18A1095517DEBBED00D9CD8C /* HypatiaSansProReadme.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HypatiaSansProReadme.pdf; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -691,6 +707,20 @@
 			name = Users;
 			sourceTree = "<group>";
 		};
+		18A1094E17DEBBE900D9CD8C /* Hypatia Sans Pro */ = {
+			isa = PBXGroup;
+			children = (
+				18A1094F17DEBBED00D9CD8C /* HypatiaSansPro-Black.otf */,
+				18A1095017DEBBED00D9CD8C /* HypatiaSansPro-Bold.otf */,
+				18A1095117DEBBED00D9CD8C /* HypatiaSansPro-ExtraLight.otf */,
+				18A1095217DEBBED00D9CD8C /* HypatiaSansPro-Light.otf */,
+				18A1095317DEBBED00D9CD8C /* HypatiaSansPro-Regular.otf */,
+				18A1095417DEBBED00D9CD8C /* HypatiaSansPro-Semibold.otf */,
+				18A1095517DEBBED00D9CD8C /* HypatiaSansProReadme.pdf */,
+			);
+			path = "Hypatia Sans Pro";
+			sourceTree = "<group>";
+		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +735,8 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A1094E17DEBBE900D9CD8C /* Hypatia Sans Pro */,
+				18A1094C17DEB9E600D9CD8C /* cog-gray-icon@2x.png */,
 				18A1092317DEA13500D9CD8C /* Users */,
 				18A1092117DE99C200D9CD8C /* Phone.png */,
 				18A1091F17DE813C00D9CD8C /* toolbar-back-button@2x.png */,
@@ -952,6 +984,14 @@
 				18A1094917DEA2BB00D9CD8C /* 18.jpg in Resources */,
 				18A1094A17DEA2BB00D9CD8C /* 19.jpg in Resources */,
 				18A1094B17DEA2BB00D9CD8C /* 20.jpg in Resources */,
+				18A1094D17DEB9E800D9CD8C /* cog-gray-icon@2x.png in Resources */,
+				18A1095617DEBBED00D9CD8C /* HypatiaSansPro-Black.otf in Resources */,
+				18A1095717DEBBED00D9CD8C /* HypatiaSansPro-Bold.otf in Resources */,
+				18A1095817DEBBED00D9CD8C /* HypatiaSansPro-ExtraLight.otf in Resources */,
+				18A1095917DEBBED00D9CD8C /* HypatiaSansPro-Light.otf in Resources */,
+				18A1095A17DEBBED00D9CD8C /* HypatiaSansPro-Regular.otf in Resources */,
+				18A1095B17DEBBED00D9CD8C /* HypatiaSansPro-Semibold.otf in Resources */,
+				18A1095C17DEBBED00D9CD8C /* HypatiaSansProReadme.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
