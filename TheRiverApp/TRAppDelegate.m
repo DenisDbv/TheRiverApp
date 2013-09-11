@@ -64,7 +64,10 @@
 
 -(void) changeCenterViewController:(UIViewController*)newController
 {
-    [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
+    UIViewController *currentCenterController = [[_rootContainer.centerViewController viewControllers] objectAtIndex:0];
+    
+    if( currentCenterController.class != newController.class )
+        [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
 }
 
 -(void) showFontsList

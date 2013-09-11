@@ -9,6 +9,7 @@
 #import "TRHeadBox.h"
 #import <MGBox2/MGScrollView.h>
 #import <QuartzCore/QuartzCore.h>
+#import <SSToolkit/SSToolkit.h>
 
 @implementation TRHeadBox
 
