@@ -22,7 +22,6 @@
 
 @interface TRUserProfileController ()
 @property (nonatomic, retain) MGScrollView *scrollView;
-@property (nonatomic, retain) TRUserModel *userDataObject;
 @end
 
 @implementation TRUserProfileController

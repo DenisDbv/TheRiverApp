@@ -156,7 +156,7 @@
         [header initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
-                [AppDelegateInstance() changeCenterViewController:userProfileVC];
+                [AppDelegateInstance() changeProfileViewController:userProfileVC];
             }];
         } forTaps:1];
         

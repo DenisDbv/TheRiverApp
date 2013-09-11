@@ -124,7 +124,7 @@
             
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:touchView.tag]];
-                [AppDelegateInstance() changeCenterViewController:userProfileVC];
+                [AppDelegateInstance() changeProfileViewController:userProfileVC];
             }];
             
         } forTaps:1];

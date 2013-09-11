@@ -12,7 +12,6 @@
 
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
-#import "TRUserProfileController.h"
 #import "TRTestViewController.h"
 #import "TRScrollViewController.h"
 
@@ -63,11 +62,22 @@
 }
 
 -(void) changeCenterViewController:(UIViewController*)newController
+{   
+    [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
+}
+
+-(void) changeProfileViewController:(TRUserProfileController*)newController
 {
-    UIViewController *currentCenterController = [[_rootContainer.centerViewController viewControllers] objectAtIndex:0];
+    id currentCenterController = [[_rootContainer.centerViewController viewControllers] objectAtIndex:0];
     
-    if( currentCenterController.class != newController.class )
-        [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
+    if(![currentCenterController isKindOfClass:[TRUserProfileController class]])
+    {
+        [self changeCenterViewController:newController];
+        return;
+    }
+    
+    if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
+        [self changeCenterViewController:newController];
 }
 
 -(void) showFontsList

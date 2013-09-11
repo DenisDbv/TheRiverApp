@@ -10,6 +10,7 @@
 #import "UIView+GestureBlocks.h"
 #import "TRAlbumViewController.h"
 #import "TRFriendsListVC.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @implementation TRExMenuBox
 {

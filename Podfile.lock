@@ -9,6 +9,7 @@ PODS:
     - Facebook-iOS-SDK (~> 3.1)
   - DWTagList (0.0.2)
   - Facebook-iOS-SDK (3.7.1)
+  - MBProgressHUD (0.7)
   - MGBox2 (2.0.0)
   - NVUIGradientButton (1.5.0)
   - PocketAPI (1.0.2)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - ACPButton
   - AQGridView
   - DWTagList
+  - MBProgressHUD (~> 0.7)
   - MGBox2
   - NVUIGradientButton
   - REActivityViewController (~> 1.6.6)
@@ -45,6 +47,7 @@ SPEC CHECKSUMS:
   DEFacebookComposeViewController: b26811d6775594df2a386406655c9f2828f041cc
   DWTagList: 76302ed894130ed285e95eb11e704a55593101ab
   Facebook-iOS-SDK: bf38d403928f6adb652e2e5ae46253e0c6ba9a19
+  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MGBox2: 7c09e36c2271f9af16fdb5141a0ca554ecee4d8d
   NVUIGradientButton: 08792b091feb141d89cb375cbb2d2db0cc02371c
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
