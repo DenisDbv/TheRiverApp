@@ -86,6 +86,9 @@
 		1891D81317DCDB7800281246 /* TRMindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D81217DCDB7800281246 /* TRMindModel.m */; };
 		1891D81617DCE70E00281246 /* TRMindItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D81517DCE70D00281246 /* TRMindItemCell.m */; };
 		1891D81817DCEB1300281246 /* TRMindItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1891D81717DCEB1200281246 /* TRMindItemCell.xib */; };
+		1896C44F17E089DB004AE5FF /* skype.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C44E17E089DB004AE5FF /* skype.png */; };
+		1896C45217E09101004AE5FF /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45017E09101004AE5FF /* button-default.png */; };
+		1896C45317E09101004AE5FF /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45117E09101004AE5FF /* button-default@2x.png */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -304,6 +307,9 @@
 		1891D81417DCE70C00281246 /* TRMindItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindItemCell.h; path = TableViewHelpers/TRMindItemCell.h; sourceTree = "<group>"; };
 		1891D81517DCE70D00281246 /* TRMindItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindItemCell.m; path = TableViewHelpers/TRMindItemCell.m; sourceTree = "<group>"; };
 		1891D81717DCEB1200281246 /* TRMindItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRMindItemCell.xib; path = TableViewHelpers/TRMindItemCell.xib; sourceTree = "<group>"; };
+		1896C44E17E089DB004AE5FF /* skype.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skype.png; sourceTree = "<group>"; };
+		1896C45017E09101004AE5FF /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
+		1896C45117E09101004AE5FF /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -841,6 +847,9 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1896C45017E09101004AE5FF /* button-default.png */,
+				1896C45117E09101004AE5FF /* button-default@2x.png */,
+				1896C44E17E089DB004AE5FF /* skype.png */,
 				18A1097817DEDF5B00D9CD8C /* Mind */,
 				18A1096517DED7F500D9CD8C /* Base */,
 				18A1095D17DED0B100D9CD8C /* profile-scrollview-contacts@2x.png */,
@@ -1134,6 +1143,9 @@
 				18A1098C17DEDF7300D9CD8C /* 1k.jpg in Resources */,
 				18A1099217DEF8E100D9CD8C /* TRFriendsListVC.xib in Resources */,
 				18A1099A17DF000300D9CD8C /* TRFriendCell.xib in Resources */,
+				1896C44F17E089DB004AE5FF /* skype.png in Resources */,
+				1896C45217E09101004AE5FF /* button-default.png in Resources */,
+				1896C45317E09101004AE5FF /* button-default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

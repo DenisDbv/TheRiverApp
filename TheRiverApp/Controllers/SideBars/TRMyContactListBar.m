@@ -18,6 +18,7 @@
 #import <REActivityViewController/REActivityViewController.h>
 #import <SSToolkit/SSToolkit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <SIAlertView/SIAlertView.h>
 
 @interface TRMyContactListBar ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
@@ -38,7 +39,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+#if TEST_UIAPPEARANCE
+    [[SIAlertView appearance] setDefaultButtonImage:[[UIImage imageNamed:@"button-default.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,5,14,6)] forState:UIControlStateNormal];
+    [[SIAlertView appearance] setDefaultButtonImage:[[UIImage imageNamed:@"button-default.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,5,14,6)] forState:UIControlStateHighlighted];
+#endif
     _searchBarController = [[TRSearchBarVC alloc] init];
     _searchBarController.delegate = (id)self;
     [self.view addSubview:_searchBarController.searchBar];
@@ -155,6 +159,35 @@
                                                            }];
                                                        }];
     
+    REActivity *customSkypeActivity = [[REActivity alloc] initWithTitle:@"Skype"
+                                                             image:[UIImage imageNamed:@"skype.png"]
+                                                       actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+                                                           
+                                                           [activityViewController dismissViewControllerAnimated:YES completion:^{
+                                                               BOOL installed = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"skype:"]];
+                                                               if(installed)
+                                                               {
+                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"skype:denisdbv?call"]];
+                                                               }
+                                                               else
+                                                               {
+                                                                   SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"У Вас не установлено приложение Skype.\n Установить?"];
+                                                                   alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:18];
+                                                                   [alertView addButtonWithTitle:@"НЕТ"
+                                                                                            type:SIAlertViewButtonTypeCancel
+                                                                                         handler:^(SIAlertView *alertView) {
+                                                                                             NSLog(@"Cancel Clicked");
+                                                                                         }];
+                                                                   [alertView addButtonWithTitle:@"ДА"
+                                                                                            type:SIAlertViewButtonTypeDefault
+                                                                                         handler:^(SIAlertView *alertView) {
+                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.com/apps/skype/skype"]];
+                                                                                         }];
+                                                                   [alertView show];
+                                                               }
+                                                           }];
+                                                       }];
+    
     REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
     messageActivity.userInfo = @{
                                   @"text": @"Привет! :)",
@@ -188,7 +221,7 @@
         }];
     }];
     
-    NSArray *activities = @[customActivity, messageActivity, mailActivity,
+    NSArray *activities = @[customActivity, customSkypeActivity, messageActivity, mailActivity,
                             vkActivity, facebookActivity, twitterActivity ];
     REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
     [activityViewController presentFromRootViewController];

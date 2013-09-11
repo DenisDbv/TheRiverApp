@@ -23,6 +23,7 @@ PODS:
     - SFHFKeychainUtils (~> 0.0.1)
   - REComposeViewController (2.1.2)
   - SFHFKeychainUtils (0.0.1)
+  - SIAlertView (1.2)
   - SSToolkit (1.0.4)
   - TDBadgedCell (2.3.1)
 
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - MGBox2
   - NVUIGradientButton
   - REActivityViewController (~> 1.6.6)
+  - SIAlertView
   - SSToolkit
   - TDBadgedCell
 
@@ -54,6 +56,7 @@ SPEC CHECKSUMS:
   REActivityViewController: 1d79c0a2fc07712d3db6996849f0750897883ba5
   REComposeViewController: 6f1ab35ff54d6bfb65374b3f492e414e1ec1a0db
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
+  SIAlertView: fd188f66278761f4ff069f517c3deb2be16ecdcc
   SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
   TDBadgedCell: 091af82e20d9da3be46eb48cfc53129c324a2faa
 
