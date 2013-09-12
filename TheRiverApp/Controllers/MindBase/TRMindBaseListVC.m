@@ -11,10 +11,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import <SSToolkit/SSToolkit.h>
 
+#import "SlideInMenuViewController.h"
 #import "TRDescriptionUnitVC.h"
+#import "TRMindFilterView.h"
 
 @interface TRMindBaseListVC ()
-
+@property (nonatomic, retain) SlideInMenuViewController *scrollDownMindMenu;
 @end
 
 @implementation TRMindBaseListVC
@@ -35,12 +37,36 @@
     self.navigationController.navigationBar.clipsToBounds = YES;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TRMindItemCell" bundle:nil] forCellReuseIdentifier:@"TRMindCell"];
+    
+    TRMindFilterView *menuView = [[TRMindFilterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
+    menuView.backgroundColor = [UIColor whiteColor]; //self.tableView.separatorColor;
+    _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
+    
+    [self.tableView addSubview: _scrollDownMindMenu.view];
+    [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
+    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [_scrollDownMindMenu scrollViewDidScroll:scrollView];
+}
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    [_scrollDownMindMenu scrollViewWillBeginDecelerating:scrollView];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [_scrollDownMindMenu scrollViewWillBeginDragging:scrollView];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [_scrollDownMindMenu scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 }
 
 #pragma mark - UITableViewDataSource
@@ -50,7 +76,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return (NSInteger)[TRUserManager sharedInstance].mindObjects.count;
+    return (NSInteger)[TRUserManager sharedInstance].mindObjects.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

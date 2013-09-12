@@ -47,16 +47,22 @@
     //self.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem];
     //self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
     
-    UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 13)];
+    UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake(5, 0, 18, 13)];
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10+settingsView.frame.size.width, settingsView.frame.size.height)];
+    leftView.backgroundColor = [UIColor clearColor];
+    [leftView addSubview:settingsView];
     [settingsView addTarget:self action:@selector(leftSideMenuButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [settingsView setBackgroundImage:[UIImage imageNamed:@"toolbar-menu-icon@2x.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:settingsView];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:leftView];
     [self.navigationItem setLeftBarButtonItem:settingsButton];
     
     UIButton *settingsView2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 23, 20)];
+    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5+settingsView2.frame.size.width, settingsView2.frame.size.height)];
+    rightView.backgroundColor = [UIColor clearColor];
+    [rightView addSubview:settingsView2];
     [settingsView2 addTarget:self action:@selector(rightSideMenuButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [settingsView2 setBackgroundImage:[UIImage imageNamed:@"toolbar-contacts-icon@2x.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *settingsButton2 = [[UIBarButtonItem alloc] initWithCustomView:settingsView2];
+    UIBarButtonItem *settingsButton2 = [[UIBarButtonItem alloc] initWithCustomView:rightView];
     [self.navigationItem setRightBarButtonItem:settingsButton2];
 }
 

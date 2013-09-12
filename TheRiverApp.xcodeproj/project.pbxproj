@@ -89,6 +89,8 @@
 		1896C44F17E089DB004AE5FF /* skype.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C44E17E089DB004AE5FF /* skype.png */; };
 		1896C45217E09101004AE5FF /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45017E09101004AE5FF /* button-default.png */; };
 		1896C45317E09101004AE5FF /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45117E09101004AE5FF /* button-default@2x.png */; };
+		1896C45B17E104D0004AE5FF /* SlideInMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */; };
+		1896C45F17E1B295004AE5FF /* TRMindFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45E17E1B295004AE5FF /* TRMindFilterView.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -310,6 +312,10 @@
 		1896C44E17E089DB004AE5FF /* skype.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skype.png; sourceTree = "<group>"; };
 		1896C45017E09101004AE5FF /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
 		1896C45117E09101004AE5FF /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
+		1896C45917E104D0004AE5FF /* SlideInMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideInMenuViewController.h; sourceTree = "<group>"; };
+		1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideInMenuViewController.m; sourceTree = "<group>"; };
+		1896C45D17E1B295004AE5FF /* TRMindFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindFilterView.h; path = Controllers/MindBase/Filter/TRMindFilterView.h; sourceTree = "<group>"; };
+		1896C45E17E1B295004AE5FF /* TRMindFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindFilterView.m; path = Controllers/MindBase/Filter/TRMindFilterView.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -684,6 +690,7 @@
 		1891D80817DC9A6100281246 /* MindBase */ = {
 			isa = PBXGroup;
 			children = (
+				1896C45C17E1B266004AE5FF /* Filter */,
 				18A108B817DD199600D9CD8C /* Layers */,
 				1891D80917DC9AB000281246 /* TRMindBaseListVC.h */,
 				1891D80A17DC9AB000281246 /* TRMindBaseListVC.m */,
@@ -692,6 +699,24 @@
 				1891D80F17DCA9E700281246 /* TRDescriptionUnitVC.m */,
 			);
 			name = MindBase;
+			sourceTree = "<group>";
+		};
+		1896C45817E104C0004AE5FF /* ScrollMenuDown */ = {
+			isa = PBXGroup;
+			children = (
+				1896C45917E104D0004AE5FF /* SlideInMenuViewController.h */,
+				1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */,
+			);
+			path = ScrollMenuDown;
+			sourceTree = "<group>";
+		};
+		1896C45C17E1B266004AE5FF /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				1896C45D17E1B295004AE5FF /* TRMindFilterView.h */,
+				1896C45E17E1B295004AE5FF /* TRMindFilterView.m */,
+			);
+			name = Filter;
 			sourceTree = "<group>";
 		};
 		18A108B817DD199600D9CD8C /* Layers */ = {
@@ -949,6 +974,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				1896C45817E104C0004AE5FF /* ScrollMenuDown */,
 				18A108C817DDC04C00D9CD8C /* WDActivityIndicator */,
 				18E65E2317D5009700D1B778 /* MFSideMenu */,
 			);
@@ -1245,6 +1271,8 @@
 				18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */,
 				18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */,
 				18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */,
+				1896C45B17E104D0004AE5FF /* SlideInMenuViewController.m in Sources */,
+				1896C45F17E1B295004AE5FF /* TRMindFilterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1327,7 +1355,7 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "EBC73F8C-AFBD-4B45-A208-0DAB01721EDE";
+				PROVISIONING_PROFILE = "9A0CD3E6-84A2-4470-8BDF-9BE662A72D4A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1341,7 +1369,7 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "EBC73F8C-AFBD-4B45-A208-0DAB01721EDE";
+				PROVISIONING_PROFILE = "9A0CD3E6-84A2-4470-8BDF-9BE662A72D4A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

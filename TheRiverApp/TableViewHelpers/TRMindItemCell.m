@@ -53,6 +53,42 @@
     return self;
 }
 
+/*-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    float table_width = 0;
+    float table_height = 0;
+    
+    UITableView *table = [self getTableView:self.contentView];
+    if(table != nil)
+    {
+        table_width = table.bounds.size.width;
+        table_height = table.bounds.size.height;
+    }
+    
+    CGRect frame = self.contentView.frame;
+    frame.origin.x = 5;
+    frame.size.width = table_width - 10;
+    self.contentView.frame = frame;
+    
+    self.backgroundView = [[UIView alloc] initWithFrame:frame];
+    self.backgroundView.backgroundColor = [UIColor whiteColor];
+    self.selectedBackgroundView = [[UIView alloc] initWithFrame:frame];
+    self.selectedBackgroundView.backgroundColor = [UIColor blueColor];
+}
+
+-(UITableView*)getTableView:(UIView*)theView
+{
+    if (!theView.superview)
+        return nil;
+    
+    if ([theView.superview isKindOfClass:[UITableView class]])
+        return (UITableView*)theView.superview;
+    
+    return [self getTableView:theView.superview];
+}*/
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

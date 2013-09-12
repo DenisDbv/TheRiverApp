@@ -8,7 +8,7 @@
 
 #import "TRCenterRootController.h"
 
-@interface TRBusinessBaseListVC : TRCenterRootController
+@interface TRBusinessBaseListVC : TRCenterRootController <UIScrollViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
