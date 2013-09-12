@@ -91,6 +91,7 @@
 		1896C45317E09101004AE5FF /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45117E09101004AE5FF /* button-default@2x.png */; };
 		1896C45B17E104D0004AE5FF /* SlideInMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */; };
 		1896C45F17E1B295004AE5FF /* TRMindFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45E17E1B295004AE5FF /* TRMindFilterView.m */; };
+		1896C46117E23164004AE5FF /* dropdown-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C46017E23164004AE5FF /* dropdown-icon@2x.png */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -316,6 +317,7 @@
 		1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideInMenuViewController.m; sourceTree = "<group>"; };
 		1896C45D17E1B295004AE5FF /* TRMindFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindFilterView.h; path = Controllers/MindBase/Filter/TRMindFilterView.h; sourceTree = "<group>"; };
 		1896C45E17E1B295004AE5FF /* TRMindFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindFilterView.m; path = Controllers/MindBase/Filter/TRMindFilterView.m; sourceTree = "<group>"; };
+		1896C46017E23164004AE5FF /* dropdown-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown-icon@2x.png"; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -872,6 +874,7 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1896C46017E23164004AE5FF /* dropdown-icon@2x.png */,
 				1896C45017E09101004AE5FF /* button-default.png */,
 				1896C45117E09101004AE5FF /* button-default@2x.png */,
 				1896C44E17E089DB004AE5FF /* skype.png */,
@@ -1172,6 +1175,7 @@
 				1896C44F17E089DB004AE5FF /* skype.png in Resources */,
 				1896C45217E09101004AE5FF /* button-default.png in Resources */,
 				1896C45317E09101004AE5FF /* button-default@2x.png in Resources */,
+				1896C46117E23164004AE5FF /* dropdown-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

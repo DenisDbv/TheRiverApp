@@ -58,14 +58,14 @@
     return self;
 }
 
-/*- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:224.0/255.0 green:224.0/255.0 blue:224.0/255.0 alpha:1.0].CGColor);
     
     // Draw them with a 2.0 stroke width so they are a bit more visible.
-    CGContextSetLineWidth(context, 1.0);
+    CGContextSetLineWidth(context, 2.0);
     
     CGContextMoveToPoint(context, 0, rect.size.height); //start at this point
     
@@ -73,41 +73,53 @@
     
     // and now draw the Path!
     CGContextStrokePath(context);
-}*/
+}
 
 -(void) createHeadButtons
 {
     headButtonsView = [[UIView alloc] initWithFrame: self.bounds];
     
-    levelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(5, roundf(self.bounds.size.height-41)/2, 146, 41) style:NVUIGradientButtonStyleDefault];
+    UIImage *dropDownImage = [UIImage imageNamed:@"dropdown-icon@2x.png"];
+    
+    levelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(5, roundf(self.bounds.size.height-41)/2, 90, 41) style:NVUIGradientButtonStyleDefault];
+    levelButton.rightAccessoryImage = [UIImage imageNamed:@"dropdown-icon@2x.png"];
     [levelButton addTarget:self action:@selector(onLevelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     levelButton.tintColor = levelButton.highlightedTintColor = [UIColor clearColor];
-    levelButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
-    levelButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    levelButton.borderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    levelButton.highlightedBorderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [levelButton setCornerRadius:4.0f];
     [levelButton setGradientEnabled:NO];
     [levelButton setBorderWidth:2.0];
-    levelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
-    levelButton.textColor = levelButton.highlightedTextColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    levelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    levelButton.textColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    levelButton.highlightedTextColor = [UIColor blueColor];
     levelButton.textShadowColor = [UIColor whiteColor];
     levelButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     levelButton.text = @"Уровень";
     [headButtonsView addSubview:levelButton];
+    UIImageView *imgLeftButton = [[UIImageView alloc] initWithImage:dropDownImage];
+    imgLeftButton.frame = CGRectMake(levelButton.frame.size.width-dropDownImage.size.width+5, 18, dropDownImage.size.width/1.5, dropDownImage.size.height/1.5);
+    [levelButton addSubview:imgLeftButton];
     
-    categoryButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-146-5), roundf(self.bounds.size.height-41)/2, 146, 41) style:NVUIGradientButtonStyleDefault];
+    categoryButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-120-5), roundf(self.bounds.size.height-41)/2, 120, 41) style:NVUIGradientButtonStyleDefault];
+    categoryButton.rightAccessoryImage = dropDownImage;
     [categoryButton addTarget:self action:@selector(onCategoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     categoryButton.tintColor = categoryButton.highlightedTintColor = [UIColor clearColor];
-    categoryButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
-    categoryButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    categoryButton.borderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    categoryButton.highlightedBorderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [categoryButton setCornerRadius:4.0f];
     [categoryButton setGradientEnabled:NO];
     [categoryButton setBorderWidth:2.0];
-    categoryButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
-    categoryButton.textColor = categoryButton.highlightedTextColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    categoryButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    categoryButton.textColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    categoryButton.highlightedTextColor = [UIColor blueColor];
     categoryButton.textShadowColor = [UIColor whiteColor];
     categoryButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     categoryButton.text = @"Категории";
     [headButtonsView addSubview:categoryButton];
+    UIImageView *imgRightButton = [[UIImageView alloc] initWithImage:dropDownImage];
+    imgRightButton.frame = CGRectMake(categoryButton.frame.size.width-dropDownImage.size.width-3, 18, dropDownImage.size.width/1.5, dropDownImage.size.height/1.5);
+    [categoryButton addSubview:imgRightButton];
     
     [self addSubview:headButtonsView];
 }
@@ -141,7 +153,7 @@
     [successButton setGradientEnabled:NO];
     [successButton setBorderWidth:2.0];
     successButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
-    successButton.textColor = categoryButton.highlightedTextColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    successButton.textColor = successButton.highlightedTextColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     successButton.textShadowColor = [UIColor whiteColor];
     successButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     successButton.text = @"Готово";
