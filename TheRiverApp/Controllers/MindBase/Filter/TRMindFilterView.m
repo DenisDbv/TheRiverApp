@@ -98,7 +98,7 @@
     levelButton.text = @"Уровень";
     [headButtonsView addSubview:levelButton];
     UIImageView *imgLeftButton = [[UIImageView alloc] initWithImage:dropDownImage];
-    imgLeftButton.frame = CGRectMake(levelButton.frame.size.width-dropDownImage.size.width+5, 18, dropDownImage.size.width/1.5, dropDownImage.size.height/1.5);
+    imgLeftButton.frame = CGRectMake(levelButton.frame.size.width-dropDownImage.size.width+5, 19, dropDownImage.size.width/2, dropDownImage.size.height/2);
     [levelButton addSubview:imgLeftButton];
     
     categoryButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-120-5), roundf(self.bounds.size.height-41)/2, 120, 41) style:NVUIGradientButtonStyleDefault];
@@ -118,7 +118,7 @@
     categoryButton.text = @"Категории";
     [headButtonsView addSubview:categoryButton];
     UIImageView *imgRightButton = [[UIImageView alloc] initWithImage:dropDownImage];
-    imgRightButton.frame = CGRectMake(categoryButton.frame.size.width-dropDownImage.size.width-3, 18, dropDownImage.size.width/1.5, dropDownImage.size.height/1.5);
+    imgRightButton.frame = CGRectMake(categoryButton.frame.size.width-dropDownImage.size.width-3, 19, dropDownImage.size.width/2, dropDownImage.size.height/2);
     [categoryButton addSubview:imgRightButton];
     
     [self addSubview:headButtonsView];
