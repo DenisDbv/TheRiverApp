@@ -17,6 +17,7 @@
 #import "TRUserProfileController.h"
 #import "TRMindBaseListVC.h"
 #import "TRBusinessBaseListVC.h"
+#import "TRMeetingsBaseListVC.h"
 
 @interface TRLeftRootMenuBar ()
 @property (nonatomic, retain) UITableView *rootMenuTableView;
@@ -297,6 +298,13 @@
             
             TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:businessBaseList];
+            
+        }];
+    } else if(indexPath.row == 2)   {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRMeetingsBaseListVC *meetingBaseList = [[TRMeetingsBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:meetingBaseList];
             
         }];
     }

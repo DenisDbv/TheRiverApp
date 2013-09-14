@@ -8,6 +8,7 @@
 
 #import "TRUserManager.h"
 #import "TRUserModel.h"
+#import "TRMeetingModel.h"
 
 @interface TRUserManager()
 
@@ -18,6 +19,7 @@
 @synthesize usersObject;
 @synthesize mindObjects;
 @synthesize businessObjects;
+@synthesize meetingObjects;
 
 + (instancetype)sharedInstance
 {
@@ -31,6 +33,8 @@
     [self createMindObjects];
     
     [self createBusinessObjects];
+    
+    [self createMeetingObjects];
     
     return [super init];
 }
@@ -568,6 +572,23 @@
                        businessModel7,
                        businessModel8,
                        businessModel9, nil];
+}
+
+-(void) createMeetingObjects
+{
+    TRMeetingModel *meetingModel1 = [[TRMeetingModel alloc] init];
+    meetingModel1.meetingDay = @"16";
+    meetingModel1.meetingMonth = @"Сентября";
+    meetingModel1.meetingTitle = @"Встреча с Петей Осиповым. Презентация приложения БМ Реки и обсуждение последующих планов.";
+    meetingModel1.meetingGroup = @"Пётр Осипов и AXBX";
+    meetingModel1.meetingDescription = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel1.meetingCity = @"Москва";
+    meetingModel1.meetingTime = @"12:00";
+    meetingModel1.meetingContact = usersObject;
+    meetingModel1.meetingPhoto = @"9k.jpg";
+    meetingModel1.meetingURL = @"http://zomgg.ru/reki/cases/09/body.html";
+    
+    meetingObjects = [[NSArray alloc] initWithObjects:meetingModel1, nil];
 }
 
 @end

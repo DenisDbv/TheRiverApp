@@ -92,6 +92,16 @@
 		1896C45B17E104D0004AE5FF /* SlideInMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */; };
 		1896C45F17E1B295004AE5FF /* TRMindFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45E17E1B295004AE5FF /* TRMindFilterView.m */; };
 		1896C46117E23164004AE5FF /* dropdown-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C46017E23164004AE5FF /* dropdown-icon@2x.png */; };
+		1896C46417E337B9004AE5FF /* TRMeetingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C46317E337B9004AE5FF /* TRMeetingModel.m */; };
+		1896C46917E34156004AE5FF /* TRMeetingsBaseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C46717E34156004AE5FF /* TRMeetingsBaseListVC.m */; };
+		1896C46A17E34156004AE5FF /* TRMeetingsBaseListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1896C46817E34156004AE5FF /* TRMeetingsBaseListVC.xib */; };
+		1896C46D17E341FC004AE5FF /* TRMeetingItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C46C17E341FC004AE5FF /* TRMeetingItemCell.m */; };
+		1896C46F17E34219004AE5FF /* TRMeetingItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1896C46E17E34219004AE5FF /* TRMeetingItemCell.xib */; };
+		1896C47217E45BBE004AE5FF /* TRMeetingDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47117E45BBE004AE5FF /* TRMeetingDescriptionVC.m */; };
+		1896C47617E45D58004AE5FF /* TRMeetRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47517E45D58004AE5FF /* TRMeetRootBox.m */; };
+		1896C47917E45E3B004AE5FF /* TRMeetLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47817E45E3B004AE5FF /* TRMeetLogoBox.m */; };
+		1896C47C17E460E1004AE5FF /* TRMeetTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47B17E460E1004AE5FF /* TRMeetTitleBox.m */; };
+		1896C47F17E46457004AE5FF /* TRMeetWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47E17E46456004AE5FF /* TRMeetWebViewBox.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -318,6 +328,24 @@
 		1896C45D17E1B295004AE5FF /* TRMindFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindFilterView.h; path = Controllers/MindBase/Filter/TRMindFilterView.h; sourceTree = "<group>"; };
 		1896C45E17E1B295004AE5FF /* TRMindFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindFilterView.m; path = Controllers/MindBase/Filter/TRMindFilterView.m; sourceTree = "<group>"; };
 		1896C46017E23164004AE5FF /* dropdown-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown-icon@2x.png"; sourceTree = "<group>"; };
+		1896C46217E337B9004AE5FF /* TRMeetingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetingModel.h; path = Model/Entity/TRMeetingModel.h; sourceTree = "<group>"; };
+		1896C46317E337B9004AE5FF /* TRMeetingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetingModel.m; path = Model/Entity/TRMeetingModel.m; sourceTree = "<group>"; };
+		1896C46617E34156004AE5FF /* TRMeetingsBaseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetingsBaseListVC.h; path = Controllers/Meetings/TRMeetingsBaseListVC.h; sourceTree = "<group>"; };
+		1896C46717E34156004AE5FF /* TRMeetingsBaseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetingsBaseListVC.m; path = Controllers/Meetings/TRMeetingsBaseListVC.m; sourceTree = "<group>"; };
+		1896C46817E34156004AE5FF /* TRMeetingsBaseListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRMeetingsBaseListVC.xib; path = Controllers/Meetings/TRMeetingsBaseListVC.xib; sourceTree = "<group>"; };
+		1896C46B17E341FC004AE5FF /* TRMeetingItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetingItemCell.h; path = TableViewHelpers/TRMeetingItemCell.h; sourceTree = "<group>"; };
+		1896C46C17E341FC004AE5FF /* TRMeetingItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetingItemCell.m; path = TableViewHelpers/TRMeetingItemCell.m; sourceTree = "<group>"; };
+		1896C46E17E34219004AE5FF /* TRMeetingItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRMeetingItemCell.xib; path = TableViewHelpers/TRMeetingItemCell.xib; sourceTree = "<group>"; };
+		1896C47017E45BBD004AE5FF /* TRMeetingDescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetingDescriptionVC.h; path = Controllers/Meetings/TRMeetingDescriptionVC.h; sourceTree = "<group>"; };
+		1896C47117E45BBE004AE5FF /* TRMeetingDescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetingDescriptionVC.m; path = Controllers/Meetings/TRMeetingDescriptionVC.m; sourceTree = "<group>"; };
+		1896C47417E45D58004AE5FF /* TRMeetRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetRootBox.h; path = Controllers/Meetings/Layers/TRMeetRootBox.h; sourceTree = "<group>"; };
+		1896C47517E45D58004AE5FF /* TRMeetRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetRootBox.m; path = Controllers/Meetings/Layers/TRMeetRootBox.m; sourceTree = "<group>"; };
+		1896C47717E45E3B004AE5FF /* TRMeetLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetLogoBox.h; path = Controllers/Meetings/Layers/TRMeetLogoBox.h; sourceTree = "<group>"; };
+		1896C47817E45E3B004AE5FF /* TRMeetLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetLogoBox.m; path = Controllers/Meetings/Layers/TRMeetLogoBox.m; sourceTree = "<group>"; };
+		1896C47A17E460E1004AE5FF /* TRMeetTitleBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetTitleBox.h; path = Controllers/Meetings/Layers/TRMeetTitleBox.h; sourceTree = "<group>"; };
+		1896C47B17E460E1004AE5FF /* TRMeetTitleBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetTitleBox.m; path = Controllers/Meetings/Layers/TRMeetTitleBox.m; sourceTree = "<group>"; };
+		1896C47D17E46456004AE5FF /* TRMeetWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetWebViewBox.h; path = Controllers/Meetings/Layers/TRMeetWebViewBox.h; sourceTree = "<group>"; };
+		1896C47E17E46456004AE5FF /* TRMeetWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetWebViewBox.m; path = Controllers/Meetings/Layers/TRMeetWebViewBox.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -538,6 +566,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1896C46517E3411E004AE5FF /* Meetings */,
 				18A1098D17DEF88F00D9CD8C /* FriendsList */,
 				18A108D517DE034100D9CD8C /* Business */,
 				1891D80817DC9A6100281246 /* MindBase */,
@@ -676,6 +705,8 @@
 				1891D81217DCDB7800281246 /* TRMindModel.m */,
 				18A108DB17DE108900D9CD8C /* TRBusinessModel.h */,
 				18A108DC17DE108900D9CD8C /* TRBusinessModel.m */,
+				1896C46217E337B9004AE5FF /* TRMeetingModel.h */,
+				1896C46317E337B9004AE5FF /* TRMeetingModel.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -719,6 +750,34 @@
 				1896C45E17E1B295004AE5FF /* TRMindFilterView.m */,
 			);
 			name = Filter;
+			sourceTree = "<group>";
+		};
+		1896C46517E3411E004AE5FF /* Meetings */ = {
+			isa = PBXGroup;
+			children = (
+				1896C47317E45D06004AE5FF /* Layers */,
+				1896C46617E34156004AE5FF /* TRMeetingsBaseListVC.h */,
+				1896C46717E34156004AE5FF /* TRMeetingsBaseListVC.m */,
+				1896C46817E34156004AE5FF /* TRMeetingsBaseListVC.xib */,
+				1896C47017E45BBD004AE5FF /* TRMeetingDescriptionVC.h */,
+				1896C47117E45BBE004AE5FF /* TRMeetingDescriptionVC.m */,
+			);
+			name = Meetings;
+			sourceTree = "<group>";
+		};
+		1896C47317E45D06004AE5FF /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				1896C47417E45D58004AE5FF /* TRMeetRootBox.h */,
+				1896C47517E45D58004AE5FF /* TRMeetRootBox.m */,
+				1896C47717E45E3B004AE5FF /* TRMeetLogoBox.h */,
+				1896C47817E45E3B004AE5FF /* TRMeetLogoBox.m */,
+				1896C47A17E460E1004AE5FF /* TRMeetTitleBox.h */,
+				1896C47B17E460E1004AE5FF /* TRMeetTitleBox.m */,
+				1896C47D17E46456004AE5FF /* TRMeetWebViewBox.h */,
+				1896C47E17E46456004AE5FF /* TRMeetWebViewBox.m */,
+			);
+			name = Layers;
 			sourceTree = "<group>";
 		};
 		18A108B817DD199600D9CD8C /* Layers */ = {
@@ -950,6 +1009,9 @@
 				18A1099617DEFBCB00D9CD8C /* TRFriendCell.h */,
 				18A1099717DEFBCD00D9CD8C /* TRFriendCell.m */,
 				18A1099917DF000100D9CD8C /* TRFriendCell.xib */,
+				1896C46B17E341FC004AE5FF /* TRMeetingItemCell.h */,
+				1896C46C17E341FC004AE5FF /* TRMeetingItemCell.m */,
+				1896C46E17E34219004AE5FF /* TRMeetingItemCell.xib */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -1176,6 +1238,8 @@
 				1896C45217E09101004AE5FF /* button-default.png in Resources */,
 				1896C45317E09101004AE5FF /* button-default@2x.png in Resources */,
 				1896C46117E23164004AE5FF /* dropdown-icon@2x.png in Resources */,
+				1896C46A17E34156004AE5FF /* TRMeetingsBaseListVC.xib in Resources */,
+				1896C46F17E34219004AE5FF /* TRMeetingItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1277,6 +1341,14 @@
 				18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */,
 				1896C45B17E104D0004AE5FF /* SlideInMenuViewController.m in Sources */,
 				1896C45F17E1B295004AE5FF /* TRMindFilterView.m in Sources */,
+				1896C46417E337B9004AE5FF /* TRMeetingModel.m in Sources */,
+				1896C46917E34156004AE5FF /* TRMeetingsBaseListVC.m in Sources */,
+				1896C46D17E341FC004AE5FF /* TRMeetingItemCell.m in Sources */,
+				1896C47217E45BBE004AE5FF /* TRMeetingDescriptionVC.m in Sources */,
+				1896C47617E45D58004AE5FF /* TRMeetRootBox.m in Sources */,
+				1896C47917E45E3B004AE5FF /* TRMeetLogoBox.m in Sources */,
+				1896C47C17E460E1004AE5FF /* TRMeetTitleBox.m in Sources */,
+				1896C47F17E46457004AE5FF /* TRMeetWebViewBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
