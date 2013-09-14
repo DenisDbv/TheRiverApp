@@ -31,6 +31,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.clipsToBounds = YES;
+    
     self.navigationController.navigationBarHidden = YES;
     
     //[self toShortWidth];

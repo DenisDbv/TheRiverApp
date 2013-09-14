@@ -9,6 +9,7 @@
 #import "TRFavoritesEditList.h"
 #import "TRSearchBarVC.h"
 #import "TRSectionHeaderView.h"
+#import "UISearchBar+cancelButton.h"
 
 #import "MFSideMenu.h"
 
@@ -21,6 +22,8 @@
 {
     NSInteger inFavotite;
     NSInteger outFavorite;
+    
+    UIButton *buttonCopy;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,13 +61,13 @@
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0
-                                                          green:54.0/255.0
-                                                           blue:57.0/255.0
+    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:41.0/255.0
+                                                          green:41.0/255.0
+                                                           blue:41.0/255.0
                                                           alpha:1.0]];
-    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:77.0/255.0
-                                                           green:79.0/255.0
-                                                            blue:80.0/255.0
+    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
+                                                           green:51.0/255.0
+                                                            blue:51.0/255.0
                                                            alpha:1.0]];
     //_contactsTableView.nxEV_emptyView = all;
 	[self.view addSubview: _contactsTableView];
@@ -88,7 +91,18 @@
     if(event == MFSideMenuStateEventMenuAnimationDidEnd)
     {
         [_contactsTableView setEditing:YES animated:YES];
+        
+        [_searchBarController.searchBar setShowsCancelButton:YES animated:YES];
+        //[self renameSearchButtonToTitle:@"Готово"];
     }
+}
+
+-(void) renameSearchButtonToTitle:(NSString*)title
+{
+    UIButton *btn = [_searchBarController.searchBar cancelButton];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn.titleLabel sizeToFit];
+    [btn layoutSubviews];
 }
 
 #pragma mark UITableViewDataSource
@@ -146,14 +160,14 @@
 - (void)tableView: (UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    [tableView beginUpdates]; 
+    /*[tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         if(inFavotite > 1)  {
-            /*inFavotite--;
+            inFavotite--;
             outFavorite++;
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView reloadData];*/
+            [tableView reloadData];
         }
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert)
@@ -166,7 +180,7 @@ forRowAtIndexPath: (NSIndexPath *)indexPath
             [tableView reloadData];
         }
     }
-    [tableView endUpdates];
+    [tableView endUpdates];*/
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -196,18 +210,70 @@ forRowAtIndexPath: (NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 #pragma mark SearchNearContactsDelegate
 
 -(void) onClickBySearchBar:(UISearchBar*)searchBar
 {
-    
+    [self createButtonInSearchBar];
 }
 
 -(void) onCancelSearchBar:(UISearchBar*)searchBar
 {
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+-(void) createButtonInSearchBar
+{
+    if(buttonCopy != nil)
+    {
+        [buttonCopy removeFromSuperview];
+        buttonCopy = nil;
+    }
+    
+    UIButton *cancelButton = [_searchBarController.searchBar cancelButton];
+    cancelButton.hidden = NO;
+    
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: cancelButton];
+    buttonCopy = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
+    [buttonCopy addTarget:self action:@selector(onClickCancel:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonCopy setTitle:@"Отмена" forState:UIControlStateNormal];
+    
+    //cancelButton.hidden = YES;
+    [cancelButton.superview addSubview:buttonCopy];
+    //[_searchBarController.searchBar addSubview:buttonCopy];
+    
+    NSLog(@"1) %@", NSStringFromCGRect(buttonCopy.frame));
+    NSLog(@"2) %@", NSStringFromCGRect(cancelButton.frame));
+}
+
+-(void) onClickCancel:(id)sender
+{
+    _searchBarController.searchBar.text = @"";
+    [_searchBarController removeSearchTable];
+    
+    UIButton *btn = (UIButton*)sender;
+    /*UIButton *cancelButton = [_searchBarController.searchBar cancelButton];
+    
+    [buttonCopy removeFromSuperview];
+    buttonCopy = nil;
+    
+    cancelButton.hidden = NO;*/
+    
+    [btn addTarget:self action:@selector(onClickCancel2:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"Готово" forState:UIControlStateNormal];
+}
+
+-(void) onClickCancel2:(id)sender
+{
+    [buttonCopy removeFromSuperview];
+    buttonCopy = nil;
+    
+    UIButton *cancelButton = [_searchBarController.searchBar cancelButton];
+    cancelButton.hidden = NO;
+    
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
     [self.navigationController popViewControllerAnimated:NO];
 }

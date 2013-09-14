@@ -14,7 +14,11 @@
 #import "MFSideMenu.h"
 
 #import "TRHeadBox.h"
-#import "TRSecondHeadBox.h"
+#import "TRContactBox.h"
+#import "TRTagsBox.h"
+#import "TRExMenuBox.h"
+#import "TRBusinessTitleBox.h"
+#import "TRBusinessBox.h"
 
 @interface TRUserProfileController ()
 @property (nonatomic, retain) MGScrollView *scrollView;
@@ -22,11 +26,11 @@
 
 @implementation TRUserProfileController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id) initByUserModel:(TRUserModel*)userObject
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        // Custom initialization
+        _userDataObject = userObject;
     }
     return self;
 }
@@ -35,17 +39,21 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.clipsToBounds = YES;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuStateEventOccurred:)
                                                  name:MFSideMenuStateNotificationEvent
                                                object:nil];
     
-    //self.menuContainerViewController.panMode = MFSideMenuPanModeCenterViewController;
-    
     [self createRootScrollView];
     
     [self createBackgroundHeadBlock];
-    [self createSecondHeadBlock];
+    [self createContactBox];
+    [self createTagsBox];
+    [self createExMenuBox];
+    [self createBusinessTitleBox];
+    [self createBusinessBox];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
 }
@@ -73,21 +81,52 @@
 -(void) createRootScrollView
 {
     _scrollView = [[MGScrollView alloc] initWithFrame:self.view.bounds];
-    _scrollView.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.95 alpha:1];
+    _scrollView.backgroundColor = [UIColor whiteColor]; //[UIColor colorWithRed:0.94 green:0.94 blue:0.95 alpha:1];
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _scrollView.bottomPadding = 10.0;
     [self.view addSubview:_scrollView];
 }
 
 -(void) createBackgroundHeadBlock
 {
-    TRHeadBox *headBox = [TRHeadBox initBox:self.view.bounds.size];
+    TRHeadBox *headBox = (TRHeadBox*)[TRHeadBox initBox: self.view.bounds.size
+                                      withUserData:_userDataObject];
     [_scrollView.boxes addObject: headBox];
 }
 
--(void) createSecondHeadBlock
+-(void) createContactBox
 {
-    TRSecondHeadBox *headBox = [TRSecondHeadBox initBox:self.view.bounds.size];
-    [_scrollView.boxes addObject: headBox];
+    TRContactBox *contactBox = (TRContactBox*)[TRContactBox initBox: self.view.bounds.size
+                                               withUserData:_userDataObject];
+    [_scrollView.boxes addObject: contactBox];
+}
+
+-(void) createTagsBox
+{
+    TRTagsBox *tagsBox = (TRTagsBox*)[TRTagsBox initBox: self.view.bounds.size
+                                      withUserData:_userDataObject];
+    [_scrollView.boxes addObject: tagsBox];
+}
+
+-(void) createExMenuBox
+{
+    TRExMenuBox *menuBox = (TRExMenuBox*)[TRExMenuBox initBox: self.view.bounds.size
+                                          withUserData:_userDataObject byTarget:self];
+    [_scrollView.boxes addObject: menuBox];
+}
+
+-(void) createBusinessTitleBox
+{
+    TRBusinessTitleBox *titleBox = (TRBusinessTitleBox*)[TRBusinessTitleBox initBox: self.view.bounds.size
+                                                         withUserData:_userDataObject];
+    [_scrollView.boxes addObject: titleBox];
+}
+
+-(void) createBusinessBox
+{
+    TRBusinessBox *businessBox = (TRBusinessBox*)[TRBusinessBox initBox: self.view.bounds.size
+                                                  withUserData:_userDataObject];
+    [_scrollView.boxes addObject: businessBox];
 }
 
 @end

@@ -30,7 +30,9 @@
 {
     [super layoutSubviews];
     
-    self.imageView.frame = CGRectInset(self.imageView.frame, 10, 10);
+    self.imageView.frame = CGRectMake(10,
+                                      (self.frame.size.height-30)/2,
+                                      30, 30);
 }
 
 @end

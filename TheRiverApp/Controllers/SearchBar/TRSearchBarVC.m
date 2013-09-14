@@ -86,6 +86,15 @@
     searchTableView = self.searchDisplayController.searchResultsTableView;
 }
 
+-(void) removeSearchTable
+{
+    [self.searchBar resignFirstResponder];
+    
+    //[self.searchDisplayController.searchResultsTableView removeFromSuperview];
+    
+    [self hideFrontBlackView];
+}
+
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 0;
@@ -130,10 +139,10 @@
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
 {
-	[frontBlackView addSubview: self.searchDisplayController.searchResultsTableView];
-    self.searchDisplayController.searchResultsTableView.frame = CGRectMake(0, 0,
-                                                                           self.view.bounds.size.width,
-                                                                           self.view.bounds.size.height-self.searchBar.bounds.size.height);
+	[((UIViewController*)self.delegate).view addSubview: self.searchDisplayController.searchResultsTableView];
+    self.searchDisplayController.searchResultsTableView.frame = frontBlackView.frame; //CGRectMake(0, 0,
+                                                                           //self.view.bounds.size.width,
+                                                                           //self.view.bounds.size.height-self.searchBar.bounds.size.height);
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
