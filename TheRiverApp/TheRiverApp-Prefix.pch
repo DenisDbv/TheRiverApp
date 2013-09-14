@@ -15,3 +15,8 @@
 #endif
 
 #import "Global.h"
+
+#import "TRUserModel.h"
+#import "TRMindModel.h"
+#import "TRUserManager.h"
+#import "TRBusinessModel.h"

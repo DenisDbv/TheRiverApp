@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TDBadgedCell/TDBadgedCell.h>
 
-@interface TRRootMenuCell : UITableViewCell
+@interface TRRootMenuCell : TDBadgedCell
 
 @end

@@ -6,8 +6,14 @@
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TRCenterRootController.h"
 
-@interface TRUserProfileController : UIViewController
+@class TRUserModel;
+
+@interface TRUserProfileController : TRCenterRootController
+
+@property (nonatomic, retain) TRUserModel *userDataObject;
+
+-(id) initByUserModel:(TRUserModel*)userObject;
 
 @end

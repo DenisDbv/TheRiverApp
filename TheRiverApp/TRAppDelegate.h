@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRUserProfileController.h"
 
 @interface TRAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -20,5 +21,6 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 -(void) changeCenterViewController:(UIViewController*)newController;
+-(void) changeProfileViewController:(TRUserProfileController*)newController;
 
 @end

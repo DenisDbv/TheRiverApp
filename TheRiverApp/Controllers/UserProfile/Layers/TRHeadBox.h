@@ -6,10 +6,8 @@
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
-#import "MGBox.h"
+#import "TRRootBox.h"
 
-@interface TRHeadBox : MGBox
-
-+(TRHeadBox *)initBox:(CGSize)bounds;
+@interface TRHeadBox : TRRootBox
 
 @end
