@@ -86,6 +86,10 @@
 		1891D81317DCDB7800281246 /* TRMindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D81217DCDB7800281246 /* TRMindModel.m */; };
 		1891D81617DCE70E00281246 /* TRMindItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D81517DCE70D00281246 /* TRMindItemCell.m */; };
 		1891D81817DCEB1300281246 /* TRMindItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1891D81717DCEB1200281246 /* TRMindItemCell.xib */; };
+		189486BA17E6416700E9B119 /* m1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189486B617E6416700E9B119 /* m1.jpg */; };
+		189486BB17E6416700E9B119 /* m2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189486B717E6416700E9B119 /* m2.jpg */; };
+		189486BC17E6416700E9B119 /* m3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189486B817E6416700E9B119 /* m3.jpg */; };
+		189486BD17E6416700E9B119 /* m4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189486B917E6416700E9B119 /* m4.jpg */; };
 		1896C44F17E089DB004AE5FF /* skype.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C44E17E089DB004AE5FF /* skype.png */; };
 		1896C45217E09101004AE5FF /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45017E09101004AE5FF /* button-default.png */; };
 		1896C45317E09101004AE5FF /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45117E09101004AE5FF /* button-default@2x.png */; };
@@ -320,6 +324,10 @@
 		1891D81417DCE70C00281246 /* TRMindItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindItemCell.h; path = TableViewHelpers/TRMindItemCell.h; sourceTree = "<group>"; };
 		1891D81517DCE70D00281246 /* TRMindItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindItemCell.m; path = TableViewHelpers/TRMindItemCell.m; sourceTree = "<group>"; };
 		1891D81717DCEB1200281246 /* TRMindItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRMindItemCell.xib; path = TableViewHelpers/TRMindItemCell.xib; sourceTree = "<group>"; };
+		189486B617E6416700E9B119 /* m1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = m1.jpg; sourceTree = "<group>"; };
+		189486B717E6416700E9B119 /* m2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = m2.jpg; sourceTree = "<group>"; };
+		189486B817E6416700E9B119 /* m3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = m3.jpg; sourceTree = "<group>"; };
+		189486B917E6416700E9B119 /* m4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = m4.jpg; sourceTree = "<group>"; };
 		1896C44E17E089DB004AE5FF /* skype.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skype.png; sourceTree = "<group>"; };
 		1896C45017E09101004AE5FF /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
 		1896C45117E09101004AE5FF /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
@@ -933,6 +941,10 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				189486B617E6416700E9B119 /* m1.jpg */,
+				189486B717E6416700E9B119 /* m2.jpg */,
+				189486B817E6416700E9B119 /* m3.jpg */,
+				189486B917E6416700E9B119 /* m4.jpg */,
 				1896C46017E23164004AE5FF /* dropdown-icon@2x.png */,
 				1896C45017E09101004AE5FF /* button-default.png */,
 				1896C45117E09101004AE5FF /* button-default@2x.png */,
@@ -1240,6 +1252,10 @@
 				1896C46117E23164004AE5FF /* dropdown-icon@2x.png in Resources */,
 				1896C46A17E34156004AE5FF /* TRMeetingsBaseListVC.xib in Resources */,
 				1896C46F17E34219004AE5FF /* TRMeetingItemCell.xib in Resources */,
+				189486BA17E6416700E9B119 /* m1.jpg in Resources */,
+				189486BB17E6416700E9B119 /* m2.jpg in Resources */,
+				189486BC17E6416700E9B119 /* m3.jpg in Resources */,
+				189486BD17E6416700E9B119 /* m4.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

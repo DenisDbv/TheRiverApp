@@ -9,6 +9,6 @@
 #import "TRMeetingModel.h"
 
 @implementation TRMeetingModel
-@synthesize meetingCity, meetingContact, meetingDay, meetingDescription, meetingGroup, meetingMonth, meetingPhoto, meetingTime, meetingTitle, meetingURL;
+@synthesize meetingCity, meetingContact, meetingDay, meetingDescription, meetingGroup, meetingMonth, meetingPhoto, meetingTime, meetingTitle, meetingURL, isCheck, isRed, isFinish;
 
 @end

@@ -21,6 +21,8 @@
 
 @property (nonatomic, retain) NSArray *meetingContact;
 @property (nonatomic) BOOL isCheck;
+@property (nonatomic) BOOL isRed;
+@property (nonatomic) BOOL isFinish;
 
 @property (nonatomic, retain) NSString *meetingPhoto;
 @property (nonatomic, retain) NSString *meetingURL;

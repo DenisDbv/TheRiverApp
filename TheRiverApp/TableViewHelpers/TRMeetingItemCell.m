@@ -9,7 +9,7 @@
 #import "TRMeetingItemCell.h"
 
 @implementation TRMeetingItemCell
-@synthesize labelCity, labelDay, labelGroup, labelMonth, labelTitle, agreeButton;
+@synthesize labelCity, labelDay, labelGroup, labelMonth, labelTitle, agreeButton, labelIfDisable;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -27,30 +27,47 @@
 
 -(void) reloadWithMeetingModel:(TRMeetingModel*)meetingObject
 {
-    labelDay.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
+    labelDay.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
     labelMonth.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+    
+    if(meetingObject.isRed == YES)
+    {
+        labelDay.textColor = labelMonth.textColor = [UIColor redColor];
+    }
+    else
+        labelDay.textColor = labelMonth.textColor = [UIColor blackColor];
+    
     labelCity.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
     labelTitle.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:18];
     labelGroup.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+    labelIfDisable.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+    
+    if(meetingObject.isFinish == YES)
+    {
+        labelDay.textColor = labelCity.textColor = labelGroup.textColor = labelMonth.textColor = labelTitle.textColor = labelIfDisable.textColor = [UIColor lightGrayColor];
+    }
 
     NSInteger maxDateBlock = [self getMaxWidthFromStrings:meetingObject];
     
     [self changeSizeLabel:labelDay atString:meetingObject.meetingDay];
     labelDay.frame = [self changeWidthInFrame:labelDay.frame byWidth:maxDateBlock];
+    labelDay.frame = [self changeXInFrame:labelDay.frame byX:13];
     
     [self changeSizeLabel:labelMonth atString:meetingObject.meetingMonth];
     labelMonth.frame = [self changeWidthInFrame:labelMonth.frame byWidth:maxDateBlock];
-    labelMonth.frame = [self changeYInFrame:labelMonth.frame byY:labelDay.frame.origin.y+labelDay.frame.size.height];
+    labelMonth.frame = [self changeYInFrame:labelMonth.frame byY:labelDay.frame.origin.y+labelDay.frame.size.height+3];
+    labelMonth.frame = [self changeXInFrame:labelMonth.frame byX:13];
     
     [self changeSizeLabel:labelCity atString:meetingObject.meetingCity];
     labelCity.frame = [self changeWidthInFrame:labelCity.frame byWidth:maxDateBlock];
-    labelCity.frame = [self changeYInFrame:labelCity.frame byY:labelMonth.frame.origin.y+labelMonth.frame.size.height];
+    labelCity.frame = [self changeYInFrame:labelCity.frame byY:labelMonth.frame.origin.y+labelMonth.frame.size.height+5];
+    labelCity.frame = [self changeXInFrame:labelCity.frame byX:13];
     
     CGSize sizeTitle = [meetingObject.meetingTitle sizeWithFont:labelTitle.font
                                             constrainedToSize:CGSizeMake(320-(maxDateBlock+35), 50)
                                                 lineBreakMode:NSLineBreakByWordWrapping];
     labelTitle.text = meetingObject.meetingTitle;
-    labelTitle.frame = CGRectMake(maxDateBlock+35, 5, 320-(maxDateBlock+35), sizeTitle.height);
+    labelTitle.frame = CGRectMake(maxDateBlock+35, 10, 320-(maxDateBlock+35), sizeTitle.height);
     
     CGSize sizeGroup = [meetingObject.meetingGroup sizeWithFont:labelGroup.font
                                               constrainedToSize:CGSizeMake(320-(maxDateBlock+35), 50)
@@ -58,14 +75,33 @@
     labelGroup.text = meetingObject.meetingGroup;
     labelGroup.frame = CGRectMake(maxDateBlock+35, labelTitle.frame.origin.y+labelTitle.frame.size.height, 320-(maxDateBlock+35), sizeGroup.height);
     
-    //agreeButton = [[ACPButton alloc] initWithFrame:CGRectMake(5, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 320-10, 30)];
-    agreeButton.frame = CGRectMake(5, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 320-10, 30);
-    [agreeButton setStyle:[UIColor yellowColor]  andBottomColor:[UIColor orangeColor]];
-    [agreeButton setLabelTextColor:[UIColor orangeColor] highlightedColor:[UIColor redColor] disableColor:nil];
-    [agreeButton setCornerRadius:4];
-    [agreeButton setBorderStyle:[UIColor blueColor] andInnerColor:nil];
-    [agreeButton setLabelTextColor:[UIColor blackColor] highlightedColor:[UIColor lightGrayColor] disableColor:nil];
-    [agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+    if(meetingObject.isFinish == NO)    {
+        labelIfDisable.hidden = YES;
+        agreeButton.hidden = NO;
+        
+        agreeButton.frame = CGRectMake(maxDateBlock+35, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 125, 35);
+        [agreeButton setLabelTextColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] disableColor:nil];
+        [agreeButton setCornerRadius:4];
+        [agreeButton setBorderStyle:nil andInnerColor:nil];
+        if(meetingObject.isCheck == NO) {
+            [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
+            [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
+            [agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+        } else  {
+            [agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
+            [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
+            [agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+        }
+    } else  {
+        agreeButton.hidden = YES;
+        labelIfDisable.hidden = NO;
+        
+        CGSize sizeGroup = [@"Мероприятие окончено" sizeWithFont:labelIfDisable.font
+                                                  constrainedToSize:CGSizeMake(320-(maxDateBlock+35), 50)
+                                                      lineBreakMode:NSLineBreakByWordWrapping];
+        labelIfDisable.text = @"Мероприятие окончено";
+        labelIfDisable.frame = CGRectMake(maxDateBlock, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 320-(maxDateBlock+35), sizeGroup.height);
+    }
 }
 
 -(NSInteger) getMaxWidthFromStrings:(TRMeetingModel*)meetingObject
@@ -95,6 +131,11 @@
 -(CGRect) changeYInFrame:(CGRect)frame byY:(NSInteger)coord
 {
     return CGRectMake(frame.origin.x, coord, frame.size.width, frame.size.height);
+}
+
+-(CGRect) changeXInFrame:(CGRect)frame byX:(NSInteger)coord
+{
+    return CGRectMake(coord, frame.origin.y, frame.size.width, frame.size.height);
 }
 
 @end

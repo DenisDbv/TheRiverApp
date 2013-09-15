@@ -46,12 +46,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20; //(NSInteger)[TRUserManager sharedInstance].meetingObjects.count;
+    return (NSInteger)[TRUserManager sharedInstance].meetingObjects.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 114;
+    return 125; //114;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,7 +62,7 @@
         cell = [[TRMeetingItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
     }
     
-    TRMeetingModel *meetUnit = [[TRUserManager sharedInstance].meetingObjects objectAtIndex:0];
+    TRMeetingModel *meetUnit = [[TRUserManager sharedInstance].meetingObjects objectAtIndex:indexPath.row];
     
     [cell reloadWithMeetingModel:meetUnit];
     
@@ -76,7 +76,7 @@
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TRMeetingDescriptionVC *descriptionUnit = [[TRMeetingDescriptionVC alloc] initByMindModel:[[TRUserManager sharedInstance].meetingObjects objectAtIndex:0]];
+    TRMeetingDescriptionVC *descriptionUnit = [[TRMeetingDescriptionVC alloc] initByMindModel:[[TRUserManager sharedInstance].meetingObjects objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:descriptionUnit animated:YES];
 }
 
