@@ -577,7 +577,7 @@
 -(void) createMeetingObjects
 {
     TRMeetingModel *meetingModel1 = [[TRMeetingModel alloc] init];
-    meetingModel1.meetingDay = @"21";
+    meetingModel1.meetingDay = @"16";
     meetingModel1.meetingMonth = @"Сентября";
     meetingModel1.meetingTitle = @"VIP двухдневный тренинг «Миллион за сто»";
     meetingModel1.meetingGroup = @"Бизнес молодость";
@@ -591,7 +591,7 @@
     meetingModel1.isCheck = NO;
     
     TRMeetingModel *meetingModel2 = [[TRMeetingModel alloc] init];
-    meetingModel2.meetingDay = @"24";
+    meetingModel2.meetingDay = @"17";
     meetingModel2.meetingMonth = @"Сентября";
     meetingModel2.meetingTitle = @"Главный двухдневный тренинг «Интенсив»";
     meetingModel2.meetingGroup = @"Бизнес молодость";
@@ -605,7 +605,7 @@
     meetingModel2.isCheck = NO;
     
     TRMeetingModel *meetingModel3 = [[TRMeetingModel alloc] init];
-    meetingModel3.meetingDay = @"25";
+    meetingModel3.meetingDay = @"24";
     meetingModel3.meetingMonth = @"Сентября";
     meetingModel3.meetingTitle = @"Двухмесячный   «Коучинг»";
     meetingModel3.meetingGroup = @"Бизнес молодость";

@@ -7,12 +7,15 @@
 //
 
 #import "TRMeetLogoBox.h"
+#import <SSToolkit/SSToolkit.h>
 
 @implementation TRMeetLogoBox
 {
     UILabel *dayLabel;
     UILabel *monthLabel;
     UILabel *timeLabel;
+    
+    SSGradientView *layerView;
 }
 
 - (void)setup {
@@ -54,24 +57,40 @@
     [UIView animateWithDuration:0.1 animations:^{
         imageView.alpha = 1;
     }];
+    
+    layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
+    layerView.backgroundColor = [UIColor clearColor];
+    [self addSubview:layerView];
+}
+
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    layerView.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    [layerView layoutSubviews];
 }
 
 -(void) showInfoBlock
 {
     dayLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    dayLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
-    dayLabel.textColor = [UIColor blackColor];
+    dayLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
+    dayLabel.textColor = [UIColor whiteColor];
     dayLabel.textAlignment = NSTextAlignmentCenter;
+    dayLabel.backgroundColor = [UIColor clearColor];
     
     monthLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     monthLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
-    monthLabel.textColor = [UIColor blackColor];
+    monthLabel.textColor = [UIColor whiteColor];
     monthLabel.textAlignment = NSTextAlignmentCenter;
+    monthLabel.backgroundColor = [UIColor clearColor];
     
     timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
-    timeLabel.textColor = [UIColor lightGrayColor];
+    timeLabel.textColor = [UIColor whiteColor];
     timeLabel.textAlignment = NSTextAlignmentCenter;
+    timeLabel.backgroundColor = [UIColor clearColor];
     
     NSInteger maxDateBlock = [self getMaxWidthFromStrings:self.meetingData];
     
@@ -88,8 +107,8 @@
 
     UIView *infoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, maxDateBlock,
                                                                 CGRectGetHeight(dayLabel.frame)+CGRectGetHeight(monthLabel.frame)+CGRectGetHeight(timeLabel.frame))];
-    infoView.backgroundColor = [UIColor whiteColor];
-    infoView.alpha = 0.7;
+    infoView.backgroundColor = [UIColor clearColor];
+    //infoView.alpha = 1.0;
     
     [infoView addSubview:dayLabel];
     [infoView addSubview:monthLabel];
@@ -102,7 +121,7 @@
 
 -(NSInteger) getMaxWidthFromStrings:(TRMeetingModel*)meetingObject
 {
-    CGSize sizeMonth = [meetingObject.meetingMonth sizeWithFont:dayLabel.font
+    CGSize sizeMonth = [meetingObject.meetingMonth sizeWithFont:monthLabel.font
                                               constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                                                   lineBreakMode:NSLineBreakByWordWrapping];
     CGSize sizeTime = [meetingObject.meetingCity sizeWithFont:timeLabel.font
