@@ -8,6 +8,7 @@
 
 #import "TRUserManager.h"
 #import "TRUserModel.h"
+#import "TRMeetingModel.h"
 
 @interface TRUserManager()
 
@@ -18,6 +19,7 @@
 @synthesize usersObject;
 @synthesize mindObjects;
 @synthesize businessObjects;
+@synthesize meetingObjects;
 
 + (instancetype)sharedInstance
 {
@@ -31,6 +33,8 @@
     [self createMindObjects];
     
     [self createBusinessObjects];
+    
+    [self createMeetingObjects];
     
     return [super init];
 }
@@ -560,7 +564,7 @@
     businessModel9.businessURL = @"http://zomgg.ru/reki/cases/09/body.html";
     
     businessObjects = [[NSArray alloc] initWithObjects:businessModel1,
-                       businessModel2,
+                       //businessModel2,
                        businessModel3,
                        businessModel4,
                        businessModel5,
@@ -568,6 +572,68 @@
                        businessModel7,
                        businessModel8,
                        businessModel9, nil];
+}
+
+-(void) createMeetingObjects
+{
+    TRMeetingModel *meetingModel1 = [[TRMeetingModel alloc] init];
+    meetingModel1.meetingDay = @"16";
+    meetingModel1.meetingMonth = @"Сентября";
+    meetingModel1.meetingTitle = @"VIP двухдневный тренинг «Миллион за сто»";
+    meetingModel1.meetingGroup = @"Бизнес молодость";
+    meetingModel1.meetingDescription = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel1.meetingCity = @"Москва";
+    meetingModel1.meetingTime = @"12:00";
+    meetingModel1.meetingContact = usersObject;
+    meetingModel1.meetingPhoto = @"m1.jpg";
+    meetingModel1.meetingURL = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel1.isRed = YES;
+    meetingModel1.isCheck = NO;
+    
+    TRMeetingModel *meetingModel2 = [[TRMeetingModel alloc] init];
+    meetingModel2.meetingDay = @"17";
+    meetingModel2.meetingMonth = @"Сентября";
+    meetingModel2.meetingTitle = @"Главный двухдневный тренинг «Интенсив»";
+    meetingModel2.meetingGroup = @"Бизнес молодость";
+    meetingModel2.meetingDescription = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel2.meetingCity = @"Москва";
+    meetingModel2.meetingTime = @"14:00";
+    meetingModel2.meetingContact = usersObject;
+    meetingModel2.meetingPhoto = @"m2.jpg";
+    meetingModel2.meetingURL = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel2.isRed = YES;
+    meetingModel2.isCheck = NO;
+    
+    TRMeetingModel *meetingModel3 = [[TRMeetingModel alloc] init];
+    meetingModel3.meetingDay = @"24";
+    meetingModel3.meetingMonth = @"Сентября";
+    meetingModel3.meetingTitle = @"Двухмесячный   «Коучинг»";
+    meetingModel3.meetingGroup = @"Бизнес молодость";
+    meetingModel3.meetingDescription = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel3.meetingCity = @"Москва";
+    meetingModel3.meetingTime = @"11:00";
+    meetingModel3.meetingContact = usersObject;
+    meetingModel3.meetingPhoto = @"m3.jpg";
+    meetingModel3.meetingURL = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel3.isRed = NO;
+    meetingModel3.isCheck = YES;
+    
+    TRMeetingModel *meetingModel4 = [[TRMeetingModel alloc] init];
+    meetingModel4.meetingDay = @"1";
+    meetingModel4.meetingMonth = @"Сентября";
+    meetingModel4.meetingTitle = @"Модель неизбежности. Что такое Интенсив?";
+    meetingModel4.meetingGroup = @"Бизнес молодость";
+    meetingModel4.meetingDescription = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel4.meetingCity = @"Вебинар";
+    meetingModel4.meetingTime = @"14:00";
+    meetingModel4.meetingContact = usersObject;
+    meetingModel4.meetingPhoto = @"m4.jpg";
+    meetingModel4.meetingURL = @"http://zomgg.ru/reki/cases/09/body.html";
+    meetingModel4.isRed = NO;
+    meetingModel4.isCheck = NO;
+    meetingModel4.isFinish = YES;
+    
+    meetingObjects = [[NSArray alloc] initWithObjects:meetingModel1, meetingModel2, meetingModel3, meetingModel4, nil];
 }
 
 @end

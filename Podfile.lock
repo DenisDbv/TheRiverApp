@@ -8,7 +8,7 @@ PODS:
   - DEFacebookComposeViewController (1.0.0):
     - Facebook-iOS-SDK (~> 3.1)
   - DWTagList (0.0.2)
-  - Facebook-iOS-SDK (3.7.1)
+  - Facebook-iOS-SDK (3.8.0)
   - MBProgressHUD (0.7)
   - MGBox2 (2.0.0)
   - NVUIGradientButton (1.5.0)
@@ -26,6 +26,7 @@ PODS:
   - SIAlertView (1.2)
   - SSToolkit (1.0.4)
   - TDBadgedCell (2.3.1)
+  - uservoice-iphone-sdk (2.0.12)
 
 DEPENDENCIES:
   - ABMultiton
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - SIAlertView
   - SSToolkit
   - TDBadgedCell
+  - uservoice-iphone-sdk
 
 SPEC CHECKSUMS:
   ABMultiton: b0a22178919b139e0b3921825ace1b36ca8e8b91
@@ -48,7 +50,7 @@ SPEC CHECKSUMS:
   AQGridView: ee436c64bc4a972ca7f3ce99971c0204af9e65ea
   DEFacebookComposeViewController: b26811d6775594df2a386406655c9f2828f041cc
   DWTagList: 76302ed894130ed285e95eb11e704a55593101ab
-  Facebook-iOS-SDK: bf38d403928f6adb652e2e5ae46253e0c6ba9a19
+  Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MGBox2: 7c09e36c2271f9af16fdb5141a0ca554ecee4d8d
   NVUIGradientButton: 08792b091feb141d89cb375cbb2d2db0cc02371c
@@ -59,5 +61,6 @@ SPEC CHECKSUMS:
   SIAlertView: fd188f66278761f4ff069f517c3deb2be16ecdcc
   SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
   TDBadgedCell: 091af82e20d9da3be46eb48cfc53129c324a2faa
+  uservoice-iphone-sdk: 1a6b31c204a6208225197f100a67d286f51b9f0d
 
 COCOAPODS: 0.23.0

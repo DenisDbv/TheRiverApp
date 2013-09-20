@@ -20,3 +20,4 @@
 #import "TRMindModel.h"
 #import "TRUserManager.h"
 #import "TRBusinessModel.h"
+#import "TRMeetingModel.h"
