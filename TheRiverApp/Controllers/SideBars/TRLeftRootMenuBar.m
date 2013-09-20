@@ -11,6 +11,7 @@
 #import "TRSectionHeaderView.h"
 #import "MFSideMenu.h"
 
+#import <uservoice-iphone-sdk/UserVoice.h>
 #import <SSToolkit/SSToolkit.h>
 
 #import "UIView+GestureBlocks.h"
@@ -82,7 +83,7 @@
     {
         return 2;
     }*/
-    return 5;
+    return 6;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -214,6 +215,10 @@
             //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
             cell.textLabel.text = @"База знаний";
             break;
+        case 5:
+            //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
+            cell.textLabel.text = @"Оставить отзыв";
+            break;
             
         default:
             break;
@@ -286,7 +291,22 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 4)  {
+    if(indexPath.row == 5)   {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            UVConfig *config = [UVConfig configWithSite:@"brandymint.uservoice.com"
+                                                 andKey:@"6P7WTuK36Q8gbXrnjXSug"
+                                              andSecret:@"N6YtFh854EPUu7y5rAWNA319UzNSsu3P6ufEfUolnuU"
+                                               andEmail:@"usertest@gmail.com"
+                                         andDisplayName:@"UserTest"
+                                                andGUID:@"111GUID"];
+            //config.showForum = NO;
+            //config.showPostIdea = NO;
+            //config.showKnowledgeBase = NO;
+            config.showContactUs = NO;
+            //[UserVoice presentUserVoiceNewIdeaFormForParentViewController:self andConfig:config];
+            [UserVoice presentUserVoiceInterfaceForParentViewController:self andConfig:config];
+        }];
+    } else if(indexPath.row == 4)  {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];

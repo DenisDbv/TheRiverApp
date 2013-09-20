@@ -564,7 +564,7 @@
     businessModel9.businessURL = @"http://zomgg.ru/reki/cases/09/body.html";
     
     businessObjects = [[NSArray alloc] initWithObjects:businessModel1,
-                       businessModel2,
+                       //businessModel2,
                        businessModel3,
                        businessModel4,
                        businessModel5,
