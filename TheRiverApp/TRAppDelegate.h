@@ -20,6 +20,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+- (void) presentLoginViewController;
+- (void) presentTheRiverControllers;
 -(void) changeCenterViewController:(UIViewController*)newController;
 -(void) changeProfileViewController:(TRUserProfileController*)newController;
 

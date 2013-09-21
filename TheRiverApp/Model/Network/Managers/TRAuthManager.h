@@ -32,6 +32,7 @@ withSuccessOperation:(SuccessOperation) succesOperaion
  andFailedOperation:(FailedOperation) failedOperation;
 
 -(void) saveUserData:(TRAuthUserModel*)userModel;
+-(BOOL) isAuth;
 -(void) logout;
 
 @end

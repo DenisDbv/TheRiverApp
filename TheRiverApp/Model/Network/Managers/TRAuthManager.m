@@ -42,21 +42,21 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                                                       andParam: params
                                                                      andHeader: nil
                                                               withSuccessBlock:^(LRRestyResponse *response) {
-        
-                                                                  if( succesOperaion != nil)
-                                                                      succesOperaion(response);
                                                                   
                                                                   NSDictionary *resultAuthJSON = [[response asString] objectFromJSONString];
                                                                   
                                                                   iamData = [[TRAuthUserModel alloc] initWithDictionary:resultAuthJSON];
                                                                   [self saveUserData: iamData];
+                                                                  
+                                                                  if( succesOperaion != nil)
+                                                                      succesOperaion(response);
         
     } andFailedBlock:^(LRRestyResponse *response){
         
         if(failedOperation != nil)
             failedOperation(response);
         
-        NSLog(@"Error: %@", response.asString);
+        NSLog(@"Error auth: %@", response.asString);
     }];
     
     [_queueAuth addOperation:operation];
@@ -70,6 +70,14 @@ withSuccessOperation:(SuccessOperation) succesOperaion
 -(TRAuthManager*) iamData
 {
     return [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileHandler];
+}
+
+-(BOOL) isAuth
+{
+    if(self.iamData.token.length == 0)
+        return NO;
+    
+    return YES;
 }
 
 -(void) logout
