@@ -108,6 +108,15 @@
 		1896C47917E45E3B004AE5FF /* TRMeetLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47817E45E3B004AE5FF /* TRMeetLogoBox.m */; };
 		1896C47C17E460E1004AE5FF /* TRMeetTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47B17E460E1004AE5FF /* TRMeetTitleBox.m */; };
 		1896C47F17E46457004AE5FF /* TRMeetWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C47E17E46456004AE5FF /* TRMeetWebViewBox.m */; };
+		18975F7E17EE052F00B06DF7 /* TRAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F7D17EE052F00B06DF7 /* TRAuthManager.m */; };
+		18975F8117EE055000B06DF7 /* URLPostOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F8017EE055000B06DF7 /* URLPostOperation.m */; };
+		18975F8417EE0D7500B06DF7 /* TRNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F8317EE0D7400B06DF7 /* TRNetworkConstants.m */; };
+		18975F8917EE1B5500B06DF7 /* TGArhiveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F8817EE1B5500B06DF7 /* TGArhiveObject.m */; };
+		18975F8D17EE208600B06DF7 /* TRAuthUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F8C17EE208600B06DF7 /* TRAuthUserModel.m */; };
+		18975F9517EE2DF100B06DF7 /* TRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F9317EE2DF100B06DF7 /* TRLoginViewController.m */; };
+		18975F9617EE2DF100B06DF7 /* TRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18975F9417EE2DF100B06DF7 /* TRLoginViewController.xib */; };
+		18975F9A17EE2EFA00B06DF7 /* TRAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F9817EE2EF900B06DF7 /* TRAuthViewController.m */; };
+		18975F9B17EE2EFA00B06DF7 /* TRAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18975F9917EE2EF900B06DF7 /* TRAuthViewController.xib */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -358,6 +367,22 @@
 		1896C47B17E460E1004AE5FF /* TRMeetTitleBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetTitleBox.m; path = Controllers/Meetings/Layers/TRMeetTitleBox.m; sourceTree = "<group>"; };
 		1896C47D17E46456004AE5FF /* TRMeetWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetWebViewBox.h; path = Controllers/Meetings/Layers/TRMeetWebViewBox.h; sourceTree = "<group>"; };
 		1896C47E17E46456004AE5FF /* TRMeetWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetWebViewBox.m; path = Controllers/Meetings/Layers/TRMeetWebViewBox.m; sourceTree = "<group>"; };
+		18975F7C17EE052F00B06DF7 /* TRAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAuthManager.h; sourceTree = "<group>"; };
+		18975F7D17EE052F00B06DF7 /* TRAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAuthManager.m; sourceTree = "<group>"; };
+		18975F7F17EE055000B06DF7 /* URLPostOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLPostOperation.h; sourceTree = "<group>"; };
+		18975F8017EE055000B06DF7 /* URLPostOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLPostOperation.m; sourceTree = "<group>"; };
+		18975F8217EE0D7400B06DF7 /* TRNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNetworkConstants.h; sourceTree = "<group>"; };
+		18975F8317EE0D7400B06DF7 /* TRNetworkConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNetworkConstants.m; sourceTree = "<group>"; };
+		18975F8717EE1B5500B06DF7 /* TGArhiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGArhiveObject.h; sourceTree = "<group>"; };
+		18975F8817EE1B5500B06DF7 /* TGArhiveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGArhiveObject.m; sourceTree = "<group>"; };
+		18975F8B17EE208600B06DF7 /* TRAuthUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRAuthUserModel.h; path = Models/TRAuthUserModel.h; sourceTree = "<group>"; };
+		18975F8C17EE208600B06DF7 /* TRAuthUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRAuthUserModel.m; path = Models/TRAuthUserModel.m; sourceTree = "<group>"; };
+		18975F9217EE2DF100B06DF7 /* TRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRLoginViewController.h; path = Controllers/Login/TRLoginViewController.h; sourceTree = "<group>"; };
+		18975F9317EE2DF100B06DF7 /* TRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRLoginViewController.m; path = Controllers/Login/TRLoginViewController.m; sourceTree = "<group>"; };
+		18975F9417EE2DF100B06DF7 /* TRLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRLoginViewController.xib; path = Controllers/Login/TRLoginViewController.xib; sourceTree = "<group>"; };
+		18975F9717EE2EF800B06DF7 /* TRAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRAuthViewController.h; path = Controllers/Login/TRAuthViewController.h; sourceTree = "<group>"; };
+		18975F9817EE2EF900B06DF7 /* TRAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRAuthViewController.m; path = Controllers/Login/TRAuthViewController.m; sourceTree = "<group>"; };
+		18975F9917EE2EF900B06DF7 /* TRAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRAuthViewController.xib; path = Controllers/Login/TRAuthViewController.xib; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -578,6 +603,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18975F8E17EE2D5100B06DF7 /* Login */,
 				1896C46517E3411E004AE5FF /* Meetings */,
 				18A1098D17DEF88F00D9CD8C /* FriendsList */,
 				18A108D517DE034100D9CD8C /* Business */,
@@ -702,6 +728,7 @@
 		1891D7EE17DB595200281246 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18975F7A17EE052F00B06DF7 /* Network */,
 				1891D7F317DB5B0500281246 /* DataManagers */,
 				1891D7EF17DB596B00281246 /* Entity */,
 			);
@@ -726,6 +753,7 @@
 		1891D7F317DB5B0500281246 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				18975F8617EE1B3300B06DF7 /* FileIO */,
 				1891D7F417DB5B3300281246 /* TRUserManager.h */,
 				1891D7F517DB5B3300281246 /* TRUserManager.m */,
 			);
@@ -790,6 +818,61 @@
 				1896C47E17E46456004AE5FF /* TRMeetWebViewBox.m */,
 			);
 			name = Layers;
+			sourceTree = "<group>";
+		};
+		18975F7A17EE052F00B06DF7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				18975F8A17EE1E1200B06DF7 /* Models */,
+				18975F7B17EE052F00B06DF7 /* Managers */,
+				18975F7F17EE055000B06DF7 /* URLPostOperation.h */,
+				18975F8017EE055000B06DF7 /* URLPostOperation.m */,
+				18975F8217EE0D7400B06DF7 /* TRNetworkConstants.h */,
+				18975F8317EE0D7400B06DF7 /* TRNetworkConstants.m */,
+			);
+			name = Network;
+			path = Model/Network;
+			sourceTree = "<group>";
+		};
+		18975F7B17EE052F00B06DF7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				18975F7C17EE052F00B06DF7 /* TRAuthManager.h */,
+				18975F7D17EE052F00B06DF7 /* TRAuthManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		18975F8617EE1B3300B06DF7 /* FileIO */ = {
+			isa = PBXGroup;
+			children = (
+				18975F8717EE1B5500B06DF7 /* TGArhiveObject.h */,
+				18975F8817EE1B5500B06DF7 /* TGArhiveObject.m */,
+			);
+			name = FileIO;
+			path = Model/DataManagers/FileIO;
+			sourceTree = "<group>";
+		};
+		18975F8A17EE1E1200B06DF7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18975F8B17EE208600B06DF7 /* TRAuthUserModel.h */,
+				18975F8C17EE208600B06DF7 /* TRAuthUserModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		18975F8E17EE2D5100B06DF7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				18975F9217EE2DF100B06DF7 /* TRLoginViewController.h */,
+				18975F9317EE2DF100B06DF7 /* TRLoginViewController.m */,
+				18975F9417EE2DF100B06DF7 /* TRLoginViewController.xib */,
+				18975F9717EE2EF800B06DF7 /* TRAuthViewController.h */,
+				18975F9817EE2EF900B06DF7 /* TRAuthViewController.m */,
+				18975F9917EE2EF900B06DF7 /* TRAuthViewController.xib */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		18A108B817DD199600D9CD8C /* Layers */ = {
@@ -1264,6 +1347,8 @@
 				189486BD17E6416700E9B119 /* m4.jpg in Resources */,
 				189486C617E7596D00E9B119 /* check-icon-white@2x.png in Resources */,
 				189486C717E7596D00E9B119 /* location-icon-gray@2x.png in Resources */,
+				18975F9617EE2DF100B06DF7 /* TRLoginViewController.xib in Resources */,
+				18975F9B17EE2EFA00B06DF7 /* TRAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,6 +1458,13 @@
 				1896C47917E45E3B004AE5FF /* TRMeetLogoBox.m in Sources */,
 				1896C47C17E460E1004AE5FF /* TRMeetTitleBox.m in Sources */,
 				1896C47F17E46457004AE5FF /* TRMeetWebViewBox.m in Sources */,
+				18975F7E17EE052F00B06DF7 /* TRAuthManager.m in Sources */,
+				18975F8117EE055000B06DF7 /* URLPostOperation.m in Sources */,
+				18975F8417EE0D7500B06DF7 /* TRNetworkConstants.m in Sources */,
+				18975F8917EE1B5500B06DF7 /* TGArhiveObject.m in Sources */,
+				18975F8D17EE208600B06DF7 /* TRAuthUserModel.m in Sources */,
+				18975F9517EE2DF100B06DF7 /* TRLoginViewController.m in Sources */,
+				18975F9A17EE2EFA00B06DF7 /* TRAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

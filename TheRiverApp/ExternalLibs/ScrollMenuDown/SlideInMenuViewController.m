@@ -229,9 +229,7 @@
 }
 
 -(void)menuPushed:(id)sender {
-    
     NSLog(@"Menu button pressed");
-    
 }
 
 @end

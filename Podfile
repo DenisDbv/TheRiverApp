@@ -1,4 +1,5 @@
 
+# Interface
 #pod 'MFSideMenu'
 #pod 'UITableView-NXEmptyView'
 pod 'REActivityViewController', '~> 1.6.6'
@@ -12,4 +13,14 @@ pod 'ABMultiton'
 pod 'SSToolkit'
 pod 'MBProgressHUD', '~> 0.7'
 pod 'SIAlertView'
+
+# Forum
 pod 'uservoice-iphone-sdk'
+
+# Network
+pod 'LRResty'
+pod 'JSONKit'
+pod 'jastor'
+
+# FileIO
+pod 'HRCoder'
