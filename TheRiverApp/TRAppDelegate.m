@@ -10,6 +10,7 @@
 
 #import "MFSideMenu.h"
 
+#import "TRLoginViewController.h"
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
 #import "TRTestViewController.h"
@@ -30,27 +31,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self setupAppearance];
     
-    [TRUserManager sharedInstance];
+    if( [[TRAuthManager client] isAuth] == NO )
+    {
+        NSLog(@"User is not authorized");
+        
+        [self presentLoginViewController];
+        
+    } else
+    {
+        NSLog(@"User has been authenticated");
+        
+        [TRUserManager sharedInstance];
+        
+        [self presentTheRiverControllers];
+    }
     
-    _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
-    _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
-    _rootContainer = [MFSideMenuContainerViewController
-                                                    containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
-                                                    leftMenuViewController: _leftRootMenuBar
-                                                    rightMenuViewController: [[UINavigationController alloc] initWithRootViewController:_rightMyContactList]];
-    [_rootContainer.shadow setEnabled:NO];
-    
-    self.window.rootViewController = _rootContainer;
-    [self.window makeKeyAndVisible];
-    
-    [self showFontsList];
+    //[self showFontsList];
     
     return YES;
 }
@@ -61,6 +61,28 @@
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
     
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+}
+
+- (void) presentLoginViewController
+{
+    TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
+    self.window.rootViewController = loginViewController;
+    [self.window makeKeyAndVisible];
+}
+
+- (void) presentTheRiverControllers
+{
+    _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
+    _rightMyContactList = [[TRMyContactListBar alloc] init];
+    _mainController = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
+    _rootContainer = [MFSideMenuContainerViewController
+                      containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
+                      leftMenuViewController: _leftRootMenuBar
+                      rightMenuViewController: [[UINavigationController alloc] initWithRootViewController:_rightMyContactList]];
+    [_rootContainer.shadow setEnabled:NO];
+    
+    self.window.rootViewController = _rootContainer;
+    [self.window makeKeyAndVisible];
 }
 
 -(void) changeCenterViewController:(UIViewController*)newController

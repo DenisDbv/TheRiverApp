@@ -13,6 +13,7 @@
 
 #import <uservoice-iphone-sdk/UserVoice.h>
 #import <SSToolkit/SSToolkit.h>
+#import <SIAlertView/SIAlertView.h>
 
 #import "UIView+GestureBlocks.h"
 #import "TRUserProfileController.h"
@@ -144,9 +145,16 @@
         CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(270.0-117.0-20.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
         nameLabel.frame = CGRectMake(imageView.frame.origin.x+imageView.frame.size.width+15, 40, size.width, size.height);
         
-        UIImageView *settingsView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cog-gray-icon@2x.png"]];
-        settingsView.frame = CGRectMake(header.bounds.size.width-30, 10, settingsView.frame.size.width/2, settingsView.frame.size.height/2);
-        [header addSubview:settingsView];
+        UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
+        [settingView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            [self logout];
+        } forTaps:1];
+        UIImageView *settingsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cog-gray-icon@2x.png"]];
+        settingsImageView.userInteractionEnabled = YES;
+        settingsImageView.frame = CGRectMake(0, 0, settingsImageView.frame.size.width/2, settingsImageView.frame.size.height/2);
+        settingsImageView.center = CGPointMake(settingView.frame.size.width/2, settingView.frame.size.height/2);
+        [settingView addSubview:settingsImageView];
+        [header addSubview:settingView];
         
         SSLineView *bottomLine = [[SSLineView alloc] initWithFrame:CGRectMake(0, header.bounds.size.height-1, header.bounds.size.width, 1)];
         [bottomLine setLineColor:[UIColor colorWithRed:41.0/255.0
@@ -159,6 +167,8 @@
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
                 [AppDelegateInstance() changeProfileViewController:userProfileVC];
+                
+                [[TRAuthManager client] logout];
             }];
         } forTaps:1];
         
@@ -348,6 +358,23 @@
             
         }];
     }*/
+}
+
+-(void) logout
+{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"Выйти?"];
+    alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:18];
+    [alertView addButtonWithTitle:@"НЕТ"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              NSLog(@"Cancel Clicked");
+                          }];
+    [alertView addButtonWithTitle:@"ДА"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              [AppDelegateInstance() presentLoginViewController];
+                          }];
+    [alertView show];
 }
 
 @end
