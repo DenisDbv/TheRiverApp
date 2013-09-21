@@ -21,3 +21,6 @@
 #import "TRUserManager.h"
 #import "TRBusinessModel.h"
 #import "TRMeetingModel.h"
+
+#import "TRNetworkConstants.h"
+#import "TRAuthManager.h"

@@ -30,8 +30,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self setupAppearance];
@@ -50,7 +48,13 @@
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
     
-    [self showFontsList];
+    //[self showFontsList];
+    
+    /*[[TRAuthManager client] authByLogin:@"dubldev@gmail.com"
+                            andPassword:@"secret1234"
+                   withSuccessOperation:nil
+                     andFailedOperation:nil];*/
+    NSLog(@"%@", [TRAuthManager client].iamData.token);
     
     return YES;
 }
