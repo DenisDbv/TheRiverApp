@@ -125,6 +125,10 @@
 		18975FF117EF436000B06DF7 /* toolbar-search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FEB17EF434B00B06DF7 /* toolbar-search-icon.png */; };
 		18975FF217EF436000B06DF7 /* toolbar-search-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FEC17EF435C00B06DF7 /* toolbar-search-icon@2x.png */; };
 		18975FF817EF854F00B06DF7 /* TRUserResolutionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975FF717EF854A00B06DF7 /* TRUserResolutionModel.m */; };
+		18975FFD17EF934000B06DF7 /* blueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FF917EF934000B06DF7 /* blueButton@2x.png */; };
+		18975FFE17EF934000B06DF7 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FFA17EF934000B06DF7 /* blueButton.png */; };
+		18975FFF17EF934000B06DF7 /* blueButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FFB17EF934000B06DF7 /* blueButtonHighlight@2x.png */; };
+		1897600017EF934000B06DF7 /* blueButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FFC17EF934000B06DF7 /* blueButtonHighlight.png */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -401,6 +405,10 @@
 		18975FEC17EF435C00B06DF7 /* toolbar-search-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-search-icon@2x.png"; sourceTree = "<group>"; };
 		18975FF617EF854700B06DF7 /* TRUserResolutionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserResolutionModel.h; path = Models/TRUserResolutionModel.h; sourceTree = "<group>"; };
 		18975FF717EF854A00B06DF7 /* TRUserResolutionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserResolutionModel.m; path = Models/TRUserResolutionModel.m; sourceTree = "<group>"; };
+		18975FF917EF934000B06DF7 /* blueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButton@2x.png"; sourceTree = "<group>"; };
+		18975FFA17EF934000B06DF7 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
+		18975FFB17EF934000B06DF7 /* blueButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		18975FFC17EF934000B06DF7 /* blueButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButtonHighlight.png; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -1050,6 +1058,10 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18975FF917EF934000B06DF7 /* blueButton@2x.png */,
+				18975FFA17EF934000B06DF7 /* blueButton.png */,
+				18975FFB17EF934000B06DF7 /* blueButtonHighlight@2x.png */,
+				18975FFC17EF934000B06DF7 /* blueButtonHighlight.png */,
 				18975FE717EF433400B06DF7 /* toolbar-knowledge-base-icon.png */,
 				18975FE817EF433900B06DF7 /* toolbar-knowledge-base-icon@2x.png */,
 				18975FE917EF433F00B06DF7 /* toolbar-messages-icon.png */,
@@ -1383,6 +1395,10 @@
 				18975FF017EF436000B06DF7 /* toolbar-messages-icon@2x.png in Resources */,
 				18975FF117EF436000B06DF7 /* toolbar-search-icon.png in Resources */,
 				18975FF217EF436000B06DF7 /* toolbar-search-icon@2x.png in Resources */,
+				18975FFD17EF934000B06DF7 /* blueButton@2x.png in Resources */,
+				18975FFE17EF934000B06DF7 /* blueButton.png in Resources */,
+				18975FFF17EF934000B06DF7 /* blueButtonHighlight@2x.png in Resources */,
+				1897600017EF934000B06DF7 /* blueButtonHighlight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

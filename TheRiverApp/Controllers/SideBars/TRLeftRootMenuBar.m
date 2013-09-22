@@ -167,8 +167,6 @@
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
                 [AppDelegateInstance() changeProfileViewController:userProfileVC];
-                
-                [[TRAuthManager client] logout];
             }];
         } forTaps:1];
         
@@ -372,6 +370,7 @@
     [alertView addButtonWithTitle:@"ДА"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alertView) {
+                              [[TRAuthManager client] logout];
                               [AppDelegateInstance() presentLoginViewController];
                           }];
     [alertView show];
