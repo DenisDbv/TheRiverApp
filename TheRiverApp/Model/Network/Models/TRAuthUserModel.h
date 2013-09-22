@@ -13,6 +13,6 @@
 
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *email;
-@property (nonatomic, retain) TRUserInfoModel *player;
+@property (nonatomic, retain) TRUserInfoModel *user;
 
 @end

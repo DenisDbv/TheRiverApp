@@ -9,7 +9,7 @@
 #import "TRAuthUserModel.h"
 
 @implementation TRAuthUserModel
-@synthesize email, token, player;
+@synthesize email, token, user;
 
 #pragma mark -
 #pragma mark NSCoding
@@ -20,7 +20,7 @@
     {
         self.email = [aDecoder decodeObjectForKey:@"email"];
         self.token = [aDecoder decodeObjectForKey:@"token"];
-        self.player = [aDecoder decodeObjectForKey:@"player"];
+        self.user = [aDecoder decodeObjectForKey:@"user"];
     }
     return self;
 }
@@ -29,7 +29,7 @@
 {
     [aCoder encodeObject:self.email forKey:@"email"];
     [aCoder encodeObject:self.token forKey:@"token"];
-    [aCoder encodeObject:self.player forKey:@"player"];
+    [aCoder encodeObject:self.user forKey:@"user"];
 }
 
 @end
