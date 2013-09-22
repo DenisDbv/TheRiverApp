@@ -306,9 +306,9 @@
             UVConfig *config = [UVConfig configWithSite:@"brandymint.uservoice.com"
                                                  andKey:@"6P7WTuK36Q8gbXrnjXSug"
                                               andSecret:@"N6YtFh854EPUu7y5rAWNA319UzNSsu3P6ufEfUolnuU"
-                                               andEmail:@"usertest@gmail.com"
-                                         andDisplayName:@"UserTest"
-                                                andGUID:@"111GUID"];
+                                               andEmail:[TRAuthManager client].iamData.email
+                                         andDisplayName:[NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.player.first_name, [TRAuthManager client].iamData.player.last_name]
+                                                andGUID:[[TRAuthManager client].iamData.player.id stringValue]];
             //config.showForum = NO;
             //config.showPostIdea = NO;
             //config.showKnowledgeBase = NO;

@@ -117,6 +117,7 @@
 		18975F9617EE2DF100B06DF7 /* TRLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18975F9417EE2DF100B06DF7 /* TRLoginViewController.xib */; };
 		18975F9A17EE2EFA00B06DF7 /* TRAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F9817EE2EF900B06DF7 /* TRAuthViewController.m */; };
 		18975F9B17EE2EFA00B06DF7 /* TRAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18975F9917EE2EF900B06DF7 /* TRAuthViewController.xib */; };
+		18975FE617EF17D900B06DF7 /* TRUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975FE517EF17D900B06DF7 /* TRUserInfoModel.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -383,6 +384,8 @@
 		18975F9717EE2EF800B06DF7 /* TRAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRAuthViewController.h; path = Controllers/Login/TRAuthViewController.h; sourceTree = "<group>"; };
 		18975F9817EE2EF900B06DF7 /* TRAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRAuthViewController.m; path = Controllers/Login/TRAuthViewController.m; sourceTree = "<group>"; };
 		18975F9917EE2EF900B06DF7 /* TRAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRAuthViewController.xib; path = Controllers/Login/TRAuthViewController.xib; sourceTree = "<group>"; };
+		18975FE417EF17D900B06DF7 /* TRUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserInfoModel.h; path = Models/TRUserInfoModel.h; sourceTree = "<group>"; };
+		18975FE517EF17D900B06DF7 /* TRUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserInfoModel.m; path = Models/TRUserInfoModel.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -858,6 +861,8 @@
 			children = (
 				18975F8B17EE208600B06DF7 /* TRAuthUserModel.h */,
 				18975F8C17EE208600B06DF7 /* TRAuthUserModel.m */,
+				18975FE417EF17D900B06DF7 /* TRUserInfoModel.h */,
+				18975FE517EF17D900B06DF7 /* TRUserInfoModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1465,6 +1470,7 @@
 				18975F8D17EE208600B06DF7 /* TRAuthUserModel.m in Sources */,
 				18975F9517EE2DF100B06DF7 /* TRLoginViewController.m in Sources */,
 				18975F9A17EE2EFA00B06DF7 /* TRAuthViewController.m in Sources */,
+				18975FE617EF17D900B06DF7 /* TRUserInfoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
