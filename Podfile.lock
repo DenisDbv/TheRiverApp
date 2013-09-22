@@ -9,11 +9,12 @@ PODS:
     - Facebook-iOS-SDK (~> 3.1)
   - DWTagList (0.0.2)
   - Facebook-iOS-SDK (3.8.0)
-  - MBProgressHUD (0.7)
+  - MBProgressHUD (0.8)
   - MGBox2 (2.0.0)
-  - NVUIGradientButton (1.5.0)
+  - NVUIGradientButton (1.6.0)
+  - ObjectiveSugar (0.9)
   - PocketAPI (1.0.2)
-  - REActivityViewController (1.6.6):
+  - REActivityViewController (1.6.7):
     - AFNetworking (~> 1.3)
     - AFXAuthClient (~> 1.0.8)
     - DEFacebookComposeViewController (~> 1.0.0)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.7)
   - MGBox2
   - NVUIGradientButton
+  - ObjectiveSugar
   - REActivityViewController (~> 1.6.6)
   - SIAlertView
   - SSToolkit
@@ -51,11 +53,12 @@ SPEC CHECKSUMS:
   DEFacebookComposeViewController: b26811d6775594df2a386406655c9f2828f041cc
   DWTagList: 76302ed894130ed285e95eb11e704a55593101ab
   Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
-  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MGBox2: 7c09e36c2271f9af16fdb5141a0ca554ecee4d8d
-  NVUIGradientButton: 08792b091feb141d89cb375cbb2d2db0cc02371c
+  NVUIGradientButton: fdff8c7df7764d0b32e4c03f667597ba1492a441
+  ObjectiveSugar: 81337e36790b5a157ee6ccdcf65c91393ca5d900
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
-  REActivityViewController: 1d79c0a2fc07712d3db6996849f0750897883ba5
+  REActivityViewController: f316ad5efd3d0b6119f21303dacb20e5dc4e1112
   REComposeViewController: 6f1ab35ff54d6bfb65374b3f492e414e1ec1a0db
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   SIAlertView: fd188f66278761f4ff069f517c3deb2be16ecdcc
@@ -63,4 +66,4 @@ SPEC CHECKSUMS:
   TDBadgedCell: 091af82e20d9da3be46eb48cfc53129c324a2faa
   uservoice-iphone-sdk: 1a6b31c204a6208225197f100a67d286f51b9f0d
 
-COCOAPODS: 0.23.0
+COCOAPODS: 0.25.0

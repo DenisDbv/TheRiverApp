@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TRContact" representedClassName="TRContact" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="isStar" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="socNetwork" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TRSocNetwork" inverseName="contact" inverseEntity="TRSocNetwork" syncable="YES"/>
+        <relationship name="tel" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TRTel" inverseName="contact" inverseEntity="TRTel" syncable="YES"/>
+    </entity>
+    <entity name="TRSocNetwork" representedClassName="TRSocNetwork" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TRContact" inverseName="socNetwork" inverseEntity="TRContact" syncable="YES"/>
+    </entity>
+    <entity name="TRTel" representedClassName="TRTel" syncable="YES">
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TRContact" inverseName="tel" inverseEntity="TRContact" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TRContact" positionX="-245" positionY="-45" width="128" height="165"/>
+        <element name="TRTel" positionX="-83" positionY="69" width="128" height="75"/>
+        <element name="TRSocNetwork" positionX="-83" positionY="-45" width="128" height="90"/>
+    </elements>
 </model>
