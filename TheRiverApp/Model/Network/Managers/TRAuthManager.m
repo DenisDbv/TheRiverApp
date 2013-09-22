@@ -46,8 +46,9 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                                                   NSDictionary *resultAuthJSON = [[response asString] objectFromJSONString];
                                                                   
                                                                   iamData = [[TRAuthUserModel alloc] initWithDictionary:resultAuthJSON];
+                                                                  iamData.email = login;
                                                                   [self saveUserData: iamData];
-                                                                  
+                                                                  NSLog(@"%@", iamData);
                                                                   if( succesOperaion != nil)
                                                                       succesOperaion(response);
         
