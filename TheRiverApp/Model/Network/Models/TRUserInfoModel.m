@@ -10,5 +10,10 @@
 
 @implementation TRUserInfoModel
 @synthesize id, first_name, last_name, sex, age, city, logo;
+@synthesize interests;
+
++ (Class)interests_class {
+    return [TRUserResolutionModel class];
+}
 
 @end
