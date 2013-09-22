@@ -35,20 +35,20 @@
     
     [self setupAppearance];
     
-    if( [[TRAuthManager client] isAuth] == NO )
+    /*if( [[TRAuthManager client] isAuth] == NO )
     {
         NSLog(@"User is not authorized");
         
         [self presentLoginViewController];
         
     } else
-    {
+    {*/
         NSLog(@"User has been authenticated");
         
         [TRUserManager sharedInstance];
         
         [self presentTheRiverControllers];
-    }
+    //}
     
     //[self showFontsList];
     

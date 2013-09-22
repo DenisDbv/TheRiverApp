@@ -118,6 +118,12 @@
 		18975F9A17EE2EFA00B06DF7 /* TRAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975F9817EE2EF900B06DF7 /* TRAuthViewController.m */; };
 		18975F9B17EE2EFA00B06DF7 /* TRAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18975F9917EE2EF900B06DF7 /* TRAuthViewController.xib */; };
 		18975FE617EF17D900B06DF7 /* TRUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18975FE517EF17D900B06DF7 /* TRUserInfoModel.m */; };
+		18975FED17EF436000B06DF7 /* toolbar-knowledge-base-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FE717EF433400B06DF7 /* toolbar-knowledge-base-icon.png */; };
+		18975FEE17EF436000B06DF7 /* toolbar-knowledge-base-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FE817EF433900B06DF7 /* toolbar-knowledge-base-icon@2x.png */; };
+		18975FEF17EF436000B06DF7 /* toolbar-messages-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FE917EF433F00B06DF7 /* toolbar-messages-icon.png */; };
+		18975FF017EF436000B06DF7 /* toolbar-messages-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FEA17EF434700B06DF7 /* toolbar-messages-icon@2x.png */; };
+		18975FF117EF436000B06DF7 /* toolbar-search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FEB17EF434B00B06DF7 /* toolbar-search-icon.png */; };
+		18975FF217EF436000B06DF7 /* toolbar-search-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FEC17EF435C00B06DF7 /* toolbar-search-icon@2x.png */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -386,6 +392,12 @@
 		18975F9917EE2EF900B06DF7 /* TRAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRAuthViewController.xib; path = Controllers/Login/TRAuthViewController.xib; sourceTree = "<group>"; };
 		18975FE417EF17D900B06DF7 /* TRUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserInfoModel.h; path = Models/TRUserInfoModel.h; sourceTree = "<group>"; };
 		18975FE517EF17D900B06DF7 /* TRUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserInfoModel.m; path = Models/TRUserInfoModel.m; sourceTree = "<group>"; };
+		18975FE717EF433400B06DF7 /* toolbar-knowledge-base-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-knowledge-base-icon.png"; sourceTree = "<group>"; };
+		18975FE817EF433900B06DF7 /* toolbar-knowledge-base-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-knowledge-base-icon@2x.png"; sourceTree = "<group>"; };
+		18975FE917EF433F00B06DF7 /* toolbar-messages-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-messages-icon.png"; sourceTree = "<group>"; };
+		18975FEA17EF434700B06DF7 /* toolbar-messages-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-messages-icon@2x.png"; sourceTree = "<group>"; };
+		18975FEB17EF434B00B06DF7 /* toolbar-search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-search-icon.png"; sourceTree = "<group>"; };
+		18975FEC17EF435C00B06DF7 /* toolbar-search-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-search-icon@2x.png"; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -1033,6 +1045,12 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18975FE717EF433400B06DF7 /* toolbar-knowledge-base-icon.png */,
+				18975FE817EF433900B06DF7 /* toolbar-knowledge-base-icon@2x.png */,
+				18975FE917EF433F00B06DF7 /* toolbar-messages-icon.png */,
+				18975FEA17EF434700B06DF7 /* toolbar-messages-icon@2x.png */,
+				18975FEB17EF434B00B06DF7 /* toolbar-search-icon.png */,
+				18975FEC17EF435C00B06DF7 /* toolbar-search-icon@2x.png */,
 				189486C417E7596B00E9B119 /* check-icon-white@2x.png */,
 				189486C517E7596C00E9B119 /* location-icon-gray@2x.png */,
 				189486B617E6416700E9B119 /* m1.jpg */,
@@ -1354,6 +1372,12 @@
 				189486C717E7596D00E9B119 /* location-icon-gray@2x.png in Resources */,
 				18975F9617EE2DF100B06DF7 /* TRLoginViewController.xib in Resources */,
 				18975F9B17EE2EFA00B06DF7 /* TRAuthViewController.xib in Resources */,
+				18975FED17EF436000B06DF7 /* toolbar-knowledge-base-icon.png in Resources */,
+				18975FEE17EF436000B06DF7 /* toolbar-knowledge-base-icon@2x.png in Resources */,
+				18975FEF17EF436000B06DF7 /* toolbar-messages-icon.png in Resources */,
+				18975FF017EF436000B06DF7 /* toolbar-messages-icon@2x.png in Resources */,
+				18975FF117EF436000B06DF7 /* toolbar-search-icon.png in Resources */,
+				18975FF217EF436000B06DF7 /* toolbar-search-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
