@@ -307,8 +307,8 @@
                                                  andKey:@"6P7WTuK36Q8gbXrnjXSug"
                                               andSecret:@"N6YtFh854EPUu7y5rAWNA319UzNSsu3P6ufEfUolnuU"
                                                andEmail:[TRAuthManager client].iamData.email
-                                         andDisplayName:[NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.player.first_name, [TRAuthManager client].iamData.player.last_name]
-                                                andGUID:[[TRAuthManager client].iamData.player.id stringValue]];
+                                         andDisplayName:[NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name]
+                                                andGUID:[[TRAuthManager client].iamData.user.id stringValue]];
             //config.showForum = NO;
             //config.showPostIdea = NO;
             //config.showKnowledgeBase = NO;

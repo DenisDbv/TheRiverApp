@@ -9,6 +9,8 @@
 #import "TRCenterRootController.h"
 #import "MFSideMenu.h"
 
+#import "TRMindBaseListVC.h"
+
 @interface TRCenterRootController ()
 
 @end
@@ -64,6 +66,36 @@
     [settingsView2 setBackgroundImage:[UIImage imageNamed:@"toolbar-contacts-icon@2x.png"] forState:UIControlStateNormal];
     UIBarButtonItem *settingsButton2 = [[UIBarButtonItem alloc] initWithCustomView:rightView];
     [self.navigationItem setRightBarButtonItem:settingsButton2];
+    
+    UIImage *knowImage = [UIImage imageNamed:@"toolbar-knowledge-base-icon@2x.png"];
+    UIImage *messageImage = [UIImage imageNamed:@"toolbar-messages-icon@2x.png"];
+    UIImage *searchImage = [UIImage imageNamed:@"toolbar-search-icon@2x.png"];
+    NSInteger width = knowImage.size.width/2+messageImage.size.width/2+searchImage.size.width/2+40;
+    NSInteger height = MAX(knowImage.size.height/2, messageImage.size.height/2);
+    height = MAX(height, searchImage.size.height/2);
+    
+    UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button1 addTarget:self action:@selector(onKnowledgeBaseClick) forControlEvents:UIControlEventTouchUpInside];
+    [button1 setImage:knowImage forState:UIControlStateNormal];
+    button1.frame = CGRectMake(0, 0, 26, 16);
+    
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button2 addTarget:self action:@selector(onMessageClick) forControlEvents:UIControlEventTouchUpInside];
+    [button2 setImage:messageImage forState:UIControlStateNormal];
+    button2.frame = CGRectMake(46, 0, 18, 14);
+    
+    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button3 addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
+    [button3 setImage:searchImage forState:UIControlStateNormal];
+    button3.frame = CGRectMake(84, 0, 18, 18);
+    
+    [buttonView addSubview:button1];
+    [buttonView addSubview:button2];
+    [buttonView addSubview:button3];
+    //buttonView.backgroundColor = [UIColor redColor];
+    
+    self.navigationItem.titleView = buttonView;
 }
 
 - (UIBarButtonItem *)leftMenuBarButtonItem {
@@ -90,6 +122,22 @@
     [self.menuContainerViewController toggleRightSideMenuCompletion:^{
         //[self setupMenuBarButtonItems];
     }];
+}
+
+-(void) onKnowledgeBaseClick
+{
+    TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
+    [AppDelegateInstance() changeCenterViewController:mindBaseList];
+}
+
+-(void) onMessageClick
+{
+    //
+}
+
+-(void) onSearchClick
+{
+    //
 }
 
 @end
