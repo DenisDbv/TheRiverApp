@@ -10,6 +10,8 @@
 #import <MGBox2/MGScrollView.h>
 #import <QuartzCore/QuartzCore.h>
 #import <SSToolkit/SSToolkit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation TRHeadBox
 
@@ -54,9 +56,10 @@
 
 -(void) showUserLogo
 {
-    UIImage *image = [UIImage imageNamed: self.userData.logo];
+    //UIImage *image = [UIImage imageNamed: self.userData.logo];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:[TRAuthManager client].iamData.user.logo];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIImageView *imageView = [[UIImageView alloc] init];
     
     imageView.size = CGSizeMake(117.0, 117.0);
     imageView.frame = CGRectOffset(imageView.frame, 4.0, 49.0);
@@ -66,6 +69,7 @@
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
     imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
     imageView.clipsToBounds = YES;
+    [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self addSubview:imageView];
     
     [UIView animateWithDuration:0.1 animations:^{
