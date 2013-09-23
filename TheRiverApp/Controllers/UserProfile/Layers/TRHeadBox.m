@@ -10,6 +10,8 @@
 #import <MGBox2/MGScrollView.h>
 #import <QuartzCore/QuartzCore.h>
 #import <SSToolkit/SSToolkit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation TRHeadBox
 
@@ -54,9 +56,10 @@
 
 -(void) showUserLogo
 {
-    UIImage *image = [UIImage imageNamed: self.userData.logo];
+    //UIImage *image = [UIImage imageNamed: self.userData.logo];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:[TRAuthManager client].iamData.user.logo];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIImageView *imageView = [[UIImageView alloc] init];
     
     imageView.size = CGSizeMake(117.0, 117.0);
     imageView.frame = CGRectOffset(imageView.frame, 4.0, 49.0);
@@ -66,6 +69,7 @@
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
     imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
     imageView.clipsToBounds = YES;
+    [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self addSubview:imageView];
     
     [UIView animateWithDuration:0.1 animations:^{
@@ -81,7 +85,7 @@
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
     nameLabel.numberOfLines = 2;
     nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.userData.firstName, self.userData.lastName];
+    nameLabel.text = [NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name];
     
     nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -102,7 +106,7 @@
     nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     nameLabel.numberOfLines = 1;
-    nameLabel.text = [NSString stringWithFormat:@"%@, %@", self.userData.yearsOld, self.userData.city];
+    nameLabel.text = [NSString stringWithFormat:@"%@, %@", [TRAuthManager client].iamData.user.age, [TRAuthManager client].iamData.user.city];
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
     nameLabel.frame = CGRectMake(4.0+117.0+15.0, 132.0+10.0, size.width, size.height);

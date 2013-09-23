@@ -13,6 +13,9 @@
 
 #import <uservoice-iphone-sdk/UserVoice.h>
 #import <SSToolkit/SSToolkit.h>
+#import <SIAlertView/SIAlertView.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 #import "UIView+GestureBlocks.h"
 #import "TRUserProfileController.h"
@@ -118,35 +121,49 @@
                                                   blue:51.0/255.0
                                                  alpha:1.0];
         
-        TRUserModel *userModel = [[TRUserManager sharedInstance].usersObject objectAtIndex:0];
+        //TRUserModel *userModel = [[TRUserManager sharedInstance].usersObject objectAtIndex:0];
         
-        UIImage *image = [UIImage imageNamed: userModel.logo];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        //Лого пользователя
+        //UIImage *image = [UIImage imageNamed: userModel.logo];
+        
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:[TRAuthManager client].iamData.user.logo];
+        UIImageView *imageView = [[UIImageView alloc] init];
         imageView.frame = CGRectMake(10.0, 20.0, 90.0, 90.0);
         imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        //imageView.layer.borderWidth = 1;
         imageView.layer.borderColor = [UIColor clearColor].CGColor;
         imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
         imageView.clipsToBounds = YES;
+        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [header addSubview:imageView];
         
+        
+        //ФИО пользователя
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.textColor = [UIColor whiteColor];
         nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:25];
         nameLabel.numberOfLines = 2;
         nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        nameLabel.text = [NSString stringWithFormat:@"%@ %@", userModel.firstName, userModel.lastName];
+        nameLabel.text = [NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name];
         [nameLabel sizeToFit];
         [header addSubview:nameLabel];
         
         CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(270.0-117.0-20.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
         nameLabel.frame = CGRectMake(imageView.frame.origin.x+imageView.frame.size.width+15, 40, size.width, size.height);
         
-        UIImageView *settingsView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cog-gray-icon@2x.png"]];
-        settingsView.frame = CGRectMake(header.bounds.size.width-30, 10, settingsView.frame.size.width/2, settingsView.frame.size.height/2);
-        [header addSubview:settingsView];
+        
+        //Настройки пользователя
+        UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
+        [settingView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            [self logout];
+        } forTaps:1];
+        UIImageView *settingsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cog-gray-icon@2x.png"]];
+        settingsImageView.userInteractionEnabled = YES;
+        settingsImageView.frame = CGRectMake(0, 0, settingsImageView.frame.size.width/2, settingsImageView.frame.size.height/2);
+        settingsImageView.center = CGPointMake(settingView.frame.size.width/2, settingView.frame.size.height/2);
+        [settingView addSubview:settingsImageView];
+        [header addSubview:settingView];
         
         SSLineView *bottomLine = [[SSLineView alloc] initWithFrame:CGRectMake(0, header.bounds.size.height-1, header.bounds.size.width, 1)];
         [bottomLine setLineColor:[UIColor colorWithRed:41.0/255.0
@@ -155,6 +172,8 @@
                                                 alpha:1.0]];
         [header addSubview:bottomLine];
         
+        
+        //По нажатию на хедер
         [header initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
@@ -296,9 +315,9 @@
             UVConfig *config = [UVConfig configWithSite:@"brandymint.uservoice.com"
                                                  andKey:@"6P7WTuK36Q8gbXrnjXSug"
                                               andSecret:@"N6YtFh854EPUu7y5rAWNA319UzNSsu3P6ufEfUolnuU"
-                                               andEmail:@"usertest@gmail.com"
-                                         andDisplayName:@"UserTest"
-                                                andGUID:@"111GUID"];
+                                               andEmail:[TRAuthManager client].iamData.email
+                                         andDisplayName:[NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name]
+                                                andGUID:[[TRAuthManager client].iamData.user.id stringValue]];
             //config.showForum = NO;
             //config.showPostIdea = NO;
             //config.showKnowledgeBase = NO;
@@ -348,6 +367,25 @@
             
         }];
     }*/
+}
+
+-(void) logout
+{
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"Выйти?"];
+    alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:18];
+    [alertView addButtonWithTitle:@"НЕТ"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              
+                              NSLog(@"Cancel Clicked");
+                          }];
+    [alertView addButtonWithTitle:@"ДА"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              [[TRAuthManager client] logout];
+                              [AppDelegateInstance() presentLoginViewController];
+                          }];
+    [alertView show];
 }
 
 @end
