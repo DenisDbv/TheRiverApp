@@ -8,6 +8,7 @@
 
 #import "Jastor.h"
 #import "TRUserResolutionModel.h"
+#import "TRBusinessUserModel.h"
 
 @interface TRUserInfoModel : Jastor
 
@@ -20,5 +21,6 @@
 @property (nonatomic, copy) NSString *sex;
 
 @property (nonatomic, retain) NSArray *interests;
+@property (nonatomic, retain) TRBusinessUserModel *business;
 
 @end

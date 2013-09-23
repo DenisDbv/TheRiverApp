@@ -365,6 +365,7 @@
     [alertView addButtonWithTitle:@"НЕТ"
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alertView) {
+                              
                               NSLog(@"Cancel Clicked");
                           }];
     [alertView addButtonWithTitle:@"ДА"

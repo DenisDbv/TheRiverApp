@@ -129,6 +129,8 @@
 		18975FFE17EF934000B06DF7 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FFA17EF934000B06DF7 /* blueButton.png */; };
 		18975FFF17EF934000B06DF7 /* blueButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FFB17EF934000B06DF7 /* blueButtonHighlight@2x.png */; };
 		1897600017EF934000B06DF7 /* blueButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 18975FFC17EF934000B06DF7 /* blueButtonHighlight.png */; };
+		1897600617F05CE400B06DF7 /* TRBusinessUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897600517F05CE000B06DF7 /* TRBusinessUserModel.m */; };
+		1897600917F05D6000B06DF7 /* TRBusinessScopeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897600817F05D5B00B06DF7 /* TRBusinessScopeModel.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -409,6 +411,10 @@
 		18975FFA17EF934000B06DF7 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		18975FFB17EF934000B06DF7 /* blueButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButtonHighlight@2x.png"; sourceTree = "<group>"; };
 		18975FFC17EF934000B06DF7 /* blueButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButtonHighlight.png; sourceTree = "<group>"; };
+		1897600417F05CDD00B06DF7 /* TRBusinessUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessUserModel.h; path = Models/TRBusinessUserModel.h; sourceTree = "<group>"; };
+		1897600517F05CE000B06DF7 /* TRBusinessUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessUserModel.m; path = Models/TRBusinessUserModel.m; sourceTree = "<group>"; };
+		1897600717F05D5600B06DF7 /* TRBusinessScopeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessScopeModel.h; path = Models/TRBusinessScopeModel.h; sourceTree = "<group>"; };
+		1897600817F05D5B00B06DF7 /* TRBusinessScopeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessScopeModel.m; path = Models/TRBusinessScopeModel.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -888,6 +894,10 @@
 				18975FE517EF17D900B06DF7 /* TRUserInfoModel.m */,
 				18975FF617EF854700B06DF7 /* TRUserResolutionModel.h */,
 				18975FF717EF854A00B06DF7 /* TRUserResolutionModel.m */,
+				1897600417F05CDD00B06DF7 /* TRBusinessUserModel.h */,
+				1897600517F05CE000B06DF7 /* TRBusinessUserModel.m */,
+				1897600717F05D5600B06DF7 /* TRBusinessScopeModel.h */,
+				1897600817F05D5B00B06DF7 /* TRBusinessScopeModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1517,6 +1527,8 @@
 				18975F9A17EE2EFA00B06DF7 /* TRAuthViewController.m in Sources */,
 				18975FE617EF17D900B06DF7 /* TRUserInfoModel.m in Sources */,
 				18975FF817EF854F00B06DF7 /* TRUserResolutionModel.m in Sources */,
+				1897600617F05CE400B06DF7 /* TRBusinessUserModel.m in Sources */,
+				1897600917F05D6000B06DF7 /* TRBusinessScopeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
