@@ -144,13 +144,15 @@
         nameLabel.textColor = [UIColor whiteColor];
         nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:25];
         nameLabel.numberOfLines = 2;
-        nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        //nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
         nameLabel.text = [NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name];
         [nameLabel sizeToFit];
         [header addSubview:nameLabel];
         
         CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(270.0-117.0-20.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-        nameLabel.frame = CGRectMake(imageView.frame.origin.x+imageView.frame.size.width+15, 40, size.width, size.height);
+        nameLabel.frame = CGRectMake(imageView.frame.origin.x+imageView.frame.size.width+15, 40, size.width, 70);
+        //nameLabel.backgroundColor = [UIColor redColor];
+        //NSLog(@"%@", NSStringFromCGSize(size));
         
         
         //Настройки пользователя
