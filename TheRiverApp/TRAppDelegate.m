@@ -58,12 +58,27 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    NSLog(@"%@", [url absoluteString]);
+    
     if( [[TRAuthManager client] isAuth] == YES)
         return NO;
     
-    NSLog(@"%@", [url absoluteString]);
+    /*NSLog(@"scheme: %@", [url scheme]);
+    NSLog(@"host: %@", [url host]);
+    NSLog(@"port: %@", [url port]);
+    NSLog(@"path: %@", [url path]);
+    NSLog(@"path components: %@", [url pathComponents]);
+    NSLog(@"parameterString: %@", [url parameterString]);
+    NSLog(@"query: %@", [url query]);
+    NSLog(@"fragment: %@", [url fragment]);*/
     
-    [self presentAuthViewController:@"from web"];
+    NSString *login = @"";
+    NSString *queryString = [url query];
+    NSArray *splitArray = [queryString componentsSeparatedByString:@"="];
+    if(splitArray.count == 2)
+        login = [splitArray objectAtIndex:1];
+    
+    [self presentAuthViewController:login];
     
     return YES;
 }
