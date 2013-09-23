@@ -21,6 +21,8 @@ pod 'uservoice-iphone-sdk'
 pod 'LRResty'
 pod 'JSONKit'
 pod 'jastor'
+pod 'SDWebImage'
+pod 'UIActivityIndicator-for-SDWebImage'
 
 # FileIO
 pod 'HRCoder'

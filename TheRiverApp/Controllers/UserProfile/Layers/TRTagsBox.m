@@ -9,6 +9,9 @@
 #import "TRTagsBox.h"
 #import "TRTagsScrollBox.h"
 
+#import "TRUserResolutionModel.h"
+#import "TRBusinessScopeModel.h"
+
 @implementation TRTagsBox
 
 - (void)setup {
@@ -28,11 +31,27 @@
     TRTagsBox *box = [TRTagsBox boxWithSize: CGSizeMake(bounds.width, 124)];
     box.userData = userObject;
     
-    TRTagsScrollBox *tagsResolution = [TRTagsScrollBox initBoxWithTitle:@"Высокое разрешение:" andTagsArray:[[NSArray alloc] initWithObjects:@"#iOS", @"#Android", @"#Ruby", @"#Rails", nil]];
-    [box.boxes addObject:tagsResolution];
+    NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
+    for(TRUserResolutionModel *userResolution in [TRAuthManager client].iamData.user.interests)
+    {
+        [hightResolution addObject:userResolution.name];
+    }
     
-    TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"Текущие ниши:" andTagsArray:[[NSArray alloc] initWithObjects:@"AXBX software", @"Школа счастья", @"NEO", nil]];
-    [box.boxes addObject:tagsCurrentBusiness];
+    if(hightResolution.count > 0)   {
+        TRTagsScrollBox *tagsResolution = [TRTagsScrollBox initBoxWithTitle:@"Высокое разрешение:" andTagsArray:hightResolution];
+        [box.boxes addObject:tagsResolution];
+    }
+    
+    NSMutableArray *business = [[NSMutableArray alloc] init];
+    for(TRBusinessScopeModel *scopes in [TRAuthManager client].iamData.user.business.scope_work)
+    {
+        [business addObject:scopes.name];
+    }
+    
+    if(business.count > 0)  {
+        TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"Отрасли:" andTagsArray:business];
+        [box.boxes addObject:tagsCurrentBusiness];
+    }
     
     return box;
 }
