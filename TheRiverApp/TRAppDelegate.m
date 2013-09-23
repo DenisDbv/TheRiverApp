@@ -11,6 +11,7 @@
 #import "MFSideMenu.h"
 
 #import "TRLoginViewController.h"
+#import "TRAuthViewController.h"
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
 #import "TRTestViewController.h"
@@ -55,6 +56,18 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if( [[TRAuthManager client] isAuth] == YES)
+        return NO;
+    
+    NSLog(@"%@", [url absoluteString]);
+    
+    [self presentAuthViewController:@"from web"];
+    
+    return YES;
+}
+
 - (void)setupAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
@@ -68,6 +81,16 @@
     TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
     self.window.rootViewController = loginViewController;
     [self.window makeKeyAndVisible];
+}
+
+- (void) presentAuthViewController:(NSString*)login
+{
+    TRAuthViewController *authViewController = [[TRAuthViewController alloc] init];
+    self.window.rootViewController = authViewController;
+    [self.window makeKeyAndVisible];
+    
+    authViewController.loginField.text = login;
+    [authViewController.passwordField becomeFirstResponder];
 }
 
 - (void) presentTheRiverControllers
