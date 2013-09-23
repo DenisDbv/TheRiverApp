@@ -34,7 +34,8 @@
 
 @implementation TRMyContactListBar
 {
-    NSArray* contacts;
+    NSArray* favContacts;
+    NSArray* otherContacts;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -84,7 +85,6 @@
                                                  name:@"ContactsUpdatedNotification"
                                                object:nil];
     NSLog(@"contacts did load");
-    [self updateContacts:nil];
 }
 
 -(void)dealloc
@@ -94,8 +94,9 @@
 
 -(void)updateContacts:(id)notification
 {
-    contacts = [TRContact all];
-    NSLog(@"update contacts %d", contacts.count);
+    favContacts = [TRContact where:@"isStar == true"];
+    otherContacts = [TRContact where:@"isStar == false"];
+    NSLog(@"update contacts %d", favContacts.count+otherContacts.count);
     [self.contactsTableView reloadData];
 }
 
@@ -107,6 +108,9 @@
     [UIView commitAnimations];
     
     [_searchBarController.searchBar sizeToFit];
+    
+    NSLog(@"contacts did appear");
+    [self updateContacts:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,27 +120,40 @@
 
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return (NSInteger)[TRUserManager sharedInstance].usersObject.count;
-    return [contacts count];
+    if(section == 0)
+        return favContacts.count;
+    else
+        return otherContacts.count;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
-                                                                         withTitle:@"ИЗБРАННОЕ"
-                                                                   withButtonTitle:@"РЕДАКТИРОВАТЬ"
-                                                                           byBlock:^{
-                                                                               [self checkoutTableToEditMode];
-                                                                           }];
-    [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
-    return headerView;
+    if(section == 0)    {
+        TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
+                                                                             withTitle:@"ИЗБРАННОЕ"
+                                                                       withButtonTitle:@"РЕДАКТИРОВАТЬ"
+                                                                               byBlock:^{
+                                                                                   [self checkoutTableToEditMode];
+                                                                               }];
+        [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+        return headerView;
+    }
+    else
+    {
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 10)];
+        lineView.backgroundColor = [UIColor lightGrayColor];
+        return lineView;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 32.0;
+    if(section == 0)
+        return 32.0;
+    else
+        return 10.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -144,7 +161,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    __block UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
@@ -164,10 +181,27 @@
     }
     
     cell.imageView.tag = indexPath.row;    
-    TRContact* contact = contacts[indexPath.row];
+    
+    TRContact* contact;
+    if (indexPath.section == 0){
+        contact = favContacts[indexPath.row];
+    }else{
+        contact = otherContacts[indexPath.row];
+    }
 
     if (contact.logo != nil){
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]]];
+//        __weak UITableViewCell* blockCell = cell;
+//        NSURL* url = [NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]];
+//        NSURLRequest* request = [NSURLRequest requestWithURL:url];
+//        [cell.imageView setImageWithURLRequest:request
+//                              placeholderImage:nil
+//                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//                                           [blockCell setNeedsDisplay];
+//                                       }
+//                                       failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//                                           NSLog(@"cell image error %@", [error localizedDescription]);
+//                                       }];
+        [cell.imageView setImageWithURL:[NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]]];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
     return cell;
@@ -178,7 +212,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
-    TRContact* contact = contacts[indexPath.row];
+    TRContact* contact;
+    if (indexPath.section == 0){
+        contact = favContacts[indexPath.row];
+    }else{
+        contact = otherContacts[indexPath.row];
+    }
+    
     TRTel* tel = contact.tel.anyObject;
     TRSocNetwork* socNetwork = contact.socNetwork.anyObject;
     
