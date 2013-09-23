@@ -49,7 +49,7 @@
     }
     
     if(business.count > 0)  {
-        TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"Текущие ниши:" andTagsArray:business];
+        TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"Отрасли:" andTagsArray:business];
         [box.boxes addObject:tagsCurrentBusiness];
     }
     
