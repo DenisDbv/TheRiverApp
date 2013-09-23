@@ -7,6 +7,7 @@
 //
 
 #import "TRAuthViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface TRAuthViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation TRAuthViewController
 
-@synthesize loginField, passwordField;
+@synthesize loginField, passwordField, loginButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +32,25 @@
     
     loginField.text = @"denisdbv@gmail.com";
     passwordField.text = @"12345678";
+    
+    [loginField becomeFirstResponder];
+    
+    UIImage *buttonImage = [[UIImage imageNamed:@"blueButton.png"]
+                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    [loginButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    
+    loginField.layer.borderWidth = 1.0f;
+    loginField.layer.borderColor = [[UIColor blackColor] CGColor];
+    loginField.layer.cornerRadius = 4;
+    loginField.clipsToBounds      = YES;
+    
+    passwordField.layer.borderWidth = 1.0f;
+    passwordField.layer.borderColor = [[UIColor blackColor] CGColor];
+    passwordField.layer.cornerRadius = 4;
+    passwordField.clipsToBounds      = YES;
 }
 
 - (void)didReceiveMemoryWarning

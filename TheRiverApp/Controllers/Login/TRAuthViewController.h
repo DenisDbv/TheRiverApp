@@ -13,6 +13,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *loginField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 
+@property (nonatomic, retain) IBOutlet UIButton *loginButton;
 -(IBAction)onLognClick:(id)sender;
 
 @end

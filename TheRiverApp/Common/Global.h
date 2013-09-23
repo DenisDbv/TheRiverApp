@@ -13,6 +13,7 @@
 
 #define AppDelegateInstance() (TRAppDelegate *)[[UIApplication sharedApplication] delegate]
 
+#define SERVER_HOSTNAME @"http://kostum5.ru"
 #define ROW_HEIGHT  32.0
 
 #endif
