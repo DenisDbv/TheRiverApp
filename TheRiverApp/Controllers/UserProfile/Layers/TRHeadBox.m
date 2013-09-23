@@ -81,7 +81,7 @@
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
     nameLabel.numberOfLines = 2;
     nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.userData.firstName, self.userData.lastName];
+    nameLabel.text = [NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name];
     
     nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -102,7 +102,7 @@
     nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     nameLabel.numberOfLines = 1;
-    nameLabel.text = [NSString stringWithFormat:@"%@, %@", self.userData.yearsOld, self.userData.city];
+    nameLabel.text = [NSString stringWithFormat:@"%@, %@", [TRAuthManager client].iamData.user.age, [TRAuthManager client].iamData.user.city];
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
     nameLabel.frame = CGRectMake(4.0+117.0+15.0, 132.0+10.0, size.width, size.height);

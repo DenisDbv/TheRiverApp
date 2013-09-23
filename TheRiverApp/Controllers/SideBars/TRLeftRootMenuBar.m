@@ -121,30 +121,35 @@
         
         TRUserModel *userModel = [[TRUserManager sharedInstance].usersObject objectAtIndex:0];
         
+        
+        //Лого пользователя
         UIImage *image = [UIImage imageNamed: userModel.logo];
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         imageView.frame = CGRectMake(10.0, 20.0, 90.0, 90.0);
         imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        //imageView.layer.borderWidth = 1;
         imageView.layer.borderColor = [UIColor clearColor].CGColor;
         imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
         imageView.clipsToBounds = YES;
         [header addSubview:imageView];
         
+        
+        //ФИО пользователя
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.textColor = [UIColor whiteColor];
         nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:25];
         nameLabel.numberOfLines = 2;
         nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        nameLabel.text = [NSString stringWithFormat:@"%@ %@", userModel.firstName, userModel.lastName];
+        nameLabel.text = [NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name];
         [nameLabel sizeToFit];
         [header addSubview:nameLabel];
         
         CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(270.0-117.0-20.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
         nameLabel.frame = CGRectMake(imageView.frame.origin.x+imageView.frame.size.width+15, 40, size.width, size.height);
         
+        
+        //Настройки пользователя
         UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
         [settingView initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self logout];
@@ -163,6 +168,8 @@
                                                 alpha:1.0]];
         [header addSubview:bottomLine];
         
+        
+        //По нажатию на хедер
         [header initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
