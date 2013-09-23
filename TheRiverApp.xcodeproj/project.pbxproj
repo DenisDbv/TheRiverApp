@@ -214,11 +214,11 @@
 		18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */; };
 		CE0D1C7617EEE03D00A39AEF /* TRDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D1C7517EEE03D00A39AEF /* TRDownloadManager.m */; };
 		CE0D1C7917EEFB7400A39AEF /* TRTel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D1C7817EEFB7400A39AEF /* TRTel.m */; };
-		CE0D1C7F17EEFB7E00A39AEF /* TRSocNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D1C7E17EEFB7C00A39AEF /* TRSocNetwork.m */; };
 		CE0D1C8217EF02A400A39AEF /* NSManagedObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D1C8117EF02A300A39AEF /* NSManagedObject+Helper.m */; };
 		CE0D1C8517EF06F300A39AEF /* TRContact.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D1C8417EF06F000A39AEF /* TRContact.m */; };
 		CE0D1C8817EF417800A39AEF /* TRContactsSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D1C8717EF417600A39AEF /* TRContactsSearchBarVC.m */; };
 		CE0D1C8A17EF5B9F00A39AEF /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = CE0D1C8917EF5B9F00A39AEF /* contacts.json */; };
+		CE0D1C9017F0D81100A39AEF /* TRSocNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D1C8F17F0D80F00A39AEF /* TRSocNetwork.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -505,8 +505,6 @@
 		CE0D1C7517EEE03D00A39AEF /* TRDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRDownloadManager.m; path = Model/DataLoader/TRDownloadManager.m; sourceTree = "<group>"; };
 		CE0D1C7717EEFB7300A39AEF /* TRTel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRTel.h; path = Model/Entity/TRTel.h; sourceTree = "<group>"; };
 		CE0D1C7817EEFB7400A39AEF /* TRTel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRTel.m; path = Model/Entity/TRTel.m; sourceTree = "<group>"; };
-		CE0D1C7D17EEFB7B00A39AEF /* TRSocNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSocNetwork.h; path = Model/Entity/TRSocNetwork.h; sourceTree = "<group>"; };
-		CE0D1C7E17EEFB7C00A39AEF /* TRSocNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSocNetwork.m; path = Model/Entity/TRSocNetwork.m; sourceTree = "<group>"; };
 		CE0D1C8017EF02A300A39AEF /* NSManagedObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+Helper.h"; path = "Model/DataLoader/NSManagedObject+Helper.h"; sourceTree = "<group>"; };
 		CE0D1C8117EF02A300A39AEF /* NSManagedObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+Helper.m"; path = "Model/DataLoader/NSManagedObject+Helper.m"; sourceTree = "<group>"; };
 		CE0D1C8317EF06EF00A39AEF /* TRContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContact.h; path = Model/Entity/TRContact.h; sourceTree = "<group>"; };
@@ -514,6 +512,8 @@
 		CE0D1C8617EF417500A39AEF /* TRContactsSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactsSearchBarVC.h; path = Controllers/SearchBar/TRContactsSearchBarVC.h; sourceTree = "<group>"; };
 		CE0D1C8717EF417600A39AEF /* TRContactsSearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactsSearchBarVC.m; path = Controllers/SearchBar/TRContactsSearchBarVC.m; sourceTree = "<group>"; };
 		CE0D1C8917EF5B9F00A39AEF /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
+		CE0D1C8E17F0D80E00A39AEF /* TRSocNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSocNetwork.h; path = Model/Entity/TRSocNetwork.h; sourceTree = "<group>"; };
+		CE0D1C8F17F0D80F00A39AEF /* TRSocNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSocNetwork.m; path = Model/Entity/TRSocNetwork.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -732,6 +732,8 @@
 		1891D7EF17DB596B00281246 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				CE0D1C8E17F0D80E00A39AEF /* TRSocNetwork.h */,
+				CE0D1C8F17F0D80F00A39AEF /* TRSocNetwork.m */,
 				1891D7F017DB59AC00281246 /* TRUserModel.h */,
 				1891D7F117DB59AC00281246 /* TRUserModel.m */,
 				1891D81117DCDB7800281246 /* TRMindModel.h */,
@@ -740,8 +742,6 @@
 				18A108DC17DE108900D9CD8C /* TRBusinessModel.m */,
 				1896C46217E337B9004AE5FF /* TRMeetingModel.h */,
 				1896C46317E337B9004AE5FF /* TRMeetingModel.m */,
-				CE0D1C7D17EEFB7B00A39AEF /* TRSocNetwork.h */,
-				CE0D1C7E17EEFB7C00A39AEF /* TRSocNetwork.m */,
 				CE0D1C7717EEFB7300A39AEF /* TRTel.h */,
 				CE0D1C7817EEFB7400A39AEF /* TRTel.m */,
 				CE0D1C8317EF06EF00A39AEF /* TRContact.h */,
@@ -1417,10 +1417,10 @@
 				1896C47F17E46457004AE5FF /* TRMeetWebViewBox.m in Sources */,
 				CE0D1C7617EEE03D00A39AEF /* TRDownloadManager.m in Sources */,
 				CE0D1C7917EEFB7400A39AEF /* TRTel.m in Sources */,
-				CE0D1C7F17EEFB7E00A39AEF /* TRSocNetwork.m in Sources */,
 				CE0D1C8217EF02A400A39AEF /* NSManagedObject+Helper.m in Sources */,
 				CE0D1C8517EF06F300A39AEF /* TRContact.m in Sources */,
 				CE0D1C8817EF417800A39AEF /* TRContactsSearchBarVC.m in Sources */,
+				CE0D1C9017F0D81100A39AEF /* TRSocNetwork.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

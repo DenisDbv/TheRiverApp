@@ -12,6 +12,12 @@
 #import "UISearchBar+cancelButton.h"
 
 #import "MFSideMenu.h"
+#import "TRContact.h"
+#import "UIImageView+AFNetworking.h"
+#import "TRDownloadManager.h"
+
+#define HOST_URL @"http://kostum5.ru"
+
 
 @interface TRFavoritesEditList ()
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
@@ -20,8 +26,11 @@
 
 @implementation TRFavoritesEditList
 {
-    NSInteger inFavotite;
-    NSInteger outFavorite;
+    NSArray* favContacts;
+    NSArray* otherContacts;
+    
+    //NSInteger inFavotite;
+    //NSInteger outFavorite;
     
     UIButton *buttonCopy;
 }
@@ -35,12 +44,19 @@
     return self;
 }
 
+-(void)updateData
+{
+    favContacts = [TRContact where:@"isStar == true"];
+    otherContacts = [TRContact where:@"isStar == false"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    inFavotite = 1;
-    outFavorite = 25;
+    //inFavotite = 1;
+    //outFavorite = 25;
+    [self updateData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuStateEventOccurred:)
@@ -112,9 +128,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0)
-        return inFavotite;
+        return favContacts.count;
     else
-        return outFavorite;
+        return otherContacts.count;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -161,38 +177,50 @@
 forRowAtIndexPath: (NSIndexPath *)indexPath
 {
     NSLog(@"commit");
-    
-    /*[tableView beginUpdates];
+        
+    //[tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        if(inFavotite > 1)  {
-            inFavotite--;
-            outFavorite++;
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView reloadData];
-        }
+        TRContact* contact = favContacts[indexPath.row];
+        contact.isStar = false;
+        [contact save];
+        [[TRDownloadManager instance] toggleContactStarStatus:contact.id];
+        
+        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self updateData];
+        [tableView reloadData];
     }
     else if(editingStyle == UITableViewCellEditingStyleInsert)
     {
-        if(outFavorite > 1)
-        {
-            //inFavotite++;
-            //outFavorite--;
-            //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView reloadData];
-        }
+        TRContact* contact = otherContacts[indexPath.row];
+        contact.isStar = true;
+        [contact save];
+        [[TRDownloadManager instance] toggleContactStarStatus:contact.id];
+        
+        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self updateData];
+        [tableView reloadData];
     }
-    [tableView endUpdates];*/
+    //[tableView endUpdates];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+//    if (indexPath.section == 0){
+//        return YES;
+//    }
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
     
 }
+
+//- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+//{
+//    
+//}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -204,8 +232,17 @@ forRowAtIndexPath: (NSIndexPath *)indexPath
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:16]];
     }
     
-    cell.imageView.image = [UIImage imageNamed:@"IamAppleDev2.jpg"];
-    cell.textLabel.text = @"Дубов Денис";
+    TRContact* contact;
+    if (indexPath.section == 0){
+        contact = favContacts[indexPath.row];
+    }else{
+        contact = otherContacts[indexPath.row];
+    }
+    
+    if (contact.logo != nil){
+        [cell.imageView setImageWithURL:[NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]]];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
     return cell;
 }
 

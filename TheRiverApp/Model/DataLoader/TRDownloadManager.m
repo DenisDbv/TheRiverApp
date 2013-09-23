@@ -17,7 +17,7 @@
 
 @implementation TRDownloadManager
 
-+(instancetype)intsance
++(instancetype)instance
 {
     static TRDownloadManager* c;
     if (c == nil) c = [TRDownloadManager new];
@@ -46,16 +46,38 @@
     }];
 }
 
+-(void)toggleContactStarStatus:(NSInteger)contactId
+{
+    NSDictionary *parameter = @{@"token":@"89862c5438d1b8ea47bf9a7b8d46e74d0aa7b8b2",
+                                @"id":@(contactId)};
+    
+    NSURL *url = [NSURL URLWithString:@"http://kostum5.ru"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+    [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    
+    [httpClient getPath:@"api/add_contact_isstar/"
+              parameters:parameter
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                     NSLog(@"star response: %@", responseStr);
+                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     // error
+                     NSLog(@"star error: %@", error);
+                 }];
+}
+
 -(void)download
 {
-    NSString* path = [[NSBundle mainBundle]pathForResource:@"contacts.json" ofType:nil];
-    NSData* data = [NSData dataWithContentsOfFile:path];
-    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    [self parseJson:json];
-    return;
+//    NSString* path = [[NSBundle mainBundle]pathForResource:@"contacts.json" ofType:nil];
+//    NSData* data = [NSData dataWithContentsOfFile:path];
+//    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//    [self parseJson:json];
+//    return;
     
     
-    NSURL *url = [NSURL URLWithString:@"http://kostum5.ru/api/get_player_contact_list/?token=4c42c089190e0d842d01d1de02a2368aaab42f23"];
+    NSURL *url = [NSURL URLWithString:@"http://kostum5.ru/api/get_player_contact_list/?token=89862c5438d1b8ea47bf9a7b8d46e74d0aa7b8b2"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation;
     
@@ -77,7 +99,7 @@
         NSArray* oldTel = [TRTel all];
         NSArray* oldSocNetwork = [TRSocNetwork all];
         
-        NSArray* contact_list = json[@"contact_list"];
+        NSArray* contact_list = json[@"user"];
         for (int i=0; i<contact_list.count; ++i) {
             NSDictionary* contact = contact_list[i];
             
@@ -96,32 +118,28 @@
             contactModel.id = id;
             contactModel.isStar = isStar;
             
-            NSArray* tel_list = contact[@"tel"];
+            
+            NSDictionary* contact_data = contact[@"contact_data"];
+            
+            NSString* facebook = contact_data[@"facebook"];
+            NSString* skype = contact_data[@"skype"];
+            
+            TRSocNetwork* socNetwork = [TRSocNetwork create];
+            socNetwork.skype = skype;
+            socNetwork.facebook = facebook;
+            socNetwork.contact = contactModel;
+            
+            [contactModel addSocNetworkObject:socNetwork];
+            
+            NSArray* tel_list = contact_data[@"phone"];
             for (int j=0; j<tel_list.count; ++j) {
-                NSDictionary* tel = tel_list[j];
-                
-                NSString* number = tel[@"number"];
+                NSString* number = tel_list[j];
                 
                 TRTel* telModel = [TRTel create];
                 telModel.number = number;
                 telModel.contact = contactModel;
                 
                 [contactModel addTelObject:telModel];
-            }
-            
-            NSArray* soc_network_list = contact[@"soc_network"];
-            for (int j=0; j<soc_network_list.count; ++j) {
-                NSDictionary* soc_network = soc_network_list[j];
-                
-                NSString* name = soc_network[@"name"];
-                NSString* url = soc_network[@"url"];
-                
-                TRSocNetwork* socNetwork = [TRSocNetwork create];
-                socNetwork.name = name;
-                socNetwork.url = url;
-                socNetwork.contact = contactModel;
-                
-                [contactModel addSocNetworkObject:socNetwork];
             }
         }
         

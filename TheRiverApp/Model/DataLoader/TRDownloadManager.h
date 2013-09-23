@@ -10,8 +10,9 @@
 
 @interface TRDownloadManager : NSObject
 
-+(instancetype)intsance;
++(instancetype)instance;
 -(void)download;
 -(void)search:(NSString*)query;
+-(void)toggleContactStarStatus:(NSInteger)contactId;
 
 @end

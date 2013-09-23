@@ -2,7 +2,7 @@
 //  TRSocNetwork.m
 //  TheRiverApp
 //
-//  Created by Admin on 22.09.13.
+//  Created by Admin on 23.09.13.
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
@@ -12,20 +12,11 @@
 
 @implementation TRSocNetwork
 
-@dynamic url;
-@dynamic name;
+@dynamic skype;
+@dynamic facebook;
+@dynamic vkontakte;
+@dynamic twitter;
+@dynamic email;
 @dynamic contact;
-
--(NSString *)twitter { return [self socUrl:@"twitter"]; }
--(NSString *)facebook { return [self socUrl:@"facebook"]; }
--(NSString *)vkotakte { return [self socUrl:@"vkotakte"]; }
-
--(NSString *)socUrl:(NSString*)socName
-{
-    if ([[self.name lowercaseString] isEqualToString:socName]){
-        return self.url;
-    }
-    return nil;
-}
 
 @end

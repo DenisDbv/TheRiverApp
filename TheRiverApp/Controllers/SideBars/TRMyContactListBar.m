@@ -238,7 +238,7 @@
     
     REVKActivity *vkActivity = [[REVKActivity alloc] initWithTitle:@"ВКонтакте" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:socNetwork.vkotakte];
+            NSURL *url = [NSURL URLWithString:socNetwork.vkontakte];
             [[UIApplication sharedApplication] openURL:url];
         }];
     }];

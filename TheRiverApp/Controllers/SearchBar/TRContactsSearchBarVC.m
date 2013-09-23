@@ -182,9 +182,10 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     NSLog(@"search string %@", searchString);
-    if([searchString isEqualToString:@"rt"] == YES)
+    if([searchString length] > 0)
     {
-        filteredContatcs = [TRContact where:@"firstName contains[cd] 'ст' or lastName contains[cd] 'ст'"];
+        NSString* s = [NSString stringWithFormat:@"firstName contains[cd] '%@' or lastName contains[cd] '%@'", searchString, searchString];
+        filteredContatcs = [TRContact where:s];
         return YES;
     }
     if (filteredContatcs != nil){

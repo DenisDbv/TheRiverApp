@@ -31,8 +31,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[TRDownloadManager intsance]download];
-    [[TRDownloadManager intsance]search:@"x"];
+    [[TRDownloadManager instance]download];
+    //[[TRDownloadManager intsance]search:@"x"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
