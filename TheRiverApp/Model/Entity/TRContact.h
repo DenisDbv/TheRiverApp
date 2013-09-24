@@ -36,4 +36,8 @@
 - (void)addSocNetwork:(NSSet *)values;
 - (void)removeSocNetwork:(NSSet *)values;
 
++(NSArray*)favorite;
++(NSArray*)notFavorite;
++(NSArray*)filterNotFavorite:(NSString*)text;
+
 @end

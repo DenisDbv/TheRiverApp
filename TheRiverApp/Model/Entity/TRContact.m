@@ -22,4 +22,20 @@
 @dynamic tel;
 @dynamic socNetwork;
 
++(NSArray*)favorite
+{
+    return [TRContact where:@"isStar == true"];
+}
+
++(NSArray*)notFavorite
+{
+    return [TRContact where:@"isStar == false"];
+}
+
++(NSArray*)filterNotFavorite:(NSString*)text
+{
+    NSString* s = [NSString stringWithFormat:@"isStar == false and firstName contains[cd] '%@' or lastName contains[cd] '%@'", text, text];
+    return [TRContact where:s];
+}
+
 @end

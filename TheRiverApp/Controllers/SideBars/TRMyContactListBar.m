@@ -94,8 +94,8 @@
 
 -(void)updateContacts:(id)notification
 {
-    favContacts = [TRContact where:@"isStar == true"];
-    otherContacts = [TRContact where:@"isStar == false"];
+    favContacts = [TRContact favorite];
+    otherContacts = [TRContact notFavorite];
     NSLog(@"update contacts %d", favContacts.count+otherContacts.count);
     [self.contactsTableView reloadData];
 }
