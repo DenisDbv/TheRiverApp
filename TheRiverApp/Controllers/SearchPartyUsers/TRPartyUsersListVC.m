@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[TRSearchPUManager client] downloadCitiesList:nil andFailedOperation:nil];
 }
 
 - (void)didReceiveMemoryWarning

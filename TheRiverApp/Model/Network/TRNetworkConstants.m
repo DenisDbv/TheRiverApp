@@ -14,3 +14,8 @@ NSString *const kTG_API_AuthUrl = @"http://kostum5.ru/api/login/";
 // Ключи для авторизации
 NSString *const kTGUserLoginKey = @"email";
 NSString *const kTGUserPasswordKey = @"password";
+
+
+NSString *const kTG_API_CitiesList = @"http://kostum5.ru/api/get_city_list/";
+NSString *const kTG_API_IndustryList = @"http://kostum5.ru/api/get_scope_work_list/";
+NSString *const kTGTokenKey = @"token";

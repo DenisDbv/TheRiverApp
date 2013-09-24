@@ -24,3 +24,4 @@
 
 #import "TRNetworkConstants.h"
 #import "TRAuthManager.h"
+#import "TRSearchPUManager.h"

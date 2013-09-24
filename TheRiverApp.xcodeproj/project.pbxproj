@@ -133,6 +133,9 @@
 		1897600917F05D6000B06DF7 /* TRBusinessScopeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897600817F05D5B00B06DF7 /* TRBusinessScopeModel.m */; };
 		1897600E17F0DB2100B06DF7 /* TRPartyUsersListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897600C17F0DB2100B06DF7 /* TRPartyUsersListVC.m */; };
 		1897600F17F0DB2100B06DF7 /* TRPartyUsersListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1897600D17F0DB2100B06DF7 /* TRPartyUsersListVC.xib */; };
+		1897601317F1753400B06DF7 /* TRPartyUsersFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */; };
+		1897601617F175D900B06DF7 /* TRSearchPUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897601517F175D800B06DF7 /* TRSearchPUManager.m */; };
+		1897601917F17A3100B06DF7 /* URLDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897601817F17A2D00B06DF7 /* URLDownloaderOperation.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -420,6 +423,12 @@
 		1897600B17F0DB2100B06DF7 /* TRPartyUsersListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartyUsersListVC.h; path = Controllers/SearchPartyUsers/TRPartyUsersListVC.h; sourceTree = "<group>"; };
 		1897600C17F0DB2100B06DF7 /* TRPartyUsersListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartyUsersListVC.m; path = Controllers/SearchPartyUsers/TRPartyUsersListVC.m; sourceTree = "<group>"; };
 		1897600D17F0DB2100B06DF7 /* TRPartyUsersListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRPartyUsersListVC.xib; path = Controllers/SearchPartyUsers/TRPartyUsersListVC.xib; sourceTree = "<group>"; };
+		1897601117F1753400B06DF7 /* TRPartyUsersFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartyUsersFilter.h; path = Controllers/SearchPartyUsers/Filter/TRPartyUsersFilter.h; sourceTree = "<group>"; };
+		1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartyUsersFilter.m; path = Controllers/SearchPartyUsers/Filter/TRPartyUsersFilter.m; sourceTree = "<group>"; };
+		1897601417F175D700B06DF7 /* TRSearchPUManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRSearchPUManager.h; sourceTree = "<group>"; };
+		1897601517F175D800B06DF7 /* TRSearchPUManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRSearchPUManager.m; sourceTree = "<group>"; };
+		1897601717F17A2800B06DF7 /* URLDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLDownloaderOperation.h; sourceTree = "<group>"; };
+		1897601817F17A2D00B06DF7 /* URLDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLDownloaderOperation.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -865,6 +874,8 @@
 				18975F7B17EE052F00B06DF7 /* Managers */,
 				18975F7F17EE055000B06DF7 /* URLPostOperation.h */,
 				18975F8017EE055000B06DF7 /* URLPostOperation.m */,
+				1897601717F17A2800B06DF7 /* URLDownloaderOperation.h */,
+				1897601817F17A2D00B06DF7 /* URLDownloaderOperation.m */,
 				18975F8217EE0D7400B06DF7 /* TRNetworkConstants.h */,
 				18975F8317EE0D7400B06DF7 /* TRNetworkConstants.m */,
 			);
@@ -877,6 +888,8 @@
 			children = (
 				18975F7C17EE052F00B06DF7 /* TRAuthManager.h */,
 				18975F7D17EE052F00B06DF7 /* TRAuthManager.m */,
+				1897601417F175D700B06DF7 /* TRSearchPUManager.h */,
+				1897601517F175D800B06DF7 /* TRSearchPUManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -924,11 +937,21 @@
 		1897600A17F0DA7600B06DF7 /* SearchPartyUsers */ = {
 			isa = PBXGroup;
 			children = (
+				1897601017F174EC00B06DF7 /* Filter */,
 				1897600B17F0DB2100B06DF7 /* TRPartyUsersListVC.h */,
 				1897600C17F0DB2100B06DF7 /* TRPartyUsersListVC.m */,
 				1897600D17F0DB2100B06DF7 /* TRPartyUsersListVC.xib */,
 			);
 			name = SearchPartyUsers;
+			sourceTree = "<group>";
+		};
+		1897601017F174EC00B06DF7 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				1897601117F1753400B06DF7 /* TRPartyUsersFilter.h */,
+				1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */,
+			);
+			name = Filter;
 			sourceTree = "<group>";
 		};
 		18A108B817DD199600D9CD8C /* Layers */ = {
@@ -1547,6 +1570,9 @@
 				1897600617F05CE400B06DF7 /* TRBusinessUserModel.m in Sources */,
 				1897600917F05D6000B06DF7 /* TRBusinessScopeModel.m in Sources */,
 				1897600E17F0DB2100B06DF7 /* TRPartyUsersListVC.m in Sources */,
+				1897601317F1753400B06DF7 /* TRPartyUsersFilter.m in Sources */,
+				1897601617F175D900B06DF7 /* TRSearchPUManager.m in Sources */,
+				1897601917F17A3100B06DF7 /* URLDownloaderOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
