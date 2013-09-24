@@ -26,7 +26,7 @@
 
 -(void)search:(NSString*)query
 {
-    NSDictionary *parameter = @{@"token":@"4c42c089190e0d842d01d1de02a2368aaab42f23",
+    NSDictionary *parameter = @{@"token":@"03525cae87c854b7b6ca5a31da4ebb65cf374d4b",
                                 @"query":query};
     
     NSURL *url = [NSURL URLWithString:@"http://kostum5.ru"];
@@ -48,7 +48,7 @@
 
 -(void)toggleContactStarStatus:(NSInteger)contactId
 {
-    NSDictionary *parameter = @{@"token":@"89862c5438d1b8ea47bf9a7b8d46e74d0aa7b8b2",
+    NSDictionary *parameter = @{@"token":@"03525cae87c854b7b6ca5a31da4ebb65cf374d4b",
                                 @"id":@(contactId)};
     
     NSURL *url = [NSURL URLWithString:@"http://kostum5.ru"];
@@ -77,7 +77,7 @@
 //    return;
     
     
-    NSURL *url = [NSURL URLWithString:@"http://kostum5.ru/api/get_player_contact_list/?token=89862c5438d1b8ea47bf9a7b8d46e74d0aa7b8b2"];
+    NSURL *url = [NSURL URLWithString:@"http://kostum5.ru/api/get_player_contact_list/?token=03525cae87c854b7b6ca5a31da4ebb65cf374d4b"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation;
     

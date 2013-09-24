@@ -190,18 +190,19 @@
     }
 
     if (contact.logo != nil){
-//        __weak UITableViewCell* blockCell = cell;
-//        NSURL* url = [NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]];
-//        NSURLRequest* request = [NSURLRequest requestWithURL:url];
-//        [cell.imageView setImageWithURLRequest:request
-//                              placeholderImage:nil
-//                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-//                                           [blockCell setNeedsDisplay];
-//                                       }
-//                                       failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-//                                           NSLog(@"cell image error %@", [error localizedDescription]);
-//                                       }];
-        [cell.imageView setImageWithURL:[NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]]];
+        __weak UITableViewCell* blockCell = cell;
+        NSURL* url = [NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]];
+        NSURLRequest* request = [NSURLRequest requestWithURL:url];
+        [cell.imageView setImageWithURLRequest:request
+                              placeholderImage:nil
+                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                           blockCell.imageView.image = image;
+                                           [blockCell setNeedsLayout];
+                                       }
+                                       failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                           NSLog(@"cell image error %@", [error localizedDescription]);
+                                       }];
+        //[cell.imageView setImageWithURL:[NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]]];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
     return cell;
