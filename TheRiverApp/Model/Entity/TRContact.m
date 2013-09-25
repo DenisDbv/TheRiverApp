@@ -34,7 +34,7 @@
 
 +(NSArray*)filterNotFavorite:(NSString*)text
 {
-    NSString* s = [NSString stringWithFormat:@"isStar == false and firstName contains[cd] '%@' or lastName contains[cd] '%@'", text, text];
+    NSString* s = [NSString stringWithFormat:@"isStar == false and (firstName contains[cd] '%@' or lastName contains[cd] '%@')", text, text];
     return [TRContact where:s];
 }
 
