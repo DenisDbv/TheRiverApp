@@ -7,7 +7,7 @@
 //
 
 #import "TRMyContactListBar.h"
-#import "TRSearchBarVC.h"
+#import "TRContactsSearchBarVC.h"
 #import "TRSectionHeaderView.h"
 #import "TRFavoritesEditList.h"
 #import "TRUserProfileController.h"
@@ -20,13 +20,23 @@
 #import <QuartzCore/QuartzCore.h>
 #import <SIAlertView/SIAlertView.h>
 
+#import "TRContact.h"
+#import "TRTel.h"
+#import "TRSocNetwork.h"
+#import "UIImageView+AFNetworking.h"
+
+#define HOST_URL @"http://kostum5.ru"
+
 @interface TRMyContactListBar ()
-@property (nonatomic, retain) TRSearchBarVC *searchBarController;
+@property (nonatomic, retain) TRContactsSearchBarVC *searchBarController;
 @property (nonatomic, retain) UITableView *contactsTableView;
 @end
 
 @implementation TRMyContactListBar
-
+{
+    NSArray* favContacts;
+    NSArray* otherContacts;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,7 +53,7 @@
     [[SIAlertView appearance] setDefaultButtonImage:[[UIImage imageNamed:@"button-default.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,5,14,6)] forState:UIControlStateNormal];
     [[SIAlertView appearance] setDefaultButtonImage:[[UIImage imageNamed:@"button-default.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,5,14,6)] forState:UIControlStateHighlighted];
 #endif
-    _searchBarController = [[TRSearchBarVC alloc] init];
+    _searchBarController = [[TRContactsSearchBarVC alloc] init];
     _searchBarController.delegate = (id)self;
     [self.view addSubview:_searchBarController.searchBar];
     [_searchBarController.searchBar sizeToFit];
@@ -69,6 +79,25 @@
     [self.view setBackgroundColor:[UIColor clearColor]];
     
     //self.view.backgroundColor = [UIColor whiteColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateContacts:)
+                                                 name:@"ContactsUpdatedNotification"
+                                               object:nil];
+    NSLog(@"contacts did load");
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:@"ContactsUpdatedNotification"];
+}
+
+-(void)updateContacts:(id)notification
+{
+    favContacts = [TRContact favorite];
+    otherContacts = [TRContact notFavorite];
+    NSLog(@"update contacts %d", favContacts.count+otherContacts.count);
+    [self.contactsTableView reloadData];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -79,6 +108,9 @@
     [UIView commitAnimations];
     
     [_searchBarController.searchBar sizeToFit];
+    
+    NSLog(@"contacts did appear");
+    [self updateContacts:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,26 +120,40 @@
 
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (NSInteger)[TRUserManager sharedInstance].usersObject.count;
+    if(section == 0)
+        return favContacts.count;
+    else
+        return otherContacts.count;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
-                                                                         withTitle:@"ИЗБРАННОЕ"
-                                                                   withButtonTitle:@"РЕДАКТИРОВАТЬ"
-                                                                           byBlock:^{
-                                                                               [self checkoutTableToEditMode];
-                                                                           }];
-    [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
-    return headerView;
+    if(section == 0)    {
+        TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
+                                                                             withTitle:@"ИЗБРАННОЕ"
+                                                                       withButtonTitle:@"РЕДАКТИРОВАТЬ"
+                                                                               byBlock:^{
+                                                                                   [self checkoutTableToEditMode];
+                                                                               }];
+        [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+        return headerView;
+    }
+    else
+    {
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 10)];
+        lineView.backgroundColor = [UIColor lightGrayColor];
+        return lineView;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 32.0;
+    if(section == 0)
+        return 32.0;
+    else
+        return 10.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -115,7 +161,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    __block UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
@@ -127,19 +173,38 @@
             UIImageView *touchView = (UIImageView*)sender.view;
             
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:touchView.tag]];
-                [AppDelegateInstance() changeProfileViewController:userProfileVC];
+                //TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:touchView.tag]];
+                //[AppDelegateInstance() changeProfileViewController:userProfileVC];
             }];
             
         } forTaps:1];
     }
     
-    cell.imageView.tag = indexPath.row;
+    cell.imageView.tag = indexPath.row;    
     
-    TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
-    
-    cell.imageView.image = [UIImage imageNamed:userUnit.logo];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userUnit.firstName, userUnit.lastName];
+    TRContact* contact;
+    if (indexPath.section == 0){
+        contact = favContacts[indexPath.row];
+    }else{
+        contact = otherContacts[indexPath.row];
+    }
+
+    if (contact.logo != nil){
+        __weak UITableViewCell* blockCell = cell;
+        NSURL* url = [NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]];
+        NSURLRequest* request = [NSURLRequest requestWithURL:url];
+        [cell.imageView setImageWithURLRequest:request
+                              placeholderImage:nil
+                                       success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                           blockCell.imageView.image = image;
+                                           [blockCell setNeedsLayout];
+                                       }
+                                       failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                           NSLog(@"cell image error %@", [error localizedDescription]);
+                                       }];
+        //[cell.imageView setImageWithURL:[NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]]];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
     return cell;
 }
 
@@ -147,14 +212,24 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    //TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    TRContact* contact;
+    if (indexPath.section == 0){
+        contact = favContacts[indexPath.row];
+    }else{
+        contact = otherContacts[indexPath.row];
+    }
+    
+    TRTel* tel = contact.tel.anyObject;
+    TRSocNetwork* socNetwork = contact.socNetwork.anyObject;
     
     REActivity *customActivity = [[REActivity alloc] initWithTitle:@"Телефон"
                                                              image:[UIImage imageNamed:@"Phone.png"]
                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                                                                                       
                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                               NSString *phoneNumber = [@"tel://" stringByAppendingString:userUnit.contactPhone];
+                                                               NSString *phoneNumber = [@"tel://" stringByAppendingString:
+                                                                                        tel.number];
                                                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
                                                            }];
                                                        }];
@@ -191,37 +266,39 @@
     REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
     messageActivity.userInfo = @{
                                   @"text": @"Привет! :)",
-                                  @"recipient":userUnit.contactPhone,
+                                  @"recipient": tel.number == nil ? @"" : tel.number,
                                 };
     
+    /*
     REMailActivity *mailActivity = [[REMailActivity alloc] init];
     mailActivity.userInfo = @{
                               @"text": @"Привет! :)",
                               @"recipient":userUnit.contactEmail,
                             };
+    */
     
     REVKActivity *vkActivity = [[REVKActivity alloc] initWithTitle:@"ВКонтакте" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:userUnit.contactVK];
+            NSURL *url = [NSURL URLWithString:socNetwork.vkontakte];
             [[UIApplication sharedApplication] openURL:url];
         }];
     }];
     
     REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] initWithTitle:@"Facebook" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:userUnit.contactFB];
+            NSURL *url = [NSURL URLWithString:socNetwork.facebook];
             [[UIApplication sharedApplication] openURL:url];
         }];
     }];
     
     RETwitterActivity *twitterActivity = [[RETwitterActivity alloc] initWithTitle:@"Twitter" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Twitter"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:userUnit.contactTwitter];
+            NSURL *url = [NSURL URLWithString:socNetwork.twitter];
             [[UIApplication sharedApplication] openURL:url];
         }];
     }];
     
-    NSArray *activities = @[customActivity, customSkypeActivity, messageActivity, mailActivity,
+    NSArray *activities = @[customActivity, customSkypeActivity, messageActivity, /*mailActivity,*/
                             vkActivity, facebookActivity, twitterActivity ];
     REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
     [activityViewController presentFromRootViewController];
@@ -230,7 +307,7 @@
 
 #pragma mark SearchNearContactsDelegate
 
--(void) onClickBySearchBar:(UISearchBar*)searchBar
+-(void) searchBarClick:(UISearchBar*)searchBar
 {
     [UIView beginAnimations:nil context:NULL];
     [self toFullWidth];
@@ -242,7 +319,7 @@
     self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
 }
 
--(void) onCancelSearchBar:(UISearchBar*)searchBar
+-(void) searchBarCancel:(UISearchBar*)searchBar
 {
     [_searchBarController.searchBar resignFirstResponder];
     

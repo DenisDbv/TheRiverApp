@@ -15,6 +15,7 @@
 #import "TRMyContactListBar.h"
 #import "TRTestViewController.h"
 #import "TRScrollViewController.h"
+#import "TRDownloadManager.h"
 
 @interface TRAppDelegate()
 @property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
@@ -31,6 +32,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[TRDownloadManager instance]download];
+    //[[TRDownloadManager intsance]search:@"x"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self setupAppearance];

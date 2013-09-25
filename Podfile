@@ -14,6 +14,8 @@ pod 'SSToolkit'
 pod 'MBProgressHUD', '~> 0.7'
 pod 'SIAlertView'
 
+pod 'ObjectiveSugar'
+
 # Forum
 pod 'uservoice-iphone-sdk'
 

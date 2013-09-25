@@ -1,28 +1,29 @@
 //
-//  TRSearchBarVC.m
+//  TRContactsSearchBarVC.m
 //  TheRiverApp
 //
-//  Created by DenisDbv on 02.09.13.
+//  Created by Admin on 22.09.13.
 //  Copyright (c) 2013 axbx. All rights reserved.
 //
 
-#import "TRSearchBarVC.h"
+#import "TRContactsSearchBarVC.h"
+
 #import "UISearchBar+CancelBtnShow.h"
 #import "TRAppDelegate.h"
+#import "TRContact.h"
 
-@interface TRSearchBarVC ()
-@property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
+@interface TRContactsSearchBarVC ()
+@property (nonatomic, strong) UISearchDisplayController *searchDC;
 @end
 
-@implementation TRSearchBarVC
+@implementation TRContactsSearchBarVC
 {
     UIView *frontBlackView;
     UITableView *searchTableView;
     
-    //NSMutableArray *_searchBuffer;
     TRAppDelegate *appDelegate;
+    NSArray* filteredContatcs;
 }
-@synthesize searchDisplayController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,10 +80,10 @@
                        state:UIControlStateNormal];
     [self.searchBar sizeToFit];
     
-    self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-    searchDisplayController.delegate = (id)self;
-    searchDisplayController.searchResultsDataSource = (id)self;
-    searchDisplayController.searchResultsDelegate = (id)self;
+    self.searchDC= [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    self.searchDC.delegate = (id)self;
+    self.searchDC.searchResultsDataSource = (id)self;
+    self.searchDC.searchResultsDelegate = (id)self;
     searchTableView = self.searchDisplayController.searchResultsTableView;
 }
 
@@ -97,20 +98,44 @@
 
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return filteredContatcs == nil ? 10 : filteredContatcs.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 59.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        [cell setBackgroundColor:[UIColor clearColor]];
+        [cell.textLabel setTextColor:[UIColor blackColor]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
     }
     
-    //Player *player = [_searchBuffer objectAtIndex:indexPath.row];
-    //cell.textLabel.text = player.lastName;
-    
-	return cell;
+    if (filteredContatcs == nil){
+        if (indexPath.row == 1){
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:22]];
+            cell.textLabel.text = @"Не найдено";
+        }else{
+            cell.textLabel.text = @"";
+        }
+    }else{
+        if (indexPath.row == 1){
+            cell.textLabel.textAlignment = NSTextAlignmentLeft;
+            [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Left" size:19]];
+        }
+        
+        //cell.imageView.tag = indexPath.row;
+        TRContact* contact = filteredContatcs[indexPath.row];
+        
+        //[cell.imageView setImageWithURL:[NSURL URLWithString:[HOST_URL stringByAppendingString:contact.logo]]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
+    }
+    return cell;
 }
 
 /*#pragma mark UISearchDisplayDelegate
@@ -137,12 +162,17 @@
 #pragma mark -
 #pragma mark - UISearchControllerDelegate
 
+-(void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
+{
+    NSLog(@"search display load table view");
+}
+
 - (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
 {
 	[((UIViewController*)self.delegate).view addSubview: self.searchDisplayController.searchResultsTableView];
     self.searchDisplayController.searchResultsTableView.frame = frontBlackView.frame; //CGRectMake(0, 0,
-                                                                           //self.view.bounds.size.width,
-                                                                           //self.view.bounds.size.height-self.searchBar.bounds.size.height);
+    //self.view.bounds.size.width,
+    //self.view.bounds.size.height-self.searchBar.bounds.size.height);
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
@@ -152,12 +182,15 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     NSLog(@"search string %@", searchString);
-	if([searchString isEqualToString:@""] == NO)
+    if([searchString length] > 0)
     {
-        /*[_searchBuffer removeAllObjects];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.lastName contains[c] %@",searchString];
-        _searchBuffer = [[appDelegate.playersArray.players filteredArrayUsingPredicate:predicate] mutableCopy];
-        [self.searchDisplayController.searchResultsTableView reloadData];*/
+        NSString* s = [NSString stringWithFormat:@"firstName contains[cd] '%@' or lastName contains[cd] '%@'", searchString, searchString];
+        filteredContatcs = [TRContact where:s];
+        return YES;
+    }
+    if (filteredContatcs != nil){
+        filteredContatcs = nil;
+        return YES;
     }
 	return NO;
 }
@@ -178,9 +211,9 @@
     
     [self showFronBlackView];
     
-    if([self.delegate respondsToSelector:@selector(onClickBySearchBar:)])
+    if([self.delegate respondsToSelector:@selector(searchBarClick:)])
     {
-        [self.delegate onClickBySearchBar: self.searchBar];
+        [self.delegate searchBarClick:self.searchBar];
     }
 }
 
@@ -192,9 +225,9 @@
     
     [self hideFrontBlackView];
     
-    if([self.delegate respondsToSelector:@selector(onCancelSearchBar:)])
+    if([self.delegate respondsToSelector:@selector(searchBarCancel:)])
     {
-        [self.delegate onCancelSearchBar: self.searchBar];
+        [self.delegate searchBarCancel:self.searchBar];
     }
 }
 
@@ -230,3 +263,4 @@
 }
 
 @end
+
