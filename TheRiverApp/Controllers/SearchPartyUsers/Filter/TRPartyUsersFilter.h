@@ -10,4 +10,6 @@
 
 @interface TRPartyUsersFilter : UIView
 
+- (id)initWithFrame:(CGRect)frame byRootTarget:(id)target;
+
 @end

@@ -50,7 +50,7 @@ static const NSString *_fileIndustryHandler = @"industry.data";
 
                                                                   NSMutableArray *citiesArray = [[NSMutableArray alloc] init];
                                                                   [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                                                          [citiesArray addObject: obj];
+                                                                          [citiesArray addObject: [obj objectForKey:@"name"] ];
                                                                   }];
                                                                   [self saveUserData:citiesArray atFile:(NSString*)_fileCitiesHandler];
                                                                   
@@ -88,7 +88,7 @@ static const NSString *_fileIndustryHandler = @"industry.data";
                                                                               
                                                                               NSMutableArray *industryArray = [[NSMutableArray alloc] init];
                                                                               [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                                                                  [industryArray addObject: obj];
+                                                                                  [industryArray addObject: [obj objectForKey:@"name"] ];
                                                                               }];
                                                                               [self saveUserData:industryArray atFile:(NSString*)_fileIndustryHandler];
                                                                               

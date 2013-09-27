@@ -9,12 +9,15 @@
 #import "TRPartyUsersListVC.h"
 #import "WDActivityIndicator.h"
 #import "TRSearchPUsersCell.h"
+#import "TRPartyUsersFilter.h"
+
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "SlideInMenuViewController.h"
 
 @interface TRPartyUsersListVC ()
 @property (nonatomic, retain) WDActivityIndicator *activityIndicator;
-
+@property (nonatomic, retain) SlideInMenuViewController *scrollDownMindMenu;
 @property (nonatomic, retain) TRPUserListModel *_userList;
 @end
 
@@ -35,12 +38,36 @@
 {
     [super viewDidLoad];
     
+    TRPartyUsersFilter *menuView = [[TRPartyUsersFilter alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
+    menuView.backgroundColor = [UIColor whiteColor]; //self.tableView.separatorColor;
+    _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
+    
+    [self.tableView addSubview: _scrollDownMindMenu.view];
+    [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
+    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
+    
     [self refreshUserList];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [_scrollDownMindMenu scrollViewDidScroll:scrollView];
+}
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    [_scrollDownMindMenu scrollViewWillBeginDecelerating:scrollView];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [_scrollDownMindMenu scrollViewWillBeginDragging:scrollView];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [_scrollDownMindMenu scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 }
 
 -(void) refreshUserList
