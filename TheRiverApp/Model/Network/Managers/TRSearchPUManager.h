@@ -19,6 +19,9 @@ typedef void (^FailedOperation)(LRRestyResponse *response);
     NSOperationQueue * _queuePUSearch;
 }
 
+@property (nonatomic, readonly) NSArray *cityList;
+@property (nonatomic, readonly) NSArray *industryList;
+
 + (instancetype)client;
 
 -(void) downloadCitiesList:(SuccessOperation) succesOperaion
@@ -26,5 +29,10 @@ typedef void (^FailedOperation)(LRRestyResponse *response);
 
 -(void) downloadIndustryList:(SuccessOperation) succesOperaion
           andFailedOperation:(FailedOperation) failedOperation;
+
+-(void) downloadUsersListByCity:(NSString*)city
+                    andIndustry:(NSString*)industry
+           withSuccessOperation:(void(^)(LRRestyResponse *response, TRPUserListModel *usersList))successBlock
+             andFailedOperation:(FailedOperation) failedOperation;
 
 @end

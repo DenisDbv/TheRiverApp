@@ -8,8 +8,14 @@
 
 #import "TRSearchPUManager.h"
 #import "URLDownloaderOperation.h"
+#import "URLPostOperation.h"
+#import <NSString+RMURLEncoding/NSString+RMURLEncoding.h>
+#import "TGArhiveObject.h"
 
 @implementation TRSearchPUManager
+
+static const NSString *_fileCitiesHandler = @"cities.data";
+static const NSString *_fileIndustryHandler = @"industry.data";
 
 + (instancetype)client
 {
@@ -40,8 +46,13 @@
     URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlCityList
                                                               withSuccessBlock:^(LRRestyResponse *response) {
                                                             
-                                                                  NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                                  NSLog(@"%@", resultJSON);
+                                                                  NSArray *resultJSON = [[response asString] objectFromJSONString];
+
+                                                                  NSMutableArray *citiesArray = [[NSMutableArray alloc] init];
+                                                                  [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                                          [citiesArray addObject: obj];
+                                                                  }];
+                                                                  [self saveUserData:citiesArray atFile:(NSString*)_fileCitiesHandler];
                                                                   
                                                                   if( succesOperaion != nil)
                                                                       succesOperaion(response);
@@ -73,8 +84,13 @@
     URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlCityList
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
-                                                                              NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                                              NSLog(@"%@", resultJSON);
+                                                                              NSArray *resultJSON = [[response asString] objectFromJSONString];
+                                                                              
+                                                                              NSMutableArray *industryArray = [[NSMutableArray alloc] init];
+                                                                              [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                                                  [industryArray addObject: obj];
+                                                                              }];
+                                                                              [self saveUserData:industryArray atFile:(NSString*)_fileIndustryHandler];
                                                                               
                                                                               if( succesOperaion != nil)
                                                                                   succesOperaion(response);
@@ -88,6 +104,70 @@
                                                                           }];
     
     [_queuePUSearch addOperation:operation];
+}
+
+-(void) downloadUsersListByCity:(NSString*)city
+                    andIndustry:(NSString*)industry
+           withSuccessOperation:(void(^)(LRRestyResponse *response, TRPUserListModel *usersList))successBlock
+             andFailedOperation:(FailedOperation) failedOperation
+{
+    if( [TRAuthManager client].isAuth == NO )   {
+        NSLog(@"Отмена получения списка участников. Пользователь не авторизован.");
+        return;
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[TRAuthManager client].iamData.token forKey:kTGTokenKey];
+    [params setObject:city forKey:kTGCityKey];
+    [params setObject:industry forKey:kTGScopeWorkKey];
+    
+    URLPostOperation * operation = [[URLPostOperation alloc]  initWithUrlString: kTG_API_PartyUsersList
+                                                                       andParam:params
+                                                                      andHeader:nil
+                                                                          withSuccessBlock:^(LRRestyResponse *response) {
+                                                                              
+                                                                              NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                              
+                                                                              TRPUserListModel *puUserList = [[TRPUserListModel alloc] initWithDictionary:resultJSON];
+                                                                              
+                                                                              if( successBlock != nil)
+                                                                                  successBlock(response, puUserList);
+                                                                              
+                                                                          } andFailedBlock:^(LRRestyResponse *response){
+                                                                              
+                                                                              if(failedOperation != nil)
+                                                                                  failedOperation(response);
+                                                                              
+                                                                              NSLog(@"Error downloadUsersListByCity: %@", response.asString);
+                                                                          }];
+    
+    [_queuePUSearch addOperation:operation];
+}
+
+-(void) saveUserData:(id)dataModel atFile:(NSString*)fileName
+{
+    [[TGArhiveObject class] saveArhiveFromObject:dataModel toFile: fileName];
+}
+
+-(NSArray*) cityList
+{
+    return [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileCitiesHandler];
+}
+
+-(NSArray*) industryList
+{
+    return [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileIndustryHandler];
+}
+
+-(void) clear
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *userFilePath = [[[TGArhiveObject class] documentsDirectory] stringByAppendingPathComponent: (NSString*)_fileCitiesHandler];
+    [fileManager removeItemAtPath:userFilePath error:nil];
+    
+    userFilePath = [[[TGArhiveObject class] documentsDirectory] stringByAppendingPathComponent: (NSString*)_fileIndustryHandler];
+    [fileManager removeItemAtPath:userFilePath error:nil];
 }
 
 @end
