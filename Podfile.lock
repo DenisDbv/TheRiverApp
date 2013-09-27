@@ -1,7 +1,7 @@
 PODS:
   - ABMultiton (1.2.1)
   - ACPButton (1.0.0)
-  - AFNetworking (1.3.2)
+  - AFNetworking (1.3.3)
   - AFXAuthClient (1.0.8):
     - AFNetworking (~> 1.3)
   - AQGridView (1.3)
@@ -26,6 +26,7 @@ PODS:
   - MBProgressHUD (0.7)
   - MGBox2 (2.0.0)
   - NSData+Base64 (1.0.0)
+  - NSString+RMURLEncoding (0.1.0)
   - NVUIGradientButton (1.5.0)
   - PocketAPI (1.0.2)
   - REActivityViewController (1.6.6):
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - LRResty
   - MBProgressHUD (~> 0.7)
   - MGBox2
+  - NSString+RMURLEncoding
   - NVUIGradientButton
   - REActivityViewController (~> 1.6.6)
   - SDWebImage
@@ -73,7 +75,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ABMultiton: b0a22178919b139e0b3921825ace1b36ca8e8b91
   ACPButton: 187740a84eb54740075178a3125403164c6473df
-  AFNetworking: 7f9bcd7c287a75476cd5c61e82fd3380e93e4c54
+  AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
   AFXAuthClient: 29dfca79bac4d8b1e83a1eeb126b231e03c64fa1
   AQGridView: ee436c64bc4a972ca7f3ce99971c0204af9e65ea
   DEFacebookComposeViewController: b26811d6775594df2a386406655c9f2828f041cc
@@ -87,6 +89,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MGBox2: 7c09e36c2271f9af16fdb5141a0ca554ecee4d8d
   NSData+Base64: 36c4e5b6479259c1a68866ccd2a8dd385c9744f7
+  NSString+RMURLEncoding: f2a8c822486cdbe5c46638e85bc159aaa3ebc2b8
   NVUIGradientButton: 08792b091feb141d89cb375cbb2d2db0cc02371c
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
   REActivityViewController: 1d79c0a2fc07712d3db6996849f0750897883ba5

@@ -34,6 +34,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    [self updateDataFromServer];
+    
     [self setupAppearance];
     
     if( [[TRAuthManager client] isAuth] == NO )
@@ -54,6 +56,12 @@
     //[self showFontsList];
     
     return YES;
+}
+
+-(void) updateDataFromServer
+{
+    [[TRSearchPUManager client] downloadCitiesList:nil andFailedOperation:nil];
+    [[TRSearchPUManager client] downloadIndustryList:nil andFailedOperation:nil];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url

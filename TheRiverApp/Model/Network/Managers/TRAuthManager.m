@@ -14,7 +14,7 @@
 
 @synthesize iamData;
 
-const NSString *_fileHandler = @"user.data";
+static const NSString * _fileHandler = @"user.data";
 
 + (instancetype)client
 {
@@ -39,7 +39,7 @@ withSuccessOperation:(SuccessOperation) succesOperaion
     [params setObject:password forKey:kTGUserPasswordKey];
     
     URLPostOperation * operation = [[URLPostOperation alloc] initWithUrlString: kTG_API_AuthUrl
-                                                                      andParam: params
+                                                                     andParam: params
                                                                      andHeader: nil
                                                               withSuccessBlock:^(LRRestyResponse *response) {
                                                                   
