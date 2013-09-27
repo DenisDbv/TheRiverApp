@@ -32,7 +32,10 @@
 {
     TRPartyUsersListVC *rootController;
     
+    NSIndexPath *preLastCitySelectIndexPath;
     NSIndexPath *lastCitySelectIndexPath;
+    
+    NSIndexPath *preLastIndustrySelectIndexPath;
     NSIndexPath *lastIndustrySelectIndexPath;
 }
 @synthesize levelButton, categoryButton, cancelButton, successButton;
@@ -48,6 +51,8 @@
         
         lastCitySelectIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
         lastIndustrySelectIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
+        preLastCitySelectIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
+        preLastIndustrySelectIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
         
         [self createSubHeadButtons];
         [self createHeadButtons];
@@ -91,10 +96,14 @@
 {
     [self showRootContent];
     
-    if(citiesTableView != nil)
+    if(citiesTableView != nil)  {
+        lastCitySelectIndexPath = preLastCitySelectIndexPath;
        [self hideCitiesTableView];
-    else
+    }
+    else    {
+        lastIndustrySelectIndexPath = preLastIndustrySelectIndexPath;
         [self hideIndustryTableView];
+    }
 }
 
 -(void) onSuccessButtonClick:(NVUIGradientButton*)sender
@@ -105,6 +114,22 @@
         [self hideCitiesTableView];
     else
         [self hideIndustryTableView];
+    
+    
+    NSString *cityName;
+    NSString *industryName;
+    
+    if(lastCitySelectIndexPath.row >= 0)
+        cityName = [[TRSearchPUManager client].cityList objectAtIndex:lastCitySelectIndexPath.row];
+    else
+        cityName = @"";
+    
+    if(lastIndustrySelectIndexPath.row >= 0)
+        industryName = [[TRSearchPUManager client].industryList objectAtIndex:lastIndustrySelectIndexPath.row];
+    else
+        industryName = @"";
+    
+    [rootController refreshUserListByCity: cityName andIndustry: industryName];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -345,6 +370,7 @@
         cell = [tableView cellForRowAtIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
+        preLastCitySelectIndexPath = lastCitySelectIndexPath;
         lastCitySelectIndexPath = indexPath;
     } else {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:lastIndustrySelectIndexPath];
@@ -353,6 +379,7 @@
         cell = [tableView cellForRowAtIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
+        preLastIndustrySelectIndexPath = lastIndustrySelectIndexPath;
         lastIndustrySelectIndexPath = indexPath;
     }
 }

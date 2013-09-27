@@ -12,4 +12,6 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
+-(void) refreshUserListByCity:(NSString*)cityName andIndustry:(NSString*)industryName;
+
 @end

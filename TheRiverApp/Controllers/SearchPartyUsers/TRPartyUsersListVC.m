@@ -46,7 +46,7 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     
-    [self refreshUserList];
+    [self refreshUserListByCity:@"Москва" andIndustry:@""];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +70,8 @@
     [_scrollDownMindMenu scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 }
 
--(void) refreshUserList
+-(void) refreshUserListByCity:(NSString*)cityName
+                  andIndustry:(NSString*)industryName
 {
     if(activityIndicator == nil)    {
         activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
@@ -79,7 +80,7 @@
         [activityIndicator startAnimating];
     }
     
-    [[TRSearchPUManager client] downloadUsersListByCity:@"Москва" andIndustry:@"" withSuccessOperation:^(LRRestyResponse *response, TRPUserListModel *usersList) {
+    [[TRSearchPUManager client] downloadUsersListByCity:cityName andIndustry:industryName withSuccessOperation:^(LRRestyResponse *response, TRPUserListModel *usersList) {
         [self endRefreshUserList:usersList];
     } andFailedOperation:^(LRRestyResponse *response) {
         //
@@ -123,10 +124,16 @@
     TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];
-    cell.detailTextLabel.text = @"1 общий друг";
 
     NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
     [cell.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
+    for(TRUserResolutionModel *userResolution in userInfo.interests)
+    {
+        [hightResolution addObject:userResolution.name];
+    }
+    cell.detailTextLabel.text = [hightResolution componentsJoinedByString:@", "];
     
     return cell;
 }
