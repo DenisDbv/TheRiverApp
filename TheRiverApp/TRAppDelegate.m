@@ -11,6 +11,7 @@
 #import "MFSideMenu.h"
 
 #import "TRLoginViewController.h"
+#import "TRAuthViewController.h"
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
 #import "TRTestViewController.h"
@@ -32,6 +33,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [self updateDataFromServer];
     
     [self setupAppearance];
     
@@ -55,6 +58,39 @@
     return YES;
 }
 
+-(void) updateDataFromServer
+{
+    [[TRSearchPUManager client] downloadCitiesList:nil andFailedOperation:nil];
+    [[TRSearchPUManager client] downloadIndustryList:nil andFailedOperation:nil];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    NSLog(@"%@", [url absoluteString]);
+    
+    if( [[TRAuthManager client] isAuth] == YES)
+        return NO;
+    
+    /*NSLog(@"scheme: %@", [url scheme]);
+    NSLog(@"host: %@", [url host]);
+    NSLog(@"port: %@", [url port]);
+    NSLog(@"path: %@", [url path]);
+    NSLog(@"path components: %@", [url pathComponents]);
+    NSLog(@"parameterString: %@", [url parameterString]);
+    NSLog(@"query: %@", [url query]);
+    NSLog(@"fragment: %@", [url fragment]);*/
+    
+    NSString *login = @"";
+    NSString *queryString = [url query];
+    NSArray *splitArray = [queryString componentsSeparatedByString:@"="];
+    if(splitArray.count == 2)
+        login = [splitArray objectAtIndex:1];
+    
+    [self presentAuthViewController:login];
+    
+    return YES;
+}
+
 - (void)setupAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
@@ -68,6 +104,16 @@
     TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
     self.window.rootViewController = loginViewController;
     [self.window makeKeyAndVisible];
+}
+
+- (void) presentAuthViewController:(NSString*)login
+{
+    TRAuthViewController *authViewController = [[TRAuthViewController alloc] init];
+    self.window.rootViewController = authViewController;
+    [self.window makeKeyAndVisible];
+    
+    authViewController.loginField.text = login;
+    [authViewController.passwordField becomeFirstResponder];
 }
 
 - (void) presentTheRiverControllers
