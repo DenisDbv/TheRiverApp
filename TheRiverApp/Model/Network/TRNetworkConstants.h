@@ -10,3 +10,11 @@ extern NSString *const kTG_API_AuthUrl;
 
 extern NSString *const kTGUserLoginKey;
 extern NSString *const kTGUserPasswordKey;
+
+
+extern NSString *const kTG_API_CitiesList;
+extern NSString *const kTG_API_IndustryList;
+extern NSString *const kTG_API_PartyUsersList;
+extern NSString *const kTGTokenKey;
+extern NSString *const kTGCityKey;
+extern NSString *const kTGScopeWorkKey;

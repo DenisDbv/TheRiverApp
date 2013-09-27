@@ -23,6 +23,7 @@ pod 'JSONKit'
 pod 'jastor'
 pod 'SDWebImage'
 pod 'UIActivityIndicator-for-SDWebImage'
+pod 'NSString+RMURLEncoding'
 
 # FileIO
 pod 'HRCoder'
