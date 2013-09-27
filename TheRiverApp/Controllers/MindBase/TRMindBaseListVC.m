@@ -39,7 +39,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TRMindItemCell" bundle:nil] forCellReuseIdentifier:@"TRMindCell"];
     
     TRMindFilterView *menuView = [[TRMindFilterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
-    menuView.backgroundColor = [UIColor whiteColor]; //self.tableView.separatorColor;
+    menuView.backgroundColor = [UIColor whiteColor];
     _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
     [self.tableView addSubview: _scrollDownMindMenu.view];

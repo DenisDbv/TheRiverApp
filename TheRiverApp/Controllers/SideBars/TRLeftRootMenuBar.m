@@ -22,6 +22,7 @@
 #import "TRMindBaseListVC.h"
 #import "TRBusinessBaseListVC.h"
 #import "TRMeetingsBaseListVC.h"
+#import "TRPartyUsersListVC.h"
 
 @interface TRLeftRootMenuBar ()
 @property (nonatomic, retain) UITableView *rootMenuTableView;
@@ -86,7 +87,7 @@
     {
         return 2;
     }*/
-    return 6;
+    return 7;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -225,18 +226,23 @@
             //cell.badgeString = @"3";
             break;
         case 2:
+            //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
+            cell.textLabel.text = @"Участники";
+            //cell.badgeString = @"3";
+            break;
+        case 3:
             //cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
             cell.textLabel.text = @"Мероприятия";
             break;
-        case 3:
+        case 4:
             cell.textLabel.text = @"Кейсы";
             //cell.badgeString = @"1+";
             break;
-        case 4:
+        case 5:
             //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
             cell.textLabel.text = @"База знаний";
             break;
-        case 5:
+        case 6:
             //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
             cell.textLabel.text = @"Оставить отзыв";
             break;
@@ -312,7 +318,7 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 5)   {
+    if(indexPath.row == 6)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             UVConfig *config = [UVConfig configWithSite:@"brandymint.uservoice.com"
                                                  andKey:@"6P7WTuK36Q8gbXrnjXSug"
@@ -327,25 +333,32 @@
             //[UserVoice presentUserVoiceNewIdeaFormForParentViewController:self andConfig:config];
             [UserVoice presentUserVoiceInterfaceForParentViewController:self andConfig:config];
         }];
-    } else if(indexPath.row == 4)  {
+    } else if(indexPath.row == 5)  {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:mindBaseList];
             
         }];
-    } else if(indexPath.row == 3)   {
+    } else if(indexPath.row == 4)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:businessBaseList];
             
         }];
-    } else if(indexPath.row == 2)   {
+    } else if(indexPath.row == 3)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRMeetingsBaseListVC *meetingBaseList = [[TRMeetingsBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:meetingBaseList];
+            
+        }];
+    } else if(indexPath.row == 2)   {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRPartyUsersListVC *partyUserList = [[TRPartyUsersListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:partyUserList];
             
         }];
     }
