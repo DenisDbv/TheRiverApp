@@ -10,6 +10,9 @@
 #import "TRPartnersSearchView.h"
 #import "UIBarButtonItem+BarButtonItemExtended.h"
 #import <SlideInMenuViewController.h>
+#import "TRSearchPartnersCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @interface TRSearchPartnersListVC ()
 @property (nonatomic, retain) TRPartnersSearchView *menuView;
@@ -38,6 +41,8 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"TRSearchPartnersCell" bundle:nil] forCellReuseIdentifier:@"TRSearchPartnersCell"];
+    
     headerTitles = @[@"ФИО", @"Город", @"Отрасли", @"Высокое разрешение"];
     
     UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
@@ -60,6 +65,11 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [menuView becomeSearchBar];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [menuView resignSearchBar];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -172,7 +182,8 @@
 {
     switch (section) {
         case 0:
-            if(_partnersList.fio.count == 0) return 0;
+            //if(_partnersList.fio.count == 0) return 0;
+            return 0;
             break;
         case 1:
             if(_partnersList.cities.count == 0) return 0;
@@ -190,32 +201,77 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *itemCellIdentifier = @"TRMindCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    static NSString *itemCellIdentifier = @"TRSearchPartnersCell";
+    TRSearchPartnersCell *cell = [tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        cell = [[TRSearchPartnersCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
     }
     
     TRUserInfoModel *userInfo;
+    NSString *subTextTitle;
+    PartnersFilterType filterType;
     
     switch (indexPath.section) {
         case 0:
             userInfo = [_partnersList.fio objectAtIndex:indexPath.row];
+            subTextTitle = @"";
+            filterType = textFio;
             break;
         case 1:
             userInfo = [_partnersList.cities objectAtIndex:indexPath.row];
+            subTextTitle = userInfo.city;
+            filterType = textCity;
             break;
         case 2:
             userInfo = [_partnersList.scope_work objectAtIndex:indexPath.row];
+            subTextTitle = [self getMutchScopeWork:userInfo.business.scope_work byQueryString:_partnersList.query];
+            filterType = textScopeWork;
             break;
         case 3:
             userInfo = [_partnersList.interests objectAtIndex:indexPath.row];
+            subTextTitle = [self getMutchHightResolution:userInfo.interests byQueryString:_partnersList.query];
+            filterType = textInterests;
             break;
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
+    [cell.avatarImageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    [cell setCellFio:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
+             subText:subTextTitle
+         typeSubText:filterType];
     
     return cell;
+}
+
+-(NSString*) getMutchScopeWork:(NSArray*)scopesArray byQueryString:(NSString*)query
+{
+    __block NSString *scopeMutch = @"-";
+    [scopesArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        TRBusinessScopeModel *scopeModel = obj;
+        if ([scopeModel.name rangeOfString:query options:NSCaseInsensitiveSearch].location != NSNotFound)
+        {
+            scopeMutch = scopeModel.name;
+            *stop = YES;
+        }
+    }];
+    
+    return scopeMutch;
+}
+
+-(NSString*) getMutchHightResolution:(NSArray*)resolutionArray byQueryString:(NSString*)query
+{
+    __block NSString *resolutionMutch = @"-";
+    [resolutionArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        TRUserResolutionModel *resolutionModel = obj;
+        if ([resolutionModel.name rangeOfString:query options:NSCaseInsensitiveSearch].location != NSNotFound)
+        {
+            resolutionMutch = resolutionModel.name;
+            *stop = YES;
+        }
+    }];
+    
+    return resolutionMutch;
 }
 
 #pragma mark - Table view delegate

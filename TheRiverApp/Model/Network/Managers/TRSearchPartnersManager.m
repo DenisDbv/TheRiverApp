@@ -20,7 +20,7 @@
 -(id) init
 {
     _queuePartnersSearch = [[NSOperationQueue alloc] init];
-    [_queuePartnersSearch setMaxConcurrentOperationCount:1];
+    [_queuePartnersSearch setMaxConcurrentOperationCount:10];
     
     return [super init];
 }
@@ -34,23 +34,30 @@
         return;
     }
     
-    [_queuePartnersSearch cancelAllOperations];
+    [_queuePartnersSearch.operations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSOperation *operationIndex = obj;
+        [operationIndex cancel];
+    }];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:[TRAuthManager client].iamData.token forKey:kTGTokenKey];
     [params setObject:query forKey:kTGQueryKey];
     
-    URLPostOperation * operation = [[URLPostOperation alloc]  initWithUrlString: kTG_API_PartnersList
+    __block URLPostOperation * operation = [[URLPostOperation alloc]  initWithUrlString: kTG_API_PartnersList
                                                                        andParam:params
                                                                       andHeader:nil
                                                                withSuccessBlock:^(LRRestyResponse *response) {
                                                                    
-                                                                   NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                   if(operation.isCancelled != YES) {
                                                                    
-                                                                   TRPartnersListModel *pList = [[TRPartnersListModel alloc] initWithDictionary:resultJSON];
-                                                                   
-                                                                   if( successBlock != nil)
-                                                                       successBlock(response, pList);
+                                                                       NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                       
+                                                                       TRPartnersListModel *pList = [[TRPartnersListModel alloc] initWithDictionary:resultJSON];
+                                                                       pList.query = query;
+                                                                       
+                                                                       if( successBlock != nil)
+                                                                           successBlock(response, pList);
+                                                                   }
                                                                    
                                                                } andFailedBlock:^(LRRestyResponse *response){
                                                                    

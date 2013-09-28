@@ -31,7 +31,7 @@
     if (self) {
         
         rootController = target;
-        delaySearchUntilQueryUnchangedForTimeOffset = 0.5 * NSEC_PER_SEC;
+        delaySearchUntilQueryUnchangedForTimeOffset = 0.9 * NSEC_PER_SEC;
         
         [self createSearchBar];
         

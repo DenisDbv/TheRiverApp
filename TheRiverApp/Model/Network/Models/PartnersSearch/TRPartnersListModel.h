@@ -10,6 +10,8 @@
 
 @interface TRPartnersListModel : Jastor
 
+@property (nonatomic, copy) NSString *query;
+
 @property (nonatomic, retain) NSArray *fio;
 @property (nonatomic, retain) NSArray *cities;
 @property (nonatomic, retain) NSArray *scope_work;

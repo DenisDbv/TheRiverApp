@@ -144,6 +144,8 @@
 		1899702A17F6CF0D0056F7ED /* TRSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702917F6CF0C0056F7ED /* TRSearchBar.m */; };
 		1899702D17F6DC560056F7ED /* TRSearchPartnersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702C17F6DC560056F7ED /* TRSearchPartnersManager.m */; };
 		1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899703017F6E2090056F7ED /* TRPartnersListModel.m */; };
+		1899703417F729010056F7ED /* TRSearchPartnersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899703317F729010056F7ED /* TRSearchPartnersCell.m */; };
+		1899703617F729340056F7ED /* TRSearchPartnersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1899703517F729340056F7ED /* TRSearchPartnersCell.xib */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -451,6 +453,9 @@
 		1899702C17F6DC560056F7ED /* TRSearchPartnersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRSearchPartnersManager.m; sourceTree = "<group>"; };
 		1899702F17F6E2090056F7ED /* TRPartnersListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartnersListModel.h; path = Models/PartnersSearch/TRPartnersListModel.h; sourceTree = "<group>"; };
 		1899703017F6E2090056F7ED /* TRPartnersListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartnersListModel.m; path = Models/PartnersSearch/TRPartnersListModel.m; sourceTree = "<group>"; };
+		1899703217F729010056F7ED /* TRSearchPartnersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchPartnersCell.h; path = TableViewHelpers/TRSearchPartnersCell.h; sourceTree = "<group>"; };
+		1899703317F729010056F7ED /* TRSearchPartnersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchPartnersCell.m; path = TableViewHelpers/TRSearchPartnersCell.m; sourceTree = "<group>"; };
+		1899703517F729340056F7ED /* TRSearchPartnersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRSearchPartnersCell.xib; path = TableViewHelpers/TRSearchPartnersCell.xib; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -1263,6 +1268,9 @@
 				1896C46E17E34219004AE5FF /* TRMeetingItemCell.xib */,
 				1899701717F57C600056F7ED /* TRSearchPUsersCell.h */,
 				1899701817F57C600056F7ED /* TRSearchPUsersCell.m */,
+				1899703217F729010056F7ED /* TRSearchPartnersCell.h */,
+				1899703317F729010056F7ED /* TRSearchPartnersCell.m */,
+				1899703517F729340056F7ED /* TRSearchPartnersCell.xib */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -1511,6 +1519,7 @@
 				1897600F17F0DB2100B06DF7 /* TRPartyUsersListVC.xib in Resources */,
 				1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */,
 				1899702317F615F10056F7ED /* TRSearchPartnersListVC.xib in Resources */,
+				1899703617F729340056F7ED /* TRSearchPartnersCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1641,6 +1650,7 @@
 				1899702A17F6CF0D0056F7ED /* TRSearchBar.m in Sources */,
 				1899702D17F6DC560056F7ED /* TRSearchPartnersManager.m in Sources */,
 				1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */,
+				1899703417F729010056F7ED /* TRSearchPartnersCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
