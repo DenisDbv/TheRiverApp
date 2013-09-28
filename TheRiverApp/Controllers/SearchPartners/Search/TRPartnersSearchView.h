@@ -12,6 +12,7 @@
 
 - (id)initWithFrame:(CGRect)frame byRootTarget:(id)target;
 
+-(void) becomeSearchBar;
 -(void) resignSearchBar;
 
 @end

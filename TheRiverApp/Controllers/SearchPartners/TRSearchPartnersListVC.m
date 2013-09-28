@@ -9,15 +9,21 @@
 #import "TRSearchPartnersListVC.h"
 #import "TRPartnersSearchView.h"
 #import "UIBarButtonItem+BarButtonItemExtended.h"
-#import "SlideInMenuViewController.h"
+#import <SlideInMenuViewController.h>
 
 @interface TRSearchPartnersListVC ()
 @property (nonatomic, retain) TRPartnersSearchView *menuView;
 @property (nonatomic, retain) SlideInMenuViewController *scrollDownMindMenu;
+
+@property (nonatomic, retain) TRPartnersListModel *_partnersList;
 @end
 
 @implementation TRSearchPartnersListVC
+{
+    NSArray *headerTitles;
+}
 @synthesize menuView;
+@synthesize _partnersList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    headerTitles = @[@"ФИО", @"Город", @"Отрасли", @"Высокое разрешение"];
     
     UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
     [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -49,10 +57,23 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    [menuView becomeSearchBar];
+}
+
 -(void) viewDidDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardDidShowNotification];
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillHideNotification];
+}
+
+-(void) refreshPartnersByQuery:(NSString*)query
+{
+    [[TRSearchPartnersManager client] downloadPartnersListByString:query withSuccessOperation:^(LRRestyResponse *response, TRPartnersListModel *partnersList) {
+        _partnersList = partnersList;
+        [self.tableView reloadData];
+    } andFailedOperation:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,16 +123,69 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+    
+    /*NSInteger sectionCount = 4;
+    
+    if(_partnersList.fio.count == 0)
+        sectionCount--;
+    if(_partnersList.cities.count == 0)
+        sectionCount--;
+    if(_partnersList.scope_work.count == 0)
+        sectionCount--;
+    if(_partnersList.interests.count == 0)
+        sectionCount--;
+    
+	return sectionCount;*/
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    
+    switch (section) {
+        case 0:
+            return _partnersList.fio.count;
+            break;
+        case 1:
+            return _partnersList.cities.count;
+            break;
+        case 2:
+            return _partnersList.scope_work.count;
+            break;
+        case 3:
+            return _partnersList.interests.count;
+            break;
+    }
+    return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [headerTitles objectAtIndex:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 59.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            if(_partnersList.fio.count == 0) return 0;
+            break;
+        case 1:
+            if(_partnersList.cities.count == 0) return 0;
+            break;
+        case 2:
+            if(_partnersList.scope_work.count == 0) return 0;
+            break;
+        case 3:
+            if(_partnersList.interests.count == 0) return 0;
+            break;
+    }
+    
+    return 20.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,7 +196,24 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
     }
     
-    cell.textLabel.text = @"test";
+    TRUserInfoModel *userInfo;
+    
+    switch (indexPath.section) {
+        case 0:
+            userInfo = [_partnersList.fio objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            userInfo = [_partnersList.cities objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            userInfo = [_partnersList.scope_work objectAtIndex:indexPath.row];
+            break;
+        case 3:
+            userInfo = [_partnersList.interests objectAtIndex:indexPath.row];
+            break;
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];
     
     return cell;
 }

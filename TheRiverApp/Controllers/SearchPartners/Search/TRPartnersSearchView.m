@@ -10,12 +10,17 @@
 #import "TRSearchPartnersListVC.h"
 #import "TRSearchBar.h"
 
+#define NSEC_PER_SEC 1000000000ull
+
 @interface TRPartnersSearchView()
 @property (nonatomic, retain) TRSearchBar *searchBar;
 @end
 
 @implementation TRPartnersSearchView
 {
+    NSUInteger searchCounter;
+    dispatch_time_t delaySearchUntilQueryUnchangedForTimeOffset;
+    
     TRSearchPartnersListVC *rootController;
 }
 @synthesize searchBar;
@@ -26,8 +31,11 @@
     if (self) {
         
         rootController = target;
+        delaySearchUntilQueryUnchangedForTimeOffset = 0.5 * NSEC_PER_SEC;
         
         [self createSearchBar];
+        
+        [[TRSearchPartnersManager client] downloadPartnersListByString:@"d" withSuccessOperation:nil andFailedOperation:nil];
     }
     return self;
 }
@@ -60,13 +68,33 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     
-    NSLog(@"%@", searchText);
+    ++searchCounter;
+    
+    NSUInteger searchID = searchCounter;
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delaySearchUntilQueryUnchangedForTimeOffset);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        if (searchID == searchCounter) {
+            if(searchText.length != 0)  {
+                NSLog(@"'%@' text searching..", searchText);
+                [rootController refreshPartnersByQuery: searchText];
+            }
+        } else {
+            //[self decrementQueueCounter];
+        }
+        
+    });
 }
 
 -(void) searchBarSearchButtonClicked:(UISearchBar *)aSearchBar{
     
     [aSearchBar resignFirstResponder];
     
+}
+
+-(void) becomeSearchBar
+{
+    [searchBar becomeFirstResponder];
 }
 
 -(void) resignSearchBar

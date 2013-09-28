@@ -12,4 +12,6 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
+-(void) refreshPartnersByQuery:(NSString*)query;
+
 @end

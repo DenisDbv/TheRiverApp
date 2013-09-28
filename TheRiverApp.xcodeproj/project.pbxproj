@@ -95,7 +95,6 @@
 		1896C44F17E089DB004AE5FF /* skype.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C44E17E089DB004AE5FF /* skype.png */; };
 		1896C45217E09101004AE5FF /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45017E09101004AE5FF /* button-default.png */; };
 		1896C45317E09101004AE5FF /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C45117E09101004AE5FF /* button-default@2x.png */; };
-		1896C45B17E104D0004AE5FF /* SlideInMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */; };
 		1896C45F17E1B295004AE5FF /* TRMindFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C45E17E1B295004AE5FF /* TRMindFilterView.m */; };
 		1896C46117E23164004AE5FF /* dropdown-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1896C46017E23164004AE5FF /* dropdown-icon@2x.png */; };
 		1896C46417E337B9004AE5FF /* TRMeetingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896C46317E337B9004AE5FF /* TRMeetingModel.m */; };
@@ -143,6 +142,8 @@
 		1899702317F615F10056F7ED /* TRSearchPartnersListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1899702117F615F10056F7ED /* TRSearchPartnersListVC.xib */; };
 		1899702717F6C6D70056F7ED /* TRPartnersSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702617F6C6D70056F7ED /* TRPartnersSearchView.m */; };
 		1899702A17F6CF0D0056F7ED /* TRSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702917F6CF0C0056F7ED /* TRSearchBar.m */; };
+		1899702D17F6DC560056F7ED /* TRSearchPartnersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702C17F6DC560056F7ED /* TRSearchPartnersManager.m */; };
+		1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899703017F6E2090056F7ED /* TRPartnersListModel.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -370,8 +371,6 @@
 		1896C44E17E089DB004AE5FF /* skype.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skype.png; sourceTree = "<group>"; };
 		1896C45017E09101004AE5FF /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
 		1896C45117E09101004AE5FF /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
-		1896C45917E104D0004AE5FF /* SlideInMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideInMenuViewController.h; sourceTree = "<group>"; };
-		1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideInMenuViewController.m; sourceTree = "<group>"; };
 		1896C45D17E1B295004AE5FF /* TRMindFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindFilterView.h; path = Controllers/MindBase/Filter/TRMindFilterView.h; sourceTree = "<group>"; };
 		1896C45E17E1B295004AE5FF /* TRMindFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindFilterView.m; path = Controllers/MindBase/Filter/TRMindFilterView.m; sourceTree = "<group>"; };
 		1896C46017E23164004AE5FF /* dropdown-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown-icon@2x.png"; sourceTree = "<group>"; };
@@ -448,6 +447,10 @@
 		1899702617F6C6D70056F7ED /* TRPartnersSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartnersSearchView.m; path = Controllers/SearchPartners/Search/TRPartnersSearchView.m; sourceTree = "<group>"; };
 		1899702817F6CF0C0056F7ED /* TRSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBar.h; path = Controllers/SearchPartners/Search/TRSearchBar.h; sourceTree = "<group>"; };
 		1899702917F6CF0C0056F7ED /* TRSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchBar.m; path = Controllers/SearchPartners/Search/TRSearchBar.m; sourceTree = "<group>"; };
+		1899702B17F6DC560056F7ED /* TRSearchPartnersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRSearchPartnersManager.h; sourceTree = "<group>"; };
+		1899702C17F6DC560056F7ED /* TRSearchPartnersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRSearchPartnersManager.m; sourceTree = "<group>"; };
+		1899702F17F6E2090056F7ED /* TRPartnersListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartnersListModel.h; path = Models/PartnersSearch/TRPartnersListModel.h; sourceTree = "<group>"; };
+		1899703017F6E2090056F7ED /* TRPartnersListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartnersListModel.m; path = Models/PartnersSearch/TRPartnersListModel.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -841,15 +844,6 @@
 			name = MindBase;
 			sourceTree = "<group>";
 		};
-		1896C45817E104C0004AE5FF /* ScrollMenuDown */ = {
-			isa = PBXGroup;
-			children = (
-				1896C45917E104D0004AE5FF /* SlideInMenuViewController.h */,
-				1896C45A17E104D0004AE5FF /* SlideInMenuViewController.m */,
-			);
-			path = ScrollMenuDown;
-			sourceTree = "<group>";
-		};
 		1896C45C17E1B266004AE5FF /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,6 +904,8 @@
 				18975F7D17EE052F00B06DF7 /* TRAuthManager.m */,
 				1897601417F175D700B06DF7 /* TRSearchPUManager.h */,
 				1897601517F175D800B06DF7 /* TRSearchPUManager.m */,
+				1899702B17F6DC560056F7ED /* TRSearchPartnersManager.h */,
+				1899702C17F6DC560056F7ED /* TRSearchPartnersManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -927,6 +923,7 @@
 		18975F8A17EE1E1200B06DF7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1899702E17F6E1D70056F7ED /* PartnersSearch */,
 				1899701017F54D430056F7ED /* PartyUsers */,
 				18975F8B17EE208600B06DF7 /* TRAuthUserModel.h */,
 				18975F8C17EE208600B06DF7 /* TRAuthUserModel.m */,
@@ -1004,6 +1001,15 @@
 				1899702917F6CF0C0056F7ED /* TRSearchBar.m */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		1899702E17F6E1D70056F7ED /* PartnersSearch */ = {
+			isa = PBXGroup;
+			children = (
+				1899702F17F6E2090056F7ED /* TRPartnersListModel.h */,
+				1899703017F6E2090056F7ED /* TRPartnersListModel.m */,
+			);
+			name = PartnersSearch;
 			sourceTree = "<group>";
 		};
 		18A108B817DD199600D9CD8C /* Layers */ = {
@@ -1284,7 +1290,6 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
-				1896C45817E104C0004AE5FF /* ScrollMenuDown */,
 				18A108C817DDC04C00D9CD8C /* WDActivityIndicator */,
 				18E65E2317D5009700D1B778 /* MFSideMenu */,
 			);
@@ -1605,7 +1610,6 @@
 				18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */,
 				18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */,
 				18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */,
-				1896C45B17E104D0004AE5FF /* SlideInMenuViewController.m in Sources */,
 				1896C45F17E1B295004AE5FF /* TRMindFilterView.m in Sources */,
 				1896C46417E337B9004AE5FF /* TRMeetingModel.m in Sources */,
 				1896C46917E34156004AE5FF /* TRMeetingsBaseListVC.m in Sources */,
@@ -1635,6 +1639,8 @@
 				1899702217F615F10056F7ED /* TRSearchPartnersListVC.m in Sources */,
 				1899702717F6C6D70056F7ED /* TRPartnersSearchView.m in Sources */,
 				1899702A17F6CF0D0056F7ED /* TRSearchBar.m in Sources */,
+				1899702D17F6DC560056F7ED /* TRSearchPartnersManager.m in Sources */,
+				1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

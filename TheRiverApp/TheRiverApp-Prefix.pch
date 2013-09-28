@@ -22,7 +22,9 @@
 #import "TRBusinessModel.h"
 #import "TRMeetingModel.h"
 #import "TRPUserListModel.h"
+#import "TRPartnersListModel.h"
 
 #import "TRNetworkConstants.h"
 #import "TRAuthManager.h"
 #import "TRSearchPUManager.h"
+#import "TRSearchPartnersManager.h"
