@@ -23,6 +23,7 @@
 - (void) presentLoginViewController;
 - (void) presentTheRiverControllers;
 -(void) changeCenterViewController:(UIViewController*)newController;
+-(void) pushCenterViewController:(UIViewController*)newController;
 -(void) changeProfileViewController:(TRUserProfileController*)newController;
 
 @end
