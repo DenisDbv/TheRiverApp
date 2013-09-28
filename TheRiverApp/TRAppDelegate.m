@@ -136,6 +136,11 @@
     [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
 }
 
+-(void) pushCenterViewController:(UIViewController*)newController
+{
+    [_rootContainer.centerViewController pushViewController:newController animated:YES];
+}
+
 -(void) changeProfileViewController:(TRUserProfileController*)newController
 {
     id currentCenterController = [[_rootContainer.centerViewController viewControllers] objectAtIndex:0];

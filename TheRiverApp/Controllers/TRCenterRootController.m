@@ -10,6 +10,7 @@
 #import "MFSideMenu.h"
 
 #import "TRMindBaseListVC.h"
+#import "TRSearchPartnersListVC.h"
 
 @interface TRCenterRootController ()
 
@@ -137,7 +138,8 @@
 
 -(void) onSearchClick
 {
-    //
+    TRSearchPartnersListVC *searchPartnersVC = [[TRSearchPartnersListVC alloc] init];
+    [AppDelegateInstance() pushCenterViewController:searchPartnersVC];
 }
 
 @end
