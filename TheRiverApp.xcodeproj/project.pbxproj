@@ -141,6 +141,8 @@
 		1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899701A17F5880B0056F7ED /* avatar_placeholder.png */; };
 		1899702217F615F10056F7ED /* TRSearchPartnersListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702017F615F10056F7ED /* TRSearchPartnersListVC.m */; };
 		1899702317F615F10056F7ED /* TRSearchPartnersListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1899702117F615F10056F7ED /* TRSearchPartnersListVC.xib */; };
+		1899702717F6C6D70056F7ED /* TRPartnersSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702617F6C6D70056F7ED /* TRPartnersSearchView.m */; };
+		1899702A17F6CF0D0056F7ED /* TRSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899702917F6CF0C0056F7ED /* TRSearchBar.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -442,6 +444,10 @@
 		1899701F17F615F10056F7ED /* TRSearchPartnersListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchPartnersListVC.h; path = Controllers/SearchPartners/TRSearchPartnersListVC.h; sourceTree = "<group>"; };
 		1899702017F615F10056F7ED /* TRSearchPartnersListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchPartnersListVC.m; path = Controllers/SearchPartners/TRSearchPartnersListVC.m; sourceTree = "<group>"; };
 		1899702117F615F10056F7ED /* TRSearchPartnersListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRSearchPartnersListVC.xib; path = Controllers/SearchPartners/TRSearchPartnersListVC.xib; sourceTree = "<group>"; };
+		1899702517F6C6D70056F7ED /* TRPartnersSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartnersSearchView.h; path = Controllers/SearchPartners/Search/TRPartnersSearchView.h; sourceTree = "<group>"; };
+		1899702617F6C6D70056F7ED /* TRPartnersSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartnersSearchView.m; path = Controllers/SearchPartners/Search/TRPartnersSearchView.m; sourceTree = "<group>"; };
+		1899702817F6CF0C0056F7ED /* TRSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBar.h; path = Controllers/SearchPartners/Search/TRSearchBar.h; sourceTree = "<group>"; };
+		1899702917F6CF0C0056F7ED /* TRSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchBar.m; path = Controllers/SearchPartners/Search/TRSearchBar.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -981,11 +987,23 @@
 		1899701E17F615A80056F7ED /* SearchPartners */ = {
 			isa = PBXGroup;
 			children = (
+				1899702417F6C6990056F7ED /* Search */,
 				1899701F17F615F10056F7ED /* TRSearchPartnersListVC.h */,
 				1899702017F615F10056F7ED /* TRSearchPartnersListVC.m */,
 				1899702117F615F10056F7ED /* TRSearchPartnersListVC.xib */,
 			);
 			name = SearchPartners;
+			sourceTree = "<group>";
+		};
+		1899702417F6C6990056F7ED /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1899702517F6C6D70056F7ED /* TRPartnersSearchView.h */,
+				1899702617F6C6D70056F7ED /* TRPartnersSearchView.m */,
+				1899702817F6CF0C0056F7ED /* TRSearchBar.h */,
+				1899702917F6CF0C0056F7ED /* TRSearchBar.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		18A108B817DD199600D9CD8C /* Layers */ = {
@@ -1615,6 +1633,8 @@
 				1899701617F55D3A0056F7ED /* TRPUserListModel.m in Sources */,
 				1899701917F57C600056F7ED /* TRSearchPUsersCell.m in Sources */,
 				1899702217F615F10056F7ED /* TRSearchPartnersListVC.m in Sources */,
+				1899702717F6C6D70056F7ED /* TRPartnersSearchView.m in Sources */,
+				1899702A17F6CF0D0056F7ED /* TRSearchBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
