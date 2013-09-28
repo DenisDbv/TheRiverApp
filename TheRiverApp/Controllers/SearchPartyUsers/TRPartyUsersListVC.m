@@ -46,7 +46,7 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     
-    [self refreshUserListByCity:@"Москва" andIndustry:@""];
+    [self refreshUserListByCity:@"" andIndustry:@""];
 }
 
 - (void)didReceiveMemoryWarning

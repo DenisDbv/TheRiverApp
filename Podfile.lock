@@ -38,6 +38,7 @@ PODS:
     - REComposeViewController (~> 2.1.2)
     - SFHFKeychainUtils (~> 0.0.1)
   - REComposeViewController (2.1.2)
+  - ScrollViewMenuSlider (1.0.1)
   - SDWebImage (3.4):
     - libwebp
     - SDWebImage/MapKit
@@ -47,6 +48,7 @@ PODS:
   - SIAlertView (1.2)
   - SSToolkit (1.0.4)
   - TDBadgedCell (2.3.1)
+  - TTTAttributedLabel (1.7.1)
   - UIActivityIndicator-for-SDWebImage (1.0.0):
     - SDWebImage (~> 3.2)
   - uservoice-iphone-sdk (2.0.12)
@@ -65,12 +67,18 @@ DEPENDENCIES:
   - NSString+RMURLEncoding
   - NVUIGradientButton
   - REActivityViewController (~> 1.6.6)
+  - ScrollViewMenuSlider (from `https://raw.github.com/finn-no/ScrollViewMenuSlider/master/ScrollViewMenuSlider.podspec`)
   - SDWebImage
   - SIAlertView
   - SSToolkit
   - TDBadgedCell
+  - TTTAttributedLabel
   - UIActivityIndicator-for-SDWebImage
   - uservoice-iphone-sdk
+
+EXTERNAL SOURCES:
+  ScrollViewMenuSlider:
+    :podspec: https://raw.github.com/finn-no/ScrollViewMenuSlider/master/ScrollViewMenuSlider.podspec
 
 SPEC CHECKSUMS:
   ABMultiton: b0a22178919b139e0b3921825ace1b36ca8e8b91
@@ -94,11 +102,13 @@ SPEC CHECKSUMS:
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
   REActivityViewController: 1d79c0a2fc07712d3db6996849f0750897883ba5
   REComposeViewController: 6f1ab35ff54d6bfb65374b3f492e414e1ec1a0db
+  ScrollViewMenuSlider: c0a6a72f0f714a318812efcf2faf8417724402d5
   SDWebImage: f13f791e411c632489824aa7f129e230b52bf5c4
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   SIAlertView: fd188f66278761f4ff069f517c3deb2be16ecdcc
   SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
   TDBadgedCell: 091af82e20d9da3be46eb48cfc53129c324a2faa
+  TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23
   UIActivityIndicator-for-SDWebImage: c5e8f6208e302b94bc50505dd24c78f34af8a749
   uservoice-iphone-sdk: 1a6b31c204a6208225197f100a67d286f51b9f0d
 
