@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
 
 typedef enum {
     textFio = 0,
@@ -18,12 +19,13 @@ typedef enum {
 @interface TRSearchPartnersCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UIImageView *avatarImageView;
-@property (nonatomic, strong) IBOutlet UILabel *fioLabel;
-@property (nonatomic, strong) IBOutlet UILabel *subTextLabel;
+@property (nonatomic, strong) IBOutlet TTTAttributedLabel *fioLabel;
+@property (nonatomic, strong) IBOutlet TTTAttributedLabel *subTextLabel;
 @property (nonatomic, strong) IBOutlet UILabel *typeSubTextLabel;
 
 -(void) setCellFio:(NSString*)fioText
            subText:(NSString*)subText
-       typeSubText:(PartnersFilterType)filterType;
+       typeSubText:(PartnersFilterType)filterType
+         withQuery:(NSString*)query;
 
 @end

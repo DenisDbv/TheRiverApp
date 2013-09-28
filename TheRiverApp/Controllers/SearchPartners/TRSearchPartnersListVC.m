@@ -239,7 +239,8 @@
     
     [cell setCellFio:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
              subText:subTextTitle
-         typeSubText:filterType];
+         typeSubText:filterType
+           withQuery:_partnersList.query];
     
     return cell;
 }
