@@ -25,7 +25,7 @@
     
     box.contentLayoutMode = MGLayoutTableStyle;
     
-    MGLineStyled *dateCreateLine = [MGLineStyled lineWithLeft:nil multilineRight:businessObject.businessDate width:300.0 minHeight:10.0];
+    /*MGLineStyled *dateCreateLine = [MGLineStyled lineWithLeft:nil multilineRight:businessObject.businessDate width:300.0 minHeight:10.0];
     dateCreateLine.backgroundColor = [UIColor clearColor];
     dateCreateLine.topMargin = 10;
     dateCreateLine.rightPadding = 0;
@@ -48,7 +48,7 @@
     authorLine.leftPadding = authorLine.rightPadding = 0;
     authorLine.borderStyle = MGBorderNone;
     authorLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
-    [box.boxes addObject:authorLine];
+    [box.boxes addObject:authorLine];*/
     
     return box;
 }

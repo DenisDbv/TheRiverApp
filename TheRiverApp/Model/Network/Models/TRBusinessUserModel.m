@@ -9,7 +9,7 @@
 #import "TRBusinessUserModel.h"
 
 @implementation TRBusinessUserModel
-@synthesize text, logo_url, scope_work;
+@synthesize company_name, activity_description, turnover_per_month, text, logo_url, scope_work;
 
 + (Class)scope_work_class {
     return [TRBusinessScopeModel class];

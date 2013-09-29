@@ -32,7 +32,7 @@
 
 -(void) showLogo
 {
-    UIImage *image = [[UIImage imageNamed: self.businessData.businessLogo] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:self.bounds.size interpolationQuality:kCGInterpolationHigh];
+    UIImage *image = nil;//[[UIImage imageNamed: self.businessData.businessLogo] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:self.bounds.size interpolationQuality:kCGInterpolationHigh];
 
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     

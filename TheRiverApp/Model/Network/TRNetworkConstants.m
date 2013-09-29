@@ -20,6 +20,8 @@ NSString *const kTG_API_CitiesList = @"http://kostum5.ru/api/get_city_list/";
 NSString *const kTG_API_IndustryList = @"http://kostum5.ru/api/get_scope_work_list/";
 NSString *const kTG_API_PartyUsersList = @"http://kostum5.ru/api/search_1_method/";
 NSString *const kTG_API_PartnersList = @"http://kostum5.ru/api/search_2_method/";
+NSString *const kTG_API_BusinessList = @"http://kostum5.ru/api/get_all_business/";
+
 NSString *const kTGTokenKey = @"token";
 NSString *const kTGCityKey = @"city";
 NSString *const kTGScopeWorkKey = @"scope_work";

@@ -30,7 +30,7 @@
     TRHeadBox *box = [TRHeadBox boxWithSize: CGSizeMake(bounds.width, 132)];
     box.userData = userObject;
     
-    [box fillBoxByColorGradient];
+    [box fillBoxByBusinessImage];
     [box showUserLogo];
     [box showFirstAndLastName];
     [box showYearsAndCity];
@@ -52,6 +52,23 @@
     [mutableColors addObject:(id)darkColor.CGColor];
     
     layer.colors = mutableColors;
+}
+
+-(void) fillBoxByBusinessImage
+{
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo_url];
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    
+    imageView.size = self.bounds.size;
+    imageView.alpha = 0;
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self addSubview:imageView];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        imageView.alpha = 1;
+    }];
 }
 
 -(void) showUserLogo

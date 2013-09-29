@@ -10,11 +10,16 @@
 #import "TRBusinessItemCell.h"
 #import "TRBusinessDescriptionVC.h"
 
-@interface TRBusinessBaseListVC ()
+#import "WDActivityIndicator.h"
 
+@interface TRBusinessBaseListVC ()
+@property (nonatomic, retain) WDActivityIndicator *activityIndicator;
+@property (nonatomic, retain) TRBusinessRootModel *_businessList;
 @end
 
 @implementation TRBusinessBaseListVC
+@synthesize activityIndicator;
+@synthesize _businessList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +42,8 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     self.tableView.backgroundColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
+    
+    [self refreshBusinessList];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,10 +52,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) refreshBusinessList
+{
+    if(activityIndicator == nil)    {
+        activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
+        [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
+        [self.view addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+    }
+    
+    [[TRBusinessManager client] downloadBusinessList:^(LRRestyResponse *response, TRBusinessRootModel *businessList) {
+        [self endRefreshUserList:businessList];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        //
+    }];
+}
+
+-(void) endRefreshUserList:(TRBusinessRootModel*)list
+{
+    [activityIndicator stopAnimating];
+    [activityIndicator removeFromSuperview];
+    activityIndicator = nil;
+    
+    _businessList = list;
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return (NSInteger)[TRUserManager sharedInstance].businessObjects.count;
+	return _businessList.business.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -87,8 +121,7 @@
         cell = [[TRBusinessItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
     }
     
-    TRBusinessModel *businessUnit = [[TRUserManager sharedInstance].businessObjects objectAtIndex: indexPath.section];
-    
+    TRBusinessModel *businessUnit = [_businessList.business objectAtIndex: indexPath.section];
     [cell reloadWithBusinessModel:businessUnit];
     
     return cell;
@@ -101,8 +134,8 @@
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TRBusinessDescriptionVC *descriptionUnit = [[TRBusinessDescriptionVC alloc] initByMindModel:[[TRUserManager sharedInstance].businessObjects objectAtIndex:indexPath.section]];
-    [self.navigationController pushViewController:descriptionUnit animated:YES];
+    //TRBusinessDescriptionVC *descriptionUnit = [[TRBusinessDescriptionVC alloc] initByMindModel:[[TRUserManager sharedInstance].businessObjects objectAtIndex:indexPath.section]];
+    //[self.navigationController pushViewController:descriptionUnit animated:YES];
 }
 
 @end

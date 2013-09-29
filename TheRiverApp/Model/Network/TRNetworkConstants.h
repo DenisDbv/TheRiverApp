@@ -16,6 +16,8 @@ extern NSString *const kTG_API_CitiesList;
 extern NSString *const kTG_API_IndustryList;
 extern NSString *const kTG_API_PartyUsersList;
 extern NSString *const kTG_API_PartnersList;
+extern NSString *const kTG_API_BusinessList;
+
 extern NSString *const kTGTokenKey;
 extern NSString *const kTGCityKey;
 extern NSString *const kTGScopeWorkKey;
