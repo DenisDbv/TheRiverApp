@@ -22,7 +22,7 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-+(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserModel*)userObject byTarget:(id)target;
++(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserInfoModel*)userObject byTarget:(id)target;
 {
     TRExMenuBox *box = [TRExMenuBox boxWithSize: CGSizeMake(bounds.width, 104)];
     box.userData = userObject;

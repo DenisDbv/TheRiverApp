@@ -26,7 +26,7 @@
 
 @implementation TRUserProfileController
 
--(id) initByUserModel:(TRUserModel*)userObject
+-(id) initByUserModel:(TRUserInfoModel*)userObject
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {

@@ -179,7 +179,7 @@
         //По нажатию на хедер
         [header initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
+                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[TRAuthManager client].iamData.user];
                 [AppDelegateInstance() changeProfileViewController:userProfileVC];
             }];
         } forTaps:1];

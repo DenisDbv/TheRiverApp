@@ -15,7 +15,7 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-+(TRBusinessTitleBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(TRBusinessTitleBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
     TRBusinessTitleBox *box = [TRBusinessTitleBox boxWithSize: CGSizeMake(bounds.width, 41)];
     box.userData = userObject;

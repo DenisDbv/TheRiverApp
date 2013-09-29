@@ -22,7 +22,7 @@
     self.rightMargin = 10.0;
 }
 
-+(TRBusinessBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(TRBusinessBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
     TRBusinessBox *box = [TRBusinessBox boxWithSize: CGSizeMake(300, 180)];
     box.userData = userObject;
@@ -36,7 +36,7 @@
 
 -(void) showBusinessImage
 {
-    UIImage *image = [UIImage imageNamed: self.userData.businessLogo];
+    UIImage *image = [UIImage imageNamed: self.userData.business.logo_url];
     
     imageView = [[UIImageView alloc] initWithImage:image];
     
@@ -58,7 +58,7 @@
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
     nameLabel.numberOfLines = 2;
     nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    nameLabel.text = self.userData.businessTitle;
+    nameLabel.text = @"title business";
     
     nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -75,7 +75,7 @@
     beforeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
     beforeLabel.numberOfLines = 2;
     beforeLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    beforeLabel.text = self.userData.businessBeforeTitle;
+    beforeLabel.text = @"before money";
     
     CGSize size2 = [beforeLabel.text sizeWithFont:beforeLabel.font constrainedToSize:CGSizeMake(280.0, FLT_MAX) lineBreakMode:beforeLabel.lineBreakMode ];
     beforeLabel.frame = CGRectMake(nameLabel.frame.origin.x, nameLabel.frame.origin.y+nameLabel.frame.size.height, size2.width, size2.height);
@@ -87,7 +87,7 @@
     afterLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
     afterLabel.numberOfLines = 2;
     afterLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    afterLabel.text = self.userData.businessAfterTitle;
+    afterLabel.text = @"after money";
     
     CGSize size3 = [afterLabel.text sizeWithFont:afterLabel.font constrainedToSize:CGSizeMake(280.0, FLT_MAX) lineBreakMode:afterLabel.lineBreakMode ];
     afterLabel.frame = CGRectMake(beforeLabel.frame.origin.x, beforeLabel.frame.origin.y+beforeLabel.frame.size.height, size3.width, size3.height);

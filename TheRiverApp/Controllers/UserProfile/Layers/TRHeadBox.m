@@ -25,7 +25,7 @@
     
 }
 
-+(TRHeadBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(TRHeadBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
     TRHeadBox *box = [TRHeadBox boxWithSize: CGSizeMake(bounds.width, 132)];
     box.userData = userObject;
@@ -57,7 +57,7 @@
 -(void) showUserLogo
 {
     //UIImage *image = [UIImage imageNamed: self.userData.logo];
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:[TRAuthManager client].iamData.user.logo];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.logo];
     
     UIImageView *imageView = [[UIImageView alloc] init];
     
@@ -85,7 +85,7 @@
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
     nameLabel.numberOfLines = 2;
     nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    nameLabel.text = [NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name];
+    nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.userData.first_name, self.userData.last_name];
     
     nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -106,7 +106,7 @@
     nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     nameLabel.numberOfLines = 1;
-    nameLabel.text = [NSString stringWithFormat:@"%@, %@", [TRAuthManager client].iamData.user.age, [TRAuthManager client].iamData.user.city];
+    nameLabel.text = [NSString stringWithFormat:@"%@, %@", self.userData.age, self.userData.city];
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
     nameLabel.frame = CGRectMake(4.0+117.0+15.0, 132.0+10.0, size.width, size.height);

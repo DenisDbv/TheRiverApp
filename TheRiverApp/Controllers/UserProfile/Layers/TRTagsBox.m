@@ -26,13 +26,13 @@
     self.topMargin = 10;
 }
 
-+(TRTagsBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(TRTagsBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
     TRTagsBox *box = [TRTagsBox boxWithSize: CGSizeMake(bounds.width, 124)];
     box.userData = userObject;
     
     NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
-    for(TRUserResolutionModel *userResolution in [TRAuthManager client].iamData.user.interests)
+    for(TRUserResolutionModel *userResolution in box.userData.interests)
     {
         [hightResolution addObject:userResolution.name];
     }
@@ -43,7 +43,7 @@
     }
     
     NSMutableArray *business = [[NSMutableArray alloc] init];
-    for(TRBusinessScopeModel *scopes in [TRAuthManager client].iamData.user.business.scope_work)
+    for(TRBusinessScopeModel *scopes in box.userData.business.scope_work)
     {
         [business addObject:scopes.name];
     }

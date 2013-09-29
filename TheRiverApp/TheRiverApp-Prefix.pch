@@ -24,6 +24,10 @@
 #import "TRPUserListModel.h"
 #import "TRPartnersListModel.h"
 
+#import "TRUserInfoModel.h"
+#import "TRUserResolutionModel.h"
+#import "TRBusinessScopeModel.h"
+
 #import "TRNetworkConstants.h"
 #import "TRAuthManager.h"
 #import "TRSearchPUManager.h"

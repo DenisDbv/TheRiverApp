@@ -120,7 +120,7 @@
 {
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
+    _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user];
     _rootContainer = [MFSideMenuContainerViewController
                       containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                       leftMenuViewController: _leftRootMenuBar
@@ -151,8 +151,11 @@
         return;
     }
     
-    if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
+    if( [newController.userDataObject.id integerValue] != [((TRUserProfileController*)currentCenterController).userDataObject.id integerValue] )
         [self changeCenterViewController:newController];
+    
+    /*if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
+        [self changeCenterViewController:newController];*/
 }
 
 -(void) showFontsList

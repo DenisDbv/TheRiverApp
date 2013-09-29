@@ -16,7 +16,7 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-+(TRContactBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(TRContactBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
     TRContactBox *box = [TRContactBox boxWithSize: CGSizeMake(bounds.width, 149)];
     box.userData = userObject;
