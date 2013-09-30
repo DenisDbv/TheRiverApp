@@ -42,8 +42,8 @@
         [box.boxes addObject:tagsResolution];
     }
     
-    NSMutableArray *business = [[NSMutableArray alloc] init];
-    for(TRBusinessScopeModel *scopes in box.userData.business.scope_work)
+    /*NSMutableArray *business = [[NSMutableArray alloc] init];
+    for(TRBusinessScopeModel *scopes in box.userData.business.industries)
     {
         [business addObject:scopes.name];
     }
@@ -51,7 +51,7 @@
     if(business.count > 0)  {
         TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"Отрасли:" andTagsArray:business];
         [box.boxes addObject:tagsCurrentBusiness];
-    }
+    }*/
     
     return box;
 }

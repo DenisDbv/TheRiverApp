@@ -36,7 +36,7 @@
 
 -(void) showBusinessImage
 {
-    UIImage *image = [UIImage imageNamed: self.userData.business.logo_url];
+    UIImage *image = [UIImage imageNamed: self.userData.business.logo];
     
     imageView = [[UIImageView alloc] initWithImage:image];
     

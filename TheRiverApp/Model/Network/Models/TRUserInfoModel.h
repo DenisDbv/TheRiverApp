@@ -10,7 +10,7 @@
 #import "TRUserResolutionModel.h"
 #import "TRBusinessUserModel.h"
 
-@interface TRUserInfoModel : Jastor
+@interface TRUserInfoModel : Jastor <NSCoding>
 
 @property (nonatomic, copy) NSNumber *id;
 @property (nonatomic, copy) NSString *logo;

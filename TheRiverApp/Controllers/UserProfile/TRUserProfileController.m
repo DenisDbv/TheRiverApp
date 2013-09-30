@@ -47,7 +47,7 @@
                                                object:nil];
     
     [self createRootScrollView];
-    
+
     [self createBackgroundHeadBlock];
     [self createContactBox];
     [self createTagsBox];

@@ -224,7 +224,7 @@
             break;
         case 2:
             userInfo = [_partnersList.scope_work objectAtIndex:indexPath.row];
-            subTextTitle = [self getMutchScopeWork:userInfo.business.scope_work byQueryString:_partnersList.query];
+            subTextTitle = [self getMutchScopeWork:userInfo.business.industries byQueryString:_partnersList.query];
             filterType = textScopeWork;
             break;
         case 3:

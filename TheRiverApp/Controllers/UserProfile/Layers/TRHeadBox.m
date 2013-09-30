@@ -56,7 +56,7 @@
 
 -(void) fillBoxByBusinessImage
 {
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo_url];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo];
     
     UIImageView *imageView = [[UIImageView alloc] init];
     
