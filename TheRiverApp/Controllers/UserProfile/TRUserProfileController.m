@@ -19,6 +19,7 @@
 #import "TRExMenuBox.h"
 #import "TRBusinessTitleBox.h"
 #import "TRBusinessBox.h"
+#import "TRDownloadManager.h"
 
 @interface TRUserProfileController ()
 @property (nonatomic, retain) MGScrollView *scrollView;
@@ -38,6 +39,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[TRDownloadManager instance]download];
+    //[[TRDownloadManager intsance]search:@"x"];
+    
     
     self.navigationController.navigationBar.clipsToBounds = YES;
     

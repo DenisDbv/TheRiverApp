@@ -24,6 +24,11 @@
     return c;
 }
 
+-(void)dealloc
+{
+    NSLog(@"dm dealloc");
+}
+
 -(void)search:(NSString*)query
 {
     NSDictionary *parameter = @{@"token":[TRAuthManager client].iamData.token,
@@ -70,6 +75,7 @@
 
 -(void)download
 {
+    NSLog(@"start download");
 //    NSString* path = [[NSBundle mainBundle]pathForResource:@"contacts.json" ofType:nil];
 //    NSData* data = [NSData dataWithContentsOfFile:path];
 //    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -83,13 +89,20 @@
     AFJSONRequestOperation *operation;
     
     void (^onSuccess)(NSURLRequest*, NSHTTPURLResponse*, id) = ^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON){
+        NSLog(@"success");
         [self parseJson:JSON];
     };
     
+    void (^onFailure)(NSURLRequest*, NSHTTPURLResponse*, NSError*, id) = ^(NSURLRequest *request, NSHTTPURLResponse *response,
+                                                                 NSError* error, id JSON){
+        NSLog(@"failure %@", error);
+    };
+
     operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                 success:onSuccess
-                                                                failure:nil];
+                                                                failure:onFailure];
     [operation start];
+    NSLog(@"end download");
 }
 
 -(void)parseJson:(id)json

@@ -42,6 +42,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSLog(@"contacts init");
+
     }
     return self;
 }
@@ -80,15 +82,17 @@
     
     //self.view.backgroundColor = [UIColor whiteColor];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateContacts:)
-                                                 name:@"ContactsUpdatedNotification"
-                                               object:nil];
     NSLog(@"contacts did load");
 }
 
 -(void)dealloc
 {
+    NSLog(@"contacts dealloc");
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"contacts did disappear");
     [[NSNotificationCenter defaultCenter] removeObserver:@"ContactsUpdatedNotification"];
 }
 
@@ -109,6 +113,10 @@
     
     [_searchBarController.searchBar sizeToFit];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateContacts:)
+                                                 name:@"ContactsUpdatedNotification"
+                                               object:nil];
     NSLog(@"contacts did appear");
     [self updateContacts:nil];
 }
