@@ -123,17 +123,7 @@
     
     TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];
-
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
-    for(TRUserResolutionModel *userResolution in userInfo.interests)
-    {
-        [hightResolution addObject:userResolution.name];
-    }
-    cell.detailTextLabel.text = [hightResolution componentsJoinedByString:@", "];
+    [cell reloadWithModel:userInfo];
     
     return cell;
 }

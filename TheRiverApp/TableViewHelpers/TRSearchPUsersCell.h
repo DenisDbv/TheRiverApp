@@ -10,4 +10,6 @@
 
 @interface TRSearchPUsersCell : UITableViewCell
 
+-(void) reloadWithModel:(TRUserInfoModel*)userInfo;
+
 @end

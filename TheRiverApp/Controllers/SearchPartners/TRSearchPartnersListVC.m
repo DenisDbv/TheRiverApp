@@ -236,9 +236,9 @@
     }
     
     NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
-    [cell.avatarImageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
-    [cell setCellFio:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
+    [cell reloadWithData:logoURLString
+                 fioText:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
              subText:subTextTitle
          typeSubText:filterType
            withQuery:_partnersList.query];

@@ -259,7 +259,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		182D72C217D3CFAF00134224 /* TheRiverApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheRiverApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		182D72C217D3CFAF00134224 /* The River.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The River.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		182D72C517D3CFAF00134224 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		182D72C717D3CFAF00134224 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		182D72C917D3CFAF00134224 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -639,7 +639,7 @@
 		182D72C317D3CFAF00134224 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				182D72C217D3CFAF00134224 /* TheRiverApp.app */,
+				182D72C217D3CFAF00134224 /* The River.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1376,7 +1376,7 @@
 			);
 			name = TheRiverApp;
 			productName = TheRiverApp;
-			productReference = 182D72C217D3CFAF00134224 /* TheRiverApp.app */;
+			productReference = 182D72C217D3CFAF00134224 /* The River.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1777,7 +1777,7 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "The River";
 				PROVISIONING_PROFILE = "7E21B295-70E8-48B0-B0F2-30F743B016CF";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1792,7 +1792,7 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "The River";
 				PROVISIONING_PROFILE = "7E21B295-70E8-48B0-B0F2-30F743B016CF";
 				WRAPPER_EXTENSION = app;
 			};
