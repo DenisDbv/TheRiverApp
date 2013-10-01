@@ -24,15 +24,25 @@
 @implementation TRSearchPartnersListVC
 {
     NSArray *headerTitles;
+    NSString *queryString;
 }
 @synthesize menuView;
 @synthesize _partnersList;
+
+-(id) initVCByQuery:(NSString*)query
+{
+    self = [super initWithNibName:@"TRSearchPartnersListVC" bundle:[NSBundle mainBundle]];
+    if (self) {
+        queryString = query;
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        queryString = @"";
     }
     return self;
 }
@@ -62,6 +72,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    if(queryString.length > 0)  {
+        [menuView setTextToSearchLabel:queryString];
+        [self refreshPartnersByQuery:queryString];
+    }
+}
+
 -(void) viewDidAppear:(BOOL)animated
 {
     [menuView becomeSearchBar];
@@ -82,7 +100,6 @@
 {
     [[TRSearchPartnersManager client] downloadPartnersListByString:query withSuccessOperation:^(LRRestyResponse *response, TRPartnersListModel *partnersList) {
         _partnersList = partnersList;
-        NSLog(@"%@ with '%@'", _partnersList, _partnersList.query);
         [self.tableView reloadData];
     } andFailedOperation:nil];
 }

@@ -51,6 +51,7 @@
                                                                    if(operation.isCancelled != YES) {
                                                                    
                                                                        NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                       NSLog(@"==>%@", resultJSON);
                                                                        TRPartnersListModel *pList = [[TRPartnersListModel alloc] initWithDictionary:resultJSON];
                                                                        
                                                                        if( successBlock != nil)

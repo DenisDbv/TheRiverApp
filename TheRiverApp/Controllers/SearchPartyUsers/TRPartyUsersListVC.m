@@ -22,14 +22,30 @@
 @end
 
 @implementation TRPartyUsersListVC
+{
+    NSString *citySearchString;
+    NSString *industrySearchString;
+}
 @synthesize activityIndicator;
 @synthesize _userList;
+
+-(id) initPUSearchByCity:(NSString*)cityName
+             andIndustry:(NSString*)industryName
+{
+    self = [super initWithNibName:@"TRPartyUsersListVC" bundle:[NSBundle mainBundle]];
+    if (self) {
+        citySearchString = cityName;
+        industrySearchString = industryName;
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        citySearchString = @"";
+        industrySearchString = @"";
     }
     return self;
 }
@@ -46,7 +62,7 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     
-    [self refreshUserListByCity:@"" andIndustry:@""];
+    [self refreshUserListByCity:citySearchString andIndustry:industrySearchString];
 }
 
 - (void)didReceiveMemoryWarning

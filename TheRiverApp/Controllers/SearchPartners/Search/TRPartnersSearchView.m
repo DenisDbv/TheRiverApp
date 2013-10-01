@@ -34,8 +34,6 @@
         delaySearchUntilQueryUnchangedForTimeOffset = 0.9 * NSEC_PER_SEC;
         
         [self createSearchBar];
-        
-        [[TRSearchPartnersManager client] downloadPartnersListByString:@"d" withSuccessOperation:nil andFailedOperation:nil];
     }
     return self;
 }
@@ -75,7 +73,7 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delaySearchUntilQueryUnchangedForTimeOffset);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         if (searchID == searchCounter) {
-            if(searchText.length != 0)  {
+            if(searchText.length != 0 && searchText.length >= 3)  {
                 NSLog(@"'%@' text searching..", searchText);
                 [rootController refreshPartnersByQuery: searchText];
             }
@@ -90,6 +88,11 @@
     
     [aSearchBar resignFirstResponder];
     
+}
+
+-(void) setTextToSearchLabel:(NSString*)text
+{
+    searchBar.text = text;
 }
 
 -(void) becomeSearchBar
