@@ -14,6 +14,8 @@
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import "UIImage+Resize.h"
 #import <MIHGradientView/MIHGradientView.h>
+#import "UIView+GestureBlocks.h"
+#import "TRImageReviewController.h"
 
 @implementation TRHeadBox
 
@@ -63,6 +65,11 @@
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     [self addSubview:imageView];
+    
+    [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
+        [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+    } forTaps:1];
     
     MIHGradientView *gradientView = [[MIHGradientView alloc] initWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.0]
                                                                         to:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
@@ -122,6 +129,11 @@
     imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
     imageView.clipsToBounds = YES;
     [self addSubview:imageView];
+    
+    [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
+        [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+    } forTaps:1];
     
     [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
                                                           options:SDWebImageDownloaderUseNSURLCache progress:nil

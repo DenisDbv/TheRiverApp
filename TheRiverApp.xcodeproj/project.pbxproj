@@ -70,7 +70,6 @@
 		1891D7B417DA298200281246 /* AQWTF.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79C17DA298200281246 /* AQWTF.png */; };
 		1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B617DA2F9900281246 /* TRRootBox.m */; };
 		1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */; };
-		1891D7C117DB1AB200281246 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C017DB1AB200281246 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C317DB1AFE00281246 /* TRImageViewController.m */; };
 		1891D7F217DB59AC00281246 /* TRUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7F117DB59AC00281246 /* TRUserModel.m */; };
 		1891D7F617DB5B3300281246 /* TRUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7F517DB5B3300281246 /* TRUserManager.m */; };
@@ -252,6 +251,9 @@
 		18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */; };
 		18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */; };
 		18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */; };
+		18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72117FAD86A006B7864 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72517FAD940006B7864 /* TRImageReviewController.m */; };
+		18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEA72617FAD940006B7864 /* TRImageReviewController.xib */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -337,8 +339,6 @@
 		1891D7B617DA2F9900281246 /* TRRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootBox.m; path = Controllers/UserProfile/Layers/TRRootBox.m; sourceTree = "<group>"; };
 		1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAlbumGridViewCell.h; sourceTree = "<group>"; };
 		1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAlbumGridViewCell.m; sourceTree = "<group>"; };
-		1891D7BF17DB1AB200281246 /* ZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomView.h; sourceTree = "<group>"; };
-		1891D7C017DB1AB200281246 /* ZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomView.m; sourceTree = "<group>"; };
 		1891D7C217DB1AFD00281246 /* TRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRImageViewController.h; sourceTree = "<group>"; };
 		1891D7C317DB1AFE00281246 /* TRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImageViewController.m; sourceTree = "<group>"; };
 		1891D7F017DB59AC00281246 /* TRUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserModel.h; path = Model/Entity/TRUserModel.h; sourceTree = "<group>"; };
@@ -596,6 +596,11 @@
 		18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
 		18E65E2917D5009700D1B778 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
 		18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
+		18FEA72017FAD869006B7864 /* ZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomView.h; sourceTree = "<group>"; };
+		18FEA72117FAD86A006B7864 /* ZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomView.m; sourceTree = "<group>"; };
+		18FEA72417FAD940006B7864 /* TRImageReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRImageReviewController.h; path = Controllers/ImageReview/TRImageReviewController.h; sourceTree = "<group>"; };
+		18FEA72517FAD940006B7864 /* TRImageReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRImageReviewController.m; path = Controllers/ImageReview/TRImageReviewController.m; sourceTree = "<group>"; };
+		18FEA72617FAD940006B7864 /* TRImageReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRImageReviewController.xib; path = Controllers/ImageReview/TRImageReviewController.xib; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -682,6 +687,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18FEA72317FAD8F5006B7864 /* ImageReview */,
 				1899701E17F615A80056F7ED /* SearchPartners */,
 				1897600A17F0DA7600B06DF7 /* SearchPartyUsers */,
 				18975F8E17EE2D5100B06DF7 /* Login */,
@@ -754,7 +760,6 @@
 		1891D78017DA26A900281246 /* PhotoAlbum */ = {
 			isa = PBXGroup;
 			children = (
-				1891D7BE17DB1AB200281246 /* ZoomView */,
 				1891D78117DA26AB00281246 /* TRAlbumViewController.h */,
 				1891D78217DA26AB00281246 /* TRAlbumViewController.m */,
 				1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */,
@@ -795,15 +800,6 @@
 				1891D79C17DA298200281246 /* AQWTF.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		1891D7BE17DB1AB200281246 /* ZoomView */ = {
-			isa = PBXGroup;
-			children = (
-				1891D7BF17DB1AB200281246 /* ZoomView.h */,
-				1891D7C017DB1AB200281246 /* ZoomView.m */,
-			);
-			path = ZoomView;
 			sourceTree = "<group>";
 		};
 		1891D7EE17DB595200281246 /* Model */ = {
@@ -1316,6 +1312,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				18FEA71F17FAD869006B7864 /* ZoomView */,
 				18A108C817DDC04C00D9CD8C /* WDActivityIndicator */,
 				18E65E2317D5009700D1B778 /* MFSideMenu */,
 			);
@@ -1334,6 +1331,25 @@
 				18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */,
 			);
 			path = MFSideMenu;
+			sourceTree = "<group>";
+		};
+		18FEA71F17FAD869006B7864 /* ZoomView */ = {
+			isa = PBXGroup;
+			children = (
+				18FEA72017FAD869006B7864 /* ZoomView.h */,
+				18FEA72117FAD86A006B7864 /* ZoomView.m */,
+			);
+			path = ZoomView;
+			sourceTree = "<group>";
+		};
+		18FEA72317FAD8F5006B7864 /* ImageReview */ = {
+			isa = PBXGroup;
+			children = (
+				18FEA72417FAD940006B7864 /* TRImageReviewController.h */,
+				18FEA72517FAD940006B7864 /* TRImageReviewController.m */,
+				18FEA72617FAD940006B7864 /* TRImageReviewController.xib */,
+			);
+			name = ImageReview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1538,6 +1554,7 @@
 				1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */,
 				1899702317F615F10056F7ED /* TRSearchPartnersListVC.xib in Resources */,
 				1899703617F729340056F7ED /* TRSearchPartnersCell.xib in Resources */,
+				18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1604,7 +1621,6 @@
 				1891D78317DA26AB00281246 /* TRAlbumViewController.m in Sources */,
 				1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */,
 				1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */,
-				1891D7C117DB1AB200281246 /* ZoomView.m in Sources */,
 				1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */,
 				1891D7F217DB59AC00281246 /* TRUserModel.m in Sources */,
 				1891D7F617DB5B3300281246 /* TRUserManager.m in Sources */,
@@ -1671,6 +1687,8 @@
 				1899703917F82B290056F7ED /* TRBusinessManager.m in Sources */,
 				1899704117F830190056F7ED /* TRBusinessRootModel.m in Sources */,
 				1899704417F831020056F7ED /* TRBusinessModel.m in Sources */,
+				18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */,
+				18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

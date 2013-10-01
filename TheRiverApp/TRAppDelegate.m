@@ -133,6 +133,11 @@
     [self.window makeKeyAndVisible];
 }
 
+-(void) presentModalViewController:(UIViewController*)controller
+{
+    [_rootContainer presentViewController:controller animated:YES completion:nil];
+}
+
 -(void) changeCenterViewController:(UIViewController*)newController
 {   
     [_rootContainer.centerViewController setViewControllers:@[newController] animated:NO];
