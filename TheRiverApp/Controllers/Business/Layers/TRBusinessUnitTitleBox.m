@@ -31,9 +31,9 @@
     dateCreateLine.rightPadding = 0;
     dateCreateLine.borderStyle = MGBorderNone;
     dateCreateLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
-    [box.boxes addObject:dateCreateLine];
+    [box.boxes addObject:dateCreateLine];*/
     
-    MGLineStyled *titleLine = [MGLineStyled lineWithMultilineLeft:box.businessData.businessTitle right:nil width:300.0 minHeight:10];
+    MGLineStyled *titleLine = [MGLineStyled lineWithMultilineLeft:box.businessData.company_name right:nil width:300.0 minHeight:10];
     titleLine.backgroundColor = [UIColor clearColor];
     titleLine.topMargin = 10;
     titleLine.leftPadding = titleLine.rightPadding = 0;
@@ -41,14 +41,14 @@
     titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
     [box.boxes addObject:titleLine];
     
-    NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.firstName, businessObject.lastName, businessObject.age, businessObject.city];
+    NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, businessObject.city];
     MGLineStyled *authorLine = [MGLineStyled lineWithMultilineLeft:fullTitle right:nil width:300 minHeight:10];
     authorLine.backgroundColor = [UIColor clearColor];
     authorLine.topMargin = 10;
     authorLine.leftPadding = authorLine.rightPadding = 0;
     authorLine.borderStyle = MGBorderNone;
     authorLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
-    [box.boxes addObject:authorLine];*/
+    [box.boxes addObject:authorLine];
     
     return box;
 }

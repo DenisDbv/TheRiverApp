@@ -82,6 +82,7 @@
 {
     [[TRSearchPartnersManager client] downloadPartnersListByString:query withSuccessOperation:^(LRRestyResponse *response, TRPartnersListModel *partnersList) {
         _partnersList = partnersList;
+        NSLog(@"%@ with '%@'", _partnersList, _partnersList.query);
         [self.tableView reloadData];
     } andFailedOperation:nil];
 }
@@ -159,7 +160,7 @@
             return _partnersList.cities.count;
             break;
         case 2:
-            return _partnersList.scope_work.count;
+            return _partnersList.industries.count;
             break;
         case 3:
             return _partnersList.interests.count;
@@ -189,7 +190,7 @@
             if(_partnersList.cities.count == 0) return 0;
             break;
         case 2:
-            if(_partnersList.scope_work.count == 0) return 0;
+            if(_partnersList.industries.count == 0) return 0;
             break;
         case 3:
             if(_partnersList.interests.count == 0) return 0;
@@ -223,7 +224,7 @@
             filterType = textCity;
             break;
         case 2:
-            userInfo = [_partnersList.scope_work objectAtIndex:indexPath.row];
+            userInfo = [_partnersList.industries objectAtIndex:indexPath.row];
             subTextTitle = [self getMutchScopeWork:userInfo.business.industries byQueryString:_partnersList.query];
             filterType = textScopeWork;
             break;

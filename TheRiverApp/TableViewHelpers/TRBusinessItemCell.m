@@ -94,13 +94,13 @@
 
 -(void) showBusinessTitle:(TRBusinessModel*)businessObject
 {
-    layerAfterLabel.text = [NSString stringWithFormat:@"Оборот в месяц: %@ р", businessObject.turnover_per_month];
+    layerAfterLabel.text = [NSString stringWithFormat:@"Оборот в месяц: %@ р", businessObject.profit];
     [layerAfterLabel sizeToFit];
     layerAfterLabel.frame = CGRectMake(10,
                                        layerView.frame.size.height - layerAfterLabel.frame.size.height - 10,
                                        layerAfterLabel.frame.size.width, layerAfterLabel.frame.size.height);
     
-    layerShortTitleLabel.text = businessObject.activity_description;
+    layerShortTitleLabel.text = businessObject.about;
     CGSize size = [layerShortTitleLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20]
                                         constrainedToSize:CGSizeMake(280.0, FLT_MAX)
                                             lineBreakMode:NSLineBreakByWordWrapping];

@@ -17,7 +17,7 @@
 
 @property (nonatomic, copy) NSString *logo;
 @property (nonatomic, copy) NSString *company_name;
-@property (nonatomic, copy) NSString *activity_description;
-@property (nonatomic, copy) NSString *turnover_per_month;
+@property (nonatomic, copy) NSString *about;
+@property (nonatomic, copy) NSString *profit;
 
 @end

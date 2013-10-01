@@ -134,8 +134,8 @@
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //TRBusinessDescriptionVC *descriptionUnit = [[TRBusinessDescriptionVC alloc] initByMindModel:[[TRUserManager sharedInstance].businessObjects objectAtIndex:indexPath.section]];
-    //[self.navigationController pushViewController:descriptionUnit animated:YES];
+    TRBusinessDescriptionVC *descriptionUnit = [[TRBusinessDescriptionVC alloc] initByMindModel: [_businessList.business objectAtIndex: indexPath.section]];
+    [self.navigationController pushViewController:descriptionUnit animated:YES];
 }
 
 @end

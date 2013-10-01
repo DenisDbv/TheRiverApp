@@ -51,7 +51,7 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                                             
                                                                   [self saveUserData: storeAuth];
                                                                   
-                                                                  TRAuthUserModel *authModel = self.iamData;
+                                                                  //TRAuthUserModel *authModel = self.iamData;
                                                                   //NSLog(@"%@", authModel);
                                                                   
                                                                   if( succesOperaion != nil)

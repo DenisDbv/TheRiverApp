@@ -10,6 +10,6 @@
 
 @implementation TRBusinessModel
 @synthesize first_name, last_name, age, city;
-@synthesize logo, company_name, activity_description, turnover_per_month;
+@synthesize logo, company_name, about, profit;
 
 @end

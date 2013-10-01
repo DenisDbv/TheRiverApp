@@ -46,7 +46,7 @@
     
     NSArray *buttonsArray = [NSArray arrayWithObjects:
                              contactsBox,
-                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Посты"],
+                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Знания"],
                              photoBox,
                              [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-subscribed@2x.png"] withTitle:@"Подписчики"], nil];
     [box addViewsToScroll:buttonsArray];
