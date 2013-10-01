@@ -254,6 +254,7 @@
 		18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72117FAD86A006B7864 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72517FAD940006B7864 /* TRImageReviewController.m */; };
 		18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEA72617FAD940006B7864 /* TRImageReviewController.xib */; };
+		18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -601,6 +602,8 @@
 		18FEA72417FAD940006B7864 /* TRImageReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRImageReviewController.h; path = Controllers/ImageReview/TRImageReviewController.h; sourceTree = "<group>"; };
 		18FEA72517FAD940006B7864 /* TRImageReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRImageReviewController.m; path = Controllers/ImageReview/TRImageReviewController.m; sourceTree = "<group>"; };
 		18FEA72617FAD940006B7864 /* TRImageReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRImageReviewController.xib; path = Controllers/ImageReview/TRImageReviewController.xib; sourceTree = "<group>"; };
+		18FEA75217FAF513006B7864 /* TRProfileWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRProfileWebViewBox.h; path = Controllers/UserProfile/Layers/TRProfileWebViewBox.h; sourceTree = "<group>"; };
+		18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRProfileWebViewBox.m; path = Controllers/UserProfile/Layers/TRProfileWebViewBox.m; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -753,6 +756,8 @@
 				1891D80317DBC94C00281246 /* TRBusinessTitleBox.m */,
 				1891D80517DBC9CF00281246 /* TRBusinessBox.h */,
 				1891D80617DBC9D400281246 /* TRBusinessBox.m */,
+				18FEA75217FAF513006B7864 /* TRProfileWebViewBox.h */,
+				18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1689,6 +1694,7 @@
 				1899704417F831020056F7ED /* TRBusinessModel.m in Sources */,
 				18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */,
 				18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */,
+				18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

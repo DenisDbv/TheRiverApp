@@ -55,7 +55,7 @@
         [self presentTheRiverControllers];
     }
     
-    //[self showFontsList];
+    [self showFontsList];
     
     return YES;
 }

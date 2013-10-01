@@ -37,6 +37,7 @@
     [box fillBoxByColorGradient];
     [box fillBoxByBusinessImage];
     [box showUserLogo];
+    [box showProfitTitle];
     [box showFirstAndLastName];
     [box showYearsAndCity];
     
@@ -156,6 +157,28 @@
      }];
 }
 
+-(void) showProfitTitle
+{
+    UILabel *nameLabel = [[UILabel alloc] init];
+    nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:13];
+    nameLabel.numberOfLines = 1;
+    nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    nameLabel.text = [NSString stringWithFormat:@"Доход в месяц: %@ р", self.userData.profit];
+    
+    nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
+    nameLabel.layer.shadowRadius = 1;
+    nameLabel.layer.shadowOpacity = 0.2f;
+    
+    CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (0.0+size.height), size.width, size.height);
+    //nameLabel.backgroundColor = [UIColor redColor];
+    
+    [self addSubview: nameLabel];
+}
+
 -(void) showFirstAndLastName
 {
     UILabel *nameLabel = [[UILabel alloc] init];
@@ -172,7 +195,7 @@
     nameLabel.layer.shadowOpacity = 0.2f;
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (0.0+size.height), size.width, size.height);
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (15.0+size.height), size.width, size.height);
     //nameLabel.backgroundColor = [UIColor redColor];
     
     [self addSubview: nameLabel];
