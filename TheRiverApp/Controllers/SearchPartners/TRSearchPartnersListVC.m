@@ -282,6 +282,25 @@
 {
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TRUserInfoModel *userInfo;
+    switch (indexPath.section) {
+        case 0:
+            userInfo = [_partnersList.fio objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            userInfo = [_partnersList.cities objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            userInfo = [_partnersList.industries objectAtIndex:indexPath.row];
+            break;
+        case 3:
+            userInfo = [_partnersList.interests objectAtIndex:indexPath.row];
+            break; 
+    }
+    
+    TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+    [AppDelegateInstance() changeProfileViewController:userProfileVC];
 }
 
 @end

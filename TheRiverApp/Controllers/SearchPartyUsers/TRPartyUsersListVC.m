@@ -134,6 +134,11 @@
 {
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
+    
+    TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+    [AppDelegateInstance() changeProfileViewController:userProfileVC];
 }
 
 @end
