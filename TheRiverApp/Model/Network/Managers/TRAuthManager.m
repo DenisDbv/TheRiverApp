@@ -45,10 +45,15 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                                                   
                                                                   NSDictionary *resultAuthJSON = [[response asString] objectFromJSONString];
                                                                   
-                                                                  iamData = [[TRAuthUserModel alloc] initWithDictionary:resultAuthJSON];
-                                                                  iamData.email = login;
-                                                                  [self saveUserData: iamData];
-                                                                  NSLog(@"%@", iamData);
+                                                                  NSMutableDictionary *storeAuth = [[NSMutableDictionary alloc] init];
+                                                                  [storeAuth setObject:resultAuthJSON forKey:@"authJson"];
+                                                                  [storeAuth setObject:login forKey:@"login"];
+                                                            
+                                                                  [self saveUserData: storeAuth];
+                                                                  
+                                                                  //TRAuthUserModel *authModel = self.iamData;
+                                                                  //NSLog(@"%@", authModel);
+                                                                  
                                                                   if( succesOperaion != nil)
                                                                       succesOperaion(response);
         
@@ -63,14 +68,17 @@ withSuccessOperation:(SuccessOperation) succesOperaion
     [_queueAuth addOperation:operation];
 }
 
--(void) saveUserData:(TRAuthUserModel*)userModel
+-(void) saveUserData:(id)userModel
 {
     [[TGArhiveObject class] saveArhiveFromObject:userModel toFile: (NSString*)_fileHandler];
 }
 
--(TRAuthManager*) iamData
+-(TRAuthUserModel*) iamData
 {
-    return [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileHandler];
+    NSMutableDictionary *authDictionary = [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileHandler];
+    TRAuthUserModel *authModel = [[TRAuthUserModel alloc] initWithDictionary: [authDictionary objectForKey:@"authJson"]];
+    authModel.email = [authDictionary objectForKey:@"login"];
+    return authModel;
 }
 
 -(BOOL) isAuth

@@ -16,14 +16,14 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-+(TRContactBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(TRContactBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
-    TRContactBox *box = [TRContactBox boxWithSize: CGSizeMake(bounds.width, 149)];
+    TRContactBox *box = [TRContactBox boxWithSize: CGSizeMake(bounds.width, 101)];
     box.userData = userObject;
     box.zIndex = -1;
     
     [box showFirstItemContactButtons];
-    [box showSecondItemContactButtons];
+    //[box showSecondItemContactButtons];
     
     return box;
 }
@@ -38,7 +38,7 @@
     UIImage *imgMessage = [UIImage imageNamed:@"send-message-icon@2x.png"];
     
     UIImageView *imgSbsView = [[UIImageView alloc] initWithImage:imgSbscrb];
-    imgSbsView.frame = CGRectMake(10, 15, imgSbscrb.size.width/2, imgSbscrb.size.height/2);
+    imgSbsView.frame = CGRectMake(18, 15, imgSbscrb.size.width/2, imgSbscrb.size.height/2);
     UIImageView *imgMessageView = [[UIImageView alloc] initWithImage:imgMessage];
     imgMessageView.frame = CGRectMake(13, 15, imgMessage.size.width/2, imgMessage.size.height/2);
     
@@ -46,6 +46,7 @@
     subscribeButton.leftAccessoryImage = [UIImage imageNamed:@"subscribe-icon.png"];
     subscribeButton.tintColor = subscribeButton.highlightedTintColor = [UIColor clearColor];
     subscribeButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    subscribeButton.borderWidth = 2.0;
     subscribeButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [subscribeButton setCornerRadius:4.0f];
     [subscribeButton setGradientEnabled:NO];
@@ -53,7 +54,7 @@
     subscribeButton.textColor = subscribeButton.highlightedTextColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     subscribeButton.textShadowColor = [UIColor whiteColor];
     subscribeButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    subscribeButton.text = @"Подписаться";
+    subscribeButton.text = @"Связаться";
     [buttonsBox addSubview:subscribeButton];
     [subscribeButton addSubview:imgSbsView];
     
@@ -61,6 +62,7 @@
     messageButton.leftAccessoryImage = [UIImage imageNamed:@"send-message-icon.png"];
     messageButton.tintColor = messageButton.highlightedTintColor = [UIColor clearColor];
     messageButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    messageButton.borderWidth = 2.0;
     messageButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [messageButton setCornerRadius:4.0f];
     [messageButton setGradientEnabled:NO];

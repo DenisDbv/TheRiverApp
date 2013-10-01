@@ -9,16 +9,22 @@
 #import "TRBusinessItemCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+Resize.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation TRBusinessItemCell
 
-@synthesize logo, title, subTitle, layerView, layerShortTitleLabel, layerBeforeLabel, layerAfterLabel;
+@synthesize logo, title, subTitle, layerView, layerShortTitleLabel, layerAfterLabel;
 
 -(void) reloadWithBusinessModel:(TRBusinessModel*)businessObject
 {
-    logo.image = [UIImage imageNamed:businessObject.businessLogo];
-    title.text = businessObject.businessTitle;
-    subTitle.text = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.firstName, businessObject.lastName, businessObject.age, businessObject.city];
+    if(businessObject.logo.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo];
+        [logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
+    
+    title.text = businessObject.company_name;
+    subTitle.text = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, businessObject.city];
     
     [title sizeToFit];
     CGSize size = [title.text sizeWithFont: title.font
@@ -80,11 +86,6 @@
     layerShortTitleLabel.layer.shadowRadius = 1;
     layerShortTitleLabel.layer.shadowOpacity = 0.2f;
     
-    layerBeforeLabel.backgroundColor = [UIColor clearColor];
-    layerBeforeLabel.textColor = [UIColor whiteColor];
-    layerBeforeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
-    layerBeforeLabel.numberOfLines = 1;
-    
     layerAfterLabel.backgroundColor = [UIColor clearColor];
     layerAfterLabel.textColor = [UIColor whiteColor];
     layerAfterLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
@@ -92,6 +93,23 @@
 }
 
 -(void) showBusinessTitle:(TRBusinessModel*)businessObject
+{
+    layerAfterLabel.text = [NSString stringWithFormat:@"Оборот в месяц: %@ р", businessObject.profit];
+    [layerAfterLabel sizeToFit];
+    layerAfterLabel.frame = CGRectMake(10,
+                                       layerView.frame.size.height - layerAfterLabel.frame.size.height - 10,
+                                       layerAfterLabel.frame.size.width, layerAfterLabel.frame.size.height);
+    
+    layerShortTitleLabel.text = businessObject.about;
+    CGSize size = [layerShortTitleLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20]
+                                        constrainedToSize:CGSizeMake(280.0, FLT_MAX)
+                                            lineBreakMode:NSLineBreakByWordWrapping];
+    layerShortTitleLabel.frame = CGRectMake(10.0,
+                                            layerAfterLabel.frame.origin.y - size.height,
+                                            size.width, size.height);
+}
+
+/*-(void) showBusinessTitle:(TRBusinessModel*)businessObject
 {
     layerAfterLabel.text = [NSString stringWithFormat:@"Стало: %@", businessObject.businessAfterTitle];
     [layerAfterLabel sizeToFit];
@@ -112,6 +130,6 @@
     layerShortTitleLabel.frame = CGRectMake(10.0,
                                             layerBeforeLabel.frame.origin.y - size.height,
                                             size.width, size.height);
-}
+}*/
 
 @end

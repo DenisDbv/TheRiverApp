@@ -64,7 +64,7 @@
                             andPassword:passwordField.text
                    withSuccessOperation:^(LRRestyResponse *response) {
                        NSLog(@"User token: %@", [TRAuthManager client].iamData.token);
-                       
+                    
                        if([[TRAuthManager client] isAuth] == YES)   {
                            [AppDelegateInstance() presentTheRiverControllers];
                        }

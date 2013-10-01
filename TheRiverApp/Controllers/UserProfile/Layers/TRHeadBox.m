@@ -12,6 +12,10 @@
 #import <SSToolkit/SSToolkit.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "UIImage+Resize.h"
+#import <MIHGradientView/MIHGradientView.h>
+#import "UIView+GestureBlocks.h"
+#import "TRImageReviewController.h"
 
 @implementation TRHeadBox
 
@@ -25,13 +29,15 @@
     
 }
 
-+(TRHeadBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(TRHeadBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
-    TRHeadBox *box = [TRHeadBox boxWithSize: CGSizeMake(bounds.width, 132)];
+    TRHeadBox *box = [TRHeadBox boxWithSize: CGSizeMake(bounds.width, 200)];    //132   //173
     box.userData = userObject;
     
     [box fillBoxByColorGradient];
+    [box fillBoxByBusinessImage];
     [box showUserLogo];
+    [box showProfitTitle];
     [box showFirstAndLastName];
     [box showYearsAndCity];
     
@@ -54,12 +60,51 @@
     layer.colors = mutableColors;
 }
 
+-(void) fillBoxByBusinessImage
+{
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    [self addSubview:imageView];
+    
+    [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
+        [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+    } forTaps:1];
+    
+    MIHGradientView *gradientView = [[MIHGradientView alloc] initWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.0]
+                                                                        to:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+    gradientView.frame = CGRectMake(0, 83.0, self.bounds.size.width, self.bounds.size.height-83.0);
+    gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [imageView addSubview:gradientView];
+    
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
+                                                          options:SDWebImageDownloaderUseNSURLCache progress:nil
+                                                        completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+    {
+        
+        if(image != nil)
+        {
+            UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(320, 200) interpolationQuality:kCGInterpolationHigh];
+            logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 320, 200)];
+            
+            imageView.alpha = 0;
+            imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [imageView setImage:logoImageTest];
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                imageView.alpha = 1;
+            }];
+        }
+    }];
+}
+
 -(void) showUserLogo
 {
     //UIImage *image = [UIImage imageNamed: self.userData.logo];
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:[TRAuthManager client].iamData.user.logo];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.logo];
     
-    UIImageView *imageView = [[UIImageView alloc] init];
+    /*UIImageView *imageView = [[UIImageView alloc] init];
     
     imageView.size = CGSizeMake(117.0, 117.0);
     imageView.frame = CGRectOffset(imageView.frame, 4.0, 49.0);
@@ -74,18 +119,53 @@
     
     [UIView animateWithDuration:0.1 animations:^{
         imageView.alpha = 1;
-    }];
+    }];*/
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.size = CGSizeMake(117.0, 117.0);
+    imageView.frame = CGRectOffset(imageView.frame, 4.0, 117.0);
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    imageView.layer.borderWidth = 1;
+    imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
+    imageView.clipsToBounds = YES;
+    [self addSubview:imageView];
+    
+    [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
+        [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+    } forTaps:1];
+    
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
+                                                          options:SDWebImageDownloaderUseNSURLCache progress:nil
+                                                        completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+     {
+         
+         if(image != nil)
+         {
+             UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(117, 117) interpolationQuality:kCGInterpolationHigh];
+             logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 117, 117)];
+             
+             imageView.alpha = 0;
+             imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+             [imageView setImage:logoImageTest];
+             
+             [UIView animateWithDuration:0.1 animations:^{
+                 imageView.alpha = 1;
+             }];
+         }
+     }];
 }
 
--(void) showFirstAndLastName
+-(void) showProfitTitle
 {
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textColor = [UIColor whiteColor];
-    nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
-    nameLabel.numberOfLines = 2;
+    nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:13];
+    nameLabel.numberOfLines = 1;
     nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    nameLabel.text = [NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name];
+    nameLabel.text = [NSString stringWithFormat:@"Доход в месяц: %@ р", self.userData.profit];
     
     nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -93,7 +173,29 @@
     nameLabel.layer.shadowOpacity = 0.2f;
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 132.0 - (8.0+size.height), size.width, size.height);
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (0.0+size.height), size.width, size.height);
+    //nameLabel.backgroundColor = [UIColor redColor];
+    
+    [self addSubview: nameLabel];
+}
+
+-(void) showFirstAndLastName
+{
+    UILabel *nameLabel = [[UILabel alloc] init];
+    nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:26];
+    nameLabel.numberOfLines = 2;
+    nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.userData.first_name, self.userData.last_name];
+    
+    nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
+    nameLabel.layer.shadowRadius = 1;
+    nameLabel.layer.shadowOpacity = 0.2f;
+    
+    CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (15.0+size.height), size.width, size.height);
     //nameLabel.backgroundColor = [UIColor redColor];
     
     [self addSubview: nameLabel];
@@ -104,12 +206,12 @@
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
-    nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     nameLabel.numberOfLines = 1;
-    nameLabel.text = [NSString stringWithFormat:@"%@, %@", [TRAuthManager client].iamData.user.age, [TRAuthManager client].iamData.user.city];
+    nameLabel.text = [NSString stringWithFormat:@"%@, %@", self.userData.age, self.userData.city];
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 132.0+10.0, size.width, size.height);
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0+8.0, size.width, size.height);
     
     [self addSubview: nameLabel];
 }
