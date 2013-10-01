@@ -9,6 +9,8 @@
 #import "TRBusinessLogoBox.h"
 #import "UIImage+Resize.h"
 #import <MGBox2/MGScrollView.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation TRBusinessLogoBox
 
@@ -32,21 +34,28 @@
 
 -(void) showLogo
 {
-    UIImage *image = [[UIImage imageNamed: self.businessData.businessLogo] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:self.bounds.size interpolationQuality:kCGInterpolationHigh];
+    //UIImage *image = nil;//[[UIImage imageNamed: self.businessData.businessLogo] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:self.bounds.size interpolationQuality:kCGInterpolationHigh];
 
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIImageView *imageView = [[UIImageView alloc] init];
     
-    //imageView.size = self.bounds.size;
-    imageView.alpha = 0;
-    //imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self addSubview:imageView];
-    
-    [UIView animateWithDuration:0.1 animations:^{
-        imageView.alpha = 1;
-    }];
-    
-    self.height = image.size.height;
-    [self refreshRootSize];
+    if(self.businessData.logo.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.businessData.logo];
+        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            imageView.size = self.bounds.size;
+            imageView.alpha = 0;
+            imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [self addSubview:imageView];
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                imageView.alpha = 1;
+            }];
+            
+            NSLog(@"%@", NSStringFromCGSize(image.size));
+            
+            self.height = image.size.height;
+            [self refreshRootSize];
+        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
 }
 
 -(void) refreshRootSize

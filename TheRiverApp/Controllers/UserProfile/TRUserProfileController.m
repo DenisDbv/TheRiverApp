@@ -19,6 +19,7 @@
 #import "TRExMenuBox.h"
 #import "TRBusinessTitleBox.h"
 #import "TRBusinessBox.h"
+#import "TRProfileWebViewBox.h"
 
 @interface TRUserProfileController ()
 @property (nonatomic, retain) MGScrollView *scrollView;
@@ -26,7 +27,7 @@
 
 @implementation TRUserProfileController
 
--(id) initByUserModel:(TRUserModel*)userObject
+-(id) initByUserModel:(TRUserInfoModel*)userObject
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
@@ -47,13 +48,14 @@
                                                object:nil];
     
     [self createRootScrollView];
-    
+
     [self createBackgroundHeadBlock];
     [self createContactBox];
     [self createTagsBox];
     [self createExMenuBox];
     [self createBusinessTitleBox];
     [self createBusinessBox];
+    [self createBusinessWebViewBox];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
 }
@@ -127,6 +129,13 @@
     TRBusinessBox *businessBox = (TRBusinessBox*)[TRBusinessBox initBox: self.view.bounds.size
                                                   withUserData:_userDataObject];
     [_scrollView.boxes addObject: businessBox];
+}
+
+-(void) createBusinessWebViewBox
+{
+    TRProfileWebViewBox *businessWebViewBox = (TRProfileWebViewBox*)[TRProfileWebViewBox initBox: self.view.bounds.size
+                                                              withUserData:_userDataObject];
+    [_scrollView.boxes addObject: businessWebViewBox];
 }
 
 @end

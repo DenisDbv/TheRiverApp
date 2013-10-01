@@ -32,6 +32,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(@"App path: %@", [[NSBundle mainBundle] resourcePath]);
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self updateDataFromServer];
@@ -53,7 +55,7 @@
         [self presentTheRiverControllers];
     }
     
-    //[self showFontsList];
+    [self showFontsList];
     
     return YES;
 }
@@ -120,7 +122,7 @@
 {
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
+    _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user];
     _rootContainer = [MFSideMenuContainerViewController
                       containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                       leftMenuViewController: _leftRootMenuBar
@@ -129,6 +131,11 @@
     
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
+}
+
+-(void) presentModalViewController:(UIViewController*)controller
+{
+    [_rootContainer presentViewController:controller animated:YES completion:nil];
 }
 
 -(void) changeCenterViewController:(UIViewController*)newController
@@ -151,8 +158,11 @@
         return;
     }
     
-    if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
+    if( [newController.userDataObject.id integerValue] != [((TRUserProfileController*)currentCenterController).userDataObject.id integerValue] )
         [self changeCenterViewController:newController];
+    
+    /*if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
+        [self changeCenterViewController:newController];*/
 }
 
 -(void) showFontsList

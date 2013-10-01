@@ -17,7 +17,6 @@
 
 @property (nonatomic, retain) IBOutlet SSGradientView *layerView;
 @property (nonatomic, retain) IBOutlet UILabel *layerShortTitleLabel;
-@property (nonatomic, retain) IBOutlet UILabel *layerBeforeLabel;
 @property (nonatomic, retain) IBOutlet UILabel *layerAfterLabel;
 
 -(void) reloadWithBusinessModel:(TRBusinessModel*)businessObject;

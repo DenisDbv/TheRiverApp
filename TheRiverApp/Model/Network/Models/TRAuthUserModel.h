@@ -9,7 +9,7 @@
 #import "Jastor.h"
 #import "TRUserInfoModel.h"
 
-@interface TRAuthUserModel : Jastor <NSCoding>
+@interface TRAuthUserModel : Jastor
 
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *email;

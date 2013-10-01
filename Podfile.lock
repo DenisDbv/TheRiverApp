@@ -25,6 +25,7 @@ PODS:
     - NSData+Base64 (~> 1.0)
   - MBProgressHUD (0.7)
   - MGBox2 (2.0.0)
+  - MIHGradientView (1.0.0)
   - NSData+Base64 (1.0.0)
   - NSString+RMURLEncoding (0.1.0)
   - NVUIGradientButton (1.5.0)
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - LRResty
   - MBProgressHUD (~> 0.7)
   - MGBox2
+  - MIHGradientView
   - NSString+RMURLEncoding
   - NVUIGradientButton
   - REActivityViewController (~> 1.6.6)
@@ -96,6 +98,7 @@ SPEC CHECKSUMS:
   LRResty: 5e4c1b91bc5f878d64e965facd5cc9320b9ed3e2
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MGBox2: 7c09e36c2271f9af16fdb5141a0ca554ecee4d8d
+  MIHGradientView: 6d1f937a396c7aee2650ab09cba4af420919bdf0
   NSData+Base64: 36c4e5b6479259c1a68866ccd2a8dd385c9744f7
   NSString+RMURLEncoding: f2a8c822486cdbe5c46638e85bc159aaa3ebc2b8
   NVUIGradientButton: 08792b091feb141d89cb375cbb2d2db0cc02371c
