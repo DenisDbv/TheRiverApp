@@ -255,6 +255,10 @@
 		18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72517FAD940006B7864 /* TRImageReviewController.m */; };
 		18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEA72617FAD940006B7864 /* TRImageReviewController.xib */; };
 		18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */; };
+		18FEA75A17FBED2E006B7864 /* TRContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75917FBED2E006B7864 /* TRContactsManager.m */; };
+		18FEA75D17FBF20A006B7864 /* TRContactsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75C17FBF208006B7864 /* TRContactsListModel.m */; };
+		18FEA76017FBF760006B7864 /* TRContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75F17FBF760006B7864 /* TRContactCell.m */; };
+		18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA76217FBFF7D006B7864 /* TRContactDataModel.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -604,6 +608,14 @@
 		18FEA72617FAD940006B7864 /* TRImageReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRImageReviewController.xib; path = Controllers/ImageReview/TRImageReviewController.xib; sourceTree = "<group>"; };
 		18FEA75217FAF513006B7864 /* TRProfileWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRProfileWebViewBox.h; path = Controllers/UserProfile/Layers/TRProfileWebViewBox.h; sourceTree = "<group>"; };
 		18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRProfileWebViewBox.m; path = Controllers/UserProfile/Layers/TRProfileWebViewBox.m; sourceTree = "<group>"; };
+		18FEA75817FBED2E006B7864 /* TRContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRContactsManager.h; sourceTree = "<group>"; };
+		18FEA75917FBED2E006B7864 /* TRContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRContactsManager.m; sourceTree = "<group>"; };
+		18FEA75B17FBF205006B7864 /* TRContactsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactsListModel.h; path = Models/TRContactsListModel.h; sourceTree = "<group>"; };
+		18FEA75C17FBF208006B7864 /* TRContactsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactsListModel.m; path = Models/TRContactsListModel.m; sourceTree = "<group>"; };
+		18FEA75E17FBF760006B7864 /* TRContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactCell.h; path = TableViewHelpers/TRContactCell.h; sourceTree = "<group>"; };
+		18FEA75F17FBF760006B7864 /* TRContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactCell.m; path = TableViewHelpers/TRContactCell.m; sourceTree = "<group>"; };
+		18FEA76117FBFF7A006B7864 /* TRContactDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactDataModel.h; path = Models/TRContactDataModel.h; sourceTree = "<group>"; };
+		18FEA76217FBFF7D006B7864 /* TRContactDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactDataModel.m; path = Models/TRContactDataModel.m; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -918,6 +930,8 @@
 				1899702C17F6DC560056F7ED /* TRSearchPartnersManager.m */,
 				1899703717F82B280056F7ED /* TRBusinessManager.h */,
 				1899703817F82B280056F7ED /* TRBusinessManager.m */,
+				18FEA75817FBED2E006B7864 /* TRContactsManager.h */,
+				18FEA75917FBED2E006B7864 /* TRContactsManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -948,6 +962,10 @@
 				1897600517F05CE000B06DF7 /* TRBusinessUserModel.m */,
 				1897600717F05D5600B06DF7 /* TRBusinessScopeModel.h */,
 				1897600817F05D5B00B06DF7 /* TRBusinessScopeModel.m */,
+				18FEA75B17FBF205006B7864 /* TRContactsListModel.h */,
+				18FEA75C17FBF208006B7864 /* TRContactsListModel.m */,
+				18FEA76117FBFF7A006B7864 /* TRContactDataModel.h */,
+				18FEA76217FBFF7D006B7864 /* TRContactDataModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1290,6 +1308,8 @@
 				1899703217F729010056F7ED /* TRSearchPartnersCell.h */,
 				1899703317F729010056F7ED /* TRSearchPartnersCell.m */,
 				1899703517F729340056F7ED /* TRSearchPartnersCell.xib */,
+				18FEA75E17FBF760006B7864 /* TRContactCell.h */,
+				18FEA75F17FBF760006B7864 /* TRContactCell.m */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -1695,6 +1715,10 @@
 				18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */,
 				18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */,
 				18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */,
+				18FEA75A17FBED2E006B7864 /* TRContactsManager.m in Sources */,
+				18FEA75D17FBF20A006B7864 /* TRContactsListModel.m in Sources */,
+				18FEA76017FBF760006B7864 /* TRContactCell.m in Sources */,
+				18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

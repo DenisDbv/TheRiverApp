@@ -11,6 +11,7 @@
 #import "TRSectionHeaderView.h"
 #import "TRFavoritesEditList.h"
 #import "TRUserProfileController.h"
+#import "TRContactCell.h"
 
 #import "MFSideMenu.h"
 #import "UIView+GestureBlocks.h"
@@ -21,11 +22,13 @@
 #import <SIAlertView/SIAlertView.h>
 
 @interface TRMyContactListBar ()
+@property (nonatomic, retain) TRContactsListModel *_contactList;
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
 @property (nonatomic, retain) UITableView *contactsTableView;
 @end
 
 @implementation TRMyContactListBar
+@synthesize _contactList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,10 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-#if TEST_UIAPPEARANCE
-    [[SIAlertView appearance] setDefaultButtonImage:[[UIImage imageNamed:@"button-default.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,5,14,6)] forState:UIControlStateNormal];
-    [[SIAlertView appearance] setDefaultButtonImage:[[UIImage imageNamed:@"button-default.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,5,14,6)] forState:UIControlStateHighlighted];
-#endif
+
     _searchBarController = [[TRSearchBarVC alloc] init];
     _searchBarController.delegate = (id)self;
     [self.view addSubview:_searchBarController.searchBar];
@@ -69,6 +69,8 @@
     [self.view setBackgroundColor:[UIColor clearColor]];
     
     //self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self refreshContactList];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -86,13 +88,22 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void) refreshContactList
+{
+    [[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
+        _contactList = contactList;
+        
+        [_contactsTableView reloadData];
+    } andFailedOperation:nil];
+}
+
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (NSInteger)[TRUserManager sharedInstance].usersObject.count;
+    return _contactList.user.count;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -115,31 +126,26 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    TRContactCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        [cell setBackgroundColor:[UIColor clearColor]];
-        [cell.textLabel setTextColor:[UIColor whiteColor]];
-        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
-        
-        [cell.imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
-            UIImageView *touchView = (UIImageView*)sender.view;
-            
-            [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:touchView.tag]];
-                [AppDelegateInstance() changeProfileViewController:userProfileVC];
-            }];
-            
-        } forTaps:1];
+        cell = [[TRContactCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+         
+         [cell.imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+             UIImageView *touchView = (UIImageView*)sender.view;
+             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[_contactList.user objectAtIndex:touchView.tag]];
+                 [AppDelegateInstance() changeProfileViewController:userProfileVC];
+             }];
+         
+         } forTaps:1];
     }
     
     cell.imageView.tag = indexPath.row;
     
-    TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
+    [cell reloadWithModel:userUnit];
     
-    cell.imageView.image = [UIImage imageNamed:userUnit.logo];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userUnit.firstName, userUnit.lastName];
     return cell;
 }
 
@@ -147,14 +153,29 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TRUserModel *userUnit = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
+    
+    NSString *phone = @"";
+    NSString *skype = @"";
+    NSString *fb = @"";
+    NSString *vk = @"";
+    NSString *email = @"";
+    
+    if(userUnit.contact_data.phone.count > 0)
+        phone = [userUnit.contact_data.phone objectAtIndex:0];
+    if(userUnit.contact_data.skype.length > 0)
+        phone = userUnit.contact_data.skype;
+    if(userUnit.contact_data.fb.length > 0)
+        phone = userUnit.contact_data.fb;
+    if(userUnit.contact_data.vk.length > 0)
+        phone = userUnit.contact_data.vk;
     
     REActivity *customActivity = [[REActivity alloc] initWithTitle:@"Телефон"
                                                              image:[UIImage imageNamed:@"Phone.png"]
                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                                                                                       
                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                               NSString *phoneNumber = [@"tel://" stringByAppendingString:userUnit.contactPhone];
+                                                               NSString *phoneNumber = [@"tel://" stringByAppendingString:phone];
                                                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
                                                            }];
                                                        }];
@@ -167,7 +188,7 @@
                                                                BOOL installed = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"skype:"]];
                                                                if(installed)
                                                                {
-                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"skype:denisdbv?call"]];
+                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"skype:%@?call", skype]]];
                                                                }
                                                                else
                                                                {
@@ -191,38 +212,31 @@
     REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
     messageActivity.userInfo = @{
                                   @"text": @"Привет! :)",
-                                  @"recipient":userUnit.contactPhone,
+                                  @"recipient":phone,
                                 };
     
     REMailActivity *mailActivity = [[REMailActivity alloc] init];
     mailActivity.userInfo = @{
                               @"text": @"Привет! :)",
-                              @"recipient":userUnit.contactEmail,
+                              @"recipient":email,
                             };
     
     REVKActivity *vkActivity = [[REVKActivity alloc] initWithTitle:@"ВКонтакте" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:userUnit.contactVK];
+            NSURL *url = [NSURL URLWithString:vk];
             [[UIApplication sharedApplication] openURL:url];
         }];
     }];
     
     REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] initWithTitle:@"Facebook" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:userUnit.contactFB];
-            [[UIApplication sharedApplication] openURL:url];
-        }];
-    }];
-    
-    RETwitterActivity *twitterActivity = [[RETwitterActivity alloc] initWithTitle:@"Twitter" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Twitter"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
-        [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:userUnit.contactTwitter];
+            NSURL *url = [NSURL URLWithString:fb];
             [[UIApplication sharedApplication] openURL:url];
         }];
     }];
     
     NSArray *activities = @[customActivity, customSkypeActivity, messageActivity, mailActivity,
-                            vkActivity, facebookActivity, twitterActivity ];
+                            vkActivity, facebookActivity];
     REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
     [activityViewController presentFromRootViewController];
     
