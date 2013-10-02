@@ -43,8 +43,6 @@
 {
     [super viewDidLoad];
     
-    inClick = NO;
-    
     searchBuffer = [TRContactsManager client].lastContactArray;
 }
 
@@ -210,6 +208,8 @@
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+    inClick = NO;
     
     searchBar.showsScopeBar = YES;
 	[searchBar sizeToFit];

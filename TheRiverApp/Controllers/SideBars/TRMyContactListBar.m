@@ -108,10 +108,10 @@
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
-                                                                         withTitle:@"ИЗБРАННОЕ"
-                                                                   withButtonTitle:@"РЕДАКТИРОВАТЬ"
+                                                                         withTitle:@"КОНТАКТЫ"
+                                                                   withButtonTitle:@""//РЕДАКТИРОВАТЬ
                                                                            byBlock:^{
-                                                                               [self checkoutTableToEditMode];
+                                                                               //[self checkoutTableToEditMode];
                                                                            }];
     [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
     return headerView;
