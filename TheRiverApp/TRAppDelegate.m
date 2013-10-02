@@ -18,6 +18,8 @@
 #import "TRScrollViewController.h"
 
 @interface TRAppDelegate()
+@property (nonatomic, copy) NSData *pushToken;
+
 @property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
 @property (nonatomic, retain) UIViewController *mainController;
 @property (nonatomic, retain) TRLeftRootMenuBar *leftRootMenuBar;
@@ -33,6 +35,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"App path: %@", [[NSBundle mainBundle] resourcePath]);
+    
+    [self registerDevice];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -55,9 +59,32 @@
         [self presentTheRiverControllers];
     }
     
-    [self showFontsList];
+    //[self showFontsList];
     
     return YES;
+}
+
+-(NSData*) getDeviceToken
+{
+    return self.pushToken;
+}
+
+-(void) registerDevice
+{
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
+    self.pushToken = deviceToken;
+    NSLog(@"My token is: %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Received notification: %@", userInfo);
 }
 
 -(void) updateDataFromServer

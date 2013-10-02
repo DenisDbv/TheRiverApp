@@ -20,6 +20,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+-(NSData*) getDeviceToken;
+
 - (void) presentLoginViewController;
 - (void) presentTheRiverControllers;
 -(void) presentModalViewController:(UIViewController*)controller;

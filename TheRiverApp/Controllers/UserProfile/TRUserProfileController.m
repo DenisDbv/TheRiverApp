@@ -106,7 +106,7 @@
 -(void) createTagsBox
 {
     TRTagsBox *tagsBox = (TRTagsBox*)[TRTagsBox initBox: self.view.bounds.size
-                                      withUserData:_userDataObject];
+                                      withUserData:_userDataObject byTarget:self];
     [_scrollView.boxes addObject: tagsBox];
 }
 

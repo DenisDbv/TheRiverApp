@@ -24,15 +24,25 @@
 @implementation TRSearchPartnersListVC
 {
     NSArray *headerTitles;
+    NSString *queryString;
 }
 @synthesize menuView;
 @synthesize _partnersList;
+
+-(id) initVCByQuery:(NSString*)query
+{
+    self = [super initWithNibName:@"TRSearchPartnersListVC" bundle:[NSBundle mainBundle]];
+    if (self) {
+        queryString = query;
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        queryString = @"";
     }
     return self;
 }
@@ -62,6 +72,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    if(queryString.length > 0)  {
+        [menuView setTextToSearchLabel:queryString];
+        [self refreshPartnersByQuery:queryString];
+    }
+}
+
 -(void) viewDidAppear:(BOOL)animated
 {
     [menuView becomeSearchBar];
@@ -82,7 +100,6 @@
 {
     [[TRSearchPartnersManager client] downloadPartnersListByString:query withSuccessOperation:^(LRRestyResponse *response, TRPartnersListModel *partnersList) {
         _partnersList = partnersList;
-        NSLog(@"%@ with '%@'", _partnersList, _partnersList.query);
         [self.tableView reloadData];
     } andFailedOperation:nil];
 }
@@ -236,9 +253,9 @@
     }
     
     NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
-    [cell.avatarImageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
-    [cell setCellFio:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
+    [cell reloadWithData:logoURLString
+                 fioText:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
              subText:subTextTitle
          typeSubText:filterType
            withQuery:_partnersList.query];
@@ -282,6 +299,25 @@
 {
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TRUserInfoModel *userInfo;
+    switch (indexPath.section) {
+        case 0:
+            userInfo = [_partnersList.fio objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            userInfo = [_partnersList.cities objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            userInfo = [_partnersList.industries objectAtIndex:indexPath.row];
+            break;
+        case 3:
+            userInfo = [_partnersList.interests objectAtIndex:indexPath.row];
+            break; 
+    }
+    
+    TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+    [AppDelegateInstance() changeProfileViewController:userProfileVC];
 }
 
 @end

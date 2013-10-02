@@ -8,7 +8,6 @@
 
 #import "TRTagsScrollBox.h"
 #import <MGBox2/MGScrollView.h>
-#import <DWTagList/DWTagList.h>
 
 @implementation TRTagsScrollBox
 
@@ -20,9 +19,10 @@
     self.backgroundColor = [UIColor clearColor];
 }
 
-+(TRTagsScrollBox *)initBoxWithTitle:(NSString*)title andTagsArray:(NSArray*)tagsArray
++(TRTagsScrollBox *)initBoxWithTitle:(NSString*)title andTagsArray:(NSArray*)tagsArray byTarget:(TRTagsBox*)target
 {
     TRTagsScrollBox *box = [TRTagsScrollBox boxWithSize: CGSizeMake(320, 49)];
+    box.rootBox = target;
     //box.backgroundColor = [UIColor yellowColor];
     
     UILabel *titleLabel = [[UILabel alloc] init];
@@ -39,6 +39,7 @@
     [box.boxes addObject:tagsBox];
     
     DWTagList *dwTagsList = [[DWTagList alloc] initWithFrame:CGRectMake(8, 0, tagsBox.bounds.size.width-8, tagsBox.frame.size.height)];
+    dwTagsList.tagDelegate = box;
     //dwTagsList.backgroundColor = [UIColor redColor];
     [dwTagsList setTagBackgroundColor:[UIColor colorWithRed:130.0/255.0 green:130.0/255.0 blue:130.0/255.0 alpha:1.0]];
     dwTagsList.scrollEnabled = NO;
@@ -47,6 +48,11 @@
     [tagsBox addSubview:dwTagsList];
     
     return box;
+}
+
+- (void)selectedTag:(NSString*)tagName
+{
+    [self.rootBox selectTag:self.tag atName:tagName];
 }
 
 @end
