@@ -39,18 +39,24 @@
     
     [self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
     
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                          options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                        completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-     {
-         
-         if(image != nil)
+    if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
+                                                              options:SDWebImageDownloaderUseNSURLCache progress:nil
+                                                            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
          {
-             UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(59, 59) interpolationQuality:kCGInterpolationHigh];
-             logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 59, 59)];
-             [self.imageView setImage:logoImageTest];
-         }
-     }];
+             
+             if(image != nil)
+             {
+                 UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(59, 59) interpolationQuality:kCGInterpolationHigh];
+                 logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 59, 59)];
+                 [self.imageView setImage:logoImageTest];
+                 
+                 [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
+             }
+         }];
+    } else  {
+        [self.imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
+    }
     
     NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
     for(TRUserResolutionModel *userResolution in userInfo.interests)
