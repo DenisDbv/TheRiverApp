@@ -85,6 +85,8 @@
         
         if(image != nil)
         {
+            NSLog(@"Business LOGO download");
+            
             UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(320, 200) interpolationQuality:kCGInterpolationHigh];
             logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 320, 200)];
             
@@ -95,7 +97,8 @@
             [UIView animateWithDuration:0.1 animations:^{
                 imageView.alpha = 1;
             }];
-        }
+        } else
+            NSLog(@"Business LOGO = nil");
     }];
 }
 
@@ -143,6 +146,8 @@
          
          if(image != nil)
          {
+             NSLog(@"User LOGO download");
+             
              UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(117, 117) interpolationQuality:kCGInterpolationHigh];
              logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 117, 117)];
              
@@ -153,7 +158,8 @@
              [UIView animateWithDuration:0.1 animations:^{
                  imageView.alpha = 1;
              }];
-         }
+         } else
+             NSLog(@"User LOGO = nil");
      }];
 }
 

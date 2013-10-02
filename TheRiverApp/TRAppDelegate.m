@@ -18,6 +18,8 @@
 #import "TRScrollViewController.h"
 
 @interface TRAppDelegate()
+@property (nonatomic, copy) NSData *pushToken;
+
 @property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
 @property (nonatomic, retain) UIViewController *mainController;
 @property (nonatomic, retain) TRLeftRootMenuBar *leftRootMenuBar;
@@ -62,12 +64,18 @@
     return YES;
 }
 
+-(NSData*) getDeviceToken
+{
+    return self.pushToken;
+}
+
 -(void) registerDevice
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
+    self.pushToken = deviceToken;
     NSLog(@"My token is: %@", deviceToken);
 }
 
