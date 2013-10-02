@@ -11,6 +11,7 @@
 @protocol TRSearchBarDelegate <NSObject>
 -(void) onClickBySearchBar:(UISearchBar*)searchBar;
 -(void) onCancelSearchBar:(UISearchBar*)searchBar;
+-(void) clickOnItemInSearchVC:(TRUserInfoModel*)userInfo;
 @end
 
 @interface TRSearchBarVC : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>

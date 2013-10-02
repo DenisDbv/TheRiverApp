@@ -161,14 +161,18 @@
     NSString *vk = @"";
     NSString *email = @"";
     
+    if(userUnit.contact_data.email.length > 0)
+        email = userUnit.contact_data.email;
     if(userUnit.contact_data.phone.count > 0)
         phone = [userUnit.contact_data.phone objectAtIndex:0];
     if(userUnit.contact_data.skype.length > 0)
-        phone = userUnit.contact_data.skype;
+        skype = userUnit.contact_data.skype;
     if(userUnit.contact_data.fb.length > 0)
-        phone = userUnit.contact_data.fb;
+        fb = userUnit.contact_data.fb;
     if(userUnit.contact_data.vk.length > 0)
-        phone = userUnit.contact_data.vk;
+        vk = userUnit.contact_data.vk;
+    
+    NSLog(@"%@ ==> %@", userUnit.contact_data.phone, phone);
     
     REActivity *customActivity = [[REActivity alloc] initWithTitle:@"Телефон"
                                                              image:[UIImage imageNamed:@"Phone.png"]
@@ -214,6 +218,20 @@
                                   @"text": @"Привет! :)",
                                   @"recipient":phone,
                                 };
+    /*REActivity *messageActivity = [[REActivity alloc] initWithTitle:@"SMS"
+                                                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"]
+                                                     actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+                                                         [activityViewController dismissViewControllerAnimated:YES completion:^{
+                                                             MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+                                                             if([MFMessageComposeViewController canSendText])
+                                                             {
+                                                                 controller.body = @"Привет :)";
+                                                                 controller.recipients = [NSArray arrayWithObjects:email, nil];
+                                                                 controller.messageComposeDelegate = self;
+                                                                 [self presentModalViewController:controller animated:YES];
+                                                             }
+                                                         }];
+                                                     }];*/
     
     REMailActivity *mailActivity = [[REMailActivity alloc] init];
     mailActivity.userInfo = @{
@@ -242,6 +260,11 @@
     
 }
 
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark SearchNearContactsDelegate
 
 -(void) onClickBySearchBar:(UISearchBar*)searchBar
@@ -268,6 +291,23 @@
     //[_searchBarController.searchBar setShowsCancelButton:NO animated:YES];
     
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+}
+
+-(void) clickOnItemInSearchVC:(TRUserInfoModel*)userInfo
+{
+    [_searchBarController.searchBar resignFirstResponder];
+    
+    [UIView animateWithDuration:0 animations:^{
+        [self toShortWidth];
+        [_searchBarController.searchBar layoutSubviews];
+    } completion:^(BOOL finished) {
+        self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+        
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+            [AppDelegateInstance() changeProfileViewController:userProfileVC];
+        }];
+    }];
 }
 
 #pragma mark Click on edit in header section

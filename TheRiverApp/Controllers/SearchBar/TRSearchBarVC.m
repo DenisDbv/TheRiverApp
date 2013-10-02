@@ -9,20 +9,26 @@
 #import "TRSearchBarVC.h"
 #import "UISearchBar+CancelBtnShow.h"
 #import "TRAppDelegate.h"
+#import "TRContactCell.h"
+#import "MFSideMenu.h"
 
 @interface TRSearchBarVC ()
 @property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
+@property (nonatomic, copy) TRContactsListModel *searchBuffer;
 @end
 
 @implementation TRSearchBarVC
 {
     UIView *frontBlackView;
     UITableView *searchTableView;
-    
-    //NSMutableArray *_searchBuffer;
+    NSMutableArray *resultBuffer;
     TRAppDelegate *appDelegate;
+    
+    TRUserInfoModel *selectUserItem;
+    BOOL inClick;
 }
 @synthesize searchDisplayController;
+@synthesize searchBuffer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +42,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    inClick = NO;
+    
+    searchBuffer = [TRContactsManager client].lastContactArray;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -96,21 +106,46 @@
 }
 
 #pragma mark UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return resultBuffer.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 59.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    TRContactCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Cell"];
+        cell = [[TRContactCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        [cell.textLabel setTextColor:[UIColor blackColor]];
     }
     
-    //Player *player = [_searchBuffer objectAtIndex:indexPath.row];
-    //cell.textLabel.text = player.lastName;
+    cell.imageView.tag = indexPath.row;
     
-	return cell;
+    TRUserInfoModel *userInfo = [resultBuffer objectAtIndex:indexPath.row];
+    [cell reloadWithModel:userInfo];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    inClick = YES;
+    selectUserItem = [resultBuffer objectAtIndex:indexPath.row];
+    
+    for (UIView *v in self.searchBar.subviews) {
+        if ([v isKindOfClass:[UIControl class]]) {
+            [((UIButton*)v) sendActionsForControlEvents:UIControlEventTouchUpInside];
+        }
+    }
 }
 
 /*#pragma mark UISearchDisplayDelegate
@@ -153,6 +188,11 @@
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
 	if([searchString isEqualToString:@""] == NO)
     {
+        [resultBuffer removeAllObjects];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.last_name contains[c] %@) or (SELF.first_name contains[c] %@)",searchString, searchString];
+        resultBuffer = [[searchBuffer.user filteredArrayUsingPredicate:predicate] mutableCopy];
+        [self.searchDisplayController.searchResultsTableView reloadData];
+        
         /*[_searchBuffer removeAllObjects];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.lastName contains[c] %@",searchString];
         _searchBuffer = [[appDelegate.playersArray.players filteredArrayUsingPredicate:predicate] mutableCopy];
@@ -191,9 +231,16 @@
     
     [self hideFrontBlackView];
     
-    if([self.delegate respondsToSelector:@selector(onCancelSearchBar:)])
-    {
-        [self.delegate onCancelSearchBar: self.searchBar];
+    if(inClick ==  NO) {
+        if([self.delegate respondsToSelector:@selector(onCancelSearchBar:)])
+        {
+            [self.delegate onCancelSearchBar: self.searchBar];
+        }
+    } else  {
+        if([self.delegate respondsToSelector:@selector(clickOnItemInSearchVC:)])
+        {
+            [self.delegate clickOnItemInSearchVC:selectUserItem];
+        }
     }
 }
 

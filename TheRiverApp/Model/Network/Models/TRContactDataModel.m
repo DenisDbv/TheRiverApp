@@ -9,7 +9,7 @@
 #import "TRContactDataModel.h"
 
 @implementation TRContactDataModel
-@synthesize phone, skype, fb, vk;
+@synthesize email, phone, skype, fb, vk;
 
 + (Class)phone_class {
     return [NSArray class];

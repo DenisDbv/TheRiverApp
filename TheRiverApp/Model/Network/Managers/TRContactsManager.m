@@ -46,17 +46,22 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                                       eTag:[self lastEtag]
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
-                                                                              NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                                              
-                                                                              TRContactsListModel *cotactListModel = [[TRContactsListModel alloc] initWithDictionary:resultJSON];
-                                                                              
-                                                                              NSMutableDictionary *storeContactsData = [[NSMutableDictionary alloc] init];
-                                                                              [storeContactsData setObject:[response.headers valueForKey:@"ETag"] forKey:@"etag"];
-                                                                              [storeContactsData setObject:resultJSON forKey:@"data"];
-                                                                              [self saveUserData:storeContactsData];
-                                                                              
-                                                                              if( successBlock != nil)
-                                                                                  successBlock(response, cotactListModel);
+                                                                              NSString *eTagValue = [response.headers valueForKey:@"ETag"];
+                                                                              if(eTagValue.length > 0)  {
+                                                                                  NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                                  
+                                                                                  TRContactsListModel *cotactListModel = [[TRContactsListModel alloc] initWithDictionary:resultJSON];
+                                                                                  
+                                                                                  NSMutableDictionary *storeContactsData = [[NSMutableDictionary alloc] init];
+                                                                                  [storeContactsData setObject:eTagValue forKey:@"etag"];
+                                                                                  [storeContactsData setObject:resultJSON forKey:@"data"];
+                                                                                  [self saveUserData:storeContactsData];
+                                                                                  
+                                                                                  if( successBlock != nil)
+                                                                                      successBlock(response, cotactListModel);
+                                                                              } else    {
+                                                                                  NSLog(@"Contact list access denied");
+                                                                              }
                                                                               
                                                                           } andFailedBlock:^(LRRestyResponse *response){
                                                                               

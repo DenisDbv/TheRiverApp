@@ -10,6 +10,7 @@
 
 @interface TRContactDataModel : Jastor
 
+@property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSArray *phone;
 @property (nonatomic, copy) NSString *skype;
 @property (nonatomic, copy) NSString *fb;

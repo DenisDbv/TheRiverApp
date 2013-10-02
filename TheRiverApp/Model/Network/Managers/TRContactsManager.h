@@ -21,6 +21,8 @@ typedef void (^FailedOperation)(LRRestyResponse *response);
 
 + (instancetype)client;
 
+-(TRContactsListModel*) lastContactArray;
+
 -(void) downloadContactList:(void(^)(LRRestyResponse *response, TRContactsListModel *contactList))successBlock
          andFailedOperation:(FailedOperation) failedOperation;
 
