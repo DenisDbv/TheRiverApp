@@ -39,7 +39,7 @@
     
     [self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
     
-    if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+    if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_small"]] == nil) {
         [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
                                                               options:SDWebImageDownloaderUseNSURLCache progress:nil
                                                             completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
@@ -51,11 +51,11 @@
                  logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 59, 59)];
                  [self.imageView setImage:logoImageTest];
                  
-                 [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
+                 [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:[logoURLString stringByAppendingString:@"_small"] toDisk:YES];
              }
          }];
     } else  {
-        [self.imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
+        [self.imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_small"]]];
     }
     
     NSMutableArray *hightResolution = [[NSMutableArray alloc] init];

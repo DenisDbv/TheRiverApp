@@ -7,6 +7,9 @@
 //
 
 #import "TRFriendCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "UIImage+Resize.h"
 
 @implementation TRFriendCell
 
@@ -38,7 +41,5 @@
     friendName.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:19];
     friendCurrentBusiness.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
 }
-
-
 
 @end

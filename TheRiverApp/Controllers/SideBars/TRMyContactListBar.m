@@ -20,15 +20,18 @@
 #import <SSToolkit/SSToolkit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <SIAlertView/SIAlertView.h>
+#import "WDActivityIndicator.h"
 
 @interface TRMyContactListBar ()
 @property (nonatomic, retain) TRContactsListModel *_contactList;
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
 @property (nonatomic, retain) UITableView *contactsTableView;
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation TRMyContactListBar
 @synthesize _contactList;
+@synthesize activityIndicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -90,7 +93,18 @@
 
 -(void) refreshContactList
 {
+    if(activityIndicator == nil)    {
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];// initWithFrame:CGRectMake(_contactsTableView.bounds.size.width/2, (_contactsTableView.bounds.size.height)/2, 0, 0)];
+        [activityIndicator setCenter:CGPointMake(270.0/2, (_contactsTableView.bounds.size.height)/2)];
+        [_contactsTableView addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+    }
+    
     [[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
+        
         _contactList = contactList;
         
         [_contactsTableView reloadData];

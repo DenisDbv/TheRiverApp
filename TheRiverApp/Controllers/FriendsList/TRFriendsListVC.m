@@ -12,11 +12,16 @@
 #import "MFSideMenu.h"
 #import "TRUserProfileController.h"
 
-@interface TRFriendsListVC ()
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "UIImage+Resize.h"
 
+@interface TRFriendsListVC ()
+@property (nonatomic, copy) TRContactsListModel *_contactList;
 @end
 
 @implementation TRFriendsListVC
+@synthesize _contactList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _contactList = [TRContactsManager client].lastContactArray;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TRFriendCell" bundle:nil] forCellReuseIdentifier:@"FriendCell"];
     
@@ -57,7 +64,6 @@
 
 -(void) viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"111");
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
 }
 
@@ -95,7 +101,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [TRUserManager sharedInstance].usersObject.count;
+    return _contactList.user.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -114,17 +120,19 @@
         [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
     }
     
-    TRUserModel *model = [[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row];
+    TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
     
-    cell.friendLogo.image = [UIImage imageNamed:model.logo];
-    cell.friendName.text = [NSString stringWithFormat:@"%@ %@", model.firstName, model.lastName];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userUnit.logo];
+    cell.friendLogo.image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_small"]];
     
-    NSString *currentsBusiness;
-    for(NSString *str in model.currentBusiness)
+    cell.friendName.text = [NSString stringWithFormat:@"%@ %@", userUnit.first_name, userUnit.last_name];
+    
+    NSMutableArray *business = [[NSMutableArray alloc] init];
+    for(TRBusinessScopeModel *str in userUnit.business.industries)
     {
-        currentsBusiness = [currentsBusiness stringByAppendingFormat:@"%@, ", str];
+        [business addObject:str.name];
     }
-    cell.friendCurrentBusiness.text = currentsBusiness;
+    cell.friendCurrentBusiness.text = [business componentsJoinedByString:@", "];
     
     return cell;
 }
@@ -133,9 +141,11 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
+    
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
     [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-        TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:indexPath.row]];
+        TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel: userUnit];
         [AppDelegateInstance() changeCenterViewController:userProfileVC];
     }];
 }

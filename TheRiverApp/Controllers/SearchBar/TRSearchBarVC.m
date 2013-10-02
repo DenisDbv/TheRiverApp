@@ -42,8 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    searchBuffer = [TRContactsManager client].lastContactArray;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -209,6 +207,7 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     
+    searchBuffer = [TRContactsManager client].lastContactArray;
     inClick = NO;
     
     searchBar.showsScopeBar = YES;

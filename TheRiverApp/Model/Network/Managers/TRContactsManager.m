@@ -37,6 +37,13 @@ static const NSString * _fileHandler = @"contacts.data";
         return;
     }
     
+    TRContactsListModel *lastContactList = [self lastContactArray];
+    if(lastContactList.user.count > 0)  {
+        if( successBlock != nil)
+            successBlock(nil, lastContactList);
+    }
+    
+    
     NSString *urlContactList = [NSString stringWithFormat:@"%@?%@=%@", kTG_API_ContactList,
                                  kTGTokenKey,
                                  [TRAuthManager client].iamData.token];
