@@ -124,6 +124,8 @@
     
     NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userUnit.logo];
     cell.friendLogo.image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_small"]];
+    if(cell.friendLogo.image.size.width == 0)
+        cell.friendLogo.image = [UIImage imageNamed:@"avatar_placeholder.png"];
     
     cell.friendName.text = [NSString stringWithFormat:@"%@ %@", userUnit.first_name, userUnit.last_name];
     
