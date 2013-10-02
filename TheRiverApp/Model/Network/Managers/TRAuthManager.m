@@ -34,9 +34,21 @@ static const NSString * _fileHandler = @"user.data";
 withSuccessOperation:(SuccessOperation) succesOperaion
  andFailedOperation:(FailedOperation) failedOperation
 {
+    NSString *tokenStr = [AppDelegateInstance() getDeviceToken].description;
+    NSString *pushToken = @"";
+    if(tokenStr.length > 0) {
+        pushToken = [[[tokenStr
+                                 stringByReplacingOccurrencesOfString:@"<" withString:@""]
+                                stringByReplacingOccurrencesOfString:@">" withString:@""]
+                               stringByReplacingOccurrencesOfString:@" " withString:@""];
+    } else  {
+        NSLog(@"Devoce token is clear by AUTH");
+    }
+    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:login forKey:kTGUserLoginKey];
     [params setObject:password forKey:kTGUserPasswordKey];
+    [params setObject:pushToken forKey:@"device_token"];
     
     URLPostOperation * operation = [[URLPostOperation alloc] initWithUrlString: kTG_API_AuthUrl
                                                                      andParam: params

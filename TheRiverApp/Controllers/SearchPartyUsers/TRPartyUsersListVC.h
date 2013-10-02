@@ -12,6 +12,8 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
+-(id) initPUSearchByCity:(NSString*)cityName andIndustry:(NSString*)industryName;
+
 -(void) refreshUserListByCity:(NSString*)cityName andIndustry:(NSString*)industryName;
 
 @end

@@ -12,6 +12,8 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
+-(id) initVCByQuery:(NSString*)query;
+
 -(void) refreshPartnersByQuery:(NSString*)query;
 
 @end

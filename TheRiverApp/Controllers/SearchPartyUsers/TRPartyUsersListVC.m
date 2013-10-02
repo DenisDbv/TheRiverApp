@@ -22,14 +22,30 @@
 @end
 
 @implementation TRPartyUsersListVC
+{
+    NSString *citySearchString;
+    NSString *industrySearchString;
+}
 @synthesize activityIndicator;
 @synthesize _userList;
+
+-(id) initPUSearchByCity:(NSString*)cityName
+             andIndustry:(NSString*)industryName
+{
+    self = [super initWithNibName:@"TRPartyUsersListVC" bundle:[NSBundle mainBundle]];
+    if (self) {
+        citySearchString = cityName;
+        industrySearchString = industryName;
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        citySearchString = @"";
+        industrySearchString = @"";
     }
     return self;
 }
@@ -46,7 +62,7 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     
-    [self refreshUserListByCity:@"" andIndustry:@""];
+    [self refreshUserListByCity:citySearchString andIndustry:industrySearchString];
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,17 +139,7 @@
     
     TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];
-
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
-    for(TRUserResolutionModel *userResolution in userInfo.interests)
-    {
-        [hightResolution addObject:userResolution.name];
-    }
-    cell.detailTextLabel.text = [hightResolution componentsJoinedByString:@", "];
+    [cell reloadWithModel:userInfo];
     
     return cell;
 }
@@ -144,6 +150,11 @@
 {
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
+    
+    TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+    [AppDelegateInstance() changeProfileViewController:userProfileVC];
 }
 
 @end
