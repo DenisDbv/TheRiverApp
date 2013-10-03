@@ -135,7 +135,7 @@
         imageView.layer.borderColor = [UIColor clearColor].CGColor;
         imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
         imageView.clipsToBounds = YES;
-        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [header addSubview:imageView];
         
         

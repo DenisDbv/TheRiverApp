@@ -40,8 +40,6 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [self updateDataFromServer];
-    
     [self setupAppearance];
     
     if( [[TRAuthManager client] isAuth] == NO )
@@ -147,6 +145,8 @@
 
 - (void) presentTheRiverControllers
 {
+    [self updateDataFromServer];
+    
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
     _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user];
