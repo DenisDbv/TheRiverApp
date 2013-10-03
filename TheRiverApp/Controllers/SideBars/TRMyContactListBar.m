@@ -179,8 +179,8 @@
     NSString *vk = @"";
     NSString *email = @"";
     
-    if(userUnit.contact_data.email.length > 0)
-        email = userUnit.contact_data.email;
+    if(userUnit.email.length > 0)
+        email = userUnit.email;
     if(userUnit.contact_data.phone.count > 0)
         phone = [userUnit.contact_data.phone objectAtIndex:0];
     if(userUnit.contact_data.skype.length > 0)
@@ -190,15 +190,12 @@
     if(userUnit.contact_data.vk.length > 0)
         vk = userUnit.contact_data.vk;
     
-    NSLog(@"%@ ==> %@", userUnit.contact_data.phone, phone);
-    
     REActivity *customActivity = [[REActivity alloc] initWithTitle:@"Телефон"
                                                              image:[UIImage imageNamed:@"Phone.png"]
                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                                                                                       
                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                               NSString *phoneNumber = [@"tel://" stringByAppendingString:phone];
-                                                               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+                                                               [[TRBindingManager sharedInstance] callBinding:userUnit];
                                                            }];
                                                        }];
     
@@ -207,67 +204,35 @@
                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                            
                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                               BOOL installed = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"skype:"]];
-                                                               if(installed)
-                                                               {
-                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"skype:%@?call", skype]]];
-                                                               }
-                                                               else
-                                                               {
-                                                                   SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"У Вас не установлено приложение Skype.\n Установить?"];
-                                                                   alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:18];
-                                                                   [alertView addButtonWithTitle:@"НЕТ"
-                                                                                            type:SIAlertViewButtonTypeCancel
-                                                                                         handler:^(SIAlertView *alertView) {
-                                                                                             NSLog(@"Cancel Clicked");
-                                                                                         }];
-                                                                   [alertView addButtonWithTitle:@"ДА"
-                                                                                            type:SIAlertViewButtonTypeDefault
-                                                                                         handler:^(SIAlertView *alertView) {
-                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.com/apps/skype/skype"]];
-                                                                                         }];
-                                                                   [alertView show];
-                                                               }
+                                                               [[TRBindingManager sharedInstance] skypeBinding:userUnit];
                                                            }];
                                                        }];
     
-    REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
-    messageActivity.userInfo = @{
-                                  @"text": @"Привет! :)",
-                                  @"recipient":phone,
-                                };
-    /*REActivity *messageActivity = [[REActivity alloc] initWithTitle:@"SMS"
+    REActivity *messageActivity = [[REActivity alloc] initWithTitle:@"SMS"
                                                            image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"]
                                                      actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                          [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                             MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
-                                                             if([MFMessageComposeViewController canSendText])
-                                                             {
-                                                                 controller.body = @"Привет :)";
-                                                                 controller.recipients = [NSArray arrayWithObjects:email, nil];
-                                                                 controller.messageComposeDelegate = self;
-                                                                 [self presentModalViewController:controller animated:YES];
-                                                             }
+                                                             [[TRBindingManager sharedInstance] smsBinding:userUnit];
                                                          }];
-                                                     }];*/
+                                                     }];
     
-    REMailActivity *mailActivity = [[REMailActivity alloc] init];
-    mailActivity.userInfo = @{
-                              @"text": @"Привет! :)",
-                              @"recipient":email,
-                            };
+    REActivity *mailActivity = [[REActivity alloc] initWithTitle:@"Email"
+                                                              image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"]
+                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
+                                                                [[TRBindingManager sharedInstance] emailBinding:userUnit];
+                                                            }];
+                                                        }];
     
     REVKActivity *vkActivity = [[REVKActivity alloc] initWithTitle:@"ВКонтакте" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:vk];
-            [[UIApplication sharedApplication] openURL:url];
+            [[TRBindingManager sharedInstance] vkBinding:userUnit];
         }];
     }];
     
     REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] initWithTitle:@"Facebook" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:fb];
-            [[UIApplication sharedApplication] openURL:url];
+            [[TRBindingManager sharedInstance] fbBinding:userUnit];
         }];
     }];
     

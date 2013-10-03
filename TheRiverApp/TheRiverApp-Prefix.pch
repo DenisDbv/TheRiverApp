@@ -37,3 +37,4 @@
 #import "TRSearchPartnersManager.h"
 #import "TRBusinessManager.h"
 #import "TRContactsManager.h"
+#import "TRBindingManager.h"

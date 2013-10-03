@@ -99,7 +99,7 @@
 -(void) createContactBox
 {
     TRContactBox *contactBox = (TRContactBox*)[TRContactBox initBox: self.view.bounds.size
-                                               withUserData:_userDataObject];
+                                               withUserData:_userDataObject byTarget:self];
     [_scrollView.boxes addObject: contactBox];
 }
 

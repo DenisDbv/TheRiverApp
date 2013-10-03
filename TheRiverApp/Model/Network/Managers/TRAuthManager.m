@@ -64,7 +64,7 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                                                   [self saveUserData: storeAuth];
                                                                   
                                                                   //TRAuthUserModel *authModel = self.iamData;
-                                                                  //NSLog(@"%@", authModel);
+                                                                  //NSLog(@"%@", resultAuthJSON);
                                                                   
                                                                   if( succesOperaion != nil)
                                                                       succesOperaion(response);
