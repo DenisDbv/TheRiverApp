@@ -89,6 +89,9 @@
 -(void) refreshUserListByCity:(NSString*)cityName
                   andIndustry:(NSString*)industryName
 {
+    _userList.user = [NSArray array];
+    [self.tableView reloadData];
+    
     if(activityIndicator == nil)    {
         activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
         [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];

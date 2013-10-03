@@ -78,28 +78,34 @@
     gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [imageView addSubview:gradientView];
     
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                          options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                        completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-    {
-        
-        if(image != nil)
+    if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
+                                                              options:SDWebImageDownloaderUseNSURLCache progress:nil
+                                                            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
         {
-            NSLog(@"Business LOGO download");
             
-            UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(320, 200) interpolationQuality:kCGInterpolationHigh];
-            logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 320, 200)];
-            
-            imageView.alpha = 0;
-            imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            [imageView setImage:logoImageTest];
-            
-            [UIView animateWithDuration:0.1 animations:^{
-                imageView.alpha = 1;
-            }];
-        } else
-            NSLog(@"Business LOGO = nil");
-    }];
+            if(image != nil)
+            {
+                NSLog(@"Business LOGO download");
+                
+                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(320, 200) interpolationQuality:kCGInterpolationHigh];
+                logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 320, 200)];
+                
+                [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
+                
+                imageView.alpha = 0;
+                imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+                [imageView setImage:logoImageTest];
+                
+                [UIView animateWithDuration:0.1 animations:^{
+                    imageView.alpha = 1;
+                }];
+            } else
+                NSLog(@"Business LOGO = nil");
+        }];
+    } else  {
+        [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
+    }
 }
 
 -(void) showUserLogo
@@ -139,28 +145,34 @@
         [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
     } forTaps:1];
     
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                          options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                        completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-     {
-         
-         if(image != nil)
+    if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
+                                                              options:SDWebImageDownloaderUseNSURLCache progress:nil
+                                                            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
          {
-             NSLog(@"User LOGO download");
              
-             UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(117, 117) interpolationQuality:kCGInterpolationHigh];
-             logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 117, 117)];
-             
-             imageView.alpha = 0;
-             imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-             [imageView setImage:logoImageTest];
-             
-             [UIView animateWithDuration:0.1 animations:^{
-                 imageView.alpha = 1;
-             }];
-         } else
-             NSLog(@"User LOGO = nil");
-     }];
+             if(image != nil)
+             {
+                 NSLog(@"User LOGO download");
+                 
+                 UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(117, 117) interpolationQuality:kCGInterpolationHigh];
+                 logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 117, 117)];
+                 
+                 [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
+                 
+                 imageView.alpha = 0;
+                 imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+                 [imageView setImage:logoImageTest];
+                 
+                 [UIView animateWithDuration:0.1 animations:^{
+                     imageView.alpha = 1;
+                 }];
+             } else
+                 NSLog(@"User LOGO = nil");
+         }];
+    } else  {
+        [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
+    }
 }
 
 -(void) showProfitTitle

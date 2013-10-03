@@ -46,7 +46,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString: _imagePath]
+    /*[[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString: _imagePath]
                                                           options:SDWebImageDownloaderUseNSURLCache progress:nil
                                                         completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
      {
@@ -54,7 +54,9 @@
          {
              [zoomView setImage:image];
          }
-     }];
+     }];*/
+    
+    [zoomView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:_imagePath]];
     
     [self performSelector:@selector(hideNavBar) withObject:nil afterDelay:0.5];
     

@@ -155,11 +155,11 @@
     
     UIImage *dropDownImage = [UIImage imageNamed:@"dropdown-icon@2x.png"];
     
-    levelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(5, roundf(self.bounds.size.height-41)/2, 90, 41) style:NVUIGradientButtonStyleDefault];
+    levelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(0, roundf(self.bounds.size.height-41)/2, 80, 41) style:NVUIGradientButtonStyleDefault];
     levelButton.rightAccessoryImage = [UIImage imageNamed:@"dropdown-icon@2x.png"];
     [levelButton addTarget:self action:@selector(onCityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     levelButton.tintColor = levelButton.highlightedTintColor = [UIColor clearColor];
-    levelButton.borderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    levelButton.borderColor = [UIColor clearColor]; //colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
     levelButton.highlightedBorderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [levelButton setCornerRadius:4.0f];
     [levelButton setGradientEnabled:NO];
@@ -175,11 +175,11 @@
     imgLeftButton.frame = CGRectMake(levelButton.frame.size.width-dropDownImage.size.width+5, 19, dropDownImage.size.width/2, dropDownImage.size.height/2);
     [levelButton addSubview:imgLeftButton];
     
-    categoryButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-120-5), roundf(self.bounds.size.height-41)/2, 120, 41) style:NVUIGradientButtonStyleDefault];
+    categoryButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-120-0), roundf(self.bounds.size.height-41)/2, 120, 41) style:NVUIGradientButtonStyleDefault];
     categoryButton.rightAccessoryImage = dropDownImage;
     [categoryButton addTarget:self action:@selector(onIndustrialButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     categoryButton.tintColor = categoryButton.highlightedTintColor = [UIColor clearColor];
-    categoryButton.borderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    categoryButton.borderColor = [UIColor clearColor]; //colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
     categoryButton.highlightedBorderColor = [UIColor clearColor]; //[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [categoryButton setCornerRadius:4.0f];
     [categoryButton setGradientEnabled:NO];
@@ -203,26 +203,26 @@
     subHeadButtonsView = [[UIView alloc] initWithFrame: self.bounds];
     subHeadButtonsView.alpha = 0;
     
-    cancelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(5, roundf(self.bounds.size.height-41)/2, 146, 41) style:NVUIGradientButtonStyleDefault];
+    cancelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(0, roundf(self.bounds.size.height-41)/2, 80, 41) style:NVUIGradientButtonStyleDefault];
     [cancelButton addTarget:self action:@selector(onCancelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     cancelButton.tintColor = cancelButton.highlightedTintColor = [UIColor clearColor];
-    cancelButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
-    cancelButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    cancelButton.borderColor = [UIColor clearColor]; //colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    cancelButton.highlightedBorderColor = [UIColor clearColor]; //colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [cancelButton setCornerRadius:4.0f];
     [cancelButton setGradientEnabled:NO];
     [cancelButton setBorderWidth:2.0];
-    cancelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
+    cancelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:16];
     cancelButton.textColor = cancelButton.highlightedTextColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     cancelButton.textShadowColor = [UIColor whiteColor];
     cancelButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     cancelButton.text = @"Отмена";
     [subHeadButtonsView addSubview:cancelButton];
     
-    successButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-146-5), roundf(self.bounds.size.height-41)/2, 146, 41) style:NVUIGradientButtonStyleDefault];
+    successButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-80-0), roundf(self.bounds.size.height-41)/2, 80, 41) style:NVUIGradientButtonStyleDefault];
     [successButton addTarget:self action:@selector(onSuccessButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     successButton.tintColor = successButton.highlightedTintColor = [UIColor clearColor];
-    successButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
-    successButton.highlightedBorderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    successButton.borderColor = [UIColor clearColor]; //colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
+    successButton.highlightedBorderColor = [UIColor clearColor]; //colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     [successButton setCornerRadius:4.0f];
     [successButton setGradientEnabled:NO];
     [successButton setBorderWidth:2.0];
@@ -241,6 +241,7 @@
     citiesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height,
                                                                    self.bounds.size.width,
                                                                    rootController.tableView.bounds.size.height-self.bounds.size.height)];
+    citiesTableView.separatorColor = [UIColor blackColor];
     citiesTableView.alpha = 0;
     citiesTableView.delegate = self;
     citiesTableView.dataSource = self;
@@ -273,6 +274,7 @@
     industriesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height,
                                                                     self.bounds.size.width,
                                                                     rootController.tableView.bounds.size.height-self.bounds.size.height)];
+    industriesTableView.separatorColor = [UIColor blackColor];
     industriesTableView.alpha = 0;
     industriesTableView.delegate = self;
     industriesTableView.dataSource = self;
@@ -327,7 +329,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:18];
     }
     
     if(tableView == citiesTableView) {

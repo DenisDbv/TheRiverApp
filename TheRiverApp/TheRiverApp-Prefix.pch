@@ -28,9 +28,12 @@
 #import "TRBusinessScopeModel.h"
 #import "TRBusinessRootModel.h"
 #import "TRBusinessModel.h"
+#import "TRContactsListModel.h"
+#import "TRContactDataModel.h"
 
 #import "TRNetworkConstants.h"
 #import "TRAuthManager.h"
 #import "TRSearchPUManager.h"
 #import "TRSearchPartnersManager.h"
 #import "TRBusinessManager.h"
+#import "TRContactsManager.h"

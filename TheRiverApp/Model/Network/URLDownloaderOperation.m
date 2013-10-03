@@ -12,6 +12,7 @@
 {
     SuccessBlockDownloader successBlockDownloader;
     FailedBlockDownloader failedBlockDownloader;
+    NSString *_eTagValue;
 }
 
 @synthesize url = _url;
@@ -23,6 +24,29 @@
     self = [super init];
     if (self == nil)
         return nil;
+    
+    _eTagValue = @"";
+    
+    _url = [urlPath copy];
+    successBlockDownloader = [succesBlock copy];
+    failedBlockDownloader = [failedBlock copy];
+    
+    _isExecuting = NO;
+    _isFinished = NO;
+    
+    return self;
+}
+
+- (id)initWithUrlString:(NSString *)urlPath
+              eTag:(NSString*)eTagValue
+       withSuccessBlock:(SuccessBlockDownloader) succesBlock
+         andFailedBlock:(FailedBlockDownloader) failedBlock
+{
+    self = [super init];
+    if (self == nil)
+        return nil;
+    
+    _eTagValue = eTagValue;
     
     _url = [urlPath copy];
     successBlockDownloader = [succesBlock copy];
@@ -47,7 +71,7 @@
     _isExecuting = YES;
     [self didChangeValueForKey:@"isExecuting"];
     
-    [self receiveJSONFromUrl:_url param:nil];
+    [self receiveJSONFromUrl:_url param:nil eTag:_eTagValue];
 }
 
 - (void)finish
@@ -64,10 +88,13 @@
     [self didChangeValueForKey:@"isFinished"];
 }
 
--(void) receiveJSONFromUrl:(NSString*)urlString param:(NSDictionary*)parameters
+-(void) receiveJSONFromUrl:(NSString*)urlString param:(NSDictionary*)parameters eTag:(NSString*)eTagValue
 {
     NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] init];
     [requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
+    
+    if(eTagValue.length > 0)
+        [requestHeaders setObject:eTagValue forKey:@"If-None-Match"];
     
     [[LRResty client] get:urlString parameters:parameters headers:requestHeaders withBlock:^(LRRestyResponse *response)  {
         if(response.status == 200)  {
