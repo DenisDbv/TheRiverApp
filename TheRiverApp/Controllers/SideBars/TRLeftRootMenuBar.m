@@ -158,9 +158,9 @@
         
         //Настройки пользователя
         UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
-        [settingView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        /*[settingView initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self logout];
-        } forTaps:1];
+        } forTaps:1];*/
         UIImageView *settingsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cog-gray-icon@2x.png"]];
         settingsImageView.userInteractionEnabled = YES;
         settingsImageView.frame = CGRectMake(0, 0, settingsImageView.frame.size.width/2, settingsImageView.frame.size.height/2);
@@ -222,25 +222,21 @@
             break;
         case 1:
             //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
-            cell.textLabel.text = @"Сообщения";
+            cell.textLabel.text = @"Участники";
             //cell.badgeString = @"3";
             break;
         case 2:
             //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
-            cell.textLabel.text = @"Участники";
+            cell.textLabel.text = @"Бизнесы";
             //cell.badgeString = @"3";
             break;
         case 3:
             //cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
-            cell.textLabel.text = @"Бизнесы";
+            cell.textLabel.text = @"Оставить отзыв";
             break;
         case 4:
-            cell.textLabel.text = @"База знаний";
+            cell.textLabel.text = @"Выход";
             //cell.badgeString = @"1+";
-            break;
-        case 5:
-            //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
-            cell.textLabel.text = @"Оставить отзыв";
             break;
             
         default:
@@ -254,6 +250,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if(indexPath.row == 5)  {
+        
+    } else if(indexPath.row == 4)   {
+        /*[self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:mindBaseList];
+            
+        }];*/
+        [self logout];
+    } else if(indexPath.row == 3)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             UVConfig *config = [UVConfig configWithSite:@"brandymint.uservoice.com"
                                                  andKey:@"6P7WTuK36Q8gbXrnjXSug"
@@ -268,29 +274,20 @@
             //[UserVoice presentUserVoiceNewIdeaFormForParentViewController:self andConfig:config];
             [UserVoice presentUserVoiceInterfaceForParentViewController:self andConfig:config];
         }];
-    } else if(indexPath.row == 4)   {
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            
-            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
-            [AppDelegateInstance() changeCenterViewController:mindBaseList];
-            
-        }];
-    } else if(indexPath.row == 3)   {
+    } else if(indexPath.row == 2)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:businessBaseList];
             
         }];
-    } else if(indexPath.row == 2)   {
+    } else if(indexPath.row == 1)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRPartyUsersListVC *partyUserList = [[TRPartyUsersListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:partyUserList];
             
         }];
-    } else if(indexPath.row == 1)   {
-        //
     } else if(indexPath.row == 0)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
