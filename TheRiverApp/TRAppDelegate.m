@@ -121,6 +121,18 @@
 - (void)setupAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
+    NSDictionary *attributes =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     [UIColor blackColor], UITextAttributeTextColor,
+     [UIColor clearColor], UITextAttributeTextShadowColor,
+     [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+     [UIFont systemFontOfSize:14], UITextAttributeFont,
+     nil];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:attributes forState:UIControlStateHighlighted];
+    
     //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
     //[[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     

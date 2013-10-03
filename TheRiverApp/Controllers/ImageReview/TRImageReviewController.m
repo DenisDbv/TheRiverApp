@@ -36,6 +36,9 @@
 {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
     UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
     [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
