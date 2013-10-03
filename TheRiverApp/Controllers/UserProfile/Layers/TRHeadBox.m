@@ -51,8 +51,10 @@
 {
     CAGradientLayer *layer = (CAGradientLayer *)self.layer;
     
-    UIColor *darkColor = [UIColor colorWithRed:24.0/255.0 green:171.0/255.0 blue:110.0/255.0 alpha:1.0f];
-    UIColor *lightColor = [UIColor colorWithRed:49.0/255.0 green:245.0/255.0 blue:85.0/255.0 alpha:1.0f];
+    /*UIColor *darkColor = [UIColor colorWithRed:24.0/255.0 green:171.0/255.0 blue:110.0/255.0 alpha:1.0f];
+    UIColor *lightColor = [UIColor colorWithRed:49.0/255.0 green:245.0/255.0 blue:85.0/255.0 alpha:1.0f];*/
+    UIColor *darkColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    UIColor *lightColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
     NSMutableArray *mutableColors = [NSMutableArray arrayWithCapacity:2];
     [mutableColors addObject:(id)lightColor.CGColor];
     [mutableColors addObject:(id)darkColor.CGColor];
@@ -80,8 +82,9 @@
     
     if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
         [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                              options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+                                                              options:SDWebImageDownloaderUseNSURLCache progress:^(NSUInteger receivedSize, long long expectedSize) {
+                                                                  //NSLog(@"%i from %i", receivedSize, expectedSize);
+                                                              } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
         {
             
             if(image != nil)

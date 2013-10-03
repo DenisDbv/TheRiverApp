@@ -21,6 +21,7 @@ NSString *const kTG_API_IndustryList = @"http://bmreki.ru/api/get_scope_work_lis
 NSString *const kTG_API_PartyUsersList = @"http://bmreki.ru/api/search_1_method/";
 NSString *const kTG_API_PartnersList = @"http://bmreki.ru/api/search_2_method/";
 NSString *const kTG_API_BusinessList = @"http://bmreki.ru/api/get_all_business/";
+NSString *const kTG_API_BusinessDesc = @"http://bmreki.ru/api/get_business_info/";
 NSString *const kTG_API_ContactList = @"http://bmreki.ru/api/get_player_contact_list/";
 
 NSString *const kTGTokenKey = @"token";

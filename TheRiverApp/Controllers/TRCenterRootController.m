@@ -12,6 +12,8 @@
 #import "TRMindBaseListVC.h"
 #import "TRSearchPartnersListVC.h"
 
+#import "UIView+GestureBlocks.h"
+
 @interface TRCenterRootController ()
 
 @end
@@ -53,8 +55,12 @@
     //self.navigationItem.rightBarButtonItem = [self rightMenuBarButtonItem];
     //self.navigationItem.leftBarButtonItem = [self leftMenuBarButtonItem];
     
-    UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake(5, 0, 18, 13)];
-    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10+settingsView.frame.size.width, settingsView.frame.size.height)];
+    UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake(5, roundf(((15+13)-13)/2), 18, 13)];
+    settingsView.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15+settingsView.frame.size.width, settingsView.frame.size.height+15)];
+    [leftView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        [self leftSideMenuButtonPressed:nil];
+    } forTaps:1];
     leftView.backgroundColor = [UIColor clearColor];
     [leftView addSubview:settingsView];
     [settingsView addTarget:self action:@selector(leftSideMenuButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -62,8 +68,11 @@
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:leftView];
     [self.navigationItem setLeftBarButtonItem:settingsButton];
     
-    UIButton *settingsView2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 23, 20)];
-    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5+settingsView2.frame.size.width, settingsView2.frame.size.height)];
+    UIButton *settingsView2 = [[UIButton alloc] initWithFrame:CGRectMake(5, roundf(((20+15)-20)/2), 23, 20)];
+    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10+settingsView2.frame.size.width, settingsView2.frame.size.height+15)];
+    [rightView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        [self rightSideMenuButtonPressed:nil];
+    } forTaps:1];
     rightView.backgroundColor = [UIColor clearColor];
     [rightView addSubview:settingsView2];
     [settingsView2 addTarget:self action:@selector(rightSideMenuButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -78,8 +87,16 @@
     NSInteger height = MAX(knowImage.size.height/2, messageImage.size.height/2);
     height = MAX(height, searchImage.size.height/2);
     
+    NSString *text = @"Поиск";
+    CGSize size = [text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14] constrainedToSize:CGSizeMake(100, 100)];
+    width = searchImage.size.width + size.width - 5;
+    
     UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        [self onSearchClick];
+    } forTaps:1];
+    //buttonView.backgroundColor = [UIColor redColor];
+    /*UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button1 addTarget:self action:@selector(onKnowledgeBaseClick) forControlEvents:UIControlEventTouchUpInside];
     [button1 setImage:knowImage forState:UIControlStateNormal];
     button1.frame = CGRectMake(0, 0, 26, 16);
@@ -87,16 +104,31 @@
     UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button2 addTarget:self action:@selector(onMessageClick) forControlEvents:UIControlEventTouchUpInside];
     [button2 setImage:messageImage forState:UIControlStateNormal];
-    button2.frame = CGRectMake(46, 0, 18, 14);
+    button2.frame = CGRectMake(46, 0, 18, 14);*/
     
     UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button3 addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
     [button3 setImage:searchImage forState:UIControlStateNormal];
-    button3.frame = CGRectMake(84, 0, 18, 18);
+    button3.frame = CGRectMake(0, 0, 18, 18);
     
-    [buttonView addSubview:button1];
-    [buttonView addSubview:button2];
+    UILabel *labelText = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 0, 0)];
+    labelText.userInteractionEnabled = YES;
+    labelText.backgroundColor = [UIColor clearColor];
+    labelText.textColor = [UIColor lightGrayColor];
+    labelText.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    labelText.text = @"Поиск";
+    [labelText sizeToFit];
+    
     [buttonView addSubview:button3];
+    [buttonView addSubview:labelText];
+    /*UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button3 addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
+    [button3 setImage:searchImage forState:UIControlStateNormal];
+    button3.frame = CGRectMake(84, 0, 18, 18);*/
+    
+    /*[buttonView addSubview:button1];
+    [buttonView addSubview:button2];*/
+    //[buttonView addSubview:button3];
     //buttonView.backgroundColor = [UIColor redColor];
     
     self.navigationItem.titleView = buttonView;

@@ -14,13 +14,27 @@
 
 @implementation TRBusinessItemCell
 
-@synthesize logo, title, subTitle, layerView, layerShortTitleLabel, layerAfterLabel;
+@synthesize logo, title, subTitle, layerView, layerView2, layerShortTitleLabel, layerAfterLabel;
 
 -(void) reloadWithBusinessModel:(TRBusinessModel*)businessObject
 {
     if(businessObject.logo.length != 0) {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo];
-        [logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_preview"]] == nil) {
+            [logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                if(image != nil)
+                {
+                    UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(300, 180) interpolationQuality:kCGInterpolationHigh];
+                    logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 300, 180)];
+                    [logo setImage:logoImageTest];
+                    
+                    [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:[logoURLString stringByAppendingString:@"_preview"] toDisk:YES];
+                }
+            } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } else  {
+            [logo setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_preview"]]];
+        }
     }
     
     title.text = businessObject.company_name;
@@ -30,6 +44,8 @@
     CGSize size = [title.text sizeWithFont: title.font
                               constrainedToSize: CGSizeMake(290.0, 50)
                                   lineBreakMode: NSLineBreakByWordWrapping ];
+    if(size.height == 0) size.height = 20;
+    
     title.frame = CGRectMake(5.0, 7.0,
                             size.width, size.height);
     
@@ -41,6 +57,7 @@
     
     logo.frame = CGRectMake(-1, subTitle.frame.origin.y+subTitle.frame.size.height+5, 302, 180);
     layerView.frame = logo.frame;
+    layerView2.frame = logo.frame;
     
     [self showBusinessTitle:businessObject];
 }
@@ -65,7 +82,12 @@
     
     layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     layerView.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    
+    //layerView2.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    //layerView2.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+    
     [layerView layoutSubviews];
+    //[layerView2 layoutSubviews];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

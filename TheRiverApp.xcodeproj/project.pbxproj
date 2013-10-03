@@ -136,6 +136,7 @@
 		1897601917F17A3100B06DF7 /* URLDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897601817F17A2D00B06DF7 /* URLDownloaderOperation.m */; };
 		1899664D17FD863500FF22A7 /* TRBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899664C17FD863500FF22A7 /* TRBindingManager.m */; };
 		1899665017FDA7FE00FF22A7 /* TRContactsSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899664F17FDA7FE00FF22A7 /* TRContactsSearchBar.m */; };
+		1899665317FE0DDB00FF22A7 /* TRBusinessDescModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */; };
 		1899701617F55D3A0056F7ED /* TRPUserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701517F55D3A0056F7ED /* TRPUserListModel.m */; };
 		1899701917F57C600056F7ED /* TRSearchPUsersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701817F57C600056F7ED /* TRSearchPUsersCell.m */; };
 		1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899701A17F5880B0056F7ED /* avatar_placeholder.png */; };
@@ -450,6 +451,8 @@
 		1899664C17FD863500FF22A7 /* TRBindingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBindingManager.m; path = Model/DataManagers/TRBindingManager.m; sourceTree = "<group>"; };
 		1899664E17FDA7FE00FF22A7 /* TRContactsSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactsSearchBar.h; path = Controllers/SideBars/TRContactsSearchBar.h; sourceTree = "<group>"; };
 		1899664F17FDA7FE00FF22A7 /* TRContactsSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactsSearchBar.m; path = Controllers/SideBars/TRContactsSearchBar.m; sourceTree = "<group>"; };
+		1899665117FE0DDA00FF22A7 /* TRBusinessDescModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessDescModel.h; path = Models/BusinessList/TRBusinessDescModel.h; sourceTree = "<group>"; };
+		1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessDescModel.m; path = Models/BusinessList/TRBusinessDescModel.m; sourceTree = "<group>"; };
 		1899701417F55D3A0056F7ED /* TRPUserListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPUserListModel.h; path = Models/PartyUsers/TRPUserListModel.h; sourceTree = "<group>"; };
 		1899701517F55D3A0056F7ED /* TRPUserListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPUserListModel.m; path = Models/PartyUsers/TRPUserListModel.m; sourceTree = "<group>"; };
 		1899701717F57C600056F7ED /* TRSearchPUsersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchPUsersCell.h; path = TableViewHelpers/TRSearchPUsersCell.h; sourceTree = "<group>"; };
@@ -1060,6 +1063,8 @@
 				1899704017F830190056F7ED /* TRBusinessRootModel.m */,
 				1899704217F830FE0056F7ED /* TRBusinessModel.h */,
 				1899704317F830FF0056F7ED /* TRBusinessModel.m */,
+				1899665117FE0DDA00FF22A7 /* TRBusinessDescModel.h */,
+				1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */,
 			);
 			name = BusinessList;
 			sourceTree = "<group>";
@@ -1731,6 +1736,7 @@
 				18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */,
 				1899664D17FD863500FF22A7 /* TRBindingManager.m in Sources */,
 				1899665017FDA7FE00FF22A7 /* TRContactsSearchBar.m in Sources */,
+				1899665317FE0DDB00FF22A7 /* TRBusinessDescModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "TRBusinessManager.h"
+#import "TRBusinessDescModel.h"
 #import "URLDownloaderOperation.h"
 #import "URLPostOperation.h"
 #import <NSString+RMURLEncoding/NSString+RMURLEncoding.h>
@@ -45,6 +46,47 @@
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
                                                                               
                                                                               TRBusinessRootModel *businessRootModel = [[TRBusinessRootModel alloc] initWithDictionary:resultJSON];
+                                                                              if(businessRootModel.business.count > 0)  {
+                                                                                  if( successBlock != nil)
+                                                                                      successBlock(response, businessRootModel);
+                                                                              } else    {
+                                                                                  
+                                                                                  NSLog(@"Список бизнесов пуст: %@", response.asString);
+                                                                                  
+                                                                                  if(failedOperation != nil)
+                                                                                      failedOperation(response);
+                                                                              }
+                                                                              
+                                                                          } andFailedBlock:^(LRRestyResponse *response){
+                                                                              
+                                                                              if(failedOperation != nil)
+                                                                                  failedOperation(response);
+                                                                              
+                                                                              NSLog(@"Error auth (%i): %@", response.status, response.asString);
+                                                                          }];
+    
+    [_queueBusiness addOperation:operation];
+}
+
+-(void) downloadBusinessDescByID:(NSString*)idBusiness
+     withSuccessfulOperation:(void(^)(LRRestyResponse *response, TRBusinessDescModel *businessDesc))successBlock
+          andFailedOperation:(FailedOperation) failedOperation
+{
+    if( [TRAuthManager client].isAuth == NO )   {
+        NSLog(@"Отмена получения списка бизнесов. Пользователь не авторизован.");
+        return;
+    }
+    
+    NSString *urlBusinessList = [NSString stringWithFormat:@"%@?%@=%@&id=%@", kTG_API_BusinessDesc,
+                                 kTGTokenKey,
+                                 [TRAuthManager client].iamData.token, idBusiness];
+    
+    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlBusinessList
+                                                                          withSuccessBlock:^(LRRestyResponse *response) {
+                                                                              
+                                                                              NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                              
+                                                                              TRBusinessDescModel *businessRootModel = [[TRBusinessDescModel alloc] initWithDictionary:resultJSON];
                                                                               
                                                                               if( successBlock != nil)
                                                                                   successBlock(response, businessRootModel);
@@ -54,7 +96,7 @@
                                                                               if(failedOperation != nil)
                                                                                   failedOperation(response);
                                                                               
-                                                                              NSLog(@"Error auth: %@", response.asString);
+                                                                              NSLog(@"Error auth (%i): %@", response.status, response.asString);
                                                                           }];
     
     [_queueBusiness addOperation:operation];

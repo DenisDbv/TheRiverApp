@@ -9,6 +9,8 @@
 #import "TRBusinessLogoBox.h"
 #import "UIImage+Resize.h"
 #import <MGBox2/MGScrollView.h>
+#import <QuartzCore/QuartzCore.h>
+#import "UIImage+Resize.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
@@ -16,7 +18,7 @@
 
 - (void)setup {
     
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor redColor];
     
     self.leftMargin = self.rightMargin = 10;
     
@@ -34,27 +36,23 @@
 
 -(void) showLogo
 {
-    //UIImage *image = nil;//[[UIImage imageNamed: self.businessData.businessLogo] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:self.bounds.size interpolationQuality:kCGInterpolationHigh];
-
-    UIImageView *imageView = [[UIImageView alloc] init];
+    __block UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addSubview:imageView];
     
     if(self.businessData.logo.length != 0) {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.businessData.logo];
-        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-            imageView.size = self.bounds.size;
-            imageView.alpha = 0;
-            imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            [self addSubview:imageView];
-            
-            [UIView animateWithDuration:0.1 animations:^{
-                imageView.alpha = 1;
-            }];
-            
-            NSLog(@"%@", NSStringFromCGSize(image.size));
-            
-            self.height = image.size.height;
-            [self refreshRootSize];
-        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            if(image != nil)
+            {
+                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
+                logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+                [imageView setImage:logoImageTest];
+                
+                [self refreshRootSize];
+            }
+        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     }
 }
 

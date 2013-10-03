@@ -75,7 +75,7 @@
     [self createRootScrollView];
     [self showBusinessLogo];
     [self showBusinessTitle];
-    //[self showMindWebView];
+    [self showMindWebView];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
 }

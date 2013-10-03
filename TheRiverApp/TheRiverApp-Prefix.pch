@@ -30,6 +30,7 @@
 #import "TRBusinessModel.h"
 #import "TRContactsListModel.h"
 #import "TRContactDataModel.h"
+#import "TRBusinessDescModel.h"
 
 #import "TRNetworkConstants.h"
 #import "TRAuthManager.h"
