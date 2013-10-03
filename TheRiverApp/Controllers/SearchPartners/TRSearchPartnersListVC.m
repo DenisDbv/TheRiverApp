@@ -186,9 +186,25 @@
     return 0;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+/*- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return [headerTitles objectAtIndex:section];
+}*/
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+    headerView.backgroundColor = [UIColor colorWithRed:173.0/255.0 green:173.0/255.0 blue:173.0/255.0 alpha:1.0];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, tableView.bounds.size.width-20, 30)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"HelveticaNeueCyr-Roman" size:14.5];
+    label.text = [headerTitles objectAtIndex:section];
+    
+    [headerView addSubview:label];
+    
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -205,12 +221,15 @@
             break;
         case 1:
             if(_partnersList.cities.count == 0) return 0;
+            else return 30;
             break;
         case 2:
             if(_partnersList.industries.count == 0) return 0;
+            else return 30;
             break;
         case 3:
             if(_partnersList.interests.count == 0) return 0;
+            else return 30;
             break;
     }
     

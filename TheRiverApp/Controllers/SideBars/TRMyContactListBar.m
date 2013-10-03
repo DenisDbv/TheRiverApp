@@ -23,7 +23,7 @@
 #import "WDActivityIndicator.h"
 
 @interface TRMyContactListBar ()
-@property (nonatomic, retain) TRContactsListModel *_contactList;
+@property (nonatomic, copy) TRContactsListModel *_contactList;
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
 @property (nonatomic, retain) UITableView *contactsTableView;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
@@ -108,7 +108,11 @@
         _contactList = contactList;
         
         [_contactsTableView reloadData];
-    } andFailedOperation:nil];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
+    }];
 }
 
 #pragma mark UITableViewDataSource

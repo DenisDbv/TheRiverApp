@@ -54,11 +54,12 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
                                                                               NSString *eTagValue = [response.headers valueForKey:@"ETag"];
-                                                                              if(eTagValue.length > 0)  {
-                                                                                  NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                                                  
-                                                                                  TRContactsListModel *cotactListModel = [[TRContactsListModel alloc] initWithDictionary:resultJSON];
-                                                                                  
+                                                                              
+                                                                              NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                            
+                                                                              TRContactsListModel *cotactListModel = [[TRContactsListModel alloc] initWithDictionary:resultJSON];
+                                                                              
+                                                                              if(cotactListModel.user.count > 0)    {
                                                                                   NSMutableDictionary *storeContactsData = [[NSMutableDictionary alloc] init];
                                                                                   [storeContactsData setObject:eTagValue forKey:@"etag"];
                                                                                   [storeContactsData setObject:resultJSON forKey:@"data"];
@@ -66,8 +67,11 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                                   
                                                                                   if( successBlock != nil)
                                                                                       successBlock(response, cotactListModel);
-                                                                              } else    {
-                                                                                  NSLog(@"Contact list access denied");
+                                                                                  
+                                                                              } else {
+                                                                                  NSLog(@"Contact list access denied (%@)", resultJSON);
+                                                                                  if(failedOperation != nil)
+                                                                                      failedOperation(response);
                                                                               }
                                                                               
                                                                           } andFailedBlock:^(LRRestyResponse *response){
@@ -75,16 +79,13 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                               if(response.status == 304)
                                                                               {
                                                                                   NSLog(@"Contact list not modified");
-                                                                                  
-                                                                                  if( successBlock != nil)
-                                                                                      successBlock(response, [self lastContactArray]);
                                                                               }
                                                                               else  {
-                                                                                  if(failedOperation != nil)
-                                                                                      failedOperation(response);
-                                                                                  
-                                                                                  NSLog(@"Error get contacts list: %@", response.description);
+                                                                                  NSLog(@"Error get contacts list (%i): %@", response.status, response.description);
                                                                               }
+                                                                              
+                                                                              if(failedOperation != nil)
+                                                                                  failedOperation(response);
                                                                           }];
     
     [_queueContacts addOperation:operation];
