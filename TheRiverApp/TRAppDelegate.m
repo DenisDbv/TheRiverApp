@@ -121,9 +121,16 @@
 - (void)setupAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    //[[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    /*NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setValue:[UIColor blackColor] forKey:UITextAttributeTextColor];
+    [attributes setValue:[UIColor whiteColor] forKey:UITextAttributeTextShadowColor];
+    [attributes setValue:[NSValue valueWithUIOffset:UIOffsetMake(0, 1)] forKey:UITextAttributeTextShadowOffset];
+    [attributes setValue:[UIFont fontWithName:@"Verdana" size:0.0] forKey:UITextAttributeFont];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];*/
 }
 
 - (void) presentLoginViewController
