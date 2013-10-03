@@ -137,6 +137,9 @@
 		1899664D17FD863500FF22A7 /* TRBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899664C17FD863500FF22A7 /* TRBindingManager.m */; };
 		1899665017FDA7FE00FF22A7 /* TRContactsSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899664F17FDA7FE00FF22A7 /* TRContactsSearchBar.m */; };
 		1899665317FE0DDB00FF22A7 /* TRBusinessDescModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */; };
+		1899665617FE12FB00FF22A7 /* TRMeetingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665517FE12FA00FF22A7 /* TRMeetingManager.m */; };
+		1899665A17FE142500FF22A7 /* TRMeetingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665917FE142500FF22A7 /* TRMeetingListModel.m */; };
+		1899665D17FE14BB00FF22A7 /* TREventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665C17FE14BB00FF22A7 /* TREventModel.m */; };
 		1899701617F55D3A0056F7ED /* TRPUserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701517F55D3A0056F7ED /* TRPUserListModel.m */; };
 		1899701917F57C600056F7ED /* TRSearchPUsersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701817F57C600056F7ED /* TRSearchPUsersCell.m */; };
 		1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899701A17F5880B0056F7ED /* avatar_placeholder.png */; };
@@ -453,6 +456,12 @@
 		1899664F17FDA7FE00FF22A7 /* TRContactsSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactsSearchBar.m; path = Controllers/SideBars/TRContactsSearchBar.m; sourceTree = "<group>"; };
 		1899665117FE0DDA00FF22A7 /* TRBusinessDescModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessDescModel.h; path = Models/BusinessList/TRBusinessDescModel.h; sourceTree = "<group>"; };
 		1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessDescModel.m; path = Models/BusinessList/TRBusinessDescModel.m; sourceTree = "<group>"; };
+		1899665417FE12FA00FF22A7 /* TRMeetingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRMeetingManager.h; sourceTree = "<group>"; };
+		1899665517FE12FA00FF22A7 /* TRMeetingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRMeetingManager.m; sourceTree = "<group>"; };
+		1899665817FE142500FF22A7 /* TRMeetingListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetingListModel.h; path = Models/MeetingList/TRMeetingListModel.h; sourceTree = "<group>"; };
+		1899665917FE142500FF22A7 /* TRMeetingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetingListModel.m; path = Models/MeetingList/TRMeetingListModel.m; sourceTree = "<group>"; };
+		1899665B17FE14BB00FF22A7 /* TREventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TREventModel.h; path = Models/MeetingList/TREventModel.h; sourceTree = "<group>"; };
+		1899665C17FE14BB00FF22A7 /* TREventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TREventModel.m; path = Models/MeetingList/TREventModel.m; sourceTree = "<group>"; };
 		1899701417F55D3A0056F7ED /* TRPUserListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPUserListModel.h; path = Models/PartyUsers/TRPUserListModel.h; sourceTree = "<group>"; };
 		1899701517F55D3A0056F7ED /* TRPUserListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPUserListModel.m; path = Models/PartyUsers/TRPUserListModel.m; sourceTree = "<group>"; };
 		1899701717F57C600056F7ED /* TRSearchPUsersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchPUsersCell.h; path = TableViewHelpers/TRSearchPUsersCell.h; sourceTree = "<group>"; };
@@ -945,6 +954,8 @@
 				1899703817F82B280056F7ED /* TRBusinessManager.m */,
 				18FEA75817FBED2E006B7864 /* TRContactsManager.h */,
 				18FEA75917FBED2E006B7864 /* TRContactsManager.m */,
+				1899665417FE12FA00FF22A7 /* TRMeetingManager.h */,
+				1899665517FE12FA00FF22A7 /* TRMeetingManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -962,6 +973,7 @@
 		18975F8A17EE1E1200B06DF7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1899665717FE13F600FF22A7 /* MeetingList */,
 				1899703E17F82FC70056F7ED /* BusinessList */,
 				1899702E17F6E1D70056F7ED /* PartnersSearch */,
 				1899701017F54D430056F7ED /* PartyUsers */,
@@ -1014,6 +1026,17 @@
 				1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */,
 			);
 			name = Filter;
+			sourceTree = "<group>";
+		};
+		1899665717FE13F600FF22A7 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+				1899665817FE142500FF22A7 /* TRMeetingListModel.h */,
+				1899665917FE142500FF22A7 /* TRMeetingListModel.m */,
+				1899665B17FE14BB00FF22A7 /* TREventModel.h */,
+				1899665C17FE14BB00FF22A7 /* TREventModel.m */,
+			);
+			name = MeetingList;
 			sourceTree = "<group>";
 		};
 		1899701017F54D430056F7ED /* PartyUsers */ = {
@@ -1737,6 +1760,9 @@
 				1899664D17FD863500FF22A7 /* TRBindingManager.m in Sources */,
 				1899665017FDA7FE00FF22A7 /* TRContactsSearchBar.m in Sources */,
 				1899665317FE0DDB00FF22A7 /* TRBusinessDescModel.m in Sources */,
+				1899665617FE12FB00FF22A7 /* TRMeetingManager.m in Sources */,
+				1899665A17FE142500FF22A7 /* TRMeetingListModel.m in Sources */,
+				1899665D17FE14BB00FF22A7 /* TREventModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

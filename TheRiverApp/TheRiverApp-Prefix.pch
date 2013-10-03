@@ -31,6 +31,8 @@
 #import "TRContactsListModel.h"
 #import "TRContactDataModel.h"
 #import "TRBusinessDescModel.h"
+#import "TRMeetingListModel.h"
+#import "TREventModel.h"
 
 #import "TRNetworkConstants.h"
 #import "TRAuthManager.h"
@@ -39,3 +41,4 @@
 #import "TRBusinessManager.h"
 #import "TRContactsManager.h"
 #import "TRBindingManager.h"
+#import "TRMeetingManager.h"

@@ -26,7 +26,7 @@
     
 }
 
-+(MGBox *) initBox:(CGSize)bounds withMeetData:(TRMeetingModel *)meetObject
++(MGBox *) initBox:(CGSize)bounds withMeetData:(TREventModel *)meetObject
 {
     TRMeetLogoBox *box = [TRMeetLogoBox boxWithSize: CGSizeMake(bounds.width, 210)];
     box.meetingData = meetObject;
@@ -39,7 +39,7 @@
 
 -(void) showLogo
 {
-    UIImage *image = [UIImage imageNamed: self.meetingData.meetingPhoto];
+    UIImage *image = [UIImage imageNamed: self.meetingData.logo];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     
@@ -92,16 +92,25 @@
     timeLabel.textAlignment = NSTextAlignmentCenter;
     timeLabel.backgroundColor = [UIColor clearColor];
     
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
+    NSDate *myDate = [df dateFromString: self.meetingData.start_date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd"];
+    
     NSInteger maxDateBlock = [self getMaxWidthFromStrings:self.meetingData];
     
-    [self changeSizeLabel:dayLabel atString:self.meetingData.meetingDay];
+    [self changeSizeLabel:dayLabel atString:[dateFormatter stringFromDate:myDate]];
     dayLabel.frame = [self changeWidthInFrame:dayLabel.frame byWidth:maxDateBlock];
     
-    [self changeSizeLabel:monthLabel atString:self.meetingData.meetingMonth];
+    [dateFormatter setDateFormat:@"MMMM"];
+    [self changeSizeLabel:monthLabel atString:[dateFormatter stringFromDate:myDate]];
     monthLabel.frame = [self changeWidthInFrame:monthLabel.frame byWidth:maxDateBlock];
     monthLabel.frame = [self changeYInFrame:monthLabel.frame byY:dayLabel.frame.origin.y+dayLabel.frame.size.height];
     
-    [self changeSizeLabel:timeLabel atString:self.meetingData.meetingTime ];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    [self changeSizeLabel:timeLabel atString:[dateFormatter stringFromDate:myDate]];
     timeLabel.frame = [self changeWidthInFrame:timeLabel.frame byWidth:maxDateBlock];
     timeLabel.frame = [self changeYInFrame:timeLabel.frame byY:monthLabel.frame.origin.y+monthLabel.frame.size.height];
 
@@ -119,12 +128,19 @@
     [self addSubview:infoView];
 }
 
--(NSInteger) getMaxWidthFromStrings:(TRMeetingModel*)meetingObject
+-(NSInteger) getMaxWidthFromStrings:(TREventModel*)meetingObject
 {
-    CGSize sizeMonth = [meetingObject.meetingMonth sizeWithFont:monthLabel.font
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
+    NSDate *myDate = [df dateFromString: meetingObject.start_date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM"];
+    
+    CGSize sizeMonth = [[dateFormatter stringFromDate:myDate] sizeWithFont:monthLabel.font
                                               constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                                                   lineBreakMode:NSLineBreakByWordWrapping];
-    CGSize sizeTime = [meetingObject.meetingCity sizeWithFont:timeLabel.font
+    CGSize sizeTime = [meetingObject.place sizeWithFont:timeLabel.font
                                             constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                                                 lineBreakMode:NSLineBreakByWordWrapping];
     

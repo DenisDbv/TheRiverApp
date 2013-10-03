@@ -13,12 +13,16 @@
 #import "UIImage+Resize.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import <SSToolkit/SSToolkit.h>
 
 @implementation TRBusinessLogoBox
+{
+    SSGradientView *layerView;
+}
 
 - (void)setup {
     
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     self.leftMargin = self.rightMargin = 10;
     
@@ -34,8 +38,21 @@
     return box;
 }
 
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    layerView.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    [layerView layoutSubviews];
+}
+
 -(void) showLogo
 {
+    layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
+    layerView.backgroundColor = [UIColor clearColor];
+    [self addSubview:layerView];
+    
     __block UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:imageView];

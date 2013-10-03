@@ -22,12 +22,12 @@
 
 @interface TRMeetingDescriptionVC ()
 @property (nonatomic, retain) MGScrollView *scrollView;
-@property (nonatomic, retain) TRMeetingModel *meetDataObject;
+@property (nonatomic, retain) TREventModel *meetDataObject;
 @end
 
 @implementation TRMeetingDescriptionVC
 
--(id) initByMindModel:(TRMeetingModel*)meetObject
+-(id) initByMindModel:(TREventModel*)meetObject
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
