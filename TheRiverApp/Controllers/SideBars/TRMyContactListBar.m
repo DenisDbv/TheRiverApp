@@ -21,6 +21,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <SIAlertView/SIAlertView.h>
 #import "WDActivityIndicator.h"
+#import <RNGridMenu/RNGridMenu.h>
 
 @interface TRMyContactListBar ()
 @property (nonatomic, copy) TRContactsListModel *_contactList;
@@ -30,6 +31,9 @@
 @end
 
 @implementation TRMyContactListBar
+{
+    NSIndexPath *lastSelectedIndex;
+}
 @synthesize _contactList;
 @synthesize activityIndicator;
 
@@ -176,7 +180,11 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
+    lastSelectedIndex = indexPath;
+    
+    [self onCommunicateClick];
+    
+    /*TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
     
     NSString *phone = @"";
     NSString *skype = @"";
@@ -244,8 +252,63 @@
     NSArray *activities = @[customActivity, customSkypeActivity, messageActivity, mailActivity,
                             vkActivity, facebookActivity];
     REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
-    [activityViewController presentFromRootViewController];
+    [activityViewController presentFromRootViewController];*/
     
+}
+
+-(void) onCommunicateClick
+{
+    [self showGrid];
+}
+
+- (void)showGrid {
+    NSInteger numberOfOptions = 6;
+    NSArray *items = @[
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Phone.png"] title:@"Телефон"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype.png"] title:@"Skype"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"] title:@"SMS"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"] title:@"Email"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] title:@"Vkontakte"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]
+                       ];
+    
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    av.delegate = self;
+    av.itemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    [av showInViewController:rootViewController center:CGPointMake(screenWidth/2.0f, screenHeight/2.0f)];
+}
+
+#pragma mark - RNGridMenuDelegate
+
+- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
+    switch (itemIndex) {
+        case 0:
+            [[TRBindingManager sharedInstance] callBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            break;
+        case 1:
+            [[TRBindingManager sharedInstance] skypeBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            break;
+        case 2:
+            [[TRBindingManager sharedInstance] smsBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            break;
+        case 3:
+            [[TRBindingManager sharedInstance] emailBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            break;
+        case 4:
+            [[TRBindingManager sharedInstance] vkBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            break;
+        case 5:
+            [[TRBindingManager sharedInstance] fbBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
