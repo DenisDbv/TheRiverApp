@@ -21,4 +21,8 @@
 -(void) downloadMeetingList:(void(^)(LRRestyResponse *response, TRMeetingListModel *meetingList))successBlock
          andFailedOperation:(FailedOperation) failedOperation;
 
+-(void) subscribeMeetingByID:(NSString*)meetID
+            successOperation:(void(^)(LRRestyResponse *response))successBlock
+          andFailedOperation:(FailedOperation) failedOperation;
+
 @end

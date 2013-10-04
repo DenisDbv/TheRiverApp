@@ -9,6 +9,9 @@
 #import "TRMeetingItemCell.h"
 
 @implementation TRMeetingItemCell
+{
+    TREventModel *eventItem;
+}
 @synthesize labelCity, labelDay, labelGroup, labelMonth, labelTitle, agreeButton, labelIfDisable;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -27,6 +30,8 @@
 
 -(void) reloadWithMeetingModel:(TREventModel*)meetingObject
 {
+    eventItem = meetingObject;
+    
     labelDay.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
     labelMonth.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
     
@@ -42,7 +47,8 @@
         labelDay.textColor = labelCity.textColor = labelGroup.textColor = labelMonth.textColor = labelTitle.textColor = labelIfDisable.textColor = [UIColor lightGrayColor];
     }
 
-    NSInteger maxDateBlock = [self getMaxWidthFromStrings:meetingObject];
+    NSInteger maxDateBlock = 76.0; //[self getMaxWidthFromStrings:meetingObject];
+    //NSLog(@"==>%i", maxDateBlock);
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
@@ -83,9 +89,11 @@
         agreeButton.hidden = NO;
         
         agreeButton.frame = CGRectMake(maxDateBlock+35, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 125, 35);
+        [agreeButton addTarget:self action:@selector(onSbscrClick:) forControlEvents:UIControlEventTouchUpInside];
         [agreeButton setLabelTextColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] disableColor:nil];
         [agreeButton setCornerRadius:4];
         [agreeButton setBorderStyle:nil andInnerColor:nil];
+        NSLog(@"%i", meetingObject.isAccept);
         if(meetingObject.isAccept == NO) {
             [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
             [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
@@ -103,8 +111,40 @@
                                                   constrainedToSize:CGSizeMake(320-(maxDateBlock+35), 50)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
         labelIfDisable.text = @"Мероприятие окончено";
-        labelIfDisable.frame = CGRectMake(maxDateBlock, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 320-(maxDateBlock+35), sizeGroup.height);
+        NSLog(@"%f", labelTitle.frame.size.height);
+        if(labelTitle.frame.size.height > 25)
+            labelIfDisable.frame = CGRectMake(maxDateBlock+35, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 320-(maxDateBlock+35), sizeGroup.height);
+        else
+            labelIfDisable.frame = CGRectMake(maxDateBlock+35, labelCity.frame.origin.y + roundf((labelCity.frame.size.height-sizeGroup.height)/2), 320-(maxDateBlock+35), sizeGroup.height);
     }
+}
+
+-(void) onSbscrClick:(id)sender
+{
+    agreeButton.enabled = NO;
+    agreeButton.userInteractionEnabled = NO;
+    
+    [[TRMeetingManager client] subscribeMeetingByID:eventItem.objectId successOperation:^(LRRestyResponse *response) {
+        if(eventItem.isAccept == NO)
+        {
+            eventItem.isAccept = YES;
+            
+            [agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
+            [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
+            [agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+        } else  {
+            eventItem.isAccept = NO;
+            
+            [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
+            [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
+            [agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+        }
+        agreeButton.enabled = YES;
+        agreeButton.userInteractionEnabled = YES;
+    } andFailedOperation:^(LRRestyResponse *response) {
+        agreeButton.enabled = YES;
+        agreeButton.userInteractionEnabled = YES;
+    }];
 }
 
 -(NSInteger) getMaxWidthFromStrings:(TREventModel*)meetingObject

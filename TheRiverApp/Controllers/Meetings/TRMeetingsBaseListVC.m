@@ -18,6 +18,9 @@
 @end
 
 @implementation TRMeetingsBaseListVC
+{
+    NSIndexPath *lastSelectedIndexPath;
+}
 @synthesize activityIndicator, _meetingList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,6 +41,12 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TRMeetingItemCell" bundle:nil] forCellReuseIdentifier:@"TRMeetingCell"];
     
     [self refreshMeetingList];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    if(lastSelectedIndexPath != nil)
+       [self.tableView reloadRowsAtIndexPaths:@[lastSelectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,6 +129,8 @@
 {
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    lastSelectedIndexPath = indexPath;
     
     TREventModel *eventUnit = [_meetingList.events objectAtIndex:indexPath.row];
     

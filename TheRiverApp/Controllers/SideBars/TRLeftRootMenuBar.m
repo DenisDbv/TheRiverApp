@@ -16,6 +16,7 @@
 #import <SIAlertView/SIAlertView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "UIImage+Resize.h"
 
 #import "UIView+GestureBlocks.h"
 #import "TRUserProfileController.h"
@@ -135,8 +136,21 @@
         imageView.layer.borderColor = [UIColor clearColor].CGColor;
         imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
         imageView.clipsToBounds = YES;
-        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [header addSubview:imageView];
+        
+        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]] == nil) {
+            [imageView setImageWithURL:[NSURL URLWithString:logoURLString] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(90.0, 90.0) interpolationQuality:kCGInterpolationHigh];
+                logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 90.0, 90.0)];
+                
+                [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:[logoURLString stringByAppendingString:@"_leftLogo"] toDisk:YES];
+                
+                [imageView setImage:logoImageTest];
+            } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } else  {
+            [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]]];
+        }
+    
         
         
         //ФИО пользователя

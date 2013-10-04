@@ -164,7 +164,7 @@
                  [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
                  
                  imageView.alpha = 0;
-                 imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+                 //imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                  [imageView setImage:logoImageTest];
                  
                  [UIView animateWithDuration:0.1 animations:^{

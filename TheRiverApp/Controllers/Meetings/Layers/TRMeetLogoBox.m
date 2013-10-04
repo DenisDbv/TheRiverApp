@@ -8,6 +8,9 @@
 
 #import "TRMeetLogoBox.h"
 #import <SSToolkit/SSToolkit.h>
+#import "UIImage+Resize.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation TRMeetLogoBox
 {
@@ -39,7 +42,7 @@
 
 -(void) showLogo
 {
-    UIImage *image = [UIImage imageNamed: self.meetingData.logo];
+    /*UIImage *image = [UIImage imageNamed: self.meetingData.logo];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     
@@ -56,11 +59,28 @@
     
     [UIView animateWithDuration:0.1 animations:^{
         imageView.alpha = 1;
-    }];
+    }];*/
     
     layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
     layerView.backgroundColor = [UIColor clearColor];
     [self addSubview:layerView];
+    
+    __block UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addSubview:imageView];
+    
+    if(self.meetingData.logo.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.meetingData.logo];
+        
+        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            if(image != nil)
+            {
+                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
+                logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+                [imageView setImage:logoImageTest];
+            }
+        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    }
 }
 
 -(void) layoutSubviews

@@ -8,7 +8,6 @@
 
 #import "TRMeetTitleBox.h"
 #import <MGBox2/MGLineStyled.h>
-#import <ACPButton/ACPButton.h>
 
 @implementation TRMeetTitleBox
 
@@ -59,31 +58,62 @@
     authorLine.textColor = [UIColor lightGrayColor];
     [box.boxes addObject:authorLine];
     
-    ACPButton *agreeButton = [[ACPButton alloc] initWithFrame:CGRectMake(0, 0,
-                                                                         300, 40)];
-    [agreeButton setLabelTextColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] disableColor:nil];
-    [agreeButton setCornerRadius:4];
-    [agreeButton setBorderStyle:nil andInnerColor:nil];
-    if(meetObject.isAccept == NO) {
-        [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
-        [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
-        [agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
-    } else  {
-        [agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
-        [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
-        [agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+    if(box.meetingData.isEnded == NO)   {
+        box.agreeButton = [[ACPButton alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
+        [box.agreeButton addTarget:box action:@selector(onSbscrClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [box.agreeButton setLabelTextColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] disableColor:nil];
+        [box.agreeButton setCornerRadius:4];
+        [box.agreeButton setBorderStyle:nil andInnerColor:nil];
+        if(meetObject.isAccept == NO) {
+            [box.agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
+            [box.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
+            [box.agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+        } else  {
+            [box.agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
+            [box.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
+            [box.agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+        }
+        
+        MGBox *buttonLine = [MGBox boxWithSize:CGSizeMake(300, 40)];
+        buttonLine.backgroundColor = [UIColor clearColor];
+        buttonLine.topMargin = 10.0;
+        buttonLine.leftPadding = authorLine.rightPadding = 0;
+        buttonLine.leftMargin = buttonLine.rightMargin = 0;
+        buttonLine.borderStyle = MGBorderNone;
+        [buttonLine addSubview: box.agreeButton];
+        [box.boxes addObject:buttonLine];
     }
     
-    MGBox *buttonLine = [MGBox boxWithSize:CGSizeMake(300, 40)];
-    buttonLine.backgroundColor = [UIColor clearColor];
-    buttonLine.topMargin = 10.0;
-    buttonLine.leftPadding = authorLine.rightPadding = 0;
-    buttonLine.leftMargin = buttonLine.rightMargin = 0;
-    buttonLine.borderStyle = MGBorderNone;
-    [buttonLine addSubview:agreeButton];
-    [box.boxes addObject:buttonLine];
-    
     return box;
+}
+
+-(void) onSbscrClick:(id)sender
+{
+    self.agreeButton.enabled = NO;
+    self.agreeButton.userInteractionEnabled = NO;
+    
+    [[TRMeetingManager client] subscribeMeetingByID:self.meetingData.objectId successOperation:^(LRRestyResponse *response) {
+        if(self.meetingData.isAccept == NO)
+        {
+            self.meetingData.isAccept = YES;
+            
+            [self.agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
+            [self.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
+            [self.agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+        } else  {
+            self.meetingData.isAccept = NO;
+            
+            [self.agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
+            [self.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
+            [self.agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+        }
+        self.agreeButton.enabled = YES;
+        self.agreeButton.userInteractionEnabled = YES;
+    } andFailedOperation:^(LRRestyResponse *response) {
+        self.agreeButton.enabled = YES;
+        self.agreeButton.userInteractionEnabled = YES;
+    }];
 }
 
 @end

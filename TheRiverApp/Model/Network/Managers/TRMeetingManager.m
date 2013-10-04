@@ -68,4 +68,42 @@
     [_queueMeetings addOperation:operation];
 }
 
+-(void) subscribeMeetingByID:(NSString*)meetID
+        successOperation:(void(^)(LRRestyResponse *response))successBlock
+         andFailedOperation:(FailedOperation) failedOperation
+{
+    if( [TRAuthManager client].isAuth == NO )   {
+        NSLog(@"Отмена подписки на мероприятие. Пользователь не авторизован.");
+        return;
+    }
+    
+    NSString *urlBusinessList = [NSString stringWithFormat:@"%@?%@=%@&id=%@", kTG_API_MeetingSbscr,
+                                 kTGTokenKey,
+                                 [TRAuthManager client].iamData.token, meetID];
+    
+    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlBusinessList
+                                                                          withSuccessBlock:^(LRRestyResponse *response) {
+                                                                              
+                                                                              NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                              NSLog(@"%@", resultJSON);
+                                                                              BOOL result = [[resultJSON objectForKey:@"status"] boolValue];
+                                                                              if(result == NO) {
+                                                                                  if(failedOperation != nil)
+                                                                                      failedOperation(response);
+                                                                              }
+                                                                              
+                                                                              if(successBlock != nil)
+                                                                                  successBlock(response);
+                                                                              
+                                                                          } andFailedBlock:^(LRRestyResponse *response){
+                                                                              
+                                                                              if(failedOperation != nil)
+                                                                                  failedOperation(response);
+                                                                              
+                                                                              NSLog(@"Error auth (%i): %@", response.status, response.asString);
+                                                                          }];
+    
+    [_queueMeetings addOperation:operation];
+}
+
 @end
