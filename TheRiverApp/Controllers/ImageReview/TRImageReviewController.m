@@ -59,6 +59,11 @@
          }
      }];*/
     
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    zoomView.frame = CGRectMake(0, 0, screenWidth, screenHeight-44-20);
+    
     [zoomView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:_imagePath]];
     
     [self performSelector:@selector(hideNavBar) withObject:nil afterDelay:0.5];

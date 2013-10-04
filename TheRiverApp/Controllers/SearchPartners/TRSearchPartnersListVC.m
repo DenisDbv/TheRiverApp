@@ -13,6 +13,7 @@
 #import "TRSearchPartnersCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "MFSideMenu.h"
 
 @interface TRSearchPartnersListVC ()
 @property (nonatomic, retain) TRPartnersSearchView *menuView;
@@ -51,6 +52,8 @@
 {
     [super viewDidLoad];
     
+    [self addSwipeGestureRecognizer];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"TRSearchPartnersCell" bundle:nil] forCellReuseIdentifier:@"TRSearchPartnersCell"];
     
     headerTitles = @[@"ФИО", @"Город", @"Отрасли", @"Высокое разрешение"];
@@ -62,11 +65,12 @@
     
     menuView = [[TRPartnersSearchView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
     menuView.backgroundColor = [UIColor whiteColor];
-    _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
+    [self.view addSubview:menuView];
+    /*_scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
     [self.tableView addSubview: _scrollDownMindMenu.view];
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
-    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
+    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];*/
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
@@ -74,6 +78,9 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
+    self.tableView.frame = CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height-50);
+    
     if(queryString.length > 0)  {
         [menuView setTextToSearchLabel:queryString];
         [self refreshPartnersByQuery:queryString];
@@ -87,6 +94,8 @@
 
 -(void) viewWillDisappear:(BOOL)animated
 {
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+    
     [menuView resignSearchBar];
 }
 
@@ -114,6 +123,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - Swipe gesture
+
+- (void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+}
+
+- (void)swipeRecognized:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded &&
+        gestureRecognizer.direction & UISwipeGestureRecognizerDirectionRight) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 - (void) keyboardShown:(NSNotification *)note{
     
     CGRect keyboardFrame;
@@ -126,12 +151,12 @@
 
 - (void) keyboardHidden:(NSNotification *)note{
     
-    [self.tableView setFrame: self.view.bounds];
+    [self.tableView setFrame: CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height-50)]; //self.view.bounds];
 }
 
 #pragma mark - UIScrollViewDelegate Implementation
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+/*- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [_scrollDownMindMenu scrollViewDidScroll:scrollView];
 }
 
@@ -146,6 +171,10 @@
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [_scrollDownMindMenu scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+}*/
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [menuView resignSearchBar];
 }
 
 #pragma mark - UITableViewDataSource
@@ -318,6 +347,8 @@
 {
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
     
     TRUserInfoModel *userInfo;
     switch (indexPath.section) {

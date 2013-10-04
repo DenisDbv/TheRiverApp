@@ -113,8 +113,9 @@
     timeLabel.backgroundColor = [UIColor clearColor];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+hh:mm"];
     NSDate *myDate = [df dateFromString: self.meetingData.start_date];
+    NSLog(@"%@", myDate.description);
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd"];
@@ -160,7 +161,9 @@
     CGSize sizeMonth = [[dateFormatter stringFromDate:myDate] sizeWithFont:monthLabel.font
                                               constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                                                   lineBreakMode:NSLineBreakByWordWrapping];
-    CGSize sizeTime = [meetingObject.place sizeWithFont:timeLabel.font
+    
+    [dateFormatter setDateFormat:@"HH:mm"];
+    CGSize sizeTime = [[dateFormatter stringFromDate:myDate] sizeWithFont:timeLabel.font
                                             constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                                                 lineBreakMode:NSLineBreakByWordWrapping];
     

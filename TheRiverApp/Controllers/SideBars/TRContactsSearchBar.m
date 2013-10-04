@@ -73,6 +73,26 @@
             
             cancelButton.frame = CGRectOffset(cancelButton.frame, -7, 2);
         }
+        
+        for (UIView *ndLeveSubView in subview.subviews)
+        {
+            // Remove the rounded corners
+            if ([ndLeveSubView isKindOfClass:NSClassFromString(@"UITextField")]) {
+                UITextField *textField = (UITextField *)subview;
+                //textField.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:16];
+                textField.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y, textField.frame.size.width-6, 35);
+                textField.backgroundColor = [UIColor whiteColor];
+                textField.layer.borderWidth = 1.0f;
+                textField.layer.cornerRadius = 6;
+                textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+                
+                for (UIView *subsubview in textField.subviews) {
+                    if ([subsubview isKindOfClass:NSClassFromString(@"UITextFieldBorderView")]) {
+                        [subsubview removeFromSuperview];
+                    }
+                }
+            }
+        }
     }
 }
 

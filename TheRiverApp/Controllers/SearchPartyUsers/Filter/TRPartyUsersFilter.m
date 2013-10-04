@@ -26,6 +26,9 @@
 
 @property (nonatomic, retain) UITableView *citiesTableView;
 @property (nonatomic, retain) UITableView *industriesTableView;
+
+@property (nonatomic, copy) NSArray *_citiesList;
+@property (nonatomic, copy) NSArray *_industryList;
 @end
 
 @implementation TRPartyUsersFilter
@@ -41,6 +44,7 @@
 @synthesize levelButton, categoryButton, cancelButton, successButton;
 @synthesize headButtonsView, subHeadButtonsView;
 @synthesize citiesTableView, industriesTableView;
+@synthesize _citiesList, _industryList;
 
 - (id)initWithFrame:(CGRect)frame byRootTarget:(id)target
 {
@@ -57,7 +61,8 @@
         [self createSubHeadButtons];
         [self createHeadButtons];
         
-        NSLog(@"%i", [TRSearchPUManager client].cityList.count);
+        _citiesList = [[TRSearchPUManager client].cityList copy];
+        _industryList = [[TRSearchPUManager client].industryList copy];
     }
     return self;
 }
@@ -120,12 +125,12 @@
     NSString *industryName;
     
     if(lastCitySelectIndexPath.row >= 0)
-        cityName = [[TRSearchPUManager client].cityList objectAtIndex:lastCitySelectIndexPath.row];
+        cityName = [_citiesList objectAtIndex:lastCitySelectIndexPath.row];
     else
         cityName = @"";
     
     if(lastIndustrySelectIndexPath.row >= 0)
-        industryName = [[TRSearchPUManager client].industryList objectAtIndex:lastIndustrySelectIndexPath.row];
+        industryName = [_industryList objectAtIndex:lastIndustrySelectIndexPath.row];
     else
         industryName = @"";
     
@@ -310,9 +315,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(tableView == citiesTableView)
-        return [TRSearchPUManager client].cityList.count;
+        return _citiesList.count;
     else
-        return [TRSearchPUManager client].industryList.count;
+        return _industryList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -341,7 +346,7 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        cell.textLabel.text = [[TRSearchPUManager client].cityList objectAtIndex:indexPath.row];
+        cell.textLabel.text = [_citiesList objectAtIndex:indexPath.row];
     }
     else
     {
@@ -352,7 +357,7 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        cell.textLabel.text = [[TRSearchPUManager client].industryList objectAtIndex:indexPath.row];
+        cell.textLabel.text = [_industryList objectAtIndex:indexPath.row];
     }
     
     return cell;

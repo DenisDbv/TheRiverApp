@@ -140,6 +140,16 @@
 		1899665617FE12FB00FF22A7 /* TRMeetingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665517FE12FA00FF22A7 /* TRMeetingManager.m */; };
 		1899665A17FE142500FF22A7 /* TRMeetingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665917FE142500FF22A7 /* TRMeetingListModel.m */; };
 		1899665D17FE14BB00FF22A7 /* TREventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665C17FE14BB00FF22A7 /* TREventModel.m */; };
+		1899666917FEEA7F00FF22A7 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899665F17FEEA7F00FF22A7 /* Icon-72.png */; };
+		1899666A17FEEA7F00FF22A7 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666017FEEA7F00FF22A7 /* Icon-72@2x.png */; };
+		1899666B17FEEA7F00FF22A7 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666117FEEA7F00FF22A7 /* Icon-Small-50.png */; };
+		1899666C17FEEA7F00FF22A7 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666217FEEA7F00FF22A7 /* Icon-Small-50@2x.png */; };
+		1899666D17FEEA7F00FF22A7 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666317FEEA7F00FF22A7 /* Icon-Small.png */; };
+		1899666E17FEEA7F00FF22A7 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666417FEEA7F00FF22A7 /* Icon-Small@2x.png */; };
+		1899666F17FEEA7F00FF22A7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666517FEEA7F00FF22A7 /* Icon.png */; };
+		1899667017FEEA7F00FF22A7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666617FEEA7F00FF22A7 /* Icon@2x.png */; };
+		1899667117FEEA7F00FF22A7 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666717FEEA7F00FF22A7 /* iTunesArtwork.png */; };
+		1899667217FEEA7F00FF22A7 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899666817FEEA7F00FF22A7 /* iTunesArtwork@2x.png */; };
 		1899701617F55D3A0056F7ED /* TRPUserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701517F55D3A0056F7ED /* TRPUserListModel.m */; };
 		1899701917F57C600056F7ED /* TRSearchPUsersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701817F57C600056F7ED /* TRSearchPUsersCell.m */; };
 		1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899701A17F5880B0056F7ED /* avatar_placeholder.png */; };
@@ -462,6 +472,16 @@
 		1899665917FE142500FF22A7 /* TRMeetingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetingListModel.m; path = Models/MeetingList/TRMeetingListModel.m; sourceTree = "<group>"; };
 		1899665B17FE14BB00FF22A7 /* TREventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TREventModel.h; path = Models/MeetingList/TREventModel.h; sourceTree = "<group>"; };
 		1899665C17FE14BB00FF22A7 /* TREventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TREventModel.m; path = Models/MeetingList/TREventModel.m; sourceTree = "<group>"; };
+		1899665F17FEEA7F00FF22A7 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		1899666017FEEA7F00FF22A7 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		1899666117FEEA7F00FF22A7 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		1899666217FEEA7F00FF22A7 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		1899666317FEEA7F00FF22A7 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		1899666417FEEA7F00FF22A7 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		1899666517FEEA7F00FF22A7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		1899666617FEEA7F00FF22A7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		1899666717FEEA7F00FF22A7 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		1899666817FEEA7F00FF22A7 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		1899701417F55D3A0056F7ED /* TRPUserListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPUserListModel.h; path = Models/PartyUsers/TRPUserListModel.h; sourceTree = "<group>"; };
 		1899701517F55D3A0056F7ED /* TRPUserListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPUserListModel.m; path = Models/PartyUsers/TRPUserListModel.m; sourceTree = "<group>"; };
 		1899701717F57C600056F7ED /* TRSearchPUsersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchPUsersCell.h; path = TableViewHelpers/TRSearchPUsersCell.h; sourceTree = "<group>"; };
@@ -1039,6 +1059,24 @@
 			name = MeetingList;
 			sourceTree = "<group>";
 		};
+		1899665E17FEEA7F00FF22A7 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				1899665F17FEEA7F00FF22A7 /* Icon-72.png */,
+				1899666017FEEA7F00FF22A7 /* Icon-72@2x.png */,
+				1899666117FEEA7F00FF22A7 /* Icon-Small-50.png */,
+				1899666217FEEA7F00FF22A7 /* Icon-Small-50@2x.png */,
+				1899666317FEEA7F00FF22A7 /* Icon-Small.png */,
+				1899666417FEEA7F00FF22A7 /* Icon-Small@2x.png */,
+				1899666517FEEA7F00FF22A7 /* Icon.png */,
+				1899666617FEEA7F00FF22A7 /* Icon@2x.png */,
+				1899666717FEEA7F00FF22A7 /* iTunesArtwork.png */,
+				1899666817FEEA7F00FF22A7 /* iTunesArtwork@2x.png */,
+			);
+			name = AppIcons;
+			path = Resources/AppIcons;
+			sourceTree = "<group>";
+		};
 		1899701017F54D430056F7ED /* PartyUsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1245,6 +1283,7 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1899665E17FEEA7F00FF22A7 /* AppIcons */,
 				1899701A17F5880B0056F7ED /* avatar_placeholder.png */,
 				18975FF917EF934000B06DF7 /* blueButton@2x.png */,
 				18975FFA17EF934000B06DF7 /* blueButton.png */,
@@ -1618,6 +1657,16 @@
 				1899702317F615F10056F7ED /* TRSearchPartnersListVC.xib in Resources */,
 				1899703617F729340056F7ED /* TRSearchPartnersCell.xib in Resources */,
 				18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */,
+				1899666917FEEA7F00FF22A7 /* Icon-72.png in Resources */,
+				1899666A17FEEA7F00FF22A7 /* Icon-72@2x.png in Resources */,
+				1899666B17FEEA7F00FF22A7 /* Icon-Small-50.png in Resources */,
+				1899666C17FEEA7F00FF22A7 /* Icon-Small-50@2x.png in Resources */,
+				1899666D17FEEA7F00FF22A7 /* Icon-Small.png in Resources */,
+				1899666E17FEEA7F00FF22A7 /* Icon-Small@2x.png in Resources */,
+				1899666F17FEEA7F00FF22A7 /* Icon.png in Resources */,
+				1899667017FEEA7F00FF22A7 /* Icon@2x.png in Resources */,
+				1899667117FEEA7F00FF22A7 /* iTunesArtwork.png in Resources */,
+				1899667217FEEA7F00FF22A7 /* iTunesArtwork@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

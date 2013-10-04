@@ -99,7 +99,7 @@
 -(void) refreshContactList
 {
     if(activityIndicator == nil)    {
-        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];// initWithFrame:CGRectMake(_contactsTableView.bounds.size.width/2, (_contactsTableView.bounds.size.height)/2, 0, 0)];
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];// initWithFrame:CGRectMake(_contactsTableView.bounds.size.width/2, (_contactsTableView.bounds.size.height)/2, 0, 0)];
         [activityIndicator setCenter:CGPointMake(270.0/2, (_contactsTableView.bounds.size.height)/2)];
         [_contactsTableView addSubview:activityIndicator];
         [activityIndicator startAnimating];
