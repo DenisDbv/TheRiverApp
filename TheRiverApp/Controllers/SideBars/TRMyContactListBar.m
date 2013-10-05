@@ -164,7 +164,7 @@
          [cell.imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
              UIImageView *touchView = (UIImageView*)sender.view;
              [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[_contactList.user objectAtIndex:touchView.tag]];
+                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[_contactList.user objectAtIndex:touchView.tag] isIam:NO];
                  [AppDelegateInstance() changeProfileViewController:userProfileVC];
              }];
          
@@ -358,7 +358,7 @@
         self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
         
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo isIam:NO];
             [AppDelegateInstance() changeProfileViewController:userProfileVC];
         }];
     }];

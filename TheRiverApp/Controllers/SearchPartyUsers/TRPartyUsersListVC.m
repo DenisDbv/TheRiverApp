@@ -156,7 +156,7 @@
     
     TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
     
-    TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+    TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo isIam:NO];
     [AppDelegateInstance() changeProfileViewController:userProfileVC];
 }
 

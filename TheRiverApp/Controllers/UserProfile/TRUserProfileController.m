@@ -26,12 +26,16 @@
 @end
 
 @implementation TRUserProfileController
+{
+    BOOL _isIam;
+}
 
--(id) initByUserModel:(TRUserInfoModel*)userObject
+-(id) initByUserModel:(TRUserInfoModel*)userObject isIam:(BOOL)isIam
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _userDataObject = userObject;
+        _isIam = isIam;
     }
     return self;
 }
@@ -50,7 +54,10 @@
     [self createRootScrollView];
 
     [self createBackgroundHeadBlock];
-    [self createContactBox];
+    
+    if(!_isIam)
+        [self createContactBox];
+    
     [self createTagsBox];
     [self createExMenuBox];
     [self createBusinessTitleBox];
@@ -107,6 +114,8 @@
 {
     TRTagsBox *tagsBox = (TRTagsBox*)[TRTagsBox initBox: self.view.bounds.size
                                       withUserData:_userDataObject byTarget:self];
+    if(_isIam)
+        tagsBox.topMargin = 48;
     [_scrollView.boxes addObject: tagsBox];
 }
 

@@ -174,7 +174,7 @@
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user];
+    _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user isIam:YES];
     _rootContainer = [MFSideMenuContainerViewController
                       containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                       leftMenuViewController: _leftRootMenuBar

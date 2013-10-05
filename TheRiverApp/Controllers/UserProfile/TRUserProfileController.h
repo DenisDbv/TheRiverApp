@@ -14,6 +14,6 @@
 
 @property (nonatomic, retain) TRUserInfoModel *userDataObject;
 
--(id) initByUserModel:(TRUserInfoModel*)userObject;
+-(id) initByUserModel:(TRUserInfoModel*)userObject isIam:(BOOL)isIam;
 
 @end
