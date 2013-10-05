@@ -51,8 +51,9 @@
     //NSLog(@"==>%i", maxDateBlock);
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
     NSDate *myDate = [df dateFromString: meetingObject.start_date];
+    NSLog(@"%@", myDate.description);
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd"];
@@ -93,7 +94,7 @@
         [agreeButton setLabelTextColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] disableColor:nil];
         [agreeButton setCornerRadius:4];
         [agreeButton setBorderStyle:nil andInnerColor:nil];
-        NSLog(@"%i", meetingObject.isAccept);
+        //NSLog(@"%i", meetingObject.isAccept);
         if(meetingObject.isAccept == NO) {
             [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
             [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
@@ -150,7 +151,7 @@
 -(NSInteger) getMaxWidthFromStrings:(TREventModel*)meetingObject
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
     NSDate *myDate = [df dateFromString: meetingObject.start_date];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

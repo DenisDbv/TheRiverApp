@@ -49,7 +49,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
+-(void) viewWillAppear:(BOOL)animated
+{
     UIView *substrateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 70)];
     substrateView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:substrateView];
@@ -68,13 +71,13 @@
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	_contactsTableView.backgroundColor = [UIColor whiteColor];
     [_contactsTableView setSeparatorColor: [UIColor colorWithRed:204.0/255.0
-                                                          green:204.0/255.0
-                                                           blue:204.0/255.0
-                                                          alpha:1.0]];
+                                                           green:204.0/255.0
+                                                            blue:204.0/255.0
+                                                           alpha:1.0]];
     /*[_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
-                                                           green:51.0/255.0
-                                                            blue:51.0/255.0
-                                                           alpha:1.0]];*/
+     green:51.0/255.0
+     blue:51.0/255.0
+     alpha:1.0]];*/
     //_contactsTableView.nxEV_emptyView = all;
 	[self.view addSubview: _contactsTableView];
     
@@ -289,22 +292,22 @@
 - (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
     switch (itemIndex) {
         case 0:
-            [[TRBindingManager sharedInstance] callBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            [[TRBindingManager sharedInstance] callBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
             break;
         case 1:
-            [[TRBindingManager sharedInstance] skypeBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            [[TRBindingManager sharedInstance] skypeBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
             break;
         case 2:
-            [[TRBindingManager sharedInstance] smsBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            [[TRBindingManager sharedInstance] smsBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
             break;
         case 3:
-            [[TRBindingManager sharedInstance] emailBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            [[TRBindingManager sharedInstance] emailBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
             break;
         case 4:
-            [[TRBindingManager sharedInstance] vkBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            [[TRBindingManager sharedInstance] vkBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
             break;
         case 5:
-            [[TRBindingManager sharedInstance] fbBinding:[_contactList.user objectAtIndex:lastSelectedIndex]];
+            [[TRBindingManager sharedInstance] fbBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
             break;
         default:
             break;

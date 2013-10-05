@@ -113,7 +113,7 @@
     timeLabel.backgroundColor = [UIColor clearColor];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+hh:mm"];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
     NSDate *myDate = [df dateFromString: self.meetingData.start_date];
     NSLog(@"%@", myDate.description);
     
@@ -152,7 +152,7 @@
 -(NSInteger) getMaxWidthFromStrings:(TREventModel*)meetingObject
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
     NSDate *myDate = [df dateFromString: meetingObject.start_date];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
