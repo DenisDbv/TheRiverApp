@@ -213,8 +213,8 @@
     if( [newController.userDataObject.id integerValue] != [((TRUserProfileController*)currentCenterController).userDataObject.id integerValue] )
         [self changeCenterViewController:newController];
     
-    /*if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
-        [self changeCenterViewController:newController];*/
+    if([_rootContainer.centerViewController viewControllers].count > 1)
+        [self changeCenterViewController:newController];
 }
 
 -(void) showFontsList
