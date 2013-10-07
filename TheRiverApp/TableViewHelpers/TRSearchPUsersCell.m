@@ -12,6 +12,9 @@
 #import "UIImage+Resize.h"
 
 @implementation TRSearchPUsersCell
+{
+    UILabel *cityLabel;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -21,6 +24,13 @@
         
         self.detailTextLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:14];
         self.detailTextLabel.textColor = [UIColor lightGrayColor];
+        
+        cityLabel = [[UILabel alloc] init];
+        cityLabel.backgroundColor = [UIColor clearColor];
+        cityLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:14];
+        cityLabel.textColor = [UIColor lightGrayColor];
+        cityLabel.textAlignment = NSTextAlignmentRight;
+        [self.contentView addSubview:cityLabel];
     }
     return self;
 }
@@ -38,10 +48,20 @@
     
     self.textLabel.frame = CGRectOffset(self.textLabel.frame, 10, 0);
     self.detailTextLabel.frame = CGRectOffset(self.detailTextLabel.frame, 10, 0);
+    
+    cityLabel.frame = CGRectMake((self.detailTextLabel.frame.origin.x+self.detailTextLabel.frame.size.width)+5,
+                                 self.detailTextLabel.frame.origin.y,
+                                 320 - (self.detailTextLabel.frame.origin.x+self.detailTextLabel.frame.size.width) - 10,
+                                 self.detailTextLabel.bounds.size.height);
 }
 
--(void) reloadWithModel:(TRUserInfoModel*)userInfo
+-(void) reloadWithModel:(TRUserInfoModel*)userInfo isShowCity:(BOOL)showCity
 {
+    if(showCity)
+        cityLabel.text = userInfo.city;
+    else
+        cityLabel.text = @"";
+    
     self.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];
     
     NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];

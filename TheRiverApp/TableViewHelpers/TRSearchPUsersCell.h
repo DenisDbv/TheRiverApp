@@ -10,6 +10,6 @@
 
 @interface TRSearchPUsersCell : UITableViewCell
 
--(void) reloadWithModel:(TRUserInfoModel*)userInfo;
+-(void) reloadWithModel:(TRUserInfoModel*)userInfo isShowCity:(BOOL)showCity;
 
 @end

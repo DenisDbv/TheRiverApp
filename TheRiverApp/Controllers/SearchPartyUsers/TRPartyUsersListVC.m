@@ -91,6 +91,9 @@
 -(void) refreshUserListByCity:(NSString*)cityName
                   andIndustry:(NSString*)industryName
 {
+    citySearchString = cityName;
+    industrySearchString = industryName;
+    
     _userList.user = [NSArray array];
     [self.tableView reloadData];
     
@@ -144,7 +147,10 @@
     
     TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
     
-    [cell reloadWithModel:userInfo];
+    if( citySearchString.length == 0 )
+        [cell reloadWithModel:userInfo isShowCity:YES];
+    else
+        [cell reloadWithModel:userInfo isShowCity:NO];
     
     return cell;
 }
