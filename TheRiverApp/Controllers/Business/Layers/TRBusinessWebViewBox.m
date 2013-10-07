@@ -45,13 +45,17 @@
     box.webView.scalesPageToFit = NO;
     box.webView.backgroundColor = [UIColor clearColor];
     box.webView.scrollView.backgroundColor = [UIColor clearColor];
-    [box.webView loadURLString:box.businessData.businessURL];
     
     box.activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(box.bounds.size.width/2-21/2, box.bounds.size.height/2-21/2, 0, 0)];
     [box.activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
     [box.activityIndicator startAnimating];
     [box addSubview:box.activityIndicator];
     
+    [[TRBusinessManager client] downloadBusinessDescByID:box.businessData.objectId withSuccessfulOperation:^(LRRestyResponse *response, TRBusinessDescModel *businessDesc) {
+        [box.webView loadHTMLString:businessDesc.user.business.desc];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        //
+    }];
     return box;
 }
 

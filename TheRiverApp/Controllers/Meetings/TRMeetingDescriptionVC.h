@@ -10,6 +10,6 @@
 
 @interface TRMeetingDescriptionVC : UIViewController
 
--(id) initByMindModel:(TRMeetingModel*)meetObject;
+-(id) initByMindModel:(TREventModel*)meetObject;
 
 @end

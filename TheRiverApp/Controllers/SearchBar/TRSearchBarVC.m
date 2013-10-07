@@ -9,20 +9,26 @@
 #import "TRSearchBarVC.h"
 #import "UISearchBar+CancelBtnShow.h"
 #import "TRAppDelegate.h"
+#import "TRContactCell.h"
+#import "MFSideMenu.h"
 
 @interface TRSearchBarVC ()
 @property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
+@property (nonatomic, copy) TRContactsListModel *searchBuffer;
 @end
 
 @implementation TRSearchBarVC
 {
     UIView *frontBlackView;
     UITableView *searchTableView;
-    
-    //NSMutableArray *_searchBuffer;
+    NSMutableArray *resultBuffer;
     TRAppDelegate *appDelegate;
+    
+    TRUserInfoModel *selectUserItem;
+    BOOL inClick;
 }
 @synthesize searchDisplayController;
+@synthesize searchBuffer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,11 +62,11 @@
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     
-    CGRect searchBarFrame = CGRectMake(0, 0, 260, 44.0);
-    self.searchBar = [[UISearchBar alloc] initWithFrame:searchBarFrame];
+    CGRect searchBarFrame = CGRectMake(3, 0, 260-6, 44.0);
+    self.searchBar = [[TRContactsSearchBar alloc] initWithFrame:searchBarFrame];
     self.searchBar.delegate = (id)self;
     self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    /*self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     self.searchBar.backgroundImage = [UIImage imageNamed:@"searchBarBG.png"];
     self.searchBar.placeholder = NSLocalizedString(@"Поиск", @"");
@@ -77,7 +83,9 @@
     [self.searchBar setImage:[UIImage imageNamed:@"searchBarIcon.png"]
             forSearchBarIcon:UISearchBarIconSearch
                        state:UIControlStateNormal];
-    [self.searchBar sizeToFit];
+    [self.searchBar sizeToFit];*/
+    
+    
     
     self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     searchDisplayController.delegate = (id)self;
@@ -96,21 +104,46 @@
 }
 
 #pragma mark UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return resultBuffer.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 59.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    TRContactCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Cell"];
+        cell = [[TRContactCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        [cell.textLabel setTextColor:[UIColor blackColor]];
     }
     
-    //Player *player = [_searchBuffer objectAtIndex:indexPath.row];
-    //cell.textLabel.text = player.lastName;
+    cell.imageView.tag = indexPath.row;
     
-	return cell;
+    TRUserInfoModel *userInfo = [resultBuffer objectAtIndex:indexPath.row];
+    [cell reloadWithModel:userInfo];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    inClick = YES;
+    selectUserItem = [resultBuffer objectAtIndex:indexPath.row];
+    
+    for (UIView *v in self.searchBar.subviews) {
+        if ([v isKindOfClass:[UIControl class]]) {
+            [((UIButton*)v) sendActionsForControlEvents:UIControlEventTouchUpInside];
+        }
+    }
 }
 
 /*#pragma mark UISearchDisplayDelegate
@@ -153,6 +186,11 @@
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
 	if([searchString isEqualToString:@""] == NO)
     {
+        [resultBuffer removeAllObjects];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.last_name contains[c] %@) or (SELF.first_name contains[c] %@)",searchString, searchString];
+        resultBuffer = [[searchBuffer.user filteredArrayUsingPredicate:predicate] mutableCopy];
+        [self.searchDisplayController.searchResultsTableView reloadData];
+        
         /*[_searchBuffer removeAllObjects];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.lastName contains[c] %@",searchString];
         _searchBuffer = [[appDelegate.playersArray.players filteredArrayUsingPredicate:predicate] mutableCopy];
@@ -170,6 +208,9 @@
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+    searchBuffer = [TRContactsManager client].lastContactArray;
+    inClick = NO;
     
     searchBar.showsScopeBar = YES;
 	[searchBar sizeToFit];
@@ -191,9 +232,16 @@
     
     [self hideFrontBlackView];
     
-    if([self.delegate respondsToSelector:@selector(onCancelSearchBar:)])
-    {
-        [self.delegate onCancelSearchBar: self.searchBar];
+    if(inClick ==  NO) {
+        if([self.delegate respondsToSelector:@selector(onCancelSearchBar:)])
+        {
+            [self.delegate onCancelSearchBar: self.searchBar];
+        }
+    } else  {
+        if([self.delegate respondsToSelector:@selector(clickOnItemInSearchVC:)])
+        {
+            [self.delegate clickOnItemInSearchVC:selectUserItem];
+        }
     }
 }
 
@@ -205,7 +253,7 @@
 {
     if(frontBlackView == nil)
     {
-        frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, self.searchBar.frame.origin.y+self.searchBar.bounds.size.height,
+        frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, 70,
                                                                   self.view.bounds.size.width, self.view.bounds.size.height)];
         frontBlackView.backgroundColor = [UIColor blackColor];
         frontBlackView.alpha = 0.0f;

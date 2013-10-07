@@ -47,13 +47,12 @@
                                                                        andParam:params
                                                                       andHeader:nil
                                                                withSuccessBlock:^(LRRestyResponse *response) {
-                                                                   
+                                                            
                                                                    if(operation.isCancelled != YES) {
                                                                    
                                                                        NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                                       
+                                                                       NSLog(@"==>%@", resultJSON);
                                                                        TRPartnersListModel *pList = [[TRPartnersListModel alloc] initWithDictionary:resultJSON];
-                                                                       pList.query = query;
                                                                        
                                                                        if( successBlock != nil)
                                                                            successBlock(response, pList);

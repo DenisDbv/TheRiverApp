@@ -9,7 +9,7 @@
 #import "TRPartnersListModel.h"
 
 @implementation TRPartnersListModel
-@synthesize fio, cities, scope_work, interests;
+@synthesize fio, cities, industries, interests, query;
 
 + (Class)fio_class {
     return [TRUserInfoModel class];
@@ -19,7 +19,7 @@
     return [TRUserInfoModel class];
 }
 
-+ (Class)scope_work_class {
++ (Class)industries_class {
     return [TRUserInfoModel class];
 }
 

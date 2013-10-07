@@ -16,6 +16,7 @@
 #import <SIAlertView/SIAlertView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "UIImage+Resize.h"
 
 #import "UIView+GestureBlocks.h"
 #import "TRUserProfileController.h"
@@ -135,8 +136,21 @@
         imageView.layer.borderColor = [UIColor clearColor].CGColor;
         imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
         imageView.clipsToBounds = YES;
-        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [header addSubview:imageView];
+        
+        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]] == nil) {
+            [imageView setImageWithURL:[NSURL URLWithString:logoURLString] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(90.0, 90.0) interpolationQuality:kCGInterpolationHigh];
+                logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 90.0, 90.0)];
+                
+                [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:[logoURLString stringByAppendingString:@"_leftLogo"] toDisk:YES];
+                
+                [imageView setImage:logoImageTest];
+            } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } else  {
+            [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]]];
+        }
+    
         
         
         //ФИО пользователя
@@ -157,7 +171,7 @@
         
         
         //Настройки пользователя
-        UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
+        /*UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
         [settingView initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self logout];
         } forTaps:1];
@@ -166,7 +180,7 @@
         settingsImageView.frame = CGRectMake(0, 0, settingsImageView.frame.size.width/2, settingsImageView.frame.size.height/2);
         settingsImageView.center = CGPointMake(settingView.frame.size.width/2, settingView.frame.size.height/2);
         [settingView addSubview:settingsImageView];
-        [header addSubview:settingView];
+        [header addSubview:settingView];*/
         
         SSLineView *bottomLine = [[SSLineView alloc] initWithFrame:CGRectMake(0, header.bounds.size.height-1, header.bounds.size.width, 1)];
         [bottomLine setLineColor:[UIColor colorWithRed:41.0/255.0
@@ -179,7 +193,7 @@
         //По нажатию на хедер
         [header initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
+                TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[TRAuthManager client].iamData.user isIam:YES];
                 [AppDelegateInstance() changeProfileViewController:userProfileVC];
             }];
         } forTaps:1];
@@ -217,100 +231,31 @@
     switch (indexPath.row) {
         case 0:
             //cell.imageView.image = [UIImage imageNamed:@"news.png"];
-            cell.textLabel.text = @"Новости";
+            cell.textLabel.text = @"Мероприятия";
             //cell.badgeString = @"10+";
             break;
         case 1:
             //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
-            cell.textLabel.text = @"Сообщения";
+            cell.textLabel.text = @"Участники";
             //cell.badgeString = @"3";
             break;
         case 2:
             //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
-            cell.textLabel.text = @"Участники";
+            cell.textLabel.text = @"Бизнесы";
             //cell.badgeString = @"3";
             break;
         case 3:
             //cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
-            cell.textLabel.text = @"Мероприятия";
+            cell.textLabel.text = @"Оставить отзыв";
             break;
         case 4:
-            cell.textLabel.text = @"Кейсы";
+            cell.textLabel.text = @"Выход";
             //cell.badgeString = @"1+";
-            break;
-        case 5:
-            //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
-            cell.textLabel.text = @"База знаний";
-            break;
-        case 6:
-            //cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
-            cell.textLabel.text = @"Оставить отзыв";
             break;
             
         default:
             break;
     }
-    /*switch (indexPath.section) {
-        case TRRootMenuSectionProfile:  {
-            if( indexPath.row == 0 )   {
-                cell.imageView.image = [UIImage imageNamed:@"IamAppleDev2.jpg"];
-                cell.textLabel.text = @"Дубов Денис";
-            }
-            break;
-        }
-        case TRRootMenuSectionFavorite: {
-            switch (indexPath.row) {
-                case 0:
-                    cell.imageView.image = [UIImage imageNamed:@"news.png"];
-                    cell.textLabel.text = @"Лента новостей";
-                    cell.badgeString = @"10+";
-                    break;
-                case 1:
-                    cell.imageView.image = [UIImage imageNamed:@"comments.png"];
-                    cell.textLabel.text = @"Сообщения";
-                    cell.badgeString = @"3";
-                    break;
-                case 2:
-                    cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
-                    cell.textLabel.text = @"Мероприятия";
-                    break;
-                case 3:
-                    cell.textLabel.text = @"Поиск участников";
-                    break;
-            }
-            break;
-        }
-        case TRRootMenuSectionKnowledge: {
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"Реки";
-                    break;
-                case 1:
-                    cell.textLabel.text = @"Кейсы";
-                    cell.badgeString = @"1+";
-                    break;
-                case 2:
-                    cell.imageView.image = [UIImage imageNamed:@"bookmark.png"];
-                    cell.textLabel.text = @"База знаний";
-                    break;
-            }
-            break;
-        }
-        case TRRootMenuSectionMy: {
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"Мои посты";
-                    break;
-                case 1:
-                    cell.textLabel.text = @"Мои подписки";
-                    break;
-            }
-            break;
-        }
-            
-        default:
-            break;
-    }*/
     return cell;
 }
 
@@ -318,7 +263,17 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 6)   {
+    if(indexPath.row == 5)  {
+        
+    } else if(indexPath.row == 4)   {
+        /*[self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:mindBaseList];
+            
+        }];*/
+        [self logout];
+    } else if(indexPath.row == 3)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             UVConfig *config = [UVConfig configWithSite:@"brandymint.uservoice.com"
                                                  andKey:@"6P7WTuK36Q8gbXrnjXSug"
@@ -333,55 +288,28 @@
             //[UserVoice presentUserVoiceNewIdeaFormForParentViewController:self andConfig:config];
             [UserVoice presentUserVoiceInterfaceForParentViewController:self andConfig:config];
         }];
-    } else if(indexPath.row == 5)  {
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            
-            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
-            [AppDelegateInstance() changeCenterViewController:mindBaseList];
-            
-        }];
-    } else if(indexPath.row == 4)   {
+    } else if(indexPath.row == 2)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:businessBaseList];
             
         }];
-    } else if(indexPath.row == 3)   {
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            
-            TRMeetingsBaseListVC *meetingBaseList = [[TRMeetingsBaseListVC alloc] init];
-            [AppDelegateInstance() changeCenterViewController:meetingBaseList];
-            
-        }];
-    } else if(indexPath.row == 2)   {
+    } else if(indexPath.row == 1)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRPartyUsersListVC *partyUserList = [[TRPartyUsersListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:partyUserList];
             
         }];
+    } else if(indexPath.row == 0)   {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRMeetingsBaseListVC *meetingBaseList = [[TRMeetingsBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:meetingBaseList];
+            
+        }];
     }
-    /*if(indexPath.section == TRRootMenuSectionProfile && indexPath.row == 0) {
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
-            [AppDelegateInstance() changeCenterViewController:userProfileVC];
-        }];
-    } else if(indexPath.section == TRRootMenuSectionKnowledge && indexPath.row == 2) {
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            
-            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
-            [AppDelegateInstance() changeCenterViewController:mindBaseList];
-            
-        }];
-    } else if(indexPath.section == TRRootMenuSectionKnowledge && indexPath.row == 1) {
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            
-            TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
-            [AppDelegateInstance() changeCenterViewController:businessBaseList];
-            
-        }];
-    }*/
 }
 
 -(void) logout

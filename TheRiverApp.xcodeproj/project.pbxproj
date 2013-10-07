@@ -21,6 +21,16 @@
 		182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72EA17D3D73800134224 /* TRMyContactListBar.m */; };
 		182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */; };
 		1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */; };
+		184C963418003C7200060B88 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962A18003C7200060B88 /* Icon-72.png */; };
+		184C963518003C7200060B88 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962B18003C7200060B88 /* Icon-72@2x.png */; };
+		184C963618003C7200060B88 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962C18003C7200060B88 /* Icon-Small-50.png */; };
+		184C963718003C7200060B88 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962D18003C7200060B88 /* Icon-Small-50@2x.png */; };
+		184C963818003C7200060B88 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962E18003C7200060B88 /* Icon-Small.png */; };
+		184C963918003C7200060B88 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962F18003C7200060B88 /* Icon-Small@2x.png */; };
+		184C963A18003C7200060B88 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C963018003C7200060B88 /* Icon.png */; };
+		184C963B18003C7200060B88 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C963118003C7200060B88 /* Icon@2x.png */; };
+		184C963C18003C7200060B88 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C963218003C7200060B88 /* iTunesArtwork.png */; };
+		184C963D18003C7200060B88 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C963318003C7200060B88 /* iTunesArtwork@2x.png */; };
 		1891D72917D643FE00281246 /* TRUserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72817D643FE00281246 /* TRUserProfileController.m */; };
 		1891D73017D6515A00281246 /* TRHeadBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D72F17D6515A00281246 /* TRHeadBox.m */; };
 		1891D73217D657F900281246 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1891D73117D657F900281246 /* background.jpg */; };
@@ -70,7 +80,6 @@
 		1891D7B417DA298200281246 /* AQWTF.png in Resources */ = {isa = PBXBuildFile; fileRef = 1891D79C17DA298200281246 /* AQWTF.png */; };
 		1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B617DA2F9900281246 /* TRRootBox.m */; };
 		1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */; };
-		1891D7C117DB1AB200281246 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C017DB1AB200281246 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7C317DB1AFE00281246 /* TRImageViewController.m */; };
 		1891D7F217DB59AC00281246 /* TRUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7F117DB59AC00281246 /* TRUserModel.m */; };
 		1891D7F617DB5B3300281246 /* TRUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891D7F517DB5B3300281246 /* TRUserManager.m */; };
@@ -135,6 +144,12 @@
 		1897601317F1753400B06DF7 /* TRPartyUsersFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */; };
 		1897601617F175D900B06DF7 /* TRSearchPUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897601517F175D800B06DF7 /* TRSearchPUManager.m */; };
 		1897601917F17A3100B06DF7 /* URLDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897601817F17A2D00B06DF7 /* URLDownloaderOperation.m */; };
+		1899664D17FD863500FF22A7 /* TRBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899664C17FD863500FF22A7 /* TRBindingManager.m */; };
+		1899665017FDA7FE00FF22A7 /* TRContactsSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899664F17FDA7FE00FF22A7 /* TRContactsSearchBar.m */; };
+		1899665317FE0DDB00FF22A7 /* TRBusinessDescModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */; };
+		1899665617FE12FB00FF22A7 /* TRMeetingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665517FE12FA00FF22A7 /* TRMeetingManager.m */; };
+		1899665A17FE142500FF22A7 /* TRMeetingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665917FE142500FF22A7 /* TRMeetingListModel.m */; };
+		1899665D17FE14BB00FF22A7 /* TREventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899665C17FE14BB00FF22A7 /* TREventModel.m */; };
 		1899701617F55D3A0056F7ED /* TRPUserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701517F55D3A0056F7ED /* TRPUserListModel.m */; };
 		1899701917F57C600056F7ED /* TRSearchPUsersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899701817F57C600056F7ED /* TRSearchPUsersCell.m */; };
 		1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899701A17F5880B0056F7ED /* avatar_placeholder.png */; };
@@ -146,6 +161,9 @@
 		1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899703017F6E2090056F7ED /* TRPartnersListModel.m */; };
 		1899703417F729010056F7ED /* TRSearchPartnersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899703317F729010056F7ED /* TRSearchPartnersCell.m */; };
 		1899703617F729340056F7ED /* TRSearchPartnersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1899703517F729340056F7ED /* TRSearchPartnersCell.xib */; };
+		1899703917F82B290056F7ED /* TRBusinessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899703817F82B280056F7ED /* TRBusinessManager.m */; };
+		1899704117F830190056F7ED /* TRBusinessRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899704017F830190056F7ED /* TRBusinessRootModel.m */; };
+		1899704417F831020056F7ED /* TRBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899704317F830FF0056F7ED /* TRBusinessModel.m */; };
 		18A108BB17DD19C400D9CD8C /* TRMindLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */; };
 		18A108BE17DD1A0800D9CD8C /* TRMindRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108BD17DD1A0800D9CD8C /* TRMindRootBox.m */; };
 		18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108C017DD976400D9CD8C /* TRMindTitleBox.m */; };
@@ -157,7 +175,6 @@
 		18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108D317DDCC5F00D9CD8C /* TRMindRatingBox.m */; };
 		18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108D717DE100200D9CD8C /* TRBusinessBaseListVC.m */; };
 		18A108DA17DE100200D9CD8C /* TRBusinessBaseListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A108D817DE100200D9CD8C /* TRBusinessBaseListVC.xib */; };
-		18A108DD17DE108A00D9CD8C /* TRBusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108DC17DE108900D9CD8C /* TRBusinessModel.m */; };
 		18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108DF17DE191F00D9CD8C /* TRBusinessItemCell.m */; };
 		18A108E217DE19A100D9CD8C /* TRBusinessItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A108E117DE19A100D9CD8C /* TRBusinessItemCell.xib */; };
 		18A108E517DE5D2800D9CD8C /* TRBusinessDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A108E417DE5D2700D9CD8C /* TRBusinessDescriptionVC.m */; };
@@ -250,11 +267,19 @@
 		18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */; };
 		18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */; };
 		18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */; };
+		18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72117FAD86A006B7864 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72517FAD940006B7864 /* TRImageReviewController.m */; };
+		18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEA72617FAD940006B7864 /* TRImageReviewController.xib */; };
+		18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */; };
+		18FEA75A17FBED2E006B7864 /* TRContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75917FBED2E006B7864 /* TRContactsManager.m */; };
+		18FEA75D17FBF20A006B7864 /* TRContactsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75C17FBF208006B7864 /* TRContactsListModel.m */; };
+		18FEA76017FBF760006B7864 /* TRContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA75F17FBF760006B7864 /* TRContactCell.m */; };
+		18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA76217FBFF7D006B7864 /* TRContactDataModel.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		182D72C217D3CFAF00134224 /* TheRiverApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheRiverApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		182D72C217D3CFAF00134224 /* The River.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The River.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		182D72C517D3CFAF00134224 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		182D72C717D3CFAF00134224 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		182D72C917D3CFAF00134224 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -276,6 +301,16 @@
 		1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootMenuCell.h; path = TableViewHelpers/TRRootMenuCell.h; sourceTree = "<group>"; };
 		1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootMenuCell.m; path = TableViewHelpers/TRRootMenuCell.m; sourceTree = "<group>"; };
 		1835771317D5AB1C00AE0D72 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Common/Global.h; sourceTree = "<group>"; };
+		184C962A18003C7200060B88 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		184C962B18003C7200060B88 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		184C962C18003C7200060B88 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		184C962D18003C7200060B88 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		184C962E18003C7200060B88 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		184C962F18003C7200060B88 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		184C963018003C7200060B88 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		184C963118003C7200060B88 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		184C963218003C7200060B88 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		184C963318003C7200060B88 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		1891D72717D643FE00281246 /* TRUserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserProfileController.h; path = Controllers/UserProfile/TRUserProfileController.h; sourceTree = "<group>"; };
 		1891D72817D643FE00281246 /* TRUserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRUserProfileController.m; path = Controllers/UserProfile/TRUserProfileController.m; sourceTree = "<group>"; };
 		1891D72E17D6515A00281246 /* TRHeadBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRHeadBox.h; path = Controllers/UserProfile/Layers/TRHeadBox.h; sourceTree = "<group>"; };
@@ -335,8 +370,6 @@
 		1891D7B617DA2F9900281246 /* TRRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootBox.m; path = Controllers/UserProfile/Layers/TRRootBox.m; sourceTree = "<group>"; };
 		1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAlbumGridViewCell.h; sourceTree = "<group>"; };
 		1891D7B917DA423000281246 /* TRAlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAlbumGridViewCell.m; sourceTree = "<group>"; };
-		1891D7BF17DB1AB200281246 /* ZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomView.h; sourceTree = "<group>"; };
-		1891D7C017DB1AB200281246 /* ZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomView.m; sourceTree = "<group>"; };
 		1891D7C217DB1AFD00281246 /* TRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRImageViewController.h; sourceTree = "<group>"; };
 		1891D7C317DB1AFE00281246 /* TRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRImageViewController.m; sourceTree = "<group>"; };
 		1891D7F017DB59AC00281246 /* TRUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRUserModel.h; path = Model/Entity/TRUserModel.h; sourceTree = "<group>"; };
@@ -437,6 +470,18 @@
 		1897601517F175D800B06DF7 /* TRSearchPUManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRSearchPUManager.m; sourceTree = "<group>"; };
 		1897601717F17A2800B06DF7 /* URLDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLDownloaderOperation.h; sourceTree = "<group>"; };
 		1897601817F17A2D00B06DF7 /* URLDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLDownloaderOperation.m; sourceTree = "<group>"; };
+		1899664B17FD863500FF22A7 /* TRBindingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBindingManager.h; path = Model/DataManagers/TRBindingManager.h; sourceTree = "<group>"; };
+		1899664C17FD863500FF22A7 /* TRBindingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBindingManager.m; path = Model/DataManagers/TRBindingManager.m; sourceTree = "<group>"; };
+		1899664E17FDA7FE00FF22A7 /* TRContactsSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactsSearchBar.h; path = Controllers/SideBars/TRContactsSearchBar.h; sourceTree = "<group>"; };
+		1899664F17FDA7FE00FF22A7 /* TRContactsSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactsSearchBar.m; path = Controllers/SideBars/TRContactsSearchBar.m; sourceTree = "<group>"; };
+		1899665117FE0DDA00FF22A7 /* TRBusinessDescModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessDescModel.h; path = Models/BusinessList/TRBusinessDescModel.h; sourceTree = "<group>"; };
+		1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessDescModel.m; path = Models/BusinessList/TRBusinessDescModel.m; sourceTree = "<group>"; };
+		1899665417FE12FA00FF22A7 /* TRMeetingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRMeetingManager.h; sourceTree = "<group>"; };
+		1899665517FE12FA00FF22A7 /* TRMeetingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRMeetingManager.m; sourceTree = "<group>"; };
+		1899665817FE142500FF22A7 /* TRMeetingListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMeetingListModel.h; path = Models/MeetingList/TRMeetingListModel.h; sourceTree = "<group>"; };
+		1899665917FE142500FF22A7 /* TRMeetingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMeetingListModel.m; path = Models/MeetingList/TRMeetingListModel.m; sourceTree = "<group>"; };
+		1899665B17FE14BB00FF22A7 /* TREventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TREventModel.h; path = Models/MeetingList/TREventModel.h; sourceTree = "<group>"; };
+		1899665C17FE14BB00FF22A7 /* TREventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TREventModel.m; path = Models/MeetingList/TREventModel.m; sourceTree = "<group>"; };
 		1899701417F55D3A0056F7ED /* TRPUserListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPUserListModel.h; path = Models/PartyUsers/TRPUserListModel.h; sourceTree = "<group>"; };
 		1899701517F55D3A0056F7ED /* TRPUserListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPUserListModel.m; path = Models/PartyUsers/TRPUserListModel.m; sourceTree = "<group>"; };
 		1899701717F57C600056F7ED /* TRSearchPUsersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchPUsersCell.h; path = TableViewHelpers/TRSearchPUsersCell.h; sourceTree = "<group>"; };
@@ -456,6 +501,12 @@
 		1899703217F729010056F7ED /* TRSearchPartnersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchPartnersCell.h; path = TableViewHelpers/TRSearchPartnersCell.h; sourceTree = "<group>"; };
 		1899703317F729010056F7ED /* TRSearchPartnersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRSearchPartnersCell.m; path = TableViewHelpers/TRSearchPartnersCell.m; sourceTree = "<group>"; };
 		1899703517F729340056F7ED /* TRSearchPartnersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRSearchPartnersCell.xib; path = TableViewHelpers/TRSearchPartnersCell.xib; sourceTree = "<group>"; };
+		1899703717F82B280056F7ED /* TRBusinessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRBusinessManager.h; sourceTree = "<group>"; };
+		1899703817F82B280056F7ED /* TRBusinessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRBusinessManager.m; sourceTree = "<group>"; };
+		1899703F17F830190056F7ED /* TRBusinessRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessRootModel.h; path = Models/BusinessList/TRBusinessRootModel.h; sourceTree = "<group>"; };
+		1899704017F830190056F7ED /* TRBusinessRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessRootModel.m; path = Models/BusinessList/TRBusinessRootModel.m; sourceTree = "<group>"; };
+		1899704217F830FE0056F7ED /* TRBusinessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessModel.h; path = Models/BusinessList/TRBusinessModel.h; sourceTree = "<group>"; };
+		1899704317F830FF0056F7ED /* TRBusinessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessModel.m; path = Models/BusinessList/TRBusinessModel.m; sourceTree = "<group>"; };
 		18A108B917DD19C400D9CD8C /* TRMindLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindLogoBox.h; path = Controllers/MindBase/Layers/TRMindLogoBox.h; sourceTree = "<group>"; };
 		18A108BA17DD19C400D9CD8C /* TRMindLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRMindLogoBox.m; path = Controllers/MindBase/Layers/TRMindLogoBox.m; sourceTree = "<group>"; };
 		18A108BC17DD1A0800D9CD8C /* TRMindRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRMindRootBox.h; path = Controllers/MindBase/Layers/TRMindRootBox.h; sourceTree = "<group>"; };
@@ -474,8 +525,6 @@
 		18A108D617DE100200D9CD8C /* TRBusinessBaseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessBaseListVC.h; path = Controllers/Business/TRBusinessBaseListVC.h; sourceTree = "<group>"; };
 		18A108D717DE100200D9CD8C /* TRBusinessBaseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessBaseListVC.m; path = Controllers/Business/TRBusinessBaseListVC.m; sourceTree = "<group>"; };
 		18A108D817DE100200D9CD8C /* TRBusinessBaseListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRBusinessBaseListVC.xib; path = Controllers/Business/TRBusinessBaseListVC.xib; sourceTree = "<group>"; };
-		18A108DB17DE108900D9CD8C /* TRBusinessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessModel.h; path = Model/Entity/TRBusinessModel.h; sourceTree = "<group>"; };
-		18A108DC17DE108900D9CD8C /* TRBusinessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessModel.m; path = Model/Entity/TRBusinessModel.m; sourceTree = "<group>"; };
 		18A108DE17DE191F00D9CD8C /* TRBusinessItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessItemCell.h; path = TableViewHelpers/TRBusinessItemCell.h; sourceTree = "<group>"; };
 		18A108DF17DE191F00D9CD8C /* TRBusinessItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessItemCell.m; path = TableViewHelpers/TRBusinessItemCell.m; sourceTree = "<group>"; };
 		18A108E117DE19A100D9CD8C /* TRBusinessItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRBusinessItemCell.xib; path = TableViewHelpers/TRBusinessItemCell.xib; sourceTree = "<group>"; };
@@ -590,6 +639,21 @@
 		18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
 		18E65E2917D5009700D1B778 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
 		18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
+		18FEA72017FAD869006B7864 /* ZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomView.h; sourceTree = "<group>"; };
+		18FEA72117FAD86A006B7864 /* ZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomView.m; sourceTree = "<group>"; };
+		18FEA72417FAD940006B7864 /* TRImageReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRImageReviewController.h; path = Controllers/ImageReview/TRImageReviewController.h; sourceTree = "<group>"; };
+		18FEA72517FAD940006B7864 /* TRImageReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRImageReviewController.m; path = Controllers/ImageReview/TRImageReviewController.m; sourceTree = "<group>"; };
+		18FEA72617FAD940006B7864 /* TRImageReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRImageReviewController.xib; path = Controllers/ImageReview/TRImageReviewController.xib; sourceTree = "<group>"; };
+		18FEA75217FAF513006B7864 /* TRProfileWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRProfileWebViewBox.h; path = Controllers/UserProfile/Layers/TRProfileWebViewBox.h; sourceTree = "<group>"; };
+		18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRProfileWebViewBox.m; path = Controllers/UserProfile/Layers/TRProfileWebViewBox.m; sourceTree = "<group>"; };
+		18FEA75817FBED2E006B7864 /* TRContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRContactsManager.h; sourceTree = "<group>"; };
+		18FEA75917FBED2E006B7864 /* TRContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRContactsManager.m; sourceTree = "<group>"; };
+		18FEA75B17FBF205006B7864 /* TRContactsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactsListModel.h; path = Models/TRContactsListModel.h; sourceTree = "<group>"; };
+		18FEA75C17FBF208006B7864 /* TRContactsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactsListModel.m; path = Models/TRContactsListModel.m; sourceTree = "<group>"; };
+		18FEA75E17FBF760006B7864 /* TRContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactCell.h; path = TableViewHelpers/TRContactCell.h; sourceTree = "<group>"; };
+		18FEA75F17FBF760006B7864 /* TRContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactCell.m; path = TableViewHelpers/TRContactCell.m; sourceTree = "<group>"; };
+		18FEA76117FBFF7A006B7864 /* TRContactDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRContactDataModel.h; path = Models/TRContactDataModel.h; sourceTree = "<group>"; };
+		18FEA76217FBFF7D006B7864 /* TRContactDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRContactDataModel.m; path = Models/TRContactDataModel.m; sourceTree = "<group>"; };
 		20D9CF22E8694C9C9542AEF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		651A28E0F2D441E39829411F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -625,7 +689,7 @@
 		182D72C317D3CFAF00134224 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				182D72C217D3CFAF00134224 /* TheRiverApp.app */,
+				182D72C217D3CFAF00134224 /* The River.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -676,6 +740,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18FEA72317FAD8F5006B7864 /* ImageReview */,
 				1899701E17F615A80056F7ED /* SearchPartners */,
 				1897600A17F0DA7600B06DF7 /* SearchPartyUsers */,
 				18975F8E17EE2D5100B06DF7 /* Login */,
@@ -704,8 +769,28 @@
 				182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */,
 				18E65E1F17D4B97A00D1B778 /* TRFavoritesEditList.h */,
 				18E65E2017D4B97A00D1B778 /* TRFavoritesEditList.m */,
+				1899664E17FDA7FE00FF22A7 /* TRContactsSearchBar.h */,
+				1899664F17FDA7FE00FF22A7 /* TRContactsSearchBar.m */,
 			);
 			name = SideBars;
+			sourceTree = "<group>";
+		};
+		184C962918003C7200060B88 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				184C962A18003C7200060B88 /* Icon-72.png */,
+				184C962B18003C7200060B88 /* Icon-72@2x.png */,
+				184C962C18003C7200060B88 /* Icon-Small-50.png */,
+				184C962D18003C7200060B88 /* Icon-Small-50@2x.png */,
+				184C962E18003C7200060B88 /* Icon-Small.png */,
+				184C962F18003C7200060B88 /* Icon-Small@2x.png */,
+				184C963018003C7200060B88 /* Icon.png */,
+				184C963118003C7200060B88 /* Icon@2x.png */,
+				184C963218003C7200060B88 /* iTunesArtwork.png */,
+				184C963318003C7200060B88 /* iTunesArtwork@2x.png */,
+			);
+			name = AppIcons;
+			path = Resources/AppIcons;
 			sourceTree = "<group>";
 		};
 		1891D72617D643BD00281246 /* UserProfile */ = {
@@ -741,6 +826,8 @@
 				1891D80317DBC94C00281246 /* TRBusinessTitleBox.m */,
 				1891D80517DBC9CF00281246 /* TRBusinessBox.h */,
 				1891D80617DBC9D400281246 /* TRBusinessBox.m */,
+				18FEA75217FAF513006B7864 /* TRProfileWebViewBox.h */,
+				18FEA75317FAF514006B7864 /* TRProfileWebViewBox.m */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -748,7 +835,6 @@
 		1891D78017DA26A900281246 /* PhotoAlbum */ = {
 			isa = PBXGroup;
 			children = (
-				1891D7BE17DB1AB200281246 /* ZoomView */,
 				1891D78117DA26AB00281246 /* TRAlbumViewController.h */,
 				1891D78217DA26AB00281246 /* TRAlbumViewController.m */,
 				1891D7B817DA423000281246 /* TRAlbumGridViewCell.h */,
@@ -791,15 +877,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		1891D7BE17DB1AB200281246 /* ZoomView */ = {
-			isa = PBXGroup;
-			children = (
-				1891D7BF17DB1AB200281246 /* ZoomView.h */,
-				1891D7C017DB1AB200281246 /* ZoomView.m */,
-			);
-			path = ZoomView;
-			sourceTree = "<group>";
-		};
 		1891D7EE17DB595200281246 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,8 +894,6 @@
 				1891D7F117DB59AC00281246 /* TRUserModel.m */,
 				1891D81117DCDB7800281246 /* TRMindModel.h */,
 				1891D81217DCDB7800281246 /* TRMindModel.m */,
-				18A108DB17DE108900D9CD8C /* TRBusinessModel.h */,
-				18A108DC17DE108900D9CD8C /* TRBusinessModel.m */,
 				1896C46217E337B9004AE5FF /* TRMeetingModel.h */,
 				1896C46317E337B9004AE5FF /* TRMeetingModel.m */,
 			);
@@ -831,6 +906,8 @@
 				18975F8617EE1B3300B06DF7 /* FileIO */,
 				1891D7F417DB5B3300281246 /* TRUserManager.h */,
 				1891D7F517DB5B3300281246 /* TRUserManager.m */,
+				1899664B17FD863500FF22A7 /* TRBindingManager.h */,
+				1899664C17FD863500FF22A7 /* TRBindingManager.m */,
 			);
 			name = DataManagers;
 			sourceTree = "<group>";
@@ -911,6 +988,12 @@
 				1897601517F175D800B06DF7 /* TRSearchPUManager.m */,
 				1899702B17F6DC560056F7ED /* TRSearchPartnersManager.h */,
 				1899702C17F6DC560056F7ED /* TRSearchPartnersManager.m */,
+				1899703717F82B280056F7ED /* TRBusinessManager.h */,
+				1899703817F82B280056F7ED /* TRBusinessManager.m */,
+				18FEA75817FBED2E006B7864 /* TRContactsManager.h */,
+				18FEA75917FBED2E006B7864 /* TRContactsManager.m */,
+				1899665417FE12FA00FF22A7 /* TRMeetingManager.h */,
+				1899665517FE12FA00FF22A7 /* TRMeetingManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -928,6 +1011,8 @@
 		18975F8A17EE1E1200B06DF7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1899665717FE13F600FF22A7 /* MeetingList */,
+				1899703E17F82FC70056F7ED /* BusinessList */,
 				1899702E17F6E1D70056F7ED /* PartnersSearch */,
 				1899701017F54D430056F7ED /* PartyUsers */,
 				18975F8B17EE208600B06DF7 /* TRAuthUserModel.h */,
@@ -940,6 +1025,10 @@
 				1897600517F05CE000B06DF7 /* TRBusinessUserModel.m */,
 				1897600717F05D5600B06DF7 /* TRBusinessScopeModel.h */,
 				1897600817F05D5B00B06DF7 /* TRBusinessScopeModel.m */,
+				18FEA75B17FBF205006B7864 /* TRContactsListModel.h */,
+				18FEA75C17FBF208006B7864 /* TRContactsListModel.m */,
+				18FEA76117FBFF7A006B7864 /* TRContactDataModel.h */,
+				18FEA76217FBFF7D006B7864 /* TRContactDataModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -975,6 +1064,17 @@
 				1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */,
 			);
 			name = Filter;
+			sourceTree = "<group>";
+		};
+		1899665717FE13F600FF22A7 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+				1899665817FE142500FF22A7 /* TRMeetingListModel.h */,
+				1899665917FE142500FF22A7 /* TRMeetingListModel.m */,
+				1899665B17FE14BB00FF22A7 /* TREventModel.h */,
+				1899665C17FE14BB00FF22A7 /* TREventModel.m */,
+			);
+			name = MeetingList;
 			sourceTree = "<group>";
 		};
 		1899701017F54D430056F7ED /* PartyUsers */ = {
@@ -1015,6 +1115,19 @@
 				1899703017F6E2090056F7ED /* TRPartnersListModel.m */,
 			);
 			name = PartnersSearch;
+			sourceTree = "<group>";
+		};
+		1899703E17F82FC70056F7ED /* BusinessList */ = {
+			isa = PBXGroup;
+			children = (
+				1899703F17F830190056F7ED /* TRBusinessRootModel.h */,
+				1899704017F830190056F7ED /* TRBusinessRootModel.m */,
+				1899704217F830FE0056F7ED /* TRBusinessModel.h */,
+				1899704317F830FF0056F7ED /* TRBusinessModel.m */,
+				1899665117FE0DDA00FF22A7 /* TRBusinessDescModel.h */,
+				1899665217FE0DDB00FF22A7 /* TRBusinessDescModel.m */,
+			);
+			name = BusinessList;
 			sourceTree = "<group>";
 		};
 		18A108B817DD199600D9CD8C /* Layers */ = {
@@ -1170,6 +1283,7 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				184C962918003C7200060B88 /* AppIcons */,
 				1899701A17F5880B0056F7ED /* avatar_placeholder.png */,
 				18975FF917EF934000B06DF7 /* blueButton@2x.png */,
 				18975FFA17EF934000B06DF7 /* blueButton.png */,
@@ -1271,6 +1385,8 @@
 				1899703217F729010056F7ED /* TRSearchPartnersCell.h */,
 				1899703317F729010056F7ED /* TRSearchPartnersCell.m */,
 				1899703517F729340056F7ED /* TRSearchPartnersCell.xib */,
+				18FEA75E17FBF760006B7864 /* TRContactCell.h */,
+				18FEA75F17FBF760006B7864 /* TRContactCell.m */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -1298,6 +1414,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				18FEA71F17FAD869006B7864 /* ZoomView */,
 				18A108C817DDC04C00D9CD8C /* WDActivityIndicator */,
 				18E65E2317D5009700D1B778 /* MFSideMenu */,
 			);
@@ -1316,6 +1433,25 @@
 				18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */,
 			);
 			path = MFSideMenu;
+			sourceTree = "<group>";
+		};
+		18FEA71F17FAD869006B7864 /* ZoomView */ = {
+			isa = PBXGroup;
+			children = (
+				18FEA72017FAD869006B7864 /* ZoomView.h */,
+				18FEA72117FAD86A006B7864 /* ZoomView.m */,
+			);
+			path = ZoomView;
+			sourceTree = "<group>";
+		};
+		18FEA72317FAD8F5006B7864 /* ImageReview */ = {
+			isa = PBXGroup;
+			children = (
+				18FEA72417FAD940006B7864 /* TRImageReviewController.h */,
+				18FEA72517FAD940006B7864 /* TRImageReviewController.m */,
+				18FEA72617FAD940006B7864 /* TRImageReviewController.xib */,
+			);
+			name = ImageReview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1337,7 +1473,7 @@
 			);
 			name = TheRiverApp;
 			productName = TheRiverApp;
-			productReference = 182D72C217D3CFAF00134224 /* TheRiverApp.app */;
+			productReference = 182D72C217D3CFAF00134224 /* The River.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1373,8 +1509,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				182D72D217D3CFAF00134224 /* InfoPlist.strings in Resources */,
+				184C963D18003C7200060B88 /* iTunesArtwork@2x.png in Resources */,
 				182D72DA17D3CFAF00134224 /* Default.png in Resources */,
 				182D72DC17D3CFAF00134224 /* Default@2x.png in Resources */,
+				184C963918003C7200060B88 /* Icon-Small@2x.png in Resources */,
 				182D72DE17D3CFAF00134224 /* Default-568h@2x.png in Resources */,
 				18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */,
 				18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */,
@@ -1383,6 +1521,7 @@
 				18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */,
 				18DA913F17D4529D00138EF2 /* searchBarIcon@2x.png in Resources */,
 				18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */,
+				184C963C18003C7200060B88 /* iTunesArtwork.png in Resources */,
 				1891D73217D657F900281246 /* background.jpg in Resources */,
 				1891D75317D7079D00281246 /* gold.png in Resources */,
 				1891D75417D7079D00281246 /* green.png in Resources */,
@@ -1400,6 +1539,7 @@
 				1891D77717D8F74C00281246 /* nav_bg.png in Resources */,
 				1891D79D17DA298200281246 /* AQ3D-simplicity.png in Resources */,
 				1891D79E17DA298200281246 /* AQAppleTV-esque_by-mikelcroft_nl-1440.png in Resources */,
+				184C963B18003C7200060B88 /* Icon@2x.png in Resources */,
 				1891D79F17DA298200281246 /* AQbatman_surfing_on_superman.png in Resources */,
 				1891D7A017DA298200281246 /* AQcoffee-break_.png in Resources */,
 				1891D7A117DA298200281246 /* AQcolorful_1440x900.png in Resources */,
@@ -1408,6 +1548,7 @@
 				1891D7A417DA298200281246 /* AQeclipse.png in Resources */,
 				1891D7A517DA298200281246 /* AQface.png in Resources */,
 				1891D7A617DA298200281246 /* AQfocus.png in Resources */,
+				184C963718003C7200060B88 /* Icon-Small-50@2x.png in Resources */,
 				1891D7A717DA298200281246 /* AQgbo.png in Resources */,
 				1891D7A817DA298200281246 /* AQGreen_Plant_(2560x1600).png in Resources */,
 				1891D7A917DA298200281246 /* AQgrounded.png in Resources */,
@@ -1433,6 +1574,7 @@
 				18A1090B17DE771A00D9CD8C /* subscribe-icon@2x.png in Resources */,
 				18A1090C17DE771A00D9CD8C /* send-message-icon@2x.png in Resources */,
 				18A1091017DE7A5700D9CD8C /* add-contact-white-icon.png in Resources */,
+				184C963518003C7200060B88 /* Icon-72@2x.png in Resources */,
 				18A1091117DE7A5700D9CD8C /* send-message-icon.png in Resources */,
 				18A1091217DE7A5700D9CD8C /* subscribe-icon.png in Resources */,
 				18A1091D17DE7FAB00D9CD8C /* toolbar-contacts-icon@2x.png in Resources */,
@@ -1441,6 +1583,7 @@
 				18A1092217DE99C300D9CD8C /* Phone.png in Resources */,
 				18A1092B17DEA14B00D9CD8C /* 1.jpg in Resources */,
 				18A1092C17DEA14B00D9CD8C /* 2.jpg in Resources */,
+				184C963A18003C7200060B88 /* Icon.png in Resources */,
 				18A1092D17DEA14B00D9CD8C /* 3.jpg in Resources */,
 				18A1092E17DEA14B00D9CD8C /* 4.jpg in Resources */,
 				18A1092F17DEA14B00D9CD8C /* 5.jpg in Resources */,
@@ -1448,6 +1591,7 @@
 				18A1093117DEA14B00D9CD8C /* 7.jpg in Resources */,
 				18A1093F17DEA2BB00D9CD8C /* 8.jpg in Resources */,
 				18A1094017DEA2BB00D9CD8C /* 9.jpg in Resources */,
+				184C963818003C7200060B88 /* Icon-Small.png in Resources */,
 				18A1094117DEA2BB00D9CD8C /* 10.jpg in Resources */,
 				18A1094217DEA2BB00D9CD8C /* 11.jpg in Resources */,
 				18A1094317DEA2BB00D9CD8C /* 12.jpg in Resources */,
@@ -1473,6 +1617,7 @@
 				18A1096417DED0BB00D9CD8C /* profile-scrollview-subscribed@2x.png in Resources */,
 				18A1096F17DED80C00D9CD8C /* 1b.png in Resources */,
 				18A1097017DED80C00D9CD8C /* 2b.png in Resources */,
+				184C963418003C7200060B88 /* Icon-72.png in Resources */,
 				18A1097117DED80C00D9CD8C /* 3b.png in Resources */,
 				18A1097217DED80C00D9CD8C /* 4b.png in Resources */,
 				18A1097317DED80C00D9CD8C /* 5b.png in Resources */,
@@ -1503,6 +1648,7 @@
 				189486BC17E6416700E9B119 /* m3.jpg in Resources */,
 				189486BD17E6416700E9B119 /* m4.jpg in Resources */,
 				189486C617E7596D00E9B119 /* check-icon-white@2x.png in Resources */,
+				184C963618003C7200060B88 /* Icon-Small-50.png in Resources */,
 				189486C717E7596D00E9B119 /* location-icon-gray@2x.png in Resources */,
 				18975F9617EE2DF100B06DF7 /* TRLoginViewController.xib in Resources */,
 				18975F9B17EE2EFA00B06DF7 /* TRAuthViewController.xib in Resources */,
@@ -1520,6 +1666,7 @@
 				1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */,
 				1899702317F615F10056F7ED /* TRSearchPartnersListVC.xib in Resources */,
 				1899703617F729340056F7ED /* TRSearchPartnersCell.xib in Resources */,
+				18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1586,7 +1733,6 @@
 				1891D78317DA26AB00281246 /* TRAlbumViewController.m in Sources */,
 				1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */,
 				1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */,
-				1891D7C117DB1AB200281246 /* ZoomView.m in Sources */,
 				1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */,
 				1891D7F217DB59AC00281246 /* TRUserModel.m in Sources */,
 				1891D7F617DB5B3300281246 /* TRUserManager.m in Sources */,
@@ -1606,7 +1752,6 @@
 				18A108CD17DDC04C00D9CD8C /* WDActivityIndicator.m in Sources */,
 				18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */,
 				18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */,
-				18A108DD17DE108A00D9CD8C /* TRBusinessModel.m in Sources */,
 				18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */,
 				18A108E517DE5D2800D9CD8C /* TRBusinessDescriptionVC.m in Sources */,
 				18A108E917DE604800D9CD8C /* TRBusinessRootBox.m in Sources */,
@@ -1651,6 +1796,22 @@
 				1899702D17F6DC560056F7ED /* TRSearchPartnersManager.m in Sources */,
 				1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */,
 				1899703417F729010056F7ED /* TRSearchPartnersCell.m in Sources */,
+				1899703917F82B290056F7ED /* TRBusinessManager.m in Sources */,
+				1899704117F830190056F7ED /* TRBusinessRootModel.m in Sources */,
+				1899704417F831020056F7ED /* TRBusinessModel.m in Sources */,
+				18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */,
+				18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */,
+				18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */,
+				18FEA75A17FBED2E006B7864 /* TRContactsManager.m in Sources */,
+				18FEA75D17FBF20A006B7864 /* TRContactsListModel.m in Sources */,
+				18FEA76017FBF760006B7864 /* TRContactCell.m in Sources */,
+				18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */,
+				1899664D17FD863500FF22A7 /* TRBindingManager.m in Sources */,
+				1899665017FDA7FE00FF22A7 /* TRContactsSearchBar.m in Sources */,
+				1899665317FE0DDB00FF22A7 /* TRBusinessDescModel.m in Sources */,
+				1899665617FE12FB00FF22A7 /* TRMeetingManager.m in Sources */,
+				1899665A17FE142500FF22A7 /* TRMeetingListModel.m in Sources */,
+				1899665D17FE14BB00FF22A7 /* TREventModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1733,8 +1894,9 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7E21B295-70E8-48B0-B0F2-30F743B016CF";
+				PRODUCT_NAME = "The River";
+				PROVISIONING_PROFILE = "6E2A36FD-6F9C-434F-B782-304978C1D9D9";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1748,8 +1910,9 @@
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7E21B295-70E8-48B0-B0F2-30F743B016CF";
+				PRODUCT_NAME = "The River";
+				PROVISIONING_PROFILE = "6E2A36FD-6F9C-434F-B782-304978C1D9D9";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

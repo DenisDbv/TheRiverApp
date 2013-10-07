@@ -15,6 +15,8 @@ pod 'MBProgressHUD', '~> 0.7'
 pod 'SIAlertView'
 pod 'ScrollViewMenuSlider', :podspec => 'https://raw.github.com/finn-no/ScrollViewMenuSlider/master/ScrollViewMenuSlider.podspec'
 pod 'TTTAttributedLabel'
+pod 'MIHGradientView'
+pod 'RNGridMenu'
 
 # Forum
 pod 'uservoice-iphone-sdk'

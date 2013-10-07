@@ -8,6 +8,9 @@
 
 #import "TRMeetLogoBox.h"
 #import <SSToolkit/SSToolkit.h>
+#import "UIImage+Resize.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation TRMeetLogoBox
 {
@@ -26,7 +29,7 @@
     
 }
 
-+(MGBox *) initBox:(CGSize)bounds withMeetData:(TRMeetingModel *)meetObject
++(MGBox *) initBox:(CGSize)bounds withMeetData:(TREventModel *)meetObject
 {
     TRMeetLogoBox *box = [TRMeetLogoBox boxWithSize: CGSizeMake(bounds.width, 210)];
     box.meetingData = meetObject;
@@ -39,7 +42,7 @@
 
 -(void) showLogo
 {
-    UIImage *image = [UIImage imageNamed: self.meetingData.meetingPhoto];
+    /*UIImage *image = [UIImage imageNamed: self.meetingData.logo];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     
@@ -56,11 +59,28 @@
     
     [UIView animateWithDuration:0.1 animations:^{
         imageView.alpha = 1;
-    }];
+    }];*/
     
     layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
     layerView.backgroundColor = [UIColor clearColor];
     [self addSubview:layerView];
+    
+    __block UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addSubview:imageView];
+    
+    if(self.meetingData.logo.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.meetingData.logo];
+        
+        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            if(image != nil)
+            {
+                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
+                logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+                [imageView setImage:logoImageTest];
+            }
+        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    }
 }
 
 -(void) layoutSubviews
@@ -92,16 +112,26 @@
     timeLabel.textAlignment = NSTextAlignmentCenter;
     timeLabel.backgroundColor = [UIColor clearColor];
     
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
+    NSDate *myDate = [df dateFromString: self.meetingData.start_date];
+    NSLog(@"%@", myDate.description);
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd"];
+    
     NSInteger maxDateBlock = [self getMaxWidthFromStrings:self.meetingData];
     
-    [self changeSizeLabel:dayLabel atString:self.meetingData.meetingDay];
+    [self changeSizeLabel:dayLabel atString:[dateFormatter stringFromDate:myDate]];
     dayLabel.frame = [self changeWidthInFrame:dayLabel.frame byWidth:maxDateBlock];
     
-    [self changeSizeLabel:monthLabel atString:self.meetingData.meetingMonth];
+    [dateFormatter setDateFormat:@"MMMM"];
+    [self changeSizeLabel:monthLabel atString:[dateFormatter stringFromDate:myDate]];
     monthLabel.frame = [self changeWidthInFrame:monthLabel.frame byWidth:maxDateBlock];
     monthLabel.frame = [self changeYInFrame:monthLabel.frame byY:dayLabel.frame.origin.y+dayLabel.frame.size.height];
     
-    [self changeSizeLabel:timeLabel atString:self.meetingData.meetingTime ];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    [self changeSizeLabel:timeLabel atString:[dateFormatter stringFromDate:myDate]];
     timeLabel.frame = [self changeWidthInFrame:timeLabel.frame byWidth:maxDateBlock];
     timeLabel.frame = [self changeYInFrame:timeLabel.frame byY:monthLabel.frame.origin.y+monthLabel.frame.size.height];
 
@@ -119,12 +149,21 @@
     [self addSubview:infoView];
 }
 
--(NSInteger) getMaxWidthFromStrings:(TRMeetingModel*)meetingObject
+-(NSInteger) getMaxWidthFromStrings:(TREventModel*)meetingObject
 {
-    CGSize sizeMonth = [meetingObject.meetingMonth sizeWithFont:monthLabel.font
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
+    NSDate *myDate = [df dateFromString: meetingObject.start_date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM"];
+    
+    CGSize sizeMonth = [[dateFormatter stringFromDate:myDate] sizeWithFont:monthLabel.font
                                               constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                                                   lineBreakMode:NSLineBreakByWordWrapping];
-    CGSize sizeTime = [meetingObject.meetingCity sizeWithFont:timeLabel.font
+    
+    [dateFormatter setDateFormat:@"HH:mm"];
+    CGSize sizeTime = [[dateFormatter stringFromDate:myDate] sizeWithFont:timeLabel.font
                                             constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                                                 lineBreakMode:NSLineBreakByWordWrapping];
     

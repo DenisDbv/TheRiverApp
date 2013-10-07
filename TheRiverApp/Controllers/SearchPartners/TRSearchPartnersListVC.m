@@ -13,6 +13,7 @@
 #import "TRSearchPartnersCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "MFSideMenu.h"
 
 @interface TRSearchPartnersListVC ()
 @property (nonatomic, retain) TRPartnersSearchView *menuView;
@@ -24,15 +25,25 @@
 @implementation TRSearchPartnersListVC
 {
     NSArray *headerTitles;
+    NSString *queryString;
 }
 @synthesize menuView;
 @synthesize _partnersList;
+
+-(id) initVCByQuery:(NSString*)query
+{
+    self = [super initWithNibName:@"TRSearchPartnersListVC" bundle:[NSBundle mainBundle]];
+    if (self) {
+        queryString = query;
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        queryString = @"";
     }
     return self;
 }
@@ -40,6 +51,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.translucent = NO;
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    [self addSwipeGestureRecognizer];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TRSearchPartnersCell" bundle:nil] forCellReuseIdentifier:@"TRSearchPartnersCell"];
     
@@ -50,16 +67,30 @@
     [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
     
     
-    menuView = [[TRPartnersSearchView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
-    menuView.backgroundColor = [UIColor whiteColor];
-    _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
+    /*_scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
     [self.tableView addSubview: _scrollDownMindMenu.view];
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
-    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
+    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];*/
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    menuView = [[TRPartnersSearchView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
+    menuView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:menuView];
+
+    self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
+    
+    self.tableView.frame = CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height-50);
+    
+    if(queryString.length > 0)  {
+        [menuView setTextToSearchLabel:queryString];
+        [self refreshPartnersByQuery:queryString];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -69,6 +100,8 @@
 
 -(void) viewWillDisappear:(BOOL)animated
 {
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+    
     [menuView resignSearchBar];
 }
 
@@ -96,6 +129,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - Swipe gesture
+
+- (void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+}
+
+- (void)swipeRecognized:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded &&
+        gestureRecognizer.direction & UISwipeGestureRecognizerDirectionRight) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 - (void) keyboardShown:(NSNotification *)note{
     
     CGRect keyboardFrame;
@@ -108,12 +157,12 @@
 
 - (void) keyboardHidden:(NSNotification *)note{
     
-    [self.tableView setFrame: self.view.bounds];
+    [self.tableView setFrame: CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height-50)]; //self.view.bounds];
 }
 
 #pragma mark - UIScrollViewDelegate Implementation
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+/*- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [_scrollDownMindMenu scrollViewDidScroll:scrollView];
 }
 
@@ -128,6 +177,10 @@
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [_scrollDownMindMenu scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+}*/
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [menuView resignSearchBar];
 }
 
 #pragma mark - UITableViewDataSource
@@ -159,7 +212,7 @@
             return _partnersList.cities.count;
             break;
         case 2:
-            return _partnersList.scope_work.count;
+            return _partnersList.industries.count;
             break;
         case 3:
             return _partnersList.interests.count;
@@ -168,9 +221,25 @@
     return 0;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+/*- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return [headerTitles objectAtIndex:section];
+}*/
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+    headerView.backgroundColor = [UIColor colorWithRed:173.0/255.0 green:173.0/255.0 blue:173.0/255.0 alpha:1.0];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, tableView.bounds.size.width-20, 30)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"HelveticaNeueCyr-Roman" size:14.5];
+    label.text = [headerTitles objectAtIndex:section];
+    
+    [headerView addSubview:label];
+    
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,12 +256,15 @@
             break;
         case 1:
             if(_partnersList.cities.count == 0) return 0;
+            else return 30;
             break;
         case 2:
-            if(_partnersList.scope_work.count == 0) return 0;
+            if(_partnersList.industries.count == 0) return 0;
+            else return 30;
             break;
         case 3:
             if(_partnersList.interests.count == 0) return 0;
+            else return 30;
             break;
     }
     
@@ -223,8 +295,8 @@
             filterType = textCity;
             break;
         case 2:
-            userInfo = [_partnersList.scope_work objectAtIndex:indexPath.row];
-            subTextTitle = [self getMutchScopeWork:userInfo.business.scope_work byQueryString:_partnersList.query];
+            userInfo = [_partnersList.industries objectAtIndex:indexPath.row];
+            subTextTitle = [self getMutchScopeWork:userInfo.business.industries byQueryString:_partnersList.query];
             filterType = textScopeWork;
             break;
         case 3:
@@ -235,9 +307,9 @@
     }
     
     NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
-    [cell.avatarImageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
-    [cell setCellFio:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
+    [cell reloadWithData:logoURLString
+                 fioText:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
              subText:subTextTitle
          typeSubText:filterType
            withQuery:_partnersList.query];
@@ -281,6 +353,27 @@
 {
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+    
+    TRUserInfoModel *userInfo;
+    switch (indexPath.section) {
+        case 0:
+            userInfo = [_partnersList.fio objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            userInfo = [_partnersList.cities objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            userInfo = [_partnersList.industries objectAtIndex:indexPath.row];
+            break;
+        case 3:
+            userInfo = [_partnersList.interests objectAtIndex:indexPath.row];
+            break; 
+    }
+    
+    TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo isIam:NO];
+    [AppDelegateInstance() changeProfileViewController:userProfileVC];
 }
 
 @end

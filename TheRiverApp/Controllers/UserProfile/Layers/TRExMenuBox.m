@@ -22,7 +22,7 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-+(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserModel*)userObject byTarget:(id)target;
++(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserInfoModel*)userObject byTarget:(id)target;
 {
     TRExMenuBox *box = [TRExMenuBox boxWithSize: CGSizeMake(bounds.width, 104)];
     box.userData = userObject;
@@ -46,7 +46,7 @@
     
     NSArray *buttonsArray = [NSArray arrayWithObjects:
                              contactsBox,
-                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Посты"],
+                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Знания"],
                              photoBox,
                              [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-subscribed@2x.png"] withTitle:@"Подписчики"], nil];
     [box addViewsToScroll:buttonsArray];

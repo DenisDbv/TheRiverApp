@@ -19,18 +19,23 @@
 #import "TRExMenuBox.h"
 #import "TRBusinessTitleBox.h"
 #import "TRBusinessBox.h"
+#import "TRProfileWebViewBox.h"
 
 @interface TRUserProfileController ()
 @property (nonatomic, retain) MGScrollView *scrollView;
 @end
 
 @implementation TRUserProfileController
+{
+    BOOL _isIam;
+}
 
--(id) initByUserModel:(TRUserModel*)userObject
+-(id) initByUserModel:(TRUserInfoModel*)userObject isIam:(BOOL)isIam
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _userDataObject = userObject;
+        _isIam = isIam;
     }
     return self;
 }
@@ -47,13 +52,17 @@
                                                object:nil];
     
     [self createRootScrollView];
-    
+
     [self createBackgroundHeadBlock];
-    [self createContactBox];
+    
+    if(!_isIam)
+        [self createContactBox];
+    
     [self createTagsBox];
     [self createExMenuBox];
     [self createBusinessTitleBox];
     [self createBusinessBox];
+    [self createBusinessWebViewBox];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
 }
@@ -97,14 +106,16 @@
 -(void) createContactBox
 {
     TRContactBox *contactBox = (TRContactBox*)[TRContactBox initBox: self.view.bounds.size
-                                               withUserData:_userDataObject];
+                                               withUserData:_userDataObject byTarget:self];
     [_scrollView.boxes addObject: contactBox];
 }
 
 -(void) createTagsBox
 {
     TRTagsBox *tagsBox = (TRTagsBox*)[TRTagsBox initBox: self.view.bounds.size
-                                      withUserData:_userDataObject];
+                                      withUserData:_userDataObject byTarget:self];
+    if(_isIam)
+        tagsBox.topMargin = 48;
     [_scrollView.boxes addObject: tagsBox];
 }
 
@@ -127,6 +138,13 @@
     TRBusinessBox *businessBox = (TRBusinessBox*)[TRBusinessBox initBox: self.view.bounds.size
                                                   withUserData:_userDataObject];
     [_scrollView.boxes addObject: businessBox];
+}
+
+-(void) createBusinessWebViewBox
+{
+    TRProfileWebViewBox *businessWebViewBox = (TRProfileWebViewBox*)[TRProfileWebViewBox initBox: self.view.bounds.size
+                                                              withUserData:_userDataObject];
+    [_scrollView.boxes addObject: businessWebViewBox];
 }
 
 @end
