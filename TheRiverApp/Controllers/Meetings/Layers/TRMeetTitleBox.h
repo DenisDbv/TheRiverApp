@@ -7,7 +7,10 @@
 //
 
 #import "TRMeetRootBox.h"
+#import <ACPButton/ACPButton.h>
 
 @interface TRMeetTitleBox : TRMeetRootBox
+
+@property (nonatomic, retain) ACPButton *agreeButton;
 
 @end

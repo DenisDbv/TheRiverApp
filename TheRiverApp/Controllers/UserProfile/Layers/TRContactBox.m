@@ -8,6 +8,8 @@
 
 #import "TRContactBox.h"
 #import <NVUIGradientButton/NVUIGradientButton.h>
+#import <RNGridMenu/RNGridMenu.h>
+#import <QuartzCore/QuartzCore.h>
 
 @implementation TRContactBox
 
@@ -16,11 +18,12 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-+(TRContactBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
++(TRContactBox *) initBox:(CGSize)bounds withUserData:(TRUserInfoModel*)userObject byTarget:(id)target;
 {
     TRContactBox *box = [TRContactBox boxWithSize: CGSizeMake(bounds.width, 101)];
     box.userData = userObject;
     box.zIndex = -1;
+    box.rootBox = target;
     
     [box showFirstItemContactButtons];
     //[box showSecondItemContactButtons];
@@ -43,6 +46,7 @@
     imgMessageView.frame = CGRectMake(13, 15, imgMessage.size.width/2, imgMessage.size.height/2);
     
     NVUIGradientButton *subscribeButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(9, 0, 146, 41) style:NVUIGradientButtonStyleDefault];
+    [subscribeButton addTarget:self action:@selector(onCommunicateClick:) forControlEvents:UIControlEventTouchUpInside];
     subscribeButton.leftAccessoryImage = [UIImage imageNamed:@"subscribe-icon.png"];
     subscribeButton.tintColor = subscribeButton.highlightedTintColor = [UIColor clearColor];
     subscribeButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
@@ -73,6 +77,55 @@
     messageButton.text = @"Сообщение";
     [buttonsBox addSubview:messageButton];
     [messageButton addSubview:imgMessageView];
+}
+
+-(void) onCommunicateClick:(id)sender
+{
+    [self showGrid];
+}
+
+- (void)showGrid {
+    NSInteger numberOfOptions = 6;
+    NSArray *items = @[
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Phone.png"] title:@"Телефон"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype.png"] title:@"Skype"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"] title:@"SMS"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"] title:@"Email"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] title:@"Vkontakte"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]
+                       ];
+    
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    av.delegate = self;
+    av.itemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
+    [av showInViewController:self.rootBox center:CGPointMake(self.rootBox.view.bounds.size.width/2.f, self.rootBox.view.bounds.size.height/2.f)];
+}
+
+#pragma mark - RNGridMenuDelegate
+
+- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
+    switch (itemIndex) {
+        case 0:
+            [[TRBindingManager sharedInstance] callBinding:self.userData];
+            break;
+        case 1:
+            [[TRBindingManager sharedInstance] skypeBinding:self.userData];
+            break;
+        case 2:
+            [[TRBindingManager sharedInstance] smsBinding:self.userData];
+            break;
+        case 3:
+            [[TRBindingManager sharedInstance] emailBinding:self.userData];
+            break;
+        case 4:
+            [[TRBindingManager sharedInstance] vkBinding:self.userData];
+            break;
+        case 5:
+            [[TRBindingManager sharedInstance] fbBinding:self.userData];
+            break;
+        default:
+            break;
+    }
 }
 
 -(void) showSecondItemContactButtons

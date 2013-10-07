@@ -62,11 +62,11 @@
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     
-    CGRect searchBarFrame = CGRectMake(0, 0, 260, 44.0);
-    self.searchBar = [[UISearchBar alloc] initWithFrame:searchBarFrame];
+    CGRect searchBarFrame = CGRectMake(3, 0, 260-6, 44.0);
+    self.searchBar = [[TRContactsSearchBar alloc] initWithFrame:searchBarFrame];
     self.searchBar.delegate = (id)self;
     self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    /*self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     self.searchBar.backgroundImage = [UIImage imageNamed:@"searchBarBG.png"];
     self.searchBar.placeholder = NSLocalizedString(@"Поиск", @"");
@@ -83,7 +83,9 @@
     [self.searchBar setImage:[UIImage imageNamed:@"searchBarIcon.png"]
             forSearchBarIcon:UISearchBarIconSearch
                        state:UIControlStateNormal];
-    [self.searchBar sizeToFit];
+    [self.searchBar sizeToFit];*/
+    
+    
     
     self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     searchDisplayController.delegate = (id)self;
@@ -251,7 +253,7 @@
 {
     if(frontBlackView == nil)
     {
-        frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, self.searchBar.frame.origin.y+self.searchBar.bounds.size.height,
+        frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, 70,
                                                                   self.view.bounds.size.width, self.view.bounds.size.height)];
         frontBlackView.backgroundColor = [UIColor blackColor];
         frontBlackView.alpha = 0.0f;

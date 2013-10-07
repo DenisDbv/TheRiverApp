@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRSearchBar.h"
+#import "TRContactsSearchBar.h"
 
 @protocol TRSearchBarDelegate <NSObject>
 -(void) onClickBySearchBar:(UISearchBar*)searchBar;
@@ -17,7 +19,7 @@
 @interface TRSearchBarVC : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic, assign) id <TRSearchBarDelegate> delegate;
-@property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, retain) TRContactsSearchBar *searchBar;
 
 -(void) removeSearchTable;
 

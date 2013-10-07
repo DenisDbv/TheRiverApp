@@ -29,7 +29,7 @@
     //self.topBorderColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
 }
 
-+(MGBox *) initBox:(CGSize)bounds withMeetData:(TRMeetingModel *)meetObject
++(MGBox *) initBox:(CGSize)bounds withMeetData:(TREventModel *)meetObject
 {
     TRMeetWebViewBox *box = [TRMeetWebViewBox boxWithSize: CGSizeMake(bounds.width, 100)];
     box.meetingData = meetObject;
@@ -44,7 +44,7 @@
     box.webView.scalesPageToFit = NO;
     box.webView.backgroundColor = [UIColor clearColor];
     box.webView.scrollView.backgroundColor = [UIColor clearColor];
-    [box.webView loadURLString:box.meetingData.meetingURL];
+    [box.webView loadHTMLString:meetObject.text];
     
     box.activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(box.bounds.size.width/2-21/2, box.bounds.size.height/2-21/2, 0, 0)];
     [box.activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];

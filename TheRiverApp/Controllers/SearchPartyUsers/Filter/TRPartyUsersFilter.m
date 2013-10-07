@@ -26,6 +26,9 @@
 
 @property (nonatomic, retain) UITableView *citiesTableView;
 @property (nonatomic, retain) UITableView *industriesTableView;
+
+@property (nonatomic, copy) NSMutableArray *_citiesList;
+@property (nonatomic, copy) NSMutableArray *_industryList;
 @end
 
 @implementation TRPartyUsersFilter
@@ -37,10 +40,17 @@
     
     NSIndexPath *preLastIndustrySelectIndexPath;
     NSIndexPath *lastIndustrySelectIndexPath;
+    
+    UIImageView *imgLeftButton;
+    UIImageView *imgRightButton;
 }
+
+const NSString *constAllItem = @"Все";
+
 @synthesize levelButton, categoryButton, cancelButton, successButton;
 @synthesize headButtonsView, subHeadButtonsView;
 @synthesize citiesTableView, industriesTableView;
+@synthesize _citiesList, _industryList;
 
 - (id)initWithFrame:(CGRect)frame byRootTarget:(id)target
 {
@@ -57,7 +67,10 @@
         [self createSubHeadButtons];
         [self createHeadButtons];
         
-        NSLog(@"%i", [TRSearchPUManager client].cityList.count);
+        _citiesList = [[NSMutableArray alloc] initWithArray:[TRSearchPUManager client].cityList copyItems:YES];
+        _industryList = [[NSMutableArray alloc] initWithArray:[TRSearchPUManager client].industryList copyItems:YES];
+        [_citiesList insertObject:constAllItem atIndex:0];
+        [_industryList insertObject:constAllItem atIndex:0];
     }
     return self;
 }
@@ -119,13 +132,13 @@
     NSString *cityName;
     NSString *industryName;
     
-    if(lastCitySelectIndexPath.row >= 0)
-        cityName = [[TRSearchPUManager client].cityList objectAtIndex:lastCitySelectIndexPath.row];
+    if(lastCitySelectIndexPath.row >= 1)
+        cityName = [_citiesList objectAtIndex:lastCitySelectIndexPath.row];
     else
         cityName = @"";
     
-    if(lastIndustrySelectIndexPath.row >= 0)
-        industryName = [[TRSearchPUManager client].industryList objectAtIndex:lastIndustrySelectIndexPath.row];
+    if(lastIndustrySelectIndexPath.row >= 1)
+        industryName = [_industryList objectAtIndex:lastIndustrySelectIndexPath.row];
     else
         industryName = @"";
     
@@ -155,7 +168,7 @@
     
     UIImage *dropDownImage = [UIImage imageNamed:@"dropdown-icon@2x.png"];
     
-    levelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(0, roundf(self.bounds.size.height-41)/2, 80, 41) style:NVUIGradientButtonStyleDefault];
+    levelButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(0, roundf(self.bounds.size.height-41)/2, 140, 41) style:NVUIGradientButtonStyleDefault];
     levelButton.rightAccessoryImage = [UIImage imageNamed:@"dropdown-icon@2x.png"];
     [levelButton addTarget:self action:@selector(onCityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     levelButton.tintColor = levelButton.highlightedTintColor = [UIColor clearColor];
@@ -165,17 +178,18 @@
     [levelButton setGradientEnabled:NO];
     [levelButton setBorderWidth:2.0];
     levelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    levelButton.titleLabel.textAlignment = NSTextAlignmentLeft;
     levelButton.textColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     levelButton.highlightedTextColor = [UIColor blueColor];
     levelButton.textShadowColor = [UIColor whiteColor];
     levelButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    levelButton.text = @"Город";
+    //levelButton.text = @"Все города";
     [headButtonsView addSubview:levelButton];
-    UIImageView *imgLeftButton = [[UIImageView alloc] initWithImage:dropDownImage];
+    imgLeftButton = [[UIImageView alloc] initWithImage:dropDownImage];
     imgLeftButton.frame = CGRectMake(levelButton.frame.size.width-dropDownImage.size.width+5, 19, dropDownImage.size.width/2, dropDownImage.size.height/2);
     [levelButton addSubview:imgLeftButton];
     
-    categoryButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-120-0), roundf(self.bounds.size.height-41)/2, 120, 41) style:NVUIGradientButtonStyleDefault];
+    categoryButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(roundf(self.bounds.size.width-140-3), roundf(self.bounds.size.height-41)/2, 140, 41) style:NVUIGradientButtonStyleDefault];
     categoryButton.rightAccessoryImage = dropDownImage;
     [categoryButton addTarget:self action:@selector(onIndustrialButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     categoryButton.tintColor = categoryButton.highlightedTintColor = [UIColor clearColor];
@@ -185,17 +199,25 @@
     [categoryButton setGradientEnabled:NO];
     [categoryButton setBorderWidth:2.0];
     categoryButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    categoryButton.titleLabel.textAlignment = NSTextAlignmentRight;
     categoryButton.textColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     categoryButton.highlightedTextColor = [UIColor blueColor];
     categoryButton.textShadowColor = [UIColor whiteColor];
     categoryButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    categoryButton.text = @"Отрасли";
+    //categoryButton.text = @"Все отрасли";
     [headButtonsView addSubview:categoryButton];
-    UIImageView *imgRightButton = [[UIImageView alloc] initWithImage:dropDownImage];
+    imgRightButton = [[UIImageView alloc] initWithImage:dropDownImage];
     imgRightButton.frame = CGRectMake(categoryButton.frame.size.width-dropDownImage.size.width-3, 19, dropDownImage.size.width/2, dropDownImage.size.height/2);
     [categoryButton addSubview:imgRightButton];
     
+    [self refreshMainButtonTitles:@"Все города" :@"Все отрасли"];
+    
     [self addSubview:headButtonsView];
+}
+
+-(NSInteger) getSizeMainButtonWithText:(NSString*)text
+{
+    return [text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:16] constrainedToSize:CGSizeMake(120, 20) lineBreakMode:NSLineBreakByTruncatingTail].width;
 }
 
 -(void) createSubHeadButtons
@@ -231,7 +253,7 @@
     successButton.textShadowColor = [UIColor whiteColor];
     successButton.highlightedTextShadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     successButton.text = @"Готово";
-    [subHeadButtonsView addSubview:successButton];
+    //[subHeadButtonsView addSubview:successButton];
     
     [self addSubview:subHeadButtonsView];
 }
@@ -241,7 +263,10 @@
     citiesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height,
                                                                    self.bounds.size.width,
                                                                    rootController.tableView.bounds.size.height-self.bounds.size.height)];
-    citiesTableView.separatorColor = [UIColor blackColor];
+    citiesTableView.separatorColor = [UIColor colorWithRed:204.0/255.0
+                                                     green:204.0/255.0
+                                                      blue:204.0/255.0
+                                                     alpha:1.0];
     citiesTableView.alpha = 0;
     citiesTableView.delegate = self;
     citiesTableView.dataSource = self;
@@ -274,7 +299,10 @@
     industriesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height,
                                                                     self.bounds.size.width,
                                                                     rootController.tableView.bounds.size.height-self.bounds.size.height)];
-    industriesTableView.separatorColor = [UIColor blackColor];
+    industriesTableView.separatorColor = [UIColor colorWithRed:204.0/255.0
+                                                         green:204.0/255.0
+                                                          blue:204.0/255.0
+                                                         alpha:1.0];
     industriesTableView.alpha = 0;
     industriesTableView.delegate = self;
     industriesTableView.dataSource = self;
@@ -310,9 +338,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(tableView == citiesTableView)
-        return [TRSearchPUManager client].cityList.count;
+        return _citiesList.count;
     else
-        return [TRSearchPUManager client].industryList.count;
+        return _industryList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -341,7 +369,7 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        cell.textLabel.text = [[TRSearchPUManager client].cityList objectAtIndex:indexPath.row];
+        cell.textLabel.text = [_citiesList objectAtIndex:indexPath.row];
     }
     else
     {
@@ -352,7 +380,7 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        cell.textLabel.text = [[TRSearchPUManager client].industryList objectAtIndex:indexPath.row];
+        cell.textLabel.text = [_industryList objectAtIndex:indexPath.row];
     }
     
     return cell;
@@ -384,6 +412,52 @@
         preLastIndustrySelectIndexPath = lastIndustrySelectIndexPath;
         lastIndustrySelectIndexPath = indexPath;
     }
+    
+    [self onClickByCell];
+}
+
+-(void) onClickByCell
+{
+    [self showRootContent];
+    
+    if(citiesTableView != nil)
+        [self hideCitiesTableView];
+    else
+        [self hideIndustryTableView];
+    
+    
+    NSString *cityName;
+    NSString *industryName;
+    
+    if(lastCitySelectIndexPath.row >= 1)
+        cityName = [_citiesList objectAtIndex:lastCitySelectIndexPath.row];
+    else
+        cityName = @"";
+    
+    if(lastIndustrySelectIndexPath.row >= 1)
+        industryName = [_industryList objectAtIndex:lastIndustrySelectIndexPath.row];
+    else
+        industryName = @"";
+    
+    [rootController refreshUserListByCity: cityName andIndustry: industryName];
+    
+    if(cityName.length == 0) cityName = @"Все города";
+    if(industryName.length == 0) industryName = @"Все отрасли";
+    [self refreshMainButtonTitles:cityName :industryName];
+}
+
+-(void) refreshMainButtonTitles:(NSString*)cityName :(NSString*)industryName
+{
+    UIImage *dropDownImage = [UIImage imageNamed:@"dropdown-icon@2x.png"];
+    
+    levelButton.text = cityName;
+    NSInteger leftImageX = [self getSizeMainButtonWithText:cityName];
+    
+    imgLeftButton.frame = CGRectMake(leftImageX + 13, 19, dropDownImage.size.width/2, dropDownImage.size.height/2);
+    
+    categoryButton.text = industryName;
+    imgRightButton.frame = CGRectMake(categoryButton.frame.size.width-dropDownImage.size.width+5, 19, dropDownImage.size.width/2, dropDownImage.size.height/2);
+    
 }
 
 @end

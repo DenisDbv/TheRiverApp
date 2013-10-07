@@ -19,6 +19,6 @@
 @property (nonatomic, retain) IBOutlet ACPButton *agreeButton;
 @property (nonatomic, retain) IBOutlet UILabel *labelIfDisable;
 
--(void) reloadWithMeetingModel:(TRMeetingModel*)meetingObject;
+-(void) reloadWithMeetingModel:(TREventModel*)meetingObject;
 
 @end

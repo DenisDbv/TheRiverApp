@@ -9,7 +9,7 @@
 #import "TRUserInfoModel.h"
 
 @implementation TRUserInfoModel
-@synthesize id, first_name, last_name, sex, age, city, logo, profit, business, contact_data;
+@synthesize id, first_name, last_name, sex, age, city, logo, profit, email, business, contact_data;
 @synthesize interests;
 
 + (Class)interests_class {

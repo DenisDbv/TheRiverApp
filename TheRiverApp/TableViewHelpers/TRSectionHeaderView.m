@@ -62,20 +62,24 @@
 
 -(void) initialize
 {
-    [self setBackgroundColor:[UIColor colorWithRed:77.0/255.0
+    [self setBackgroundColor:[UIColor colorWithRed:230.0/255.0
+                                             green:230.0/255.0
+                                              blue:230.0/255.0
+                                             alpha:1.0]];
+    /*[self setBackgroundColor:[UIColor colorWithRed:77.0/255.0
                                              green:79.0/255.0
                                               blue:80.0/255.0
-                                             alpha:1.0]];
+                                             alpha:1.0]];*/
     
     _label = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 10.0, 2.0)];
     [self.label setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:12]];
     [self.label setBackgroundColor:[UIColor clearColor]];
-    [self.label setTextColor:[UIColor colorWithRed:203.0/255.0
-                                             green:206.0/255.0
-                                              blue:209.0/255.0
+    [self.label setTextColor:[UIColor colorWithRed:102.0/255.0
+                                             green:102.0/255.0
+                                              blue:102.0/255.0
                                              alpha:1.0]];
-    [self.label setShadowOffset:CGSizeMake(0, 1)];
-    [self.label setShadowColor:[[UIColor blackColor] colorWithAlphaComponent:.5]];
+    //[self.label setShadowOffset:CGSizeMake(0, 1)];
+    //[self.label setShadowColor:[[UIColor blackColor] colorWithAlphaComponent:.5]];
     [self.label setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [self addSubview:self.label];
     [self setClipsToBounds:NO];
@@ -86,7 +90,7 @@
     [self.label setText:self.title];
 }
 
--(void)drawRect:(CGRect)rect{
+/*-(void)drawRect:(CGRect)rect{
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -142,6 +146,6 @@
     //// Cleanup
     CGGradientRelease(gradient2);
     CGColorSpaceRelease(colorSpace);
-}
+}*/
 
 @end
