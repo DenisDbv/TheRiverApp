@@ -295,7 +295,6 @@
     
     searchBar = [[TRPartySearchBar alloc] initWithFrame:CGRectMake(5, 0, self.frame.size.width-10, 35)];
     searchBar.frame = CGRectOffset(searchBar.frame, 0, (self.frame.size.height-40)/2);
-    [searchBar setPlaceholder:@"Поиск"];
     [searchBar setShowsCancelButton:YES];
     searchBar.delegate = self;
     [subHeadButtonsView addSubview:searchBar];
@@ -367,6 +366,7 @@
         citiesTableView.alpha = 1;
     }];
     
+    [searchBar setPlaceholder:@"Введите город"];
     [searchBar setText:@""];
     [searchBar becomeFirstResponder];
     [self refreshDataBySearchString:@""];
@@ -407,6 +407,7 @@
         industriesTableView.alpha = 1;
     }];
     
+    [searchBar setPlaceholder:@"Введите отрасль"];
     [searchBar setText:@""];
     [searchBar becomeFirstResponder];
     [self refreshDataBySearchString:@""];
