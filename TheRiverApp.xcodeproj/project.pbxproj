@@ -251,6 +251,7 @@
 		18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1099C17DF183100D9CD8C /* UIImage+Resize.m */; };
 		18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1099F17DF193900D9CD8C /* UIImage+Alpha.m */; };
 		18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */; };
+		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -613,6 +614,8 @@
 		18A1099F17DF193900D9CD8C /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Alpha.m"; path = "Common/UIImage+Alpha.m"; sourceTree = "<group>"; };
 		18A109A017DF193A00D9CD8C /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RoundedCorner.h"; path = "Common/UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "Common/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
+		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -1062,6 +1065,8 @@
 			children = (
 				1897601117F1753400B06DF7 /* TRPartyUsersFilter.h */,
 				1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */,
+				18CBE8A7180293A800547909 /* TRPartySearchBar.h */,
+				18CBE8A8180293A800547909 /* TRPartySearchBar.m */,
 			);
 			name = Filter;
 			sourceTree = "<group>";
@@ -1750,6 +1755,7 @@
 				18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */,
 				18A108C717DDACA900D9CD8C /* TRMindWebViewBox.m in Sources */,
 				18A108CD17DDC04C00D9CD8C /* WDActivityIndicator.m in Sources */,
+				18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */,
 				18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */,
 				18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */,
 				18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */,
