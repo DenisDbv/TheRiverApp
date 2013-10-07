@@ -21,6 +21,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <SIAlertView/SIAlertView.h>
 #import "WDActivityIndicator.h"
+#import <RNGridMenu/RNGridMenu.h>
 
 @interface TRMyContactListBar ()
 @property (nonatomic, copy) TRContactsListModel *_contactList;
@@ -30,6 +31,9 @@
 @end
 
 @implementation TRMyContactListBar
+{
+    NSIndexPath *lastSelectedIndex;
+}
 @synthesize _contactList;
 @synthesize activityIndicator;
 
@@ -45,27 +49,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    UIView *substrateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 70)];
+    substrateView.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:substrateView];
+    
     _searchBarController = [[TRSearchBarVC alloc] init];
     _searchBarController.delegate = (id)self;
-    [self.view addSubview:_searchBarController.searchBar];
+    _searchBarController.searchBar.frame = CGRectOffset(_searchBarController.searchBar.frame, 0, (substrateView.frame.size.height-_searchBarController.searchBar.frame.size.height)/2);
     [_searchBarController.searchBar sizeToFit];
+    [self.view addSubview:_searchBarController.searchBar];
     
-    _contactsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f,
-                                                                       320.0, CGRectGetHeight(self.view.bounds)-44.0)
+    _contactsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 70.0f,
+                                                                       320.0, CGRectGetHeight(self.view.bounds)-70.0)
                                                       style:UITableViewStylePlain];
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	_contactsTableView.backgroundColor = [UIColor whiteColor];
-    [_contactsTableView setSeparatorColor:[UIColor colorWithRed:41.0/255.0
-                                                          green:41.0/255.0
-                                                           blue:41.0/255.0
-                                                          alpha:1.0]];
-    [_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
-                                                           green:51.0/255.0
-                                                            blue:51.0/255.0
+    [_contactsTableView setSeparatorColor: [UIColor colorWithRed:204.0/255.0
+                                                           green:204.0/255.0
+                                                            blue:204.0/255.0
                                                            alpha:1.0]];
+    /*[_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
+     green:51.0/255.0
+     blue:51.0/255.0
+     alpha:1.0]];*/
     //_contactsTableView.nxEV_emptyView = all;
 	[self.view addSubview: _contactsTableView];
     
@@ -94,7 +106,7 @@
 -(void) refreshContactList
 {
     if(activityIndicator == nil)    {
-        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];// initWithFrame:CGRectMake(_contactsTableView.bounds.size.width/2, (_contactsTableView.bounds.size.height)/2, 0, 0)];
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];// initWithFrame:CGRectMake(_contactsTableView.bounds.size.width/2, (_contactsTableView.bounds.size.height)/2, 0, 0)];
         [activityIndicator setCenter:CGPointMake(270.0/2, (_contactsTableView.bounds.size.height)/2)];
         [_contactsTableView addSubview:activityIndicator];
         [activityIndicator startAnimating];
@@ -125,7 +137,7 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 32.0f)
+    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 25.0f)
                                                                          withTitle:@"КОНТАКТЫ"
                                                                    withButtonTitle:@""//РЕДАКТИРОВАТЬ
                                                                            byBlock:^{
@@ -136,7 +148,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 32.0;
+    return 25.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -152,7 +164,7 @@
          [cell.imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
              UIImageView *touchView = (UIImageView*)sender.view;
              [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[_contactList.user objectAtIndex:touchView.tag]];
+                 TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:[_contactList.user objectAtIndex:touchView.tag] isIam:NO];
                  [AppDelegateInstance() changeProfileViewController:userProfileVC];
              }];
          
@@ -171,7 +183,11 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
+    lastSelectedIndex = indexPath;
+    
+    [self onCommunicateClick];
+    
+    /*TRUserInfoModel *userUnit = [_contactList.user objectAtIndex:indexPath.row];
     
     NSString *phone = @"";
     NSString *skype = @"";
@@ -179,8 +195,8 @@
     NSString *vk = @"";
     NSString *email = @"";
     
-    if(userUnit.contact_data.email.length > 0)
-        email = userUnit.contact_data.email;
+    if(userUnit.email.length > 0)
+        email = userUnit.email;
     if(userUnit.contact_data.phone.count > 0)
         phone = [userUnit.contact_data.phone objectAtIndex:0];
     if(userUnit.contact_data.skype.length > 0)
@@ -190,15 +206,12 @@
     if(userUnit.contact_data.vk.length > 0)
         vk = userUnit.contact_data.vk;
     
-    NSLog(@"%@ ==> %@", userUnit.contact_data.phone, phone);
-    
     REActivity *customActivity = [[REActivity alloc] initWithTitle:@"Телефон"
                                                              image:[UIImage imageNamed:@"Phone.png"]
                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                                                                                       
                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                               NSString *phoneNumber = [@"tel://" stringByAppendingString:phone];
-                                                               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+                                                               [[TRBindingManager sharedInstance] callBinding:userUnit];
                                                            }];
                                                        }];
     
@@ -207,75 +220,98 @@
                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                            
                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                               BOOL installed = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"skype:"]];
-                                                               if(installed)
-                                                               {
-                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"skype:%@?call", skype]]];
-                                                               }
-                                                               else
-                                                               {
-                                                                   SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"У Вас не установлено приложение Skype.\n Установить?"];
-                                                                   alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:18];
-                                                                   [alertView addButtonWithTitle:@"НЕТ"
-                                                                                            type:SIAlertViewButtonTypeCancel
-                                                                                         handler:^(SIAlertView *alertView) {
-                                                                                             NSLog(@"Cancel Clicked");
-                                                                                         }];
-                                                                   [alertView addButtonWithTitle:@"ДА"
-                                                                                            type:SIAlertViewButtonTypeDefault
-                                                                                         handler:^(SIAlertView *alertView) {
-                                                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.com/apps/skype/skype"]];
-                                                                                         }];
-                                                                   [alertView show];
-                                                               }
+                                                               [[TRBindingManager sharedInstance] skypeBinding:userUnit];
                                                            }];
                                                        }];
     
-    REMessageActivity *messageActivity = [[REMessageActivity alloc] init];
-    messageActivity.userInfo = @{
-                                  @"text": @"Привет! :)",
-                                  @"recipient":phone,
-                                };
-    /*REActivity *messageActivity = [[REActivity alloc] initWithTitle:@"SMS"
+    REActivity *messageActivity = [[REActivity alloc] initWithTitle:@"SMS"
                                                            image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"]
                                                      actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
                                                          [activityViewController dismissViewControllerAnimated:YES completion:^{
-                                                             MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
-                                                             if([MFMessageComposeViewController canSendText])
-                                                             {
-                                                                 controller.body = @"Привет :)";
-                                                                 controller.recipients = [NSArray arrayWithObjects:email, nil];
-                                                                 controller.messageComposeDelegate = self;
-                                                                 [self presentModalViewController:controller animated:YES];
-                                                             }
+                                                             [[TRBindingManager sharedInstance] smsBinding:userUnit];
                                                          }];
-                                                     }];*/
+                                                     }];
     
-    REMailActivity *mailActivity = [[REMailActivity alloc] init];
-    mailActivity.userInfo = @{
-                              @"text": @"Привет! :)",
-                              @"recipient":email,
-                            };
+    REActivity *mailActivity = [[REActivity alloc] initWithTitle:@"Email"
+                                                              image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"]
+                                                        actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
+                                                            [activityViewController dismissViewControllerAnimated:YES completion:^{
+                                                                [[TRBindingManager sharedInstance] emailBinding:userUnit];
+                                                            }];
+                                                        }];
     
     REVKActivity *vkActivity = [[REVKActivity alloc] initWithTitle:@"ВКонтакте" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:vk];
-            [[UIApplication sharedApplication] openURL:url];
+            [[TRBindingManager sharedInstance] vkBinding:userUnit];
         }];
     }];
     
     REFacebookActivity *facebookActivity = [[REFacebookActivity alloc] initWithTitle:@"Facebook" image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] actionBlock:^(REActivity *activity, REActivityViewController *activityViewController) {
         [activityViewController dismissViewControllerAnimated:YES completion:^{
-            NSURL *url = [NSURL URLWithString:fb];
-            [[UIApplication sharedApplication] openURL:url];
+            [[TRBindingManager sharedInstance] fbBinding:userUnit];
         }];
     }];
     
     NSArray *activities = @[customActivity, customSkypeActivity, messageActivity, mailActivity,
                             vkActivity, facebookActivity];
     REActivityViewController *activityViewController = [[REActivityViewController alloc] initWithViewController:self activities:activities];
-    [activityViewController presentFromRootViewController];
+    [activityViewController presentFromRootViewController];*/
     
+}
+
+-(void) onCommunicateClick
+{
+    [self showGrid];
+}
+
+- (void)showGrid {
+    NSInteger numberOfOptions = 6;
+    NSArray *items = @[
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Phone.png"] title:@"Телефон"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype.png"] title:@"Skype"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"] title:@"SMS"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"] title:@"Email"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] title:@"Vkontakte"],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]
+                       ];
+    
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    av.delegate = self;
+    av.itemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    [av showInViewController:rootViewController center:CGPointMake(screenWidth/2.0f, screenHeight/2.0f)];
+}
+
+#pragma mark - RNGridMenuDelegate
+
+- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
+    switch (itemIndex) {
+        case 0:
+            [[TRBindingManager sharedInstance] callBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
+            break;
+        case 1:
+            [[TRBindingManager sharedInstance] skypeBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
+            break;
+        case 2:
+            [[TRBindingManager sharedInstance] smsBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
+            break;
+        case 3:
+            [[TRBindingManager sharedInstance] emailBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
+            break;
+        case 4:
+            [[TRBindingManager sharedInstance] vkBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
+            break;
+        case 5:
+            [[TRBindingManager sharedInstance] fbBinding:[_contactList.user objectAtIndex:lastSelectedIndex.row]];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
@@ -322,7 +358,7 @@
         self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
         
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo];
+            TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo isIam:NO];
             [AppDelegateInstance() changeProfileViewController:userProfileVC];
         }];
     }];

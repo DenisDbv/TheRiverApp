@@ -51,8 +51,10 @@
 {
     CAGradientLayer *layer = (CAGradientLayer *)self.layer;
     
-    UIColor *darkColor = [UIColor colorWithRed:24.0/255.0 green:171.0/255.0 blue:110.0/255.0 alpha:1.0f];
-    UIColor *lightColor = [UIColor colorWithRed:49.0/255.0 green:245.0/255.0 blue:85.0/255.0 alpha:1.0f];
+    /*UIColor *darkColor = [UIColor colorWithRed:24.0/255.0 green:171.0/255.0 blue:110.0/255.0 alpha:1.0f];
+    UIColor *lightColor = [UIColor colorWithRed:49.0/255.0 green:245.0/255.0 blue:85.0/255.0 alpha:1.0f];*/
+    UIColor *darkColor = [UIColor colorWithRed:36.0/255.0 green:132.0/255.0 blue:232.0/255.0 alpha:1.0];
+    UIColor *lightColor = [UIColor colorWithRed:36.0/255.0 green:132.0/255.0 blue:232.0/255.0 alpha:1.0];
     NSMutableArray *mutableColors = [NSMutableArray arrayWithCapacity:2];
     [mutableColors addObject:(id)lightColor.CGColor];
     [mutableColors addObject:(id)darkColor.CGColor];
@@ -68,8 +70,10 @@
     [self addSubview:imageView];
     
     [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
-        [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+        if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
+            TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
+            [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+        }
     } forTaps:1];
     
     MIHGradientView *gradientView = [[MIHGradientView alloc] initWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.0]
@@ -80,8 +84,9 @@
     
     if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
         [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                              options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+                                                              options:SDWebImageDownloaderUseNSURLCache progress:^(NSUInteger receivedSize, long long expectedSize) {
+                                                                  //NSLog(@"%i from %i", receivedSize, expectedSize);
+                                                              } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
         {
             
             if(image != nil)
@@ -141,8 +146,10 @@
     [self addSubview:imageView];
     
     [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
-        [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+        if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
+            TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
+            [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+        }
     } forTaps:1];
     
     if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
@@ -161,7 +168,7 @@
                  [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
                  
                  imageView.alpha = 0;
-                 imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+                 //imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                  [imageView setImage:logoImageTest];
                  
                  [UIView animateWithDuration:0.1 animations:^{
@@ -213,7 +220,7 @@
     nameLabel.layer.shadowOpacity = 0.2f;
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (15.0+size.height), size.width, size.height);
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (18.0+size.height), size.width, size.height);
     //nameLabel.backgroundColor = [UIColor redColor];
     
     [self addSubview: nameLabel];
@@ -229,7 +236,7 @@
     nameLabel.text = [NSString stringWithFormat:@"%@, %@", self.userData.age, self.userData.city];
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0+8.0, size.width, size.height);
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0+6.0, size.width, size.height);
     
     [self addSubview: nameLabel];
 }

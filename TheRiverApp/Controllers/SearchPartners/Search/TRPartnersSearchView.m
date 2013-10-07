@@ -59,7 +59,7 @@
 {
     searchBar = [[TRSearchBar alloc] initWithFrame:CGRectMake(5, 0, self.frame.size.width-10, 35)];
     searchBar.frame = CGRectOffset(searchBar.frame, 0, (self.frame.size.height-40)/2);
-    [searchBar setPlaceholder:@"Поиск"];
+    [searchBar setPlaceholder:@"Поиск (минимум 3 символа)"];
     searchBar.delegate = self;
     [self addSubview:searchBar];
 }

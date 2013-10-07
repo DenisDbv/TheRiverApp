@@ -20,6 +20,7 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+-(NSInteger) osVersion;
 -(NSData*) getDeviceToken;
 
 - (void) presentLoginViewController;

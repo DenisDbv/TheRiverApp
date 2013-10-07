@@ -33,14 +33,6 @@
     dateCreateLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     [box.boxes addObject:dateCreateLine];*/
     
-    MGLineStyled *titleLine = [MGLineStyled lineWithMultilineLeft:box.businessData.company_name right:nil width:300.0 minHeight:10];
-    titleLine.backgroundColor = [UIColor clearColor];
-    titleLine.topMargin = 10;
-    titleLine.leftPadding = titleLine.rightPadding = 0;
-    titleLine.borderStyle = MGBorderNone;
-    titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
-    [box.boxes addObject:titleLine];
-    
     NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, businessObject.city];
     MGLineStyled *authorLine = [MGLineStyled lineWithMultilineLeft:fullTitle right:nil width:300 minHeight:10];
     authorLine.backgroundColor = [UIColor clearColor];
@@ -49,6 +41,31 @@
     authorLine.borderStyle = MGBorderNone;
     authorLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     [box.boxes addObject:authorLine];
+    
+    MGLineStyled *titleLine = [MGLineStyled lineWithMultilineLeft:businessObject.company_name right:nil width:300.0 minHeight:10];
+    titleLine.backgroundColor = [UIColor clearColor];
+    titleLine.topMargin = 10;
+    titleLine.leftPadding = titleLine.rightPadding = 0;
+    titleLine.borderStyle = MGBorderNone;
+    titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
+    [box.boxes addObject:titleLine];
+    
+    MGLineStyled *aboutLine = [MGLineStyled lineWithMultilineLeft:businessObject.about right:nil width:300 minHeight:10];
+    aboutLine.backgroundColor = [UIColor clearColor];
+    aboutLine.topMargin = 0;
+    aboutLine.leftPadding = authorLine.rightPadding = 0;
+    aboutLine.borderStyle = MGBorderNone;
+    aboutLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+    [box.boxes addObject:aboutLine];
+    
+    NSString *fullProfitTitle = [NSString stringWithFormat:@"Оборот в месяц: %@ р", businessObject.profit];
+    MGLineStyled *profitLine = [MGLineStyled lineWithMultilineLeft:fullProfitTitle right:nil width:300 minHeight:10];
+    profitLine.backgroundColor = [UIColor clearColor];
+    profitLine.topMargin = 5;
+    profitLine.leftPadding = authorLine.rightPadding = 0;
+    profitLine.borderStyle = MGBorderNone;
+    profitLine.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
+    [box.boxes addObject:profitLine];
     
     return box;
 }

@@ -24,4 +24,8 @@ typedef void (^FailedOperation)(LRRestyResponse *response);
 -(void) downloadBusinessList:(void(^)(LRRestyResponse *response, TRBusinessRootModel *businessList))successBlock
           andFailedOperation:(FailedOperation) failedOperation;
 
+-(void) downloadBusinessDescByID:(NSString*)idBusiness
+         withSuccessfulOperation:(void(^)(LRRestyResponse *response, TRBusinessDescModel *businessDesc))successBlock
+              andFailedOperation:(FailedOperation) failedOperation;
+
 @end

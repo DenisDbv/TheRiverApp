@@ -35,6 +35,9 @@
     
     self.navigationController.navigationBarHidden = YES;
     
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
     //[self toShortWidth];
 }
 

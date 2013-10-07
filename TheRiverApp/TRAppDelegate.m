@@ -32,6 +32,12 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+-(NSInteger) osVersion
+{
+    NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    return [[versionCompatibility objectAtIndex:0] intValue];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"App path: %@", [[NSBundle mainBundle] resourcePath]);
@@ -121,15 +127,35 @@
 - (void)setupAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    NSDictionary *attributes =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     [UIColor blackColor], UITextAttributeTextColor,
+     [UIColor clearColor], UITextAttributeTextShadowColor,
+     [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+     [UIFont systemFontOfSize:14], UITextAttributeFont,
+     nil];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:attributes forState:UIControlStateHighlighted];
     
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    //[[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    /*NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setValue:[UIColor blackColor] forKey:UITextAttributeTextColor];
+    [attributes setValue:[UIColor whiteColor] forKey:UITextAttributeTextShadowColor];
+    [attributes setValue:[NSValue valueWithUIOffset:UIOffsetMake(0, 1)] forKey:UITextAttributeTextShadowOffset];
+    [attributes setValue:[UIFont fontWithName:@"Verdana" size:0.0] forKey:UITextAttributeFont];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];*/
 }
 
 - (void) presentLoginViewController
 {
-    TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
-    self.window.rootViewController = loginViewController;
+    //TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
+    TRAuthViewController *authViewController = [[TRAuthViewController alloc] init];
+    self.window.rootViewController = authViewController;
     [self.window makeKeyAndVisible];
 }
 
@@ -149,7 +175,7 @@
     
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user];
+    _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user isIam:YES];
     _rootContainer = [MFSideMenuContainerViewController
                       containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                       leftMenuViewController: _leftRootMenuBar
@@ -188,8 +214,8 @@
     if( [newController.userDataObject.id integerValue] != [((TRUserProfileController*)currentCenterController).userDataObject.id integerValue] )
         [self changeCenterViewController:newController];
     
-    /*if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
-        [self changeCenterViewController:newController];*/
+    if([_rootContainer.centerViewController viewControllers].count > 1)
+        [self changeCenterViewController:newController];
 }
 
 -(void) showFontsList

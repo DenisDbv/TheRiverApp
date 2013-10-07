@@ -147,7 +147,7 @@
     
     self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
     [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-        TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel: userUnit];
+        TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel: userUnit isIam:NO];
         [AppDelegateInstance() changeCenterViewController:userProfileVC];
     }];
 }
