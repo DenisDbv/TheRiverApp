@@ -38,8 +38,28 @@
     
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
 	
     [self setupMenuBarButtonItems];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    if( self.navigationController.viewControllers.count > 1)    {
+        
+        [self addSwipeGestureRecognizer];
+        //self.menuContainerViewController.leftMenuSlideDisable = YES;
+        self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
+    }
+    else    {
+        //self.menuContainerViewController.leftMenuSlideDisable = NO;
+        self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
+    }
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    self.menuContainerViewController.panMode = MFSideMenuPanModeDefault;
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,6 +80,7 @@
         UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
         [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
         [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
+        
     } else  {
         UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake(5, roundf(((15+13)-13)/2), 18, 13)];
         settingsView.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
@@ -86,7 +107,6 @@
     [settingsView2 setBackgroundImage:[UIImage imageNamed:@"toolbar-contacts-icon@2x.png"] forState:UIControlStateNormal];
     UIBarButtonItem *settingsButton2 = [[UIBarButtonItem alloc] initWithCustomView:rightView];
     [self.navigationItem setRightBarButtonItem:settingsButton2];
-    
     
     
     UIImage *knowImage = [UIImage imageNamed:@"toolbar-knowledge-base-icon@2x.png"];
@@ -146,6 +166,22 @@
 -(void) onBack
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Swipe gesture
+
+- (void)addSwipeGestureRecognizer
+{
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+}
+
+- (void)swipeRecognized:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded &&
+        gestureRecognizer.direction & UISwipeGestureRecognizerDirectionRight) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (UIBarButtonItem *)leftMenuBarButtonItem {
