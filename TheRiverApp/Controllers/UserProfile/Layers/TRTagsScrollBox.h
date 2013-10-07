@@ -7,9 +7,13 @@
 //
 
 #import "TRRootBox.h"
+#import <DWTagList/DWTagList.h>
+#import "TRTagsBox.h"
 
-@interface TRTagsScrollBox : TRRootBox
+@interface TRTagsScrollBox : TRRootBox <DWTagListDelegate>
 
-+(TRTagsScrollBox *)initBoxWithTitle:(NSString*)title andTagsArray:(NSArray*)tagsArray;
+@property (nonatomic, retain) TRTagsBox *rootBox;
+
++(TRTagsScrollBox *)initBoxWithTitle:(NSString*)title andTagsArray:(NSArray*)tagsArray byTarget:(TRTagsBox*)target;
 
 @end

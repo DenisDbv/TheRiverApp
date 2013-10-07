@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) NSArray *fio;
 @property (nonatomic, retain) NSArray *cities;
-@property (nonatomic, retain) NSArray *scope_work;
+@property (nonatomic, retain) NSArray *industries;
 @property (nonatomic, retain) NSArray *interests;
 
 @end

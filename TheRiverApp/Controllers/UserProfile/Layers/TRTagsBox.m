@@ -12,6 +12,9 @@
 #import "TRUserResolutionModel.h"
 #import "TRBusinessScopeModel.h"
 
+#import "TRPartyUsersListVC.h"
+#import "TRSearchPartnersListVC.h"
+
 @implementation TRTagsBox
 
 - (void)setup {
@@ -23,37 +26,51 @@
     
     self.zIndex = -1;
     
-    self.topMargin = 10;
+    self.topMargin = 5;
 }
 
-+(TRTagsBox *)initBox:(CGSize)bounds withUserData:(TRUserModel *)userObject
++(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserInfoModel*)userObject byTarget:(id)target
 {
     TRTagsBox *box = [TRTagsBox boxWithSize: CGSizeMake(bounds.width, 124)];
     box.userData = userObject;
+    box.rootBox = target;
     
     NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
-    for(TRUserResolutionModel *userResolution in [TRAuthManager client].iamData.user.interests)
+    for(TRUserResolutionModel *userResolution in box.userData.interests)
     {
         [hightResolution addObject:userResolution.name];
     }
     
     if(hightResolution.count > 0)   {
-        TRTagsScrollBox *tagsResolution = [TRTagsScrollBox initBoxWithTitle:@"Высокое разрешение:" andTagsArray:hightResolution];
+        TRTagsScrollBox *tagsResolution = [TRTagsScrollBox initBoxWithTitle:@"Высокое разрешение:" andTagsArray:hightResolution byTarget:box];
+        tagsResolution.tag = 1;
         [box.boxes addObject:tagsResolution];
     }
     
     NSMutableArray *business = [[NSMutableArray alloc] init];
-    for(TRBusinessScopeModel *scopes in [TRAuthManager client].iamData.user.business.scope_work)
+    for(TRBusinessScopeModel *scopes in box.userData.business.industries)
     {
         [business addObject:scopes.name];
     }
     
     if(business.count > 0)  {
-        TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"Отрасли:" andTagsArray:business];
+        TRTagsScrollBox *tagsCurrentBusiness = [TRTagsScrollBox initBoxWithTitle:@"Отрасли:" andTagsArray:business byTarget:box];
+        tagsCurrentBusiness.tag = 2;
         [box.boxes addObject:tagsCurrentBusiness];
     }
     
     return box;
+}
+
+-(void) selectTag:(NSInteger)tag atName:(NSString*)text
+{
+    if(tag == 1)    {
+        TRSearchPartnersListVC *partnersVC = [[TRSearchPartnersListVC alloc] initVCByQuery:text];
+        [self.rootBox.navigationController pushViewController:partnersVC animated:YES];
+    } else  {
+        TRPartyUsersListVC *partyUsersVC = [[TRPartyUsersListVC alloc] initPUSearchByCity:@"" andIndustry:text];
+        [self.rootBox.navigationController pushViewController:partyUsersVC animated:YES];
+    }
 }
 
 @end

@@ -31,4 +31,9 @@ typedef void (^FailedBlockDownloader)(LRRestyResponse *response);
        withSuccessBlock:(SuccessBlockDownloader) succesBlock
          andFailedBlock:(FailedBlockDownloader) failedBlock;
 
+- (id)initWithUrlString:(NSString *)urlPath
+                   eTag:(NSString*)eTagValue
+       withSuccessBlock:(SuccessBlockDownloader) succesBlock
+         andFailedBlock:(FailedBlockDownloader) failedBlock;
+
 @end

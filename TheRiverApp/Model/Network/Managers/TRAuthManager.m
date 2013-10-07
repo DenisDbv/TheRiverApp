@@ -34,9 +34,21 @@ static const NSString * _fileHandler = @"user.data";
 withSuccessOperation:(SuccessOperation) succesOperaion
  andFailedOperation:(FailedOperation) failedOperation
 {
+    NSString *tokenStr = [AppDelegateInstance() getDeviceToken].description;
+    NSString *pushToken = @"";
+    if(tokenStr.length > 0) {
+        pushToken = [[[tokenStr
+                                 stringByReplacingOccurrencesOfString:@"<" withString:@""]
+                                stringByReplacingOccurrencesOfString:@">" withString:@""]
+                               stringByReplacingOccurrencesOfString:@" " withString:@""];
+    } else  {
+        NSLog(@"Devoce token is clear by AUTH");
+    }
+    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:login forKey:kTGUserLoginKey];
     [params setObject:password forKey:kTGUserPasswordKey];
+    [params setObject:pushToken forKey:@"device_token"];
     
     URLPostOperation * operation = [[URLPostOperation alloc] initWithUrlString: kTG_API_AuthUrl
                                                                      andParam: params
@@ -45,10 +57,15 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                                                   
                                                                   NSDictionary *resultAuthJSON = [[response asString] objectFromJSONString];
                                                                   
-                                                                  iamData = [[TRAuthUserModel alloc] initWithDictionary:resultAuthJSON];
-                                                                  iamData.email = login;
-                                                                  [self saveUserData: iamData];
-                                                                  NSLog(@"%@", iamData);
+                                                                  NSMutableDictionary *storeAuth = [[NSMutableDictionary alloc] init];
+                                                                  [storeAuth setObject:resultAuthJSON forKey:@"authJson"];
+                                                                  [storeAuth setObject:login forKey:@"login"];
+                                                            
+                                                                  [self saveUserData: storeAuth];
+                                                                  
+                                                                  //TRAuthUserModel *authModel = self.iamData;
+                                                                  //NSLog(@"%@", resultAuthJSON);
+                                                                  
                                                                   if( succesOperaion != nil)
                                                                       succesOperaion(response);
         
@@ -63,14 +80,17 @@ withSuccessOperation:(SuccessOperation) succesOperaion
     [_queueAuth addOperation:operation];
 }
 
--(void) saveUserData:(TRAuthUserModel*)userModel
+-(void) saveUserData:(id)userModel
 {
     [[TGArhiveObject class] saveArhiveFromObject:userModel toFile: (NSString*)_fileHandler];
 }
 
--(TRAuthManager*) iamData
+-(TRAuthUserModel*) iamData
 {
-    return [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileHandler];
+    NSMutableDictionary *authDictionary = [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileHandler];
+    TRAuthUserModel *authModel = [[TRAuthUserModel alloc] initWithDictionary: [authDictionary objectForKey:@"authJson"]];
+    authModel.email = [authDictionary objectForKey:@"login"];
+    return authModel;
 }
 
 -(BOOL) isAuth

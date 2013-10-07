@@ -18,6 +18,8 @@
 #import "TRScrollViewController.h"
 
 @interface TRAppDelegate()
+@property (nonatomic, copy) NSData *pushToken;
+
 @property (nonatomic, retain) MFSideMenuContainerViewController *rootContainer;
 @property (nonatomic, retain) UIViewController *mainController;
 @property (nonatomic, retain) TRLeftRootMenuBar *leftRootMenuBar;
@@ -30,11 +32,19 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+-(NSInteger) osVersion
+{
+    NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    return [[versionCompatibility objectAtIndex:0] intValue];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    NSLog(@"App path: %@", [[NSBundle mainBundle] resourcePath]);
     
-    [self updateDataFromServer];
+    [self registerDevice];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self setupAppearance];
     
@@ -56,6 +66,29 @@
     //[self showFontsList];
     
     return YES;
+}
+
+-(NSData*) getDeviceToken
+{
+    return self.pushToken;
+}
+
+-(void) registerDevice
+{
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
+    self.pushToken = deviceToken;
+    NSLog(@"My token is: %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Received notification: %@", userInfo);
 }
 
 -(void) updateDataFromServer
@@ -94,15 +127,35 @@
 - (void)setupAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    NSDictionary *attributes =
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     [UIColor blackColor], UITextAttributeTextColor,
+     [UIColor clearColor], UITextAttributeTextShadowColor,
+     [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+     [UIFont systemFontOfSize:14], UITextAttributeFont,
+     nil];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:attributes forState:UIControlStateHighlighted];
     
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
+    //[[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    /*NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setValue:[UIColor blackColor] forKey:UITextAttributeTextColor];
+    [attributes setValue:[UIColor whiteColor] forKey:UITextAttributeTextShadowColor];
+    [attributes setValue:[NSValue valueWithUIOffset:UIOffsetMake(0, 1)] forKey:UITextAttributeTextShadowOffset];
+    [attributes setValue:[UIFont fontWithName:@"Verdana" size:0.0] forKey:UITextAttributeFont];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];*/
 }
 
 - (void) presentLoginViewController
 {
-    TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
-    self.window.rootViewController = loginViewController;
+    //TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
+    TRAuthViewController *authViewController = [[TRAuthViewController alloc] init];
+    self.window.rootViewController = authViewController;
     [self.window makeKeyAndVisible];
 }
 
@@ -118,9 +171,11 @@
 
 - (void) presentTheRiverControllers
 {
+    [self updateDataFromServer];
+    
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
-    _mainController = [[TRUserProfileController alloc] initByUserModel:[[TRUserManager sharedInstance].usersObject objectAtIndex:0]];
+    _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user isIam:YES];
     _rootContainer = [MFSideMenuContainerViewController
                       containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
                       leftMenuViewController: _leftRootMenuBar
@@ -129,6 +184,11 @@
     
     self.window.rootViewController = _rootContainer;
     [self.window makeKeyAndVisible];
+}
+
+-(void) presentModalViewController:(UIViewController*)controller
+{
+    [_rootContainer presentViewController:controller animated:YES completion:nil];
 }
 
 -(void) changeCenterViewController:(UIViewController*)newController
@@ -151,7 +211,10 @@
         return;
     }
     
-    if( ![newController.userDataObject.lastName isEqualToString:((TRUserProfileController*)currentCenterController).userDataObject.lastName] )
+    if( [newController.userDataObject.id integerValue] != [((TRUserProfileController*)currentCenterController).userDataObject.id integerValue] )
+        [self changeCenterViewController:newController];
+    
+    if([_rootContainer.centerViewController viewControllers].count > 1)
         [self changeCenterViewController:newController];
 }
 

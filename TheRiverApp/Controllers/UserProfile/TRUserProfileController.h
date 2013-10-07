@@ -8,12 +8,12 @@
 
 #import "TRCenterRootController.h"
 
-@class TRUserModel;
+@class TRUserInfoModel;
 
 @interface TRUserProfileController : TRCenterRootController
 
-@property (nonatomic, retain) TRUserModel *userDataObject;
+@property (nonatomic, retain) TRUserInfoModel *userDataObject;
 
--(id) initByUserModel:(TRUserModel*)userObject;
+-(id) initByUserModel:(TRUserInfoModel*)userObject isIam:(BOOL)isIam;
 
 @end

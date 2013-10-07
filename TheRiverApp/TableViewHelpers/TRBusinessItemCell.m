@@ -9,21 +9,43 @@
 #import "TRBusinessItemCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+Resize.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation TRBusinessItemCell
 
-@synthesize logo, title, subTitle, layerView, layerShortTitleLabel, layerBeforeLabel, layerAfterLabel;
+@synthesize logo, title, subTitle, layerView, layerView2, layerShortTitleLabel, layerAfterLabel;
 
 -(void) reloadWithBusinessModel:(TRBusinessModel*)businessObject
 {
-    logo.image = [UIImage imageNamed:businessObject.businessLogo];
-    title.text = businessObject.businessTitle;
-    subTitle.text = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.firstName, businessObject.lastName, businessObject.age, businessObject.city];
+    if(businessObject.logo.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo];
+        
+        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_preview"]] == nil) {
+            [logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                if(image != nil)
+                {
+                    UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(300, 180) interpolationQuality:kCGInterpolationHigh];
+                    logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 300, 180)];
+                    [logo setImage:logoImageTest];
+                    
+                    [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:[logoURLString stringByAppendingString:@"_preview"] toDisk:YES];
+                }
+            } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } else  {
+            [logo setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_preview"]]];
+        }
+    }
+    
+    title.text = businessObject.company_name;
+    subTitle.text = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, businessObject.city];
     
     [title sizeToFit];
     CGSize size = [title.text sizeWithFont: title.font
                               constrainedToSize: CGSizeMake(290.0, 50)
                                   lineBreakMode: NSLineBreakByWordWrapping ];
+    if(size.height == 0) size.height = 20;
+    
     title.frame = CGRectMake(5.0, 7.0,
                             size.width, size.height);
     
@@ -35,6 +57,7 @@
     
     logo.frame = CGRectMake(-1, subTitle.frame.origin.y+subTitle.frame.size.height+5, 302, 180);
     layerView.frame = logo.frame;
+    layerView2.frame = logo.frame;
     
     [self showBusinessTitle:businessObject];
 }
@@ -59,7 +82,12 @@
     
     layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     layerView.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    
+    //layerView2.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    //layerView2.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+    
     [layerView layoutSubviews];
+    //[layerView2 layoutSubviews];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -80,11 +108,6 @@
     layerShortTitleLabel.layer.shadowRadius = 1;
     layerShortTitleLabel.layer.shadowOpacity = 0.2f;
     
-    layerBeforeLabel.backgroundColor = [UIColor clearColor];
-    layerBeforeLabel.textColor = [UIColor whiteColor];
-    layerBeforeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
-    layerBeforeLabel.numberOfLines = 1;
-    
     layerAfterLabel.backgroundColor = [UIColor clearColor];
     layerAfterLabel.textColor = [UIColor whiteColor];
     layerAfterLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
@@ -92,6 +115,23 @@
 }
 
 -(void) showBusinessTitle:(TRBusinessModel*)businessObject
+{
+    layerAfterLabel.text = [NSString stringWithFormat:@"Оборот в месяц: %@ р", businessObject.profit];
+    [layerAfterLabel sizeToFit];
+    layerAfterLabel.frame = CGRectMake(10,
+                                       layerView.frame.size.height - layerAfterLabel.frame.size.height - 10,
+                                       layerAfterLabel.frame.size.width, layerAfterLabel.frame.size.height);
+    
+    layerShortTitleLabel.text = businessObject.about;
+    CGSize size = [layerShortTitleLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20]
+                                        constrainedToSize:CGSizeMake(280.0, FLT_MAX)
+                                            lineBreakMode:NSLineBreakByWordWrapping];
+    layerShortTitleLabel.frame = CGRectMake(10.0,
+                                            layerAfterLabel.frame.origin.y - size.height,
+                                            size.width, size.height);
+}
+
+/*-(void) showBusinessTitle:(TRBusinessModel*)businessObject
 {
     layerAfterLabel.text = [NSString stringWithFormat:@"Стало: %@", businessObject.businessAfterTitle];
     [layerAfterLabel sizeToFit];
@@ -112,6 +152,6 @@
     layerShortTitleLabel.frame = CGRectMake(10.0,
                                             layerBeforeLabel.frame.origin.y - size.height,
                                             size.width, size.height);
-}
+}*/
 
 @end

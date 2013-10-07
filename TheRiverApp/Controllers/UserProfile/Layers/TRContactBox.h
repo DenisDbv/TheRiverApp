@@ -10,4 +10,6 @@
 
 @interface TRContactBox : TRRootBox
 
+@property (nonatomic, retain) TRUserProfileController *rootBox;
+
 @end

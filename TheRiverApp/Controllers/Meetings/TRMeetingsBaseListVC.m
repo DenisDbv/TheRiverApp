@@ -10,11 +10,18 @@
 #import "TRMeetingItemCell.h"
 #import "TRMeetingDescriptionVC.h"
 
-@interface TRMeetingsBaseListVC ()
+#import "WDActivityIndicator.h"
 
+@interface TRMeetingsBaseListVC ()
+@property (nonatomic, retain) WDActivityIndicator *activityIndicator;
+@property (nonatomic, retain) TRMeetingListModel *_meetingList;
 @end
 
 @implementation TRMeetingsBaseListVC
+{
+    NSIndexPath *lastSelectedIndexPath;
+}
+@synthesize activityIndicator, _meetingList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,11 +39,48 @@
     self.navigationController.navigationBar.clipsToBounds = YES;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TRMeetingItemCell" bundle:nil] forCellReuseIdentifier:@"TRMeetingCell"];
+    
+    [self refreshMeetingList];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    if(lastSelectedIndexPath != nil)
+       [self.tableView reloadRowsAtIndexPaths:@[lastSelectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void) refreshMeetingList
+{
+    if(activityIndicator == nil)    {
+        activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
+        [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
+        [self.view addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+    }
+    
+    [[TRMeetingManager client] downloadMeetingList:^(LRRestyResponse *response, TRMeetingListModel *meetingList) {
+        [self endRefreshMeetingList:meetingList];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        [self endRefreshMeetingList:nil];
+    }];
+}
+
+-(void) endRefreshMeetingList:(TRMeetingListModel*)list
+{
+    [activityIndicator stopAnimating];
+    [activityIndicator removeFromSuperview];
+    activityIndicator = nil;
+    
+    if(list != nil) {
+        _meetingList = list;
+        
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -46,12 +90,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (NSInteger)[TRUserManager sharedInstance].meetingObjects.count;
+    return (NSInteger)_meetingList.events.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 125; //114;
+    return 125;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,9 +106,19 @@
         cell = [[TRMeetingItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
     }
     
-    TRMeetingModel *meetUnit = [[TRUserManager sharedInstance].meetingObjects objectAtIndex:indexPath.row];
+    TREventModel *eventUnit = [_meetingList.events objectAtIndex:indexPath.row];
     
-    [cell reloadWithMeetingModel:meetUnit];
+    [cell reloadWithMeetingModel:eventUnit];
+    /*
+    NSLog(@"%@", eventUnit.start_date);
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
+    NSDate *myDate = [df dateFromString: eventUnit.start_date];
+    NSLog (@"%@", [myDate description]);
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE MMMM YYYY dd"];
+    NSLog(@"%@",[dateFormatter stringFromDate:myDate]);*/
     
     return cell;
 }
@@ -76,7 +130,11 @@
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TRMeetingDescriptionVC *descriptionUnit = [[TRMeetingDescriptionVC alloc] initByMindModel:[[TRUserManager sharedInstance].meetingObjects objectAtIndex:indexPath.row]];
+    lastSelectedIndexPath = indexPath;
+    
+    TREventModel *eventUnit = [_meetingList.events objectAtIndex:indexPath.row];
+    
+    TRMeetingDescriptionVC *descriptionUnit = [[TRMeetingDescriptionVC alloc] initByMindModel:eventUnit];
     [self.navigationController pushViewController:descriptionUnit animated:YES];
 }
 

@@ -128,6 +128,7 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="836750443"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<bool key="IBUIAutoresizesSubviews">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<reference key="IBUIContentView" ref="836750443"/>
 			</object>

@@ -7,7 +7,12 @@
 //
 
 #import "TRRootBox.h"
+#import "TRUserProfileController.h"
 
 @interface TRTagsBox : TRRootBox
+
+@property (nonatomic, retain) TRUserProfileController *rootBox;
+
+-(void) selectTag:(NSInteger)tag atName:(NSString*)text;
 
 @end

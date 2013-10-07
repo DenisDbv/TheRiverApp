@@ -7,6 +7,9 @@
 //
 
 #import "TRSearchPartnersCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "UIImage+Resize.h"
 
 @implementation TRSearchPartnersCell
 {
@@ -45,11 +48,27 @@
     centerY = (self.frame.size.height - 17)/2;
 }
 
--(void) setCellFio:(NSString*)fioText
-           subText:(NSString*)subText
-       typeSubText:(PartnersFilterType)filterType
-         withQuery:(NSString*)query
+-(void) reloadWithData:(NSString*)image
+               fioText:(NSString*)fioText
+               subText:(NSString*)subText
+           typeSubText:(PartnersFilterType)filterType
+             withQuery:(NSString*)query
 {
+    [self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
+    
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:image]
+                                                          options:SDWebImageDownloaderUseNSURLCache progress:nil
+                                                        completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+     {
+         
+         if(image != nil)
+         {
+             UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(59, 59) interpolationQuality:kCGInterpolationHigh];
+             logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 59, 59)];
+             [self.imageView setImage:logoImageTest];
+         }
+     }];
+    
     fioLabel.frame = CGRectMake(72.0, 3.0, fioLabel.frame.size.width, fioLabel.frame.size.height);
     fioLabel.text = fioText;
     subTextLabel.text = @"";

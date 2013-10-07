@@ -10,10 +10,10 @@
 
 @interface TRMeetRootBox : MGBox
 
-@property (nonatomic, strong) TRMeetingModel *meetingData;
+@property (nonatomic, strong) TREventModel *meetingData;
 
 +(MGBox *) initBox:(CGSize)bounds;
-+(MGBox *) initBox:(CGSize)bounds withMeetData:(TRMeetingModel *)meetObject;
-+(MGBox *) initBox:(CGSize)bounds withUserData:(TRMeetingModel*)userObject byTarget:(id)target;
++(MGBox *) initBox:(CGSize)bounds withMeetData:(TREventModel *)meetObject;
++(MGBox *) initBox:(CGSize)bounds withUserData:(TREventModel*)userObject byTarget:(id)target;
 
 @end
