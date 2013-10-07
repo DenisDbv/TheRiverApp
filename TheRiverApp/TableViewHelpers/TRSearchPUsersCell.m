@@ -27,7 +27,7 @@
         
         cityLabel = [[UILabel alloc] init];
         cityLabel.backgroundColor = [UIColor clearColor];
-        cityLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:14];
+        cityLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:14];
         cityLabel.textColor = [UIColor lightGrayColor];
         cityLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:cityLabel];
