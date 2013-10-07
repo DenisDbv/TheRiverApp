@@ -63,7 +63,7 @@
             if ([subsubview isKindOfClass:NSClassFromString(@"UITextField")]) {
                 UITextField *textField = (UITextField *)subsubview;
                 //textField.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:16];
-                textField.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y, textField.frame.size.width, 35);
+                textField.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y, textField.frame.size.width, 32);
                 textField.backgroundColor = [UIColor clearColor];
                 textField.layer.borderWidth = 1.0f;
                 textField.layer.cornerRadius = 4;

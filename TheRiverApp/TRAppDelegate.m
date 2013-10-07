@@ -153,8 +153,9 @@
 
 - (void) presentLoginViewController
 {
-    TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
-    self.window.rootViewController = loginViewController;
+    //TRLoginViewController *loginViewController = [[TRLoginViewController alloc] init];
+    TRAuthViewController *authViewController = [[TRAuthViewController alloc] init];
+    self.window.rootViewController = authViewController;
     [self.window makeKeyAndVisible];
 }
 

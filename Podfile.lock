@@ -14,14 +14,14 @@ PODS:
   - JSONKit (1.5pre)
   - LRResty (0.11.0):
     - NSData+Base64 (~> 1.0)
-  - MBProgressHUD (0.7)
+  - MBProgressHUD (0.8)
   - MGBox2 (2.0.0)
   - MIHGradientView (1.0.0)
   - NSData+Base64 (1.0.0)
   - NSString+RMURLEncoding (0.1.0)
-  - NVUIGradientButton (1.5.0)
+  - NVUIGradientButton (1.6.1)
   - PocketAPI (1.0.2)
-  - REActivityViewController (1.6.6):
+  - REActivityViewController (1.6.7):
     - AFNetworking (~> 1.3)
     - AFXAuthClient (~> 1.0.8)
     - DEFacebookComposeViewController (~> 1.0.0)
@@ -38,7 +38,7 @@ PODS:
   - SFHFKeychainUtils (0.0.1)
   - SIAlertView (1.2)
   - SSToolkit (1.0.4)
-  - TDBadgedCell (2.3.1)
+  - TDBadgedCell (2.4.1)
   - TTTAttributedLabel (1.7.1)
   - UIActivityIndicator-for-SDWebImage (1.0.0):
     - SDWebImage (~> 3.2)
@@ -86,14 +86,14 @@ SPEC CHECKSUMS:
   jastor: 9cb5ac45a9abae145d030ba3bf83a679d29738ac
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
   LRResty: 5e4c1b91bc5f878d64e965facd5cc9320b9ed3e2
-  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MGBox2: 7c09e36c2271f9af16fdb5141a0ca554ecee4d8d
   MIHGradientView: 6d1f937a396c7aee2650ab09cba4af420919bdf0
   NSData+Base64: 36c4e5b6479259c1a68866ccd2a8dd385c9744f7
   NSString+RMURLEncoding: f2a8c822486cdbe5c46638e85bc159aaa3ebc2b8
-  NVUIGradientButton: 08792b091feb141d89cb375cbb2d2db0cc02371c
+  NVUIGradientButton: bea9ead8be151e7603e1df63b664744f916da1b1
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
-  REActivityViewController: 1d79c0a2fc07712d3db6996849f0750897883ba5
+  REActivityViewController: f316ad5efd3d0b6119f21303dacb20e5dc4e1112
   REComposeViewController: 6f1ab35ff54d6bfb65374b3f492e414e1ec1a0db
   RNGridMenu: 8aed69538abb8280f496a88fb24e0cf7dd180caf
   ScrollViewMenuSlider: c0a6a72f0f714a318812efcf2faf8417724402d5
@@ -101,7 +101,7 @@ SPEC CHECKSUMS:
   SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   SIAlertView: fd188f66278761f4ff069f517c3deb2be16ecdcc
   SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
-  TDBadgedCell: 091af82e20d9da3be46eb48cfc53129c324a2faa
+  TDBadgedCell: 16b3256427b4bfc61e7822f0c3eebc6b71cad60d
   TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23
   UIActivityIndicator-for-SDWebImage: c5e8f6208e302b94bc50505dd24c78f34af8a749
   uservoice-iphone-sdk: 1a6b31c204a6208225197f100a67d286f51b9f0d

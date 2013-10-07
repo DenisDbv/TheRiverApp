@@ -52,6 +52,10 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.translucent = NO;
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     [self addSwipeGestureRecognizer];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TRSearchPartnersCell" bundle:nil] forCellReuseIdentifier:@"TRSearchPartnersCell"];
@@ -63,9 +67,6 @@
     [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
     
     
-    menuView = [[TRPartnersSearchView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
-    menuView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:menuView];
     /*_scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
     [self.tableView addSubview: _scrollDownMindMenu.view];
@@ -78,7 +79,12 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    menuView = [[TRPartnersSearchView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
+    menuView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:menuView];
+
     self.menuContainerViewController.panMode = MFSideMenuPanModeNone;
+    
     self.tableView.frame = CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height-50);
     
     if(queryString.length > 0)  {

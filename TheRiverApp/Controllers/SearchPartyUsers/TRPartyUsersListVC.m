@@ -54,6 +54,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.translucent = NO;
+    
     TRPartyUsersFilter *menuView = [[TRPartyUsersFilter alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
     menuView.backgroundColor = [UIColor whiteColor]; //self.tableView.separatorColor;
     _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
