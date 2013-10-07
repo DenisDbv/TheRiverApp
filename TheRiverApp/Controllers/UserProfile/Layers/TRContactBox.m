@@ -95,10 +95,17 @@
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]
                        ];
     
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    
     RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
     av.delegate = self;
     av.itemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
-    [av showInViewController:self.rootBox center:CGPointMake(self.rootBox.view.bounds.size.width/2.f, self.rootBox.view.bounds.size.height/2.f)];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    [av showInViewController:rootViewController center:CGPointMake(screenWidth/2.0f, screenHeight/2.0f)];
 }
 
 #pragma mark - RNGridMenuDelegate
