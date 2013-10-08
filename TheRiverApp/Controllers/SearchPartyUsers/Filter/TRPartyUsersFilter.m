@@ -337,6 +337,7 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *) aSearchBar
 {
     [aSearchBar resignFirstResponder];
+    [aSearchBar endEditing:YES];
     
     [self onCancelButtonClick:nil];
 }
@@ -427,6 +428,7 @@
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [searchBar resignFirstResponder];
+    [searchBar endEditing:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -514,6 +516,7 @@
 -(void) onClickByCell
 {
     [searchBar resignFirstResponder];
+    [searchBar endEditing:YES];
     
     [self showRootContent];
     

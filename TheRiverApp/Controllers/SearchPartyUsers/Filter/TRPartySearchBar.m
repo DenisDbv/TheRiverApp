@@ -96,7 +96,7 @@
                 [cancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal];
                 [cancelButton setBackgroundImage:[UIImage new] forState:UIControlStateHighlighted];
                 
-                cancelButton.frame = CGRectOffset(cancelButton.frame, -7, 5);
+                cancelButton.frame = CGRectOffset(cancelButton.frame, 0, 3);
             }
         }
         
