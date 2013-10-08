@@ -37,7 +37,7 @@
     buttonsBox.topMargin = 48;
     [self.boxes addObject:buttonsBox];
     
-    UIImage *imgSbscrb = [UIImage imageNamed:@"subscribe-icon@2x.png"];
+    UIImage *imgSbscrb = [UIImage imageNamed:@"contacts-icon@2x.png"];
     UIImage *imgMessage = [UIImage imageNamed:@"send-message-icon@2x.png"];
     
     UIImageView *imgSbsView = [[UIImageView alloc] initWithImage:imgSbscrb];
@@ -47,7 +47,7 @@
     
     NVUIGradientButton *subscribeButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(9, 0, 146, 41) style:NVUIGradientButtonStyleDefault];
     [subscribeButton addTarget:self action:@selector(onCommunicateClick:) forControlEvents:UIControlEventTouchUpInside];
-    subscribeButton.leftAccessoryImage = [UIImage imageNamed:@"subscribe-icon.png"];
+    subscribeButton.leftAccessoryImage = [UIImage imageNamed:@"contacts-icon.png"];
     subscribeButton.tintColor = subscribeButton.highlightedTintColor = [UIColor clearColor];
     subscribeButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
     subscribeButton.borderWidth = 2.0;

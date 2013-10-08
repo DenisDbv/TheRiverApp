@@ -252,6 +252,8 @@
 		18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1099F17DF193900D9CD8C /* UIImage+Alpha.m */; };
 		18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
+		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
+		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -616,6 +618,8 @@
 		18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "Common/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
+		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
+		18CBE8AB180330F200547909 /* contacts-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon@2x.png"; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -1288,6 +1292,8 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18CBE8AA180330F200547909 /* contacts-icon.png */,
+				18CBE8AB180330F200547909 /* contacts-icon@2x.png */,
 				184C962918003C7200060B88 /* AppIcons */,
 				1899701A17F5880B0056F7ED /* avatar_placeholder.png */,
 				18975FF917EF934000B06DF7 /* blueButton@2x.png */,
@@ -1538,6 +1544,7 @@
 				1891D77117D8F74C00281246 /* wishlist.png in Resources */,
 				1891D77217D8F74C00281246 /* news.png in Resources */,
 				1891D77317D8F74C00281246 /* map.png in Resources */,
+				18CBE8AC180330F200547909 /* contacts-icon.png in Resources */,
 				1891D77417D8F74C00281246 /* comments.png in Resources */,
 				1891D77517D8F74C00281246 /* calendar.png in Resources */,
 				1891D77617D8F74C00281246 /* bookmark.png in Resources */,
@@ -1627,6 +1634,7 @@
 				18A1097217DED80C00D9CD8C /* 4b.png in Resources */,
 				18A1097317DED80C00D9CD8C /* 5b.png in Resources */,
 				18A1097417DED80C00D9CD8C /* 6b.png in Resources */,
+				18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */,
 				18A1097517DED80C00D9CD8C /* 7b.png in Resources */,
 				18A1097617DED80C00D9CD8C /* 8b.jpg in Resources */,
 				18A1097717DED80C00D9CD8C /* 9b.png in Resources */,

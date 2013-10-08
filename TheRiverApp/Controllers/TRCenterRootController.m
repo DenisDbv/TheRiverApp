@@ -14,6 +14,8 @@
 
 #import "UIView+GestureBlocks.h"
 #import "UIBarButtonItem+BarButtonItemExtended.h"
+#import "TRBusinessBaseListVC.h"
+#import "TRMeetingsBaseListVC.h"
 
 @interface TRCenterRootController ()
 
@@ -108,59 +110,63 @@
     UIBarButtonItem *settingsButton2 = [[UIBarButtonItem alloc] initWithCustomView:rightView];
     [self.navigationItem setRightBarButtonItem:settingsButton2];
     
-    
-    UIImage *knowImage = [UIImage imageNamed:@"toolbar-knowledge-base-icon@2x.png"];
-    UIImage *messageImage = [UIImage imageNamed:@"toolbar-messages-icon@2x.png"];
-    UIImage *searchImage = [UIImage imageNamed:@"toolbar-search-icon@2x.png"];
-    NSInteger width = knowImage.size.width/2+messageImage.size.width/2+searchImage.size.width/2+40;
-    NSInteger height = MAX(knowImage.size.height/2, messageImage.size.height/2);
-    height = MAX(height, searchImage.size.height/2);
-    
-    NSString *text = @"Поиск";
-    CGSize size = [text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14] constrainedToSize:CGSizeMake(100, 100)];
-    width = searchImage.size.width + size.width - 5;
-    
-    UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-    [buttonView initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        [self onSearchClick];
-    } forTaps:1];
-    //buttonView.backgroundColor = [UIColor redColor];
-    /*UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button1 addTarget:self action:@selector(onKnowledgeBaseClick) forControlEvents:UIControlEventTouchUpInside];
-    [button1 setImage:knowImage forState:UIControlStateNormal];
-    button1.frame = CGRectMake(0, 0, 26, 16);
-    
-    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button2 addTarget:self action:@selector(onMessageClick) forControlEvents:UIControlEventTouchUpInside];
-    [button2 setImage:messageImage forState:UIControlStateNormal];
-    button2.frame = CGRectMake(46, 0, 18, 14);*/
-    
-    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button3 addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
-    [button3 setImage:searchImage forState:UIControlStateNormal];
-    button3.frame = CGRectMake(0, 0, 18, 18);
-    
-    UILabel *labelText = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 0, 0)];
-    labelText.userInteractionEnabled = YES;
-    labelText.backgroundColor = [UIColor clearColor];
-    labelText.textColor = [UIColor lightGrayColor];
-    labelText.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    labelText.text = @"Поиск";
-    [labelText sizeToFit];
-    
-    [buttonView addSubview:button3];
-    [buttonView addSubview:labelText];
-    /*UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button3 addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
-    [button3 setImage:searchImage forState:UIControlStateNormal];
-    button3.frame = CGRectMake(84, 0, 18, 18);*/
-    
-    /*[buttonView addSubview:button1];
-    [buttonView addSubview:button2];*/
-    //[buttonView addSubview:button3];
-    //buttonView.backgroundColor = [UIColor redColor];
-    
-    self.navigationItem.titleView = buttonView;
+
+    if(![self.navigationController.visibleViewController isKindOfClass:[TRBusinessBaseListVC class]] &&
+       ![self.navigationController.visibleViewController isKindOfClass:[TRMeetingsBaseListVC class]])
+    {
+        UIImage *knowImage = [UIImage imageNamed:@"toolbar-knowledge-base-icon@2x.png"];
+        UIImage *messageImage = [UIImage imageNamed:@"toolbar-messages-icon@2x.png"];
+        UIImage *searchImage = [UIImage imageNamed:@"toolbar-search-icon@2x.png"];
+        NSInteger width = knowImage.size.width/2+messageImage.size.width/2+searchImage.size.width/2+40;
+        NSInteger height = MAX(knowImage.size.height/2, messageImage.size.height/2);
+        height = MAX(height, searchImage.size.height/2);
+        
+        NSString *text = @"Поиск";
+        CGSize size = [text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14] constrainedToSize:CGSizeMake(100, 100)];
+        width = searchImage.size.width + size.width - 5;
+        
+        UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+        [buttonView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            [self onSearchClick];
+        } forTaps:1];
+        //buttonView.backgroundColor = [UIColor redColor];
+        /*UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button1 addTarget:self action:@selector(onKnowledgeBaseClick) forControlEvents:UIControlEventTouchUpInside];
+        [button1 setImage:knowImage forState:UIControlStateNormal];
+        button1.frame = CGRectMake(0, 0, 26, 16);
+        
+        UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button2 addTarget:self action:@selector(onMessageClick) forControlEvents:UIControlEventTouchUpInside];
+        [button2 setImage:messageImage forState:UIControlStateNormal];
+        button2.frame = CGRectMake(46, 0, 18, 14);*/
+        
+        UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button3 addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
+        [button3 setImage:searchImage forState:UIControlStateNormal];
+        button3.frame = CGRectMake(0, 0, 18, 18);
+        
+        UILabel *labelText = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 0, 0)];
+        labelText.userInteractionEnabled = YES;
+        labelText.backgroundColor = [UIColor clearColor];
+        labelText.textColor = [UIColor lightGrayColor];
+        labelText.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        labelText.text = @"Поиск";
+        [labelText sizeToFit];
+        
+        [buttonView addSubview:button3];
+        [buttonView addSubview:labelText];
+        /*UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button3 addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
+        [button3 setImage:searchImage forState:UIControlStateNormal];
+        button3.frame = CGRectMake(84, 0, 18, 18);*/
+        
+        /*[buttonView addSubview:button1];
+        [buttonView addSubview:button2];*/
+        //[buttonView addSubview:button3];
+        //buttonView.backgroundColor = [UIColor redColor];
+        
+        self.navigationItem.titleView = buttonView;
+    }
 }
 
 -(void) onBack
