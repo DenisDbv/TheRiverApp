@@ -66,7 +66,10 @@
     [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
     
-    
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
     /*_scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
     [self.tableView addSubview: _scrollDownMindMenu.view];

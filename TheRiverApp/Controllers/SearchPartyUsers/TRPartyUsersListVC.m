@@ -60,11 +60,21 @@
     menuView.backgroundColor = [UIColor whiteColor]; //self.tableView.separatorColor;
     _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
     [self.tableView addSubview: _scrollDownMindMenu.view];
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     
     [self refreshUserListByCity:citySearchString andIndustry:industrySearchString];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -48,6 +48,21 @@
     centerY = (self.frame.size.height - 17)/2;
 }
 
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    NSInteger xOffset = 0;
+    
+    if(IS_OS_7_OR_LATER)
+        xOffset = -20;
+    
+    self.imageView.frame = CGRectMake(self.imageView.frame.origin.x+xOffset,
+                                      self.imageView.frame.origin.y,
+                                      self.imageView.frame.size.width,
+                                      self.imageView.frame.size.height);
+}
+
 -(void) reloadWithData:(NSString*)image
                fioText:(NSString*)fioText
                subText:(NSString*)subText

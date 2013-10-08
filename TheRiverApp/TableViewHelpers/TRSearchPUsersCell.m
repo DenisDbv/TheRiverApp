@@ -44,10 +44,20 @@
 {
     [super layoutSubviews];
     
-    self.imageView.frame = CGRectOffset(self.imageView.frame, 10, 0);
+    NSInteger xOffset = 10;
     
-    self.textLabel.frame = CGRectOffset(self.textLabel.frame, 10, 0);
-    self.detailTextLabel.frame = CGRectOffset(self.detailTextLabel.frame, 10, 0);
+    if(IS_OS_7_OR_LATER)
+        xOffset = -10;
+    
+    self.imageView.frame = CGRectOffset(self.imageView.frame, xOffset, 0);
+    
+    self.textLabel.frame = CGRectOffset(self.textLabel.frame, xOffset, 0);
+    self.detailTextLabel.frame = CGRectOffset(self.detailTextLabel.frame, xOffset, 0);
+    
+    self.detailTextLabel.frame = CGRectMake(self.detailTextLabel.frame.origin.x,
+                                            self.detailTextLabel.frame.origin.y,
+                                            (320 - self.detailTextLabel.frame.origin.x)-10-100,
+                                            self.detailTextLabel.frame.size.height);
     
     cityLabel.frame = CGRectMake((self.detailTextLabel.frame.origin.x+self.detailTextLabel.frame.size.width)+5,
                                  self.detailTextLabel.frame.origin.y,
