@@ -21,6 +21,8 @@
 		182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72EA17D3D73800134224 /* TRMyContactListBar.m */; };
 		182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */; };
 		1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */; };
+		183F1E5018043D9600487D8B /* AMPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F1E4F18043D9600487D8B /* AMPNavigationBar.m */; };
+		183F1E5318043E6400487D8B /* TRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F1E5218043E6400487D8B /* TRNavigationController.m */; };
 		184C963418003C7200060B88 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962A18003C7200060B88 /* Icon-72.png */; };
 		184C963518003C7200060B88 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962B18003C7200060B88 /* Icon-72@2x.png */; };
 		184C963618003C7200060B88 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962C18003C7200060B88 /* Icon-Small-50.png */; };
@@ -304,6 +306,10 @@
 		1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootMenuCell.h; path = TableViewHelpers/TRRootMenuCell.h; sourceTree = "<group>"; };
 		1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootMenuCell.m; path = TableViewHelpers/TRRootMenuCell.m; sourceTree = "<group>"; };
 		1835771317D5AB1C00AE0D72 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Common/Global.h; sourceTree = "<group>"; };
+		183F1E4E18043D9600487D8B /* AMPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMPNavigationBar.h; path = Common/AMPNavigationBar.h; sourceTree = "<group>"; };
+		183F1E4F18043D9600487D8B /* AMPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMPNavigationBar.m; path = Common/AMPNavigationBar.m; sourceTree = "<group>"; };
+		183F1E5118043E6400487D8B /* TRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRNavigationController.h; path = Common/TRNavigationController.h; sourceTree = "<group>"; };
+		183F1E5218043E6400487D8B /* TRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRNavigationController.m; path = Common/TRNavigationController.m; sourceTree = "<group>"; };
 		184C962A18003C7200060B88 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		184C962B18003C7200060B88 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		184C962C18003C7200060B88 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -1418,6 +1424,10 @@
 				1891D77A17D9EB8900281246 /* UISearchBar+cancelButton.m */,
 				18A1099317DEFAF900D9CD8C /* UIBarButtonItem+BarButtonItemExtended.h */,
 				18A1099417DEFAF900D9CD8C /* UIBarButtonItem+BarButtonItemExtended.m */,
+				183F1E4E18043D9600487D8B /* AMPNavigationBar.h */,
+				183F1E4F18043D9600487D8B /* AMPNavigationBar.m */,
+				183F1E5118043E6400487D8B /* TRNavigationController.h */,
+				183F1E5218043E6400487D8B /* TRNavigationController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1723,6 +1733,8 @@
 			files = (
 				182D72D417D3CFAF00134224 /* main.m in Sources */,
 				182D72D817D3CFAF00134224 /* TRAppDelegate.m in Sources */,
+				183F1E5018043D9600487D8B /* AMPNavigationBar.m in Sources */,
+				183F1E5318043E6400487D8B /* TRNavigationController.m in Sources */,
 				182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */,
 				182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */,
 				182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */,

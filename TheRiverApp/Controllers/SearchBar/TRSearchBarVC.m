@@ -263,7 +263,7 @@
 {
     if(frontBlackView == nil)
     {
-        frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, 70,
+        frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, 70 + ((IS_OS_7_OR_LATER)?15:0),
                                                                   self.view.bounds.size.width, self.view.bounds.size.height)];
         frontBlackView.backgroundColor = [UIColor blackColor];
         frontBlackView.alpha = 0.0f;
