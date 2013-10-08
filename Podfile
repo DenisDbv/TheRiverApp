@@ -17,6 +17,7 @@ pod 'ScrollViewMenuSlider', :podspec => 'https://raw.github.com/finn-no/ScrollVi
 pod 'TTTAttributedLabel'
 pod 'MIHGradientView'
 pod 'RNGridMenu'
+pod 'RNBlurModalView', '~> 0.1.0'
 
 # Forum
 pod 'uservoice-iphone-sdk'

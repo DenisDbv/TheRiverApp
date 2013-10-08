@@ -10,6 +10,7 @@
 #import <NVUIGradientButton/NVUIGradientButton.h>
 #import <RNGridMenu/RNGridMenu.h>
 #import <QuartzCore/QuartzCore.h>
+#import <RNBlurModalView/RNBlurModalView.h>
 
 @implementation TRContactBox
 
@@ -63,6 +64,7 @@
     [subscribeButton addSubview:imgSbsView];
     
     NVUIGradientButton *messageButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(164, 0, 146, 41) style:NVUIGradientButtonStyleDefault];
+    [messageButton addTarget:self action:@selector(onMessageClick:) forControlEvents:UIControlEventTouchUpInside];
     messageButton.leftAccessoryImage = [UIImage imageNamed:@"send-message-icon.png"];
     messageButton.tintColor = messageButton.highlightedTintColor = [UIColor clearColor];
     messageButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
@@ -82,6 +84,13 @@
 -(void) onCommunicateClick:(id)sender
 {
     [self showGrid];
+}
+
+-(void) onMessageClick:(id)sender
+{
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:rootViewController title:@"Сообщения" message:@"В следующей версии будет реализована возможность обмена сообщениями внутри приложения. Поддержка чат комнат и многого другого."];
+    [modal showWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveLinear completion:nil];
 }
 
 - (void)showGrid {
