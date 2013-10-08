@@ -33,6 +33,7 @@
 {
     TRMeetWebViewBox *box = [TRMeetWebViewBox boxWithSize: CGSizeMake(bounds.width, 100)];
     box.meetingData = meetObject;
+    box.topMargin = 10;
     //box.backgroundColor = [UIColor redColor];
     
     box.webView = [[SSWebView alloc] initWithFrame:CGRectMake(0, 0, bounds.width, 1)];

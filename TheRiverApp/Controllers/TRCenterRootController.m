@@ -122,7 +122,7 @@
         height = MAX(height, searchImage.size.height/2);
         
         NSString *text = @"Поиск";
-        CGSize size = [text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14] constrainedToSize:CGSizeMake(100, 100)];
+        CGSize size = [text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16] constrainedToSize:CGSizeMake(100, 100)];
         width = searchImage.size.width + size.width - 5;
         
         UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
@@ -145,11 +145,11 @@
         [button3 setImage:searchImage forState:UIControlStateNormal];
         button3.frame = CGRectMake(0, 0, 18, 18);
         
-        UILabel *labelText = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 0, 0)];
+        UILabel *labelText = [[UILabel alloc] initWithFrame:CGRectMake(23, -1, 0, 0)];
         labelText.userInteractionEnabled = YES;
         labelText.backgroundColor = [UIColor clearColor];
         labelText.textColor = [UIColor lightGrayColor];
-        labelText.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        labelText.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
         labelText.text = @"Поиск";
         [labelText sizeToFit];
         

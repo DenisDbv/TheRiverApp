@@ -95,7 +95,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 125;
+    TRMeetingItemCell *meetCell = [[TRMeetingItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TRMeetingCell"];
+    
+    TREventModel *eventUnit = [_meetingList.events objectAtIndex:indexPath.row];
+    
+    return [meetCell getCellHeight:eventUnit]; //125;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
