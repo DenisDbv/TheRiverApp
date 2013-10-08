@@ -31,6 +31,26 @@
     // Configure the view for the selected state
 }
 
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    NSInteger xOffset = 0;
+    
+    if(IS_OS_7_OR_LATER)
+        xOffset = -20;
+    
+    self.imageView.frame = CGRectMake(self.imageView.frame.origin.x+xOffset,
+                                      self.imageView.frame.origin.y,
+                                      self.imageView.frame.size.width,
+                                      self.imageView.frame.size.height);
+    
+    self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x+xOffset,
+                                      self.textLabel.frame.origin.y,
+                                      self.textLabel.frame.size.width,
+                                      self.textLabel.frame.size.height);
+}
+
 -(void) reloadWithModel:(TRUserInfoModel*)userInfo
 {
     self.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];

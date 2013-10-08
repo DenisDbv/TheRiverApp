@@ -46,6 +46,8 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self.searchBar sizeToFit];
 }
 
@@ -139,9 +141,17 @@
     inClick = YES;
     selectUserItem = [resultBuffer objectAtIndex:indexPath.row];
     
-    for (UIView *v in self.searchBar.subviews) {
-        if ([v isKindOfClass:[UIControl class]]) {
-            [((UIButton*)v) sendActionsForControlEvents:UIControlEventTouchUpInside];
+    if(IS_OS_7_OR_LATER)    {
+        for (UIView *v in [[self.searchBar.subviews objectAtIndex:0] subviews]) {
+            if ([v isKindOfClass:[UIControl class]]) {
+                [((UIButton*)v) sendActionsForControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+    } else  {
+        for (UIView *v in self.searchBar.subviews) {
+            if ([v isKindOfClass:[UIControl class]]) {
+                [((UIButton*)v) sendActionsForControlEvents:UIControlEventTouchUpInside];
+            }
         }
     }
 }

@@ -81,6 +81,7 @@
 -(void) onBack
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"%@", _imagePath);
 }
 
 -(void) hideNavBar

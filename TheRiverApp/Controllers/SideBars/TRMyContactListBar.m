@@ -49,10 +49,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
+    
     UIView *substrateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 70)];
     substrateView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:substrateView];
@@ -74,6 +71,10 @@
                                                            green:204.0/255.0
                                                             blue:204.0/255.0
                                                            alpha:1.0]];
+    if ([_contactsTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_contactsTableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
     /*[_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
      green:51.0/255.0
      blue:51.0/255.0
