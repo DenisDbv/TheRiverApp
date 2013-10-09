@@ -14,8 +14,10 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import "MFSideMenu.h"
+#import "WDActivityIndicator.h"
 
 @interface TRSearchPartnersListVC ()
+@property (nonatomic, retain) WDActivityIndicator *activityIndicator;
 @property (nonatomic, retain) TRPartnersSearchView *menuView;
 @property (nonatomic, retain) SlideInMenuViewController *scrollDownMindMenu;
 
@@ -27,6 +29,7 @@
     NSArray *headerTitles;
     NSString *queryString;
 }
+@synthesize activityIndicator;
 @synthesize menuView;
 @synthesize _partnersList;
 
@@ -116,10 +119,31 @@
 
 -(void) refreshPartnersByQuery:(NSString*)query
 {
+    _partnersList.fio = [NSArray array];
+    _partnersList.cities = [NSArray array];
+    _partnersList.industries = [NSArray array];
+    _partnersList.interests = [NSArray array];
+    [self.tableView reloadData];
+    
+    if(activityIndicator == nil)    {
+        activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
+        [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
+        [self.view addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+    }
+    
     [[TRSearchPartnersManager client] downloadPartnersListByString:query withSuccessOperation:^(LRRestyResponse *response, TRPartnersListModel *partnersList) {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
+        
         _partnersList = partnersList;
         [self.tableView reloadData];
-    } andFailedOperation:nil];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
+    }];
 }
 
 - (void)didReceiveMemoryWarning

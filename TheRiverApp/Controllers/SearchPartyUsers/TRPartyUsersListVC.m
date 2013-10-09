@@ -117,7 +117,9 @@
     [[TRSearchPUManager client] downloadUsersListByCity:cityName andIndustry:industryName withSuccessOperation:^(LRRestyResponse *response, TRPUserListModel *usersList) {
         [self endRefreshUserList:usersList];
     } andFailedOperation:^(LRRestyResponse *response) {
-        //
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
     }];
 }
 
