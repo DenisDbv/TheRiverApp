@@ -76,6 +76,17 @@
     return self;
 }
 
+-(void) setFrame:(CGRect)frame
+{
+    if(IS_OS_7_OR_LATER)    {
+        float inset = 10.0f;
+        frame.origin.x += inset;
+        frame.size.width -= 2 * inset;
+    }
+    
+    [super setFrame:frame];
+}
+
 -(void) layoutSubviews
 {
     [super layoutSubviews];
