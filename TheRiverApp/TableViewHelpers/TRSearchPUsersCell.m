@@ -74,22 +74,31 @@
     
     self.textLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name];
     
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
+    if(userInfo.logo_cell.length > 0)   {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo_cell];
+        
+        UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+        if(img == nil) {
+            [self.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"]
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                      [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
+                                  } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        } else  {
+            [self.imageView setImage: img];
+        }
+    } else  {
+        [self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
+    }
     
-    [self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
-    
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                          options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                        completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-     {
-         
-         if(image != nil)
-         {
-             UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(59, 59) interpolationQuality:kCGInterpolationHigh];
-             logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 59, 59)];
-             [self.imageView setImage:logoImageTest];
-         }
-     }];
+    /*[self.imageView setImageWithURL:[NSURL URLWithString:logoURLString]
+                   placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                              if(image) {
+                                  image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(59, 59) interpolationQuality:kCGInterpolationHigh];
+                                  image = [image croppedImage:CGRectMake(0, 0, 59, 59)];
+                                  [self.imageView setImage:image];
+                              }
+    } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];*/
     
     NSMutableArray *hightResolution = [[NSMutableArray alloc] init];
     for(TRUserResolutionModel *userResolution in userInfo.interests)

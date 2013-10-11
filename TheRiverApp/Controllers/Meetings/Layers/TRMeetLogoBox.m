@@ -65,17 +65,17 @@
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:imageView];
     
-    if(self.meetingData.logo.length != 0) {
-        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.meetingData.logo];
+    if(self.meetingData.logo_desc.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.meetingData.logo_desc];
         
         [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             if(image != nil)
             {
-                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
+                /*UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
                 logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
-                [imageView setImage:logoImageTest];
+                [imageView setImage:logoImageTest];*/
             }
-        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     }
     
     layerView = [[SSGradientView alloc] initWithFrame:self.bounds];

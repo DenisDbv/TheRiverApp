@@ -20,7 +20,6 @@
     self = [super initWithNavigationBarClass:[AMPNavigationBar class] toolbarClass:[UIToolbar class]];
     if (self) {
         self.viewControllers = @[ rootViewController ];
-        NSLog(@"!!!!");
     }
     return self;
 }

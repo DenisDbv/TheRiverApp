@@ -49,7 +49,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    /*[[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString: _imagePath]
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString: _imagePath]
                                                           options:SDWebImageDownloaderUseNSURLCache progress:nil
                                                         completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
      {
@@ -57,14 +57,14 @@
          {
              [zoomView setImage:image];
          }
-     }];*/
+     }];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
     zoomView.frame = CGRectMake(0, 0, screenWidth, screenHeight-44-20);
     
-    [zoomView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:_imagePath]];
+    //[zoomView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:_imagePath]];
     
     [self performSelector:@selector(hideNavBar) withObject:nil afterDelay:0.5];
     
@@ -81,7 +81,6 @@
 -(void) onBack
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"%@", _imagePath);
 }
 
 -(void) hideNavBar

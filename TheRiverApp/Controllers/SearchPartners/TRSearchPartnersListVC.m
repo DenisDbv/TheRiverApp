@@ -333,9 +333,9 @@
             break;
     }
     
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo_cell];
     
-    [cell reloadWithData:logoURLString
+    [cell reloadWithData:(userInfo.logo_cell.length > 0)?logoURLString:@""
                  fioText:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
              subText:subTextTitle
          typeSubText:filterType

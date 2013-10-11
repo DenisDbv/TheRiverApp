@@ -60,7 +60,7 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                                                   NSMutableDictionary *storeAuth = [[NSMutableDictionary alloc] init];
                                                                   [storeAuth setObject:resultAuthJSON forKey:@"authJson"];
                                                                   [storeAuth setObject:login forKey:@"login"];
-                                                            
+                                            
                                                                   [self saveUserData: storeAuth];
                                                                   
                                                                   //TRAuthUserModel *authModel = self.iamData;

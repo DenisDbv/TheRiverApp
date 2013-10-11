@@ -64,17 +64,9 @@
 
 -(void) fillBoxByBusinessImage
 {
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo];
-    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:imageView];
-    
-    [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
-            TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
-            [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
-        }
-    } forTaps:1];
     
     MIHGradientView *gradientView = [[MIHGradientView alloc] initWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.0]
                                                                         to:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
@@ -82,7 +74,7 @@
     gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [imageView addSubview:gradientView];
     
-    if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+    /*if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
         [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
                                                               options:SDWebImageDownloaderUseNSURLCache progress:^(NSUInteger receivedSize, long long expectedSize) {
                                                                   //NSLog(@"%i from %i", receivedSize, expectedSize);
@@ -110,31 +102,36 @@
         }];
     } else  {
         [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
+    }*/
+    
+    if(self.userData.business.logo_profile.length > 0)   {
+        
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo_profile];
+        
+        [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
+                NSString *fullLogoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo];
+                TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:fullLogoURLString];
+                [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+            }
+        } forTaps:1];
+        
+        UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+        if(img == nil) {
+            [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage new]
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                 [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
+                             } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } else  {
+            [imageView setImage: img];
+        }
+    } else  {
+        [imageView setImage:[UIImage new]];
     }
 }
 
 -(void) showUserLogo
 {
-    //UIImage *image = [UIImage imageNamed: self.userData.logo];
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.logo];
-    
-    /*UIImageView *imageView = [[UIImageView alloc] init];
-    
-    imageView.size = CGSizeMake(117.0, 117.0);
-    imageView.frame = CGRectOffset(imageView.frame, 4.0, 49.0);
-    imageView.alpha = 0;
-    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    imageView.layer.borderWidth = 1;
-    imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    imageView.layer.cornerRadius = CGRectGetHeight(imageView.bounds) / 2;
-    imageView.clipsToBounds = YES;
-    [imageView setImageWithURL:[NSURL URLWithString:logoURLString] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self addSubview:imageView];
-    
-    [UIView animateWithDuration:0.1 animations:^{
-        imageView.alpha = 1;
-    }];*/
-    
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.size = CGSizeMake(117.0, 117.0);
     imageView.frame = CGRectOffset(imageView.frame, 4.0, 117.0);
@@ -145,14 +142,7 @@
     imageView.clipsToBounds = YES;
     [self addSubview:imageView];
     
-    [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
-            TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:logoURLString];
-            [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
-        }
-    } forTaps:1];
-    
-    if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+    /*if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
         [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
                                                               options:SDWebImageDownloaderUseNSURLCache progress:nil
                                                             completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
@@ -179,6 +169,30 @@
          }];
     } else  {
         [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
+    }*/
+    
+    if(self.userData.logo_profile.length > 0)   {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.logo_profile];
+        
+        [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
+                NSString *fullLogoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.logo];
+                TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:fullLogoURLString];
+                [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+            }
+        } forTaps:1];
+        
+        UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+        if(img == nil) {
+            [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage new]
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                      [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
+                                  } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } else  {
+            [imageView setImage: img];
+        }
+    } else  {
+        [imageView setImage:[UIImage new]];
     }
 }
 

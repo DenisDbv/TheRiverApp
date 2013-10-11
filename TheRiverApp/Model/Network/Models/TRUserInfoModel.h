@@ -15,6 +15,8 @@
 
 @property (nonatomic, copy) NSNumber *id;
 @property (nonatomic, copy) NSString *logo;
+@property (nonatomic, copy) NSString *logo_profile;
+@property (nonatomic, copy) NSString *logo_cell;
 @property (nonatomic, copy) NSString *first_name;
 @property (nonatomic, copy) NSString *last_name;
 @property (nonatomic, copy) NSString *age;
