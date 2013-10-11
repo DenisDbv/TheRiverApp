@@ -56,7 +56,7 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                               NSString *eTagValue = [response.headers valueForKey:@"ETag"];
                                                                               
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                            
+                                                                              
                                                                               TRContactsListModel *cotactListModel = [[TRContactsListModel alloc] initWithDictionary:resultJSON];
                                                                               
                                                                               if(cotactListModel.user.count > 0)    {

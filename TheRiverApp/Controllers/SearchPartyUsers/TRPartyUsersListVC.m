@@ -60,11 +60,21 @@
     menuView.backgroundColor = [UIColor whiteColor]; //self.tableView.separatorColor;
     _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
     [self.tableView addSubview: _scrollDownMindMenu.view];
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     
     [self refreshUserListByCity:citySearchString andIndustry:industrySearchString];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,6 +101,9 @@
 -(void) refreshUserListByCity:(NSString*)cityName
                   andIndustry:(NSString*)industryName
 {
+    citySearchString = cityName;
+    industrySearchString = industryName;
+    
     _userList.user = [NSArray array];
     [self.tableView reloadData];
     
@@ -104,7 +117,9 @@
     [[TRSearchPUManager client] downloadUsersListByCity:cityName andIndustry:industryName withSuccessOperation:^(LRRestyResponse *response, TRPUserListModel *usersList) {
         [self endRefreshUserList:usersList];
     } andFailedOperation:^(LRRestyResponse *response) {
-        //
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
     }];
 }
 
@@ -144,7 +159,10 @@
     
     TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
     
-    [cell reloadWithModel:userInfo];
+    if( citySearchString.length == 0 )
+        [cell reloadWithModel:userInfo isShowCity:YES];
+    else
+        [cell reloadWithModel:userInfo isShowCity:NO];
     
     return cell;
 }
@@ -159,7 +177,7 @@
     TRUserInfoModel *userInfo = [_userList.user objectAtIndex:indexPath.row];
     
     TRUserProfileController *userProfileVC = [[TRUserProfileController alloc] initByUserModel:userInfo isIam:NO];
-    [AppDelegateInstance() changeProfileViewController:userProfileVC];
+    [AppDelegateInstance() pushCenterViewController:userProfileVC]; //changeProfileViewController:userProfileVC];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import <NVUIGradientButton/NVUIGradientButton.h>
 #import <RNGridMenu/RNGridMenu.h>
 #import <QuartzCore/QuartzCore.h>
+#import <RNBlurModalView/RNBlurModalView.h>
 
 @implementation TRContactBox
 
@@ -37,7 +38,7 @@
     buttonsBox.topMargin = 48;
     [self.boxes addObject:buttonsBox];
     
-    UIImage *imgSbscrb = [UIImage imageNamed:@"subscribe-icon@2x.png"];
+    UIImage *imgSbscrb = [UIImage imageNamed:@"contacts-icon@2x.png"];
     UIImage *imgMessage = [UIImage imageNamed:@"send-message-icon@2x.png"];
     
     UIImageView *imgSbsView = [[UIImageView alloc] initWithImage:imgSbscrb];
@@ -47,7 +48,7 @@
     
     NVUIGradientButton *subscribeButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(9, 0, 146, 41) style:NVUIGradientButtonStyleDefault];
     [subscribeButton addTarget:self action:@selector(onCommunicateClick:) forControlEvents:UIControlEventTouchUpInside];
-    subscribeButton.leftAccessoryImage = [UIImage imageNamed:@"subscribe-icon.png"];
+    subscribeButton.leftAccessoryImage = [UIImage imageNamed:@"contacts-icon.png"];
     subscribeButton.tintColor = subscribeButton.highlightedTintColor = [UIColor clearColor];
     subscribeButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
     subscribeButton.borderWidth = 2.0;
@@ -63,6 +64,7 @@
     [subscribeButton addSubview:imgSbsView];
     
     NVUIGradientButton *messageButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(164, 0, 146, 41) style:NVUIGradientButtonStyleDefault];
+    [messageButton addTarget:self action:@selector(onMessageClick:) forControlEvents:UIControlEventTouchUpInside];
     messageButton.leftAccessoryImage = [UIImage imageNamed:@"send-message-icon.png"];
     messageButton.tintColor = messageButton.highlightedTintColor = [UIColor clearColor];
     messageButton.borderColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:0.5];
@@ -84,6 +86,13 @@
     [self showGrid];
 }
 
+-(void) onMessageClick:(id)sender
+{
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:rootViewController title:@"Сообщения" message:@"В следующей версии будет реализована возможность обмена сообщениями внутри приложения. Поддержка чат комнат и многого другого."];
+    [modal showWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveLinear completion:nil];
+}
+
 - (void)showGrid {
     NSInteger numberOfOptions = 6;
     NSArray *items = @[
@@ -95,10 +104,17 @@
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]
                        ];
     
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    
     RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
     av.delegate = self;
     av.itemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
-    [av showInViewController:self.rootBox center:CGPointMake(self.rootBox.view.bounds.size.width/2.f, self.rootBox.view.bounds.size.height/2.f)];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    [av showInViewController:rootViewController center:CGPointMake(screenWidth/2.0f, screenHeight/2.0f)];
 }
 
 #pragma mark - RNGridMenuDelegate

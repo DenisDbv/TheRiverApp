@@ -16,6 +16,7 @@
 #import "TRMyContactListBar.h"
 #import "TRTestViewController.h"
 #import "TRScrollViewController.h"
+#import "TRNavigationController.h"
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -45,6 +46,15 @@
     [self registerDevice];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [application setStatusBarStyle:UIStatusBarStyleLightContent];
+        self.window.clipsToBounds = YES;
+        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
+        
+        //Added on 19th Sep 2013
+        self.window.bounds = CGRectMake(0, 20, self.window.frame.size.width, self.window.frame.size.height);
+    }
     
     [self setupAppearance];
     
@@ -177,9 +187,9 @@
     _rightMyContactList = [[TRMyContactListBar alloc] init];
     _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user isIam:YES];
     _rootContainer = [MFSideMenuContainerViewController
-                      containerWithCenterViewController: [[UINavigationController alloc] initWithRootViewController: _mainController]
-                      leftMenuViewController: _leftRootMenuBar
-                      rightMenuViewController: [[UINavigationController alloc] initWithRootViewController:_rightMyContactList]];
+                      containerWithCenterViewController: [[TRNavigationController alloc] initWithRootViewController: _mainController]
+                      leftMenuViewController: [[TRNavigationController alloc] initWithRootViewController:_leftRootMenuBar]
+                      rightMenuViewController: [[TRNavigationController alloc] initWithRootViewController:_rightMyContactList]];
     [_rootContainer.shadow setEnabled:NO];
     
     self.window.rootViewController = _rootContainer;

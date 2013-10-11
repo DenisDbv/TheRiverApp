@@ -49,22 +49,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
-    UIView *substrateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0, 70)];
+    
+    NSInteger yOffset = 0;
+    
+    if(IS_OS_7_OR_LATER)
+        yOffset = 15;
+    
+    UIView *substrateView = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, 320.0, 70)];
     substrateView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:substrateView];
     
     _searchBarController = [[TRSearchBarVC alloc] init];
     _searchBarController.delegate = (id)self;
-    _searchBarController.searchBar.frame = CGRectOffset(_searchBarController.searchBar.frame, 0, (substrateView.frame.size.height-_searchBarController.searchBar.frame.size.height)/2);
+    _searchBarController.searchBar.frame = CGRectOffset(_searchBarController.searchBar.frame, 0, yOffset + (substrateView.frame.size.height-_searchBarController.searchBar.frame.size.height)/2);
     [_searchBarController.searchBar sizeToFit];
     [self.view addSubview:_searchBarController.searchBar];
     
-    _contactsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 70.0f,
-                                                                       320.0, CGRectGetHeight(self.view.bounds)-70.0)
+    _contactsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 70.0f+yOffset,
+                                                                       320.0, CGRectGetHeight(self.view.bounds)-(70.0+yOffset))
                                                       style:UITableViewStylePlain];
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
@@ -74,6 +76,10 @@
                                                            green:204.0/255.0
                                                             blue:204.0/255.0
                                                            alpha:1.0]];
+    if ([_contactsTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_contactsTableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
     /*[_contactsTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
      green:51.0/255.0
      blue:51.0/255.0

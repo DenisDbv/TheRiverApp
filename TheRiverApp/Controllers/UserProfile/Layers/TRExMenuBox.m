@@ -11,6 +11,7 @@
 #import "TRAlbumViewController.h"
 #import "TRFriendsListVC.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <RNBlurModalView/RNBlurModalView.h>
 
 @implementation TRExMenuBox
 {
@@ -34,14 +35,16 @@
     
     UIView *photoBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-photos@2x.png"] withTitle:@"Фотографии"];
     [photoBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        TRAlbumViewController *albumVC = [[TRAlbumViewController alloc] init];
-        [((UIViewController*)target).navigationController pushViewController:albumVC animated:YES];
+        //TRAlbumViewController *albumVC = [[TRAlbumViewController alloc] init];
+        //[((UIViewController*)target).navigationController pushViewController:albumVC animated:YES];
+        [box showAlarmMessage:@"Фотографии" :@"В следующей версии вы сможете отмечать друг друга на фотографиях мероприятий"];
     } forTaps:1];
     
     UIView *contactsBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-contacts@2x.png"] withTitle:@"Контакты"];
     [contactsBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        TRFriendsListVC *friendsList = [[TRFriendsListVC alloc] init];
-        [((UIViewController*)target).navigationController pushViewController:friendsList animated:YES];
+        //TRFriendsListVC *friendsList = [[TRFriendsListVC alloc] init];
+        //[((UIViewController*)target).navigationController pushViewController:friendsList animated:YES];
+        [box showAlarmMessage:@"Контакты" :@"В следующих версиях вы сможете просмотреть контакты друг друга"];
     } forTaps:1];
     
     NSArray *buttonsArray = [NSArray arrayWithObjects:
@@ -52,6 +55,13 @@
     [box addViewsToScroll:buttonsArray];
     
     return box;
+}
+
+-(void) showAlarmMessage:(NSString*)title :(NSString*)message
+{
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:rootViewController title:title message:message];
+    [modal showWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveLinear completion:nil];
 }
 
 -(void) initScroll

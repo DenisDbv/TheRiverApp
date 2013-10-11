@@ -80,14 +80,13 @@
         } else {
             //[self decrementQueueCounter];
         }
-        
     });
 }
 
 -(void) searchBarSearchButtonClicked:(UISearchBar *)aSearchBar{
     
     [aSearchBar resignFirstResponder];
-    
+    [searchBar endEditing:YES];
 }
 
 -(void) setTextToSearchLabel:(NSString*)text
@@ -103,6 +102,7 @@
 -(void) resignSearchBar
 {
     [searchBar resignFirstResponder];
+    [searchBar endEditing:YES];
 }
 
 @end

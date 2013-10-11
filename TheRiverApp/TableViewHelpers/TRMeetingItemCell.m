@@ -18,9 +18,14 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        [self initialized];
     }
     return self;
+}
+
+-(void)awakeFromNib
+{
+    [self initialized];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -28,73 +33,80 @@
     [super setSelected:selected animated:animated];
 }
 
+-(void) initialized
+{
+    labelDay.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
+    labelMonth.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+    
+    labelCity.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+    
+    labelTitle.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:18];
+    labelGroup.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+    labelIfDisable.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+}
+
 -(void) reloadWithMeetingModel:(TREventModel*)meetingObject
 {
     eventItem = meetingObject;
     
-    labelDay.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
-    labelMonth.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
-    
     labelDay.textColor = labelMonth.textColor = [UIColor redColor];
-    
-    labelCity.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
-    labelTitle.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:18];
-    labelGroup.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
-    labelIfDisable.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+    labelCity.textColor = [UIColor lightGrayColor];
+    labelTitle.textColor = labelGroup.textColor = labelIfDisable.textColor = [UIColor blackColor];
     
     if(meetingObject.isEnded == YES)
     {
         labelDay.textColor = labelCity.textColor = labelGroup.textColor = labelMonth.textColor = labelTitle.textColor = labelIfDisable.textColor = [UIColor lightGrayColor];
     }
 
-    NSInteger maxDateBlock = 76.0; //[self getMaxWidthFromStrings:meetingObject];
-    //NSLog(@"==>%i", maxDateBlock);
+    NSInteger maxDateBlock = 80.0; //[self getMaxWidthFromStrings:meetingObject];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"dd.MM.yyyy HH:mm"];
     NSDate *myDate = [df dateFromString: meetingObject.start_date];
-    NSLog(@"%@", myDate.description);
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd"];
     
     [self changeSizeLabel:labelDay atString:[dateFormatter stringFromDate:myDate]];
     labelDay.frame = [self changeWidthInFrame:labelDay.frame byWidth:maxDateBlock];
-    labelDay.frame = [self changeXInFrame:labelDay.frame byX:13];
+    labelDay.frame = [self changeXInFrame:labelDay.frame byX:10];
     
     [dateFormatter setDateFormat:@"MMMM"];
     [self changeSizeLabel:labelMonth atString:[dateFormatter stringFromDate:myDate]];
     labelMonth.frame = [self changeWidthInFrame:labelMonth.frame byWidth:maxDateBlock];
     labelMonth.frame = [self changeYInFrame:labelMonth.frame byY:labelDay.frame.origin.y+labelDay.frame.size.height+3];
-    labelMonth.frame = [self changeXInFrame:labelMonth.frame byX:13];
+    labelMonth.frame = [self changeXInFrame:labelMonth.frame byX:10];
     
     [self changeSizeLabel:labelCity atString:meetingObject.place];
     labelCity.frame = [self changeWidthInFrame:labelCity.frame byWidth:maxDateBlock];
     labelCity.frame = [self changeYInFrame:labelCity.frame byY:labelMonth.frame.origin.y+labelMonth.frame.size.height+5];
-    labelCity.frame = [self changeXInFrame:labelCity.frame byX:13];
+    labelCity.frame = [self changeXInFrame:labelCity.frame byX:10];
+    //labelCity.backgroundColor = [UIColor yellowColor];
     
+    NSInteger xOffset = (maxDateBlock+10)+15;
+    NSInteger secondWidth = 320-xOffset-10;
     CGSize sizeTitle = [meetingObject.title sizeWithFont:labelTitle.font
-                                            constrainedToSize:CGSizeMake(320-(maxDateBlock+35), 50)
+                                            constrainedToSize:CGSizeMake(secondWidth, 50)
                                                 lineBreakMode:NSLineBreakByWordWrapping];
     labelTitle.text = meetingObject.title;
-    labelTitle.frame = CGRectMake(maxDateBlock+35, 10, 320-(maxDateBlock+35), sizeTitle.height);
+    labelTitle.frame = CGRectMake(xOffset, 10, secondWidth, sizeTitle.height);
+    //labelTitle.backgroundColor = [UIColor redColor];
     
     CGSize sizeGroup = [meetingObject.group sizeWithFont:labelGroup.font
-                                              constrainedToSize:CGSizeMake(320-(maxDateBlock+35), 50)
+                                              constrainedToSize:CGSizeMake(secondWidth, 50)
                                                   lineBreakMode:NSLineBreakByWordWrapping];
     labelGroup.text = meetingObject.group;
-    labelGroup.frame = CGRectMake(maxDateBlock+35, labelTitle.frame.origin.y+labelTitle.frame.size.height, 320-(maxDateBlock+35), sizeGroup.height);
+    labelGroup.frame = CGRectMake(xOffset, labelTitle.frame.origin.y+labelTitle.frame.size.height, secondWidth, sizeGroup.height);
     
     if(meetingObject.isEnded == NO)    {
         labelIfDisable.hidden = YES;
         agreeButton.hidden = NO;
         
-        agreeButton.frame = CGRectMake(maxDateBlock+35, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 125, 35);
+        agreeButton.frame = CGRectMake(xOffset, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 125, 35);
         [agreeButton addTarget:self action:@selector(onSbscrClick:) forControlEvents:UIControlEventTouchUpInside];
         [agreeButton setLabelTextColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] disableColor:nil];
         [agreeButton setCornerRadius:4];
         [agreeButton setBorderStyle:nil andInnerColor:nil];
-        //NSLog(@"%i", meetingObject.isAccept);
+        
         if(meetingObject.isAccept == NO) {
             [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
             [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
@@ -109,15 +121,47 @@
         labelIfDisable.hidden = NO;
         
         CGSize sizeGroup = [@"Мероприятие окончено" sizeWithFont:labelIfDisable.font
-                                                  constrainedToSize:CGSizeMake(320-(maxDateBlock+35), 50)
+                                                  constrainedToSize:CGSizeMake(secondWidth, 50)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
         labelIfDisable.text = @"Мероприятие окончено";
-        NSLog(@"%f", labelTitle.frame.size.height);
+        
         if(labelTitle.frame.size.height > 25)
-            labelIfDisable.frame = CGRectMake(maxDateBlock+35, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, 320-(maxDateBlock+35), sizeGroup.height);
+            labelIfDisable.frame = CGRectMake(xOffset, labelGroup.frame.origin.y+labelGroup.frame.size.height+10, secondWidth, sizeGroup.height);
         else
-            labelIfDisable.frame = CGRectMake(maxDateBlock+35, labelCity.frame.origin.y + roundf((labelCity.frame.size.height-sizeGroup.height)/2), 320-(maxDateBlock+35), sizeGroup.height);
+            labelIfDisable.frame = CGRectMake(xOffset, labelCity.frame.origin.y + roundf((labelCity.frame.size.height-sizeGroup.height)/2), secondWidth, sizeGroup.height);
     }
+}
+
+-(CGFloat) getCellHeight:(TREventModel*)meetingObject
+{
+    NSInteger maxDateBlock = 80.0;
+    NSInteger xOffset = (maxDateBlock+10)+15;
+    NSInteger secondWidth = 320-xOffset-10;
+    
+    CGSize sizeTitle = [meetingObject.title sizeWithFont:[UIFont fontWithName:@"HypatiaSansPro-Bold" size:18]
+                                       constrainedToSize:CGSizeMake(secondWidth, 50)
+                                           lineBreakMode:NSLineBreakByWordWrapping];
+    
+    CGSize sizeGroup = [meetingObject.group sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14]
+                                       constrainedToSize:CGSizeMake(secondWidth, 50)
+                                           lineBreakMode:NSLineBreakByWordWrapping];
+    
+    NSInteger deltaHeight = 0;
+    
+    if(meetingObject.isEnded == NO) {
+        deltaHeight = 35;
+    } else  {
+        CGSize sizeEnded = [@"Мероприятие окончено" sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14]
+                                               constrainedToSize:CGSizeMake(secondWidth, 50)
+                                                   lineBreakMode:NSLineBreakByWordWrapping];
+        if(sizeTitle.height > 25)   {
+            deltaHeight = sizeEnded.height;
+        } else  {
+            return 10 + 30 + 3 + 15 + 5 + 15 + 10 + 10;
+        }
+    }
+    
+    return 10 + sizeTitle.height + sizeGroup.height + 10 + deltaHeight + 10;
 }
 
 -(void) onSbscrClick:(id)sender

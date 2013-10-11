@@ -79,10 +79,13 @@
     [self showMindWebView];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
+    
+    NSLog(@"#####");
 }
 
 -(void) onBack
 {
+    NSLog(@"1111");
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -11,6 +11,7 @@
 @interface TREventModel : Jastor
 
 @property (nonatomic, retain) NSString *logo;
+@property (nonatomic, retain) NSString *logo_desc;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *group;
 @property (nonatomic, retain) NSString *place;
