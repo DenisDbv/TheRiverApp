@@ -48,13 +48,28 @@
     centerY = (self.frame.size.height - 17)/2;
 }
 
--(void) reloadWithData:(NSString*)image
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    NSInteger xOffset = 0;
+    
+    if(IS_OS_7_OR_LATER)
+        xOffset = -20;
+    
+    self.imageView.frame = CGRectMake(self.imageView.frame.origin.x+xOffset,
+                                      self.imageView.frame.origin.y,
+                                      self.imageView.frame.size.width,
+                                      self.imageView.frame.size.height);
+}
+
+-(void) reloadWithData:(NSString*)imagePath
                fioText:(NSString*)fioText
                subText:(NSString*)subText
            typeSubText:(PartnersFilterType)filterType
              withQuery:(NSString*)query
 {
-    [self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
+    /*[self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
     
     [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:image]
                                                           options:SDWebImageDownloaderUseNSURLCache progress:nil
@@ -67,7 +82,21 @@
              logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 59, 59)];
              [self.imageView setImage:logoImageTest];
          }
-     }];
+     }];*/
+    
+    if(imagePath.length > 0)   {
+        UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imagePath];
+        if(img == nil) {
+            [self.imageView setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"]
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                 [[SDImageCache sharedImageCache] storeImage:image forKey:imagePath toDisk:YES];
+                             } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        } else  {
+            [self.imageView setImage: img];
+        }
+    } else  {
+        [self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
+    }
     
     fioLabel.frame = CGRectMake(72.0, 3.0, fioLabel.frame.size.width, fioLabel.frame.size.height);
     fioLabel.text = fioText;

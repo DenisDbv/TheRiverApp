@@ -18,22 +18,22 @@
 
 -(void) reloadWithBusinessModel:(TRBusinessModel*)businessObject
 {
-    if(businessObject.logo.length != 0) {
-        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo];
+    if(businessObject.logo_cell.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo_cell];
         
-        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_preview"]] == nil) {
-            [logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+            [logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage new] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
-                    UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(300, 180) interpolationQuality:kCGInterpolationHigh];
+                    /*UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(300, 180) interpolationQuality:kCGInterpolationHigh];
                     logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 300, 180)];
-                    [logo setImage:logoImageTest];
+                    [logo setImage:logoImageTest];*/
                     
-                    [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:[logoURLString stringByAppendingString:@"_preview"] toDisk:YES];
+                    [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
                 }
             } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         } else  {
-            [logo setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_preview"]]];
+            [logo setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
         }
     }
     
@@ -74,6 +74,17 @@
         [self initialized];
     }
     return self;
+}
+
+-(void) setFrame:(CGRect)frame
+{
+    if(IS_OS_7_OR_LATER)    {
+        float inset = 10.0f;
+        frame.origin.x += inset;
+        frame.size.width -= 2 * inset;
+    }
+    
+    [super setFrame:frame];
 }
 
 -(void) layoutSubviews

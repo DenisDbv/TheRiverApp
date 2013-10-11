@@ -138,7 +138,7 @@
         imageView.clipsToBounds = YES;
         [header addSubview:imageView];
         
-        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]] == nil) {
+        /*if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]] == nil) {
             [imageView setImageWithURL:[NSURL URLWithString:logoURLString] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(90.0, 90.0) interpolationQuality:kCGInterpolationHigh];
                 logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 90.0, 90.0)];
@@ -149,8 +149,28 @@
             } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         } else  {
             [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]]];
+        }*/
+        
+        if([TRAuthManager client].iamData.user.logo_profile.length > 0)   {
+            NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:[TRAuthManager client].iamData.user.logo_profile];
+            
+            UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_leftLogo"]];
+            if(img == nil) {
+                [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage new]
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                     [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
+                                     
+                                     image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(90.0, 90.0) interpolationQuality:kCGInterpolationHigh];
+                                     image = [image croppedImage:CGRectMake(0, 0, 90.0, 90.0)];
+                                     [[SDImageCache sharedImageCache] storeImage:image forKey:[logoURLString stringByAppendingString:@"_leftLogo"] toDisk:YES];
+                                     
+                                 } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+            } else  {
+                [imageView setImage: img];
+            }
+        } else  {
+            [imageView setImage:[UIImage new]];
         }
-    
         
         
         //ФИО пользователя

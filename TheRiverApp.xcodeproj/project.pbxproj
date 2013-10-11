@@ -21,6 +21,8 @@
 		182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72EA17D3D73800134224 /* TRMyContactListBar.m */; };
 		182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */; };
 		1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */; };
+		183F1E5018043D9600487D8B /* AMPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F1E4F18043D9600487D8B /* AMPNavigationBar.m */; };
+		183F1E5318043E6400487D8B /* TRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F1E5218043E6400487D8B /* TRNavigationController.m */; };
 		184C963418003C7200060B88 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962A18003C7200060B88 /* Icon-72.png */; };
 		184C963518003C7200060B88 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962B18003C7200060B88 /* Icon-72@2x.png */; };
 		184C963618003C7200060B88 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C962C18003C7200060B88 /* Icon-Small-50.png */; };
@@ -251,6 +253,9 @@
 		18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1099C17DF183100D9CD8C /* UIImage+Resize.m */; };
 		18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1099F17DF193900D9CD8C /* UIImage+Alpha.m */; };
 		18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */; };
+		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
+		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
+		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
 		18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912217D3DCC200138EF2 /* TRRootController.m */; };
 		18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912617D3DF0300138EF2 /* TRSearchBarVC.m */; };
 		18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA912917D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m */; };
@@ -301,6 +306,10 @@
 		1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootMenuCell.h; path = TableViewHelpers/TRRootMenuCell.h; sourceTree = "<group>"; };
 		1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootMenuCell.m; path = TableViewHelpers/TRRootMenuCell.m; sourceTree = "<group>"; };
 		1835771317D5AB1C00AE0D72 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Common/Global.h; sourceTree = "<group>"; };
+		183F1E4E18043D9600487D8B /* AMPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMPNavigationBar.h; path = Common/AMPNavigationBar.h; sourceTree = "<group>"; };
+		183F1E4F18043D9600487D8B /* AMPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMPNavigationBar.m; path = Common/AMPNavigationBar.m; sourceTree = "<group>"; };
+		183F1E5118043E6400487D8B /* TRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRNavigationController.h; path = Common/TRNavigationController.h; sourceTree = "<group>"; };
+		183F1E5218043E6400487D8B /* TRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRNavigationController.m; path = Common/TRNavigationController.m; sourceTree = "<group>"; };
 		184C962A18003C7200060B88 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		184C962B18003C7200060B88 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		184C962C18003C7200060B88 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -613,6 +622,10 @@
 		18A1099F17DF193900D9CD8C /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Alpha.m"; path = "Common/UIImage+Alpha.m"; sourceTree = "<group>"; };
 		18A109A017DF193A00D9CD8C /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RoundedCorner.h"; path = "Common/UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "Common/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
+		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
+		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
+		18CBE8AB180330F200547909 /* contacts-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon@2x.png"; sourceTree = "<group>"; };
 		18DA912117D3DCC200138EF2 /* TRRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootController.h; path = Controllers/TRRootController.h; sourceTree = "<group>"; };
 		18DA912217D3DCC200138EF2 /* TRRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootController.m; path = Controllers/TRRootController.m; sourceTree = "<group>"; };
 		18DA912517D3DF0300138EF2 /* TRSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRSearchBarVC.h; path = Controllers/SearchBar/TRSearchBarVC.h; sourceTree = "<group>"; };
@@ -1062,6 +1075,8 @@
 			children = (
 				1897601117F1753400B06DF7 /* TRPartyUsersFilter.h */,
 				1897601217F1753400B06DF7 /* TRPartyUsersFilter.m */,
+				18CBE8A7180293A800547909 /* TRPartySearchBar.h */,
+				18CBE8A8180293A800547909 /* TRPartySearchBar.m */,
 			);
 			name = Filter;
 			sourceTree = "<group>";
@@ -1283,6 +1298,8 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18CBE8AA180330F200547909 /* contacts-icon.png */,
+				18CBE8AB180330F200547909 /* contacts-icon@2x.png */,
 				184C962918003C7200060B88 /* AppIcons */,
 				1899701A17F5880B0056F7ED /* avatar_placeholder.png */,
 				18975FF917EF934000B06DF7 /* blueButton@2x.png */,
@@ -1407,6 +1424,10 @@
 				1891D77A17D9EB8900281246 /* UISearchBar+cancelButton.m */,
 				18A1099317DEFAF900D9CD8C /* UIBarButtonItem+BarButtonItemExtended.h */,
 				18A1099417DEFAF900D9CD8C /* UIBarButtonItem+BarButtonItemExtended.m */,
+				183F1E4E18043D9600487D8B /* AMPNavigationBar.h */,
+				183F1E4F18043D9600487D8B /* AMPNavigationBar.m */,
+				183F1E5118043E6400487D8B /* TRNavigationController.h */,
+				183F1E5218043E6400487D8B /* TRNavigationController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1533,6 +1554,7 @@
 				1891D77117D8F74C00281246 /* wishlist.png in Resources */,
 				1891D77217D8F74C00281246 /* news.png in Resources */,
 				1891D77317D8F74C00281246 /* map.png in Resources */,
+				18CBE8AC180330F200547909 /* contacts-icon.png in Resources */,
 				1891D77417D8F74C00281246 /* comments.png in Resources */,
 				1891D77517D8F74C00281246 /* calendar.png in Resources */,
 				1891D77617D8F74C00281246 /* bookmark.png in Resources */,
@@ -1622,6 +1644,7 @@
 				18A1097217DED80C00D9CD8C /* 4b.png in Resources */,
 				18A1097317DED80C00D9CD8C /* 5b.png in Resources */,
 				18A1097417DED80C00D9CD8C /* 6b.png in Resources */,
+				18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */,
 				18A1097517DED80C00D9CD8C /* 7b.png in Resources */,
 				18A1097617DED80C00D9CD8C /* 8b.jpg in Resources */,
 				18A1097717DED80C00D9CD8C /* 9b.png in Resources */,
@@ -1710,6 +1733,8 @@
 			files = (
 				182D72D417D3CFAF00134224 /* main.m in Sources */,
 				182D72D817D3CFAF00134224 /* TRAppDelegate.m in Sources */,
+				183F1E5018043D9600487D8B /* AMPNavigationBar.m in Sources */,
+				183F1E5318043E6400487D8B /* TRNavigationController.m in Sources */,
 				182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */,
 				182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */,
 				182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */,
@@ -1750,6 +1775,7 @@
 				18A108C117DD976500D9CD8C /* TRMindTitleBox.m in Sources */,
 				18A108C717DDACA900D9CD8C /* TRMindWebViewBox.m in Sources */,
 				18A108CD17DDC04C00D9CD8C /* WDActivityIndicator.m in Sources */,
+				18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */,
 				18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */,
 				18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */,
 				18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */,

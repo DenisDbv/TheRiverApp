@@ -11,18 +11,18 @@
 
 NSString * const MFSideMenuStateNotificationEvent = @"MFSideMenuStateNotificationEvent";
 
-typedef enum {
+/*typedef enum {
     MFSideMenuPanDirectionNone,
     MFSideMenuPanDirectionLeft,
     MFSideMenuPanDirectionRight
-} MFSideMenuPanDirection;
+} MFSideMenuPanDirection;*/
 
 @interface MFSideMenuContainerViewController ()
 @property (nonatomic, strong) UIView *menuContainerView;
 
 @property (nonatomic, assign) CGPoint panGestureOrigin;
 @property (nonatomic, assign) CGFloat panGestureVelocity;
-@property (nonatomic, assign) MFSideMenuPanDirection panDirection;
+//@property (nonatomic, assign) MFSideMenuPanDirection panDirection;
 
 @property (nonatomic, assign) BOOL viewHasAppeared;
 @end

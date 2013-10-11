@@ -21,4 +21,6 @@
 
 -(void) reloadWithMeetingModel:(TREventModel*)meetingObject;
 
+-(CGFloat) getCellHeight:(TREventModel*)meetingObject;
+
 @end

@@ -61,33 +61,33 @@
         imageView.alpha = 1;
     }];*/
     
-    layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
-    layerView.backgroundColor = [UIColor clearColor];
-    [self addSubview:layerView];
-    
     __block UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:imageView];
     
-    if(self.meetingData.logo.length != 0) {
-        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.meetingData.logo];
+    if(self.meetingData.logo_desc.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.meetingData.logo_desc];
         
         [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             if(image != nil)
             {
-                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
+                /*UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
                 logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
-                [imageView setImage:logoImageTest];
+                [imageView setImage:logoImageTest];*/
             }
-        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     }
+    
+    layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
+    layerView.backgroundColor = [UIColor clearColor];
+    [self addSubview:layerView];
 }
 
 -(void) layoutSubviews
 {
     [super layoutSubviews];
     
-    layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     layerView.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [layerView layoutSubviews];
 }
@@ -112,15 +112,13 @@
     timeLabel.textAlignment = NSTextAlignmentCenter;
     timeLabel.backgroundColor = [UIColor clearColor];
     
+    NSInteger maxDateBlock = [self getMaxWidthFromStrings:self.meetingData] + 4;
+    
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"dd.MM.yyyy HH:mm"];
     NSDate *myDate = [df dateFromString: self.meetingData.start_date];
-    NSLog(@"%@", myDate.description);
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd"];
-    
-    NSInteger maxDateBlock = [self getMaxWidthFromStrings:self.meetingData];
     
     [self changeSizeLabel:dayLabel atString:[dateFormatter stringFromDate:myDate]];
     dayLabel.frame = [self changeWidthInFrame:dayLabel.frame byWidth:maxDateBlock];
@@ -138,6 +136,7 @@
     UIView *infoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, maxDateBlock,
                                                                 CGRectGetHeight(dayLabel.frame)+CGRectGetHeight(monthLabel.frame)+CGRectGetHeight(timeLabel.frame))];
     infoView.backgroundColor = [UIColor clearColor];
+    infoView.autoresizesSubviews = NO;
     //infoView.alpha = 1.0;
     
     [infoView addSubview:dayLabel];

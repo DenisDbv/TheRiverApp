@@ -14,8 +14,10 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import "MFSideMenu.h"
+#import "WDActivityIndicator.h"
 
 @interface TRSearchPartnersListVC ()
+@property (nonatomic, retain) WDActivityIndicator *activityIndicator;
 @property (nonatomic, retain) TRPartnersSearchView *menuView;
 @property (nonatomic, retain) SlideInMenuViewController *scrollDownMindMenu;
 
@@ -27,6 +29,7 @@
     NSArray *headerTitles;
     NSString *queryString;
 }
+@synthesize activityIndicator;
 @synthesize menuView;
 @synthesize _partnersList;
 
@@ -66,7 +69,10 @@
     [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
     
-    
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
     /*_scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
     [self.tableView addSubview: _scrollDownMindMenu.view];
@@ -113,10 +119,31 @@
 
 -(void) refreshPartnersByQuery:(NSString*)query
 {
+    _partnersList.fio = [NSArray array];
+    _partnersList.cities = [NSArray array];
+    _partnersList.industries = [NSArray array];
+    _partnersList.interests = [NSArray array];
+    [self.tableView reloadData];
+    
+    if(activityIndicator == nil)    {
+        activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
+        [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
+        [self.view addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+    }
+    
     [[TRSearchPartnersManager client] downloadPartnersListByString:query withSuccessOperation:^(LRRestyResponse *response, TRPartnersListModel *partnersList) {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
+        
         _partnersList = partnersList;
         [self.tableView reloadData];
-    } andFailedOperation:nil];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -306,9 +333,9 @@
             break;
     }
     
-    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo];
+    NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo_cell];
     
-    [cell reloadWithData:logoURLString
+    [cell reloadWithData:(userInfo.logo_cell.length > 0)?logoURLString:@""
                  fioText:[NSString stringWithFormat:@"%@ %@", userInfo.first_name, userInfo.last_name]
              subText:subTextTitle
          typeSubText:filterType

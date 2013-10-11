@@ -16,6 +16,8 @@
 @property (nonatomic, copy) NSString *city;
 
 @property (nonatomic, copy) NSString *logo;
+@property (nonatomic, copy) NSString *logo_desc;
+@property (nonatomic, copy) NSString *logo_cell;
 @property (nonatomic, copy) NSString *company_name;
 @property (nonatomic, copy) NSString *about;
 @property (nonatomic, copy) NSString *profit;

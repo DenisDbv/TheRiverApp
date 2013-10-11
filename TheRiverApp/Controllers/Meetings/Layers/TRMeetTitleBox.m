@@ -52,6 +52,7 @@
     
     MGLineStyled *authorLine = [MGLineStyled lineWithMultilineLeft:box.meetingData.group right:blockView width:300 minHeight:10];
     authorLine.backgroundColor = [UIColor clearColor];
+    authorLine.topMargin = 10.0f;
     authorLine.leftPadding = authorLine.rightPadding = 0;
     authorLine.borderStyle = MGBorderNone;
     authorLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
@@ -77,7 +78,7 @@
         
         MGBox *buttonLine = [MGBox boxWithSize:CGSizeMake(300, 40)];
         buttonLine.backgroundColor = [UIColor clearColor];
-        buttonLine.topMargin = 10.0;
+        buttonLine.topMargin = 20.0;
         buttonLine.leftPadding = authorLine.rightPadding = 0;
         buttonLine.leftMargin = buttonLine.rightMargin = 0;
         buttonLine.borderStyle = MGBorderNone;

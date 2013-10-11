@@ -23,7 +23,7 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet TTTAttributedLabel *subTextLabel;
 @property (nonatomic, strong) IBOutlet UILabel *typeSubTextLabel;
 
--(void) reloadWithData:(NSString*)image
+-(void) reloadWithData:(NSString*)imagePath
                fioText:(NSString*)fioText
                subText:(NSString*)subText
            typeSubText:(PartnersFilterType)filterType

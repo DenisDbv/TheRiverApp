@@ -9,6 +9,6 @@
 #import "TREventModel.h"
 
 @implementation TREventModel
-@synthesize logo, title, group, place, text, start_date, isAccept, isEnded;
+@synthesize logo, logo_desc, title, group, place, text, start_date, isAccept, isEnded;
 
 @end
