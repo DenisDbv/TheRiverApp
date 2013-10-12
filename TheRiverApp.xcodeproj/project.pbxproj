@@ -253,6 +253,8 @@
 		18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1099C17DF183100D9CD8C /* UIImage+Resize.m */; };
 		18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1099F17DF193900D9CD8C /* UIImage+Alpha.m */; };
 		18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */; };
+		18A47FC71809714400983BC1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A47FC51809714400983BC1 /* logo.png */; };
+		18A47FC81809714400983BC1 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A47FC61809714400983BC1 /* logo@2x.png */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
 		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
@@ -622,6 +624,8 @@
 		18A1099F17DF193900D9CD8C /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Alpha.m"; path = "Common/UIImage+Alpha.m"; sourceTree = "<group>"; };
 		18A109A017DF193A00D9CD8C /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RoundedCorner.h"; path = "Common/UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "Common/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		18A47FC51809714400983BC1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		18A47FC61809714400983BC1 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
@@ -1298,6 +1302,8 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A47FC51809714400983BC1 /* logo.png */,
+				18A47FC61809714400983BC1 /* logo@2x.png */,
 				18CBE8AA180330F200547909 /* contacts-icon.png */,
 				18CBE8AB180330F200547909 /* contacts-icon@2x.png */,
 				184C962918003C7200060B88 /* AppIcons */,
@@ -1531,12 +1537,14 @@
 			files = (
 				182D72D217D3CFAF00134224 /* InfoPlist.strings in Resources */,
 				184C963D18003C7200060B88 /* iTunesArtwork@2x.png in Resources */,
+				18A47FC71809714400983BC1 /* logo.png in Resources */,
 				182D72DA17D3CFAF00134224 /* Default.png in Resources */,
 				182D72DC17D3CFAF00134224 /* Default@2x.png in Resources */,
 				184C963918003C7200060B88 /* Icon-Small@2x.png in Resources */,
 				182D72DE17D3CFAF00134224 /* Default-568h@2x.png in Resources */,
 				18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */,
 				18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */,
+				18A47FC81809714400983BC1 /* logo@2x.png in Resources */,
 				18DA913717D4526000138EF2 /* IamChinaMan.JPG in Resources */,
 				18DA913D17D4529D00138EF2 /* searchBarBG.png in Resources */,
 				18DA913E17D4529D00138EF2 /* searchBarIcon.png in Resources */,
