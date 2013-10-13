@@ -116,12 +116,12 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    scrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, ([UIScreen mainScreen].bounds.size.height-20));
+    scrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, ([UIScreen mainScreen].bounds.size.height));
     NSLog(@"%@", NSStringFromCGRect(scrollView.frame));
     [scrollView setContentSize:CGSizeMake(1, 1)];
     
     CGRect rectLoginContainer = loginContainerView.frame;
-    rectLoginContainer.origin.y = (([UIScreen mainScreen].bounds.size.height-20) - rectLoginContainer.size.height)/2 + ((IS_IPHONE5)?50:90);
+    rectLoginContainer.origin.y = (([UIScreen mainScreen].bounds.size.height) - rectLoginContainer.size.height)/2 + ((IS_IPHONE5)?50:110);
     loginContainerView.frame = rectLoginContainer;
     
     logoImageView.image = [UIImage imageNamed:@"logo@2x.png"];
@@ -158,7 +158,7 @@
     [[[note userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&keyboardCurve];
     [[[note userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&keyboardDuration];
     
-    NSInteger yOffset = abs((keyboardFrame.origin.y - loginContainerView.frame.size.height)/2 - loginContainerView.frame.origin.y);
+    NSInteger yOffset = abs((keyboardFrame.origin.y - loginContainerView.frame.size.height)/2 - loginContainerView.frame.origin.y) + ((IS_IPHONE5)?0:-15);
     [scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
     
     [UIView animateWithDuration:keyboardDuration animations:^{
