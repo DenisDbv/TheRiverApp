@@ -89,7 +89,7 @@
 -(void) onMessageClick:(id)sender
 {
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:rootViewController title:@"Сообщения" message:@"В следующей версии будет реализована возможность обмена сообщениями внутри приложения. Поддержка чат комнат и многого другого."];
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:rootViewController title:@"Сообщения" message:@"Обмен сообщениями будет реализован в следующей версии приложения.\nБудут достпны чат комнаты, обсуждение идей и проектов, а также многое другое.\n\n "];
     [modal showWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveLinear completion:nil];
 }
 

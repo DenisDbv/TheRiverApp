@@ -37,15 +37,18 @@
     [photoBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
         //TRAlbumViewController *albumVC = [[TRAlbumViewController alloc] init];
         //[((UIViewController*)target).navigationController pushViewController:albumVC animated:YES];
-        [box showAlarmMessage:@"Фотографии" :@"В следующей версии вы сможете отмечать друг друга на фотографиях мероприятий"];
+        [box showAlarmMessage:@"Фотографии" :@"В следующей версии вы сможете загрузить фотографии и видео себя и своего бизнеса"];
     } forTaps:1];
     
     UIView *contactsBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-contacts@2x.png"] withTitle:@"Контакты"];
     [contactsBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
         //TRFriendsListVC *friendsList = [[TRFriendsListVC alloc] init];
         //[((UIViewController*)target).navigationController pushViewController:friendsList animated:YES];
-        [box showAlarmMessage:@"Контакты" :@"В следующих версиях вы сможете просмотреть контакты друг друга"];
+        [box showAlarmMessage:@"Контакты" :@"В следующей версии, в этом разделе будет список избранных участников.\n\n "];
     } forTaps:1];
+    
+    // В следующей версии, в этом разделе вы сможете просматривать знания и ценные инструменты которые опубликовали другие участники
+    // интересно. Заголовок: И это еще не всё Описание: Это приложение сообщества, поэтому смело предлагайте свои идеи и голосуйте за другие. Самые интересные из них обязательно будут реализованы. Для этого зайдите на вкладку "оставить отзыв" в левом меню.
     
     NSArray *buttonsArray = [NSArray arrayWithObjects:
                              contactsBox,

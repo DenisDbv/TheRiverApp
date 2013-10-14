@@ -13,8 +13,16 @@
 @interface UIView (GestureBlocks)
 
 @property (readwrite, nonatomic, copy) void (^tapHandler)(UIGestureRecognizer *sender);
+@property (readwrite, nonatomic, copy) void (^swipeUpHandler)(UIGestureRecognizer *sender);
+@property (readwrite, nonatomic, copy) void (^swipeDownHandler)(UIGestureRecognizer *sender);
 
 - (void)initialiseTapHandler:(void (^) (UIGestureRecognizer *sender))block forTaps:(int)numberOfTaps;
 - (IBAction)handleTap:(UIGestureRecognizer *)sender;
+
+- (void)initialiseSwipeUpHandler:(void (^) (UIGestureRecognizer *sender))block;
+- (IBAction)swipeUp:(UIGestureRecognizer *)sender;
+
+- (void)initialiseSwipeDownHandler:(void (^) (UIGestureRecognizer *sender))block;
+- (IBAction)swipeDown:(UIGestureRecognizer *)sender;
 
 @end
