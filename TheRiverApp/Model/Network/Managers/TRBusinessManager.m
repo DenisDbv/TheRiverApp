@@ -73,7 +73,7 @@
           andFailedOperation:(FailedOperation) failedOperation
 {
     if( [TRAuthManager client].isAuth == NO )   {
-        NSLog(@"Отмена получения списка бизнесов. Пользователь не авторизован.");
+        NSLog(@"Отмена получения описания бизнеса. Пользователь не авторизован.");
         return;
     }
     
