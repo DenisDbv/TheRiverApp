@@ -261,6 +261,8 @@
 		18A89B0F180B166100B79D53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89AFF180B166100B79D53 /* Icon@2x.png */; };
 		18A89B10180B166100B79D53 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89B00180B166100B79D53 /* iTunesArtwork.png */; };
 		18A89B11180B166100B79D53 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89B01180B166100B79D53 /* iTunesArtwork@2x.png */; };
+		18A89B14180BE1D600B79D53 /* TRBusinessNewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89B13180BE1D600B79D53 /* TRBusinessNewItemCell.m */; };
+		18A89B16180BE1FC00B79D53 /* TRBusinessNewItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89B15180BE1FC00B79D53 /* TRBusinessNewItemCell.xib */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
 		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
@@ -638,6 +640,9 @@
 		18A89AFF180B166100B79D53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		18A89B00180B166100B79D53 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		18A89B01180B166100B79D53 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		18A89B12180BE1D600B79D53 /* TRBusinessNewItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessNewItemCell.h; path = TableViewHelpers/TRBusinessNewItemCell.h; sourceTree = "<group>"; };
+		18A89B13180BE1D600B79D53 /* TRBusinessNewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessNewItemCell.m; path = TableViewHelpers/TRBusinessNewItemCell.m; sourceTree = "<group>"; };
+		18A89B15180BE1FC00B79D53 /* TRBusinessNewItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRBusinessNewItemCell.xib; path = TableViewHelpers/TRBusinessNewItemCell.xib; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
@@ -1427,6 +1432,9 @@
 				1899703517F729340056F7ED /* TRSearchPartnersCell.xib */,
 				18FEA75E17FBF760006B7864 /* TRContactCell.h */,
 				18FEA75F17FBF760006B7864 /* TRContactCell.m */,
+				18A89B12180BE1D600B79D53 /* TRBusinessNewItemCell.h */,
+				18A89B13180BE1D600B79D53 /* TRBusinessNewItemCell.m */,
+				18A89B15180BE1FC00B79D53 /* TRBusinessNewItemCell.xib */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -1654,6 +1662,7 @@
 				18A89B03180B166100B79D53 /* Icon-40@2x.png in Resources */,
 				18A1094B17DEA2BB00D9CD8C /* 20.jpg in Resources */,
 				18A1094D17DEB9E800D9CD8C /* cog-gray-icon@2x.png in Resources */,
+				18A89B16180BE1FC00B79D53 /* TRBusinessNewItemCell.xib in Resources */,
 				18A1095617DEBBED00D9CD8C /* HypatiaSansPro-Black.otf in Resources */,
 				18A1095717DEBBED00D9CD8C /* HypatiaSansPro-Bold.otf in Resources */,
 				18A1095817DEBBED00D9CD8C /* HypatiaSansPro-ExtraLight.otf in Resources */,
@@ -1812,6 +1821,7 @@
 				18A108C717DDACA900D9CD8C /* TRMindWebViewBox.m in Sources */,
 				18A108CD17DDC04C00D9CD8C /* WDActivityIndicator.m in Sources */,
 				18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */,
+				18A89B14180BE1D600B79D53 /* TRBusinessNewItemCell.m in Sources */,
 				18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */,
 				18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */,
 				18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */,
