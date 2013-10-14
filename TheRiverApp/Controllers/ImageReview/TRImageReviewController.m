@@ -13,7 +13,7 @@
 #import "UIView+GestureBlocks.h"
 
 @interface TRImageReviewController ()
-
+@property (nonatomic, retain) UIActivityIndicatorView *indicatorView;
 @end
 
 @implementation TRImageReviewController
@@ -22,6 +22,7 @@
     BOOL isShow;
 }
 @synthesize zoomView;
+@synthesize indicatorView;
 
 - (id) initWithImage:(NSString*)imagePath
 {
@@ -49,10 +50,20 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    if(indicatorView == nil)    {
+        indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        indicatorView.center = self.view.center;
+        [self.view addSubview: indicatorView];
+    }
+    
+    [indicatorView startAnimating];
+    
     [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString: _imagePath]
                                                           options:SDWebImageDownloaderUseNSURLCache progress:nil
                                                         completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
      {
+         [indicatorView stopAnimating];
+         
          if(image != nil)
          {
              [zoomView setImage:image];
