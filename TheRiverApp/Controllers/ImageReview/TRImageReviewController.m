@@ -11,6 +11,7 @@
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import "UIBarButtonItem+BarButtonItemExtended.h"
 #import "UIView+GestureBlocks.h"
+#import "UIImage+Resize.h"
 
 @interface TRImageReviewController ()
 @property (nonatomic, retain) UIActivityIndicatorView *indicatorView;
@@ -66,6 +67,8 @@
          
          if(image != nil)
          {
+             //[zoomView setImage:image];
+             image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(320, 320) interpolationQuality:kCGInterpolationHigh];
              [zoomView setImage:image];
          }
      }];
