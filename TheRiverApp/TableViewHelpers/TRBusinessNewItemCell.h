@@ -14,4 +14,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *businessName;
 @property (nonatomic, strong) IBOutlet UILabel *businessAbout;
 
+-(void) reloadWithBusinessModel:(TRBusinessModel*)businessObject;
+
 @end

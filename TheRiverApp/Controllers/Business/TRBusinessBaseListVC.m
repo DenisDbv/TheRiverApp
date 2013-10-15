@@ -8,6 +8,7 @@
 
 #import "TRBusinessBaseListVC.h"
 #import "TRBusinessItemCell.h"
+#import "TRBusinessNewItemCell.h"
 #import "TRBusinessDescriptionVC.h"
 
 #import "WDActivityIndicator.h"
@@ -36,7 +37,7 @@
     
     self.navigationController.navigationBar.clipsToBounds = YES;
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"TRBusinessItemCell" bundle:nil] forCellReuseIdentifier:@"TRBusinessCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TRBusinessNewItemCell" bundle:nil] forCellReuseIdentifier:@"TRBusinessNewItemCell"];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -91,17 +92,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 269;
+    return 90;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 10;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 10;
+    return 2;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,10 +116,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *itemCellIdentifier = @"TRBusinessCell";
-    TRBusinessItemCell *cell = [tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    static NSString *itemCellIdentifier = @"TRBusinessNewItemCell";
+    TRBusinessNewItemCell *cell = [tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     if (cell == nil) {
-        cell = [[TRBusinessItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
+        cell = [[TRBusinessNewItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
     }
     
     TRBusinessModel *businessUnit = [_businessList.business objectAtIndex: indexPath.section];

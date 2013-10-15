@@ -1419,6 +1419,9 @@
 				18A108DE17DE191F00D9CD8C /* TRBusinessItemCell.h */,
 				18A108DF17DE191F00D9CD8C /* TRBusinessItemCell.m */,
 				18A108E117DE19A100D9CD8C /* TRBusinessItemCell.xib */,
+				18A89B12180BE1D600B79D53 /* TRBusinessNewItemCell.h */,
+				18A89B13180BE1D600B79D53 /* TRBusinessNewItemCell.m */,
+				18A89B15180BE1FC00B79D53 /* TRBusinessNewItemCell.xib */,
 				18A1099617DEFBCB00D9CD8C /* TRFriendCell.h */,
 				18A1099717DEFBCD00D9CD8C /* TRFriendCell.m */,
 				18A1099917DF000100D9CD8C /* TRFriendCell.xib */,
@@ -1432,9 +1435,6 @@
 				1899703517F729340056F7ED /* TRSearchPartnersCell.xib */,
 				18FEA75E17FBF760006B7864 /* TRContactCell.h */,
 				18FEA75F17FBF760006B7864 /* TRContactCell.m */,
-				18A89B12180BE1D600B79D53 /* TRBusinessNewItemCell.h */,
-				18A89B13180BE1D600B79D53 /* TRBusinessNewItemCell.m */,
-				18A89B15180BE1FC00B79D53 /* TRBusinessNewItemCell.xib */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
