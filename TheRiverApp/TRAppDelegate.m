@@ -266,6 +266,14 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    NSLog(@"Start application from background");
+    
+    [self updateDataFromServer];
+    
+    /*[[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
+    } andFailedOperation:^(LRRestyResponse *response) {
+    }];*/
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
