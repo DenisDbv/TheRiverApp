@@ -273,6 +273,9 @@
 		18A89C98180E89C800B79D53 /* skype_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8E180E89C800B79D53 /* skype_black.png */; };
 		18A89C99180E89C800B79D53 /* vk_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8F180E89C800B79D53 /* vk_black.png */; };
 		18A89C9A180E89C800B79D53 /* vk_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C90180E89C800B79D53 /* vk_black@2x.png */; };
+		18A89C9E180EA99800B79D53 /* TRWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89C9D180EA99800B79D53 /* TRWebView.m */; };
+		18A89CA1180EAEEC00B79D53 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C9F180EAEEC00B79D53 /* close.png */; };
+		18A89CA2180EAEEC00B79D53 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89CA0180EAEEC00B79D53 /* close@2x.png */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
 		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
@@ -663,6 +666,10 @@
 		18A89C8E180E89C800B79D53 /* skype_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skype_black.png; sourceTree = "<group>"; };
 		18A89C8F180E89C800B79D53 /* vk_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vk_black.png; sourceTree = "<group>"; };
 		18A89C90180E89C800B79D53 /* vk_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vk_black@2x.png"; sourceTree = "<group>"; };
+		18A89C9C180EA99800B79D53 /* TRWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRWebView.h; sourceTree = "<group>"; };
+		18A89C9D180EA99800B79D53 /* TRWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRWebView.m; sourceTree = "<group>"; };
+		18A89C9F180EAEEC00B79D53 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		18A89CA0180EAEEC00B79D53 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
@@ -1347,6 +1354,17 @@
 			path = voice_asset_black;
 			sourceTree = "<group>";
 		};
+		18A89C9B180EA98A00B79D53 /* TRWebView */ = {
+			isa = PBXGroup;
+			children = (
+				18A89C9F180EAEEC00B79D53 /* close.png */,
+				18A89CA0180EAEEC00B79D53 /* close@2x.png */,
+				18A89C9C180EA99800B79D53 /* TRWebView.h */,
+				18A89C9D180EA99800B79D53 /* TRWebView.m */,
+			);
+			path = TRWebView;
+			sourceTree = "<group>";
+		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,6 +1522,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				18A89C9B180EA98A00B79D53 /* TRWebView */,
 				18FEA71F17FAD869006B7864 /* ZoomView */,
 				18A108C817DDC04C00D9CD8C /* WDActivityIndicator */,
 				18E65E2317D5009700D1B778 /* MFSideMenu */,
@@ -1698,6 +1717,7 @@
 				18A1094617DEA2BB00D9CD8C /* 15.jpg in Resources */,
 				18A1094717DEA2BB00D9CD8C /* 16.jpg in Resources */,
 				18A1094817DEA2BB00D9CD8C /* 17.jpg in Resources */,
+				18A89CA1180EAEEC00B79D53 /* close.png in Resources */,
 				18A1094917DEA2BB00D9CD8C /* 18.jpg in Resources */,
 				18A1094A17DEA2BB00D9CD8C /* 19.jpg in Resources */,
 				18A89B03180B166100B79D53 /* Icon-40@2x.png in Resources */,
@@ -1715,6 +1735,7 @@
 				18A89B05180B166100B79D53 /* Icon-60@2x.png in Resources */,
 				18A89B04180B166100B79D53 /* Icon-60.png in Resources */,
 				18A89B07180B166100B79D53 /* Icon-72@2x.png in Resources */,
+				18A89CA2180EAEEC00B79D53 /* close@2x.png in Resources */,
 				18A1095C17DEBBED00D9CD8C /* HypatiaSansProReadme.pdf in Resources */,
 				18A1096117DED0BB00D9CD8C /* profile-scrollview-contacts@2x.png in Resources */,
 				18A1096217DED0BB00D9CD8C /* profile-scrollview-photos@2x.png in Resources */,
@@ -1832,6 +1853,7 @@
 				182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */,
 				182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */,
 				18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */,
+				18A89C9E180EA99800B79D53 /* TRWebView.m in Sources */,
 				18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */,
 				18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */,
 				18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */,

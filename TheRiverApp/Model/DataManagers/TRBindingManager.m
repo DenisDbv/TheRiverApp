@@ -55,7 +55,6 @@
 -(void) callBinding:(TRUserInfoModel*)userModel
 {
     NSString *phoneNumber = [@"tel://" stringByAppendingString: [userModel.contact_data.phone objectAtIndex:0] ];
-    NSLog(@"%@", phoneNumber);
     if(phoneNumber.length > 0)
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString: phoneNumber]];
 }

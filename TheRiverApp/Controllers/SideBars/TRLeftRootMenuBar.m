@@ -24,6 +24,7 @@
 #import "TRBusinessBaseListVC.h"
 #import "TRMeetingsBaseListVC.h"
 #import "TRPartyUsersListVC.h"
+#import "TRWebView.h"
 
 @interface TRLeftRootMenuBar ()
 @property (nonatomic, retain) UITableView *rootMenuTableView;
@@ -191,16 +192,17 @@
         
         
         //Настройки пользователя
-        /*UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
+        UIView *settingView = [[UIView alloc] initWithFrame:CGRectMake(header.bounds.size.width-40, 0, 40, 40)];
         [settingView initialiseTapHandler:^(UIGestureRecognizer *sender) {
-            [self logout];
+            NSString *urlDirect = [NSString stringWithFormat:@"%@/edit_1/?token=%@", SERVER_HOSTNAME, [TRAuthManager client].iamData.token];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlDirect]];
         } forTaps:1];
         UIImageView *settingsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cog-gray-icon@2x.png"]];
         settingsImageView.userInteractionEnabled = YES;
         settingsImageView.frame = CGRectMake(0, 0, settingsImageView.frame.size.width/2, settingsImageView.frame.size.height/2);
         settingsImageView.center = CGPointMake(settingView.frame.size.width/2, settingView.frame.size.height/2);
         [settingView addSubview:settingsImageView];
-        [header addSubview:settingView];*/
+        [header addSubview:settingView];
         
         SSLineView *bottomLine = [[SSLineView alloc] initWithFrame:CGRectMake(0, header.bounds.size.height-1, header.bounds.size.width, 1)];
         [bottomLine setLineColor:[UIColor colorWithRed:41.0/255.0
