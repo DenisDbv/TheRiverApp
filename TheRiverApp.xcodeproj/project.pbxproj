@@ -263,6 +263,16 @@
 		18A89B11180B166100B79D53 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89B01180B166100B79D53 /* iTunesArtwork@2x.png */; };
 		18A89B14180BE1D600B79D53 /* TRBusinessNewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89B13180BE1D600B79D53 /* TRBusinessNewItemCell.m */; };
 		18A89B16180BE1FC00B79D53 /* TRBusinessNewItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89B15180BE1FC00B79D53 /* TRBusinessNewItemCell.xib */; };
+		18A89C91180E89C800B79D53 /* facebook_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C87180E89C800B79D53 /* facebook_black.png */; };
+		18A89C92180E89C800B79D53 /* facebook_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C88180E89C800B79D53 /* facebook_black@2x.png */; };
+		18A89C93180E89C800B79D53 /* mail_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C89180E89C800B79D53 /* mail_black.png */; };
+		18A89C94180E89C800B79D53 /* mail_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8A180E89C800B79D53 /* mail_black@2x.png */; };
+		18A89C95180E89C800B79D53 /* message_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8B180E89C800B79D53 /* message_black.png */; };
+		18A89C96180E89C800B79D53 /* message_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8C180E89C800B79D53 /* message_black@2x.png */; };
+		18A89C97180E89C800B79D53 /* phone_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8D180E89C800B79D53 /* phone_black.png */; };
+		18A89C98180E89C800B79D53 /* skype_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8E180E89C800B79D53 /* skype_black.png */; };
+		18A89C99180E89C800B79D53 /* vk_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C8F180E89C800B79D53 /* vk_black.png */; };
+		18A89C9A180E89C800B79D53 /* vk_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C90180E89C800B79D53 /* vk_black@2x.png */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
 		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
@@ -643,6 +653,16 @@
 		18A89B12180BE1D600B79D53 /* TRBusinessNewItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRBusinessNewItemCell.h; path = TableViewHelpers/TRBusinessNewItemCell.h; sourceTree = "<group>"; };
 		18A89B13180BE1D600B79D53 /* TRBusinessNewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRBusinessNewItemCell.m; path = TableViewHelpers/TRBusinessNewItemCell.m; sourceTree = "<group>"; };
 		18A89B15180BE1FC00B79D53 /* TRBusinessNewItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRBusinessNewItemCell.xib; path = TableViewHelpers/TRBusinessNewItemCell.xib; sourceTree = "<group>"; };
+		18A89C87180E89C800B79D53 /* facebook_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_black.png; sourceTree = "<group>"; };
+		18A89C88180E89C800B79D53 /* facebook_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_black@2x.png"; sourceTree = "<group>"; };
+		18A89C89180E89C800B79D53 /* mail_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail_black.png; sourceTree = "<group>"; };
+		18A89C8A180E89C800B79D53 /* mail_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail_black@2x.png"; sourceTree = "<group>"; };
+		18A89C8B180E89C800B79D53 /* message_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_black.png; sourceTree = "<group>"; };
+		18A89C8C180E89C800B79D53 /* message_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_black@2x.png"; sourceTree = "<group>"; };
+		18A89C8D180E89C800B79D53 /* phone_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_black.png; sourceTree = "<group>"; };
+		18A89C8E180E89C800B79D53 /* skype_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skype_black.png; sourceTree = "<group>"; };
+		18A89C8F180E89C800B79D53 /* vk_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vk_black.png; sourceTree = "<group>"; };
+		18A89C90180E89C800B79D53 /* vk_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vk_black@2x.png"; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
@@ -1310,6 +1330,23 @@
 			path = AppIcons;
 			sourceTree = "<group>";
 		};
+		18A89C86180E89C800B79D53 /* voice_asset_black */ = {
+			isa = PBXGroup;
+			children = (
+				18A89C87180E89C800B79D53 /* facebook_black.png */,
+				18A89C88180E89C800B79D53 /* facebook_black@2x.png */,
+				18A89C89180E89C800B79D53 /* mail_black.png */,
+				18A89C8A180E89C800B79D53 /* mail_black@2x.png */,
+				18A89C8B180E89C800B79D53 /* message_black.png */,
+				18A89C8C180E89C800B79D53 /* message_black@2x.png */,
+				18A89C8D180E89C800B79D53 /* phone_black.png */,
+				18A89C8E180E89C800B79D53 /* skype_black.png */,
+				18A89C8F180E89C800B79D53 /* vk_black.png */,
+				18A89C90180E89C800B79D53 /* vk_black@2x.png */,
+			);
+			path = voice_asset_black;
+			sourceTree = "<group>";
+		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1324,6 +1361,7 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A89C86180E89C800B79D53 /* voice_asset_black */,
 				18A89AF1180B166100B79D53 /* AppIcons */,
 				18A47FC51809714400983BC1 /* logo.png */,
 				18A47FC61809714400983BC1 /* logo@2x.png */,
@@ -1570,6 +1608,7 @@
 				182D72DA17D3CFAF00134224 /* Default.png in Resources */,
 				182D72DC17D3CFAF00134224 /* Default@2x.png in Resources */,
 				182D72DE17D3CFAF00134224 /* Default-568h@2x.png in Resources */,
+				18A89C9A180E89C800B79D53 /* vk_black@2x.png in Resources */,
 				18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */,
 				18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */,
 				18A47FC81809714400983BC1 /* logo@2x.png in Resources */,
@@ -1630,6 +1669,7 @@
 				18A1090A17DE771A00D9CD8C /* add-contact-white-icon@2x.png in Resources */,
 				18A1090B17DE771A00D9CD8C /* subscribe-icon@2x.png in Resources */,
 				18A1090C17DE771A00D9CD8C /* send-message-icon@2x.png in Resources */,
+				18A89C94180E89C800B79D53 /* mail_black@2x.png in Resources */,
 				18A89B0E180B166100B79D53 /* Icon.png in Resources */,
 				18A1091017DE7A5700D9CD8C /* add-contact-white-icon.png in Resources */,
 				18A1091117DE7A5700D9CD8C /* send-message-icon.png in Resources */,
@@ -1653,6 +1693,7 @@
 				18A89B06180B166100B79D53 /* Icon-72.png in Resources */,
 				18A1094317DEA2BB00D9CD8C /* 12.jpg in Resources */,
 				18A1094417DEA2BB00D9CD8C /* 13.jpg in Resources */,
+				18A89C92180E89C800B79D53 /* facebook_black@2x.png in Resources */,
 				18A1094517DEA2BB00D9CD8C /* 14.jpg in Resources */,
 				18A1094617DEA2BB00D9CD8C /* 15.jpg in Resources */,
 				18A1094717DEA2BB00D9CD8C /* 16.jpg in Resources */,
@@ -1665,6 +1706,7 @@
 				18A89B16180BE1FC00B79D53 /* TRBusinessNewItemCell.xib in Resources */,
 				18A1095617DEBBED00D9CD8C /* HypatiaSansPro-Black.otf in Resources */,
 				18A1095717DEBBED00D9CD8C /* HypatiaSansPro-Bold.otf in Resources */,
+				18A89C91180E89C800B79D53 /* facebook_black.png in Resources */,
 				18A1095817DEBBED00D9CD8C /* HypatiaSansPro-ExtraLight.otf in Resources */,
 				18A1095917DEBBED00D9CD8C /* HypatiaSansPro-Light.otf in Resources */,
 				18A89B08180B166100B79D53 /* Icon-76.png in Resources */,
@@ -1700,6 +1742,8 @@
 				18A1098917DEDF7300D9CD8C /* 4k.jpg in Resources */,
 				18A1098A17DEDF7300D9CD8C /* 3k.jpg in Resources */,
 				18A1098B17DEDF7300D9CD8C /* 2k.jpg in Resources */,
+				18A89C98180E89C800B79D53 /* skype_black.png in Resources */,
+				18A89C95180E89C800B79D53 /* message_black.png in Resources */,
 				18A1098C17DEDF7300D9CD8C /* 1k.jpg in Resources */,
 				18A1099217DEF8E100D9CD8C /* TRFriendsListVC.xib in Resources */,
 				18A1099A17DF000300D9CD8C /* TRFriendCell.xib in Resources */,
@@ -1707,6 +1751,7 @@
 				1896C45217E09101004AE5FF /* button-default.png in Resources */,
 				1896C45317E09101004AE5FF /* button-default@2x.png in Resources */,
 				1896C46117E23164004AE5FF /* dropdown-icon@2x.png in Resources */,
+				18A89C96180E89C800B79D53 /* message_black@2x.png in Resources */,
 				1896C46A17E34156004AE5FF /* TRMeetingsBaseListVC.xib in Resources */,
 				1896C46F17E34219004AE5FF /* TRMeetingItemCell.xib in Resources */,
 				189486BA17E6416700E9B119 /* m1.jpg in Resources */,
@@ -1722,6 +1767,8 @@
 				18A89B0A180B166100B79D53 /* Icon-Small-50.png in Resources */,
 				18975FEE17EF436000B06DF7 /* toolbar-knowledge-base-icon@2x.png in Resources */,
 				18975FEF17EF436000B06DF7 /* toolbar-messages-icon.png in Resources */,
+				18A89C97180E89C800B79D53 /* phone_black.png in Resources */,
+				18A89C99180E89C800B79D53 /* vk_black.png in Resources */,
 				18975FF017EF436000B06DF7 /* toolbar-messages-icon@2x.png in Resources */,
 				18A89B0D180B166100B79D53 /* Icon-Small@2x.png in Resources */,
 				18975FF117EF436000B06DF7 /* toolbar-search-icon.png in Resources */,
@@ -1729,6 +1776,7 @@
 				18975FFD17EF934000B06DF7 /* blueButton@2x.png in Resources */,
 				18975FFE17EF934000B06DF7 /* blueButton.png in Resources */,
 				18975FFF17EF934000B06DF7 /* blueButtonHighlight@2x.png in Resources */,
+				18A89C93180E89C800B79D53 /* mail_black.png in Resources */,
 				1897600017EF934000B06DF7 /* blueButtonHighlight.png in Resources */,
 				1897600F17F0DB2100B06DF7 /* TRPartyUsersListVC.xib in Resources */,
 				1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */,
@@ -1961,7 +2009,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Denis Dubov (BLTF8P8RTQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
@@ -1978,14 +2026,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Denis Dubov (BLTF8P8RTQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "The River";
-				PROVISIONING_PROFILE = "A386FB3B-896A-49AF-82EE-B296923327B3";
+				PROVISIONING_PROFILE = "6E2A36FD-6F9C-434F-B782-304978C1D9D9";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
