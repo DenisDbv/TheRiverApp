@@ -10,6 +10,9 @@
 
 @interface TRContactsListModel : Jastor
 
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *code;
+
 @property (nonatomic, retain) NSArray *user;
 
 @end

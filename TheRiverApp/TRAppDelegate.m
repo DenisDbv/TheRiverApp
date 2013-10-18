@@ -66,7 +66,7 @@
         
     } else
     {
-        NSLog(@"User has been authenticated");
+        NSLog(@"User has been authenticated by token: %@", [TRAuthManager client].iamData.token);
         
         [TRUserManager sharedInstance];
         
@@ -90,11 +90,11 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     self.pushToken = deviceToken;
-    NSLog(@"My token is: %@", deviceToken);
+    NSLog(@"My push token is: %@", deviceToken);
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Failed to get token, error: %@", error);
+    NSLog(@"Failed to get push token, error: %@", error);
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

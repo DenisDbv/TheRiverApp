@@ -37,14 +37,24 @@
     [photoBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
         //TRAlbumViewController *albumVC = [[TRAlbumViewController alloc] init];
         //[((UIViewController*)target).navigationController pushViewController:albumVC animated:YES];
-        [box showAlarmMessage:@"Фотографии" :@"В следующей версии вы сможете загрузить фотографии и видео себя и своего бизнеса"];
+        [box showAlarmMessage:@"Фотографии" :@"В следующей версии вы сможете загрузить больше фотографий и видео, своих и своего бизнеса\n\n"];
     } forTaps:1];
     
     UIView *contactsBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-contacts@2x.png"] withTitle:@"Контакты"];
     [contactsBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
         //TRFriendsListVC *friendsList = [[TRFriendsListVC alloc] init];
         //[((UIViewController*)target).navigationController pushViewController:friendsList animated:YES];
-        [box showAlarmMessage:@"Контакты" :@"В следующей версии, в этом разделе будет список избранных участников.\n\n "];
+        [box showAlarmMessage:@"Контакты" :@"В следующей версии, в этом разделе будет список избранных участников.\n\n"];
+    } forTaps:1];
+    
+    UIView *knowBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Знания"];
+    [knowBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        [box showAlarmMessage:@"Знания" :@"В следующей версии, в этом разделе вы сможете просматривать знания и ценные инструменты которые опубликовали другие участники.\n\n"];
+    } forTaps:1];
+    
+    UIView *sbscrBox = [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-subscribed@2x.png"] withTitle:@"Интересно"];
+    [sbscrBox initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        [box showAlarmMessage:@"И это еще не всё!" :@"Это приложение сообщества, поэтому смело предлагайте свои идеи и голосуйте за другие.\nСамые интересные из них обязательно будут реализованы. Для этого зайдите на вкладку \"оставить отзыв\" в левом меню.\n\n"];
     } forTaps:1];
     
     // В следующей версии, в этом разделе вы сможете просматривать знания и ценные инструменты которые опубликовали другие участники
@@ -52,9 +62,9 @@
     
     NSArray *buttonsArray = [NSArray arrayWithObjects:
                              contactsBox,
-                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-posts@2x.png"] withTitle:@"Знания"],
+                             knowBox,
                              photoBox,
-                             [box createViewWithImage:[UIImage imageNamed:@"profile-scrollview-subscribed@2x.png"] withTitle:@"Подписчики"], nil];
+                             sbscrBox, nil];
     [box addViewsToScroll:buttonsArray];
     
     return box;
