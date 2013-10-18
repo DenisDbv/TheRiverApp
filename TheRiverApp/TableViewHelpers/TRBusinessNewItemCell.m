@@ -18,9 +18,14 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        [self initialized];
     }
     return self;
+}
+
+-(void) awakeFromNib
+{
+    [self initialized];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -28,6 +33,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void) initialized
+{
+    self.imageView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    self.imageView.layer.shadowOffset = CGSizeMake(1, 1);
+    self.imageView.layer.shadowOpacity = 0.5;
+    self.imageView.layer.shadowRadius = 1.0;
+    self.imageView.clipsToBounds = NO;
 }
 
 -(void) setFrame:(CGRect)frame
@@ -69,19 +83,21 @@
             [self.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
-                    image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
+                    /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
                      image = [image croppedImage:CGRectMake(0, 0, 85, 85)];
-                     [self.imageView setImage:image];
+                     [self.imageView setImage:image];*/
                     
                     [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
                 }
             } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         } else  {
             UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
-            image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
-            image = [image croppedImage:CGRectMake(0, 0, 85, 85)];
+            /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
+            image = [image croppedImage:CGRectMake(0, 0, 85, 85)];*/
             [self.imageView setImage:image];
         }
+    }   else    {
+        [self.imageView setImage:[UIImage new]];
     }
     
     /*if(businessObject.user_logo.length != 0) {
