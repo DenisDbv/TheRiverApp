@@ -161,8 +161,8 @@
                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                      [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
                                      
-                                     image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(90.0, 90.0) interpolationQuality:kCGInterpolationHigh];
-                                     image = [image croppedImage:CGRectMake(0, 0, 90.0, 90.0)];
+                                     /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(90.0, 90.0) interpolationQuality:kCGInterpolationHigh];
+                                     image = [image croppedImage:CGRectMake(0, 0, 90.0, 90.0)];*/
                                      [[SDImageCache sharedImageCache] storeImage:image forKey:[logoURLString stringByAppendingString:@"_leftLogo"] toDisk:YES];
                                      
                                  } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
