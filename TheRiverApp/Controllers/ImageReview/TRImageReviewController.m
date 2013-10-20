@@ -15,6 +15,7 @@
 
 @interface TRImageReviewController ()
 @property (nonatomic, retain) UIActivityIndicatorView *indicatorView;
+@property (nonatomic, strong) UIButton *closeButton;
 @end
 
 @implementation TRImageReviewController
@@ -24,6 +25,7 @@
 }
 @synthesize zoomView;
 @synthesize indicatorView;
+@synthesize closeButton;
 
 - (id) initWithImage:(NSString*)imagePath
 {
@@ -41,12 +43,21 @@
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     
-    UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
+    /*UIBarButtonItem *onCancelButton = [UIBarButtonItem barItemWithImage:[UIImage imageNamed:@"toolbar-back-button@2x.png"] target:self action:@selector(onBack)];
     [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
+    [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];*/
     
     self.view.backgroundColor = [UIColor blackColor];
     zoomView.backgroundColor = [UIColor clearColor];
+    
+    closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeButton addTarget:self action:@selector(onBack) forControlEvents:UIControlEventTouchUpInside];
+    closeButton.frame = CGRectMake(self.view.bounds.size.width - 20 - roundf(58/2), -5, 58, 58);
+    [closeButton setContentMode:UIViewContentModeScaleAspectFit|UIViewContentModeCenter];
+    closeButton.showsTouchWhenHighlighted = YES;
+    closeButton.alpha = 1;
+    [closeButton setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    [self.view addSubview:closeButton];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -94,13 +105,14 @@
 
 -(void) onBack
 {
+    [AppDelegateInstance() setStatusBarHide:NO];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) hideNavBar
 {
     [UIView animateWithDuration:0.5 animations:^{
-        self.navigationController.navigationBar.alpha = 0;
+        closeButton.alpha = 0;
     } completion:^(BOOL finished) {
         isShow = NO;
     }];
@@ -109,7 +121,7 @@
 -(void) showNavBar
 {
     [UIView animateWithDuration:0.2 animations:^{
-        self.navigationController.navigationBar.alpha = 1;
+        closeButton.alpha = 1;
     } completion:^(BOOL finished) {
         isShow = YES;
     }];

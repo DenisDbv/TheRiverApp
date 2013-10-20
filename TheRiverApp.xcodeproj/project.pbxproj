@@ -283,6 +283,8 @@
 		18B1AFC418140D9800272C0D /* OBAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFC218140D9800272C0D /* OBAlert.m */; };
 		18B1AFC518140D9800272C0D /* UIButton+ALBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFC318140D9800272C0D /* UIButton+ALBlock.m */; };
 		18B1AFC71814212400272C0D /* rightbar_contact_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B1AFC61814212400272C0D /* rightbar_contact_placeholder.png */; };
+		18B1AFCA1814256500272C0D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B1AFC81814256500272C0D /* close.png */; };
+		18B1AFCB1814256500272C0D /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B1AFC91814256500272C0D /* close@2x.png */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
 		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
@@ -689,6 +691,8 @@
 		18B1AFC218140D9800272C0D /* OBAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAlert.m; sourceTree = "<group>"; };
 		18B1AFC318140D9800272C0D /* UIButton+ALBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ALBlock.m"; sourceTree = "<group>"; };
 		18B1AFC61814212400272C0D /* rightbar_contact_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightbar_contact_placeholder.png; sourceTree = "<group>"; };
+		18B1AFC81814256500272C0D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		18B1AFC91814256500272C0D /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
@@ -1434,6 +1438,8 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18B1AFC81814256500272C0D /* close.png */,
+				18B1AFC91814256500272C0D /* close@2x.png */,
 				18B1AFC61814212400272C0D /* rightbar_contact_placeholder.png */,
 				18A89C86180E89C800B79D53 /* voice_asset_black */,
 				18A89AF1180B166100B79D53 /* AppIcons */,
@@ -1713,6 +1719,7 @@
 				1891D77717D8F74C00281246 /* nav_bg.png in Resources */,
 				1891D79D17DA298200281246 /* AQ3D-simplicity.png in Resources */,
 				1891D79E17DA298200281246 /* AQAppleTV-esque_by-mikelcroft_nl-1440.png in Resources */,
+				18B1AFCA1814256500272C0D /* close.png in Resources */,
 				1891D79F17DA298200281246 /* AQbatman_surfing_on_superman.png in Resources */,
 				1891D7A017DA298200281246 /* AQcoffee-break_.png in Resources */,
 				1891D7A117DA298200281246 /* AQcolorful_1440x900.png in Resources */,
@@ -1768,6 +1775,7 @@
 				18A1094217DEA2BB00D9CD8C /* 11.jpg in Resources */,
 				18A89B06180B166100B79D53 /* Icon-72.png in Resources */,
 				18A1094317DEA2BB00D9CD8C /* 12.jpg in Resources */,
+				18B1AFCB1814256500272C0D /* close@2x.png in Resources */,
 				18A1094417DEA2BB00D9CD8C /* 13.jpg in Resources */,
 				18A89C92180E89C800B79D53 /* facebook_black@2x.png in Resources */,
 				18A1094517DEA2BB00D9CD8C /* 14.jpg in Resources */,

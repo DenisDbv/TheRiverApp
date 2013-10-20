@@ -111,8 +111,9 @@
         [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
             if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
                 NSString *fullLogoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.business.logo];
+                [AppDelegateInstance() setStatusBarHide:YES];
                 TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:fullLogoURLString];
-                [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+                [AppDelegateInstance() presentModalViewController: imageReviewController];
             }
         } forTaps:1];
         
@@ -178,8 +179,9 @@
         [imageView initialiseTapHandler:^(UIGestureRecognizer *sender) {
             if( [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString].size.width > 0 )    {
                 NSString *fullLogoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.logo];
+                [AppDelegateInstance() setStatusBarHide:YES];
                 TRImageReviewController *imageReviewController = [[TRImageReviewController alloc] initWithImage:fullLogoURLString];
-                [AppDelegateInstance() presentModalViewController: [[UINavigationController alloc] initWithRootViewController:imageReviewController] ];
+                [AppDelegateInstance() presentModalViewController: imageReviewController ];
             }
         } forTaps:1];
         

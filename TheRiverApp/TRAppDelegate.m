@@ -80,6 +80,21 @@
     return YES;
 }
 
+-(void) setStatusBarHide:(BOOL)status
+{
+    if(status)  {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        self.window.frame =  CGRectMake(0,0, self.window.frame.size.width,self.window.frame.size.height);
+        self.window.bounds = CGRectMake(0,0, self.window.frame.size.width, self.window.frame.size.height);
+    } else  {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        if(IS_OS_7_OR_LATER)    {
+            self.window.frame =  CGRectMake(0,20, self.window.frame.size.width,self.window.frame.size.height-20);
+            self.window.bounds = CGRectMake(0,20, self.window.frame.size.width, self.window.frame.size.height);
+        }
+    }
+}
+
 -(void) logout
 {
     [_rightMyContactList removeTimer];

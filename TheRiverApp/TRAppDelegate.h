@@ -23,6 +23,8 @@
 -(NSInteger) osVersion;
 -(NSData*) getDeviceToken;
 
+-(void) setStatusBarHide:(BOOL)status;
+
 -(void) logout;
 -(void) showServerErrorMessage;
 
