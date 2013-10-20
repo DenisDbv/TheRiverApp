@@ -33,26 +33,19 @@ static const NSString *_fileIndustryHandler = @"industry.data";
 -(void) downloadCitiesList:(SuccessOperation) succesOperaion
         andFailedOperation:(FailedOperation) failedOperation
 {
-    
-    if( [TRAuthManager client].isAuth == NO )   {
-        NSLog(@"Отмена получения списка городов. Пользователь не авторизован.");
-        return;
-    }
-    
-    NSString *urlCityList = [NSString stringWithFormat:@"%@?%@=%@", kTG_API_CitiesList,
-                                                                    kTGTokenKey,
-                                                                    [TRAuthManager client].iamData.token];
-    
-    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlCityList
+    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: kTG_API_CitiesList
                                                               withSuccessBlock:^(LRRestyResponse *response) {
                                                             
                                                                   NSArray *resultJSON = [[response asString] objectFromJSONString];
 
-                                                                  NSMutableArray *citiesArray = [[NSMutableArray alloc] init];
+                                                                  TRCitiesListModel *citiesList = [[TRCitiesListModel alloc] initWithDictionary:resultJSON];
+                                                                  [self saveUserData:citiesList atFile:(NSString*)_fileCitiesHandler];
+                                                                  
+                                                                  /*NSMutableArray *citiesArray = [[NSMutableArray alloc] init];
                                                                   [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                                                           [citiesArray addObject: [obj objectForKey:@"name"] ];
                                                                   }];
-                                                                  [self saveUserData:citiesArray atFile:(NSString*)_fileCitiesHandler];
+                                                                  [self saveUserData:citiesArray atFile:(NSString*)_fileCitiesHandler];*/
                                                                   
                                                                   if( succesOperaion != nil)
                                                                       succesOperaion(response);
@@ -71,26 +64,19 @@ static const NSString *_fileIndustryHandler = @"industry.data";
 -(void) downloadIndustryList:(SuccessOperation) succesOperaion
         andFailedOperation:(FailedOperation) failedOperation
 {
-    
-    if( [TRAuthManager client].isAuth == NO )   {
-        NSLog(@"Отмена получения списка отраслей. Пользователь не авторизован.");
-        return;
-    }
-    
-    NSString *urlCityList = [NSString stringWithFormat:@"%@?%@=%@", kTG_API_IndustryList,
-                             kTGTokenKey,
-                             [TRAuthManager client].iamData.token];
-    
-    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlCityList
+    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: kTG_API_IndustryList
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
                                                                               NSArray *resultJSON = [[response asString] objectFromJSONString];
+                                                                            
+                                                                              TRIndustriesListModel *industriesList = [[TRIndustriesListModel alloc] initWithDictionary:resultJSON];
+                                                                              [self saveUserData:industriesList atFile:(NSString*)_fileIndustryHandler];
                                                                               
-                                                                              NSMutableArray *industryArray = [[NSMutableArray alloc] init];
+                                                                              /*NSMutableArray *industryArray = [[NSMutableArray alloc] init];
                                                                               [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                                                                   [industryArray addObject: [obj objectForKey:@"name"] ];
                                                                               }];
-                                                                              [self saveUserData:industryArray atFile:(NSString*)_fileIndustryHandler];
+                                                                              [self saveUserData:industryArray atFile:(NSString*)_fileIndustryHandler];*/
                                                                               
                                                                               if( succesOperaion != nil)
                                                                                   succesOperaion(response);
@@ -149,12 +135,12 @@ static const NSString *_fileIndustryHandler = @"industry.data";
     [[TGArhiveObject class] saveArhiveFromObject:dataModel toFile: fileName];
 }
 
--(NSArray*) cityList
+-(TRCitiesListModel*) cityList
 {
     return [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileCitiesHandler];
 }
 
--(NSArray*) industryList
+-(TRIndustriesListModel*) industryList
 {
     return [[TGArhiveObject class] unarhiveObjectFromFile: (NSString*)_fileIndustryHandler];
 }

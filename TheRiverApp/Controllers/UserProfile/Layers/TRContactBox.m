@@ -89,24 +89,58 @@
 -(void) onMessageClick:(id)sender
 {
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:rootViewController title:@"Сообщения" message:@"Обмен сообщениями будет реализован в следующей версии приложения.\nБудут достпны чат комнаты, обсуждение идей и проектов, а также многое другое.\n\n "];
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:rootViewController title:@"Сообщения" message:@"В следующей версии приложения будут доступны чат комнаты, обсуждение идей и проектов, а также многое другое.\n\n"];
     [modal showWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveLinear completion:nil];
 }
 
 - (void)showGrid {
     NSInteger numberOfOptions = 6;
-    NSArray *items = @[
+    NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
+    TRUserInfoModel *userInfo = self.userData;
+    TRContactDataModel *contactData = userInfo.contact_data;
+    
+    if(contactData.phone.count > 0)
+        [itemsArray addObject: [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Phone.png"] title:@"Телефон"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"phone_black.png"] title:@"Телефон" disable:YES]];
+    
+    if(contactData.skype.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype.png"] title:@"Skype"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype_black.png"] title:@"Skype" disable:YES]];
+    
+    if(contactData.phone.count > 0)
+        [itemsArray addObject: [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"] title:@"SMS"]];
+    else
+        [itemsArray addObject: [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"message_black.png"] title:@"SMS" disable:YES]];
+    
+    if(userInfo.email.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"] title:@"Email"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"mail_black.png"] title:@"Email" disable:YES]];
+    
+    if(contactData.vk.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] title:@"Vkontakte"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"vk_black.png"] title:@"Vkontakte" disable:YES]];
+    
+    if(contactData.fb.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"facebook_black.png"] title:@"Facebook" disable:YES]];
+    
+    /*NSArray *items = @[
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Phone.png"] title:@"Телефон"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype.png"] title:@"Skype"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"] title:@"SMS"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"] title:@"Email"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] title:@"Vkontakte"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]
-                       ];
+                       ];*/
     
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     
-    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[itemsArray subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
     av.delegate = self;
     av.itemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
     

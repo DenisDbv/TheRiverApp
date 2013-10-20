@@ -98,8 +98,7 @@
     
     [[LRResty client] get:urlString parameters:parameters headers:requestHeaders withBlock:^(LRRestyResponse *response)  {
         if(response.status == 200)  {
-    
-            //NSLog(@"%@", response.asString);
+            
             [self finish];
             successBlockDownloader(response);
         }

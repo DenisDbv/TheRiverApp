@@ -11,6 +11,9 @@
 #import <ABMultiton/ABMultitonProtocol.h>
 #import <ABMultiton/ABMultiton.h>
 
+#import "TRCitiesListModel.h"
+#import "TRIndustriesListModel.h"
+
 typedef void (^SuccessOperation)(LRRestyResponse *response);
 typedef void (^FailedOperation)(LRRestyResponse *response);
 
@@ -19,8 +22,8 @@ typedef void (^FailedOperation)(LRRestyResponse *response);
     NSOperationQueue * _queuePUSearch;
 }
 
-@property (nonatomic, readonly) NSArray *cityList;
-@property (nonatomic, readonly) NSArray *industryList;
+@property (nonatomic, readonly) TRCitiesListModel *cityList;
+@property (nonatomic, readonly) TRIndustriesListModel *industryList;
 
 + (instancetype)client;
 

@@ -66,9 +66,7 @@
         
     } else
     {
-        NSLog(@"User has been authenticated");
-        
-        [TRUserManager sharedInstance];
+        NSLog(@"User has been authenticated by token: %@", [TRAuthManager client].iamData.token);
         
         [self presentTheRiverControllers];
     }
@@ -90,11 +88,11 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     self.pushToken = deviceToken;
-    NSLog(@"My token is: %@", deviceToken);
+    NSLog(@"My push token is: %@", deviceToken);
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Failed to get token, error: %@", error);
+    NSLog(@"Failed to get push token, error: %@", error);
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -266,6 +264,14 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    NSLog(@"Start application from background");
+    
+    [self updateDataFromServer];
+    
+    /*[[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
+    } andFailedOperation:^(LRRestyResponse *response) {
+    }];*/
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
