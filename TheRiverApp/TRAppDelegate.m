@@ -68,8 +68,6 @@
     {
         NSLog(@"User has been authenticated by token: %@", [TRAuthManager client].iamData.token);
         
-        [TRUserManager sharedInstance];
-        
         [self presentTheRiverControllers];
     }
     

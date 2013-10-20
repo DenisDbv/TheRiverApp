@@ -33,17 +33,7 @@ static const NSString *_fileIndustryHandler = @"industry.data";
 -(void) downloadCitiesList:(SuccessOperation) succesOperaion
         andFailedOperation:(FailedOperation) failedOperation
 {
-    
-    if( [TRAuthManager client].isAuth == NO )   {
-        NSLog(@"Отмена получения списка городов. Пользователь не авторизован.");
-        return;
-    }
-    
-    NSString *urlCityList = [NSString stringWithFormat:@"%@?%@=%@", kTG_API_CitiesList,
-                                                                    kTGTokenKey,
-                                                                    [TRAuthManager client].iamData.token];
-    
-    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlCityList
+    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: kTG_API_CitiesList
                                                               withSuccessBlock:^(LRRestyResponse *response) {
                                                             
                                                                   NSArray *resultJSON = [[response asString] objectFromJSONString];
@@ -74,17 +64,7 @@ static const NSString *_fileIndustryHandler = @"industry.data";
 -(void) downloadIndustryList:(SuccessOperation) succesOperaion
         andFailedOperation:(FailedOperation) failedOperation
 {
-    
-    if( [TRAuthManager client].isAuth == NO )   {
-        NSLog(@"Отмена получения списка отраслей. Пользователь не авторизован.");
-        return;
-    }
-    
-    NSString *urlCityList = [NSString stringWithFormat:@"%@?%@=%@", kTG_API_IndustryList,
-                             kTGTokenKey,
-                             [TRAuthManager client].iamData.token];
-    
-    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlCityList
+    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: kTG_API_IndustryList
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
                                                                               NSArray *resultJSON = [[response asString] objectFromJSONString];
