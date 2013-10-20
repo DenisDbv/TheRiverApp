@@ -179,8 +179,6 @@
 
 - (void) presentTheRiverControllers
 {
-    [self updateDataFromServer];
-    
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
     _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user isIam:YES];

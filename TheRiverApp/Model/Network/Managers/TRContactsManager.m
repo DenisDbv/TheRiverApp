@@ -71,8 +71,12 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                                   NSMutableDictionary *storeContactsData = [[NSMutableDictionary alloc] init];
                                                                                   [storeContactsData setObject:eTagValue forKey:@"etag"];
                                                                                   [storeContactsData setObject:resultJSON forKey:@"data"];
-                                                                                  [self saveUserData:storeContactsData];
                                                                                   
+                                                                                  dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                                                                                  dispatch_async(queue, ^ {
+                                                                                      [self saveUserData:storeContactsData];
+                                                                                  });
+                                                                                
                                                                                   if( successBlock != nil)
                                                                                       successBlock(response, cotactListModel);
                                                                                   

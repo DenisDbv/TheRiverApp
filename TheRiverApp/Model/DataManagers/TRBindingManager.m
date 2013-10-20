@@ -81,7 +81,7 @@
     
     if ([MFMailComposeViewController canSendMail]) {
         
-        NSLog(@"%@", userModel.email);
+        //NSLog(@"%@", userModel.email);
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = (id)self;
         [mailViewController setToRecipients:@[userModel.email]];

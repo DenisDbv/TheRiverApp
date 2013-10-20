@@ -85,7 +85,7 @@
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                                              NSLog(@"%@", resultJSON);
+                                                                              //NSLog(@"%@", resultJSON);
                                                                               BOOL result = [[resultJSON objectForKey:@"status"] boolValue];
                                                                               if(result == NO) {
                                                                                   if(failedOperation != nil)
