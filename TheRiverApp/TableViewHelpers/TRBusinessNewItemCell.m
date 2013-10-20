@@ -80,7 +80,7 @@
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo_cell];
         
         if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
-            [self.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            [self.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
                     /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
@@ -97,7 +97,7 @@
             [self.imageView setImage:image];
         }
     }   else    {
-        [self.imageView setImage:[UIImage new]];
+        [self.imageView setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
     }
     
     /*if(businessObject.user_logo.length != 0) {
