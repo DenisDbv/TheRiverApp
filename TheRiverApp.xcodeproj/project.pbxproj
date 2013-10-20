@@ -280,6 +280,8 @@
 		18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB21813CA5900272C0D /* TRCityItem.m */; };
 		18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */; };
 		18B1AFB91813CE1E00272C0D /* TRIndustriesItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB81813CE1E00272C0D /* TRIndustriesItem.m */; };
+		18B1AFC418140D9800272C0D /* OBAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFC218140D9800272C0D /* OBAlert.m */; };
+		18B1AFC518140D9800272C0D /* UIButton+ALBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFC318140D9800272C0D /* UIButton+ALBlock.m */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
 		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
@@ -682,6 +684,9 @@
 		18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRIndustriesListModel.m; sourceTree = "<group>"; };
 		18B1AFB71813CE1E00272C0D /* TRIndustriesItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRIndustriesItem.h; sourceTree = "<group>"; };
 		18B1AFB81813CE1E00272C0D /* TRIndustriesItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRIndustriesItem.m; sourceTree = "<group>"; };
+		18B1AFC118140D9800272C0D /* OBAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAlert.h; sourceTree = "<group>"; };
+		18B1AFC218140D9800272C0D /* OBAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAlert.m; sourceTree = "<group>"; };
+		18B1AFC318140D9800272C0D /* UIButton+ALBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ALBlock.m"; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
@@ -1403,6 +1408,16 @@
 			path = Models/CitiesList;
 			sourceTree = "<group>";
 		};
+		18B1AFC018140D9800272C0D /* OBAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				18B1AFC118140D9800272C0D /* OBAlert.h */,
+				18B1AFC218140D9800272C0D /* OBAlert.m */,
+				18B1AFC318140D9800272C0D /* UIButton+ALBlock.m */,
+			);
+			path = OBAlertView;
+			sourceTree = "<group>";
+		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1560,6 +1575,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				18B1AFC018140D9800272C0D /* OBAlertView */,
 				18A89C9B180EA98A00B79D53 /* TRWebView */,
 				18FEA71F17FAD869006B7864 /* ZoomView */,
 				18A108C817DDC04C00D9CD8C /* WDActivityIndicator */,
@@ -1886,6 +1902,7 @@
 				182D72D417D3CFAF00134224 /* main.m in Sources */,
 				182D72D817D3CFAF00134224 /* TRAppDelegate.m in Sources */,
 				183F1E5018043D9600487D8B /* AMPNavigationBar.m in Sources */,
+				18B1AFC418140D9800272C0D /* OBAlert.m in Sources */,
 				183F1E5318043E6400487D8B /* TRNavigationController.m in Sources */,
 				182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */,
 				182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */,
@@ -1985,6 +2002,7 @@
 				1899704417F831020056F7ED /* TRBusinessModel.m in Sources */,
 				18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */,
 				18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */,
+				18B1AFC518140D9800272C0D /* UIButton+ALBlock.m in Sources */,
 				18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */,
 				18FEA75A17FBED2E006B7864 /* TRContactsManager.m in Sources */,
 				18FEA75D17FBF20A006B7864 /* TRContactsListModel.m in Sources */,

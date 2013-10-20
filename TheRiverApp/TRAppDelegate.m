@@ -9,6 +9,7 @@
 #import "TRAppDelegate.h"
 
 #import "MFSideMenu.h"
+#import "OBAlert.h"
 
 #import "TRLoginViewController.h"
 #import "TRAuthViewController.h"
@@ -28,6 +29,9 @@
 @end
 
 @implementation TRAppDelegate
+{
+    OBAlert *alert;
+}
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -74,6 +78,30 @@
     //[self showFontsList];
     
     return YES;
+}
+
+-(void) logout
+{
+    [_rightMyContactList removeTimer];
+    [[TRAuthManager client] logout];
+    [AppDelegateInstance() presentLoginViewController];
+}
+
+-(void) showServerErrorMessage
+{
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    
+    if(alert == nil)    {
+        alert = [[OBAlert alloc] initInViewController:rootViewController];
+        [alert showAlertWithText:@"Возможно на сервере идут технические работы. Пожалуйста авторизируйтесь в системе заного. Заранее просим прощения за связанные с этим неудобства."
+                       titleText:@"Ошибка связи"
+                      buttonText:@"Авторизоваться"
+                           onTap:^{
+                               [alert removeAlert];
+                               
+                               [self logout];
+                           }];
+    }
 }
 
 -(NSData*) getDeviceToken

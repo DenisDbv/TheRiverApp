@@ -347,8 +347,7 @@
     [alertView addButtonWithTitle:@"ДА"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alertView) {
-                              [[TRAuthManager client] logout];
-                              [AppDelegateInstance() presentLoginViewController];
+                              [AppDelegateInstance() logout];
                           }];
     [alertView show];
 }

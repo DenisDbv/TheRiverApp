@@ -102,6 +102,14 @@
         if(response.status == 200)  {
             
             [self finish];
+            
+            NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+            if( ([[resultJSON objectForKey:@"status"] boolValue] == NO) &&
+               ([[resultJSON objectForKey:@"code"] integerValue] == 1))    {
+                NSLog(@"Oops!!! Server error: %@", resultJSON);
+                [AppDelegateInstance() showServerErrorMessage];
+            }
+            
             successBlockDownloader(response);
         }
         else
