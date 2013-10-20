@@ -43,7 +43,7 @@ static const NSString * _fileHandler = @"contacts.data";
             successBlock(nil, lastContactList);
     }
     
-    //NSLog(@"last etag == %@", [self lastEtag]);
+    NSLog(@"last etag == %@", [self lastEtag]);
     
     NSString *urlContactList = [NSString stringWithFormat:@"%@?%@=%@", kTG_API_ContactList,
                                  kTGTokenKey,
@@ -55,17 +55,12 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
                                                                               NSString *eTagValue = [response.headers valueForKey:@"ETag"];
-                                                                              //NSLog(@"====>%@", eTagValue);
+                                                                              //eTagValue = [eTagValue stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+                                                                              NSLog(@"====>%@", eTagValue);
                                                                               
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
                                                                               
                                                                               TRContactsListModel *cotactListModel = [[TRContactsListModel alloc] initWithDictionary:resultJSON];
-                                                                              
-                                                                              /*if([cotactListModel.status boolValue] == NO)
-                                                                              {
-                                                                                  NSLog(@"------------------------");
-                                                                                  return;
-                                                                              }*/
                                                                               
                                                                               if(cotactListModel.user.count > 0)    {
                                                                                   NSMutableDictionary *storeContactsData = [[NSMutableDictionary alloc] init];

@@ -46,7 +46,7 @@
     if (self == nil)
         return nil;
     
-    _eTagValue = eTagValue;
+    _eTagValue = [eTagValue copy];
     
     _url = [urlPath copy];
     successBlockDownloader = [succesBlock copy];
@@ -93,8 +93,10 @@
     NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] init];
     [requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
     
-    if(eTagValue.length > 0)
+    if(eTagValue.length > 0)    {
         [requestHeaders setObject:eTagValue forKey:@"If-None-Match"];
+        //NSLog(@"!! %@", requestHeaders);
+    }
     
     [[LRResty client] get:urlString parameters:parameters headers:requestHeaders withBlock:^(LRRestyResponse *response)  {
         if(response.status == 200)  {
