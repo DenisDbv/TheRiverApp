@@ -276,6 +276,10 @@
 		18A89C9E180EA99800B79D53 /* TRWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89C9D180EA99800B79D53 /* TRWebView.m */; };
 		18A89CA1180EAEEC00B79D53 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C9F180EAEEC00B79D53 /* close.png */; };
 		18A89CA2180EAEEC00B79D53 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89CA0180EAEEC00B79D53 /* close@2x.png */; };
+		18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */; };
+		18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB21813CA5900272C0D /* TRCityItem.m */; };
+		18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */; };
+		18B1AFB91813CE1E00272C0D /* TRIndustriesItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB81813CE1E00272C0D /* TRIndustriesItem.m */; };
 		18CBE8A9180293A800547909 /* TRPartySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CBE8A8180293A800547909 /* TRPartySearchBar.m */; };
 		18CBE8AC180330F200547909 /* contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AA180330F200547909 /* contacts-icon.png */; };
 		18CBE8AD180330F200547909 /* contacts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CBE8AB180330F200547909 /* contacts-icon@2x.png */; };
@@ -670,6 +674,14 @@
 		18A89C9D180EA99800B79D53 /* TRWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRWebView.m; sourceTree = "<group>"; };
 		18A89C9F180EAEEC00B79D53 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		18A89CA0180EAEEC00B79D53 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		18B1AFAE1813CA4900272C0D /* TRCitiesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCitiesListModel.h; sourceTree = "<group>"; };
+		18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRCitiesListModel.m; sourceTree = "<group>"; };
+		18B1AFB11813CA5900272C0D /* TRCityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCityItem.h; sourceTree = "<group>"; };
+		18B1AFB21813CA5900272C0D /* TRCityItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRCityItem.m; sourceTree = "<group>"; };
+		18B1AFB41813CDE800272C0D /* TRIndustriesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRIndustriesListModel.h; sourceTree = "<group>"; };
+		18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRIndustriesListModel.m; sourceTree = "<group>"; };
+		18B1AFB71813CE1E00272C0D /* TRIndustriesItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRIndustriesItem.h; sourceTree = "<group>"; };
+		18B1AFB81813CE1E00272C0D /* TRIndustriesItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRIndustriesItem.m; sourceTree = "<group>"; };
 		18CBE8A7180293A800547909 /* TRPartySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRPartySearchBar.h; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.h; sourceTree = "<group>"; };
 		18CBE8A8180293A800547909 /* TRPartySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRPartySearchBar.m; path = Controllers/SearchPartyUsers/Filter/TRPartySearchBar.m; sourceTree = "<group>"; };
 		18CBE8AA180330F200547909 /* contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts-icon.png"; sourceTree = "<group>"; };
@@ -1054,6 +1066,8 @@
 		18975F8A17EE1E1200B06DF7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				18B1AFAC1813CA2300272C0D /* IndustriesList */,
+				18B1AFAD1813CA2300272C0D /* CitiesList */,
 				1899665717FE13F600FF22A7 /* MeetingList */,
 				1899703E17F82FC70056F7ED /* BusinessList */,
 				1899702E17F6E1D70056F7ED /* PartnersSearch */,
@@ -1363,6 +1377,30 @@
 				18A89C9D180EA99800B79D53 /* TRWebView.m */,
 			);
 			path = TRWebView;
+			sourceTree = "<group>";
+		};
+		18B1AFAC1813CA2300272C0D /* IndustriesList */ = {
+			isa = PBXGroup;
+			children = (
+				18B1AFB41813CDE800272C0D /* TRIndustriesListModel.h */,
+				18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */,
+				18B1AFB71813CE1E00272C0D /* TRIndustriesItem.h */,
+				18B1AFB81813CE1E00272C0D /* TRIndustriesItem.m */,
+			);
+			name = IndustriesList;
+			path = Models/IndustriesList;
+			sourceTree = "<group>";
+		};
+		18B1AFAD1813CA2300272C0D /* CitiesList */ = {
+			isa = PBXGroup;
+			children = (
+				18B1AFAE1813CA4900272C0D /* TRCitiesListModel.h */,
+				18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */,
+				18B1AFB11813CA5900272C0D /* TRCityItem.h */,
+				18B1AFB21813CA5900272C0D /* TRCityItem.m */,
+			);
+			name = CitiesList;
+			path = Models/CitiesList;
 			sourceTree = "<group>";
 		};
 		18DA912417D3DECD00138EF2 /* SearchBar */ = {
@@ -1860,6 +1898,7 @@
 				18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */,
 				18E65E2117D4B97A00D1B778 /* TRFavoritesEditList.m in Sources */,
 				18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */,
+				18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */,
 				18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */,
 				18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */,
@@ -1903,6 +1942,7 @@
 				18A1099117DEF8E100D9CD8C /* TRFriendsListVC.m in Sources */,
 				18A1099517DEFAF900D9CD8C /* UIBarButtonItem+BarButtonItemExtended.m in Sources */,
 				18A1099817DEFBCF00D9CD8C /* TRFriendCell.m in Sources */,
+				18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */,
 				18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */,
 				18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */,
 				18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */,
@@ -1931,6 +1971,7 @@
 				1897601617F175D900B06DF7 /* TRSearchPUManager.m in Sources */,
 				1897601917F17A3100B06DF7 /* URLDownloaderOperation.m in Sources */,
 				1899701617F55D3A0056F7ED /* TRPUserListModel.m in Sources */,
+				18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */,
 				1899701917F57C600056F7ED /* TRSearchPUsersCell.m in Sources */,
 				1899702217F615F10056F7ED /* TRSearchPartnersListVC.m in Sources */,
 				1899702717F6C6D70056F7ED /* TRPartnersSearchView.m in Sources */,
@@ -1938,6 +1979,7 @@
 				1899702D17F6DC560056F7ED /* TRSearchPartnersManager.m in Sources */,
 				1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */,
 				1899703417F729010056F7ED /* TRSearchPartnersCell.m in Sources */,
+				18B1AFB91813CE1E00272C0D /* TRIndustriesItem.m in Sources */,
 				1899703917F82B290056F7ED /* TRBusinessManager.m in Sources */,
 				1899704117F830190056F7ED /* TRBusinessRootModel.m in Sources */,
 				1899704417F831020056F7ED /* TRBusinessModel.m in Sources */,
