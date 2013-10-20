@@ -121,7 +121,6 @@
         if(img == nil) {
             [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage new]
                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                 NSLog(@"LOGO profile: %@", NSStringFromCGSize(image.size));
                                  [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
                              } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         } else  {
