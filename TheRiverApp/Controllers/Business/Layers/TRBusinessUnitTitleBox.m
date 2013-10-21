@@ -74,7 +74,7 @@
 {
     NSInteger lastDigit = age % 10;
     
-    NSLog(@"==>%i", lastDigit);
+    //NSLog(@"==>%i", lastDigit);
     
     if( lastDigit == 1 )
         return @"год";

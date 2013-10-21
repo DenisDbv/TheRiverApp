@@ -56,7 +56,7 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                               
                                                                               NSString *eTagValue = [response.headers valueForKey:@"ETag"];
                                                                               //eTagValue = [eTagValue stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-                                                                              NSLog(@"====>%@", eTagValue);
+                                                                              //NSLog(@"====>%@", eTagValue);
                                                                               
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
                                                                               

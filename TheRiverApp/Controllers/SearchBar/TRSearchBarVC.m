@@ -210,7 +210,7 @@
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-	NSLog(@"==>%i", searchOption);
+	//NSLog(@"==>%i", searchOption);
 	return NO;
 }
 

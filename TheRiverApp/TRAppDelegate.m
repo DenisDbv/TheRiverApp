@@ -19,6 +19,8 @@
 #import "TRScrollViewController.h"
 #import "TRNavigationController.h"
 
+#import <Harpy/Harpy.h>
+
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
 
@@ -76,6 +78,11 @@
     }
     
     //[self showFontsList];
+    
+    [[Harpy sharedInstance] setAppID:@"725299549"];
+    [[Harpy sharedInstance] setAppName:@"The River"];
+    [[Harpy sharedInstance] setAlertType:HarpyAlertTypeForce];
+    [[Harpy sharedInstance] checkVersion];
     
     return YES;
 }
@@ -306,6 +313,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     NSLog(@"Start application from background");
+    
+    [[Harpy sharedInstance] checkVersionDaily];
     
     [self updateDataFromServer];
     
