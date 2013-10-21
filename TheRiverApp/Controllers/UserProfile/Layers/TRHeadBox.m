@@ -249,12 +249,28 @@
     nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     nameLabel.numberOfLines = 1;
-    nameLabel.text = [NSString stringWithFormat:@"%@, %@", self.userData.age, self.userData.city];
+    nameLabel.text = [NSString stringWithFormat:@"%@ %@, %@", self.userData.age, [self getStringYearByAge:[self.userData.age integerValue]], self.userData.city];
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
     nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0+6.0, size.width, size.height);
     
     [self addSubview: nameLabel];
+}
+
+-(NSString*) getStringYearByAge:(NSInteger)age
+{
+    NSInteger lastDigit = age % 10;
+    
+    NSLog(@"==>%i", lastDigit);
+    
+    if( lastDigit == 1 )
+        return @"год";
+    else if( lastDigit > 1 && lastDigit <= 4 )
+        return @"года";
+    else if( (lastDigit >= 5 && lastDigit <= 9) || lastDigit == 0 )
+        return @"лет";
+
+    return @"";
 }
 
 @end

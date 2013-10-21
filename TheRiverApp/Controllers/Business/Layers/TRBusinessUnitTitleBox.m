@@ -33,7 +33,7 @@
     dateCreateLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     [box.boxes addObject:dateCreateLine];*/
     
-    NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, businessObject.city];
+    NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, [box getStringYearByAge:[businessObject.age integerValue]], businessObject.city];
     MGLineStyled *authorLine = [MGLineStyled lineWithMultilineLeft:fullTitle right:nil width:300 minHeight:10];
     authorLine.backgroundColor = [UIColor clearColor];
     authorLine.topMargin = 10;
@@ -68,6 +68,22 @@
     [box.boxes addObject:profitLine];
     
     return box;
+}
+
+-(NSString*) getStringYearByAge:(NSInteger)age
+{
+    NSInteger lastDigit = age % 10;
+    
+    NSLog(@"==>%i", lastDigit);
+    
+    if( lastDigit == 1 )
+        return @"год";
+    else if( lastDigit > 1 && lastDigit <= 4 )
+        return @"года";
+    else if( (lastDigit >= 5 && lastDigit <= 9) || lastDigit == 0 )
+        return @"лет";
+    
+    return @"";
 }
 
 @end

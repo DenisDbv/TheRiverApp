@@ -40,8 +40,8 @@
     
     //NSLog(@"%@", NSStringFromCGSize([UIScreen mainScreen].bounds.size)); //NSStringFromCGSize(self.view.bounds.size));
     
-    loginField.text = @"denisdbv@gmail.com";
-    passwordField.text = @"12345678";
+    //loginField.text = @"denisdbv@gmail.com";
+    //passwordField.text = @"12345678";
     
     //[loginField becomeFirstResponder];
     
