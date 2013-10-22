@@ -38,10 +38,10 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"%@", NSStringFromCGSize([UIScreen mainScreen].bounds.size)); //NSStringFromCGSize(self.view.bounds.size));
+    //NSLog(@"%@", NSStringFromCGSize([UIScreen mainScreen].bounds.size)); //NSStringFromCGSize(self.view.bounds.size));
     
-    loginField.text = @"denisdbv@gmail.com";
-    passwordField.text = @"12345678";
+    //loginField.text = @"denisdbv@gmail.com";
+    //passwordField.text = @"12345678";
     
     //[loginField becomeFirstResponder];
     
@@ -117,7 +117,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     scrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, ([UIScreen mainScreen].bounds.size.height));
-    NSLog(@"%@", NSStringFromCGRect(scrollView.frame));
+    //NSLog(@"%@", NSStringFromCGRect(scrollView.frame));
     [scrollView setContentSize:CGSizeMake(1, 1)];
     
     CGRect rectLoginContainer = loginContainerView.frame;
@@ -130,7 +130,7 @@
                                     logoImageView.frame.size.width,
                                     logoImageView.frame.size.height);
     
-    NSLog(@"%@", NSStringFromCGRect(rectLoginContainer));
+    //NSLog(@"%@", NSStringFromCGRect(rectLoginContainer));
 }
 
 - (void)didReceiveMemoryWarning

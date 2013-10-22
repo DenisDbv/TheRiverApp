@@ -10,4 +10,7 @@
 
 @interface TRMyContactListBar : TRRootController
 
+-(void) refreshContactListWithCenterIndicator:(BOOL)isCenter;
+-(void) removeTimer;
+
 @end

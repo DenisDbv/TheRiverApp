@@ -39,7 +39,12 @@ static const NSString *_fileIndustryHandler = @"industry.data";
                                                                   NSArray *resultJSON = [[response asString] objectFromJSONString];
 
                                                                   TRCitiesListModel *citiesList = [[TRCitiesListModel alloc] initWithDictionary:resultJSON];
-                                                                  [self saveUserData:citiesList atFile:(NSString*)_fileCitiesHandler];
+                                                                  
+                                                                  dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                                                                  dispatch_async(queue, ^ {
+                                                                      [self saveUserData:citiesList atFile:(NSString*)_fileCitiesHandler];
+                                                                  });
+                                                                  
                                                                   
                                                                   /*NSMutableArray *citiesArray = [[NSMutableArray alloc] init];
                                                                   [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -70,7 +75,12 @@ static const NSString *_fileIndustryHandler = @"industry.data";
                                                                               NSArray *resultJSON = [[response asString] objectFromJSONString];
                                                                             
                                                                               TRIndustriesListModel *industriesList = [[TRIndustriesListModel alloc] initWithDictionary:resultJSON];
-                                                                              [self saveUserData:industriesList atFile:(NSString*)_fileIndustryHandler];
+                                                                              //[self saveUserData:industriesList atFile:(NSString*)_fileIndustryHandler];
+                                                                              
+                                                                              dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                                                                              dispatch_async(queue, ^ {
+                                                                                  [self saveUserData:industriesList atFile:(NSString*)_fileIndustryHandler];
+                                                                              });
                                                                               
                                                                               /*NSMutableArray *industryArray = [[NSMutableArray alloc] init];
                                                                               [resultJSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

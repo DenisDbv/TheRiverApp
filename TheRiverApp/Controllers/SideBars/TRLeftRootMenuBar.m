@@ -296,10 +296,12 @@
         }];*/
         [self logout];
     } else if(indexPath.row == 3)   {
+        NSLog(@"%@, %@ %@", [TRAuthManager client].iamData.email, [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name);
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
-            UVConfig *config = [UVConfig configWithSite:@"brandymint.uservoice.com"
-                                                 andKey:@"6P7WTuK36Q8gbXrnjXSug"
-                                              andSecret:@"N6YtFh854EPUu7y5rAWNA319UzNSsu3P6ufEfUolnuU"
+            
+            UVConfig *config = [UVConfig configWithSite:@"axbx.uservoice.com"
+                                                 andKey:@"8xnEIOixzm30U9B2U4m5dg"
+                                              andSecret:@"6PgTEB830Y6rN1CMqWonDcD9Xhfy9cc2fRwHWlWbk"
                                                andEmail:[TRAuthManager client].iamData.email
                                          andDisplayName:[NSString stringWithFormat:@"%@ %@", [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name]
                                                 andGUID:[[TRAuthManager client].iamData.user.id stringValue]];
@@ -347,8 +349,7 @@
     [alertView addButtonWithTitle:@"ДА"
                              type:SIAlertViewButtonTypeDefault
                           handler:^(SIAlertView *alertView) {
-                              [[TRAuthManager client] logout];
-                              [AppDelegateInstance() presentLoginViewController];
+                              [AppDelegateInstance() logout];
                           }];
     [alertView show];
 }
