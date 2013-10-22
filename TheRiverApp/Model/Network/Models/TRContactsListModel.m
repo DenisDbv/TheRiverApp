@@ -10,6 +10,7 @@
 
 @implementation TRContactsListModel
 
+@synthesize status, code;
 @synthesize user;
 
 + (Class)user_class {

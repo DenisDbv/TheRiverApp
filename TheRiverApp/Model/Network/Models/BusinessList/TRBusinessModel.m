@@ -9,7 +9,7 @@
 #import "TRBusinessModel.h"
 
 @implementation TRBusinessModel
-@synthesize first_name, last_name, age, city;
+@synthesize user_logo, first_name, last_name, age, city;
 @synthesize logo, logo_desc, logo_cell, company_name, about, profit;
 
 @end

@@ -18,6 +18,7 @@ pod 'TTTAttributedLabel'
 pod 'MIHGradientView'
 pod 'RNGridMenu'
 pod 'RNBlurModalView', '~> 0.1.0'
+pod 'Harpy'
 
 # Forum
 pod 'uservoice-iphone-sdk'

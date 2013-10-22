@@ -8,7 +8,8 @@ PODS:
   - DEFacebookComposeViewController (1.0.0):
     - Facebook-iOS-SDK (~> 3.1)
   - DWTagList (0.0.2)
-  - Facebook-iOS-SDK (3.8.0)
+  - Facebook-iOS-SDK (3.9.0)
+  - Harpy (2.3.9)
   - HRCoder (1.2.2)
   - jastor (0.1.0)
   - JSONKit (1.5pre)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - ACPButton
   - AQGridView
   - DWTagList
+  - Harpy
   - HRCoder
   - jastor
   - JSONKit
@@ -83,7 +85,8 @@ SPEC CHECKSUMS:
   AQGridView: ee436c64bc4a972ca7f3ce99971c0204af9e65ea
   DEFacebookComposeViewController: b26811d6775594df2a386406655c9f2828f041cc
   DWTagList: 76302ed894130ed285e95eb11e704a55593101ab
-  Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
+  Facebook-iOS-SDK: 5e1416dbdfc17b2620c2ca31c02e6feec042f2c1
+  Harpy: 7bc05e9a13bf1e930ede68075f9e224a46bc3727
   HRCoder: 686700a4246e96844cc898052da171229ee5f65d
   jastor: 9cb5ac45a9abae145d030ba3bf83a679d29738ac
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
@@ -91,7 +94,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MGBox2: 7c09e36c2271f9af16fdb5141a0ca554ecee4d8d
   MIHGradientView: 6d1f937a396c7aee2650ab09cba4af420919bdf0
-  NSData+Base64: 36c4e5b6479259c1a68866ccd2a8dd385c9744f7
+  NSData+Base64: 4819562faee4544e3cf5703f2139820b09732b28
   NSString+RMURLEncoding: f2a8c822486cdbe5c46638e85bc159aaa3ebc2b8
   NVUIGradientButton: bea9ead8be151e7603e1df63b664744f916da1b1
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e

@@ -23,6 +23,11 @@
 -(NSInteger) osVersion;
 -(NSData*) getDeviceToken;
 
+-(void) setStatusBarHide:(BOOL)status;
+
+-(void) logout;
+-(void) showServerErrorMessage;
+
 - (void) presentLoginViewController;
 - (void) presentTheRiverControllers;
 -(void) presentModalViewController:(UIViewController*)controller;

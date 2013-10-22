@@ -10,6 +10,7 @@
 
 @interface TRBusinessModel : Jastor
 
+@property (nonatomic, copy) NSString *user_logo;
 @property (nonatomic, copy) NSString *first_name;
 @property (nonatomic, copy) NSString *last_name;
 @property (nonatomic, copy) NSString *age;

@@ -34,6 +34,11 @@
 #import "TRMeetingListModel.h"
 #import "TREventModel.h"
 
+#import "TRCitiesListModel.h"
+#import "TRCityItem.h"
+#import "TRIndustriesListModel.h"
+#import "TRIndustriesItem.h"
+
 #import "TRNetworkConstants.h"
 #import "TRAuthManager.h"
 #import "TRSearchPUManager.h"

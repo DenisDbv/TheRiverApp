@@ -68,10 +68,13 @@
         [self createSubHeadButtons];
         [self createHeadButtons];
         
-        _citiesList = [[NSMutableArray alloc] initWithArray:[TRSearchPUManager client].cityList copyItems:YES];
-        _industryList = [[NSMutableArray alloc] initWithArray:[TRSearchPUManager client].industryList copyItems:YES];
-        [_citiesList insertObject:@"Все города" atIndex:0];
-        [_industryList insertObject:@"Все отрасли" atIndex:0];
+        _citiesList = [[NSMutableArray alloc] initWithArray:[TRSearchPUManager client].cityList.citys copyItems:YES];
+        _industryList = [[NSMutableArray alloc] initWithArray:[TRSearchPUManager client].industryList.scope_works copyItems:YES];
+        
+        TRCityItem *allCityItem = [[TRCityItem alloc] initWithDictionary:[NSDictionary dictionaryWithObject:@"Все города" forKey:@"name"]];
+        TRIndustriesItem *allIndustryItem = [[TRIndustriesItem alloc] initWithDictionary:[NSDictionary dictionaryWithObject:@"Все отрасли" forKey:@"name"]];
+        [_citiesList insertObject: allCityItem atIndex:0];
+        [_industryList insertObject: allIndustryItem atIndex:0];
         
         _visibleCitiesList = [[NSArray alloc] initWithArray:_citiesList copyItems:YES];
         _visibleIndustryList = [[NSArray alloc] initWithArray:_industryList copyItems:YES];
@@ -312,7 +315,7 @@
     NSPredicate *predicate;
     if(searchText.length > 0)
     {
-        predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", searchText];
+        predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[cd] %@", searchText];
         
         if(citiesTableView != nil)  {
             _visibleCitiesList = [_citiesList filteredArrayUsingPredicate:predicate];
@@ -468,7 +471,9 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;*/
         
-        cell.textLabel.text = [_visibleCitiesList objectAtIndex:indexPath.row];
+        TRCityItem *cityItem = [_visibleCitiesList objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = cityItem.name;
     }
     else
     {
@@ -479,7 +484,8 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;*/
         
-        cell.textLabel.text = [_visibleIndustryList objectAtIndex:indexPath.row];
+        TRIndustriesItem *industryItem = [_visibleIndustryList objectAtIndex:indexPath.row];
+        cell.textLabel.text = industryItem.name;
     }
     
     return cell;
@@ -529,8 +535,11 @@
     NSString *cityName;
     NSString *industryName;
     
-    cityName = [_visibleCitiesList objectAtIndex:lastCitySelectIndexPath.row];
-    industryName = [_visibleIndustryList objectAtIndex:lastIndustrySelectIndexPath.row];
+    TRCityItem *cityItem = [_visibleCitiesList objectAtIndex:lastCitySelectIndexPath.row];
+    TRIndustriesItem *industryItem = [_visibleIndustryList objectAtIndex:lastIndustrySelectIndexPath.row];
+    
+    cityName = cityItem.name;
+    industryName = industryItem.name;
     
     [self refreshMainButtonTitles:cityName :industryName];
     

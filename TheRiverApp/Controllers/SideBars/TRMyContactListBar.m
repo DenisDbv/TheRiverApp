@@ -28,14 +28,18 @@
 @property (nonatomic, retain) TRSearchBarVC *searchBarController;
 @property (nonatomic, retain) UITableView *contactsTableView;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicatorInHeader;
 @end
 
 @implementation TRMyContactListBar
 {
+    TRSectionHeaderView * headerView;
     NSIndexPath *lastSelectedIndex;
+    
+    NSTimer *refreshListTimer;
 }
 @synthesize _contactList;
-@synthesize activityIndicator;
+@synthesize activityIndicator, activityIndicatorInHeader;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,7 +95,20 @@
     
     //self.view.backgroundColor = [UIColor whiteColor];
     
-    [self refreshContactList];
+    [self refreshContactListWithCenterIndicator:YES];
+    
+    [self createTimer];
+}
+
+-(void) createTimer
+{
+    refreshListTimer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(refreshByTableHeader) userInfo:nil repeats:YES];
+}
+
+-(void) removeTimer
+{
+    [refreshListTimer invalidate];
+    refreshListTimer = nil;
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -109,23 +126,37 @@
     [super didReceiveMemoryWarning];
 }
 
--(void) refreshContactList
+-(void) refreshByTableHeader
 {
-    if(activityIndicator == nil)    {
-        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];// initWithFrame:CGRectMake(_contactsTableView.bounds.size.width/2, (_contactsTableView.bounds.size.height)/2, 0, 0)];
+    NSLog(@"Refresh list by timer");
+    [self refreshContactListWithCenterIndicator:NO];
+}
+
+-(void) refreshContactListWithCenterIndicator:(BOOL)isCenter
+{
+    if(activityIndicator == nil && isCenter == YES)    {
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [activityIndicator setCenter:CGPointMake(270.0/2, (_contactsTableView.bounds.size.height)/2)];
         [_contactsTableView addSubview:activityIndicator];
         [activityIndicator startAnimating];
+    } else  {
+        [activityIndicatorInHeader startAnimating];
     }
     
     [[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
-        [activityIndicator stopAnimating];
-        [activityIndicator removeFromSuperview];
-        activityIndicator = nil;
+        
+        if(activityIndicator != nil)    {
+            [activityIndicator stopAnimating];
+            [activityIndicator removeFromSuperview];
+            activityIndicator = nil;
+        } else  {
+            [activityIndicatorInHeader stopAnimating];
+        }
         
         _contactList = contactList;
         
         [_contactsTableView reloadData];
+        
     } andFailedOperation:^(LRRestyResponse *response) {
         [activityIndicator stopAnimating];
         [activityIndicator removeFromSuperview];
@@ -143,13 +174,18 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TRSectionHeaderView * headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 25.0f)
+    headerView =  [[TRSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 25.0f)
                                                                          withTitle:@"КОНТАКТЫ"
                                                                    withButtonTitle:@""//РЕДАКТИРОВАТЬ
                                                                            byBlock:^{
                                                                                //[self checkoutTableToEditMode];
                                                                            }];
     [headerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    
+    activityIndicatorInHeader = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(10, 5, 10, 10)];
+    activityIndicatorInHeader.color = [UIColor redColor];
+    [headerView addSubview:activityIndicatorInHeader];
+    
     return headerView;
 }
 
@@ -272,7 +308,41 @@
 
 - (void)showGrid {
     NSInteger numberOfOptions = 6;
-    NSArray *items = @[
+    NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
+    TRUserInfoModel *userInfo = [_contactList.user objectAtIndex:lastSelectedIndex.row];
+    TRContactDataModel *contactData = userInfo.contact_data;
+    
+    if(contactData.phone.count > 0)
+        [itemsArray addObject: [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Phone.png"] title:@"Телефон"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"phone_black.png"] title:@"Телефон" disable:YES]];
+
+    if(contactData.skype.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype.png"] title:@"Skype"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype_black.png"] title:@"Skype" disable:YES]];
+    
+    if(contactData.phone.count > 0)
+        [itemsArray addObject: [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"] title:@"SMS"]];
+    else
+        [itemsArray addObject: [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"message_black.png"] title:@"SMS" disable:YES]];
+    
+    if(userInfo.email.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"] title:@"Email"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"mail_black.png"] title:@"Email" disable:YES]];
+    
+    if(contactData.vk.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] title:@"Vkontakte"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"vk_black.png"] title:@"Vkontakte" disable:YES]];
+    
+    if(contactData.fb.length > 0)
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]];
+    else
+        [itemsArray addObject:[[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"facebook_black.png"] title:@"Facebook" disable:YES]];
+    
+    /*NSArray *items = @[
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Phone.png"] title:@"Телефон"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"skype.png"] title:@"Skype"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Message"] title:@"SMS"],
@@ -280,8 +350,8 @@
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"] title:@"Vkontakte"],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"] title:@"Facebook"]
                        ];
-    
-    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    */
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[itemsArray subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
     av.delegate = self;
     av.itemFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;

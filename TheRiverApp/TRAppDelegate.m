@@ -9,6 +9,7 @@
 #import "TRAppDelegate.h"
 
 #import "MFSideMenu.h"
+#import "OBAlert.h"
 
 #import "TRLoginViewController.h"
 #import "TRAuthViewController.h"
@@ -17,6 +18,8 @@
 #import "TRTestViewController.h"
 #import "TRScrollViewController.h"
 #import "TRNavigationController.h"
+
+#import <Harpy/Harpy.h>
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -28,6 +31,9 @@
 @end
 
 @implementation TRAppDelegate
+{
+    OBAlert *alert;
+}
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -66,16 +72,58 @@
         
     } else
     {
-        NSLog(@"User has been authenticated");
-        
-        [TRUserManager sharedInstance];
+        NSLog(@"User has been authenticated by token: %@", [TRAuthManager client].iamData.token);
         
         [self presentTheRiverControllers];
     }
     
     //[self showFontsList];
     
+    [[Harpy sharedInstance] setAppID:@"725299549"];
+    [[Harpy sharedInstance] setAppName:@"The River"];
+    [[Harpy sharedInstance] setAlertType:HarpyAlertTypeForce];
+    [[Harpy sharedInstance] checkVersion];
+    
     return YES;
+}
+
+-(void) setStatusBarHide:(BOOL)status
+{
+    if(status)  {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        self.window.frame =  CGRectMake(0,0, self.window.frame.size.width,self.window.frame.size.height);
+        self.window.bounds = CGRectMake(0,0, self.window.frame.size.width, self.window.frame.size.height);
+    } else  {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        if(IS_OS_7_OR_LATER)    {
+            self.window.frame =  CGRectMake(0,20, self.window.frame.size.width,self.window.frame.size.height-20);
+            self.window.bounds = CGRectMake(0,20, self.window.frame.size.width, self.window.frame.size.height);
+        }
+    }
+}
+
+-(void) logout
+{
+    [_rightMyContactList removeTimer];
+    [[TRAuthManager client] logout];
+    [AppDelegateInstance() presentLoginViewController];
+}
+
+-(void) showServerErrorMessage
+{
+    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    
+    if(alert == nil)    {
+        alert = [[OBAlert alloc] initInViewController:rootViewController];
+        [alert showAlertWithText:@"Возможно на сервере идут технические работы. Пожалуйста авторизируйтесь в системе заного. Заранее просим прощения за связанные с этим неудобства."
+                       titleText:@"Ошибка связи"
+                      buttonText:@"Авторизоваться"
+                           onTap:^{
+                               [alert removeAlert];
+                               
+                               [self logout];
+                           }];
+    }
 }
 
 -(NSData*) getDeviceToken
@@ -90,11 +138,11 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     self.pushToken = deviceToken;
-    NSLog(@"My token is: %@", deviceToken);
+    NSLog(@"My push token is: %@", deviceToken);
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Failed to get token, error: %@", error);
+    NSLog(@"Failed to get push token, error: %@", error);
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -181,8 +229,6 @@
 
 - (void) presentTheRiverControllers
 {
-    [self updateDataFromServer];
-    
     _leftRootMenuBar = [[TRLeftRootMenuBar alloc] init];
     _rightMyContactList = [[TRMyContactListBar alloc] init];
     _mainController = [[TRUserProfileController alloc] initByUserModel: [TRAuthManager client].iamData.user isIam:YES];
@@ -266,6 +312,16 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    NSLog(@"Start application from background");
+    
+    [[Harpy sharedInstance] checkVersionDaily];
+    
+    [self updateDataFromServer];
+    
+    /*[[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
+    } andFailedOperation:^(LRRestyResponse *response) {
+    }];*/
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

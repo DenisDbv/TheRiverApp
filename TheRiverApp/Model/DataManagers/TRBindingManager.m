@@ -27,6 +27,8 @@
 
 -(void) skypeBinding:(TRUserInfoModel*)userModel
 {
+    if(userModel.contact_data.skype.length == 0) return;
+    
     BOOL installed = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"skype:"]];
     if(installed)
     {
@@ -53,26 +55,33 @@
 -(void) callBinding:(TRUserInfoModel*)userModel
 {
     NSString *phoneNumber = [@"tel://" stringByAppendingString: [userModel.contact_data.phone objectAtIndex:0] ];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: phoneNumber]];
+    if(phoneNumber.length > 0)
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: phoneNumber]];
 }
 
 -(void) vkBinding:(TRUserInfoModel*)userModel
 {
+    if(userModel.contact_data.vk.length == 0) return;
+    
     NSURL *url = [NSURL URLWithString:userModel.contact_data.vk];
     [[UIApplication sharedApplication] openURL:url];
 }
 
 -(void) fbBinding:(TRUserInfoModel*)userModel
 {
+    if(userModel.contact_data.fb.length == 0) return;
+    
     NSURL *url = [NSURL URLWithString:userModel.contact_data.fb];
     [[UIApplication sharedApplication] openURL:url];
 }
 
 -(void) emailBinding:(TRUserInfoModel*)userModel
 {
+    if(userModel.email.length == 0) return;
+    
     if ([MFMailComposeViewController canSendMail]) {
         
-        NSLog(@"%@", userModel.email);
+        //NSLog(@"%@", userModel.email);
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = (id)self;
         [mailViewController setToRecipients:@[userModel.email]];
