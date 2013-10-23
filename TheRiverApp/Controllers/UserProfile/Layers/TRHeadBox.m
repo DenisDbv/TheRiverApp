@@ -26,12 +26,11 @@
 - (void)setup {
 
     self.backgroundColor = [UIColor whiteColor];
-    
 }
 
 +(TRHeadBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
-    TRHeadBox *box = [TRHeadBox boxWithSize: CGSizeMake(bounds.width, 200)];    //132   //173
+    TRHeadBox *box = [TRHeadBox boxWithSize: CGSizeMake(bounds.width, 200)];
     box.userData = userObject;
     
     [box fillBoxByColorGradient];
@@ -202,19 +201,19 @@
 {
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.backgroundColor = [UIColor clearColor];
-    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.textColor = [UIColor colorWithRed:112.0/255.0 green:112.0/255.0 blue:112.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:13];
     nameLabel.numberOfLines = 1;
-    nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    //nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
     nameLabel.text = [NSString stringWithFormat:@"Доход в месяц: %@ р", self.userData.profit];
     
-    nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    nameLabel.layer.shadowOffset = CGSizeMake(0, 1);
+    /*nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    nameLabel.layer.shadowOffset = CGSizeMåake(0, 1);
     nameLabel.layer.shadowRadius = 1;
-    nameLabel.layer.shadowOpacity = 0.2f;
+    nameLabel.layer.shadowOpacity = 0.2f;*/
     
-    CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (0.0+size.height), size.width, size.height);
+    CGSize size = [nameLabel.text sizeWithFont:[UIFont fontWithName:@"HypatiaSansPro-Regular" size:13] constrainedToSize:CGSizeMake(200.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 + 7.0, size.width, size.height);
     //nameLabel.backgroundColor = [UIColor redColor];
     
     [self addSubview: nameLabel];
@@ -236,7 +235,7 @@
     nameLabel.layer.shadowOpacity = 0.2f;
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (18.0+size.height), size.width, size.height);
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (size.height), size.width, size.height);
     //nameLabel.backgroundColor = [UIColor redColor];
     
     [self addSubview: nameLabel];
@@ -252,7 +251,7 @@
     nameLabel.text = [NSString stringWithFormat:@"%@ %@, %@", self.userData.age, [self getStringYearByAge:[self.userData.age integerValue]], self.userData.city];
     
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
-    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0+6.0, size.width, size.height);
+    nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0+24.0, size.width, size.height);
     
     [self addSubview: nameLabel];
 }

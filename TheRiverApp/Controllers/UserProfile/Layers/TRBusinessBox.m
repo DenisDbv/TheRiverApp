@@ -16,22 +16,22 @@
 
 - (void)setup {
     
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor colorWithRed:229.0/255.0 green:229.0/255.0 blue:229.0/255.0 alpha:1.0];
     
-    self.topMargin = 10.0;
-    self.leftMargin = 10.0;
-    self.rightMargin = 10.0;
+    self.topMargin = 0.0;
+    self.leftMargin = 0.0;
+    self.rightMargin = 0.0;
 }
 
 +(TRBusinessBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject
 {
-    TRBusinessBox *box = [TRBusinessBox boxWithSize: CGSizeMake(300, 10)];
+    TRBusinessBox *box = [TRBusinessBox boxWithSize: CGSizeMake(320, 10)];
     box.userData = userObject;
     //box.backgroundColor = [UIColor redColor];
     
     //[box showBusinessImage];
     //[box showBusinessTitle];
-    [box showBusinessInfo];
+    [box showBusinessInfo2];
     
     return box;
 }
@@ -132,6 +132,68 @@
     employesLine.borderStyle = MGBorderNone;
     employesLine.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
     [self.boxes addObject:employesLine];
+}
+
+-(void) showBusinessInfo2
+{
+    MGBox *cardBox = [MGBox boxWithSize:CGSizeMake(310, 50)];
+    cardBox.backgroundColor = [UIColor whiteColor];
+    cardBox.topMargin = 10.0;
+    cardBox.leftMargin = 5.0;
+    cardBox.rightMargin = 5.0;
+    [self.boxes addObject:cardBox];
+    
+    MGLineStyled *titleLine = [MGLineStyled lineWithMultilineLeft:self.userData.business.company_name right:nil width:310.0 minHeight:10];
+    titleLine.backgroundColor = [UIColor clearColor];
+    titleLine.topMargin = 10;
+    titleLine.leftPadding = titleLine.rightPadding = 10;
+    titleLine.borderStyle = MGBorderNone;
+    titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:18];
+    [cardBox.boxes addObject:titleLine];
+    
+    MGLineStyled *businessAbout = [MGLineStyled lineWithMultilineLeft:self.userData.business.about right:nil width:300 minHeight:10];
+    businessAbout.backgroundColor = [UIColor clearColor];
+    businessAbout.topMargin = 0;
+    businessAbout.leftPadding = businessAbout.rightPadding = 10;
+    businessAbout.borderStyle = MGBorderNone;
+    businessAbout.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+    [cardBox.boxes addObject:businessAbout];
+    
+    MGLineStyled *blocksLine = [MGLineStyled lineWithLeft:[self blockWithTitle:@"Оборот в месяц" andText:[NSString stringWithFormat:@"%@ р", self.userData.business.profit]]
+                                                    right:[self blockWithTitle:@"Количество сотрудников" andText:self.userData.business.employees]
+                                                     size:CGSizeMake(300, 60)];
+    blocksLine.backgroundColor = [UIColor clearColor];
+    blocksLine.topMargin = 10;
+    blocksLine.leftPadding = 10;
+    blocksLine.rightPadding = 0;
+    blocksLine.borderStyle = MGBorderNone;
+    [cardBox.boxes addObject:blocksLine];
+}
+
+-(UIView*) blockWithTitle:(NSString*)title andText:(NSString*)text
+{
+    UIView *blockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 140.0, 50.0)];
+    blockView.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1.0];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:12.0];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor grayColor];
+    titleLabel.text = title;
+    titleLabel.frame = CGRectMake(0, 5, blockView.bounds.size.width, 14);
+    [blockView addSubview:titleLabel];
+    
+    UILabel *textLabel = [[UILabel alloc] init];
+    textLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:20.0];
+    textLabel.backgroundColor = [UIColor clearColor];
+    textLabel.textAlignment = NSTextAlignmentCenter;
+    textLabel.textColor = [UIColor grayColor];
+    textLabel.text = text;
+    textLabel.frame = CGRectMake(0, titleLabel.frame.origin.y+titleLabel.frame.size.height, blockView.bounds.size.width, 30);
+    [blockView addSubview:textLabel];
+    
+    return blockView;
 }
 
 @end

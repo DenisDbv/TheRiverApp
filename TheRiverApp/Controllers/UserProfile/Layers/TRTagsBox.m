@@ -26,7 +26,7 @@
     
     self.zIndex = -1;
     
-    self.topMargin = 5;
+    self.topMargin = 0;
 }
 
 +(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserInfoModel*)userObject byTarget:(id)target

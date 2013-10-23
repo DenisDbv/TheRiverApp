@@ -12,4 +12,6 @@
 
 @property (nonatomic, retain) TRUserProfileController *rootBox;
 
++(TRContactBox *) initClearBox:(CGSize)bounds;
+
 @end

@@ -57,6 +57,8 @@
     
     if(!_isIam)
         [self createContactBox];
+    else
+        [self createClearContactBox];
     
     [self createTagsBox];
     [self createExMenuBox];
@@ -90,9 +92,9 @@
 -(void) createRootScrollView
 {
     _scrollView = [[MGScrollView alloc] initWithFrame:self.view.bounds];
-    _scrollView.backgroundColor = [UIColor whiteColor]; //[UIColor colorWithRed:0.94 green:0.94 blue:0.95 alpha:1];
+    _scrollView.backgroundColor = [UIColor colorWithRed:229.0/255.0 green:229.0/255.0 blue:229.0/255.0 alpha:1.0]; //[UIColor whiteColor]; //[UIColor colorWithRed:0.94 green:0.94 blue:0.95 alpha:1];
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    _scrollView.bottomPadding = 10.0;
+    _scrollView.bottomPadding = 5.0;
     [self.view addSubview:_scrollView];
 }
 
@@ -110,12 +112,18 @@
     [_scrollView.boxes addObject: contactBox];
 }
 
+-(void) createClearContactBox
+{
+    TRContactBox *contactBox = (TRContactBox*)[TRContactBox initClearBox:self.view.bounds.size];
+    [_scrollView.boxes addObject: contactBox];
+}
+
 -(void) createTagsBox
 {
     TRTagsBox *tagsBox = (TRTagsBox*)[TRTagsBox initBox: self.view.bounds.size
                                       withUserData:_userDataObject byTarget:self];
-    if(_isIam)
-        tagsBox.topMargin = 48;
+    /*if(_isIam)
+        tagsBox.topMargin = 48;*/
     [_scrollView.boxes addObject: tagsBox];
 }
 
