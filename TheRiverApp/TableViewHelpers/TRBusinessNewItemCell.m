@@ -37,14 +37,23 @@
 
 -(void) initialized
 {
-    self.imageView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    /*self.imageView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     self.imageView.layer.shadowOffset = CGSizeMake(1, 1);
     self.imageView.layer.shadowOpacity = 0.5;
     self.imageView.layer.shadowRadius = 1.0;
-    self.imageView.clipsToBounds = NO;
+    self.imageView.clipsToBounds = NO;*/
+    
+    self.userLogo.layer.borderWidth = 0;
+    self.userLogo.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.userLogo.layer.cornerRadius = CGRectGetHeight(self.userLogo.bounds) / 2;
+    self.userLogo.clipsToBounds = YES;
+    
+    self.businessName.highlightedTextColor = [UIColor whiteColor];
+    self.businessName.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:16.0];
+    self.businessAbout.highlightedTextColor = [UIColor whiteColor];
 }
 
--(void) setFrame:(CGRect)frame
+/*-(void) setFrame:(CGRect)frame
 {
     if(IS_OS_7_OR_LATER)    {
         float inset = 5.0f;
@@ -57,9 +66,9 @@
     }
     
     [super setFrame:frame];
-}
+}*/
 
--(void) layoutSubviews
+/*-(void) layoutSubviews
 {
     [super layoutSubviews];
     
@@ -72,7 +81,7 @@
                                       self.imageView.frame.origin.y,
                                       self.imageView.frame.size.width,
                                       self.imageView.frame.size.height);
-}
+}*/
 
 -(void) reloadWithBusinessModel:(TRBusinessModel*)businessObject
 {
@@ -80,7 +89,7 @@
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo_cell];
         
         if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
-            [self.imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            [self.businessLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
                     /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
@@ -94,33 +103,35 @@
             UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
             /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
             image = [image croppedImage:CGRectMake(0, 0, 85, 85)];*/
-            [self.imageView setImage:image];
+            [self.businessLogo setImage:image];
         }
     }   else    {
-        [self.imageView setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+        [self.businessLogo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
     }
     
-    /*if(businessObject.user_logo.length != 0) {
+    if(businessObject.user_logo.length != 0) {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.user_logo];
         
         if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
-            [self.userLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"avatar_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            [self.userLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
-                    image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(20, 20) interpolationQuality:kCGInterpolationHigh];
+                    //image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(20, 20) interpolationQuality:kCGInterpolationHigh];
                     //image = [image croppedImage:CGRectMake(0, 0, 20, 20)];
-                    [self.userLogo setImage:image];
+                    //[self.userLogo setImage:image];
                     
                     [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
                 }
             } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         } else  {
             UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
-            image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(20, 20) interpolationQuality:kCGInterpolationHigh];
+            //image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(20, 20) interpolationQuality:kCGInterpolationHigh];
             //image = [image croppedImage:CGRectMake(0, 0, 20, 20)];
             [self.userLogo setImage:image];
         }
-    }*/
+    } else    {
+        [self.userLogo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+    }
     
     self.businessName.text = businessObject.company_name;
     self.businessAbout.text = businessObject.about;

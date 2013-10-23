@@ -7,32 +7,32 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="94" id="10G-eO-5MN" customClass="TRBusinessNewItemCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
+        <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="10G-eO-5MN" customClass="TRBusinessNewItemCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="10G-eO-5MN" id="PK9-io-8fW">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="DU5-MI-RDc">
-                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                        <rect key="frame" x="10" y="17" width="51" height="51"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kEN-p9-6ix">
-                        <rect key="frame" x="295" y="33" width="20" height="20"/>
+                        <rect key="frame" x="278" y="30" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО &quot;Компания&quot;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Bx-HP-G4d">
-                        <rect key="frame" x="95" y="8" width="207" height="21"/>
+                        <rect key="frame" x="78" y="17" width="192" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Производство производство производство" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KmN-NQ-IG4">
-                        <rect key="frame" x="95" y="37" width="207" height="34"/>
+                        <rect key="frame" x="78" y="40" width="192" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -40,6 +40,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="businessAbout" destination="KmN-NQ-IG4" id="fgI-wz-huJ"/>
+                <outlet property="businessLogo" destination="DU5-MI-RDc" id="mHc-GN-Jnu"/>
                 <outlet property="businessName" destination="5Bx-HP-G4d" id="wM1-cR-PHX"/>
                 <outlet property="userLogo" destination="kEN-p9-6ix" id="8qA-g6-k4u"/>
             </connections>

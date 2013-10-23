@@ -10,6 +10,7 @@
 
 @interface TRBusinessNewItemCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UIImageView *businessLogo;
 @property (nonatomic, strong) IBOutlet UIImageView *userLogo;
 @property (nonatomic, strong) IBOutlet UILabel *businessName;
 @property (nonatomic, strong) IBOutlet UILabel *businessAbout;
