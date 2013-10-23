@@ -47,7 +47,7 @@
     
     self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x+xOffset,
                                       self.textLabel.frame.origin.y,
-                                      self.textLabel.frame.size.width,
+                                      self.textLabel.frame.size.width-xOffset,
                                       self.textLabel.frame.size.height);
 }
 

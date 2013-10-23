@@ -19,6 +19,8 @@ pod 'MIHGradientView'
 pod 'RNGridMenu'
 pod 'RNBlurModalView', '~> 0.1.0'
 pod 'Harpy'
+pod 'YRDropdownView'
+pod 'Reachability'
 
 # Forum
 pod 'uservoice-iphone-sdk'

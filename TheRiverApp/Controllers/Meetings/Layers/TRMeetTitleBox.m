@@ -8,6 +8,7 @@
 
 #import "TRMeetTitleBox.h"
 #import <MGBox2/MGLineStyled.h>
+#import <MGBox2/MGScrollView.h>
 
 @implementation TRMeetTitleBox
 
@@ -70,10 +71,14 @@
             [box.agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
             [box.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
             [box.agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+            [box.agreeButton setImage:[UIImage new] forState:UIControlStateNormal];
+            [box.agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         } else  {
             [box.agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
             [box.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
             [box.agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+            [box.agreeButton setImage:[UIImage imageNamed:@"check-icon-white@2x.png"] forState:UIControlStateNormal];
+            [box.agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
         }
         
         MGBox *buttonLine = [MGBox boxWithSize:CGSizeMake(300, 40)];
@@ -102,15 +107,20 @@
             [self.agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
             [self.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
             [self.agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+            [self.agreeButton setImage:[UIImage imageNamed:@"check-icon-white@2x.png"] forState:UIControlStateNormal];
+            [self.agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
         } else  {
             self.meetingData.isAccept = NO;
             
             [self.agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
             [self.agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
             [self.agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+            [self.agreeButton setImage:[UIImage new] forState:UIControlStateNormal];
+            [self.agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         }
         self.agreeButton.enabled = YES;
         self.agreeButton.userInteractionEnabled = YES;
+        [self.agreeButton layoutSubviews];
     } andFailedOperation:^(LRRestyResponse *response) {
         self.agreeButton.enabled = YES;
         self.agreeButton.userInteractionEnabled = YES;

@@ -60,7 +60,9 @@
     [[TRBusinessManager client] downloadBusinessList:^(LRRestyResponse *response, TRBusinessRootModel *businessList) {
         [self endRefreshUserList:businessList];
     } andFailedOperation:^(LRRestyResponse *response) {
-        //
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
     }];
 }
 

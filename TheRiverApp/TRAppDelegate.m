@@ -20,6 +20,8 @@
 #import "TRNavigationController.h"
 
 #import <Harpy/Harpy.h>
+#import <Reachability/Reachability.h>
+#import <YRDropdownView/YRDropdownView.h>
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -83,6 +85,25 @@
     [[Harpy sharedInstance] setAppName:@"The River"];
     [[Harpy sharedInstance] setAlertType:HarpyAlertTypeForce];
     [[Harpy sharedInstance] checkVersion];
+    
+    Reachability* reach = [Reachability reachabilityForInternetConnection];
+    reach.reachableBlock = ^(Reachability*reach)
+    {
+        [YRDropdownView hideDropdownInView:self.window animated:YES];
+    };
+    reach.unreachableBlock = ^(Reachability*reach)
+    {
+        NSLog(@"Internet access denied");
+        UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+        
+        [YRDropdownView showDropdownInView:rootViewController.view.window
+                                     title:@"Предупреждение!"
+                                    detail:@"Не обнаружено подключение к интернету.\nВсе процессы в приложении будут временно приостановлены, до возобновления подключения."
+                                     image:[UIImage imageNamed:@"dropdown-alert"]
+                                  animated:YES
+                                 hideAfter:10];
+    };
+    [reach startNotifier];
     
     return YES;
 }

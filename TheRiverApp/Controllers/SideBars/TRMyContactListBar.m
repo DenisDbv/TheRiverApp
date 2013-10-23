@@ -184,7 +184,7 @@
     
     activityIndicatorInHeader = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(10, 5, 10, 10)];
     activityIndicatorInHeader.color = [UIColor redColor];
-    [headerView addSubview:activityIndicatorInHeader];
+    //[headerView addSubview:activityIndicatorInHeader];
     
     return headerView;
 }
