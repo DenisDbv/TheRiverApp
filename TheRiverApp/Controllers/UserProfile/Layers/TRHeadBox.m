@@ -245,7 +245,7 @@
 {
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.backgroundColor = [UIColor clearColor];
-    nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
+    nameLabel.textColor = [UIColor colorWithRed:112.0/255.0 green:112.0/255.0 blue:112.0/255.0 alpha:1.0]; //[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     nameLabel.numberOfLines = 1;
     nameLabel.text = [NSString stringWithFormat:@"%@ %@, %@", self.userData.age, [self getStringYearByAge:[self.userData.age integerValue]], self.userData.city];
