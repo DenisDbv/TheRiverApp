@@ -59,7 +59,7 @@
     [box.boxes addObject:aboutLine];
     
     MGLineStyled *blocksLine = [MGLineStyled lineWithLeft:[box blockWithTitle:@"Оборот в месяц" andText:[NSString stringWithFormat:@"%@ р", businessObject.profit]]
-                                                    right:[box blockWithTitle:@"Количество сотрудников" andText:@"14"]
+                                                    right:[box blockWithTitle:@"Количество сотрудников" andText:businessObject.employees]
                                                      size:CGSizeMake(300, 60)];
     blocksLine.backgroundColor = [UIColor clearColor];
     blocksLine.topMargin = 10;

@@ -49,7 +49,7 @@
     self.userLogo.clipsToBounds = YES;
     
     self.businessName.highlightedTextColor = [UIColor whiteColor];
-    self.businessName.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:16.0];
+    self.businessName.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:16.0];
     self.businessAbout.highlightedTextColor = [UIColor whiteColor];
 }
 
@@ -88,7 +88,8 @@
     if(businessObject.logo_cell.length != 0) {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.logo_cell];
         
-        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+        UIImage *imgLogoCellFromDisk = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+        if(imgLogoCellFromDisk == nil) {
             [self.businessLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
@@ -100,10 +101,10 @@
                 }
             } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         } else  {
-            UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+            //UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
             /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
             image = [image croppedImage:CGRectMake(0, 0, 85, 85)];*/
-            [self.businessLogo setImage:image];
+            [self.businessLogo setImage: imgLogoCellFromDisk];
         }
     }   else    {
         [self.businessLogo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
@@ -112,22 +113,24 @@
     if(businessObject.user_logo.length != 0) {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.user_logo];
         
-        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
+        UIImage *imgLogoCellFromDisk = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+        //NSLog(@"%@ %@ %@", businessObject.first_name, businessObject.last_name, NSStringFromCGSize(imgLogoCellFromDisk.size));
+        if(imgLogoCellFromDisk == nil) {
             [self.userLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
-                    //image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(20, 20) interpolationQuality:kCGInterpolationHigh];
+                    //image = [image resizedImageWithContentMode:UIViewContentModeScaleAspe ctFill bounds:CGSizeMake(20, 20) interpolationQuality:kCGInterpolationHigh];
                     //image = [image croppedImage:CGRectMake(0, 0, 20, 20)];
                     //[self.userLogo setImage:image];
                     
                     [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
                 }
-            } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            }];
         } else  {
-            UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+            //UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
             //image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(20, 20) interpolationQuality:kCGInterpolationHigh];
             //image = [image croppedImage:CGRectMake(0, 0, 20, 20)];
-            [self.userLogo setImage:image];
+            [self.userLogo setImage:imgLogoCellFromDisk];
         }
     } else    {
         [self.userLogo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
