@@ -21,7 +21,7 @@
 
 +(TRContactBox *) initBox:(CGSize)bounds withUserData:(TRUserInfoModel*)userObject byTarget:(id)target;
 {
-    TRContactBox *box = [TRContactBox boxWithSize: CGSizeMake(bounds.width, 101)];
+    TRContactBox *box = [TRContactBox boxWithSize: CGSizeMake(bounds.width, 106)];
     box.userData = userObject;
     box.zIndex = -1;
     box.rootBox = target;
@@ -32,10 +32,18 @@
     return box;
 }
 
++(TRContactBox *) initClearBox:(CGSize)bounds
+{
+    TRContactBox *box = [TRContactBox boxWithSize: CGSizeMake(bounds.width, 48)];
+    box.zIndex = -1;
+    
+    return box;
+}
+
 -(void) showFirstItemContactButtons
 {
     MGBox *buttonsBox = [MGBox boxWithSize:CGSizeMake(self.bounds.size.width, 41)];
-    buttonsBox.topMargin = 48;
+    buttonsBox.topMargin = 55; //48;
     [self.boxes addObject:buttonsBox];
     
     UIImage *imgSbscrb = [UIImage imageNamed:@"contacts-icon@2x.png"];

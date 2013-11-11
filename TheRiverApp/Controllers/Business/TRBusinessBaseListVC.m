@@ -38,11 +38,6 @@
     self.navigationController.navigationBar.clipsToBounds = YES;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TRBusinessNewItemCell" bundle:nil] forCellReuseIdentifier:@"TRBusinessNewItemCell"];
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
-    self.tableView.backgroundColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
     
     [self refreshBusinessList];
 }
@@ -65,7 +60,9 @@
     [[TRBusinessManager client] downloadBusinessList:^(LRRestyResponse *response, TRBusinessRootModel *businessList) {
         [self endRefreshUserList:businessList];
     } andFailedOperation:^(LRRestyResponse *response) {
-        //
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+        activityIndicator = nil;
     }];
 }
 
@@ -92,10 +89,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 90;
+    return 85;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+/*- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 3;
 }
@@ -103,7 +100,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 2;
-}
+}*/
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {

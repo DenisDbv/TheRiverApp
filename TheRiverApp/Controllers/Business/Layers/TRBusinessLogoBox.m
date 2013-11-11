@@ -38,20 +38,28 @@
     return box;
 }
 
--(void) layoutSubviews
+/*-(void) layoutSubviews
 {
     [super layoutSubviews];
     
     layerView.bottomColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     layerView.topColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [layerView layoutSubviews];
-}
+}*/
 
 -(void) showLogo
 {
-    layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
+    /*layerView = [[SSGradientView alloc] initWithFrame:self.bounds];
     layerView.backgroundColor = [UIColor clearColor];
-    [self addSubview:layerView];
+    layerView.hidden = YES;
+    [self addSubview:layerView];*/
+    
+    UIImageView *clearPerson = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightbar_contact_placeholder_transparent.png"]];
+    clearPerson.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    clearPerson.contentMode = UIViewContentModeCenter;
+    clearPerson.center = self.center;
+    clearPerson.hidden = YES;
+    [self addSubview: clearPerson];
     
     __block UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -60,7 +68,7 @@
     if(self.businessData.logo_desc.length != 0) {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.businessData.logo_desc];
         
-        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [imageView setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage new] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             if(image != nil)
             {
                 /*UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(self.bounds.size.width, self.bounds.size.height) interpolationQuality:kCGInterpolationHigh];
@@ -68,8 +76,12 @@
                 [imageView setImage:logoImageTest];
                 
                 [self refreshRootSize];*/
+            } else  {
+                clearPerson.hidden = NO;
             }
-        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    } else  {
+        clearPerson.hidden = NO;
     }
 }
 

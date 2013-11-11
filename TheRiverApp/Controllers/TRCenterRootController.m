@@ -84,7 +84,7 @@
         [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
         
     } else  {
-        UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake(5, roundf(((15+13)-13)/2), 18, 13)];
+        UIButton *settingsView = [[UIButton alloc] initWithFrame:CGRectMake((IS_OS_7_OR_LATER)?-5:5, roundf(((15+13)-13)/2), 18, 13)];
         settingsView.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15+settingsView.frame.size.width, settingsView.frame.size.height+15)];
         [leftView initialiseTapHandler:^(UIGestureRecognizer *sender) {
@@ -98,7 +98,7 @@
         [self.navigationItem setLeftBarButtonItem:settingsButton];
     }
     
-    UIButton *settingsView2 = [[UIButton alloc] initWithFrame:CGRectMake(5, roundf(((20+15)-20)/2), 23, 20)];
+    UIButton *settingsView2 = [[UIButton alloc] initWithFrame:CGRectMake((IS_OS_7_OR_LATER)?15:5, roundf(((20+15)-20)/2), 23, 20)];
     UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10+settingsView2.frame.size.width, settingsView2.frame.size.height+15)];
     [rightView initialiseTapHandler:^(UIGestureRecognizer *sender) {
         [self rightSideMenuButtonPressed:nil];

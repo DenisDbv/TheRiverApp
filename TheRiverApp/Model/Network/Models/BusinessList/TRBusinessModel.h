@@ -22,5 +22,6 @@
 @property (nonatomic, copy) NSString *company_name;
 @property (nonatomic, copy) NSString *about;
 @property (nonatomic, copy) NSString *profit;
+@property (nonatomic, copy) NSString *employees;
 
 @end

@@ -58,14 +58,15 @@
     aboutLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     [box.boxes addObject:aboutLine];
     
-    NSString *fullProfitTitle = [NSString stringWithFormat:@"Оборот в месяц: %@ р", businessObject.profit];
-    MGLineStyled *profitLine = [MGLineStyled lineWithMultilineLeft:fullProfitTitle right:nil width:300 minHeight:10];
-    profitLine.backgroundColor = [UIColor clearColor];
-    profitLine.topMargin = 5;
-    profitLine.leftPadding = authorLine.rightPadding = 0;
-    profitLine.borderStyle = MGBorderNone;
-    profitLine.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
-    [box.boxes addObject:profitLine];
+    MGLineStyled *blocksLine = [MGLineStyled lineWithLeft:[box blockWithTitle:@"Оборот в месяц" andText:[NSString stringWithFormat:@"%@ р", businessObject.profit]]
+                                                    right:[box blockWithTitle:@"Количество сотрудников" andText:businessObject.employees]
+                                                     size:CGSizeMake(300, 60)];
+    blocksLine.backgroundColor = [UIColor clearColor];
+    blocksLine.topMargin = 10;
+    blocksLine.leftPadding = 0;
+    blocksLine.rightPadding = 0;
+    blocksLine.borderStyle = MGBorderNone;
+    [box.boxes addObject:blocksLine];
     
     return box;
 }
@@ -84,6 +85,32 @@
         return @"лет";
     
     return @"";
+}
+
+-(UIView*) blockWithTitle:(NSString*)title andText:(NSString*)text
+{
+    UIView *blockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 140.0, 50.0)];
+    blockView.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1.0];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:12.0];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor grayColor];
+    titleLabel.text = title;
+    titleLabel.frame = CGRectMake(0, 5, blockView.bounds.size.width, 14);
+    [blockView addSubview:titleLabel];
+    
+    UILabel *textLabel = [[UILabel alloc] init];
+    textLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:20.0];
+    textLabel.backgroundColor = [UIColor clearColor];
+    textLabel.textAlignment = NSTextAlignmentCenter;
+    textLabel.textColor = [UIColor grayColor];
+    textLabel.text = text;
+    textLabel.frame = CGRectMake(0, titleLabel.frame.origin.y+titleLabel.frame.size.height, blockView.bounds.size.width, 30);
+    [blockView addSubview:textLabel];
+    
+    return blockView;
 }
 
 @end

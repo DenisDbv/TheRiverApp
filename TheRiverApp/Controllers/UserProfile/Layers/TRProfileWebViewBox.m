@@ -23,9 +23,10 @@
 
 - (void)setup {
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor colorWithRed:229.0/255.0 green:229.0/255.0 blue:229.0/255.0 alpha:1.0];
     
     self.leftMargin = self.rightMargin = 0;
+    self.topMargin = 0;
     
     //self.topBorderColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
 }
@@ -35,7 +36,7 @@
     TRProfileWebViewBox *box = [TRProfileWebViewBox boxWithSize: CGSizeMake(bounds.width, 100)];
     box.userData = userObject;
     
-    box.webView = [[SSWebView alloc] initWithFrame:CGRectMake(0, 0, bounds.width, 1)];
+    box.webView = [[SSWebView alloc] initWithFrame:CGRectMake(5, 0, bounds.width-10, 1)];
     [box addSubview: box.webView];
     
     box.webView.alpha = 0.0f;

@@ -189,6 +189,15 @@
 
 -(void) onLognClick:(id)sender
 {
+    if(loginField.text.length == 0)   {
+        [self shakeIt:loginField withDelta:-2.0];
+        return;
+    }
+    if(passwordField.text.length == 0)   {
+        [self shakeIt:passwordField withDelta:3.0];
+        return;
+    }
+    
     [authIndicator startAnimating];
     [addButton setEnabled:NO];
     

@@ -111,10 +111,14 @@
             [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
             [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
             [agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+            [agreeButton setImage:[UIImage new] forState:UIControlStateNormal];
+            [agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         } else  {
             [agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
             [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
             [agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+            [agreeButton setImage:[UIImage imageNamed:@"check-icon-white@2x.png"] forState:UIControlStateNormal];
+            [agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
         }
     } else  {
         agreeButton.hidden = YES;
@@ -177,15 +181,20 @@
             [agreeButton setStyle:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:110.0/255.0 green:206.0/255.0 blue:15.0/255.0 alpha:1.0]];
             [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor greenColor] disableColor:nil];
             [agreeButton setTitle:@"Я иду" forState:UIControlStateNormal];
+            [agreeButton setImage:[UIImage imageNamed:@"check-icon-white@2x.png"] forState:UIControlStateNormal];
+            [agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
         } else  {
             eventItem.isAccept = NO;
             
             [agreeButton setStyle:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0] andBottomColor:[UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0]];
             [agreeButton setLabelTextShadow:CGSizeMake(0.5, 1) normalColor:nil highlightedColor:[UIColor blueColor] disableColor:nil];
             [agreeButton setTitle:@"Я пойду" forState:UIControlStateNormal];
+            [agreeButton setImage:[UIImage new] forState:UIControlStateNormal];
+            [agreeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         }
         agreeButton.enabled = YES;
         agreeButton.userInteractionEnabled = YES;
+        [agreeButton layoutSubviews];
     } andFailedOperation:^(LRRestyResponse *response) {
         agreeButton.enabled = YES;
         agreeButton.userInteractionEnabled = YES;
@@ -231,6 +240,26 @@
 -(CGRect) changeXInFrame:(CGRect)frame byX:(NSInteger)coord
 {
     return CGRectMake(coord, frame.origin.y, frame.size.width, frame.size.height);
+}
+
+-(UITableView*) getTableView:(UIView*)theView
+{
+    if (!theView.superview)
+        return nil;
+    
+    if ([theView.superview isKindOfClass:[UITableView class]])
+        return (UITableView*)theView.superview;
+    
+    return [self getTableView:theView.superview];
+}
+
+-(void) updateCell
+{
+    UITableView *table = [self getTableView:self.contentView];
+    if(table != nil)    {
+        NSIndexPath *indexPath = [table indexPathForCell:self];
+        [table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 @end
