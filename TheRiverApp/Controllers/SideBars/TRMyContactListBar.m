@@ -75,6 +75,7 @@
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    //_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;
 	_contactsTableView.backgroundColor = [UIColor whiteColor];
     [_contactsTableView setSeparatorColor: [UIColor colorWithRed:204.0/255.0
                                                            green:204.0/255.0

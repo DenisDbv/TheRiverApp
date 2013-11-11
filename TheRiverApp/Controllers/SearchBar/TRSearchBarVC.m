@@ -106,6 +106,11 @@
 }
 
 #pragma mark UITableViewDataSource
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.searchBar endEditing:YES];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -183,9 +188,7 @@
 - (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
 {
 	[((UIViewController*)self.delegate).view addSubview: self.searchDisplayController.searchResultsTableView];
-    self.searchDisplayController.searchResultsTableView.frame = frontBlackView.frame; //CGRectMake(0, 0,
-                                                                           //self.view.bounds.size.width,
-                                                                           //self.view.bounds.size.height-self.searchBar.bounds.size.height);
+    self.searchDisplayController.searchResultsTableView.frame = frontBlackView.frame;
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
@@ -264,7 +267,7 @@
     if(frontBlackView == nil)
     {
         frontBlackView = [[UIView alloc] initWithFrame:CGRectMake(0, 70 + ((IS_OS_7_OR_LATER)?15:0),
-                                                                  self.view.bounds.size.width, self.view.bounds.size.height)];
+                                                                  self.view.bounds.size.width, self.view.bounds.size.height- (70 + ((IS_OS_7_OR_LATER)?15:0)))];
         frontBlackView.backgroundColor = [UIColor blackColor];
         frontBlackView.alpha = 0.0f;
         
