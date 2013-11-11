@@ -268,7 +268,7 @@
             break;
         case 3:
             //cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
-            cell.textLabel.text = @"Оставить отзыв";
+            cell.textLabel.text = @"Предложить идею";
             break;
         case 4:
             cell.textLabel.text = @"Выход";
