@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *last_name;
 @property (nonatomic, copy) NSString *age;
 @property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *url;
 
 @property (nonatomic, copy) NSString *logo;
 @property (nonatomic, copy) NSString *logo_desc;

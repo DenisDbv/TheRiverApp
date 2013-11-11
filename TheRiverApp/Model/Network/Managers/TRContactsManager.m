@@ -59,6 +59,7 @@ static const NSString * _fileHandler = @"contacts.data";
                                                                               //NSLog(@"====>%@", eTagValue);
                                                                               
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                              //NSLog(@"%@", resultJSON);
                                                                               
                                                                               TRContactsListModel *cotactListModel = [[TRContactsListModel alloc] initWithDictionary:resultJSON];
                                                                               

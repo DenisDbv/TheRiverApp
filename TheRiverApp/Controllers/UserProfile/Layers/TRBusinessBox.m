@@ -159,6 +159,26 @@
     businessAbout.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     [cardBox.boxes addObject:businessAbout];
     
+    if(self.userData.url.length > 0)    {
+        NSString *urlString = [self.userData.url stringByReplacingOccurrencesOfString:@"http://"
+                                                                  withString:@""
+                                                                     options:NSAnchoredSearch // beginning of string
+                                                                                range:NSMakeRange(0, [self.userData.url length])];
+        NSString *businessLinkStr = [NSString stringWithFormat:@"__%@__|mush", urlString];
+        MGLineStyled *businessLink = [MGLineStyled lineWithMultilineLeft:businessLinkStr right:nil width:300 minHeight:10];
+        businessLink.backgroundColor = [UIColor clearColor];
+        businessLink.topMargin = 5;
+        businessLink.leftPadding = businessLink.rightPadding = 10;
+        businessLink.borderStyle = MGBorderNone;
+        businessLink.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+        businessLink.textColor = [UIColor colorWithRed:46.0/255.0 green:64.0/255.0 blue:197.0/255.0 alpha:1.0];
+        [cardBox.boxes addObject:businessLink];
+        
+        businessLink.onTap = ^{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.userData.url]];
+        };
+    }
+    
     MGLineStyled *blocksLine = [MGLineStyled lineWithLeft:[self blockWithTitle:@"Оборот в месяц" andText:[NSString stringWithFormat:@"%@ р", self.userData.business.profit]]
                                                     right:[self blockWithTitle:@"Количество сотрудников" andText:self.userData.business.employees]
                                                      size:CGSizeMake(300, 60)];

@@ -58,6 +58,26 @@
     aboutLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     [box.boxes addObject:aboutLine];
     
+    if(businessObject.url.length > 0)    {
+        NSString *urlString = [businessObject.url stringByReplacingOccurrencesOfString:@"http://"
+                                                                           withString:@""
+                                                                              options:NSAnchoredSearch // beginning of string
+                                                                                range:NSMakeRange(0, [businessObject.url length])];
+        NSString *businessLinkStr = [NSString stringWithFormat:@"__%@__|mush", urlString];
+        MGLineStyled *businessLink = [MGLineStyled lineWithMultilineLeft:businessLinkStr right:nil width:300 minHeight:10];
+        businessLink.backgroundColor = [UIColor clearColor];
+        businessLink.topMargin = 5;
+        businessLink.leftPadding = businessLink.rightPadding = 10;
+        businessLink.borderStyle = MGBorderNone;
+        businessLink.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+        businessLink.textColor = [UIColor colorWithRed:46.0/255.0 green:64.0/255.0 blue:197.0/255.0 alpha:1.0];
+        [box.boxes addObject:businessLink];
+        
+        businessLink.onTap = ^{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:businessObject.url]];
+        };
+    }
+    
     MGLineStyled *blocksLine = [MGLineStyled lineWithLeft:[box blockWithTitle:@"Оборот в месяц" andText:[NSString stringWithFormat:@"%@ р", businessObject.profit]]
                                                     right:[box blockWithTitle:@"Количество сотрудников" andText:businessObject.employees]
                                                      size:CGSizeMake(300, 60)];

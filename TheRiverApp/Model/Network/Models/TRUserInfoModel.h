@@ -24,6 +24,7 @@
 @property (nonatomic, copy) NSString *sex;
 @property (nonatomic, copy) NSString *profit;
 @property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *url;
 
 @property (nonatomic, retain) NSArray *interests;
 @property (nonatomic, retain) TRBusinessUserModel *business;
