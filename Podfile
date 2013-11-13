@@ -35,3 +35,4 @@ pod 'NSString+RMURLEncoding'
 
 # FileIO
 pod 'HRCoder'
+pod 'ISDiskCache'

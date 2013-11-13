@@ -95,7 +95,7 @@
     
     if(eTagValue.length > 0)    {
         [requestHeaders setObject:eTagValue forKey:@"If-None-Match"];
-        //NSLog(@"!! %@", requestHeaders);
+        NSLog(@"!! %@", requestHeaders);
     }
     
     [[LRResty client] get:urlString parameters:parameters headers:requestHeaders withBlock:^(LRRestyResponse *response)  {

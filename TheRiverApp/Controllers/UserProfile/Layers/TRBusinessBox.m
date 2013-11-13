@@ -162,9 +162,9 @@
     if(self.userData.url.length > 0)    {
         NSString *urlString = [self.userData.url stringByReplacingOccurrencesOfString:@"http://"
                                                                   withString:@""
-                                                                     options:NSAnchoredSearch // beginning of string
+                                                                     options:NSAnchoredSearch
                                                                                 range:NSMakeRange(0, [self.userData.url length])];
-        NSString *businessLinkStr = [NSString stringWithFormat:@"__%@__|mush", urlString];
+        NSString *businessLinkStr = [NSString stringWithFormat:@"__%@__ |mush", urlString];
         MGLineStyled *businessLink = [MGLineStyled lineWithMultilineLeft:businessLinkStr right:nil width:300 minHeight:10];
         businessLink.backgroundColor = [UIColor clearColor];
         businessLink.topMargin = 5;

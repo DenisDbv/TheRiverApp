@@ -8,6 +8,9 @@
 
 #import "TRBusinessUnitTitleBox.h"
 #import <MGBox2/MGLineStyled.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "TRUserProfileController.h"
 
 @implementation TRBusinessUnitTitleBox
 
@@ -33,18 +36,45 @@
     dateCreateLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     [box.boxes addObject:dateCreateLine];*/
     
+    UIImageView *userLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+    userLogo.frame = CGRectMake(3, 8, 25, 25);
+    userLogo.layer.borderWidth = 0;
+    userLogo.layer.borderColor = [UIColor whiteColor].CGColor;
+    userLogo.layer.cornerRadius = CGRectGetHeight(userLogo.bounds) / 2;
+    userLogo.clipsToBounds = YES;
+    [box addSubview:userLogo];
+    
+    if(businessObject.user_logo.length != 0) {
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:businessObject.user_logo];
+        
+        UIImage *imgLogoCellFromDisk = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+        if(imgLogoCellFromDisk == nil) {
+            [userLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                if(image != nil)
+                {
+                    [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
+                }
+            }];
+        } else  {
+            [userLogo setImage:imgLogoCellFromDisk];
+        }
+    } else    {
+        [userLogo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+    }
+    
     NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, [box getStringYearByAge:[businessObject.age integerValue]], businessObject.city];
-    MGLineStyled *authorLine = [MGLineStyled lineWithMultilineLeft:fullTitle right:nil width:300 minHeight:10];
+    MGLineStyled *authorLine = [MGLineStyled lineWithLeft:fullTitle multilineRight:nil width:300-35 minHeight:10];
     authorLine.backgroundColor = [UIColor clearColor];
-    authorLine.topMargin = 10;
+    authorLine.topMargin = 12;
     authorLine.leftPadding = authorLine.rightPadding = 0;
+    authorLine.leftMargin = 35;
     authorLine.borderStyle = MGBorderNone;
     authorLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     [box.boxes addObject:authorLine];
     
     MGLineStyled *titleLine = [MGLineStyled lineWithMultilineLeft:businessObject.company_name right:nil width:300.0 minHeight:10];
     titleLine.backgroundColor = [UIColor clearColor];
-    titleLine.topMargin = 10;
+    titleLine.topMargin = 20;
     titleLine.leftPadding = titleLine.rightPadding = 0;
     titleLine.borderStyle = MGBorderNone;
     titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
@@ -63,11 +93,12 @@
                                                                            withString:@""
                                                                               options:NSAnchoredSearch // beginning of string
                                                                                 range:NSMakeRange(0, [businessObject.url length])];
-        NSString *businessLinkStr = [NSString stringWithFormat:@"__%@__|mush", urlString];
+        //NSLog(@"=>%@", urlString);
+        NSString *businessLinkStr = [NSString stringWithFormat:@"__%@__ |mush", urlString];
         MGLineStyled *businessLink = [MGLineStyled lineWithMultilineLeft:businessLinkStr right:nil width:300 minHeight:10];
         businessLink.backgroundColor = [UIColor clearColor];
         businessLink.topMargin = 5;
-        businessLink.leftPadding = businessLink.rightPadding = 10;
+        businessLink.leftPadding = businessLink.rightPadding = 0;
         businessLink.borderStyle = MGBorderNone;
         businessLink.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
         businessLink.textColor = [UIColor colorWithRed:46.0/255.0 green:64.0/255.0 blue:197.0/255.0 alpha:1.0];

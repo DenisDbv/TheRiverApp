@@ -22,6 +22,7 @@
 #import <Harpy/Harpy.h>
 #import <Reachability/Reachability.h>
 #import <YRDropdownView/YRDropdownView.h>
+#import <ISDiskCache/ISDiskCache.h>
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -52,6 +53,8 @@
     NSLog(@"App path: %@", [[NSBundle mainBundle] resourcePath]);
     
     [self registerDevice];
+    
+    [ISDiskCache sharedCache].limitOfSize = 10 * 1024 * 1024; // 10MB
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

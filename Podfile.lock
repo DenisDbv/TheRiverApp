@@ -11,6 +11,7 @@ PODS:
   - Facebook-iOS-SDK (3.9.0)
   - Harpy (2.3.9)
   - HRCoder (1.2.2)
+  - ISDiskCache (0.1.0)
   - jastor (0.1.0)
   - JSONKit (1.5pre)
   - LRResty (0.11.0):
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - DWTagList
   - Harpy
   - HRCoder
+  - ISDiskCache
   - jastor
   - JSONKit
   - LRResty
@@ -92,6 +94,7 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 5e1416dbdfc17b2620c2ca31c02e6feec042f2c1
   Harpy: 7bc05e9a13bf1e930ede68075f9e224a46bc3727
   HRCoder: 686700a4246e96844cc898052da171229ee5f65d
+  ISDiskCache: 98dbbedb8442b7f744cb016ddd55637722b851dc
   jastor: 9cb5ac45a9abae145d030ba3bf83a679d29738ac
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
   LRResty: 5e4c1b91bc5f878d64e965facd5cc9320b9ed3e2
