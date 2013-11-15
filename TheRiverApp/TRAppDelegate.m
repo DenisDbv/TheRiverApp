@@ -82,7 +82,7 @@
         [self presentTheRiverControllers];
     }
     
-    [self showFontsList];
+    //[self showFontsList];
     
     [[Harpy sharedInstance] setAppID:@"725299549"];
     [[Harpy sharedInstance] setAppName:@"The River"];

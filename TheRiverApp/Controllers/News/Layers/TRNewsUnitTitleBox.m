@@ -36,7 +36,7 @@
     titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
     [box.boxes addObject:titleLine];
     
-    MGLineStyled *aboutLine = [MGLineStyled lineWithMultilineLeft:newsItem.date_create right:nil width:300 minHeight:10];
+    MGLineStyled *aboutLine = [MGLineStyled lineWithMultilineLeft:[box time:newsItem.date_create] right:nil width:300 minHeight:10];
     aboutLine.backgroundColor = [UIColor clearColor];
     aboutLine.topMargin = 0;
     aboutLine.leftPadding = aboutLine.rightPadding = 0;
@@ -45,6 +45,27 @@
     [box.boxes addObject:aboutLine];
     
     return box;
+}
+
+-(NSString*) time:(NSString*)time
+{
+    //time = @"2013-11-14 15:53:47";
+    //NSLog(@"%@", time);
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"yyyy.MM.dd HH:mm:ss"];
+    
+    //NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSDate *date = [dateFormatter dateFromString:time];
+    //NSLog(@"->%@", [date description]);
+    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    timeZone = [NSTimeZone localTimeZone];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"dd.MM.YYYY, HH:mm"];
+    return [dateFormatter stringFromDate:date];
 }
 
 @end

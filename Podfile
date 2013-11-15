@@ -22,6 +22,7 @@ pod 'Harpy'
 pod 'YRDropdownView'
 pod 'Reachability'
 pod 'SVPullToRefresh'
+pod 'NSDate+TimeAgo'
 
 # Forum
 pod 'uservoice-iphone-sdk'

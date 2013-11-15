@@ -32,11 +32,18 @@
 
 -(NSString*) getCurrentDate
 {
-    NSDate *currDate = [NSDate date];
+    /*NSDate *currDate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd.MM.YY HH:mm"];
     
-    return [dateFormatter stringFromDate:currDate];
+    return [dateFormatter stringFromDate:currDate];*/
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    return [dateFormatter stringFromDate:[NSDate date]];
 }
 
 -(void) downloadNewsListByPage:(NSInteger)pageIndex

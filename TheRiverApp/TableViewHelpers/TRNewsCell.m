@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import "UIImage+Resize.h"
+#import <NSDate+TimeAgo/NSDate+TimeAgo.h>
 
 @implementation TRNewsCell
 @synthesize newsLogo, newsTitle, newsTime, newsDesc;
@@ -42,7 +43,8 @@
     //newsTitle.backgroundColor = [UIColor redColor];
     //NSLog(@"=>%@", NSStringFromCGSize(size));
     
-    newsTime.text = newsItem.date_create;
+    newsTime.text = [self time:newsItem.date_create];
+    [self time:newsTime.text];
     newsTime.frame = CGRectMake(newsTime.frame.origin.x, newsTitle.frame.origin.y+newsTitle.frame.size.height+3.0, newsTime.frame.size.width, newsTime.frame.size.height);
     
     newsDesc.text = newsItem.text;
@@ -80,6 +82,28 @@
     maxHeight += 6 + 30 + 17;
     
     return maxHeight;
+}
+
+-(NSString*) time:(NSString*)time
+{
+    //time = @"2013-11-14 15:53:47";
+    //NSLog(@"%@", time);
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"yyyy.MM.dd HH:mm:ss"];
+    
+    //NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSDate *date = [dateFormatter dateFromString:time];
+    //NSLog(@"->%@", [date description]);
+    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    timeZone = [NSTimeZone localTimeZone];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"dd.MM.YYYY, HH:mm"];
+    //return [dateFormatter stringFromDate:date];
+    return [date dateTimeAgo];
 }
 
 @end
