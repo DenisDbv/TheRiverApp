@@ -82,7 +82,7 @@
         [self presentTheRiverControllers];
     }
     
-    //[self showFontsList];
+    [self showFontsList];
     
     [[Harpy sharedInstance] setAppID:@"725299549"];
     [[Harpy sharedInstance] setAppName:@"The River"];
@@ -296,6 +296,11 @@
     
     if([_rootContainer.centerViewController viewControllers].count > 1)
         [self changeCenterViewController:newController];
+}
+
+-(void) showBadgeNews:(NSInteger)newsCount
+{
+    [_leftRootMenuBar showBadgeNews:newsCount];
 }
 
 -(void) showFontsList

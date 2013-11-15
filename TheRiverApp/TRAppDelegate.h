@@ -35,4 +35,6 @@
 -(void) pushCenterViewController:(UIViewController*)newController;
 -(void) changeProfileViewController:(TRUserProfileController*)newController;
 
+-(void) showBadgeNews:(NSInteger)newsCount;
+
 @end

@@ -47,3 +47,6 @@
 #import "TRContactsManager.h"
 #import "TRBindingManager.h"
 #import "TRMeetingManager.h"
+
+#import "TRNewsManager.h"
+#import "TRNewsModel.h"

@@ -26,6 +26,8 @@ NSString *const kTG_API_BusinessDesc = @"http://kostum5.ru/api/get_business_info
 NSString *const kTG_API_ContactList = @"http://kostum5.ru/api/get_player_contact_list/";
 NSString *const kTG_API_MeetingList = @"http://kostum5.ru/api/get_events_list/";
 NSString *const kTG_API_MeetingSbscr = @"http://kostum5.ru/api/subscribe_event/";
+NSString *const kTG_API_NewsList = @"http://kostum5.ru/api/get_news_list/?token=%@&page=%i&last_entry=%@"; //token, page, last refresh date news
+NSString *const kTG_API_NewsDesc = @"http://kostum5.ru/api/get_news/?token=%@&id=%@";   //token, id
 
 NSString *const kTGTokenKey = @"token";
 NSString *const kTGCityKey = @"city";

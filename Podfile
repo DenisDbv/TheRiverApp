@@ -21,6 +21,7 @@ pod 'RNBlurModalView', '~> 0.1.0'
 pod 'Harpy'
 pod 'YRDropdownView'
 pod 'Reachability'
+pod 'SVPullToRefresh'
 
 # Forum
 pod 'uservoice-iphone-sdk'

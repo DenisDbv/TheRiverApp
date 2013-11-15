@@ -25,12 +25,17 @@
 #import "TRMeetingsBaseListVC.h"
 #import "TRPartyUsersListVC.h"
 #import "TRWebView.h"
+#import "TRNewsListVC.h"
+
+#import "LKBadgeView.h"
 
 @interface TRLeftRootMenuBar ()
 @property (nonatomic, retain) UITableView *rootMenuTableView;
+@property (nonatomic, strong) LKBadgeView* badgeView;
 @end
 
 @implementation TRLeftRootMenuBar
+@synthesize badgeView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -252,25 +257,36 @@
     
     switch (indexPath.row) {
         case 0:
+        {
+            cell.textLabel.text = @"Новости";
+            
+            badgeView = [[LKBadgeView alloc] initWithFrame:CGRectMake(85, 10, 50, 30)];
+            badgeView.textColor = [UIColor whiteColor];
+            badgeView.badgeColor = [UIColor redColor];
+            badgeView.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+            [cell.contentView addSubview:badgeView];
+        }
+            break;
+        case 1:
             //cell.imageView.image = [UIImage imageNamed:@"news.png"];
             cell.textLabel.text = @"Мероприятия";
             //cell.badgeString = @"10+";
             break;
-        case 1:
+        case 2:
             //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
             cell.textLabel.text = @"Участники";
             //cell.badgeString = @"3";
             break;
-        case 2:
+        case 3:
             //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
             cell.textLabel.text = @"Бизнесы";
             //cell.badgeString = @"3";
             break;
-        case 3:
+        case 4:
             //cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
             cell.textLabel.text = @"Предложить идею";
             break;
-        case 4:
+        case 5:
             cell.textLabel.text = @"Выход";
             //cell.badgeString = @"1+";
             break;
@@ -285,9 +301,9 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 5)  {
+    if(indexPath.row == 6)  {
         
-    } else if(indexPath.row == 4)   {
+    } else if(indexPath.row == 5)   {
         /*[self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
@@ -295,7 +311,7 @@
             
         }];*/
         [self logout];
-    } else if(indexPath.row == 3)   {
+    } else if(indexPath.row == 4)   {
         NSLog(@"%@, %@ %@", [TRAuthManager client].iamData.email, [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name);
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
@@ -312,25 +328,32 @@
             //[UserVoice presentUserVoiceNewIdeaFormForParentViewController:self andConfig:config];
             [UserVoice presentUserVoiceInterfaceForParentViewController:self andConfig:config];
         }];
-    } else if(indexPath.row == 2)   {
+    } else if(indexPath.row == 3)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:businessBaseList];
             
         }];
-    } else if(indexPath.row == 1)   {
+    } else if(indexPath.row == 2)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRPartyUsersListVC *partyUserList = [[TRPartyUsersListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:partyUserList];
             
         }];
-    } else if(indexPath.row == 0)   {
+    } else if(indexPath.row == 1)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRMeetingsBaseListVC *meetingBaseList = [[TRMeetingsBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:meetingBaseList];
+            
+        }];
+    } else if(indexPath.row == 0)   {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRNewsListVC *newsListVC = [[TRNewsListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:newsListVC];
             
         }];
     }
@@ -352,6 +375,14 @@
                               [AppDelegateInstance() logout];
                           }];
     [alertView show];
+}
+
+-(void) showBadgeNews:(NSInteger)newsCount
+{
+    if(newsCount != 0)
+        badgeView.text = [NSString stringWithFormat:@"%i", newsCount];
+    else
+        badgeView.text = @"";
 }
 
 @end

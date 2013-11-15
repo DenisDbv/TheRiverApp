@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182250541834A0EB004CE8F9 /* TRNewsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 182250531834A0EB004CE8F9 /* TRNewsManager.m */; };
+		182250581834A8D0004CE8F9 /* TRNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182250571834A8D0004CE8F9 /* TRNewsModel.m */; };
+		1822505D1834B582004CE8F9 /* TRNewsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822505B1834B582004CE8F9 /* TRNewsListVC.m */; };
+		1822505E1834B582004CE8F9 /* TRNewsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1822505C1834B582004CE8F9 /* TRNewsListVC.xib */; };
+		1822506118350F23004CE8F9 /* TRNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822506018350F23004CE8F9 /* TRNewsCell.m */; };
+		1822506318350F40004CE8F9 /* TRNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1822506218350F40004CE8F9 /* TRNewsCell.xib */; };
+		1822506718353CB9004CE8F9 /* LKBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822506618353CB9004CE8F9 /* LKBadgeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1822506B1835FFBB004CE8F9 /* TRNewsDescVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 182250691835FFBB004CE8F9 /* TRNewsDescVC.m */; };
+		1822506C1835FFBB004CE8F9 /* TRNewsDescVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1822506A1835FFBB004CE8F9 /* TRNewsDescVC.xib */; };
+		18225077183608D0004CE8F9 /* TRNewsLogoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18225070183608D0004CE8F9 /* TRNewsLogoBox.m */; };
+		18225078183608D0004CE8F9 /* TRNewsRootBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18225072183608D0004CE8F9 /* TRNewsRootBox.m */; };
+		18225079183608D0004CE8F9 /* TRNewsUnitTitleBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18225074183608D0004CE8F9 /* TRNewsUnitTitleBox.m */; };
+		1822507A183608D0004CE8F9 /* TRNewsWebViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 18225076183608D0004CE8F9 /* TRNewsWebViewBox.m */; };
 		182D72C617D3CFAF00134224 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182D72C517D3CFAF00134224 /* UIKit.framework */; };
 		182D72C817D3CFAF00134224 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182D72C717D3CFAF00134224 /* Foundation.framework */; };
 		182D72CA17D3CFAF00134224 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182D72C917D3CFAF00134224 /* CoreGraphics.framework */; };
@@ -264,6 +277,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182250521834A0EB004CE8F9 /* TRNewsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsManager.h; sourceTree = "<group>"; };
+		182250531834A0EB004CE8F9 /* TRNewsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsManager.m; sourceTree = "<group>"; };
+		182250561834A8D0004CE8F9 /* TRNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsModel.h; sourceTree = "<group>"; };
+		182250571834A8D0004CE8F9 /* TRNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsModel.m; sourceTree = "<group>"; };
+		1822505A1834B582004CE8F9 /* TRNewsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsListVC.h; sourceTree = "<group>"; };
+		1822505B1834B582004CE8F9 /* TRNewsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsListVC.m; sourceTree = "<group>"; };
+		1822505C1834B582004CE8F9 /* TRNewsListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRNewsListVC.xib; sourceTree = "<group>"; };
+		1822505F18350F23004CE8F9 /* TRNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRNewsCell.h; path = TableViewHelpers/TRNewsCell.h; sourceTree = "<group>"; };
+		1822506018350F23004CE8F9 /* TRNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRNewsCell.m; path = TableViewHelpers/TRNewsCell.m; sourceTree = "<group>"; };
+		1822506218350F40004CE8F9 /* TRNewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TRNewsCell.xib; path = TableViewHelpers/TRNewsCell.xib; sourceTree = "<group>"; };
+		1822506518353CB9004CE8F9 /* LKBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKBadgeView.h; sourceTree = "<group>"; };
+		1822506618353CB9004CE8F9 /* LKBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKBadgeView.m; sourceTree = "<group>"; };
+		182250681835FFBB004CE8F9 /* TRNewsDescVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsDescVC.h; sourceTree = "<group>"; };
+		182250691835FFBB004CE8F9 /* TRNewsDescVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsDescVC.m; sourceTree = "<group>"; };
+		1822506A1835FFBB004CE8F9 /* TRNewsDescVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRNewsDescVC.xib; sourceTree = "<group>"; };
+		1822506F183608D0004CE8F9 /* TRNewsLogoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsLogoBox.h; sourceTree = "<group>"; };
+		18225070183608D0004CE8F9 /* TRNewsLogoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsLogoBox.m; sourceTree = "<group>"; };
+		18225071183608D0004CE8F9 /* TRNewsRootBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsRootBox.h; sourceTree = "<group>"; };
+		18225072183608D0004CE8F9 /* TRNewsRootBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsRootBox.m; sourceTree = "<group>"; };
+		18225073183608D0004CE8F9 /* TRNewsUnitTitleBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsUnitTitleBox.h; sourceTree = "<group>"; };
+		18225074183608D0004CE8F9 /* TRNewsUnitTitleBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsUnitTitleBox.m; sourceTree = "<group>"; };
+		18225075183608D0004CE8F9 /* TRNewsWebViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsWebViewBox.h; sourceTree = "<group>"; };
+		18225076183608D0004CE8F9 /* TRNewsWebViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNewsWebViewBox.m; sourceTree = "<group>"; };
 		182D72C217D3CFAF00134224 /* The River.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The River.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		182D72C517D3CFAF00134224 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		182D72C717D3CFAF00134224 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -655,6 +691,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182250551834A8BD004CE8F9 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				182250561834A8D0004CE8F9 /* TRNewsModel.h */,
+				182250571834A8D0004CE8F9 /* TRNewsModel.m */,
+			);
+			name = News;
+			path = Models/News;
+			sourceTree = "<group>";
+		};
+		182250591834B554004CE8F9 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				1822506E183608D0004CE8F9 /* Layers */,
+				1822505A1834B582004CE8F9 /* TRNewsListVC.h */,
+				1822505B1834B582004CE8F9 /* TRNewsListVC.m */,
+				1822505C1834B582004CE8F9 /* TRNewsListVC.xib */,
+				182250681835FFBB004CE8F9 /* TRNewsDescVC.h */,
+				182250691835FFBB004CE8F9 /* TRNewsDescVC.m */,
+				1822506A1835FFBB004CE8F9 /* TRNewsDescVC.xib */,
+			);
+			name = News;
+			path = Controllers/News;
+			sourceTree = "<group>";
+		};
+		1822506418353CB9004CE8F9 /* LKBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				1822506518353CB9004CE8F9 /* LKBadgeView.h */,
+				1822506618353CB9004CE8F9 /* LKBadgeView.m */,
+			);
+			path = LKBadgeView;
+			sourceTree = "<group>";
+		};
+		1822506E183608D0004CE8F9 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				18225071183608D0004CE8F9 /* TRNewsRootBox.h */,
+				18225072183608D0004CE8F9 /* TRNewsRootBox.m */,
+				1822506F183608D0004CE8F9 /* TRNewsLogoBox.h */,
+				18225070183608D0004CE8F9 /* TRNewsLogoBox.m */,
+				18225073183608D0004CE8F9 /* TRNewsUnitTitleBox.h */,
+				18225074183608D0004CE8F9 /* TRNewsUnitTitleBox.m */,
+				18225075183608D0004CE8F9 /* TRNewsWebViewBox.h */,
+				18225076183608D0004CE8F9 /* TRNewsWebViewBox.m */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
 		182D72B917D3CFAF00134224 = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +805,7 @@
 		182D72E717D3D65100134224 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				182250591834B554004CE8F9 /* News */,
 				18FEA72317FAD8F5006B7864 /* ImageReview */,
 				1899701E17F615A80056F7ED /* SearchPartners */,
 				1897600A17F0DA7600B06DF7 /* SearchPartyUsers */,
@@ -956,6 +1042,8 @@
 				18FEA75917FBED2E006B7864 /* TRContactsManager.m */,
 				1899665417FE12FA00FF22A7 /* TRMeetingManager.h */,
 				1899665517FE12FA00FF22A7 /* TRMeetingManager.m */,
+				182250521834A0EB004CE8F9 /* TRNewsManager.h */,
+				182250531834A0EB004CE8F9 /* TRNewsManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -973,6 +1061,7 @@
 		18975F8A17EE1E1200B06DF7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				182250551834A8BD004CE8F9 /* News */,
 				18B1AFAC1813CA2300272C0D /* IndustriesList */,
 				18B1AFAD1813CA2300272C0D /* CitiesList */,
 				1899665717FE13F600FF22A7 /* MeetingList */,
@@ -1373,6 +1462,9 @@
 				1899703517F729340056F7ED /* TRSearchPartnersCell.xib */,
 				18FEA75E17FBF760006B7864 /* TRContactCell.h */,
 				18FEA75F17FBF760006B7864 /* TRContactCell.m */,
+				1822505F18350F23004CE8F9 /* TRNewsCell.h */,
+				1822506018350F23004CE8F9 /* TRNewsCell.m */,
+				1822506218350F40004CE8F9 /* TRNewsCell.xib */,
 			);
 			name = TableViewHelpers;
 			sourceTree = "<group>";
@@ -1404,6 +1496,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				1822506418353CB9004CE8F9 /* LKBadgeView */,
 				18B1AFC018140D9800272C0D /* OBAlertView */,
 				18A89C9B180EA98A00B79D53 /* TRWebView */,
 				18FEA71F17FAD869006B7864 /* ZoomView */,
@@ -1511,6 +1604,7 @@
 				182D72DC17D3CFAF00134224 /* Default@2x.png in Resources */,
 				182D72DE17D3CFAF00134224 /* Default-568h@2x.png in Resources */,
 				18A89C9A180E89C800B79D53 /* vk_black@2x.png in Resources */,
+				1822506318350F40004CE8F9 /* TRNewsCell.xib in Resources */,
 				18DA913517D4526000138EF2 /* IamAppleDev.jpg in Resources */,
 				18DA913617D4526000138EF2 /* IamAppleDev2.jpg in Resources */,
 				18A47FC81809714400983BC1 /* logo@2x.png in Resources */,
@@ -1560,6 +1654,7 @@
 				18A108DA17DE100200D9CD8C /* TRBusinessBaseListVC.xib in Resources */,
 				18A108E217DE19A100D9CD8C /* TRBusinessItemCell.xib in Resources */,
 				18A1090A17DE771A00D9CD8C /* add-contact-white-icon@2x.png in Resources */,
+				1822505E1834B582004CE8F9 /* TRNewsListVC.xib in Resources */,
 				18A1090B17DE771A00D9CD8C /* subscribe-icon@2x.png in Resources */,
 				18A1090C17DE771A00D9CD8C /* send-message-icon@2x.png in Resources */,
 				18A89C94180E89C800B79D53 /* mail_black@2x.png in Resources */,
@@ -1635,6 +1730,7 @@
 				1897600017EF934000B06DF7 /* blueButtonHighlight.png in Resources */,
 				1897600F17F0DB2100B06DF7 /* TRPartyUsersListVC.xib in Resources */,
 				1899701B17F5880B0056F7ED /* avatar_placeholder.png in Resources */,
+				1822506C1835FFBB004CE8F9 /* TRNewsDescVC.xib in Resources */,
 				1899702317F615F10056F7ED /* TRSearchPartnersListVC.xib in Resources */,
 				1899703617F729340056F7ED /* TRSearchPartnersCell.xib in Resources */,
 				18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */,
@@ -1694,6 +1790,7 @@
 				18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */,
 				18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */,
 				18E65E2117D4B97A00D1B778 /* TRFavoritesEditList.m in Sources */,
+				1822507A183608D0004CE8F9 /* TRNewsWebViewBox.m in Sources */,
 				18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */,
 				18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */,
 				18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */,
@@ -1707,6 +1804,7 @@
 				1891D76517D8F48900281246 /* TRCenterRootController.m in Sources */,
 				1891D77B17D9EB8900281246 /* UISearchBar+cancelButton.m in Sources */,
 				1891D78317DA26AB00281246 /* TRAlbumViewController.m in Sources */,
+				1822506118350F23004CE8F9 /* TRNewsCell.m in Sources */,
 				1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */,
 				1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */,
 				1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */,
@@ -1716,6 +1814,7 @@
 				1891D7FE17DBC3CD00281246 /* TRTagsBox.m in Sources */,
 				1891D80117DBC51D00281246 /* TRExMenuBox.m in Sources */,
 				1891D80417DBC95000281246 /* TRBusinessTitleBox.m in Sources */,
+				1822505D1834B582004CE8F9 /* TRNewsListVC.m in Sources */,
 				1891D80717DBC9DC00281246 /* TRBusinessBox.m in Sources */,
 				1891D80C17DC9AB000281246 /* TRMindBaseListVC.m in Sources */,
 				1891D81017DCA9E700281246 /* TRDescriptionUnitVC.m in Sources */,
@@ -1730,6 +1829,7 @@
 				18A89B14180BE1D600B79D53 /* TRBusinessNewItemCell.m in Sources */,
 				18A108D417DDCC6000D9CD8C /* TRMindRatingBox.m in Sources */,
 				18A108D917DE100200D9CD8C /* TRBusinessBaseListVC.m in Sources */,
+				1822506718353CB9004CE8F9 /* LKBadgeView.m in Sources */,
 				18A108E017DE191F00D9CD8C /* TRBusinessItemCell.m in Sources */,
 				18A108E517DE5D2800D9CD8C /* TRBusinessDescriptionVC.m in Sources */,
 				18A108E917DE604800D9CD8C /* TRBusinessRootBox.m in Sources */,
@@ -1748,6 +1848,7 @@
 				1896C46917E34156004AE5FF /* TRMeetingsBaseListVC.m in Sources */,
 				1896C46D17E341FC004AE5FF /* TRMeetingItemCell.m in Sources */,
 				1896C47217E45BBE004AE5FF /* TRMeetingDescriptionVC.m in Sources */,
+				18225077183608D0004CE8F9 /* TRNewsLogoBox.m in Sources */,
 				1896C47617E45D58004AE5FF /* TRMeetRootBox.m in Sources */,
 				1896C47917E45E3B004AE5FF /* TRMeetLogoBox.m in Sources */,
 				1896C47C17E460E1004AE5FF /* TRMeetTitleBox.m in Sources */,
@@ -1755,6 +1856,7 @@
 				18975F7E17EE052F00B06DF7 /* TRAuthManager.m in Sources */,
 				18975F8117EE055000B06DF7 /* URLPostOperation.m in Sources */,
 				18975F8417EE0D7500B06DF7 /* TRNetworkConstants.m in Sources */,
+				18225079183608D0004CE8F9 /* TRNewsUnitTitleBox.m in Sources */,
 				18975F8917EE1B5500B06DF7 /* TGArhiveObject.m in Sources */,
 				18975F8D17EE208600B06DF7 /* TRAuthUserModel.m in Sources */,
 				18975F9517EE2DF100B06DF7 /* TRLoginViewController.m in Sources */,
@@ -1766,6 +1868,7 @@
 				1897600E17F0DB2100B06DF7 /* TRPartyUsersListVC.m in Sources */,
 				1897601317F1753400B06DF7 /* TRPartyUsersFilter.m in Sources */,
 				1897601617F175D900B06DF7 /* TRSearchPUManager.m in Sources */,
+				18225078183608D0004CE8F9 /* TRNewsRootBox.m in Sources */,
 				1897601917F17A3100B06DF7 /* URLDownloaderOperation.m in Sources */,
 				1899701617F55D3A0056F7ED /* TRPUserListModel.m in Sources */,
 				18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */,
@@ -1788,11 +1891,14 @@
 				18FEA75D17FBF20A006B7864 /* TRContactsListModel.m in Sources */,
 				18FEA76017FBF760006B7864 /* TRContactCell.m in Sources */,
 				18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */,
+				1822506B1835FFBB004CE8F9 /* TRNewsDescVC.m in Sources */,
 				1899664D17FD863500FF22A7 /* TRBindingManager.m in Sources */,
 				1899665017FDA7FE00FF22A7 /* TRContactsSearchBar.m in Sources */,
 				1899665317FE0DDB00FF22A7 /* TRBusinessDescModel.m in Sources */,
+				182250541834A0EB004CE8F9 /* TRNewsManager.m in Sources */,
 				1899665617FE12FB00FF22A7 /* TRMeetingManager.m in Sources */,
 				1899665A17FE142500FF22A7 /* TRMeetingListModel.m in Sources */,
+				182250581834A8D0004CE8F9 /* TRNewsModel.m in Sources */,
 				1899665D17FE14BB00FF22A7 /* TREventModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
