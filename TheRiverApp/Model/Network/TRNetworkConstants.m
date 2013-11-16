@@ -11,6 +11,7 @@
 #pragma mark - Авторизация и ключи для авторизации
 // Авторизация
 NSString *const kTG_API_AuthUrl = @"http://kostum5.ru/api/login/";
+NSString *const kTG_API_AuthProfilerefresh = @"http://kostum5.ru/api/get_profile_info/?token=%@&id=%@";
 // Ключи для авторизации
 NSString *const kTGUserLoginKey = @"email";
 NSString *const kTGUserPasswordKey = @"password";

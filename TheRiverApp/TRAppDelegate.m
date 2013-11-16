@@ -23,6 +23,7 @@
 #import <Reachability/Reachability.h>
 #import <YRDropdownView/YRDropdownView.h>
 #import <ISDiskCache/ISDiskCache.h>
+#import <SIAlertView/SIAlertView.h>
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -115,6 +116,27 @@
     return YES;
 }
 
+-(void) checkBusinessURL
+{
+    if([TRAuthManager client].iamData.user.url.length == 0) {
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"Хотите ли вы указать сайт для своего бизнеса?"];
+        alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Medium" size:18];
+        [alertView addButtonWithTitle:@"НЕТ"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  
+                                  NSLog(@"Cancel Clicked");
+                              }];
+        [alertView addButtonWithTitle:@"ДА"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alertView) {
+                                  NSString *urlDirect = [NSString stringWithFormat:@"%@/edit_3/?token=%@", SERVER_HOSTNAME, [TRAuthManager client].iamData.token];
+                                  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlDirect]];
+                              }];
+        [alertView show];
+    }
+}
+
 -(void) setStatusBarHide:(BOOL)status
 {
     if(status)  {
@@ -185,6 +207,12 @@
 
 -(void) updateDataFromServer
 {
+    [[TRAuthManager client] refreshAuthUserProfile:^(LRRestyResponse *response) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshIam" object:nil];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        //
+    }];
+    
     [[TRSearchPUManager client] downloadCitiesList:nil andFailedOperation:nil];
     [[TRSearchPUManager client] downloadIndustryList:nil andFailedOperation:nil];
 }

@@ -7,6 +7,7 @@
 //
 
 extern NSString *const kTG_API_AuthUrl;
+extern NSString *const kTG_API_AuthProfilerefresh;
 
 extern NSString *const kTGUserLoginKey;
 extern NSString *const kTGUserPasswordKey;

@@ -210,6 +210,8 @@
                            [AppDelegateInstance() registerUserForFeedBack];
                            
                            [AppDelegateInstance() presentTheRiverControllers];
+                           
+                           [AppDelegateInstance() checkBusinessURL];
                        } else   {
                            [authIndicator stopAnimating];
                            [addButton setEnabled:YES];

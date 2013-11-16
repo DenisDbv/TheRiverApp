@@ -29,6 +29,7 @@
 -(void) showServerErrorMessage;
 
 -(void) registerUserForFeedBack;
+-(void) checkBusinessURL;
 
 - (void) presentLoginViewController;
 - (void) presentTheRiverControllers;

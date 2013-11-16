@@ -8,6 +8,7 @@
 
 #import "TRAuthManager.h"
 #import "URLPostOperation.h"
+#import "URLDownloaderOperation.h"
 #import "TGArhiveObject.h"
 
 @implementation TRAuthManager
@@ -63,6 +64,8 @@ withSuccessOperation:(SuccessOperation) succesOperaion
                                             
                                                                   [self saveUserData: storeAuth];
                                                                   
+                                                                  //NSLog(@"%@", storeAuth);
+                                                                  
                                                                   //TRAuthUserModel *authModel = self.iamData;
                                                                   //NSLog(@"%@", resultAuthJSON);
                                                                   
@@ -76,6 +79,42 @@ withSuccessOperation:(SuccessOperation) succesOperaion
         
         NSLog(@"Error auth: %@", response.asString);
     }];
+    
+    [_queueAuth addOperation:operation];
+}
+
+-(void) refreshAuthUserProfile:(SuccessOperation) succesOperaion
+            andFailedOperation:(FailedOperation) failedOperation
+{
+    if( [TRAuthManager client].isAuth == NO )   {
+        NSLog(@"Отмена обновления профиля участника. Пользователь не авторизован.");
+        return;
+    }
+    
+    NSString *urlAuthProfileRefresh = [NSString stringWithFormat:kTG_API_AuthProfilerefresh, [TRAuthManager client].iamData.token, [TRAuthManager client].iamData.user.objectId];
+    
+    URLDownloaderOperation * operation = [[URLDownloaderOperation alloc] initWithUrlString: urlAuthProfileRefresh
+                                                                          withSuccessBlock:^(LRRestyResponse *response) {
+                                                                              
+                                                                              NSDictionary *resultJSON = [[response asString] objectFromJSONString];
+                                                                              
+                                                                              NSMutableDictionary *authDictionary = [[NSMutableDictionary alloc] initWithDictionary:resultJSON copyItems:YES];
+                                                                              [authDictionary setObject:[self iamData].token forKey:@"token"];
+                                                                              
+                                                                              NSMutableDictionary *storeAuth = [[NSMutableDictionary alloc] init];
+                                                                              [storeAuth setObject:authDictionary forKey:@"authJson"];
+                                                                              [storeAuth setObject:[self iamData].email forKey:@"login"];
+                                                                              
+                                                                              [self saveUserData:storeAuth];
+                                                                              
+                                                                              if(succesOperaion != nil)
+                                                                                  succesOperaion(response);
+                                                                              
+                                                                          } andFailedBlock:^(LRRestyResponse *response){
+                                                                              
+                                                                              if(failedOperation != nil)
+                                                                                  failedOperation(response);
+                                                                          }];
     
     [_queueAuth addOperation:operation];
 }
