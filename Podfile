@@ -26,6 +26,7 @@ pod 'NSDate+TimeAgo'
 
 # Forum
 pod 'uservoice-iphone-sdk'
+pod 'Glazum', '~> 0.2.2'
 
 # Network
 pod 'LRResty'

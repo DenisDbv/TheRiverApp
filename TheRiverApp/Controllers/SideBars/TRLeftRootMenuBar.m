@@ -354,7 +354,6 @@
             
             TRNewsListVC *newsListVC = [[TRNewsListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:newsListVC];
-            
         }];
     }
 }

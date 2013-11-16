@@ -52,6 +52,8 @@
 {
     NSLog(@"App path: %@", [[NSBundle mainBundle] resourcePath]);
     
+    [Glazum setOptions:@{GlazumOptionDebug:@YES}];
+    
     [self registerDevice];
     
     [ISDiskCache sharedCache].limitOfSize = 10 * 1024 * 1024; // 10MB
@@ -78,6 +80,8 @@
     } else
     {
         NSLog(@"User has been authenticated by token: %@", [TRAuthManager client].iamData.token);
+        
+        [self registerUserForFeedBack];
         
         [self presentTheRiverControllers];
     }
@@ -153,6 +157,12 @@
 -(NSData*) getDeviceToken
 {
     return self.pushToken;
+}
+
+-(void) registerUserForFeedBack
+{
+    [Glazum setUserIdentifier:[TRAuthManager client].iamData.email];
+    NSLog(@"Feedback registered device: %@", [TRAuthManager client].iamData.email);
 }
 
 -(void) registerDevice
@@ -343,13 +353,11 @@
 {
     NSLog(@"Start application from background");
     
+    [Glazum startUp:@"3f05f6ff-df50-4071-b16f-a8c2def19648"];
+    
     [[Harpy sharedInstance] checkVersionDaily];
     
     [self updateDataFromServer];
-    
-    /*[[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
-    } andFailedOperation:^(LRRestyResponse *response) {
-    }];*/
     
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }

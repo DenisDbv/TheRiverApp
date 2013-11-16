@@ -207,6 +207,8 @@
                        NSLog(@"User token: %@", [TRAuthManager client].iamData.token);
                     
                        if([[TRAuthManager client] isAuth] == YES)   {
+                           [AppDelegateInstance() registerUserForFeedBack];
+                           
                            [AppDelegateInstance() presentTheRiverControllers];
                        } else   {
                            [authIndicator stopAnimating];

@@ -9,6 +9,7 @@ PODS:
     - Facebook-iOS-SDK (~> 3.1)
   - DWTagList (0.0.2)
   - Facebook-iOS-SDK (3.9.0)
+  - Glazum (0.2.2)
   - Harpy (2.3.9)
   - HRCoder (1.2.2)
   - ISDiskCache (0.1.0)
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - ACPButton
   - AQGridView
   - DWTagList
+  - Glazum (~> 0.2.2)
   - Harpy
   - HRCoder
   - ISDiskCache
@@ -96,6 +98,7 @@ SPEC CHECKSUMS:
   DEFacebookComposeViewController: b26811d6775594df2a386406655c9f2828f041cc
   DWTagList: 76302ed894130ed285e95eb11e704a55593101ab
   Facebook-iOS-SDK: 5e1416dbdfc17b2620c2ca31c02e6feec042f2c1
+  Glazum: bd673a1fe93e730a5da7ac88fdaf4c5c51b9f3a0
   Harpy: 7bc05e9a13bf1e930ede68075f9e224a46bc3727
   HRCoder: 686700a4246e96844cc898052da171229ee5f65d
   ISDiskCache: 98dbbedb8442b7f744cb016ddd55637722b851dc

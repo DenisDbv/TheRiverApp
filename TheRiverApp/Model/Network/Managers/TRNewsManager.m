@@ -41,7 +41,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     [dateFormatter setTimeZone:timeZone];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setDateFormat:@"dd.MM.YYYY HH:mm"];
     
     return [dateFormatter stringFromDate:[NSDate date]];
 }
@@ -108,7 +108,7 @@
                                                                           withSuccessBlock:^(LRRestyResponse *response) {
                                                                               
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
-                                                                              NSLog(@"%@", resultJSON);
+                                                                              //NSLog(@"%@", resultJSON);
                                                                               
                                                                               TRNewsItem *newsItem = [[TRNewsItem alloc] initWithDictionary:resultJSON];
                                                                               
