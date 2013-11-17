@@ -203,6 +203,8 @@
 		18A109A317DF193B00D9CD8C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */; };
 		18A47FC71809714400983BC1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A47FC51809714400983BC1 /* logo.png */; };
 		18A47FC81809714400983BC1 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A47FC61809714400983BC1 /* logo@2x.png */; };
+		18A707E3183949E70009F3A9 /* TRAuthBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A707E2183949E70009F3A9 /* TRAuthBlockView.m */; };
+		18A707E5183949F90009F3A9 /* TRAuthBlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A707E4183949F90009F3A9 /* TRAuthBlockView.xib */; };
 		18A89B02180B166100B79D53 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89AF2180B166100B79D53 /* Icon-40.png */; };
 		18A89B03180B166100B79D53 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89AF3180B166100B79D53 /* Icon-40@2x.png */; };
 		18A89B04180B166100B79D53 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89AF4180B166100B79D53 /* Icon-60.png */; };
@@ -575,6 +577,9 @@
 		18A109A117DF193A00D9CD8C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RoundedCorner.m"; path = "Common/UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		18A47FC51809714400983BC1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		18A47FC61809714400983BC1 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		18A707E1183949E70009F3A9 /* TRAuthBlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAuthBlockView.h; sourceTree = "<group>"; };
+		18A707E2183949E70009F3A9 /* TRAuthBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAuthBlockView.m; sourceTree = "<group>"; };
+		18A707E4183949F90009F3A9 /* TRAuthBlockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRAuthBlockView.xib; sourceTree = "<group>"; };
 		18A89AF2180B166100B79D53 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		18A89AF3180B166100B79D53 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		18A89AF4180B166100B79D53 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
@@ -1089,6 +1094,7 @@
 		18975F8E17EE2D5100B06DF7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				18A707E0183949BA0009F3A9 /* AuthBlockView */,
 				18975F9217EE2DF100B06DF7 /* TRLoginViewController.h */,
 				18975F9317EE2DF100B06DF7 /* TRLoginViewController.m */,
 				18975F9417EE2DF100B06DF7 /* TRLoginViewController.xib */,
@@ -1262,6 +1268,17 @@
 				18A1099017DEF8E100D9CD8C /* TRFriendsListVC.xib */,
 			);
 			name = FriendsList;
+			sourceTree = "<group>";
+		};
+		18A707E0183949BA0009F3A9 /* AuthBlockView */ = {
+			isa = PBXGroup;
+			children = (
+				18A707E1183949E70009F3A9 /* TRAuthBlockView.h */,
+				18A707E2183949E70009F3A9 /* TRAuthBlockView.m */,
+				18A707E4183949F90009F3A9 /* TRAuthBlockView.xib */,
+			);
+			name = AuthBlockView;
+			path = Controllers/Login/AuthBlockView;
 			sourceTree = "<group>";
 		};
 		18A89AF1180B166100B79D53 /* AppIcons */ = {
@@ -1598,6 +1615,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A707E5183949F90009F3A9 /* TRAuthBlockView.xib in Resources */,
 				182D72D217D3CFAF00134224 /* InfoPlist.strings in Resources */,
 				18A47FC71809714400983BC1 /* logo.png in Resources */,
 				182D72DA17D3CFAF00134224 /* Default.png in Resources */,
@@ -1839,6 +1857,7 @@
 				18A1099117DEF8E100D9CD8C /* TRFriendsListVC.m in Sources */,
 				18A1099517DEFAF900D9CD8C /* UIBarButtonItem+BarButtonItemExtended.m in Sources */,
 				18A1099817DEFBCF00D9CD8C /* TRFriendCell.m in Sources */,
+				18A707E3183949E70009F3A9 /* TRAuthBlockView.m in Sources */,
 				18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */,
 				18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */,
 				18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */,

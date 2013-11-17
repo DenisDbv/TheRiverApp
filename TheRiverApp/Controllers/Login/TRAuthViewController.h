@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRAuthBlockView.h"
 
-@interface TRAuthViewController : UIViewController
+@interface TRAuthViewController : UIViewController <TRAuthBlockViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIView *loginContainerView;
