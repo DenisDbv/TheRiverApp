@@ -22,6 +22,8 @@
 #import <Harpy/Harpy.h>
 #import <Reachability/Reachability.h>
 #import <YRDropdownView/YRDropdownView.h>
+#import <ISDiskCache/ISDiskCache.h>
+#import <SIAlertView/SIAlertView.h>
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -51,7 +53,11 @@
 {
     NSLog(@"App path: %@", [[NSBundle mainBundle] resourcePath]);
     
+    [Glazum setOptions:@{GlazumOptionDebug:@YES}];
+    
     [self registerDevice];
+    
+    [ISDiskCache sharedCache].limitOfSize = 10 * 1024 * 1024; // 10MB
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -75,6 +81,8 @@
     } else
     {
         NSLog(@"User has been authenticated by token: %@", [TRAuthManager client].iamData.token);
+        
+        [self registerUserForFeedBack];
         
         [self presentTheRiverControllers];
     }
@@ -106,6 +114,27 @@
     [reach startNotifier];
     
     return YES;
+}
+
+-(void) checkBusinessURL
+{
+    if([TRAuthManager client].iamData.user.url.length == 0) {
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"Хотите ли вы указать сайт для своего бизнеса?"];
+        alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Medium" size:18];
+        [alertView addButtonWithTitle:@"НЕТ"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  
+                                  NSLog(@"Cancel Clicked");
+                              }];
+        [alertView addButtonWithTitle:@"ДА"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alertView) {
+                                  NSString *urlDirect = [NSString stringWithFormat:@"%@/edit_3/?token=%@", SERVER_HOSTNAME, [TRAuthManager client].iamData.token];
+                                  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlDirect]];
+                              }];
+        [alertView show];
+    }
 }
 
 -(void) setStatusBarHide:(BOOL)status
@@ -152,6 +181,12 @@
     return self.pushToken;
 }
 
+-(void) registerUserForFeedBack
+{
+    [Glazum setUserIdentifier:[TRAuthManager client].iamData.email];
+    NSLog(@"Feedback registered device: %@", [TRAuthManager client].iamData.email);
+}
+
 -(void) registerDevice
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
@@ -172,6 +207,12 @@
 
 -(void) updateDataFromServer
 {
+    [[TRAuthManager client] refreshAuthUserProfile:^(LRRestyResponse *response) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshIam" object:nil];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        //
+    }];
+    
     [[TRSearchPUManager client] downloadCitiesList:nil andFailedOperation:nil];
     [[TRSearchPUManager client] downloadIndustryList:nil andFailedOperation:nil];
 }
@@ -295,6 +336,11 @@
         [self changeCenterViewController:newController];
 }
 
+-(void) showBadgeNews:(NSInteger)newsCount
+{
+    [_leftRootMenuBar showBadgeNews:newsCount];
+}
+
 -(void) showFontsList
 {
     NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
@@ -335,13 +381,11 @@
 {
     NSLog(@"Start application from background");
     
+    [Glazum startUp:@"3f05f6ff-df50-4071-b16f-a8c2def19648"];
+    
     [[Harpy sharedInstance] checkVersionDaily];
     
     [self updateDataFromServer];
-    
-    /*[[TRContactsManager client] downloadContactList:^(LRRestyResponse *response, TRContactsListModel *contactList) {
-    } andFailedOperation:^(LRRestyResponse *response) {
-    }];*/
     
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }

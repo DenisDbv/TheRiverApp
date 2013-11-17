@@ -52,7 +52,12 @@
                                                object:nil];
     
     [self createRootScrollView];
+    
+    [self createBoxes];
+}
 
+-(void) createBoxes
+{
     [self createBackgroundHeadBlock];
     
     if(!_isIam)
@@ -67,6 +72,19 @@
     [self createBusinessWebViewBox];
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didRefreshIamProfile)
+                                                 name:@"RefreshIam"
+                                               object:nil];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshIam" object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,6 +102,18 @@
     else if(event == MFSideMenuStateEventMenuDragEnd)
     {
         _scrollView.scrollEnabled = YES;
+    }
+}
+
+-(void) didRefreshIamProfile
+{
+    if(_isIam)  {
+        
+        _userDataObject = [TRAuthManager client].iamData.user;
+
+        [_scrollView.boxes removeAllObjects];
+        
+        [self createBoxes];
     }
 }
 

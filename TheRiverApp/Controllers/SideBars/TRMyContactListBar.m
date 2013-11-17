@@ -37,6 +37,7 @@
     NSIndexPath *lastSelectedIndex;
     
     NSTimer *refreshListTimer;
+    NSTimer *refreshNewsListTimer;
 }
 @synthesize _contactList;
 @synthesize activityIndicator, activityIndicatorInHeader;
@@ -75,6 +76,7 @@
 	_contactsTableView.delegate = (id)self;
 	_contactsTableView.dataSource = (id)self;
 	_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    //_contactsTableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;
 	_contactsTableView.backgroundColor = [UIColor whiteColor];
     [_contactsTableView setSeparatorColor: [UIColor colorWithRed:204.0/255.0
                                                            green:204.0/255.0
@@ -96,19 +98,24 @@
     //self.view.backgroundColor = [UIColor whiteColor];
     
     [self refreshContactListWithCenterIndicator:YES];
+    [self refreshNewsList];
     
     [self createTimer];
 }
 
 -(void) createTimer
 {
-    refreshListTimer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(refreshByTableHeader) userInfo:nil repeats:YES];
+    refreshListTimer = [NSTimer scheduledTimerWithTimeInterval:120.0 target:self selector:@selector(refreshByTableHeader) userInfo:nil repeats:YES];
+    refreshNewsListTimer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(refreshNewsList) userInfo:nil repeats:YES];
 }
 
 -(void) removeTimer
 {
     [refreshListTimer invalidate];
     refreshListTimer = nil;
+    
+    [refreshNewsListTimer invalidate];
+    refreshNewsListTimer = nil;
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -130,6 +137,15 @@
 {
     NSLog(@"Refresh list by timer");
     [self refreshContactListWithCenterIndicator:NO];
+}
+
+-(void) refreshNewsList
+{
+    NSLog(@"Refresh news list");
+    
+    [[TRNewsManager client] downloadNewsListByPage:1 successOperation:nil andFailedOperation:nil];
+    
+    [Glazum setMarker:@":test1"];
 }
 
 -(void) refreshContactListWithCenterIndicator:(BOOL)isCenter

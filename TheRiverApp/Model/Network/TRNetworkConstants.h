@@ -7,6 +7,7 @@
 //
 
 extern NSString *const kTG_API_AuthUrl;
+extern NSString *const kTG_API_AuthProfilerefresh;
 
 extern NSString *const kTGUserLoginKey;
 extern NSString *const kTGUserPasswordKey;
@@ -21,6 +22,8 @@ extern NSString *const kTG_API_BusinessDesc;
 extern NSString *const kTG_API_ContactList;
 extern NSString *const kTG_API_MeetingList;
 extern NSString *const kTG_API_MeetingSbscr;
+extern NSString *const kTG_API_NewsList;
+extern NSString *const kTG_API_NewsDesc;
 
 extern NSString *const kTGTokenKey;
 extern NSString *const kTGCityKey;

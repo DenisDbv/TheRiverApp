@@ -28,11 +28,16 @@
 -(void) logout;
 -(void) showServerErrorMessage;
 
+-(void) registerUserForFeedBack;
+-(void) checkBusinessURL;
+
 - (void) presentLoginViewController;
 - (void) presentTheRiverControllers;
 -(void) presentModalViewController:(UIViewController*)controller;
 -(void) changeCenterViewController:(UIViewController*)newController;
 -(void) pushCenterViewController:(UIViewController*)newController;
 -(void) changeProfileViewController:(TRUserProfileController*)newController;
+
+-(void) showBadgeNews:(NSInteger)newsCount;
 
 @end

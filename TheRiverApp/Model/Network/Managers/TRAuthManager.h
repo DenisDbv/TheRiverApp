@@ -31,6 +31,9 @@ typedef void (^FailedOperation)(LRRestyResponse *response);
 withSuccessOperation:(SuccessOperation) succesOperaion
  andFailedOperation:(FailedOperation) failedOperation;
 
+-(void) refreshAuthUserProfile:(SuccessOperation) succesOperaion
+            andFailedOperation:(FailedOperation) failedOperation;
+
 -(void) saveUserData:(id)userModel;
 -(BOOL) isAuth;
 -(void) logout;

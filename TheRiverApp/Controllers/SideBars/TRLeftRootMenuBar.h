@@ -17,4 +17,6 @@ typedef NS_ENUM(NSInteger, TRRootMenuSection){
 
 @interface TRLeftRootMenuBar : TRRootController
 
+-(void) showBadgeNews:(NSInteger)newsCount;
+
 @end

@@ -11,6 +11,7 @@
 #import "URLPostOperation.h"
 #import <NSString+RMURLEncoding/NSString+RMURLEncoding.h>
 #import "TGArhiveObject.h"
+#import <ISDiskCache/ISDiskCache.h>
 
 @implementation TRSearchPUManager
 
@@ -117,6 +118,14 @@ static const NSString *_fileIndustryHandler = @"industry.data";
     [params setObject:city forKey:kTGCityKey];
     [params setObject:industry forKey:kTGScopeWorkKey];
     
+    if([[ISDiskCache sharedCache] hasObjectForKey:params])    {
+        NSDictionary *resultJSON = [[ISDiskCache sharedCache] objectForKey:params];
+        TRPUserListModel *puUserList = [[TRPUserListModel alloc] initWithDictionary:resultJSON];
+        
+        if( successBlock != nil)
+            successBlock(nil, puUserList);
+    }
+    
     URLPostOperation * operation = [[URLPostOperation alloc]  initWithUrlString: kTG_API_PartyUsersList
                                                                        andParam:params
                                                                       andHeader:nil
@@ -125,7 +134,17 @@ static const NSString *_fileIndustryHandler = @"industry.data";
                                                                               NSDictionary *resultJSON = [[response asString] objectFromJSONString];
                                                                               
                                                                               TRPUserListModel *puUserList = [[TRPUserListModel alloc] initWithDictionary:resultJSON];
-                                                                              
+                                                                              if(puUserList.user.count > 0)
+                                                                              {
+                                                                                  [[ISDiskCache sharedCache] setObject:resultJSON forKey:params];
+                                                                              }
+                                                                              else
+                                                                              {
+                                                                                  NSLog(@"Список участников пуст: %@", response.asString);
+                                                                                  
+                                                                                  if(failedOperation != nil)
+                                                                                      failedOperation(response);
+                                                                              }
                                                                               if( successBlock != nil)
                                                                                   successBlock(response, puUserList);
                                                                               

@@ -42,7 +42,7 @@
     }
     
     if(hightResolution.count > 0)   {
-        TRTagsScrollBox *tagsResolution = [TRTagsScrollBox initBoxWithTitle:@"Высокое разрешение:" andTagsArray:hightResolution byTarget:box];
+        TRTagsScrollBox *tagsResolution = [TRTagsScrollBox initBoxWithTitle:@"Ниши и высокое разрешение:" andTagsArray:hightResolution byTarget:box];
         tagsResolution.tag = 1;
         [box.boxes addObject:tagsResolution];
     }

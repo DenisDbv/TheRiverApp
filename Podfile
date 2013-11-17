@@ -21,9 +21,12 @@ pod 'RNBlurModalView', '~> 0.1.0'
 pod 'Harpy'
 pod 'YRDropdownView'
 pod 'Reachability'
+pod 'SVPullToRefresh'
+pod 'NSDate+TimeAgo'
 
 # Forum
 pod 'uservoice-iphone-sdk'
+pod 'Glazum', '~> 0.2.2'
 
 # Network
 pod 'LRResty'
@@ -35,3 +38,4 @@ pod 'NSString+RMURLEncoding'
 
 # FileIO
 pod 'HRCoder'
+pod 'ISDiskCache'
