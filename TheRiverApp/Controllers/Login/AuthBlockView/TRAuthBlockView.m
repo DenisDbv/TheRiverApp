@@ -28,12 +28,12 @@
     
     if (self) {
         NSArray* nib = [[NSBundle mainBundle] loadNibNamed:@"TRAuthBlockView" owner:self options:nil];
-        [[nib objectAtIndex:0] setFrame:CGRectMake(10, 100, 300, 255)];
+        [[nib objectAtIndex:0] setFrame:CGRectMake(10, 100, 290, 233)];
         self = [nib objectAtIndex:0];
         
         //self.backgroundColor = [UIColor redColor];
-        self.layer.cornerRadius = 8.0;
-        self.layer.borderWidth = 1.0;
+        self.layer.cornerRadius = 16.0;
+        self.layer.borderWidth = 0.5;
         self.layer.borderColor = [UIColor colorWithRed:40.0/255.0 green:40.0/255.0 blue:40.0/255.0 alpha:1.0].CGColor;
         
         [self initialized];
@@ -45,14 +45,14 @@
 -(void) initialized
 {
     loginBlockView.layer.cornerRadius = 6.0;
-    loginBlockView.layer.borderWidth = 1.0;
+    loginBlockView.layer.borderWidth = 0.5;
     loginBlockView.layer.borderColor = [UIColor colorWithRed:21.0/255.0 green:21.0/255.0 blue:21.0/255.0 alpha:1.0].CGColor;
     
-    SSLineView *sepEmailPassword = [[SSLineView alloc] initWithFrame:CGRectMake(2, loginBlockView.frame.size.height/2, loginBlockView.frame.size.width-4, 1)];
+    SSLineView *sepEmailPassword = [[SSLineView alloc] initWithFrame:CGRectMake(2, loginBlockView.frame.size.height/2, loginBlockView.frame.size.width-4, 0.5)];
     sepEmailPassword.backgroundColor = [UIColor colorWithRed:205.0/255.0 green:205.0/255.0 blue:205.0/255.0 alpha:1.0];
     [loginBlockView addSubview:sepEmailPassword];
     
-    loginButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(21, 189, 250, 44) style:NVUIGradientButtonStyleDefault];
+    loginButton = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(21, 161, 250, 44) style:NVUIGradientButtonStyleDefault];
     [loginButton addTarget:self action:@selector(onLoginClick:) forControlEvents:UIControlEventTouchUpInside];
     loginButton.tintColor = loginButton.highlightedTintColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
     loginButton.borderColor = [UIColor clearColor];
@@ -69,6 +69,17 @@
     authIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(70, 12, 20, 20)];
     [authIndicator setColor:[UIColor whiteColor]];
     [loginButton addSubview:authIndicator];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField*)textField;
+{
+    if(textField.tag == 1)  {
+        [passwordTextField becomeFirstResponder];
+    } else  {
+        [self onLoginClick:nil];
+    }
+    
+    return YES;
 }
 
 -(void) onLoginClick:(id)sender

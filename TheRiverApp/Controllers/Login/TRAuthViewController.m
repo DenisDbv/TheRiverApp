@@ -11,22 +11,23 @@
 #import <NVUIGradientButton/NVUIGradientButton.h>
 #import "UIView+GestureBlocks.h"
 
-@interface TRAuthViewController ()
-@property (nonatomic, retain) UIActivityIndicatorView *authIndicator;
+#import <MGBox2/MGBox.h>
+#import <MGBox2/MGScrollView.h>
+#import <MGBox2/MGTableBoxStyled.h>
+#import <MGBox2/MGLineStyled.h>
+#import "TRAuthPhotoBox.h"
 
+@interface TRAuthViewController ()
 @property (nonatomic, retain) TRAuthBlockView *authBlockView;
+
+@property (nonatomic, retain) MGScrollView *backScrollView;
 @end
 
 @implementation TRAuthViewController
 {
-    NVUIGradientButton *addButton;
+    MGBox *photosBox;
 }
-
-@synthesize scrollView, loginContainerView;
-@synthesize loginField, passwordField, loginButton;
-@synthesize logoImageView;
-@synthesize authIndicator;
-
+@synthesize scrollView;
 @synthesize authBlockView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,23 +43,27 @@
 {
     [super viewDidLoad];
     
+    scrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, ([UIScreen mainScreen].bounds.size.height));
+    [scrollView setContentSize:scrollView.frame.size];
+    scrollView.bounces = NO;
+    
     authBlockView = [[TRAuthBlockView alloc] init];
     authBlockView.delegate = self;
     [self.scrollView addSubview:authBlockView];
+    
+    CGRect rectLoginContainer = authBlockView.frame;
+    rectLoginContainer.origin.x = ([UIScreen mainScreen].bounds.size.width - rectLoginContainer.size.width)/2;
+    rectLoginContainer.origin.y = [UIScreen mainScreen].bounds.size.height - rectLoginContainer.size.height - 23.0f - ((IS_IPHONE5)?30:0);
+    //(([UIScreen mainScreen].bounds.size.height) - rectLoginContainer.size.height)/2 + ((IS_IPHONE5)?50:110);
+    authBlockView.frame = rectLoginContainer;
+    
+    [self createRootScrollView];
     
     [scrollView initialiseSwipeUpHandler:^(UIGestureRecognizer *sender) {
         [self resignFromAllFields];
     }];
     
     [scrollView initialiseSwipeDownHandler:^(UIGestureRecognizer *sender) {
-        [self resignFromAllFields];
-    }];
-    
-    [loginContainerView initialiseSwipeUpHandler:^(UIGestureRecognizer *sender) {
-        [self resignFromAllFields];
-    }];
-    
-    [loginContainerView initialiseSwipeDownHandler:^(UIGestureRecognizer *sender) {
         [self resignFromAllFields];
     }];
     
@@ -72,20 +77,74 @@
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillHideNotification];
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
-    scrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, ([UIScreen mainScreen].bounds.size.height));
-    [scrollView setContentSize:CGSizeMake(1, 1)];
-    
-    CGRect rectLoginContainer = authBlockView.frame;
-    rectLoginContainer.origin.y = [UIScreen mainScreen].bounds.size.height - rectLoginContainer.size.height - 23.0f - ((IS_IPHONE5)?30:0);
-    //(([UIScreen mainScreen].bounds.size.height) - rectLoginContainer.size.height)/2 + ((IS_IPHONE5)?50:110);
-    authBlockView.frame = rectLoginContainer;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void) createRootScrollView
+{
+    _backScrollView = [[MGScrollView alloc] initWithFrame:CGRectMake(0, 0, 324, self.view.bounds.size.height)];
+    _backScrollView.backgroundColor = [UIColor whiteColor];
+    //_backScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _backScrollView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
+    _backScrollView.margin = UIEdgeInsetsMake(0, 0, 0, 0);
+    _backScrollView.contentLayoutMode = MGLayoutGridStyle;
+    _backScrollView.scrollEnabled = NO;
+    //_backScrollView.backgroundColor = [UIColor redColor];
+    _backScrollView.contentSize = _backScrollView.bounds.size;
+    [self.view insertSubview:_backScrollView belowSubview:scrollView];
+    
+    photosBox = [MGBox boxWithSize:_backScrollView.bounds.size];
+    photosBox.contentLayoutMode = MGLayoutGridStyle;
+    [_backScrollView.boxes addObject:photosBox];
+    
+    NSArray *arr = [self arrangePhotoPaths];
+    for(NSString *path in arr)
+    {
+        TRAuthPhotoBox *photoBox = [TRAuthPhotoBox photoAddBoxWithFileName:path andTag:1];
+        [photosBox.boxes addObject:photoBox];
+    }
+    
+    //[photosBox layoutWithSpeed:0.5 completion:nil];
+    [_backScrollView layoutWithSpeed:0.1 completion:nil];
+}
+
+#pragma mark - Photo Box helpers
+
+- (int)randomMissingPhoto {
+    int photo;
+    
+    photo = arc4random_uniform(171) + 1;
+    
+    return photo;
+}
+
+- (MGBox *)photoBoxWithTag:(int)tag {
+    for (MGBox *box in photosBox.boxes) {
+        if (box.tag == tag) {
+            return box;
+        }
+    }
+    return nil;
+}
+
+-(NSArray*) arrangePhotoPaths
+{
+    NSMutableArray *photosArray = [[NSMutableArray alloc] init];
+    for(int index = 1; index <= 171; index++)
+    {
+        [photosArray addObject:[NSString stringWithFormat:@"%i.jpg", index]];
+    }
+    
+    int count = photosArray.count;
+    for (NSUInteger i = 0; i < count; ++i) {
+        int nElements = count - i;
+        int n = (arc4random() % nElements) + i;
+        [photosArray exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+    
+    return photosArray;
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -107,7 +166,7 @@
     [[[note userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&keyboardCurve];
     [[[note userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&keyboardDuration];
     
-    NSInteger yOffset = abs((keyboardFrame.origin.y - authBlockView.frame.size.height)/2 - authBlockView.frame.origin.y);// + ((IS_IPHONE5)?0:-15);
+    NSInteger yOffset = abs((keyboardFrame.origin.y - authBlockView.frame.size.height)/2 - authBlockView.frame.origin.y); // + ((IS_IPHONE5)?0:-15);
     [scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
     
     [scrollView setScrollEnabled:NO];

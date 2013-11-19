@@ -12,11 +12,5 @@
 @interface TRAuthViewController : UIViewController <TRAuthBlockViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) IBOutlet UIView *loginContainerView;
-@property (nonatomic, retain) IBOutlet UIImageView *logoImageView;
-@property (nonatomic, retain) IBOutlet UITextField *loginField;
-@property (nonatomic, retain) IBOutlet UITextField *passwordField;
-
-@property (nonatomic, retain) IBOutlet UIButton *loginButton;
 
 @end

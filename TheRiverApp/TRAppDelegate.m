@@ -11,7 +11,6 @@
 #import "MFSideMenu.h"
 #import "OBAlert.h"
 
-#import "TRLoginViewController.h"
 #import "TRAuthViewController.h"
 #import "TRLeftRootMenuBar.h"
 #import "TRMyContactListBar.h"
@@ -285,8 +284,8 @@
     self.window.rootViewController = authViewController;
     [self.window makeKeyAndVisible];
     
-    authViewController.loginField.text = login;
-    [authViewController.passwordField becomeFirstResponder];
+    //authViewController.loginField.text = login;
+    //[authViewController.passwordField becomeFirstResponder];
 }
 
 - (void) presentTheRiverControllers
