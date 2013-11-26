@@ -7,7 +7,6 @@
 //
 
 #import "TRMindWebViewBox.h"
-#import <SSToolkit/SSToolkit.h>
 #import <MGBox2/MGScrollView.h>
 #import "TRMindRatingBox.h"
 
@@ -29,7 +28,7 @@
     //self.topBorderColor = [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0];
 }
 
-+(TRMindWebViewBox *)initBox:(CGSize)bounds withMindData:(TRMindModel *)mindObject
++(TRMindWebViewBox *)initBox:(CGSize)bounds withMindData:(TRMindItem *)mindObject
 {
     TRMindWebViewBox *box = [TRMindWebViewBox boxWithSize: CGSizeMake(bounds.width, 100)];
     box.mindData = mindObject;
@@ -38,13 +37,13 @@
     box.webView = [[SSWebView alloc] initWithFrame:CGRectMake(0, 0, bounds.width, 1)];
     [box addSubview: box.webView];
     
-    box.webView.alpha = 0.0f;
+    box.webView.alpha = 1.0f;
     box.webView.scrollView.scrollEnabled = NO;
     box.webView.delegate = box;
     box.webView.scalesPageToFit = NO;
     box.webView.backgroundColor = [UIColor clearColor];
     box.webView.scrollView.backgroundColor = [UIColor clearColor];
-    [box.webView loadURLString:box.mindData.mindURL];
+    [box.webView loadHTMLString:box.mindData.text];
     
     box.activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(box.bounds.size.width/2-21/2, box.bounds.size.height/2-21/2, 0, 0)];
     [box.activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
@@ -68,8 +67,8 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.webView.alpha = 1.0f;
         } completion:^(BOOL finished) {
-            self.borderStyle = MGBorderEtchedBottom;
-            [self showMindRating];
+            //self.borderStyle = MGBorderEtchedBottom;
+            //[self showMindRating];
         }];
     }
 }

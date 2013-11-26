@@ -120,6 +120,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd"];
     
+    NSLog(@"%@", self.meetingData.start_date);
+    
     [self changeSizeLabel:dayLabel atString:[dateFormatter stringFromDate:myDate]];
     dayLabel.frame = [self changeWidthInFrame:dayLabel.frame byWidth:maxDateBlock];
     

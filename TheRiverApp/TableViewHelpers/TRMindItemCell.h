@@ -12,11 +12,10 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *logo;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UILabel *authorNameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *dateCreateLabel;
-@property (nonatomic, weak) IBOutlet UIView *levelView;
-@property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
+@property (nonatomic, weak) IBOutlet UILabel *descLabel;
 
--(void) reloadWithMindModel:(TRMindModel*)mindObject;
+-(void) reloadWithMindModel:(TRMindItem*)mindObject;
+
+-(CGFloat) getCellHeight:(TRMindItem*)mindItem;
 
 @end

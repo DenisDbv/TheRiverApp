@@ -47,6 +47,7 @@
                                                                               
                                                                               TRMeetingListModel *meetingRootModel = [[TRMeetingListModel alloc] initWithDictionary:resultJSON];
                                                                               if(meetingRootModel.events.count > 0)  {
+                                                                                  
                                                                                   if( successBlock != nil)
                                                                                       successBlock(response, meetingRootModel);
                                                                               } else    {

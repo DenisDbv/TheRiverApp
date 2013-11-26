@@ -8,49 +8,78 @@
 
 #import "TRMindItemCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import "UIImage+Resize.h"
 
 @implementation TRMindItemCell
 
-@synthesize logo, titleLabel, authorNameLabel, dateCreateLabel, levelView, ratingLabel;
-
--(void) reloadWithMindModel:(TRMindModel*)mindObject
-{
-    //levelView.layer.cornerRadius = CGRectGetHeight(levelView.bounds) / 2;
-    levelView.clipsToBounds = YES;
-    logo.image = [UIImage imageNamed:mindObject.mindLogo];
-    titleLabel.text = mindObject.mindTitle;
-    authorNameLabel.text = mindObject.mindAuthor;
-    dateCreateLabel.text = mindObject.mindDayCreate;
-    ratingLabel.text = [NSString stringWithFormat:@"%i", mindObject.mindRating];
-    
-    [titleLabel sizeToFit];
-    CGSize size = [titleLabel.text sizeWithFont: titleLabel.font
-                              constrainedToSize: CGSizeMake(222.0, 50)
-                                  lineBreakMode: NSLineBreakByWordWrapping ];
-    titleLabel.frame = CGRectMake(78.0,
-                                  10.0,
-                                  size.width, size.height);
-    
-    [authorNameLabel sizeToFit];
-    authorNameLabel.frame = CGRectMake(authorNameLabel.frame.origin.x,
-                                       titleLabel.frame.origin.y+titleLabel.frame.size.height+3,
-                                       authorNameLabel.bounds.size.width,
-                                       authorNameLabel.bounds.size.height);
-
-    //[dateCreateLabel sizeToFit];
-    /*dateCreateLabel.frame = CGRectMake(dateCreateLabel.frame.origin.x,
-                                       authorNameLabel.frame.origin.y+authorNameLabel.frame.size.height,
-                                       dateCreateLabel.bounds.size.width,
-                                       dateCreateLabel.bounds.size.height);*/
-}
+@synthesize logo, titleLabel, descLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        titleLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:16];
+        [self initialize];
     }
     return self;
+}
+
+-(void) awakeFromNib
+{
+    [self initialize];
+}
+
+-(void) initialize
+{
+    titleLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:16];
+}
+
+-(void) reloadWithMindModel:(TRMindItem*)mindObject
+{
+    titleLabel.highlightedTextColor = [UIColor whiteColor];
+    descLabel.highlightedTextColor = [UIColor whiteColor];
+    
+    titleLabel.text = mindObject.title;
+    CGSize size = [titleLabel.text sizeWithFont:titleLabel.font constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    titleLabel.frame = CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y, titleLabel.frame.size.width, (floor(size.height) > titleLabel.frame.size.height)?44.0:size.height);
+    
+    descLabel.text = mindObject.text;
+    size = [descLabel.text sizeWithFont:descLabel.font constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    descLabel.frame = CGRectMake(descLabel.frame.origin.x, titleLabel.frame.origin.y+titleLabel.frame.size.height+3.0, descLabel.frame.size.width, (floor(size.height) > descLabel.frame.size.height)?54.0:floor(size.height));
+    
+    if(mindObject.logo.length > 0)   {
+        NSString *logoURLString = [@"http://kostum5.ru/" stringByAppendingString:mindObject.logo];
+        
+        UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
+        if(img == nil) {
+            [self.logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                     [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
+                                 } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        } else  {
+            [self.logo setImage: img];
+        }
+    } else  {
+        [self.logo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+    }
+}
+
+-(CGFloat) getCellHeight:(TRMindItem*)mindItem
+{
+    CGFloat maxHeight = 0;
+    
+    CGSize size = [mindItem.title sizeWithFont:[UIFont fontWithName:@"HypatiaSansPro-Bold" size:16.0] constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    maxHeight = (floor(size.height) > 44.0)?44.0:floor(size.height);
+    
+    size = [mindItem.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13.0] constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    maxHeight += (floor(size.height) > 54.0)?54.0:floor(size.height);
+    
+    if(maxHeight < 50) maxHeight = 50;
+    
+    maxHeight += 3 + 34;
+    
+    return maxHeight;
 }
 
 /*-(void) layoutSubviews

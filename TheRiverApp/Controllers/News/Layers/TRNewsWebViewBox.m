@@ -20,6 +20,7 @@
 @end
 
 @implementation TRNewsWebViewBox
+@synthesize activityIndicator;
 
 - (void)setup {
     
@@ -48,12 +49,18 @@
     
     [box.webView loadHTMLString:newsItem.text];
     
+    box.activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(box.bounds.size.width/2-21/2, box.bounds.size.height/2-21/2, 0, 0)];
+    [box.activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
+    [box.activityIndicator startAnimating];
+    [box addSubview:box.activityIndicator];
+    
     return box;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     if(self.webView.loading == NO)  {
+        [self.activityIndicator stopAnimating];
         NSInteger webContentHeight = self.webView.scrollView.contentSize.height;
         
         self.height = webContentHeight;

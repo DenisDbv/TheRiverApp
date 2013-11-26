@@ -99,7 +99,7 @@
     
     TREventModel *eventUnit = [_meetingList.events objectAtIndex:indexPath.row];
     
-    return [meetCell getCellHeight:eventUnit]; //125;
+    return [meetCell getCellHeight:eventUnit];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,16 +113,6 @@
     TREventModel *eventUnit = [_meetingList.events objectAtIndex:indexPath.row];
     
     [cell reloadWithMeetingModel:eventUnit];
-    /*
-    NSLog(@"%@", eventUnit.start_date);
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss+HH:mm"];
-    NSDate *myDate = [df dateFromString: eventUnit.start_date];
-    NSLog (@"%@", [myDate description]);
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE MMMM YYYY dd"];
-    NSLog(@"%@",[dateFormatter stringFromDate:myDate]);*/
     
     return cell;
 }

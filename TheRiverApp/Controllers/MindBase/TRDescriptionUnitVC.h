@@ -10,6 +10,6 @@
 
 @interface TRDescriptionUnitVC : UIViewController
 
--(id) initByMindModel:(TRMindModel*)mindObject;
+-(id) initByMindModel:(NSString*)mindID;
 
 @end

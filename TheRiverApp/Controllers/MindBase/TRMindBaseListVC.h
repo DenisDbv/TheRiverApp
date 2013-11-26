@@ -7,8 +7,9 @@
 //
 
 #import "TRCenterRootController.h"
+#import "TRPartnersSearchView.h"
 
-@interface TRMindBaseListVC : TRCenterRootController
+@interface TRMindBaseListVC : TRCenterRootController <TRPartnersSearchViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 

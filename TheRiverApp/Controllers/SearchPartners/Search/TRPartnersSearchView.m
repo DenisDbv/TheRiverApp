@@ -14,16 +14,16 @@
 
 @interface TRPartnersSearchView()
 @property (nonatomic, retain) TRSearchBar *searchBar;
+@property (nonatomic, strong) id <TRPartnersSearchViewDelegate> rootController;
 @end
 
 @implementation TRPartnersSearchView
 {
     NSUInteger searchCounter;
     dispatch_time_t delaySearchUntilQueryUnchangedForTimeOffset;
-    
-    TRSearchPartnersListVC *rootController;
 }
 @synthesize searchBar;
+@synthesize rootController;
 
 - (id)initWithFrame:(CGRect)frame byRootTarget:(id)target
 {
@@ -75,7 +75,13 @@
         if (searchID == searchCounter) {
             if(searchText.length != 0 && searchText.length >= 3)  {
                 NSLog(@"'%@' text searching..", searchText);
-                [rootController refreshPartnersByQuery: searchText];
+                if([rootController respondsToSelector:@selector(refreshPartnersByQuery:)])  {
+                    [rootController refreshPartnersByQuery: searchText];
+                }
+            } else if(searchText.length == 0)   {
+                if([rootController respondsToSelector:@selector(refreshPartnersByClearQuery)])  {
+                    [rootController refreshPartnersByClearQuery];
+                }
             }
         } else {
             //[self decrementQueueCounter];

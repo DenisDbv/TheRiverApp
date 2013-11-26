@@ -18,10 +18,6 @@
 
 #import "Global.h"
 
-#import "TRUserModel.h"
-#import "TRMindModel.h"
-#import "TRUserManager.h"
-#import "TRMeetingModel.h"
 #import "TRPUserListModel.h"
 #import "TRPartnersListModel.h"
 
@@ -52,3 +48,6 @@
 
 #import "TRNewsManager.h"
 #import "TRNewsModel.h"
+
+#import "TRMindModel.h"
+#import "TRMindManager.h"

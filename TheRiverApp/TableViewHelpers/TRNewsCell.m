@@ -19,7 +19,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        [self initialized];
     }
     return self;
 }
@@ -31,6 +31,16 @@
     // Configure the view for the selected state
 }
 
+-(void)awakeFromNib
+{
+    [self initialized];
+}
+
+-(void) initialized
+{
+    newsTitle.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:16];
+}
+
 -(void) reloadWithNewsItem:(TRNewsItem*)newsItem
 {
     newsTitle.highlightedTextColor = [UIColor whiteColor];
@@ -39,7 +49,7 @@
     
     newsTitle.text = newsItem.title;
     CGSize size = [newsTitle.text sizeWithFont:newsTitle.font constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-    newsTitle.frame = CGRectMake(newsTitle.frame.origin.x, newsTitle.frame.origin.y, newsTitle.frame.size.width, (floor(size.height) > newsTitle.frame.size.height)?35.0:floor(size.height));
+    newsTitle.frame = CGRectMake(newsTitle.frame.origin.x, newsTitle.frame.origin.y, newsTitle.frame.size.width, (floor(size.height) > newsTitle.frame.size.height)?44.0:size.height);
     //newsTitle.backgroundColor = [UIColor redColor];
     //NSLog(@"=>%@", NSStringFromCGSize(size));
     
@@ -73,12 +83,14 @@
 {
     CGFloat maxHeight = 0;
     
-    CGSize size = [newsItem.title sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0] constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-    maxHeight = (floor(size.height) > 35.0)?35.0:floor(size.height);
+    CGSize size = [newsItem.title sizeWithFont:[UIFont fontWithName:@"HypatiaSansPro-Bold" size:16.0] constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    maxHeight = (floor(size.height) > 44.0)?44.0:floor(size.height);
     
     size = [newsItem.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13.0] constrainedToSize:CGSizeMake(231.0, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     maxHeight += (floor(size.height) > 54.0)?54.0:floor(size.height);
 
+    if(maxHeight < 50) maxHeight = 50;
+    
     maxHeight += 6 + 30 + 17;
     
     return maxHeight;

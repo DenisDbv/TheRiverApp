@@ -7,7 +7,8 @@
 //
 
 #import "TRMindRootBox.h"
+#import <SSToolkit/SSToolkit.h>
 
-@interface TRMindWebViewBox : TRMindRootBox
+@interface TRMindWebViewBox : TRMindRootBox <SSWebViewDelegate>
 
 @end

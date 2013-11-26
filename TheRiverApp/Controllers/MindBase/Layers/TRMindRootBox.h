@@ -10,10 +10,9 @@
 
 @interface TRMindRootBox : MGBox
 
-@property (nonatomic, strong) TRMindModel *mindData;
+@property (nonatomic, strong) TRMindItem *mindData;
 
 +(MGBox *) initBox:(CGSize)bounds;
-+(MGBox *) initBox:(CGSize)bounds withMindData:(TRMindModel *)mindObject;
-+(MGBox *) initBox:(CGSize)bounds withUserData:(TRUserModel*)userObject byTarget:(id)target;
++(MGBox *) initBox:(CGSize)bounds withMindData:(TRMindItem *)mindObject;
 
 @end

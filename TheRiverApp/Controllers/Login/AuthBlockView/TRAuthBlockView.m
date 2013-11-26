@@ -32,9 +32,9 @@
         self = [nib objectAtIndex:0];
         
         //self.backgroundColor = [UIColor redColor];
-        self.layer.cornerRadius = 16.0;
+        self.layer.cornerRadius = 8.0;
         self.layer.borderWidth = 0.5;
-        self.layer.borderColor = [UIColor colorWithRed:40.0/255.0 green:40.0/255.0 blue:40.0/255.0 alpha:1.0].CGColor;
+        self.layer.borderColor = [UIColor colorWithRed:48.0/255.0 green:48.0/255.0 blue:48.0/255.0 alpha:1.0].CGColor;
         
         [self initialized];
     }
@@ -44,7 +44,7 @@
 
 -(void) initialized
 {
-    loginBlockView.layer.cornerRadius = 6.0;
+    loginBlockView.layer.cornerRadius = 4.0;
     loginBlockView.layer.borderWidth = 0.5;
     loginBlockView.layer.borderColor = [UIColor colorWithRed:21.0/255.0 green:21.0/255.0 blue:21.0/255.0 alpha:1.0].CGColor;
     
@@ -69,9 +69,15 @@
     authIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(70, 12, 20, 20)];
     [authIndicator setColor:[UIColor whiteColor]];
     [loginButton addSubview:authIndicator];
+    
+    //Так как в ios7 исчезает мигающий индикатор
+    if(IS_OS_7_OR_LATER)    {
+        emailTextField.tintColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+        passwordTextField.tintColor = [UIColor colorWithRed:77.0/255.0 green:112.0/255.0 blue:255.0/255.0 alpha:1.0];
+    }
 }
 
--(BOOL)textFieldShouldReturn:(UITextField*)textField;
+-(BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     if(textField.tag == 1)  {
         [passwordTextField becomeFirstResponder];

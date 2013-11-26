@@ -279,14 +279,19 @@
             break;
         case 3:
             //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
-            cell.textLabel.text = @"Бизнесы";
+            cell.textLabel.text = @"База знаний";
             //cell.badgeString = @"3";
             break;
         case 4:
+            //cell.imageView.image = [UIImage imageNamed:@"comments.png"];
+            cell.textLabel.text = @"Бизнесы";
+            //cell.badgeString = @"3";
+            break;
+        case 5:
             //cell.imageView.image = [UIImage imageNamed:@"calendar.png"];
             cell.textLabel.text = @"Предложить идею";
             break;
-        case 5:
+        case 6:
             cell.textLabel.text = @"Выход";
             //cell.badgeString = @"1+";
             break;
@@ -301,9 +306,9 @@
 	[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 6)  {
+    if(indexPath.row == 7)  {
         
-    } else if(indexPath.row == 5)   {
+    } else if(indexPath.row == 6)   {
         /*[self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
@@ -311,7 +316,7 @@
             
         }];*/
         [self logout];
-    } else if(indexPath.row == 4)   {
+    } else if(indexPath.row == 5)   {
         NSLog(@"%@, %@ %@", [TRAuthManager client].iamData.email, [TRAuthManager client].iamData.user.first_name, [TRAuthManager client].iamData.user.last_name);
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
@@ -328,11 +333,18 @@
             //[UserVoice presentUserVoiceNewIdeaFormForParentViewController:self andConfig:config];
             [UserVoice presentUserVoiceInterfaceForParentViewController:self andConfig:config];
         }];
-    } else if(indexPath.row == 3)   {
+    } else if(indexPath.row == 4)   {
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
             
             TRBusinessBaseListVC *businessBaseList = [[TRBusinessBaseListVC alloc] init];
             [AppDelegateInstance() changeCenterViewController:businessBaseList];
+            
+        }];
+    } else if(indexPath.row == 3)   {
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed completion:^{
+            
+            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
+            [AppDelegateInstance() changeCenterViewController:mindBaseList];
             
         }];
     } else if(indexPath.row == 2)   {

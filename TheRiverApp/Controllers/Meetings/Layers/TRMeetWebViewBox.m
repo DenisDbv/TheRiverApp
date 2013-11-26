@@ -46,6 +46,7 @@
     box.webView.backgroundColor = [UIColor clearColor];
     box.webView.scrollView.backgroundColor = [UIColor clearColor];
     [box.webView loadHTMLString:meetObject.text];
+    //NSLog(@"%@", meetObject.text);
     
     box.activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(box.bounds.size.width/2-21/2, box.bounds.size.height/2-21/2, 0, 0)];
     [box.activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];

@@ -24,6 +24,9 @@ extern NSString *const kTG_API_MeetingList;
 extern NSString *const kTG_API_MeetingSbscr;
 extern NSString *const kTG_API_NewsList;
 extern NSString *const kTG_API_NewsDesc;
+extern NSString *const kTG_API_MindList;
+extern NSString *const kTG_API_MindDesc;
+extern NSString *const kTG_API_MindSearch;
 
 extern NSString *const kTGTokenKey;
 extern NSString *const kTGCityKey;

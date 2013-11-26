@@ -164,7 +164,7 @@
 
 -(void) showNewsWebView
 {
-    TRNewsWebViewBox *webViewBox = (TRNewsWebViewBox*)[TRNewsWebViewBox initBox: CGSizeMake(320, 0)
+    TRNewsWebViewBox *webViewBox = (TRNewsWebViewBox*)[TRNewsWebViewBox initBox: CGSizeMake(300, 0)
                                                                    withNewsData: _newsItem];
     [_scrollView.boxes addObject: webViewBox];
 }

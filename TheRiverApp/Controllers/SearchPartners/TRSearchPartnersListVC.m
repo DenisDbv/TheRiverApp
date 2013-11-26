@@ -7,7 +7,6 @@
 //
 
 #import "TRSearchPartnersListVC.h"
-#import "TRPartnersSearchView.h"
 #import "UIBarButtonItem+BarButtonItemExtended.h"
 #import <SlideInMenuViewController.h>
 #import "TRSearchPartnersCell.h"

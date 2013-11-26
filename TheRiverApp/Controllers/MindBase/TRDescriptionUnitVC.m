@@ -9,6 +9,8 @@
 #import "TRDescriptionUnitVC.h"
 #import "MFSideMenu.h"
 
+#import "WDActivityIndicator.h"
+
 #import <MGBox2/MGBox.h>
 #import <MGBox2/MGScrollView.h>
 #import <MGBox2/MGTableBoxStyled.h>
@@ -42,17 +44,24 @@
 @end
 
 @interface TRDescriptionUnitVC ()
+@property (nonatomic, retain) WDActivityIndicator *activityIndicator;
 @property (nonatomic, retain) MGScrollView *scrollView;
-@property (nonatomic, retain) TRMindModel *mindDataObject;
+@property (nonatomic, retain) TRMindItem *mindDataObject;
+
+@property (nonatomic, copy) NSString *_mindID;
 @end
 
 @implementation TRDescriptionUnitVC
+@synthesize _mindID;
+@synthesize mindDataObject;
+@synthesize activityIndicator;
 
--(id) initByMindModel:(TRMindModel*)mindObject
+-(id) initByMindModel:(NSString*)mindID
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        _mindDataObject = mindObject;
+        //_mindDataObject = mindObject;
+        _mindID = mindID;
     }
     return self;
 }
@@ -60,6 +69,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(menuStateEventOccurred:)
@@ -72,20 +83,11 @@
     [onCancelButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.navigationItem setLeftBarButtonItem:onCancelButton animated:YES];
     
-    [self createRootScrollView];
-    
-    [self showMindLogo];
-    [self showMindTitle];
-    [self showMindWebView];
-    
-    [_scrollView layoutWithSpeed:0.3 completion:nil];
-    
-    NSLog(@"#####");
+    [self refreshMindByID:_mindID];
 }
 
 -(void) onBack
 {
-    NSLog(@"1111");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -102,7 +104,37 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void) refreshMindByID:(NSString*)mindID
+{
+    if(activityIndicator == nil)    {
+        activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
+        [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
+        [self.view addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+    }
+    
+    [[TRMindManager client] downloadMindDescByID:mindID successOperation:^(LRRestyResponse *response, TRMindItem *mindItem) {
+        [self endRefreshMind:mindItem];
+    } andFailedOperation:^(LRRestyResponse *response) {
+        [self endRefreshMind:nil];
+    }];
+}
+
+-(void) endRefreshMind:(TRMindItem*)mindItem
+{
+    [activityIndicator stopAnimating];
+    [activityIndicator removeFromSuperview];
+    activityIndicator = nil;
+    
+    mindDataObject = mindItem;
+    
+    [self createRootScrollView];
+    [self showMindLogo];
+    [self showMindTitle];
+    [self showMindWebView];
+    [_scrollView layoutWithSpeed:0.3 completion:nil];
 }
 
 - (void)menuStateEventOccurred:(NSNotification *)notification {
@@ -148,21 +180,21 @@
 -(void) showMindLogo
 {
     TRMindLogoBox *logoBox = (TRMindLogoBox*)[TRMindLogoBox initBox: CGSizeMake(300, 0)
-                                           withMindData:_mindDataObject];
+                                           withMindData:mindDataObject];
     [_scrollView.boxes addObject: logoBox];
 }
 
 -(void) showMindTitle
 {
     TRMindTitleBox *titleBox = (TRMindTitleBox*)[TRMindTitleBox initBox: CGSizeMake(300, 0)
-                                                       withMindData:_mindDataObject];
+                                                       withMindData:mindDataObject];
     [_scrollView.boxes addObject: titleBox];
 }
 
 -(void) showMindWebView
 {
     TRMindWebViewBox *webViewBox = (TRMindWebViewBox*)[TRMindWebViewBox initBox: CGSizeMake(320, 0)
-                                                           withMindData:_mindDataObject];
+                                                           withMindData:mindDataObject];
     [_scrollView.boxes addObject: webViewBox];
 }
 

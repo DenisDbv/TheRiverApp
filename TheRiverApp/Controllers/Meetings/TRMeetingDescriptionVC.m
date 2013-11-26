@@ -59,6 +59,7 @@
     
     [_scrollView layoutWithSpeed:0.3 completion:nil];
 }
+
 -(void) onBack
 {
     [self.navigationController popViewControllerAnimated:YES];

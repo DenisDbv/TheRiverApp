@@ -18,36 +18,20 @@
     self.leftMargin = self.rightMargin = 9;
 }
 
-+(TRMindTitleBox *)initBox:(CGSize)bounds withMindData:(TRMindModel *)mindObject
++(TRMindTitleBox *)initBox:(CGSize)bounds withMindData:(TRMindItem *)mindObject
 {
     TRMindTitleBox *box = [TRMindTitleBox boxWithSize: CGSizeMake(bounds.width, 10)];
     box.mindData = mindObject;
     
     box.contentLayoutMode = MGLayoutTableStyle;
     
-    MGLineStyled *dateCreateLine = [MGLineStyled lineWithLeft:nil multilineRight:mindObject.mindDayCreate width:300.0 minHeight:10.0];
+    MGLineStyled *dateCreateLine = [MGLineStyled lineWithMultilineLeft:mindObject.title right:nil width:300.0 minHeight:10.0];
     dateCreateLine.backgroundColor = [UIColor clearColor];
-    dateCreateLine.topMargin = 10;
-    dateCreateLine.rightPadding = 0;
+    dateCreateLine.topMargin = 20;
+    dateCreateLine.leftPadding = dateCreateLine.rightPadding = 0;
     dateCreateLine.borderStyle = MGBorderNone;
-    dateCreateLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    dateCreateLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
     [box.boxes addObject:dateCreateLine];
-    
-    MGLineStyled *titleLine = [MGLineStyled lineWithMultilineLeft:box.mindData.mindTitle right:nil width:300.0 minHeight:10];
-    titleLine.backgroundColor = [UIColor clearColor];
-    titleLine.topMargin = 10;
-    titleLine.leftPadding = titleLine.rightPadding = 0;
-    titleLine.borderStyle = MGBorderNone;
-    titleLine.font = [UIFont fontWithName:@"HypatiaSansPro-Bold" size:23];
-    [box.boxes addObject:titleLine];
-    
-    MGLineStyled *authorLine = [MGLineStyled lineWithMultilineLeft:box.mindData.mindAuthor right:nil width:300 minHeight:10];
-    authorLine.backgroundColor = [UIColor clearColor];
-    authorLine.topMargin = 10;
-    authorLine.leftPadding = authorLine.rightPadding = 0;
-    authorLine.borderStyle = MGBorderNone;
-    authorLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
-    [box.boxes addObject:authorLine];
     
     return box;
 }

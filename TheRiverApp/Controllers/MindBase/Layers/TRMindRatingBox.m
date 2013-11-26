@@ -47,7 +47,7 @@
 {
     _ratingView = [[UIView alloc] init];
     
-    UIImage *imageStar = [UIImage imageNamed:@"star-icon.png"];
+    /*UIImage *imageStar = [UIImage imageNamed:@"star-icon.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:imageStar];
     [_ratingView addSubview:imageView];
     
@@ -62,7 +62,7 @@
     countRating.frame = CGRectOffset(countRating.frame, imageView.frame.size.width+4,
                                      (imageView.frame.size.height-countRating.frame.size.height)/2);
     _ratingView.frame = CGRectMake(12, 10, MAX(imageView.frame.size.width, countRating.frame.size.width),
-                                  MAX(imageView.frame.size.height, countRating.frame.size.height));
+                                  MAX(imageView.frame.size.height, countRating.frame.size.height));*/
     
     return _ratingView;
 }
