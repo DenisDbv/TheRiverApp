@@ -73,6 +73,17 @@
     }
 }
 
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    if ( navigationType == UIWebViewNavigationTypeLinkClicked ) {
+        NSURL *url = [request URL];
+        [[UIApplication sharedApplication] openURL: url];
+        return NO;
+    }
+    
+    return YES;
+}
+
 -(void) refreshRootSize
 {
     MGScrollView *scroll = (MGScrollView*)self.parentBox;
