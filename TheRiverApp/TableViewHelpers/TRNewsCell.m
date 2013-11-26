@@ -54,7 +54,7 @@
     //NSLog(@"=>%@", NSStringFromCGSize(size));
     
     newsTime.text = [self time:newsItem.date_create];
-    [self time:newsTime.text];
+    //[self time:newsTime.text];
     newsTime.frame = CGRectMake(newsTime.frame.origin.x, newsTitle.frame.origin.y+newsTitle.frame.size.height+3.0, newsTime.frame.size.width, newsTime.frame.size.height);
     
     newsDesc.text = newsItem.text;
@@ -103,7 +103,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     [dateFormatter setTimeZone:timeZone];
-    [dateFormatter setDateFormat:@"yyyy.MM.dd HH:mm:ss"];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
     
     //NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
     

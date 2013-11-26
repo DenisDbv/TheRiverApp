@@ -60,18 +60,19 @@
 
     NSInteger maxDateBlock = 80.0; //[self getMaxWidthFromStrings:meetingObject];
     
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
+    /*NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
     NSDate *myDate = [df dateFromString: meetingObject.start_date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd"];
     
-    [self changeSizeLabel:labelDay atString:[dateFormatter stringFromDate:myDate]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd"];*/
+    
+    [self changeSizeLabel:labelDay atString:[self time:meetingObject.start_date withFormat:@"dd"]];//[dateFormatter stringFromDate:myDate]];
     labelDay.frame = [self changeWidthInFrame:labelDay.frame byWidth:maxDateBlock];
     labelDay.frame = [self changeXInFrame:labelDay.frame byX:10];
     
-    [dateFormatter setDateFormat:@"MMMM"];
-    [self changeSizeLabel:labelMonth atString:[dateFormatter stringFromDate:myDate]];
+    //[dateFormatter setDateFormat:@"MMMM"];
+    [self changeSizeLabel:labelMonth atString:[self time:meetingObject.start_date withFormat:@"MMMM"]];//[dateFormatter stringFromDate:myDate]];
     labelMonth.frame = [self changeWidthInFrame:labelMonth.frame byWidth:maxDateBlock];
     labelMonth.frame = [self changeYInFrame:labelMonth.frame byY:labelDay.frame.origin.y+labelDay.frame.size.height+3];
     labelMonth.frame = [self changeXInFrame:labelMonth.frame byX:10];
@@ -134,6 +135,22 @@
         else
             labelIfDisable.frame = CGRectMake(xOffset, labelCity.frame.origin.y + roundf((labelCity.frame.size.height-sizeGroup.height)/2), secondWidth, sizeGroup.height);
     }
+}
+
+-(NSString*) time:(NSString*)time withFormat:(NSString*)format
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
+    
+    NSDate *date = [dateFormatter dateFromString:time];
+    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    timeZone = [NSTimeZone localTimeZone];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:format];
+    return [dateFormatter stringFromDate:date];
 }
 
 -(CGFloat) getCellHeight:(TREventModel*)meetingObject
@@ -203,14 +220,14 @@
 
 -(NSInteger) getMaxWidthFromStrings:(TREventModel*)meetingObject
 {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"dd.MM.yyyy HH:mm"];
+    /*NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
     NSDate *myDate = [df dateFromString: meetingObject.start_date];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MMMM"];
+    [dateFormatter setDateFormat:@"MMMM"];*/
     
-    CGSize sizeMonth = [[dateFormatter stringFromDate:myDate] sizeWithFont:labelMonth.font
+    CGSize sizeMonth = [[self time:meetingObject.start_date withFormat:@"MMMM"] sizeWithFont:labelMonth.font
                           constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX)
                               lineBreakMode:NSLineBreakByWordWrapping];
     CGSize sizeCity = [meetingObject.place sizeWithFont:labelCity.font
