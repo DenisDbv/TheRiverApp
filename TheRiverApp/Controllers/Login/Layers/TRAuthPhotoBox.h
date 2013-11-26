@@ -10,8 +10,10 @@
 
 @interface TRAuthPhotoBox : MGBox
 
+@property (nonatomic, strong) NSString *photoName;
+
 + (TRAuthPhotoBox *)photoAddBoxWithFileName:(NSString*)fileName andTag:(NSInteger)tag;
 
--(void) show;
+-(void) changePhotoTo:(NSString*)fileName;
 
 @end

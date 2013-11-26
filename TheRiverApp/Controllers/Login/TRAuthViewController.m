@@ -26,6 +26,8 @@
 @implementation TRAuthViewController
 {
     MGBox *photosBox;
+    NSTimer *refreshPhotoTimer;
+    NSArray *photosBoxArray;
 }
 @synthesize scrollView;
 @synthesize authBlockView;
@@ -67,6 +69,8 @@
         [self resignFromAllFields];
     }];
     
+    [self createTimer];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -75,11 +79,41 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardDidShowNotification];
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillHideNotification];
+    
+    [self removeTimer];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void) createTimer
+{
+    refreshPhotoTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(refreshPhotoEvent) userInfo:nil repeats:YES];
+}
+
+-(void) removeTimer
+{
+    [refreshPhotoTimer invalidate];
+    refreshPhotoTimer = nil;
+}
+
+-(void) refreshPhotoEvent
+{
+    int firstItem = [self randomMissingPhoto];
+    int secondItem = [self randomMissingPhoto];
+    
+    TRAuthPhotoBox *photoBoxFirst = [photosBox.boxes objectAtIndex:firstItem];
+    TRAuthPhotoBox *photoBoxSecond = [photosBox.boxes objectAtIndex:secondItem];
+    
+    NSString *firstImageName = photoBoxFirst.photoName;
+    NSString *secondImageName = photoBoxSecond.photoName;
+    
+    [photoBoxFirst changePhotoTo: secondImageName];
+    [photoBoxSecond changePhotoTo: firstImageName];
+    
+    //NSLog(@"%i to %i", firstItem, secondItem);
 }
 
 -(void) createRootScrollView
@@ -99,8 +133,8 @@
     photosBox.contentLayoutMode = MGLayoutGridStyle;
     [_backScrollView.boxes addObject:photosBox];
     
-    NSArray *arr = [self arrangePhotoPaths];
-    for(NSString *path in arr)
+    photosBoxArray = [self arrangePhotoPaths];
+    for(NSString *path in photosBoxArray)
     {
         TRAuthPhotoBox *photoBox = [TRAuthPhotoBox photoAddBoxWithFileName:path andTag:1];
         [photosBox.boxes addObject:photoBox];
@@ -115,7 +149,7 @@
 - (int)randomMissingPhoto {
     int photo;
     
-    photo = arc4random_uniform(171) + 1;
+    photo = arc4random_uniform(170) + 1;
     
     return photo;
 }

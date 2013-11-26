@@ -25,8 +25,9 @@
 {
     TRAuthPhotoBox *box = [TRAuthPhotoBox boxWithSize:CGSizeMake(54.0, 58.0)];
     
-    box.backgroundColor = [UIColor colorWithRed:0.74 green:0.74 blue:0.75 alpha:1];
+    box.backgroundColor = [UIColor whiteColor];//colorWithRed:0.74 green:0.74 blue:0.75 alpha:1];
     box.tag = tag;
+    box.photoName = fileName;
     
     UIImage *add = [UIImage imageNamed: fileName];
     box.addView = [[UIImageView alloc] initWithImage:add];
@@ -34,7 +35,6 @@
     [box addSubview:box.addView];
     
     box.addView.center = (CGPoint){box.width / 2, box.height / 2};
-    box.addView.alpha = 1.0;
     box.addView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin
     | UIViewAutoresizingFlexibleRightMargin
     | UIViewAutoresizingFlexibleBottomMargin
@@ -43,9 +43,17 @@
     return box;
 }
 
--(void) show
+-(void) changePhotoTo:(NSString*)fileName
 {
-    _addView.alpha = 1.0;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.addView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.addView setImage:[UIImage imageNamed:fileName]];
+        self.photoName = fileName;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.addView.alpha = 1;
+        }];
+    }];
 }
 
 @end
