@@ -407,6 +407,23 @@
 		18A89CA2180EAEEC00B79D53 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89CA0180EAEEC00B79D53 /* close@2x.png */; };
 		18A933721844000D000384EE /* TRMindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933711844000D000384EE /* TRMindManager.m */; };
 		18A93381184760B8000384EE /* userpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A93380184760B8000384EE /* userpic.png */; };
+		18A933AA1847ADED000384EE /* HtmlWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933851847ADED000384EE /* HtmlWebViewController.m */; };
+		18A933AB1847ADED000384EE /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933871847ADED000384EE /* PushNotificationManager.m */; };
+		18A933AC1847ADED000384EE /* PushRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933891847ADED000384EE /* PushRuntime.m */; };
+		18A933AD1847ADED000384EE /* PW_SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9338B1847ADED000384EE /* PW_SBJsonBase.m */; };
+		18A933AE1847ADED000384EE /* PW_SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9338D1847ADED000384EE /* PW_SBJsonParser.m */; };
+		18A933AF1847ADED000384EE /* PW_SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9338F1847ADED000384EE /* PW_SBJsonWriter.m */; };
+		18A933B01847ADED000384EE /* PWApplicationEventRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933911847ADED000384EE /* PWApplicationEventRequest.m */; };
+		18A933B11847ADED000384EE /* PWAppOpenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933931847ADED000384EE /* PWAppOpenRequest.m */; };
+		18A933B21847ADED000384EE /* PWGetNearestZoneRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933951847ADED000384EE /* PWGetNearestZoneRequest.m */; };
+		18A933B31847ADED000384EE /* PWGetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933971847ADED000384EE /* PWGetTagsRequest.m */; };
+		18A933B41847ADED000384EE /* PWLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933991847ADED000384EE /* PWLocationTracker.m */; };
+		18A933B51847ADED000384EE /* PWPushStatRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9339B1847ADED000384EE /* PWPushStatRequest.m */; };
+		18A933B61847ADED000384EE /* PWRegisterDeviceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9339D1847ADED000384EE /* PWRegisterDeviceRequest.m */; };
+		18A933B71847ADED000384EE /* PWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9339F1847ADED000384EE /* PWRequest.m */; };
+		18A933B81847ADED000384EE /* PWRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933A11847ADED000384EE /* PWRequestManager.m */; };
+		18A933B91847ADED000384EE /* PWSendBadgeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933A31847ADED000384EE /* PWSendBadgeRequest.m */; };
+		18A933BA1847ADED000384EE /* PWSetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933A51847ADED000384EE /* PWSetTagsRequest.m */; };
 		18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */; };
 		18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB21813CA5900272C0D /* TRCityItem.m */; };
 		18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */; };
@@ -448,6 +465,16 @@
 		18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA76217FBFF7D006B7864 /* TRContactDataModel.m */; };
 		FC3EC073098C4B1B86DBC70C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D9CF22E8694C9C9542AEF5 /* libPods.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18A933BC1847ADED000384EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A933A61847ADED000384EE /* PushNotificationManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = PushNotificationManager;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		182250521834A0EB004CE8F9 /* TRNewsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNewsManager.h; sourceTree = "<group>"; };
@@ -953,6 +980,42 @@
 		18A933701844000D000384EE /* TRMindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRMindManager.h; sourceTree = "<group>"; };
 		18A933711844000D000384EE /* TRMindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRMindManager.m; sourceTree = "<group>"; };
 		18A93380184760B8000384EE /* userpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userpic.png; sourceTree = "<group>"; };
+		18A933841847ADED000384EE /* HtmlWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlWebViewController.h; sourceTree = "<group>"; };
+		18A933851847ADED000384EE /* HtmlWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HtmlWebViewController.m; sourceTree = "<group>"; };
+		18A933861847ADED000384EE /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
+		18A933871847ADED000384EE /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
+		18A933881847ADED000384EE /* PushRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushRuntime.h; sourceTree = "<group>"; };
+		18A933891847ADED000384EE /* PushRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushRuntime.m; sourceTree = "<group>"; };
+		18A9338A1847ADED000384EE /* PW_SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PW_SBJsonBase.h; sourceTree = "<group>"; };
+		18A9338B1847ADED000384EE /* PW_SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PW_SBJsonBase.m; sourceTree = "<group>"; };
+		18A9338C1847ADED000384EE /* PW_SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PW_SBJsonParser.h; sourceTree = "<group>"; };
+		18A9338D1847ADED000384EE /* PW_SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PW_SBJsonParser.m; sourceTree = "<group>"; };
+		18A9338E1847ADED000384EE /* PW_SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PW_SBJsonWriter.h; sourceTree = "<group>"; };
+		18A9338F1847ADED000384EE /* PW_SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PW_SBJsonWriter.m; sourceTree = "<group>"; };
+		18A933901847ADED000384EE /* PWApplicationEventRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWApplicationEventRequest.h; sourceTree = "<group>"; };
+		18A933911847ADED000384EE /* PWApplicationEventRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWApplicationEventRequest.m; sourceTree = "<group>"; };
+		18A933921847ADED000384EE /* PWAppOpenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWAppOpenRequest.h; sourceTree = "<group>"; };
+		18A933931847ADED000384EE /* PWAppOpenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWAppOpenRequest.m; sourceTree = "<group>"; };
+		18A933941847ADED000384EE /* PWGetNearestZoneRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGetNearestZoneRequest.h; sourceTree = "<group>"; };
+		18A933951847ADED000384EE /* PWGetNearestZoneRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGetNearestZoneRequest.m; sourceTree = "<group>"; };
+		18A933961847ADED000384EE /* PWGetTagsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGetTagsRequest.h; sourceTree = "<group>"; };
+		18A933971847ADED000384EE /* PWGetTagsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGetTagsRequest.m; sourceTree = "<group>"; };
+		18A933981847ADED000384EE /* PWLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWLocationTracker.h; sourceTree = "<group>"; };
+		18A933991847ADED000384EE /* PWLocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWLocationTracker.m; sourceTree = "<group>"; };
+		18A9339A1847ADED000384EE /* PWPushStatRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPushStatRequest.h; sourceTree = "<group>"; };
+		18A9339B1847ADED000384EE /* PWPushStatRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPushStatRequest.m; sourceTree = "<group>"; };
+		18A9339C1847ADED000384EE /* PWRegisterDeviceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRegisterDeviceRequest.h; sourceTree = "<group>"; };
+		18A9339D1847ADED000384EE /* PWRegisterDeviceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRegisterDeviceRequest.m; sourceTree = "<group>"; };
+		18A9339E1847ADED000384EE /* PWRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRequest.h; sourceTree = "<group>"; };
+		18A9339F1847ADED000384EE /* PWRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRequest.m; sourceTree = "<group>"; };
+		18A933A01847ADED000384EE /* PWRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWRequestManager.h; sourceTree = "<group>"; };
+		18A933A11847ADED000384EE /* PWRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWRequestManager.m; sourceTree = "<group>"; };
+		18A933A21847ADED000384EE /* PWSendBadgeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSendBadgeRequest.h; sourceTree = "<group>"; };
+		18A933A31847ADED000384EE /* PWSendBadgeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSendBadgeRequest.m; sourceTree = "<group>"; };
+		18A933A41847ADED000384EE /* PWSetTagsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWSetTagsRequest.h; sourceTree = "<group>"; };
+		18A933A51847ADED000384EE /* PWSetTagsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSetTagsRequest.m; sourceTree = "<group>"; };
+		18A933A61847ADED000384EE /* PushNotificationManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PushNotificationManager.xcodeproj; sourceTree = "<group>"; };
+		18A933A91847ADED000384EE /* PushNotificationManager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager_Prefix.pch; sourceTree = "<group>"; };
 		18B1AFAE1813CA4900272C0D /* TRCitiesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCitiesListModel.h; sourceTree = "<group>"; };
 		18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRCitiesListModel.m; sourceTree = "<group>"; };
 		18B1AFB11813CA5900272C0D /* TRCityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCityItem.h; sourceTree = "<group>"; };
@@ -1855,6 +1918,65 @@
 			path = TRWebView;
 			sourceTree = "<group>";
 		};
+		18A933821847ADED000384EE /* iPhone-ARC */ = {
+			isa = PBXGroup;
+			children = (
+				18A933831847ADED000384EE /* Classes */,
+				18A933A61847ADED000384EE /* PushNotificationManager.xcodeproj */,
+				18A933A91847ADED000384EE /* PushNotificationManager_Prefix.pch */,
+			);
+			path = "iPhone-ARC";
+			sourceTree = "<group>";
+		};
+		18A933831847ADED000384EE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				18A933841847ADED000384EE /* HtmlWebViewController.h */,
+				18A933851847ADED000384EE /* HtmlWebViewController.m */,
+				18A933861847ADED000384EE /* PushNotificationManager.h */,
+				18A933871847ADED000384EE /* PushNotificationManager.m */,
+				18A933881847ADED000384EE /* PushRuntime.h */,
+				18A933891847ADED000384EE /* PushRuntime.m */,
+				18A9338A1847ADED000384EE /* PW_SBJsonBase.h */,
+				18A9338B1847ADED000384EE /* PW_SBJsonBase.m */,
+				18A9338C1847ADED000384EE /* PW_SBJsonParser.h */,
+				18A9338D1847ADED000384EE /* PW_SBJsonParser.m */,
+				18A9338E1847ADED000384EE /* PW_SBJsonWriter.h */,
+				18A9338F1847ADED000384EE /* PW_SBJsonWriter.m */,
+				18A933901847ADED000384EE /* PWApplicationEventRequest.h */,
+				18A933911847ADED000384EE /* PWApplicationEventRequest.m */,
+				18A933921847ADED000384EE /* PWAppOpenRequest.h */,
+				18A933931847ADED000384EE /* PWAppOpenRequest.m */,
+				18A933941847ADED000384EE /* PWGetNearestZoneRequest.h */,
+				18A933951847ADED000384EE /* PWGetNearestZoneRequest.m */,
+				18A933961847ADED000384EE /* PWGetTagsRequest.h */,
+				18A933971847ADED000384EE /* PWGetTagsRequest.m */,
+				18A933981847ADED000384EE /* PWLocationTracker.h */,
+				18A933991847ADED000384EE /* PWLocationTracker.m */,
+				18A9339A1847ADED000384EE /* PWPushStatRequest.h */,
+				18A9339B1847ADED000384EE /* PWPushStatRequest.m */,
+				18A9339C1847ADED000384EE /* PWRegisterDeviceRequest.h */,
+				18A9339D1847ADED000384EE /* PWRegisterDeviceRequest.m */,
+				18A9339E1847ADED000384EE /* PWRequest.h */,
+				18A9339F1847ADED000384EE /* PWRequest.m */,
+				18A933A01847ADED000384EE /* PWRequestManager.h */,
+				18A933A11847ADED000384EE /* PWRequestManager.m */,
+				18A933A21847ADED000384EE /* PWSendBadgeRequest.h */,
+				18A933A31847ADED000384EE /* PWSendBadgeRequest.m */,
+				18A933A41847ADED000384EE /* PWSetTagsRequest.h */,
+				18A933A51847ADED000384EE /* PWSetTagsRequest.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		18A933A71847ADED000384EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18A933BD1847ADED000384EE /* libPushNotificationManager.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		18B1AFAC1813CA2300272C0D /* IndustriesList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2040,6 +2162,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				18A933821847ADED000384EE /* iPhone-ARC */,
 				1822506418353CB9004CE8F9 /* LKBadgeView */,
 				18B1AFC018140D9800272C0D /* OBAlertView */,
 				18A89C9B180EA98A00B79D53 /* TRWebView */,
@@ -2130,12 +2253,28 @@
 			mainGroup = 182D72B917D3CFAF00134224;
 			productRefGroup = 182D72C317D3CFAF00134224 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 18A933A71847ADED000384EE /* Products */;
+					ProjectRef = 18A933A61847ADED000384EE /* PushNotificationManager.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				182D72C117D3CFAF00134224 /* TheRiverApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		18A933BD1847ADED000384EE /* libPushNotificationManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPushNotificationManager.a;
+			remoteRef = 18A933BC1847ADED000384EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		182D72C017D3CFAF00134224 /* Resources */ = {
@@ -2497,20 +2636,26 @@
 				182D72D817D3CFAF00134224 /* TRAppDelegate.m in Sources */,
 				183F1E5018043D9600487D8B /* AMPNavigationBar.m in Sources */,
 				18B1AFC418140D9800272C0D /* OBAlert.m in Sources */,
+				18A933B71847ADED000384EE /* PWRequest.m in Sources */,
 				183F1E5318043E6400487D8B /* TRNavigationController.m in Sources */,
 				182D72E117D3CFAF00134224 /* TheRiverApp.xcdatamodeld in Sources */,
 				182D72EB17D3D73800134224 /* TRMyContactListBar.m in Sources */,
 				182D72EE17D3D76A00134224 /* TRLeftRootMenuBar.m in Sources */,
+				18A933B31847ADED000384EE /* PWGetTagsRequest.m in Sources */,
 				18DA912317D3DCC200138EF2 /* TRRootController.m in Sources */,
 				18A89C9E180EA99800B79D53 /* TRWebView.m in Sources */,
 				18DA912717D3DF0300138EF2 /* TRSearchBarVC.m in Sources */,
 				18DA912A17D3E1A900138EF2 /* UISearchBar+CancelBtnShow.m in Sources */,
 				18DA914417D4757E00138EF2 /* TRSectionHeaderView.m in Sources */,
+				18A933B81847ADED000384EE /* PWRequestManager.m in Sources */,
+				18A933AE1847ADED000384EE /* PW_SBJsonParser.m in Sources */,
 				18DA914817D4853C00138EF2 /* UIView+GestureBlocks.m in Sources */,
+				18A933AB1847ADED000384EE /* PushNotificationManager.m in Sources */,
 				18E65E2117D4B97A00D1B778 /* TRFavoritesEditList.m in Sources */,
 				1822507A183608D0004CE8F9 /* TRNewsWebViewBox.m in Sources */,
 				18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */,
 				18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */,
+				18A933B11847ADED000384EE /* PWAppOpenRequest.m in Sources */,
 				18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */,
 				18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				1835771217D5A38A00AE0D72 /* TRRootMenuCell.m in Sources */,
@@ -2521,10 +2666,13 @@
 				1891D75E17D8538000281246 /* TRScrollViewController.m in Sources */,
 				1891D76517D8F48900281246 /* TRCenterRootController.m in Sources */,
 				1891D77B17D9EB8900281246 /* UISearchBar+cancelButton.m in Sources */,
+				18A933B41847ADED000384EE /* PWLocationTracker.m in Sources */,
 				18A707EB1839DBE30009F3A9 /* TRAuthPhotoBox.m in Sources */,
 				1891D78317DA26AB00281246 /* TRAlbumViewController.m in Sources */,
 				1822506118350F23004CE8F9 /* TRNewsCell.m in Sources */,
+				18A933AC1847ADED000384EE /* PushRuntime.m in Sources */,
 				1891D7B717DA2F9B00281246 /* TRRootBox.m in Sources */,
+				18A933B61847ADED000384EE /* PWRegisterDeviceRequest.m in Sources */,
 				1891D7BA17DA423100281246 /* TRAlbumGridViewCell.m in Sources */,
 				1891D7C417DB1AFE00281246 /* TRImageViewController.m in Sources */,
 				1891D7FB17DBC1FD00281246 /* TRContactBox.m in Sources */,
@@ -2556,6 +2704,7 @@
 				18A1099517DEFAF900D9CD8C /* UIBarButtonItem+BarButtonItemExtended.m in Sources */,
 				18A1099817DEFBCF00D9CD8C /* TRFriendCell.m in Sources */,
 				18A707E3183949E70009F3A9 /* TRAuthBlockView.m in Sources */,
+				18A933B91847ADED000384EE /* PWSendBadgeRequest.m in Sources */,
 				18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */,
 				18A1099D17DF183200D9CD8C /* UIImage+Resize.m in Sources */,
 				18A109A217DF193B00D9CD8C /* UIImage+Alpha.m in Sources */,
@@ -2581,6 +2730,7 @@
 				18975FF817EF854F00B06DF7 /* TRUserResolutionModel.m in Sources */,
 				1897600617F05CE400B06DF7 /* TRBusinessUserModel.m in Sources */,
 				1897600917F05D6000B06DF7 /* TRBusinessScopeModel.m in Sources */,
+				18A933AD1847ADED000384EE /* PW_SBJsonBase.m in Sources */,
 				1897600E17F0DB2100B06DF7 /* TRPartyUsersListVC.m in Sources */,
 				1897601317F1753400B06DF7 /* TRPartyUsersFilter.m in Sources */,
 				1897601617F175D900B06DF7 /* TRSearchPUManager.m in Sources */,
@@ -2590,20 +2740,25 @@
 				18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */,
 				1899701917F57C600056F7ED /* TRSearchPUsersCell.m in Sources */,
 				1899702217F615F10056F7ED /* TRSearchPartnersListVC.m in Sources */,
+				18A933BA1847ADED000384EE /* PWSetTagsRequest.m in Sources */,
 				1899702717F6C6D70056F7ED /* TRPartnersSearchView.m in Sources */,
+				18A933AF1847ADED000384EE /* PW_SBJsonWriter.m in Sources */,
 				1899702A17F6CF0D0056F7ED /* TRSearchBar.m in Sources */,
 				1899702D17F6DC560056F7ED /* TRSearchPartnersManager.m in Sources */,
 				1899703117F6E2090056F7ED /* TRPartnersListModel.m in Sources */,
 				1899703417F729010056F7ED /* TRSearchPartnersCell.m in Sources */,
+				18A933B21847ADED000384EE /* PWGetNearestZoneRequest.m in Sources */,
 				18B1AFB91813CE1E00272C0D /* TRIndustriesItem.m in Sources */,
 				1899703917F82B290056F7ED /* TRBusinessManager.m in Sources */,
 				1899704117F830190056F7ED /* TRBusinessRootModel.m in Sources */,
+				18A933B51847ADED000384EE /* PWPushStatRequest.m in Sources */,
 				1899704417F831020056F7ED /* TRBusinessModel.m in Sources */,
 				18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */,
 				18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */,
 				18B1AFC518140D9800272C0D /* UIButton+ALBlock.m in Sources */,
 				18FEA75417FAF517006B7864 /* TRProfileWebViewBox.m in Sources */,
 				18FEA75A17FBED2E006B7864 /* TRContactsManager.m in Sources */,
+				18A933AA1847ADED000384EE /* HtmlWebViewController.m in Sources */,
 				18FEA75D17FBF20A006B7864 /* TRContactsListModel.m in Sources */,
 				18FEA76017FBF760006B7864 /* TRContactCell.m in Sources */,
 				18FEA76317FBFF80006B7864 /* TRContactDataModel.m in Sources */,
@@ -2615,6 +2770,7 @@
 				182250541834A0EB004CE8F9 /* TRNewsManager.m in Sources */,
 				1899665617FE12FB00FF22A7 /* TRMeetingManager.m in Sources */,
 				1899665A17FE142500FF22A7 /* TRMeetingListModel.m in Sources */,
+				18A933B01847ADED000384EE /* PWApplicationEventRequest.m in Sources */,
 				182250581834A8D0004CE8F9 /* TRNewsModel.m in Sources */,
 				1899665D17FE14BB00FF22A7 /* TREventModel.m in Sources */,
 			);

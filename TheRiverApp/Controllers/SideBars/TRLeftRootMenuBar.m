@@ -57,9 +57,9 @@
 	_rootMenuTableView.dataSource = (id)self;
 	_rootMenuTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	_rootMenuTableView.backgroundColor = [UIColor whiteColor];
-    [_rootMenuTableView setSeparatorColor:[UIColor colorWithRed:41.0/255.0
-                                                          green:41.0/255.0
-                                                           blue:41.0/255.0
+    [_rootMenuTableView setSeparatorColor:[UIColor colorWithRed:45.0/255.0
+                                                          green:45.0/255.0
+                                                           blue:45.0/255.0
                                                           alpha:1.0]];
     [_rootMenuTableView setBackgroundColor:[UIColor colorWithRed:51.0/255.0
                                                            green:51.0/255.0
@@ -68,6 +68,10 @@
 	[self.view addSubview: _rootMenuTableView];
     
     [self.view setBackgroundColor:[UIColor clearColor]];
+    
+    if ([_rootMenuTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_rootMenuTableView setSeparatorInset:UIEdgeInsetsZero];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +80,15 @@
 }
 
 #pragma mark UITableViewDataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return [UIView new];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -239,7 +252,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 59.0;
+    return 53.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -249,7 +262,7 @@
         cell = [[TRRootMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         [cell setBackgroundColor:[UIColor clearColor]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
-        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:19]];
+        [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.5]];
         
         cell.badge.fontSize = 13;
         cell.badgeTextColor = [UIColor whiteColor];

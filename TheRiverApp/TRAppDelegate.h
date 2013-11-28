@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TRUserProfileController.h"
 
-@interface TRAppDelegate : UIResponder <UIApplicationDelegate>
+#import "PushNotificationManager.h"
+#import "PWLocationTracker.h"
+
+@interface TRAppDelegate : UIResponder <UIApplicationDelegate, PushNotificationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

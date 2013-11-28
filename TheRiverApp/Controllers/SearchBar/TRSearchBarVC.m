@@ -200,14 +200,37 @@
 	if([searchString isEqualToString:@""] == NO)
     {
         [resultBuffer removeAllObjects];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.last_name contains[c] %@) or (SELF.first_name contains[c] %@)",searchString, searchString];
-        resultBuffer = [[searchBuffer.user filteredArrayUsingPredicate:predicate] mutableCopy];
-        [self.searchDisplayController.searchResultsTableView reloadData];
         
-        /*[_searchBuffer removeAllObjects];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.lastName contains[c] %@",searchString];
-        _searchBuffer = [[appDelegate.playersArray.players filteredArrayUsingPredicate:predicate] mutableCopy];
-        [self.searchDisplayController.searchResultsTableView reloadData];*/
+        //first anme
+        //last name
+        //Denis Dubov
+        NSArray *arraySearch = [searchString componentsSeparatedByString:@" "];
+        if(arraySearch.count == 1)  {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.last_name contains[c] %@) or (SELF.first_name contains[c] %@)",searchString, searchString];
+            resultBuffer = [[searchBuffer.user filteredArrayUsingPredicate:predicate] mutableCopy];
+        } else  {
+            NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"(SELF.first_name contains[c] %@)",[arraySearch objectAtIndex:0]];
+            NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"(SELF.last_name contains[c] %@)", [arraySearch objectAtIndex:1]];
+            
+            NSMutableArray *rez1 = [[NSMutableArray alloc] init];
+            rez1 = [[searchBuffer.user filteredArrayUsingPredicate:predicate1] mutableCopy];
+            
+            if(rez1.count == 0) {
+                predicate1 = [NSPredicate predicateWithFormat:@"(SELF.first_name contains[c] %@)",[arraySearch objectAtIndex:1]];
+                predicate2 = [NSPredicate predicateWithFormat:@"(SELF.last_name contains[c] %@)", [arraySearch objectAtIndex:0]];
+
+                rez1 = [[searchBuffer.user filteredArrayUsingPredicate:predicate2] mutableCopy];
+                resultBuffer = [[rez1 filteredArrayUsingPredicate:predicate1] mutableCopy];
+                if(resultBuffer.count == 0)
+                    resultBuffer = rez1;
+            } else  {
+                resultBuffer = [[rez1 filteredArrayUsingPredicate:predicate2] mutableCopy];
+                if(resultBuffer.count == 0)
+                    resultBuffer = rez1;
+            }
+        }
+        
+        [self.searchDisplayController.searchResultsTableView reloadData];
     }
 	return NO;
 }

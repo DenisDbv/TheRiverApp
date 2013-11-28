@@ -30,9 +30,12 @@
 {
     [super layoutSubviews];
     
-    self.imageView.frame = CGRectMake(10,
-                                      (self.frame.size.height-30)/2,
-                                      30, 30);
+    //if( !IS_OS_7_OR_LATER )
+    self.textLabel.frame = CGRectMake(20.0, self.textLabel.frame.origin.y, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
+    
+    //self.imageView.frame = CGRectMake(10,
+    //                                  (self.frame.size.height-30)/2,
+    //                                  30, 30);
 }
 
 @end

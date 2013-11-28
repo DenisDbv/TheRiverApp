@@ -69,7 +69,6 @@
     __weak TRMindBaseListVC *weakSelf = self;
     
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        NSLog(@"!!!");
         if(weakSelf._pageIndex < weakSelf._maxPages) {
             [weakSelf refreshMindByPage: ++weakSelf._pageIndex withActivity:NO];
         } else {

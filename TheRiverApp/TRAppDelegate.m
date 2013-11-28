@@ -56,6 +56,14 @@
     
     [self registerDevice];
     
+    //set custom delegate for push handling
+	PushNotificationManager * pushManager = [PushNotificationManager pushManager];
+	pushManager.delegate = self;
+	if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+		PushNotificationManager * pushManager = [PushNotificationManager pushManager];
+		[pushManager startLocationTracking];
+    }
+    
     [ISDiskCache sharedCache].limitOfSize = 10 * 1024 * 1024; // 10MB
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -173,6 +181,23 @@
                                [self logout];
                            }];
     }
+}
+
+//succesfully registered for push notifications
+- (void) onDidRegisterForRemoteNotificationsWithDeviceToken:(NSString *)token {
+	NSLog(@"%@", [NSString stringWithFormat:@"Registered with push token: %@", token] );
+}
+
+//failed to register for push notifications
+- (void) onDidFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+	NSLog(@"%@",[NSString stringWithFormat:@"Failed to register: %@", [error description]]);
+}
+
+//user pressed OK on the push notification
+- (void) onPushAccepted:(PushNotificationManager *)pushManager withNotification:(NSDictionary *)pushNotification {
+	[PushNotificationManager clearNotificationCenter];
+	
+	NSLog(@"%@",[NSString stringWithFormat:@"Received push notification: %@", pushNotification] );
 }
 
 -(NSData*) getDeviceToken
