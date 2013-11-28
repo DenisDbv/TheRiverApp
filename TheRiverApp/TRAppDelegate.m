@@ -23,6 +23,13 @@
 #import <YRDropdownView/YRDropdownView.h>
 #import <ISDiskCache/ISDiskCache.h>
 #import <SIAlertView/SIAlertView.h>
+#import <JSONKit/JSONKit.h>
+
+#import "PW_SBJsonParser.h"
+
+#import "TRMindBaseListVC.h"
+#import "TRMeetingsBaseListVC.h"
+#import "TRNewsListVC.h"
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -198,6 +205,38 @@
 	[PushNotificationManager clearNotificationCenter];
 	
 	NSLog(@"%@",[NSString stringWithFormat:@"Received push notification: %@", pushNotification] );
+    
+    NSString *customDataString = [pushManager getCustomPushData:pushNotification];
+    NSDictionary *jsonData = [customDataString objectFromJSONString];
+    
+    [self checkAndOpenWindowAfterPushNotifications:[[jsonData objectForKey:@"window_open"] integerValue]];
+}
+
+-(void) checkAndOpenWindowAfterPushNotifications:(NSInteger)index
+{
+    switch (index) {
+        case 1: //Новости
+        {
+            TRNewsListVC *newsListVC = [[TRNewsListVC alloc] init];
+            [self changeCenterViewController:newsListVC];
+        }
+            break;
+        case 2: //Мероприятия
+        {
+            TRMeetingsBaseListVC *meetingBaseList = [[TRMeetingsBaseListVC alloc] init];
+            [self changeCenterViewController:meetingBaseList];
+        }
+            break;
+        case 3: //База знаний
+        {
+            TRMindBaseListVC *mindBaseList = [[TRMindBaseListVC alloc] init];
+            [self changeCenterViewController:mindBaseList];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 -(NSData*) getDeviceToken
