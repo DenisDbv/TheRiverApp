@@ -36,7 +36,7 @@
     dateCreateLine.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     [box.boxes addObject:dateCreateLine];*/
     
-    UIImageView *userLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+    UIImageView *userLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userpic.png"]];
     userLogo.frame = CGRectMake(3, 8, 25, 25);
     userLogo.layer.borderWidth = 0;
     userLogo.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -49,7 +49,7 @@
         
         UIImage *imgLogoCellFromDisk = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
         if(imgLogoCellFromDisk == nil) {
-            [userLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            [userLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"userpic.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
                     [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
@@ -59,7 +59,7 @@
             [userLogo setImage:imgLogoCellFromDisk];
         }
     } else    {
-        [userLogo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+        [userLogo setImage:[UIImage imageNamed:@"userpic.png"]];
     }
     
     NSString *fullTitle = [NSString stringWithFormat:@"%@ %@ %@ %@, %@", businessObject.first_name, businessObject.last_name, businessObject.age, [box getStringYearByAge:[businessObject.age integerValue]], businessObject.city];

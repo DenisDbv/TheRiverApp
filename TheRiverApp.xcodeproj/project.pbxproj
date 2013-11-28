@@ -406,6 +406,7 @@
 		18A89CA1180EAEEC00B79D53 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89C9F180EAEEC00B79D53 /* close.png */; };
 		18A89CA2180EAEEC00B79D53 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89CA0180EAEEC00B79D53 /* close@2x.png */; };
 		18A933721844000D000384EE /* TRMindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933711844000D000384EE /* TRMindManager.m */; };
+		18A93381184760B8000384EE /* userpic.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A93380184760B8000384EE /* userpic.png */; };
 		18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */; };
 		18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB21813CA5900272C0D /* TRCityItem.m */; };
 		18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */; };
@@ -951,6 +952,7 @@
 		18A89CA0180EAEEC00B79D53 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		18A933701844000D000384EE /* TRMindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRMindManager.h; sourceTree = "<group>"; };
 		18A933711844000D000384EE /* TRMindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRMindManager.m; sourceTree = "<group>"; };
+		18A93380184760B8000384EE /* userpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userpic.png; sourceTree = "<group>"; };
 		18B1AFAE1813CA4900272C0D /* TRCitiesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCitiesListModel.h; sourceTree = "<group>"; };
 		18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRCitiesListModel.m; sourceTree = "<group>"; };
 		18B1AFB11813CA5900272C0D /* TRCityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCityItem.h; sourceTree = "<group>"; };
@@ -1901,6 +1903,7 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A93380184760B8000384EE /* userpic.png */,
 				18A70A9A183B46AC0009F3A9 /* logo_small.png */,
 				18A709431839F2730009F3A9 /* photo */,
 				18A707E6183979830009F3A9 /* background.png */,
@@ -2218,6 +2221,7 @@
 				1891D7A417DA298200281246 /* AQeclipse.png in Resources */,
 				18A70A1C1839F2740009F3A9 /* 14.jpg in Resources */,
 				1891D7A517DA298200281246 /* AQface.png in Resources */,
+				18A93381184760B8000384EE /* userpic.png in Resources */,
 				1891D7A617DA298200281246 /* AQfocus.png in Resources */,
 				18B1B00018186C7C00272C0D /* dropdown-alert.png in Resources */,
 				18A70A0F1839F2740009F3A9 /* 128.jpg in Resources */,
