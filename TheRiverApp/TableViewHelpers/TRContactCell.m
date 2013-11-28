@@ -42,8 +42,8 @@
     
     self.imageView.frame = CGRectMake(self.imageView.frame.origin.x+xOffset,
                                       self.imageView.frame.origin.y,
-                                      self.imageView.frame.size.width,
-                                      self.imageView.frame.size.height);
+                                      59,
+                                      59);
     
     self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x+xOffset,
                                       self.textLabel.frame.origin.y,
@@ -57,27 +57,6 @@
     
     if(userInfo.logo_cell.length > 0)   {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:userInfo.logo_cell];
-        
-        /*[self.imageView setImage:[UIImage imageNamed:@"avatar_placeholder.png"]];
-        
-        if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
-            [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                                  options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                                completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-             {
-                 
-                 if(image != nil)
-                 {
-                     UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(59, 59) interpolationQuality:kCGInterpolationHigh];
-                     logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 59, 59)];
-                     [self.imageView setImage:logoImageTest];
-                     
-                     [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:[logoURLString stringByAppendingString:@"_small"] toDisk:YES];
-                 }
-             }];
-        } else  {
-            [self.imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[logoURLString stringByAppendingString:@"_small"]]];
-        }*/
         
         UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
         if(img == nil) {
