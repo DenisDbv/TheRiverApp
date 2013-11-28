@@ -70,7 +70,7 @@
     
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         if(weakSelf._pageIndex < weakSelf._maxPages) {
-            [weakSelf refreshMindByPage: ++weakSelf._pageIndex];
+            [weakSelf refreshMindByPage: ++weakSelf._pageIndex withActivity:NO];
         } else {
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
             weakSelf.tableView.showsInfiniteScrolling = NO;
@@ -85,7 +85,7 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];
     [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(menuView.frame.size.height, 0, 0, 0)];*/
     
-    [self refreshMindByPage:1];
+    [self refreshMindByPage:1 withActivity:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -150,12 +150,12 @@
     [mindItemArray removeAllObjects];
     [self.tableView reloadData];
     
-    [self refreshMindByPage:1];
+    [self refreshMindByPage:1 withActivity:YES];
 }
 
--(void) refreshMindByPage:(NSInteger)pageIndex
+-(void) refreshMindByPage:(NSInteger)pageIndex withActivity:(BOOL)activity
 {
-    if(activityIndicator == nil)    {
+    if(activityIndicator == nil && activity == YES)    {
         activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
         [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
         [self.view addSubview:activityIndicator];

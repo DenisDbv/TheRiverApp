@@ -200,7 +200,7 @@
     [[[note userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&keyboardCurve];
     [[[note userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&keyboardDuration];
     
-    NSInteger yOffset = abs((keyboardFrame.origin.y - authBlockView.frame.size.height)/2 - authBlockView.frame.origin.y); // + ((IS_IPHONE5)?0:-15);
+    NSInteger yOffset = abs((keyboardFrame.origin.y - authBlockView.frame.size.height)/2 - authBlockView.frame.origin.y + ((IS_IPHONE5)?9:9));
     [scrollView setContentOffset:CGPointMake(0, yOffset) animated:YES];
     
     [scrollView setScrollEnabled:NO];

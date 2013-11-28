@@ -16,6 +16,8 @@
 #import "UIBarButtonItem+BarButtonItemExtended.h"
 #import "TRBusinessBaseListVC.h"
 #import "TRMeetingsBaseListVC.h"
+#import "TRNewsListVC.h"
+#import "TRMindBaseListVC.h"
 
 @interface TRCenterRootController ()
 
@@ -112,7 +114,9 @@
     
 
     if(![self.navigationController.visibleViewController isKindOfClass:[TRBusinessBaseListVC class]] &&
-       ![self.navigationController.visibleViewController isKindOfClass:[TRMeetingsBaseListVC class]])
+       ![self.navigationController.visibleViewController isKindOfClass:[TRMeetingsBaseListVC class]] &&
+       ![self.navigationController.visibleViewController isKindOfClass:[TRNewsListVC class]] &&
+       ![self.navigationController.visibleViewController isKindOfClass:[TRMindBaseListVC class]])
     {
         UIImage *knowImage = [UIImage imageNamed:@"toolbar-knowledge-base-icon@2x.png"];
         UIImage *messageImage = [UIImage imageNamed:@"toolbar-messages-icon@2x.png"];
