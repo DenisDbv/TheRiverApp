@@ -57,7 +57,10 @@
     self.navigationController.navigationBar.translucent = NO;
     
     TRPartyUsersFilter *menuView = [[TRPartyUsersFilter alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50) byRootTarget:self];
-    menuView.backgroundColor = [UIColor whiteColor]; //self.tableView.separatorColor;
+    if(industrySearchString.length > 0)
+       [menuView changeIndustryTitleButton:industrySearchString];
+    
+    menuView.backgroundColor = [UIColor whiteColor];
     _scrollDownMindMenu = [[SlideInMenuViewController alloc] initWithMenuView: menuView];
     
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight;

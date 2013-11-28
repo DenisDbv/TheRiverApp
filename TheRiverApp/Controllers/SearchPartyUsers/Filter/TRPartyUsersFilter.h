@@ -12,4 +12,6 @@
 
 - (id)initWithFrame:(CGRect)frame byRootTarget:(id)target;
 
+-(void) changeIndustryTitleButton:(NSString*)title;
+
 @end

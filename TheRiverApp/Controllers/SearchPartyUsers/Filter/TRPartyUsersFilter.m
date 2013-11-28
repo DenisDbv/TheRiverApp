@@ -82,35 +82,20 @@
     return self;
 }
 
-/*- (void) keyboardShown:(NSNotification *)note{
+-(void) changeIndustryTitleButton:(NSString*)title
+{
+    TRCityItem *cityItem = [_visibleCitiesList objectAtIndex:lastCitySelectIndexPath.row];
     
-    [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+    NSInteger searchIndex = [_industryList indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        TRIndustriesItem *item = obj;
+        if([item.name isEqualToString:title]) return YES;
+        return NO;
+    }];
     
-    if(citiesTableView != nil)  {
-        CGRect tableViewFrame = citiesTableView.frame;
-        tableViewFrame.size.height -= keyboardFrame.size.height;
-        [citiesTableView setFrame:tableViewFrame];
-    }
-    else    {
-        CGRect tableViewFrame = industriesTableView.frame;
-        tableViewFrame.size.height -= keyboardFrame.size.height;
-        [industriesTableView setFrame:tableViewFrame];
-    }
+    lastIndustrySelectIndexPath = [NSIndexPath indexPathForRow:searchIndex inSection:0];
+    
+    [self refreshMainButtonTitles:cityItem.name :title];
 }
-
-- (void) keyboardHidden:(NSNotification *)note{
-    
-    if(citiesTableView != nil)  {
-        CGRect tableViewFrame = citiesTableView.frame;
-        tableViewFrame.size.height += keyboardFrame.size.height;
-        [citiesTableView setFrame:tableViewFrame];
-    }
-    else    {
-        CGRect tableViewFrame = industriesTableView.frame;
-        tableViewFrame.size.height += keyboardFrame.size.height;
-        [industriesTableView setFrame:tableViewFrame];
-    }
-}*/
 
 -(void) onCityButtonClick:(NVUIGradientButton*)sender
 {
