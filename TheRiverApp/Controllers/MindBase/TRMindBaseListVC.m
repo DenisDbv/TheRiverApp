@@ -69,6 +69,7 @@
     __weak TRMindBaseListVC *weakSelf = self;
     
     [self.tableView addInfiniteScrollingWithActionHandler:^{
+        NSLog(@"!!!");
         if(weakSelf._pageIndex < weakSelf._maxPages) {
             [weakSelf refreshMindByPage: ++weakSelf._pageIndex withActivity:NO];
         } else {
@@ -127,6 +128,7 @@
     _maxPages = 1;
     [mindItemArray removeAllObjects];
     [self.tableView reloadData];
+    self.tableView.showsInfiniteScrolling = YES;
 
     if(activityIndicator == nil)    {
         activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
@@ -155,6 +157,8 @@
 
 -(void) refreshMindByPage:(NSInteger)pageIndex withActivity:(BOOL)activity
 {
+    self.tableView.showsInfiniteScrolling = YES;
+    
     if(activityIndicator == nil && activity == YES)    {
         activityIndicator = [[WDActivityIndicator alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, (self.view.bounds.size.height-100)/2, 0, 0)];
         [activityIndicator setIndicatorStyle:WDActivityIndicatorStyleGradient];
@@ -181,7 +185,7 @@
     
     if(mindModel.bd.count > 0)    {
         _maxPages = [mindModel.num_pages integerValue];
-        
+        NSLog(@"start page = %i, max page = %i", _pageIndex, _maxPages);
         if(pageIndex == 1)  {
             mindItemArray = [[NSMutableArray alloc] init];
         }
