@@ -245,6 +245,8 @@
                            [authBlockView stopSpinner];
                            
                            [authBlockView shakeLoginView];
+                           
+                           authBlockView.passwordTextField.text = @"";
                        }
                    } andFailedOperation:^(LRRestyResponse *response) {
                        [authBlockView shakeLoginView];
