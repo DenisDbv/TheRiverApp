@@ -211,11 +211,13 @@
                                              theGameImage.frame.origin.y + 7.5,
                                               self.theGameImage2.frame.size.width, self.theGameImage2.frame.size.height);
         
-        [theGameImage initialiseTapHandler:^(UIGestureRecognizer *sender) {
-            [self openTheGameURL];
-        } forTaps:1];
+        UIView *frontClickView = [[UIView alloc] initWithFrame:CGRectMake(theGameImage.frame.origin.x, theGameImage.frame.origin.y,
+                                                                         self.bounds.size.width - theGameImage.frame.origin.x-5,
+                                                                          self.bounds.size.height - theGameImage.frame.origin.y-5)];
+        frontClickView.backgroundColor = [UIColor clearColor];
+        [self addSubview:frontClickView];
         
-        [nameLabel initialiseTapHandler:^(UIGestureRecognizer *sender) {
+        [frontClickView initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self openTheGameURL];
         } forTaps:1];
     }
@@ -241,7 +243,7 @@
                                                                     delay:0
                                                                   options:UIViewAnimationOptionBeginFromCurrentState
                                                                animations:(void (^)(void)) ^{
-                                                                   self.theGameImage2.transform=CGAffineTransformMakeScale(1.3, 1.3);
+                                                                   self.theGameImage2.transform=CGAffineTransformMakeScale(1.2, 1.2);
                                                                }
                                                                completion:^(BOOL finished){
                                                                    self.theGameImage2.transform=CGAffineTransformIdentity;
