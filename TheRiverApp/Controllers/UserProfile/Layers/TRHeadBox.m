@@ -28,8 +28,8 @@
     return [CAGradientLayer class];
 }
 
-- (void)setup {
-
+- (void)setup
+{
     self.backgroundColor = [UIColor whiteColor];
 }
 
@@ -92,7 +92,7 @@
         }
         
         gradientView.frame = CGRectMake(0, self.bounds.size.height - height, self.bounds.size.width, height);
-        gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [imageView addSubview:gradientView];
     }
     
@@ -193,7 +193,7 @@
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
     nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (size.height), size.width, size.height);
     //nameLabel.backgroundColor = [UIColor redColor];
-    NSLog(@"%@", NSStringFromCGSize(size));
+    //NSLog(@"%@", NSStringFromCGSize(size));
     [self addSubview: nameLabel];
     
     if(self.isTheGameUser)  {

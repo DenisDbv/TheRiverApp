@@ -53,7 +53,7 @@
         
         UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
         if(img == nil) {
-            [self.logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]
+            [self.logo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"mind_logo.png"]
                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                      [[SDImageCache sharedImageCache] storeImage:image forKey:logoURLString toDisk:YES];
                                  } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -61,7 +61,7 @@
             [self.logo setImage: img];
         }
     } else  {
-        [self.logo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+        [self.logo setImage:[UIImage imageNamed:@"mind_logo.png"]];
     }
 }
 
