@@ -16,6 +16,11 @@
 #import <MIHGradientView/MIHGradientView.h>
 #import "UIView+GestureBlocks.h"
 #import "TRImageReviewController.h"
+#import "UIImage+UIImageFunctions.h"
+
+@interface TRHeadBox()
+@property (nonatomic, assign) BOOL isTheGameUser;
+@end
 
 @implementation TRHeadBox
 
@@ -33,15 +38,17 @@
     TRHeadBox *box = [TRHeadBox boxWithSize: CGSizeMake(bounds.width, 200)];
     box.userData = userObject;
     
+    if(box.userData.contact_data.thegame.length == 0)
+        box.isTheGameUser = NO;
+    else
+        box.isTheGameUser = YES;
+    
     [box fillBoxByColorGradient];
     [box fillBoxByBusinessImage];
     [box showUserLogo];
     [box showProfitTitle];
     [box showFirstAndLastName];
     [box showYearsAndCity];
-    
-    //TRPhotoBox *photoBox = [TRPhotoBox initBox];
-    //[box.boxes addObject:photoBox];
     
     return box;
 }
@@ -67,41 +74,27 @@
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:imageView];
     
-    MIHGradientView *gradientView = [[MIHGradientView alloc] initWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.0]
-                                                                        to:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
-    gradientView.frame = CGRectMake(0, 83.0, self.bounds.size.width, self.bounds.size.height-83.0);
-    gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [imageView addSubview:gradientView];
-    
-    /*if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
-        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                              options:SDWebImageDownloaderUseNSURLCache progress:^(NSUInteger receivedSize, long long expectedSize) {
-                                                                  //NSLog(@"%i from %i", receivedSize, expectedSize);
-                                                              } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-        {
-            
-            if(image != nil)
-            {
-                NSLog(@"Business LOGO download");
-                
-                UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(320, 200) interpolationQuality:kCGInterpolationHigh];
-                logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 320, 200)];
-                
-                [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
-                
-                imageView.alpha = 0;
-                imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-                [imageView setImage:logoImageTest];
-                
-                [UIView animateWithDuration:0.1 animations:^{
-                    imageView.alpha = 1;
-                }];
-            } else
-                NSLog(@"Business LOGO = nil");
-        }];
+    if(!self.isTheGameUser) {
+        MIHGradientView *gradientView = [[MIHGradientView alloc] initWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.0]
+                                                                            to:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+        gradientView.frame = CGRectMake(0, 83.0, self.bounds.size.width, self.bounds.size.height-83.0);
+        gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [imageView addSubview:gradientView];
     } else  {
-        [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
-    }*/
+        MIHGradientView *gradientView = [[MIHGradientView alloc] initWithColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]
+                                                                            to:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+        
+        NSInteger height = 0;
+        if([self getSizeFIOLabel].height > 40)  {
+            height = 105;
+        } else  {
+            height = 87;
+        }
+        
+        gradientView.frame = CGRectMake(0, self.bounds.size.height - height, self.bounds.size.width, height);
+        gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [imageView addSubview:gradientView];
+    }
     
     if(self.userData.business.logo_profile.length > 0)   {
         
@@ -142,35 +135,6 @@
     imageView.clipsToBounds = YES;
     [self addSubview:imageView];
     
-    /*if([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString] == nil) {
-        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:logoURLString]
-                                                              options:SDWebImageDownloaderUseNSURLCache progress:nil
-                                                            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-         {
-             
-             if(image != nil)
-             {
-                 NSLog(@"User LOGO download");
-                 
-                 UIImage *logoImageTest = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(117, 117) interpolationQuality:kCGInterpolationHigh];
-                 logoImageTest = [logoImageTest croppedImage:CGRectMake(0, 0, 117, 117)];
-                 
-                 [[SDImageCache sharedImageCache] storeImage:logoImageTest forKey:logoURLString toDisk:YES];
-                 
-                 imageView.alpha = 0;
-                 //imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-                 [imageView setImage:logoImageTest];
-                 
-                 [UIView animateWithDuration:0.1 animations:^{
-                     imageView.alpha = 1;
-                 }];
-             } else
-                 NSLog(@"User LOGO = nil");
-         }];
-    } else  {
-        [imageView setImage:[[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString]];
-    }*/
-    
     if(self.userData.logo_profile.length > 0)   {
         NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:self.userData.logo_profile];
         
@@ -204,18 +168,10 @@
     nameLabel.textColor = [UIColor colorWithRed:112.0/255.0 green:112.0/255.0 blue:112.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:13];
     nameLabel.numberOfLines = 1;
-    //nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
     nameLabel.text = [NSString stringWithFormat:@"Доход в месяц: %@ р", self.userData.profit];
-    
-    /*nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    nameLabel.layer.shadowOffset = CGSizeMåake(0, 1);
-    nameLabel.layer.shadowRadius = 1;
-    nameLabel.layer.shadowOpacity = 0.2f;*/
     
     CGSize size = [nameLabel.text sizeWithFont:[UIFont fontWithName:@"HypatiaSansPro-Regular" size:13] constrainedToSize:CGSizeMake(200.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
     nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 + 7.0, size.width, size.height);
-    //nameLabel.backgroundColor = [UIColor redColor];
-    
     [self addSubview: nameLabel];
 }
 
@@ -237,8 +193,37 @@
     CGSize size = [nameLabel.text sizeWithFont:nameLabel.font constrainedToSize:CGSizeMake(175.0, FLT_MAX) lineBreakMode:nameLabel.lineBreakMode ];
     nameLabel.frame = CGRectMake(4.0+117.0+15.0, 200.0 - (size.height), size.width, size.height);
     //nameLabel.backgroundColor = [UIColor redColor];
-    
+    NSLog(@"%@", NSStringFromCGSize(size));
     [self addSubview: nameLabel];
+    
+    if(self.isTheGameUser)  {
+        UIImageView *theGameImage = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"the_game.png"] scaleProportionalToRetina] ];
+        [self addSubview:theGameImage];
+        
+        theGameImage.frame = CGRectMake(nameLabel.frame.origin.x - 9,
+                                        nameLabel.frame.origin.y - 8 - theGameImage.frame.size.height,
+                                        theGameImage.frame.size.width, theGameImage.frame.size.height);
+        
+        [theGameImage initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            [self openTheGameURL];
+        } forTaps:1];
+        
+        [nameLabel initialiseTapHandler:^(UIGestureRecognizer *sender) {
+            [self openTheGameURL];
+        } forTaps:1];
+    }
+}
+
+-(void) openTheGameURL
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.userData.contact_data.thegame]];
+}
+
+-(CGSize) getSizeFIOLabel
+{
+    return [[NSString stringWithFormat:@"%@ %@", self.userData.first_name, self.userData.last_name] sizeWithFont:[UIFont fontWithName:@"HypatiaSansPro-Bold" size:26]
+                             constrainedToSize:CGSizeMake(175.0, FLT_MAX)
+                                 lineBreakMode:NSLineBreakByWordWrapping ];
 }
 
 -(void) showYearsAndCity
