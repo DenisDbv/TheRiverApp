@@ -529,7 +529,7 @@
 		182D72ED17D3D76A00134224 /* TRLeftRootMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRLeftRootMenuBar.m; path = Controllers/SideBars/TRLeftRootMenuBar.m; sourceTree = "<group>"; };
 		1835771017D5A38A00AE0D72 /* TRRootMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRRootMenuCell.h; path = TableViewHelpers/TRRootMenuCell.h; sourceTree = "<group>"; };
 		1835771117D5A38A00AE0D72 /* TRRootMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRRootMenuCell.m; path = TableViewHelpers/TRRootMenuCell.m; sourceTree = "<group>"; };
-		1835771317D5AB1C00AE0D72 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Global.h; path = Common/Global.h; sourceTree = "<group>"; };
+		1835771317D5AB1C00AE0D72 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Global.h; path = Common/Global.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		183F1E4E18043D9600487D8B /* AMPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMPNavigationBar.h; path = Common/AMPNavigationBar.h; sourceTree = "<group>"; };
 		183F1E4F18043D9600487D8B /* AMPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMPNavigationBar.m; path = Common/AMPNavigationBar.m; sourceTree = "<group>"; };
 		183F1E5118043E6400487D8B /* TRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRNavigationController.h; path = Common/TRNavigationController.h; sourceTree = "<group>"; };
@@ -631,7 +631,7 @@
 		18975F7F17EE055000B06DF7 /* URLPostOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLPostOperation.h; sourceTree = "<group>"; };
 		18975F8017EE055000B06DF7 /* URLPostOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLPostOperation.m; sourceTree = "<group>"; };
 		18975F8217EE0D7400B06DF7 /* TRNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNetworkConstants.h; sourceTree = "<group>"; };
-		18975F8317EE0D7400B06DF7 /* TRNetworkConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRNetworkConstants.m; sourceTree = "<group>"; };
+		18975F8317EE0D7400B06DF7 /* TRNetworkConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TRNetworkConstants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		18975F8717EE1B5500B06DF7 /* TGArhiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGArhiveObject.h; sourceTree = "<group>"; };
 		18975F8817EE1B5500B06DF7 /* TGArhiveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGArhiveObject.m; sourceTree = "<group>"; };
 		18975F8B17EE208600B06DF7 /* TRAuthUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRAuthUserModel.h; path = Models/TRAuthUserModel.h; sourceTree = "<group>"; };

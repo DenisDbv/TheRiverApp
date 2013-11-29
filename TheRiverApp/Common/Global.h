@@ -13,7 +13,7 @@
 
 #define AppDelegateInstance() (TRAppDelegate *)[[UIApplication sharedApplication] delegate]
 
-#define SERVER_HOSTNAME @"http://kostum5.ru" //@"http://bmreki.ru"
+#define SERVER_HOSTNAME @"http://bmreki.ru" //@"http://bmreki.ru"
 #define ROW_HEIGHT  32.0
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
