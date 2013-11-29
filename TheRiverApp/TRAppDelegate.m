@@ -44,6 +44,7 @@
 @implementation TRAppDelegate
 {
     OBAlert *alert;
+    
 }
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -234,14 +235,44 @@
 
 //user pressed OK on the push notification
 - (void) onPushAccepted:(PushNotificationManager *)pushManager withNotification:(NSDictionary *)pushNotification {
-	[PushNotificationManager clearNotificationCenter];
+
+}
+
+- (void) onPushReceived:(PushNotificationManager *)pushManager withNotification:(NSDictionary *)pushNotification onStart:(BOOL)onStart
+{
+    [PushNotificationManager clearNotificationCenter];
 	
 	NSLog(@"%@",[NSString stringWithFormat:@"Received push notification: %@", pushNotification] );
     
     NSString *customDataString = [pushManager getCustomPushData:pushNotification];
     
     NSDictionary *jsonData = [customDataString objectFromJSONString];
-    [self checkAndOpenWindowAfterPushNotifications:[[jsonData objectForKey:@"window_open"] integerValue]];
+    
+    if(onStart) {
+     [self checkAndOpenWindowAfterPushNotifications:[[jsonData objectForKey:@"window_open"] integerValue]];
+    } else  {
+        UIViewController *test =  _rootContainer.centerViewController;
+        switch ([[jsonData objectForKey:@"window_open"] integerValue]) {
+            case 1: //Новости
+            {
+                [test.view makeToast:@"Добавлена новость" duration:3.0 position:nil];
+            }
+                break;
+            case 2: //Мероприятия
+            {
+                [test.view makeToast:@"Добавлено мероприятие" duration:3.0 position:nil];
+            }
+                break;
+            case 3: //База знаний
+            {
+                [test.view makeToast:@"Добавлено знание" duration:3.0 position:nil];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 -(void) checkAndOpenWindowAfterPushNotifications:(NSInteger)index
@@ -353,6 +384,12 @@
      setTitleTextAttributes:attributes forState:UIControlStateNormal];
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
      setTitleTextAttributes:attributes forState:UIControlStateHighlighted];
+    
+    /*[[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];*/
+    
+    //[[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
     //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9]];
     //[[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];

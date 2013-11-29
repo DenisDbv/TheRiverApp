@@ -84,7 +84,7 @@
 
 -(void) refreshNewsByPage:(NSInteger)pageIndex
 {
-    [[TRNewsManager client] downloadNewsListByPage:pageIndex successOperation:^(LRRestyResponse *response, TRNewsModel *newsModel) {
+    [[TRNewsManager client] downloadNewsListByPage:pageIndex forStack:NO successOperation:^(LRRestyResponse *response, TRNewsModel *newsModel) {
         [self endRefreshNewsList:newsModel byPageIndex:pageIndex];
     } andFailedOperation:^(LRRestyResponse *response) {
         [self endRefreshNewsList:nil byPageIndex:pageIndex];

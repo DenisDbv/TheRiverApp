@@ -9,6 +9,7 @@
 #import "TRMeetTitleBox.h"
 #import <MGBox2/MGLineStyled.h>
 #import <MGBox2/MGScrollView.h>
+#import "UIImage+UIImageFunctions.h"
 
 @implementation TRMeetTitleBox
 
@@ -40,7 +41,7 @@
     pointLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     pointLabel.textColor = [UIColor lightGrayColor];
     [pointLabel sizeToFit];
-    UIImage *locationImage = [UIImage imageNamed:@"location-icon-gray@2x.png"];
+    UIImage *locationImage = [[UIImage imageNamed:@"geo2.png"] scaleProportionalToRetina]; //location-icon-gray@2x.png
     UIView *blockView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
                                                                 pointLabel.frame.size.width+5+locationImage.size.width,
                                                                 pointLabel.frame.size.height)];

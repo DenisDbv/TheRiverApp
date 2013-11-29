@@ -33,7 +33,7 @@
 
 -(void) showLogo
 {
-    UIImageView *clearPerson = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightbar_contact_placeholder_transparent.png"]];
+    UIImageView *clearPerson = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mind_logo.png"]];
     clearPerson.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     clearPerson.contentMode = UIViewContentModeCenter;
     clearPerson.center = self.center;

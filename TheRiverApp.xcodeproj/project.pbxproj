@@ -427,6 +427,9 @@
 		18A933C41848937E000384EE /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933C31848937E000384EE /* Toast+UIView.m */; };
 		18A933C6184898BA000384EE /* the_game.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A933C5184898BA000384EE /* the_game.png */; };
 		18A933C918489CD2000384EE /* UIImage+UIImageFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933C818489CD2000384EE /* UIImage+UIImageFunctions.m */; };
+		18A933CD1848D0AF000384EE /* geo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A933CC1848D0AF000384EE /* geo2.png */; };
+		18A933D01848D15A000384EE /* mind_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A933CE1848D15A000384EE /* mind_logo.png */; };
+		18A933D11848D15A000384EE /* business_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A933CF1848D15A000384EE /* business_logo.png */; };
 		18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */; };
 		18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB21813CA5900272C0D /* TRCityItem.m */; };
 		18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */; };
@@ -1024,6 +1027,9 @@
 		18A933C5184898BA000384EE /* the_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = the_game.png; sourceTree = "<group>"; };
 		18A933C718489CD2000384EE /* UIImage+UIImageFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageFunctions.h"; sourceTree = "<group>"; };
 		18A933C818489CD2000384EE /* UIImage+UIImageFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageFunctions.m"; sourceTree = "<group>"; };
+		18A933CC1848D0AF000384EE /* geo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geo2.png; sourceTree = "<group>"; };
+		18A933CE1848D15A000384EE /* mind_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mind_logo.png; sourceTree = "<group>"; };
+		18A933CF1848D15A000384EE /* business_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = business_logo.png; sourceTree = "<group>"; };
 		18B1AFAE1813CA4900272C0D /* TRCitiesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCitiesListModel.h; sourceTree = "<group>"; };
 		18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRCitiesListModel.m; sourceTree = "<group>"; };
 		18B1AFB11813CA5900272C0D /* TRCityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCityItem.h; sourceTree = "<group>"; };
@@ -2042,6 +2048,9 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A933CE1848D15A000384EE /* mind_logo.png */,
+				18A933CF1848D15A000384EE /* business_logo.png */,
+				18A933CC1848D0AF000384EE /* geo2.png */,
 				18A933C5184898BA000384EE /* the_game.png */,
 				18A93380184760B8000384EE /* userpic.png */,
 				18A70A9A183B46AC0009F3A9 /* logo_small.png */,
@@ -2345,6 +2354,7 @@
 				18A70A341839F2740009F3A9 /* 161.jpg in Resources */,
 				18A70A9B183B46AC0009F3A9 /* logo_small.png in Resources */,
 				18DA914017D4529D00138EF2 /* searchTextBG.png in Resources */,
+				18A933D01848D15A000384EE /* mind_logo.png in Resources */,
 				1891D76117D8D35A00281246 /* menu-icon.png in Resources */,
 				1891D76217D8D35A00281246 /* menu-icon@2x.png in Resources */,
 				18A70A331839F2740009F3A9 /* 160.jpg in Resources */,
@@ -2433,6 +2443,7 @@
 				18A70A5A1839F2740009F3A9 /* 41.jpg in Resources */,
 				18A1090A17DE771A00D9CD8C /* add-contact-white-icon@2x.png in Resources */,
 				1822505E1834B582004CE8F9 /* TRNewsListVC.xib in Resources */,
+				18A933D11848D15A000384EE /* business_logo.png in Resources */,
 				18A70A8F1839F2740009F3A9 /* 9.jpg in Resources */,
 				18A70A2D1839F2740009F3A9 /* 155.jpg in Resources */,
 				18A1090B17DE771A00D9CD8C /* subscribe-icon@2x.png in Resources */,
@@ -2444,6 +2455,7 @@
 				18A89B0E180B166100B79D53 /* Icon.png in Resources */,
 				18A1091017DE7A5700D9CD8C /* add-contact-white-icon.png in Resources */,
 				18A70A1B1839F2740009F3A9 /* 139.jpg in Resources */,
+				18A933CD1848D0AF000384EE /* geo2.png in Resources */,
 				18A70A1D1839F2740009F3A9 /* 140.jpg in Resources */,
 				18A1091117DE7A5700D9CD8C /* send-message-icon.png in Resources */,
 				18A1091217DE7A5700D9CD8C /* subscribe-icon.png in Resources */,

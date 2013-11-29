@@ -90,7 +90,7 @@
         
         UIImage *imgLogoCellFromDisk = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
         if(imgLogoCellFromDisk == nil) {
-            [self.businessLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            [self.businessLogo setImageWithURL:[NSURL URLWithString:logoURLString] placeholderImage:[UIImage imageNamed:@"business_logo.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if(image != nil)
                 {
                     /*image = [image resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(85, 85) interpolationQuality:kCGInterpolationHigh];
@@ -107,7 +107,7 @@
             [self.businessLogo setImage: imgLogoCellFromDisk];
         }
     }   else    {
-        [self.businessLogo setImage:[UIImage imageNamed:@"rightbar_contact_placeholder.png"]];
+        [self.businessLogo setImage:[UIImage imageNamed:@"business_logo.png"]];
     }
     
     if(businessObject.user_logo.length != 0) {

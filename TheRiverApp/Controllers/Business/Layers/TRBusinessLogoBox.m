@@ -54,7 +54,7 @@
     layerView.hidden = YES;
     [self addSubview:layerView];*/
     
-    UIImageView *clearPerson = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightbar_contact_placeholder_transparent.png"]];
+    UIImageView *clearPerson = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"business_logo.png"]];
     clearPerson.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     clearPerson.contentMode = UIViewContentModeCenter;
     clearPerson.center = self.center;

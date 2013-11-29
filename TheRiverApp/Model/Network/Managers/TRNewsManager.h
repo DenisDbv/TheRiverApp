@@ -21,7 +21,7 @@
 
 + (instancetype)client;
 
--(void) downloadNewsListByPage:(NSInteger)pageIndex
+-(void) downloadNewsListByPage:(NSInteger)pageIndex forStack:(BOOL)stack
               successOperation:(void(^)(LRRestyResponse *response, TRNewsModel *newsModel))successBlock
             andFailedOperation:(FailedOperation) failedOperation;
 

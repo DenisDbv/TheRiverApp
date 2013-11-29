@@ -21,6 +21,11 @@
     self.topMargin = 0.0;
     self.leftMargin = 0.0;
     self.rightMargin = 0.0;
+    
+    /*self.layer.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0].CGColor;
+    self.layer.shadowOffset = CGSizeMake(1, -1);
+    self.layer.shadowOpacity = 0.75;
+    self.layer.shadowRadius = 3;*/
 }
 
 +(TRBusinessBox *)initBox:(CGSize)bounds withUserData:(TRUserInfoModel *)userObject

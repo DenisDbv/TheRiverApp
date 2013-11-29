@@ -41,12 +41,12 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     [dateFormatter setTimeZone:timeZone];
-    [dateFormatter setDateFormat:@"dd.MM.YYYY HH:mm"];
+    [dateFormatter setDateFormat:@"dd.MM.YYYY HH:mm:ss"];
     
     return [dateFormatter stringFromDate:[NSDate date]];
 }
 
--(void) downloadNewsListByPage:(NSInteger)pageIndex
+-(void) downloadNewsListByPage:(NSInteger)pageIndex forStack:(BOOL)stack
         successOperation:(void(^)(LRRestyResponse *response, TRNewsModel *newsModel))successBlock
          andFailedOperation:(FailedOperation) failedOperation
 {
@@ -56,7 +56,7 @@
     }
     
     NSString *lastDateEntry = [userDefaults objectForKey:@"downloadNewsList_lastDate"];
-    if(lastDateEntry.length == 0)
+    if(lastDateEntry.length == 0 || stack == NO )
         lastDateEntry = [self getCurrentDate];
     
     NSString *urlBusinessList = [NSString stringWithFormat:kTG_API_NewsList, [TRAuthManager client].iamData.token, pageIndex, [lastDateEntry stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ];
@@ -70,9 +70,11 @@
                                                                               TRNewsModel *newsModel = [[TRNewsModel alloc] initWithDictionary:resultJSON];
                                                                               if(newsModel.news.count > 0)  {
                                                                                   
-                                                                                  [userDefaults setObject:[self getCurrentDate] forKey:@"downloadNewsList_lastDate"];
+                                                                                  if(!stack)
+                                                                                      [userDefaults setObject:[self getCurrentDate] forKey:@"downloadNewsList_lastDate"];
                                                                                   
-                                                                                  [AppDelegateInstance() showBadgeNews:[newsModel.count_last_news integerValue]];
+                                                                                  //NSLog(@"Количество новых новостей: %i", [newsModel.count_last_news integerValue]);
+                                                                                  //[AppDelegateInstance() showBadgeNews:[newsModel.count_last_news integerValue]];
                                                                                   
                                                                                   if(successBlock != nil)
                                                                                       successBlock(response, newsModel);
