@@ -14,5 +14,6 @@
 @property (nonatomic, copy) NSString *skype;
 @property (nonatomic, copy) NSString *fb;
 @property (nonatomic, copy) NSString *vk;
+@property (nonatomic, copy) NSString *thegame;
 
 @end

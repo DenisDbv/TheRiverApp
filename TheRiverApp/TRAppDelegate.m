@@ -30,6 +30,7 @@
 #import "TRMindBaseListVC.h"
 #import "TRMeetingsBaseListVC.h"
 #import "TRNewsListVC.h"
+#import "Toast+UIView.h"
 
 @interface TRAppDelegate()
 @property (nonatomic, copy) NSData *pushToken;
@@ -99,6 +100,8 @@
         [self registerUserForFeedBack];
         
         [self presentTheRiverControllers];
+        
+        [self checkBusinessURL];
     }
     
     //[self showFontsList];
@@ -132,7 +135,7 @@
 
 -(void) checkBusinessURL
 {
-    if([TRAuthManager client].iamData.user.url.length == 0) {
+    /*if([TRAuthManager client].iamData.user.url.length == 0) {
         SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"Хотите ли вы указать сайт для своего бизнеса?"];
         alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Medium" size:18];
         [alertView addButtonWithTitle:@"НЕТ"
@@ -145,6 +148,35 @@
                                  type:SIAlertViewButtonTypeDefault
                               handler:^(SIAlertView *alertView) {
                                   NSString *urlDirect = [NSString stringWithFormat:@"%@/edit_3/?token=%@", SERVER_HOSTNAME, [TRAuthManager client].iamData.token];
+                                  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlDirect]];
+                              }];
+        [alertView show];
+    }*/
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL result = [[userDefaults objectForKey:@"disable_alert_profile_edit"] boolValue];
+    
+    if( (([TRAuthManager client].iamData.user.url.length == 0) || ([TRAuthManager client].iamData.user.contact_data.thegame.length == 0)) && !result )
+    {
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"Профили участников обновлены, хотите дополнить свой профиль ссылкой на сайт бизнеса и ссылкой на свою страницу THE GAME? (если вы участвуете)"];
+        alertView.messageFont = [UIFont fontWithName:@"HypatiaSansPro-Regular" size:18];
+        [alertView addButtonWithTitle:@"ПОЗЖЕ"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  
+                                  NSLog(@"Cancel Clicked");
+                                  
+                                  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                                  [userDefaults setObject:[NSNumber numberWithBool:YES] forKey:@"disable_alert_profile_edit"];
+                                  [userDefaults synchronize];
+                                  
+                                  UIViewController *test =  _rootContainer.centerViewController;
+                                  [test.view makeToast:@"Вы сможете дополнить информацию позже, в настройках своего профиля." duration:5.0 position:nil];
+                              }];
+        [alertView addButtonWithTitle:@"ДА"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alertView) {
+                                  NSString *urlDirect = [NSString stringWithFormat:@"%@/editurl/?token=%@", SERVER_HOSTNAME, [TRAuthManager client].iamData.token];
                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlDirect]];
                               }];
         [alertView show];
@@ -207,8 +239,8 @@
 	NSLog(@"%@",[NSString stringWithFormat:@"Received push notification: %@", pushNotification] );
     
     NSString *customDataString = [pushManager getCustomPushData:pushNotification];
-    NSDictionary *jsonData = [customDataString objectFromJSONString];
     
+    NSDictionary *jsonData = [customDataString objectFromJSONString];
     [self checkAndOpenWindowAfterPushNotifications:[[jsonData objectForKey:@"window_open"] integerValue]];
 }
 

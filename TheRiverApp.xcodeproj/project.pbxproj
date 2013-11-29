@@ -424,6 +424,7 @@
 		18A933B81847ADED000384EE /* PWRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933A11847ADED000384EE /* PWRequestManager.m */; };
 		18A933B91847ADED000384EE /* PWSendBadgeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933A31847ADED000384EE /* PWSendBadgeRequest.m */; };
 		18A933BA1847ADED000384EE /* PWSetTagsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933A51847ADED000384EE /* PWSetTagsRequest.m */; };
+		18A933C41848937E000384EE /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A933C31848937E000384EE /* Toast+UIView.m */; };
 		18B1AFB01813CA4900272C0D /* TRCitiesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */; };
 		18B1AFB31813CA5900272C0D /* TRCityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB21813CA5900272C0D /* TRCityItem.m */; };
 		18B1AFB61813CDE800272C0D /* TRIndustriesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1AFB51813CDE800272C0D /* TRIndustriesListModel.m */; };
@@ -1016,6 +1017,8 @@
 		18A933A51847ADED000384EE /* PWSetTagsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWSetTagsRequest.m; sourceTree = "<group>"; };
 		18A933A61847ADED000384EE /* PushNotificationManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PushNotificationManager.xcodeproj; sourceTree = "<group>"; };
 		18A933A91847ADED000384EE /* PushNotificationManager_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager_Prefix.pch; sourceTree = "<group>"; };
+		18A933C21848937E000384EE /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		18A933C31848937E000384EE /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		18B1AFAE1813CA4900272C0D /* TRCitiesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCitiesListModel.h; sourceTree = "<group>"; };
 		18B1AFAF1813CA4900272C0D /* TRCitiesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRCitiesListModel.m; sourceTree = "<group>"; };
 		18B1AFB11813CA5900272C0D /* TRCityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCityItem.h; sourceTree = "<group>"; };
@@ -1977,6 +1980,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		18A933C11848937E000384EE /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				18A933C21848937E000384EE /* Toast+UIView.h */,
+				18A933C31848937E000384EE /* Toast+UIView.m */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		18B1AFAC1813CA2300272C0D /* IndustriesList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2162,6 +2174,7 @@
 		18E65E2217D5009700D1B778 /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				18A933C11848937E000384EE /* Toast */,
 				18A933821847ADED000384EE /* iPhone-ARC */,
 				1822506418353CB9004CE8F9 /* LKBadgeView */,
 				18B1AFC018140D9800272C0D /* OBAlertView */,
@@ -2718,6 +2731,7 @@
 				1896C47917E45E3B004AE5FF /* TRMeetLogoBox.m in Sources */,
 				1896C47C17E460E1004AE5FF /* TRMeetTitleBox.m in Sources */,
 				1896C47F17E46457004AE5FF /* TRMeetWebViewBox.m in Sources */,
+				18A933C41848937E000384EE /* Toast+UIView.m in Sources */,
 				18975F7E17EE052F00B06DF7 /* TRAuthManager.m in Sources */,
 				18975F8117EE055000B06DF7 /* URLPostOperation.m in Sources */,
 				18975F8417EE0D7500B06DF7 /* TRNetworkConstants.m in Sources */,
@@ -2850,14 +2864,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Denis Dubov (BLTF8P8RTQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "The River";
-				PROVISIONING_PROFILE = "7CE57264-CC7D-46BD-8BA1-0D7068F43BDB";
+				PROVISIONING_PROFILE = "837C172F-7856-4095-B1B5-9B44A33E8D7A";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2867,14 +2881,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Denis Dubov (BLTF8P8RTQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "The River";
-				PROVISIONING_PROFILE = "7CE57264-CC7D-46BD-8BA1-0D7068F43BDB";
+				PROVISIONING_PROFILE = "837C172F-7856-4095-B1B5-9B44A33E8D7A";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
