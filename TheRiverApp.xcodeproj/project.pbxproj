@@ -461,6 +461,8 @@
 		18E65E2B17D5009700D1B778 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2617D5009700D1B778 /* MFSideMenuContainerViewController.m */; };
 		18E65E2C17D5009700D1B778 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */; };
 		18E65E2D17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */; };
+		18FC6D28184937690038A0C6 /* thegame_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FC6D26184937690038A0C6 /* thegame_1.png */; };
+		18FC6D29184937690038A0C6 /* thegame_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FC6D27184937690038A0C6 /* thegame_2.png */; };
 		18FEA72217FAD86A006B7864 /* ZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72117FAD86A006B7864 /* ZoomView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18FEA72717FAD940006B7864 /* TRImageReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEA72517FAD940006B7864 /* TRImageReviewController.m */; };
 		18FEA72817FAD940006B7864 /* TRImageReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEA72617FAD940006B7864 /* TRImageReviewController.xib */; };
@@ -1077,6 +1079,8 @@
 		18E65E2817D5009700D1B778 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
 		18E65E2917D5009700D1B778 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
 		18E65E2A17D5009700D1B778 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
+		18FC6D26184937690038A0C6 /* thegame_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thegame_1.png; sourceTree = "<group>"; };
+		18FC6D27184937690038A0C6 /* thegame_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thegame_2.png; sourceTree = "<group>"; };
 		18FEA72017FAD869006B7864 /* ZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomView.h; sourceTree = "<group>"; };
 		18FEA72117FAD86A006B7864 /* ZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomView.m; sourceTree = "<group>"; };
 		18FEA72417FAD940006B7864 /* TRImageReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRImageReviewController.h; path = Controllers/ImageReview/TRImageReviewController.h; sourceTree = "<group>"; };
@@ -2048,6 +2052,8 @@
 		18DA912B17D44C5700138EF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18FC6D26184937690038A0C6 /* thegame_1.png */,
+				18FC6D27184937690038A0C6 /* thegame_2.png */,
 				18A933CE1848D15A000384EE /* mind_logo.png */,
 				18A933CF1848D15A000384EE /* business_logo.png */,
 				18A933CC1848D0AF000384EE /* geo2.png */,
@@ -2405,6 +2411,7 @@
 				18A707E7183979830009F3A9 /* background.png in Resources */,
 				1891D7A817DA298200281246 /* AQGreen_Plant_(2560x1600).png in Resources */,
 				1891D7A917DA298200281246 /* AQgrounded.png in Resources */,
+				18FC6D28184937690038A0C6 /* thegame_1.png in Resources */,
 				1891D7AA17DA298200281246 /* AQhappy.png in Resources */,
 				18A70A3A1839F2740009F3A9 /* 167.jpg in Resources */,
 				1891D7AB17DA298200281246 /* AQLeatherHoles-Apple.png in Resources */,
@@ -2546,6 +2553,7 @@
 				18A70A7E1839F2740009F3A9 /* 74.jpg in Resources */,
 				18A70A1E1839F2740009F3A9 /* 141.jpg in Resources */,
 				18A70A131839F2740009F3A9 /* 131.jpg in Resources */,
+				18FC6D29184937690038A0C6 /* thegame_2.png in Resources */,
 				18A70A041839F2740009F3A9 /* 118.jpg in Resources */,
 				18A70A691839F2740009F3A9 /* 55.jpg in Resources */,
 				1896C45217E09101004AE5FF /* button-default.png in Resources */,
@@ -2886,14 +2894,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Denis Dubov (BLTF8P8RTQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "The River";
-				PROVISIONING_PROFILE = "BB25D70D-81A4-418E-9E39-51F93CD1E7B3";
+				PRODUCT_NAME = "БМ Реки";
+				PROVISIONING_PROFILE = "28F11DDF-D670-4F9D-A4A7-6DDAF7A65D29";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2903,14 +2911,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 651A28E0F2D441E39829411F /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Denis Dubov (BLTF8P8RTQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TheRiverApp/TheRiverApp-Prefix.pch";
 				INFOPLIST_FILE = "TheRiverApp/TheRiverApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "The River";
-				PROVISIONING_PROFILE = "BB25D70D-81A4-418E-9E39-51F93CD1E7B3";
+				PRODUCT_NAME = "БМ Реки";
+				PROVISIONING_PROFILE = "28F11DDF-D670-4F9D-A4A7-6DDAF7A65D29";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

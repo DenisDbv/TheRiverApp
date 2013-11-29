@@ -63,7 +63,7 @@
     //newsDesc.backgroundColor = [UIColor yellowColor];
     
     if(newsItem.logo.length > 0)   {
-        NSString *logoURLString = [@"http://kostum5.ru/" stringByAppendingString:newsItem.logo];
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:newsItem.logo];
     
         UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
         if(img == nil) {

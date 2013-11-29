@@ -23,12 +23,14 @@
 
 @interface TRUserProfileController ()
 @property (nonatomic, retain) MGScrollView *scrollView;
+@property (nonatomic, strong) TRHeadBox *headBox;
 @end
 
 @implementation TRUserProfileController
 {
     BOOL _isIam;
 }
+@synthesize headBox;
 
 -(id) initByUserModel:(TRUserInfoModel*)userObject isIam:(BOOL)isIam
 {
@@ -71,7 +73,9 @@
     [self createBusinessBox];
     [self createBusinessWebViewBox];
     
-    [_scrollView layoutWithSpeed:0.3 completion:nil];
+    [_scrollView layoutWithSpeed:0.3 completion:^{
+        [headBox animateTheGameIcon];
+    }];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -130,7 +134,7 @@
 
 -(void) createBackgroundHeadBlock
 {
-    TRHeadBox *headBox = (TRHeadBox*)[TRHeadBox initBox: self.view.bounds.size
+    headBox = (TRHeadBox*)[TRHeadBox initBox: self.view.bounds.size
                                       withUserData:_userDataObject];
     [_scrollView.boxes addObject: headBox];
 }

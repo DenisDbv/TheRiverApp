@@ -20,6 +20,7 @@
 
 @interface TRHeadBox()
 @property (nonatomic, assign) BOOL isTheGameUser;
+@property (nonatomic, strong) UIImageView *theGameImage2;
 @end
 
 @implementation TRHeadBox
@@ -197,12 +198,18 @@
     [self addSubview: nameLabel];
     
     if(self.isTheGameUser)  {
-        UIImageView *theGameImage = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"the_game.png"] scaleProportionalToRetina] ];
+        UIImageView *theGameImage = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"thegame_1.png"] scaleProportionalToRetina] ];
         [self addSubview:theGameImage];
         
         theGameImage.frame = CGRectMake(nameLabel.frame.origin.x - 9,
                                         nameLabel.frame.origin.y - 8 - theGameImage.frame.size.height,
                                         theGameImage.frame.size.width, theGameImage.frame.size.height);
+        
+        self.theGameImage2 = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"thegame_2.png"] scaleProportionalToRetina] ];
+        [self addSubview:self.theGameImage2];
+        self.theGameImage2.frame = CGRectMake(theGameImage.frame.origin.x+88,
+                                             theGameImage.frame.origin.y + 7.5,
+                                              self.theGameImage2.frame.size.width, self.theGameImage2.frame.size.height);
         
         [theGameImage initialiseTapHandler:^(UIGestureRecognizer *sender) {
             [self openTheGameURL];
@@ -212,6 +219,35 @@
             [self openTheGameURL];
         } forTaps:1];
     }
+}
+
+-(void) animateTheGameIcon
+{
+    [UIView animateWithDuration:0.3
+                          delay:0.2
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:(void (^)(void)) ^{
+                         self.theGameImage2.transform=CGAffineTransformMakeScale(1.3, 1.3);
+                     }
+                     completion:^(BOOL finished){
+                         [UIView animateWithDuration:0.1
+                                               delay:0
+                                             options:UIViewAnimationOptionBeginFromCurrentState
+                                          animations:(void (^)(void)) ^{
+                                              self.theGameImage2.transform=CGAffineTransformMakeScale(1.0, 1.0);
+                                          }
+                                          completion:^(BOOL finished){
+                                              [UIView animateWithDuration:0.3
+                                                                    delay:0
+                                                                  options:UIViewAnimationOptionBeginFromCurrentState
+                                                               animations:(void (^)(void)) ^{
+                                                                   self.theGameImage2.transform=CGAffineTransformMakeScale(1.3, 1.3);
+                                                               }
+                                                               completion:^(BOOL finished){
+                                                                   self.theGameImage2.transform=CGAffineTransformIdentity;
+                                                               }];
+                                          }];
+                     }];
 }
 
 -(void) openTheGameURL

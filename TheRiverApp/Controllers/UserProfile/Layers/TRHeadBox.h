@@ -10,4 +10,6 @@
 
 @interface TRHeadBox : TRRootBox
 
+-(void) animateTheGameIcon;
+
 @end

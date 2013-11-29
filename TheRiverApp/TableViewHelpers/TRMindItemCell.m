@@ -49,7 +49,7 @@
     descLabel.frame = CGRectMake(descLabel.frame.origin.x, titleLabel.frame.origin.y+titleLabel.frame.size.height+3.0, descLabel.frame.size.width, (floor(size.height) > descLabel.frame.size.height)?54.0:floor(size.height));
     
     if(mindObject.logo.length > 0)   {
-        NSString *logoURLString = [@"http://kostum5.ru/" stringByAppendingString:mindObject.logo];
+        NSString *logoURLString = [SERVER_HOSTNAME stringByAppendingString:mindObject.logo];
         
         UIImage *img = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:logoURLString];
         if(img == nil) {
